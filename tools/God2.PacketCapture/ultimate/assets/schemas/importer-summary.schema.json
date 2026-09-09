@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/importer-summary.schema.json",
+  "title":"God2 recovery bundle importer summary",
+  "type":"object",
+  "required":["schemaVersion","status","packageId","sourceZipSha256","artifactRoot","stagingRoot","stagedFileCount","gapCount","readyDomainCount","blockedDomainCount","productionDatabaseConnectionAttempted","productionDatabaseMutationAttempted","resultManifestPath","completedAtUtc"],
+  "properties":{
+    "schemaVersion":{"const":"god2-recovery-bundle-import-result-v1"},
+    "status":{"enum":["RECOVERY_BUNDLE_IMPORTER_DRY_RUN_PASS","EVIDENCE_BLOCKED_RECOVERY_BUNDLE_IMPORT"]},
+    "packageId":{"type":"string","pattern":"^[A-Za-z0-9._-]{1,160}$"},
+    "sourceZipSha256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},
+    "artifactRoot":{"const":"."},
+    "stagingRoot":{"type":"string","pattern":"^(?![A-Za-z]:)(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\]+$"},
+    "stagedFileCount":{"type":"integer","minimum":0},
+    "gapCount":{"type":"integer","minimum":0},
+    "readyDomainCount":{"type":"integer","minimum":0},
+    "blockedDomainCount":{"type":"integer","minimum":0},
+    "productionDatabaseConnectionAttempted":{"const":false},
+    "productionDatabaseMutationAttempted":{"const":false},
+    "resultManifestPath":{"const":"result-manifest.json"},
+    "completedAtUtc":{"type":"string","format":"date-time"},
+    "diagnostics":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "god2-generic-probe-plan-v1",
+  "generation": 1,
+  "targets": [
+    {
+      "targetId": 1,
+      "candidateId": "replace_with_verified_candidate",
+      "functionRva": "0x00000000",
+      "expectedBytes": "00 00 00 00 00 00 00 00",
+      "capture": ["ECX", "EDX", "BoundedStack"],
+      "follow": ["Return", "Caller", "Consumer"],
+      "stackWords": 8,
+      "consumerSteps": 4,
+      "maximumObservations": 1000,
+      "domain": "Object",
+      "priority": "P1",
+      "objectSource": "ECX"
+    }
+  ]
+}

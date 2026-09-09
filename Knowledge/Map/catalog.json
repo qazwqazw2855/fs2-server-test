@@ -1,0 +1,602 @@
+{
+  "Domain": "Map",
+  "SourceCategory": "primary:maps;related:spawns",
+  "SourceArtifact": "maps/maps.official.json;spawns/spawns.official.json",
+  "DeclaredRecordCount": 69,
+  "RelatedSourceRecordCount": 69,
+  "IndexedRecordCount": 69,
+  "VerificationStatus": "Recovered; NumericMapIdUnverified | Unverified; Needs Recovery",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "area",
+    "canRecord",
+    "displayNameCandidate",
+    "exitRegions",
+    "id",
+    "mapId",
+    "mbd",
+    "numericMapId",
+    "numericMapIdStatus",
+    "packedMbdCandidate",
+    "provenance",
+    "resourceName",
+    "roomGroupId",
+    "runtimeEligibility",
+    "spawnKind",
+    "spawnPosition",
+    "templateId",
+    "unknownFields",
+    "validationStatus",
+    "x",
+    "y"
+  ],
+  "MissingFields": [
+    "crossReferenceEvidence",
+    "exitRegionCoordinates",
+    "gameplaySemanticValidation",
+    "numericMapId",
+    "packetRuntimeValidation",
+    "portalTriggerRecord",
+    "respawnSeconds",
+    "serverDestinationMapId",
+    "spawnCondition",
+    "spawnPosition",
+    "templateId",
+    "x",
+    "y"
+  ],
+  "Entities": [
+    {
+      "Id": "client:map/array/array",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "95C6B2D1A61FE5EE65F4C0B98803C57BFFE6D442BB11F083FAC1543CE4707855"
+    },
+    {
+      "Id": "client:map/array/array01/array01",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "0FBC6FF1FDD31383BFD6C553DFD0BFEF7B158C73A1F1D90F70FF54762E9392F7"
+    },
+    {
+      "Id": "client:map/array/array02/array02",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "66DEA8C5F442E7BB158469978C30F46E83A0B674C0FA79D493C23CE5C312FCC1"
+    },
+    {
+      "Id": "client:map/array/array03/array03",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "16060033C5A0A99CA3CFF6F76B4EC91443B2FC0FCE3AB47A0CBFC5B043EBC0A7"
+    },
+    {
+      "Id": "client:map/array/array04/array04",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "E307548D11B01A607DC86257C67C892E43B48D875A4682EA57DF44182A81B479"
+    },
+    {
+      "Id": "client:map/array/array05/array05",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "1072456E348AC1F1B371F522137A5B0C63C67185CB8D5D5DFB1914474F79D0DC"
+    },
+    {
+      "Id": "client:map/array/array06/array06",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "C5E5DCF7CFECA498914B832DF444BEBB326BFC1264B0DF0AEDA2B05E71CFF30C"
+    },
+    {
+      "Id": "client:map/array/array07/array07",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "E816A65B26D865CE16F0431245907AC9A9EE60F7EDB4B532B5E27C10AC0B0110"
+    },
+    {
+      "Id": "client:map/array/array08/array08",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "D55636029A849A2E73D4EED56F6F875D2C4DACA3A2B989CED9545B015479EB61"
+    },
+    {
+      "Id": "client:map/array/array09/array09",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "44A28A8EB1747FB87567C65DE6BCF2377A9D30832D444A185CC78E78E363F487"
+    },
+    {
+      "Id": "client:map/array/array10/array10",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "CE8E93DC941E63B74363E2B96E34FE9318175B82FABB425102D392138D568A3F"
+    },
+    {
+      "Id": "client:map/array/array11/array11",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "0A6155D800A5DB867F752FDA6AD17386334BFFEC6F8DF57B963C3DA4C68EBCA8"
+    },
+    {
+      "Id": "client:map/array/array12/array12",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "2C2AECA0D54337D0AEB17F62FFE38FDFE645F81A0F6F1EAC5BF14262DF06D6BC"
+    },
+    {
+      "Id": "client:map/array/array13/array13",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "A4602EAB6975A18A8AD0F41FB35068F7339BE703301158554B6B40A6DC235EAB"
+    },
+    {
+      "Id": "client:map/array/sroom/sroom",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "9EDD597EFC2D60E5B39D68D275D4237FF8624E7B09A97DF5C52E16A11FAEC9AB"
+    },
+    {
+      "Id": "client:map/array/sroom02/sroom02",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "77AD3C50BA1475163DE3FDBFADEB5C6C43BF4881F34BADEB09C590F3782A61D5"
+    },
+    {
+      "Id": "client:map/array/sroom03/sroom03",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "74CC37B445E8FE465B14628A48C4C79097C32793DB67DD79B7C0C31E860737DE"
+    },
+    {
+      "Id": "client:map/array/sroom04/sroom04",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "11B33DB91F03694AA9F8D9C208E5CF765B225DFA4752CE596E71C47E8DD97BAF"
+    },
+    {
+      "Id": "client:map/array/sroom05/sroom05",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "2E82533B815C9E268BD5943B1737E9ED0254074A49F0E1E9AB12F2EA96EE8C43"
+    },
+    {
+      "Id": "client:map/array/sroom06/sroom06",
+      "Name": "\u7DF4\u529F\u623F / battle training rooms",
+      "References": {
+        "roomGroupId": "client:roomGroup/array"
+      },
+      "RecordHash": "7B77313866EC2E3EDD4DCFB6F032EE4E390AAF3B97A5D3EA9E6D0F52BB99A9EF"
+    },
+    {
+      "Id": "client:map/island03/cave01/cave01",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "168E1EF3CC757500E4F67F4B6DAF4EA1B8790F73A2840D6AAE9F4EE29700371A"
+    },
+    {
+      "Id": "client:map/island03/cave08/cave08",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "B36A757FBEFD8FCA8AE51984E8815262FA26DC56D5C99E1A0769ADBD48D31687"
+    },
+    {
+      "Id": "client:map/island03/cave09/cave09",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "D098CA740F9D6F614A2B2C00859CB7F9591470004A091D4CFABDA16F91FDB49C"
+    },
+    {
+      "Id": "client:map/island03/cave10/cave10",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "EDBFD44C03D3D130F399C0F5B6F3C03F871F1D8115718C9D42085DC08B07B9EE"
+    },
+    {
+      "Id": "client:map/island03/cave12/cave12",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "DE3A4B4CF8099FF7E2C7826A56652D3C9F6A96303A838B448109F7B129F59E59"
+    },
+    {
+      "Id": "client:map/island03/cityi2/cityi2",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "ACC5885731BADFB4D1EDDA4362C2C99D585B78B7DA09F4F3294B06314D838DAD"
+    },
+    {
+      "Id": "client:map/island03/cityi4/cityi4",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "D98C9C540266FF2A23F69445BAF5F1596A84B356ABBCD17E160561D530748256"
+    },
+    {
+      "Id": "client:map/island03/indoor/god03",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "DA0F73205C06C543C43D359BAC36D3591565773204D26B832E6F5F8B577E3665"
+    },
+    {
+      "Id": "client:map/island03/indoor/gr01",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "F23259947027E6E9A2546A92BB72134BE07F212DC711D0EEF64F90045BF18226"
+    },
+    {
+      "Id": "client:map/island03/indoor/gr02",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "969B7FBF4B74175C72765E14B0792E2122B4A91D6C5383EEFC2062C2507B0D67"
+    },
+    {
+      "Id": "client:map/island03/indoor/gr03",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "C2E447AD1C48120CBC22CEB57AF00BBDF2A99D6C653371A71D9BE01503DAF994"
+    },
+    {
+      "Id": "client:map/island03/indoor/gr04",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "3F2CD32BCB88884AB5152C52FDFE38241490166A6B005790B3F6AEE178504EE8"
+    },
+    {
+      "Id": "client:map/island03/indoor/hofu",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "59803F2FA2D11D38F2381A5B06A0F86B2B2C47CC147BCD20CB1E5EC2F4ABAED5"
+    },
+    {
+      "Id": "client:map/island03/indoor/konfu",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "7BF796292E2DD05C79E777DFA026C1E1F67C56AA2EB4BAB08E2B7DC96E8DEC63"
+    },
+    {
+      "Id": "client:map/island03/indoor/tp_nor_r",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "F8550A1776A1A4D8A78431A84DBAA3C48FBAB0FF6000D5B52DCC8C6AD30ADEC8"
+    },
+    {
+      "Id": "client:map/island03/island03",
+      "Name": "\u6606\u4ED1\u4ED9\u754C3 / \u5D11\u5D19\u4ED9\u754C3",
+      "References": {
+        "roomGroupId": "client:roomGroup/island03"
+      },
+      "RecordHash": "5ABC37D38D4B8FCD63D1B1550262BB096AA34E09BB7BFF96CE831850D24EF5A0"
+    },
+    {
+      "Id": "client:map/south003/citys07/citys07",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "37B3C3CCC8E0D5D68729D6BE4C3A5CC6E4825BB608BBF6F1468353009EAF1282"
+    },
+    {
+      "Id": "client:map/south003/citys08/citys08",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "A6FA514E40056E8C1A50E2878E31D805EFA95B8DCD2ED5BB231FB63C7E9D505E"
+    },
+    {
+      "Id": "client:map/south003/indoor/god01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "C0958DFAAEEC1C458807DC9FAE6141CFA11A9D02C6CD55ACE1D34D907AE90464"
+    },
+    {
+      "Id": "client:map/south003/indoor/god02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "A835BE4F08FD1BA339246F9EBB2801794529B6984E58A1144ECB0173075506CF"
+    },
+    {
+      "Id": "client:map/south003/indoor/god03",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "610EC3E707309BCCC2472AF9047DD694D197A7128421486241526CA866DCE3C8"
+    },
+    {
+      "Id": "client:map/south003/indoor/mhl01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "3444CAD26552DA84E71A70D903795B23AA50578477A96C6766C39D79EE8C9258"
+    },
+    {
+      "Id": "client:map/south003/indoor/mhl02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "E420F34C15555F569779C042E5A826C17A4D8616781D3585FD38086A00916472"
+    },
+    {
+      "Id": "client:map/south003/indoor/mhr01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "4E441552A443E44BC360B3EC36480BBC3E03E81B0CE4F655E6FADAF2FEE25184"
+    },
+    {
+      "Id": "client:map/south003/indoor/mhr02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "CF72CB4F5D6E714554CC235636513D5552A67F2A96831AD04D9360EFD61E2D35"
+    },
+    {
+      "Id": "client:map/south003/indoor/shl01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "4F741F8ABFB13ED92ECC1FA764E3A8CD99E3D4E9CF1FFE0F67EF975FAFAF67DA"
+    },
+    {
+      "Id": "client:map/south003/indoor/shl02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "F9166C2690D3C32A8EC4E2A98E8BC3F4228E97D1FF6D2A55B8E6FEA31938EFD3"
+    },
+    {
+      "Id": "client:map/south003/indoor/shr01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "277B202742712F7DD7023C3C7D32B1AB99C06FC5F84DAA2391EAA1E5819F24BA"
+    },
+    {
+      "Id": "client:map/south003/indoor/shr02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "0BE5C327D083B691C4AE3685AFF76ABE037B7D2394A041DD9611BB66B2DC3B66"
+    },
+    {
+      "Id": "client:map/south003/indoor/tp_nor_l",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "F0A1CBF7A933C7E37FE59EFA362D69E526068AECDEE841E7C7EDBCDA334F38C1"
+    },
+    {
+      "Id": "client:map/south003/indoor/tp_nor_r",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "16C4A5D69F3FC78B78F399540BF7E0FDD6E18324612B9C5CF67D3438EA83C481"
+    },
+    {
+      "Id": "client:map/south003/mazes01/mazes01",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "AECDEF3A02F3BE4A4CB621C7D72926E0A59A8EDBD498FEB0EADF63DE00120F72"
+    },
+    {
+      "Id": "client:map/south003/mazes02/mazes02",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "38538DE7CD24E825FF6395EE87C10E1C464CF20723518783533DA887D2002B76"
+    },
+    {
+      "Id": "client:map/south003/roads07/roads07",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "2D234A4B3BC0401C5EAEA2DA6549C5D9367BE8E83EED6549256318A530B95DDF"
+    },
+    {
+      "Id": "client:map/south003/south003",
+      "Name": "\u6953\u83EF\u93AE candidate",
+      "References": {
+        "roomGroupId": "client:roomGroup/south003"
+      },
+      "RecordHash": "B720EFFD89DB741CF7BB9830F6A01BEEE6F038E99013FEBB51646CBBD7A08FDE"
+    },
+    {
+      "Id": "client:map/tong/indoor/towertop",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "653F7DA801CCBBA4DD2B3DD8A26724E818464E4EB2ADC45603D835BEC8D08CFF"
+    },
+    {
+      "Id": "client:map/tong/mazeto01/mazeto01",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "1312DBA1E17DC66544C567A8E4B6C9527F293D4D3F1642E1FF5CF4399C7CBBC5"
+    },
+    {
+      "Id": "client:map/tong/mazeto02/mazeto02",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "EC619697258FB362A3C570951D382E76145F64747E007C32BB4255F0314760AE"
+    },
+    {
+      "Id": "client:map/tong/mazeto03/mazeto03",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "50AC9838F769B492FD4775FEF131A71CDB1BA5702BA550E409CAE9A96DCD68B2"
+    },
+    {
+      "Id": "client:map/tong/mazeto04/mazeto04",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "03C65F1573FB7AEF36C6C143E60F62E85B3377233D503924FBEB8EC388B0BD50"
+    },
+    {
+      "Id": "client:map/tong/reborn/reborn",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "EF6F9E3D2EB1D7C8D6C5059DD19177DA7462B1DBDC599065B857C8EE52A82348"
+    },
+    {
+      "Id": "client:map/tong/tong",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "9D735F718C643F55C08E57DBE524DFD7B19DEB4329508C616B8A9B54C938005D"
+    },
+    {
+      "Id": "client:map/tong/tong1/tong1",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "0C1554D2B9FA91F5A91FAFDA402E2D1751A1445EC1133FC4A2DC78A4D8D9E50E"
+    },
+    {
+      "Id": "client:map/tong/tong2/tong2",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "98B34C521829692B586596514D5B3313912F95558EEBFD142A3959971883B852"
+    },
+    {
+      "Id": "client:map/tong/tong3/tong3",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "47D30D9F15FE36E147B07B8EFEEA3F305825476E822C53F267C230EE5BBBD9EB"
+    },
+    {
+      "Id": "client:map/tong/tong4/tong4",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "3975A693FE7E779CE049883207F0F47D6291496317FCECFE73B34A2457D25A53"
+    },
+    {
+      "Id": "client:map/tong/tonggem/tonggem",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "EE16D59483B819FF6B334FF657A98A3358E50302D6D7060845E9EFCDFDA6DAF3"
+    },
+    {
+      "Id": "client:map/tong/tongwar1/tongwar1",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "D1697C1581E1E9E0C5737181AF2AC3B793BF72E6E88ED357855375F66E2262D9"
+    },
+    {
+      "Id": "client:map/tong/tower3/tower3",
+      "Name": "Tong map group",
+      "References": {
+        "roomGroupId": "client:roomGroup/tong"
+      },
+      "RecordHash": "CBE28701EFF8DFC0E6C82F8FAAB6B9E739A470BDA9C3F0F2F1045B40B9795555"
+    }
+  ]
+}

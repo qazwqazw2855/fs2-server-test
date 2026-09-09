@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "god2-primary-attribute-pk-calibration-v1",
+  "captureClass": "ControlledLocalPkThenOfficialPkReplication",
+  "subjects": [
+    {
+      "name": "校準甲",
+      "actorKind": "Player",
+      "strength": 101,
+      "constitution": 103,
+      "intelligence": 107,
+      "speed": 109,
+      "currentMp": 127,
+      "maximumMp": 127,
+      "metal": 11,
+      "wood": 13,
+      "water": 17,
+      "fire": 19,
+      "earth": 23
+      ,"skills": [6501, 6502, 6503]
+    },
+    {
+      "name": "校準乙",
+      "actorKind": "Player",
+      "strength": 211,
+      "constitution": 223,
+      "intelligence": 227,
+      "speed": 229,
+      "currentMp": 233,
+      "maximumMp": 233,
+      "metal": 29,
+      "wood": 31,
+      "water": 37,
+      "fire": 41,
+      "earth": 43
+      ,"skills": [6511, 6512, 6513]
+    },
+    {
+      "name": "校準寵甲",
+      "actorKind": "Pet",
+      "strength": 307,
+      "constitution": 311,
+      "intelligence": 313,
+      "speed": 317,
+      "currentMp": 331,
+      "maximumMp": 331,
+      "metal": 47,
+      "wood": 53,
+      "water": 59,
+      "fire": 61,
+      "earth": 67
+      ,"skills": [6521, 6522, 6523]
+    },
+    {
+      "name": "校準寵乙",
+      "actorKind": "Pet",
+      "strength": 401,
+      "constitution": 409,
+      "intelligence": 419,
+      "speed": 421,
+      "currentMp": 431,
+      "maximumMp": 431,
+      "metal": 71,
+      "wood": 73,
+      "water": 79,
+      "fire": 83,
+      "earth": 89
+      ,"skills": [6531, 6532, 6533]
+    }
+  ]
+}

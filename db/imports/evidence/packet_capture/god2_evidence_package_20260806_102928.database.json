@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "god2-evidence-package-20260806-102928-v1",
+  "evidenceSourceId": "god2-evidence-package-20260806-102928",
+  "sourcePackageSha256": "6C8D52617F652F522610ABDB3D4DB1B381E0A21A08B8E60E4A574AC66F7E9951",
+  "sessionId": "65BBF007-6117-419F-BF8E-F3C7C95B8809",
+  "originalCaptureDirectoryId": "2026-08-06_18-14-15_05A7F156-259E-4110-A553-2C125ED962CC",
+  "analysisRunId": "7D843178-F12E-4993-8EF2-991AD9FD324D",
+  "targetExecutable": "God2_opt.exe",
+  "targetProcessId": 368,
+  "targetArchitecture": "x86",
+  "captureRecordCount": 5797,
+  "transportChunkCount": 3482,
+  "decodedMessageCount": 1685,
+  "clientDecodedMessageCount": 786,
+  "serverDecodedMessageCount": 899,
+  "lengthPrefixValidatedCount": 1685,
+  "directionalOpcodeFamilyCount": 64,
+  "handlerObservationCount": 630,
+  "handlerFamilyCount": 8,
+  "verifiedGameplayClassificationCount": 0,
+  "registeredDecodedKnowledgeCount": 6,
+  "battleResultE6AdditionalObservations": 3,
+  "handlerFamilies": [
+    {"opcode":"0x86","observedCount":337,"payloadLength":17,"uniquePayloadCount":103,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x83","observedCount":125,"payloadLength":15,"uniquePayloadCount":85,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x85","observedCount":92,"payloadLength":2,"uniquePayloadCount":1,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x88","observedCount":33,"payloadLength":121,"uniquePayloadCount":33,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x1C","observedCount":23,"payloadLength":45,"uniquePayloadCount":14,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x89","observedCount":8,"payloadLength":57,"uniquePayloadCount":7,"handlerAddress":"0x005470B3"},
+    {"opcode":"0x38","observedCount":6,"payloadLength":2,"uniquePayloadCount":1,"handlerAddress":"0x0054709B"},
+    {"opcode":"0x87","observedCount":6,"payloadLength":3,"uniquePayloadCount":2,"handlerAddress":"0x0054709B"}
+  ],
+  "productionPolicy": {
+    "rawSensitivePayloadStored": false,
+    "verifiedGameplayPromotions": 0,
+    "productionEnabled": false,
+    "candidateOrUnknownPromoted": false
+  }
+}

@@ -1,0 +1,5 @@
+#pragma once
+
+#define IDI_GOD2_PACKET_CAPTURE 101
+#define IDR_X86_PACKET_PROBE 201
+#define IDR_X86_PACKET_INJECTOR 202

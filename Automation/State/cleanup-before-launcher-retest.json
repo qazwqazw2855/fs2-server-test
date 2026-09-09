@@ -1,0 +1,12 @@
+{
+    "command":  "CleanupReplayProcesses",
+    "stoppedProcesses":  [
+                             {
+                                 "processId":  21668,
+                                 "processName":  "Launcher"
+                             }
+                         ],
+    "remainingClientCount":  0,
+    "remainingLauncherCount":  0,
+    "completedAtUtc":  "2026-08-12T04:06:31.3703650+00:00"
+}

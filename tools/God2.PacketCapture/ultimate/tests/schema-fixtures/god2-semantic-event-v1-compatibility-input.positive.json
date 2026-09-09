@@ -1,0 +1,1 @@
+{"SchemaVersion":1,"EventType":"ObjectResolution","EventId":"NonCanonicalV1CompatibilityFixture","FixtureOnly":true,"LiveEvidenceClaimed":false,"Profile":"NonCanonicalV1CompatibilityInput","Canonical":false,"Promotable":false,"WrongCausalFixture":true,"LegacyProducerExtension":"preserved-only-during-input-canonicalization"}

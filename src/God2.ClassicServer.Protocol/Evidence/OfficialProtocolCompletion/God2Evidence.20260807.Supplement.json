@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "god2-evidence-package-20260807-supplement-v1",
+  "generatedAtUtc": "2026-08-07T10:19:28.609Z",
+  "evidenceSourceId": "god2-evidence-package-20260807-supplement",
+  "baseStructuralCatalog": "god2-evidence-package-20260806-102928",
+  "sourcePackages": [
+    {
+      "sessionId": "870DB7D9-B96A-4F38-B225-8C7EA3D9A7E6",
+      "toolVersion": "1.0.3",
+      "sha256": "48C85FA534DB6C221A8AD06B24DFE4326E83DF70BB27640C8C534C6F431C3B2E",
+      "fileSize": 2996358,
+      "entryCount": 95,
+      "captureRecordCount": 2475,
+      "transportChunkCount": 1547,
+      "decodedMessageCount": 727,
+      "handlerObservationCount": 201,
+      "packageValidationStatus": "PassWithWarnings",
+      "blockers": []
+    },
+    {
+      "sessionId": "2C820B07-0A81-459A-B04A-7C5936A015F5",
+      "toolVersion": "1.0.2",
+      "sha256": "0778A6AA3C7F0EEB6F48A99BEE0015F0F6AB43C399F7BB3203A272425D506A57",
+      "fileSize": 2657171,
+      "captureRecordCount": 2254,
+      "transportChunkCount": 1286,
+      "decodedMessageCount": 617,
+      "handlerObservationCount": 351,
+      "packageValidationStatus": "PassWithWarnings",
+      "blockers": []
+    }
+  ],
+  "clientIdentity": {
+    "fileName": "God2_opt.exe",
+    "architecture": "x86",
+    "sha256": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B",
+    "identityStatus": "Pass"
+  },
+  "supplementalDecodedFrameEvidence": {
+    "comparisonTarget": "OfficialEvidencePackage20260806Catalog",
+    "fieldAuthority": "DirectionOpcodeAndExactFrameLengthOnly",
+    "familyCount": 62,
+    "observationCount": 87,
+    "uniqueFrameCount": 85,
+    "families": [{"direction":"ClientToServer","opcode":"0x02","frameLength":5,"observedCount":2,"uniqueFrameCount":1},{"direction":"ClientToServer","opcode":"0x2F","frameLength":14,"observedCount":1,"uniqueFrameCount":1},{"direction":"ClientToServer","opcode":"0x67","frameLength":5,"observedCount":1,"uniqueFrameCount":1},{"direction":"ClientToServer","opcode":"0xB0","frameLength":6,"observedCount":1,"uniqueFrameCount":1},{"direction":"ClientToServer","opcode":"0xB4","frameLength":5,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x03","frameLength":6,"observedCount":2,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x23","frameLength":115,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x23","frameLength":969,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x23","frameLength":1058,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x23","frameLength":1137,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x23","frameLength":1173,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x24","frameLength":20,"observedCount":7,"uniqueFrameCount":7},{"direction":"ServerToClient","opcode":"0x24","frameLength":41,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x36","frameLength":35,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x3A","frameLength":31,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x41","frameLength":50,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x4C","frameLength":20,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x4C","frameLength":41,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":26,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":36,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":37,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":42,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x5C","frameLength":44,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":46,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":48,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":69,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5C","frameLength":78,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5D","frameLength":7,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5D","frameLength":104,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5D","frameLength":618,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5F","frameLength":35,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x5F","frameLength":42,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x73","frameLength":8,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x85","frameLength":241,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x85","frameLength":243,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x85","frameLength":252,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x85","frameLength":260,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x85","frameLength":263,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x85","frameLength":299,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x85","frameLength":314,"observedCount":2,"uniqueFrameCount":2},{"direction":"ServerToClient","opcode":"0x85","frameLength":322,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":39,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":71,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":95,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":260,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":264,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":277,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":279,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":311,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":316,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":348,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":373,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0x86","frameLength":440,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xAE","frameLength":28,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xAE","frameLength":61,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xB2","frameLength":8,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xC8","frameLength":161,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xDA","frameLength":215,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xE4","frameLength":154,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xE5","frameLength":21,"observedCount":11,"uniqueFrameCount":11},{"direction":"ServerToClient","opcode":"0xE6","frameLength":62,"observedCount":1,"uniqueFrameCount":1},{"direction":"ServerToClient","opcode":"0xE8","frameLength":5,"observedCount":2,"uniqueFrameCount":2}]
+  },
+  "newPackageCorrelationEvidence": {
+    "correlationLevel": "Strong",
+    "strongLogicalMessageCount": 404,
+    "correlationCoveragePercent": 40.727273,
+    "stageMappings": [
+      {"fromStage":"Transport","toStage":"PostDecrypt","direction":"ServerToClient","sourceRecordCount":403,"targetRecordCount":403,"mappingCount":403,"basis":"SameThreadLatestInboundTransport"},
+      {"fromStage":"PostDecrypt","toStage":"HandlerDecoded","direction":"ServerToClient","sourceRecordCount":48,"targetRecordCount":201,"mappingCount":201,"basis":"SameThreadLatestPostDecrypt"}
+    ],
+    "outerFrameHandlerGroups": [
+      {"outerOpcode":"0x86","outerFrameLength":20,"correlatedFrameCount":28,"handlerMappingCount":28,"handlerFamilies":[{"opcode":"0x86","length":17,"count":28}]},
+      {"outerOpcode":"0x5D","outerFrameLength":539,"correlatedFrameCount":1,"handlerMappingCount":20,"handlerFamilies":[{"opcode":"0x86","length":17,"count":12},{"opcode":"0x1C","length":45,"count":4},{"opcode":"0x83","length":15,"count":1},{"opcode":"0x38","length":2,"count":1},{"opcode":"0x87","length":3,"count":1},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x82","outerFrameLength":537,"correlatedFrameCount":1,"handlerMappingCount":20,"handlerFamilies":[{"opcode":"0x86","length":17,"count":12},{"opcode":"0x1C","length":45,"count":4},{"opcode":"0x83","length":15,"count":1},{"opcode":"0x38","length":2,"count":1},{"opcode":"0x87","length":3,"count":1},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x86","outerFrameLength":279,"correlatedFrameCount":1,"handlerMappingCount":15,"handlerFamilies":[{"opcode":"0x86","length":17,"count":5},{"opcode":"0x85","length":2,"count":5},{"opcode":"0x83","length":15,"count":4},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x88","outerFrameLength":192,"correlatedFrameCount":3,"handlerMappingCount":15,"handlerFamilies":[{"opcode":"0x88","length":121,"count":3},{"opcode":"0x86","length":17,"count":12}]},
+      {"outerOpcode":"0x86","outerFrameLength":264,"correlatedFrameCount":1,"handlerMappingCount":14,"handlerFamilies":[{"opcode":"0x86","length":17,"count":5},{"opcode":"0x85","length":2,"count":5},{"opcode":"0x83","length":15,"count":3},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x86","outerFrameLength":277,"correlatedFrameCount":1,"handlerMappingCount":13,"handlerFamilies":[{"opcode":"0x86","length":17,"count":6},{"opcode":"0x85","length":2,"count":3},{"opcode":"0x83","length":15,"count":3},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x85","outerFrameLength":260,"correlatedFrameCount":1,"handlerMappingCount":12,"handlerFamilies":[{"opcode":"0x85","length":2,"count":3},{"opcode":"0x83","length":15,"count":3},{"opcode":"0x86","length":17,"count":5},{"opcode":"0x88","length":121,"count":1}]},
+      {"outerOpcode":"0x86","outerFrameLength":107,"correlatedFrameCount":1,"handlerMappingCount":11,"handlerFamilies":[{"opcode":"0x86","length":17,"count":2},{"opcode":"0x85","length":2,"count":5},{"opcode":"0x83","length":15,"count":4}]},
+      {"outerOpcode":"0x85","outerFrameLength":243,"correlatedFrameCount":1,"handlerMappingCount":11,"handlerFamilies":[{"opcode":"0x85","length":2,"count":3},{"opcode":"0x83","length":15,"count":3},{"opcode":"0x88","length":121,"count":1},{"opcode":"0x86","length":17,"count":4}]},
+      {"outerOpcode":"0x85","outerFrameLength":252,"correlatedFrameCount":1,"handlerMappingCount":11,"handlerFamilies":[{"opcode":"0x85","length":2,"count":3},{"opcode":"0x83","length":15,"count":3},{"opcode":"0x88","length":121,"count":1},{"opcode":"0x86","length":17,"count":4}]},
+      {"outerOpcode":"0x86","outerFrameLength":112,"correlatedFrameCount":1,"handlerMappingCount":9,"handlerFamilies":[{"opcode":"0x86","length":17,"count":2},{"opcode":"0x85","length":2,"count":3},{"opcode":"0x83","length":15,"count":4}]},
+      {"outerOpcode":"0x85","outerFrameLength":322,"correlatedFrameCount":1,"handlerMappingCount":8,"handlerFamilies":[{"opcode":"0x85","length":2,"count":2},{"opcode":"0x83","length":15,"count":1},{"opcode":"0x88","length":121,"count":1},{"opcode":"0x86","length":17,"count":4}]},
+      {"outerOpcode":"0x86","outerFrameLength":37,"correlatedFrameCount":3,"handlerMappingCount":6,"handlerFamilies":[{"opcode":"0x86","length":17,"count":6}]},
+      {"outerOpcode":"0x86","outerFrameLength":39,"correlatedFrameCount":1,"handlerMappingCount":4,"handlerFamilies":[{"opcode":"0x86","length":17,"count":1},{"opcode":"0x85","length":2,"count":2},{"opcode":"0x83","length":15,"count":1}]},
+      {"outerOpcode":"0x86","outerFrameLength":295,"correlatedFrameCount":1,"handlerMappingCount":2,"handlerFamilies":[{"opcode":"0x86","length":17,"count":1},{"opcode":"0x89","length":57,"count":1}]},
+      {"outerOpcode":"0x86","outerFrameLength":201,"correlatedFrameCount":1,"handlerMappingCount":2,"handlerFamilies":[{"opcode":"0x86","length":17,"count":1},{"opcode":"0x89","length":57,"count":1}]}
+    ]
+  },
+  "gameplayEvidenceGate": {
+    "verifiedGameplayClassificationCount": 0,
+    "movementCandidateCount": 141,
+    "skillEffectCandidateCount": 31,
+    "formulaCandidateCount": 31,
+    "blocker": "Identity, map, direction, attacker, target, skill, hit, critical, element and authoritative formula fields are not verified.",
+    "runtimeMutationEnabled": false
+  },
+  "serverApplication": {
+    "supplementalStructuralFamiliesRegistered": 62,
+    "strongFrameHandlerGroupsStored": 17,
+    "handlerFamiliesAdded": 0,
+    "productionHandlersAdded": 0,
+    "verifiedGameplayPromotions": 0,
+    "rawSensitivePayloadStored": false
+  },
+  "productionPolicy": {
+    "evidenceOnly": true,
+    "fieldSemanticsStatus": "Unknown",
+    "gameplaySemanticsStatus": "NotVerified",
+    "productionEnabled": false,
+    "candidateOrUnknownPromoted": false
+  }
+}

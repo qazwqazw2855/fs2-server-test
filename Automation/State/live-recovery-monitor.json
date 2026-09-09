@@ -1,0 +1,12 @@
+{
+    "schema":  "God2LiveRecoveryMonitor/1",
+    "monitorProcessId":  15084,
+    "targetProcessId":  13580,
+    "status":  "STOPPED",
+    "intervalSeconds":  30,
+    "traceRoot":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\ElevatedAutomationHost\\host-run-20260812-000800\\attempt-759-trace",
+    "updatedAtUtc":  "2026-08-12T02:01:08.4531001Z",
+    "lastError":  "",
+    "clientMemoryWritten":  false,
+    "networkBytesEmitted":  false
+}

@@ -1,0 +1,216 @@
+{
+    "schemaVersion":  1,
+    "currentBuildId":  "god2-opt-6b127086e0c0",
+    "fakeNetworkBytes":  0,
+    "actorPrimaryEnabled":  false,
+    "defaultEngine":  "LegacyPrimary",
+    "gates":  [
+                  {
+                      "family":  "EncounterTrigger",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "BattleEnter",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "Formation",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "PlayerSpawn",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "PetSpawn",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "EnemySpawn",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "RoundStart",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "CommandWindow",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "BasicAttackClientCommand",
+                      "direction":  "ClientToServer",
+                      "gate":  "BlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "SkillClientCommand",
+                      "direction":  "ClientToServer",
+                      "gate":  "BlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "ItemClientCommand",
+                      "direction":  "ClientToServer",
+                      "gate":  "BlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "DefendClientCommand",
+                      "direction":  "ClientToServer",
+                      "gate":  "BlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "FleeClientCommand",
+                      "direction":  "ClientToServer",
+                      "gate":  "BlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "ActionConfirmation",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "ActionStart",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "Damage",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "Healing",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "StatusApplyRemove",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "DeathRevive",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "RoundEnd",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "BattleEnd",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "Reward",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  },
+                  {
+                      "family":  "WorldResume",
+                      "direction":  "ServerToClient",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "candidateOpcode":  null,
+                      "sampleCount":  0,
+                      "promotionAllowed":  false,
+                      "blocker":  "No qualifying current-build raw battle sample; unknown required dynamic fields."
+                  }
+              ]
+}

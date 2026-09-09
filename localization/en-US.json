@@ -1,0 +1,6 @@
+{
+  "shutdown.complete": "Shutdown Complete",
+  "startup.ready": "Server Ready",
+  "startup.configuration": "Configuration",
+  "startup.mariadb": "MariaDB Connection"
+}

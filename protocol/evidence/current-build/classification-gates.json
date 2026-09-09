@@ -1,0 +1,9 @@
+﻿{
+  "DecoderVerifiedRequiredForSemanticMapping": true,
+  "SerializerVerifiedRequiredForProductionBytes": true,
+  "CandidateRuntimeMutationBlocked": true,
+  "RuntimeMutationBlockedCount": 97,
+  "FakeNetworkBytes": 0,
+  "ActorPrimary": "disabled",
+  "LegacyPrimary": "default"
+}

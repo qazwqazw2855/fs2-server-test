@@ -1,0 +1,1721 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/enhanced-capture-acceptance.schema.json",
+  "title": "God2 DLL Enhanced Capture acceptance report v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "generatedAtUtc",
+    "repositoryRoot",
+    "status",
+    "standalonePayloadStatus",
+    "finalExeUiStatus",
+    "expectedTarget",
+    "authorityConsistency",
+    "deepRecoveryEvidence",
+    "payloads",
+    "domainInventory",
+    "runtimeEvidence",
+    "inputBindings",
+    "freshness",
+    "selfTests",
+    "guiVisibility",
+    "checks",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "god2-enhanced-capture-acceptance-v2" },
+    "generatedAtUtc": { "type": "string", "format": "date-time" },
+    "repositoryRoot": { "const": "." },
+    "status": {
+      "enum": [
+        "DLL_ENHANCED_CAPTURE_ACCEPTANCE_PASS",
+        "DLL_ENHANCED_CAPTURE_ACCEPTANCE_PASS_FINAL_EXE_UI_PENDING",
+        "DLL_ENHANCED_CAPTURE_ACCEPTANCE_BLOCKED"
+      ]
+    },
+    "standalonePayloadStatus": { "enum": ["PASS", "BLOCKED"] },
+    "finalExeUiStatus": {
+      "enum": [
+        "PASS",
+        "PENDING_GUI_SMOKE_VISIBILITY_INPUT",
+        "BLOCKED_RELEASE_EXECUTABLE_GATE",
+        "BLOCKED_GUI_SMOKE_GATE"
+      ]
+    },
+    "expectedTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executable", "architecture", "version", "sha256", "activationStatus"],
+      "properties": {
+        "executable": { "const": "God2_opt.exe" },
+        "architecture": { "const": "x86" },
+        "version": { "const": "1.0.0.1" },
+        "sha256": { "const": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B" },
+        "activationStatus": {
+          "enum": [
+            "CURRENT_OFFICIAL_CLIENT_IDENTITY_VERIFIED",
+            "HISTORICAL_OFFICIAL_CLIENT_IDENTITY_VERIFIED_CURRENT_SESSION_NOT_OBSERVED",
+            "EVIDENCE_BLOCKED_OFFICIAL_CLIENT_IDENTITY_UNAVAILABLE"
+          ]
+        }
+      }
+    },
+    "authorityConsistency": { "$ref": "#/$defs/authorityConsistencyBinding" },
+    "deepRecoveryEvidence": { "$ref": "#/$defs/deepRecoveryEvidenceBinding" },
+    "payloads": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["releaseExecutable", "probeResource201", "injectorResource202"],
+      "properties": {
+        "releaseExecutable": { "$ref": "#/$defs/fileIdentity" },
+        "probeResource201": { "$ref": "#/$defs/payloadIdentity" },
+        "injectorResource202": { "$ref": "#/$defs/payloadIdentity" }
+      }
+    },
+    "domainInventory": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": { "$ref": "#/$defs/domainInventoryRow" }
+    },
+    "runtimeEvidence": { "$ref": "#/$defs/runtimeEvidence" },
+    "inputBindings": {
+      "type": "array",
+      "minItems": 40,
+      "maxItems": 41,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/inputBinding" },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "ATTACH_RESULT_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "DETACH_RESULT_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "PRODUCTION_IDENTITY_GATE_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "NATIVE_PROBE_SELFTEST_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "NATIVE_SEMANTIC_WIRE_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "NATIVE_SEMANTIC_WIRE_VERIFICATION_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "ULTIMATE_NATIVE_WIRE_REPORT_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "DEEP_PROBE_CANDIDATE_MAP_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "CANONICAL_V1_SEMANTIC_WIRE_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "CANONICAL_V1_SEMANTIC_WIRE_BINDING_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "NONCANONICAL_V1_COMPATIBILITY_FIXTURE_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "RESTORE_FAULT_LIFECYCLE_EVIDENCE" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["role", "file"],
+            "properties": {
+              "role": { "const": "BRIDGE_AWARE_STATUS_V3_SCHEMA" },
+              "file": { "$ref": "#/$defs/fileIdentity" }
+            }
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "freshness": { "$ref": "#/$defs/freshness" },
+    "selfTests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network", "product", "evidenceFixture", "nativeProbe", "semanticV2", "ultimate"],
+      "properties": {
+        "network": { "$ref": "#/$defs/testEvidence" },
+        "product": { "$ref": "#/$defs/testEvidence" },
+        "evidenceFixture": { "$ref": "#/$defs/testEvidence" },
+        "nativeProbe": { "$ref": "#/$defs/testEvidence" },
+        "semanticV2": { "$ref": "#/$defs/testEvidence" },
+        "ultimate": { "$ref": "#/$defs/testEvidence" }
+      }
+    },
+    "guiVisibility": { "$ref": "#/$defs/guiVisibility" },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/check" }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "passed", "failed", "pending", "candidateOnlyBlockedDomains", "exactFinalStatus"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 1 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "pending": { "type": "integer", "minimum": 0 },
+        "candidateOnlyBlockedDomains": { "const": 21 },
+        "exactFinalStatus": {
+          "enum": [
+            "ULTIMATE_INFRASTRUCTURE_PASS_DEEP_LIVE_PENDING",
+            "ULTIMATE_DEEP_RECOVERY_LIVE_PASS"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "status": { "const": "DLL_ENHANCED_CAPTURE_ACCEPTANCE_PASS" } },
+        "required": ["status"]
+      },
+      "then": {
+        "properties": {
+          "standalonePayloadStatus": { "const": "PASS" },
+          "finalExeUiStatus": { "const": "PASS" },
+          "selfTests": {
+            "properties": {
+              "network": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } },
+              "product": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } },
+              "evidenceFixture": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } },
+              "nativeProbe": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } },
+              "semanticV2": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } },
+              "ultimate": { "properties": { "status": { "const": "PASS" }, "failed": { "const": 0 } } }
+            }
+          },
+          "guiVisibility": {
+            "properties": {
+              "status": { "const": "PASS" },
+              "evidenceObserved": { "const": true },
+              "DllTwentyFiveDomainStatusContract": { "const": "PASS" },
+              "DllStrictUnloadResultContract": { "const": "PASS" },
+              "DllStrictUnloadFinalizationContract": { "const": "PASS" },
+              "DllCancelResultReadBeforeCleanupContract": { "const": "PASS" },
+              "DllEnhancedCaptureConsumerStateLifecycle": { "const": "PASS" },
+              "ThreeLanguageDllStrictUnloadContract": { "const": "PASS" },
+              "SharedTransportSlotReuseDomainAccounting": { "const": "PASS" },
+              "enhancedCaptureStatusSchemaVersion": { "const": "god2-enhanced-capture-status-v2" },
+              "initialStrictUnloadVerified": { "const": false },
+              "unloadPolicy": { "const": "QuiesceRestoreDrainAndProveModuleAbsent;OtherwiseEvidenceBlockedAndBoundedRetry;NeverReportResidentInactiveAsStopped" },
+              "observedExecutableSha256": { "$ref": "#/$defs/sha256" },
+              "executableSha256Bound": { "const": "PASS" }
+            }
+          },
+          "freshness": {
+            "properties": { "guiSmokeGeneratedAfterRelease": { "const": true } }
+          },
+          "checks": {
+            "not": {
+              "contains": {
+                "properties": { "status": { "enum": ["FAIL", "PENDING"] } },
+                "required": ["status"]
+              }
+            }
+          },
+          "summary": {
+            "properties": { "failed": { "const": 0 }, "pending": { "const": 0 } }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\.\\.(?:/|$))(?!.*?/\\.\\.(?:/|$))(?!.*//)(?:\\.|[A-Za-z0-9_.-][A-Za-z0-9_. -]*(?:/[A-Za-z0-9_. -]+)*)$"
+    },
+    "authorityConsistencyBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "report"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "report": { "$ref": "#/$defs/authorityConsistencyReport" }
+      }
+    },
+    "authorityConsistencyReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["SchemaVersion", "GeneratedAtUtc", "Status", "ConflictCount", "Conflicts", "Records"],
+      "properties": {
+        "SchemaVersion": { "const": "god2-evidence-authority-consistency-v1" },
+        "GeneratedAtUtc": { "type": "string", "format": "date-time" },
+        "Status": { "enum": ["PASS", "FAILED"] },
+        "ConflictCount": { "type": "integer", "minimum": 0 },
+        "Conflicts": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "Records": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/evidenceAuthorityRecord" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "Status": { "const": "PASS" } }, "required": ["Status"] },
+          "then": { "properties": { "ConflictCount": { "const": 0 }, "Conflicts": { "maxItems": 0 } } }
+        }
+      ]
+    },
+    "evidenceAuthorityRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "AuthorityProfile", "SessionId", "SourceArtifact", "SourceSHA256",
+        "TargetExecutable", "TargetVersion", "TargetSHA256", "TargetProcessId",
+        "TargetProcessCreationTime", "CurrentSessionObserved", "HistoricalEvidenceReused",
+        "FixtureOnly", "PromotionEligible", "AttachStatus", "DetachStatus",
+        "PackageSHA256", "RuntimeEventCount"
+      ],
+      "properties": {
+        "AuthorityProfile": { "enum": [
+          "SyntheticContractFixture", "ExactSelfTestClient", "ExactBinaryStaticAnalysis",
+          "HistoricalOfficialClientLive", "CurrentOfficialClientLive", "OfflineReanalysis",
+          "PortableExternalHardwareRun"
+        ] },
+        "SessionId": { "type": "string", "minLength": 1 },
+        "SourceArtifact": { "$ref": "#/$defs/portablePath" },
+        "SourceSHA256": { "$ref": "#/$defs/sha256" },
+        "TargetExecutable": { "type": ["string", "null"] },
+        "TargetVersion": { "type": ["string", "null"] },
+        "TargetSHA256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "TargetProcessId": { "type": ["integer", "null"], "minimum": 1, "maximum": 4294967295 },
+        "TargetProcessCreationTime": { "type": ["string", "null"] },
+        "CurrentSessionObserved": { "type": "boolean" },
+        "HistoricalEvidenceReused": { "type": "boolean" },
+        "FixtureOnly": { "type": "boolean" },
+        "PromotionEligible": { "type": "boolean" },
+        "AttachStatus": { "type": ["string", "null"] },
+        "DetachStatus": { "type": ["string", "null"] },
+        "PackageSHA256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "RuntimeEventCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "deepRecoveryEvidenceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "authorityProfile", "domainCount", "confirmedContractCount",
+        "currentOfficialLiveProducerCount", "historicalOfficialLiveProducerCount",
+        "currentOfficialLiveVerifiedProducerCount", "currentOfficialLiveDeepProducerCount",
+        "currentOfficialLiveVerifiedDeepProducerCount", "producerMetricConsistency",
+        "verifiedDeepDomainCount",
+        "candidateOnlyBlockedDomainCount", "candidateCount",
+        "promotionLedgerRowCount", "activationAllowedCount", "serverReady",
+        "databaseReady", "artifacts"
+      ],
+      "properties": {
+        "status": { "enum": ["PASS_FAIL_CLOSED_EVIDENCE_GENERATION", "EVIDENCE_BLOCKED_GENERATION_FAILED"] },
+        "authorityProfile": { "enum": ["HistoricalOfficialClientLive", "CurrentOfficialClientLive"] },
+        "domainCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "confirmedContractCount": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "currentOfficialLiveProducerCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "historicalOfficialLiveProducerCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "currentOfficialLiveVerifiedProducerCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "currentOfficialLiveDeepProducerCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "currentOfficialLiveVerifiedDeepProducerCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "producerMetricConsistency": { "const": true },
+        "verifiedDeepDomainCount": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "candidateOnlyBlockedDomainCount": { "type": "integer", "minimum": 0, "maximum": 21 },
+        "candidateCount": { "type": "integer", "minimum": 0 },
+        "promotionLedgerRowCount": { "type": "integer", "minimum": 0 },
+        "activationAllowedCount": { "type": "integer", "minimum": 0 },
+        "serverReady": { "type": "boolean" },
+        "databaseReady": { "type": "boolean" },
+        "artifacts": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/deepRecoveryArtifactBinding" }
+        }
+      }
+    },
+    "deepRecoveryArtifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "path", "sha256"],
+      "properties": {
+        "role": { "enum": [
+          "Capability", "Runtime", "Semantic", "CandidateMapV3", "PromotionLedger",
+          "RuntimeObservations", "SemanticEventAuthority", "CandidateAbi", "CandidateThread", "CandidateReentrancy",
+          "CandidateObjectStability", "CandidateConsumerLinks", "CandidatePromotionResult",
+          "ExactTargetIdentity", "ContentDomainSummary", "RecoveryReadiness"
+        ] },
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "fileIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "length", "sha256", "lastWriteTimeUtc"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "length": { "type": "integer", "minimum": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "lastWriteTimeUtc": { "type": "string", "format": "date-time" }
+      }
+    },
+    "payloadIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceId", "embeddedLength", "embeddedSha256", "standalone",
+        "machine", "optionalHeader", "isDll", "exports", "authenticodeStatus"
+      ],
+      "properties": {
+        "resourceId": { "enum": [201, 202] },
+        "embeddedLength": { "type": "integer", "minimum": 1 },
+        "embeddedSha256": { "$ref": "#/$defs/sha256" },
+        "standalone": { "$ref": "#/$defs/fileIdentity" },
+        "machine": { "const": "I386" },
+        "optionalHeader": { "const": "PE32" },
+        "isDll": { "type": "boolean" },
+        "exports": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "authenticodeStatus": { "type": "string", "minLength": 1 }
+      }
+    },
+    "domainInventoryRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "domain", "probe", "contractStatus", "activationAllowed"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "domain": { "type": "string", "minLength": 1 },
+        "probe": { "type": "string", "minLength": 1 },
+        "contractStatus": {
+          "enum": ["CONFIRMED_EXACT_BUILD_CONTRACT", "CANDIDATE_ONLY_EVIDENCE_BLOCKED"]
+        },
+        "activationAllowed": { "type": "boolean" }
+      }
+    },
+    "runtimeEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "officialClientLiveEvidenceClaimed", "officialClientLiveGateStatus",
+        "evidencePackageFixture",
+        "nativeProbeBinding", "productArtifactBindings", "probeDomains", "nativeEventProducers",
+        "semanticEventMatrix", "nativeSemanticWire", "activationGates", "networkCompletion",
+        "sharedRing", "semanticAdmissionCap", "lifecycle", "faultIsolation",
+        "asyncDiagnostics", "enhancedCaptureStatusSchema", "bridgeAwareStatusV3"
+      ],
+      "properties": {
+        "officialClientLiveEvidenceClaimed": { "type": "boolean" },
+        "officialClientLiveGateStatus": {
+          "enum": [
+            "PASS_OFFICIAL_EXACT_CLIENT_RUNTIME",
+            "PASS_HISTORICAL_OFFICIAL_EXACT_CLIENT_RUNTIME",
+            "FAIL_OFFICIAL_EXACT_CLIENT_RUNTIME"
+          ]
+        },
+        "evidencePackageFixture": { "$ref": "#/$defs/evidencePackageFixture" },
+        "nativeProbeBinding": { "$ref": "#/$defs/nativeProbeBinding" },
+        "productArtifactBindings": { "$ref": "#/$defs/productArtifactBindings" },
+        "probeDomains": { "$ref": "#/$defs/probeDomains" },
+        "nativeEventProducers": { "$ref": "#/$defs/nativeEventProducers" },
+        "semanticEventMatrix": { "$ref": "#/$defs/semanticEventMatrix" },
+        "nativeSemanticWire": { "$ref": "#/$defs/nativeSemanticWire" },
+        "activationGates": { "$ref": "#/$defs/activationGates" },
+        "networkCompletion": { "$ref": "#/$defs/networkCompletion" },
+        "sharedRing": { "$ref": "#/$defs/sharedRing" },
+        "semanticAdmissionCap": { "$ref": "#/$defs/semanticAdmissionCap" },
+        "lifecycle": { "$ref": "#/$defs/lifecycle" },
+        "faultIsolation": { "$ref": "#/$defs/faultIsolation" },
+        "asyncDiagnostics": { "$ref": "#/$defs/asyncDiagnostics" },
+        "enhancedCaptureStatusSchema": { "$ref": "#/$defs/enhancedCaptureStatusSchemaBinding" },
+        "bridgeAwareStatusV3": { "$ref": "#/$defs/bridgeAwareStatusV3Binding" }
+      }
+    },
+    "evidencePackageFixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reportPath", "reportSha256", "executableSha256", "expectedCommandContract",
+        "expectedExitCode", "generatedAfterExecutable", "schemaVersion", "checkCount",
+        "passed", "failed", "packageSha256", "requiredChecks"
+      ],
+      "properties": {
+        "reportPath": { "$ref": "#/$defs/portablePath" },
+        "reportSha256": { "$ref": "#/$defs/sha256" },
+        "executableSha256": { "$ref": "#/$defs/sha256" },
+        "expectedCommandContract": {
+          "const": "God2SemanticRecoveryEngine.exe --internal-package-fixture-test --session <fresh-5412-fixture-session> --report <repo-relative-report>"
+        },
+        "expectedExitCode": { "const": 0 },
+        "generatedAfterExecutable": { "const": true },
+        "schemaVersion": { "const": 11 },
+        "checkCount": { "type": "integer", "minimum": 77 },
+        "passed": { "type": "integer", "minimum": 77 },
+        "failed": { "const": 0 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "requiredChecks": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "10a_legacy_or_detail_only_unload_spoof_rejected",
+              "10b_versioned_strict_unload_positive_accepted",
+              "10c_cleanup_schema_requires_typed_complete_inventory",
+              "10d_verified_no_module_loaded_cleanup_is_distinct_from_unknown",
+              "14e_missing_shared_health_uses_nonpromotable_availability_schema",
+              "14f_missing_candidate_map_never_emits_stale_v1_placeholder"
+            ]
+          }
+        }
+      }
+    },
+    "nativeProbeBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "schemaId", "schemaVersion", "productEmbeddedReportExact"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^Artifacts/ClientInstrumentation/LoginTrial/(?!\\.{1,2}/)[A-Za-z0-9._-]+/raw/trace/native-probe-selftest\\.json$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "schemaId": { "const": "God2NativeProbeSelfTest" },
+        "schemaVersion": { "const": 1 },
+        "productEmbeddedReportExact": { "const": true }
+      }
+    },
+    "strictBoundRecordArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "embeddedRecordExact"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "embeddedRecordExact": { "const": true }
+      }
+    },
+    "candidateMapArtifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "schemaVersion", "strictContractPassed"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "schemaVersion": { "const": "god2-deep-probe-candidate-map-v2" },
+        "strictContractPassed": { "const": true }
+      }
+    },
+    "productArtifactBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "allStrictBound", "allGeneratedAfterBoundInputs",
+        "attachResult", "detachResult", "productionIdentityGate", "nativeProbe",
+        "candidateMap"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "allStrictBound": { "const": true },
+        "allGeneratedAfterBoundInputs": { "const": true },
+        "attachResult": { "$ref": "#/$defs/strictBoundRecordArtifact" },
+        "detachResult": { "$ref": "#/$defs/strictBoundRecordArtifact" },
+        "productionIdentityGate": { "$ref": "#/$defs/strictBoundRecordArtifact" },
+        "nativeProbe": { "$ref": "#/$defs/strictBoundRecordArtifact" },
+        "candidateMap": { "$ref": "#/$defs/candidateMapArtifactBinding" }
+      }
+    },
+    "nativeSemanticWire": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path", "sha256", "lineCount", "eventTypeDigestSha256", "targetProcessId",
+        "producerProcessId", "consumerProcessId", "nativeProcessId", "wireProcessIds",
+        "crossProcess", "crossProcessNegativeCount", "strictJsonlContractPassed",
+        "verificationPath", "verificationSha256", "verificationSchemaId",
+        "verificationSchemaVersion", "verificationEmbeddedReportExact",
+        "ultimateReportPath", "ultimateReportSha256", "ultimateEmbeddedReportExact"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "lineCount": { "const": 25 },
+        "eventTypeDigestSha256": {
+          "const": "A354EB5BB9E7632C8712DA37E6DADDFEC1ED8ED0984C38E2FCBB32C100C6958C"
+        },
+        "targetProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "producerProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "consumerProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "nativeProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "wireProcessIds": {
+          "type": "array", "minItems": 25, "maxItems": 25,
+          "items": { "type": "integer", "minimum": 1, "maximum": 4294967295 }
+        },
+        "crossProcess": { "const": true },
+        "crossProcessNegativeCount": { "const": 2 },
+        "strictJsonlContractPassed": { "const": true },
+        "verificationPath": { "$ref": "#/$defs/portablePath" },
+        "verificationSha256": { "$ref": "#/$defs/sha256" },
+        "verificationSchemaId": { "const": "God2NativeSemanticWireVerification" },
+        "verificationSchemaVersion": { "const": 1 },
+        "verificationEmbeddedReportExact": { "const": true },
+        "ultimateReportPath": { "$ref": "#/$defs/portablePath" },
+        "ultimateReportSha256": { "$ref": "#/$defs/sha256" },
+        "ultimateEmbeddedReportExact": { "const": true }
+      }
+    },
+    "probeDomains": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceSha256", "domainCount", "confirmedContractDomainCount",
+        "candidateOnlyBlockedDomainCount", "officialTargetIdentityVerified", "results"
+      ],
+      "properties": {
+        "evidenceSha256": { "$ref": "#/$defs/sha256" },
+        "domainCount": { "const": 25 },
+        "confirmedContractDomainCount": { "const": 4 },
+        "candidateOnlyBlockedDomainCount": { "const": 21 },
+        "officialTargetIdentityVerified": { "type": "boolean" },
+        "results": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "items": { "$ref": "#/$defs/probeDomainRuntimeRow" }
+        }
+      }
+    },
+    "probeDomainRuntimeRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index", "domain", "probe", "contractStatus", "activationAllowedByContract",
+        "runtimeDiagnosticObserved", "runtimeActivationObserved", "targetIdentityVerified"
+      ],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "domain": { "type": "string", "minLength": 1 },
+        "probe": { "type": "string", "minLength": 1 },
+        "contractStatus": { "enum": ["ConfirmedContract", "CandidateOnlyBlockedContract"] },
+        "activationAllowedByContract": { "type": "boolean" },
+        "runtimeDiagnosticObserved": { "const": true },
+        "runtimeActivationObserved": { "type": "boolean" },
+        "targetIdentityVerified": { "const": false }
+      }
+    },
+    "nativeEventProducers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "nativeEvidenceSha256", "fixtureCount",
+        "distinctCount", "nativeCount", "sortedNameDigestSha256"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "fixtureCount": { "const": 25 },
+        "distinctCount": { "const": 25 },
+        "nativeCount": { "const": 25 },
+        "sortedNameDigestSha256": {
+          "const": "A354EB5BB9E7632C8712DA37E6DADDFEC1ED8ED0984C38E2FCBB32C100C6958C"
+        }
+      }
+    },
+    "semanticEventMatrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaId", "schemaVersion", "rows", "totals", "nativeWireBinding"],
+      "properties": {
+        "schemaId": { "const": "God2SemanticEventMatrix" },
+        "schemaVersion": { "const": 2 },
+        "rows": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "items": { "$ref": "#/$defs/semanticEventResult" }
+        },
+        "totals": { "$ref": "#/$defs/semanticEventMatrixTotals" },
+        "nativeWireBinding": { "$ref": "#/$defs/nativeSemanticWireBinding" }
+      }
+    },
+    "semanticEventMatrixTotals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixtureProducerCount", "producerImplementedCount", "nativeSelfTestProducerCount", "blockedCapabilityCount",
+        "readerAcceptedCount", "dispatchCount", "roundTripCount",
+        "corruptionRejectedCount", "versionRejectedCount", "v1CompatibleCount",
+        "noPromotionEnforcedCount", "nativeWireReaderAcceptedCount",
+        "nativeWireDispatchCount"
+      ],
+      "properties": {
+        "fixtureProducerCount": { "const": 25 },
+        "producerImplementedCount": { "const": 25 },
+        "nativeSelfTestProducerCount": { "const": 25 },
+        "blockedCapabilityCount": { "const": 20 },
+        "readerAcceptedCount": { "const": 25 },
+        "dispatchCount": { "const": 25 },
+        "roundTripCount": { "const": 25 },
+        "corruptionRejectedCount": { "const": 25 },
+        "versionRejectedCount": { "const": 25 },
+        "v1CompatibleCount": { "const": 25 },
+        "noPromotionEnforcedCount": { "const": 2 },
+        "nativeWireReaderAcceptedCount": { "const": 25 },
+        "nativeWireDispatchCount": { "const": 25 }
+      }
+    },
+    "semanticEventResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index", "eventType", "fixtureProducer", "producerImplemented", "nativeSelfTestProducer", "blockedCapability",
+        "readerAccepted", "roundTripPassed", "corruptionRejected", "versionRejected",
+        "v1Compatible", "dispatchPassed", "dispatchSink", "promotionPolicy",
+        "noPromotionEnforced", "nativeWireReaderAccepted", "nativeWireDispatchPassed"
+      ],
+      "properties": {
+        "index": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "eventType": {
+          "enum": [
+            "PacketBoundary", "ParserRead", "SerializerWrite", "HandlerInvocation",
+            "HandlerArgument", "ObjectAllocated", "ObjectDestroyed", "ObjectResolved",
+            "ObjectLookup", "RegistryLocated", "RegistryEnumerated", "ResourceRead",
+            "ResourceDecoded", "ResourceDeserialized", "StateMutation", "TaintSeed",
+            "TaintPropagation", "ValueFlow", "FormulaOperand", "FormulaResult",
+            "FunctionRoleCandidate", "UIAnchor", "SnapshotObject", "SnapshotEdge",
+            "ProbeDiagnostic"
+          ]
+        },
+        "producerImplemented": { "type": "boolean" },
+        "nativeSelfTestProducer": { "const": true },
+        "fixtureProducer": { "const": true },
+        "blockedCapability": { "type": "boolean" },
+        "readerAccepted": { "const": true },
+        "dispatchSink": {
+          "enum": [
+            "ProtocolRecovery", "ObjectRecovery", "RegistryRecovery", "ResourceRecovery",
+            "MutationRecovery", "ValueProvenanceRecovery", "FormulaRecovery",
+            "CandidateLedger", "ContentRecovery", "SnapshotRecovery", "DiagnosticLedger"
+          ]
+        },
+        "roundTripPassed": { "const": true },
+        "corruptionRejected": { "const": true },
+        "versionRejected": { "const": true },
+        "v1Compatible": { "const": true },
+        "dispatchPassed": { "const": true },
+        "promotionPolicy": { "enum": ["StandardEvidenceGates", "NoPromotion"] },
+        "noPromotionEnforced": { "type": "boolean" },
+        "nativeWireReaderAccepted": { "const": true },
+        "nativeWireDispatchPassed": { "const": true }
+      }
+    },
+    "nativeSemanticWireBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bound", "verified", "inputSHA256", "eventTypeDigest", "inputLineCount"],
+      "properties": {
+        "bound": { "const": true },
+        "verified": { "const": true },
+        "inputSHA256": { "$ref": "#/$defs/sha256" },
+        "eventTypeDigest": {
+          "const": "A354EB5BB9E7632C8712DA37E6DADDFEC1ED8ED0984C38E2FCBB32C100C6958C"
+        },
+        "inputLineCount": { "const": 25 }
+      }
+    },
+    "activationGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "promotionGateCount", "abiSafetyGateCount",
+        "totalGateCount", "matrixValid", "passedGateCount", "rejectedGateCount", "results"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "promotionGateCount": { "const": 10 },
+        "abiSafetyGateCount": { "const": 4 },
+        "totalGateCount": { "const": 14 },
+        "matrixValid": { "const": true },
+        "passedGateCount": { "const": 1 },
+        "rejectedGateCount": { "const": 13 },
+        "results": {
+          "type": "array",
+          "minItems": 14,
+          "maxItems": 14,
+          "items": { "$ref": "#/$defs/candidateGateResult" }
+        }
+      }
+    },
+    "candidateGateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate", "category", "passedOnAllCandidateDomains", "rejectedOnAllCandidateDomains"],
+      "properties": {
+        "gate": {
+          "enum": [
+            "ExactTargetIdentity", "ExecutableSection", "ExactCandidateBytes",
+            "CallingConventionVerified", "TypedRuntimeEvidence", "RepeatedCausalObservation",
+            "ContradictionsResolved", "StableObjectOrContext", "VerifiedConsumerOrMutation",
+            "SensitiveMaskContract", "ArgumentContractVerified",
+            "ReturnValueLifetimeVerified", "ThreadContextVerified", "ReentrancyRiskVerified"
+          ]
+        },
+        "category": { "enum": ["Promotion", "AbiSafety"] },
+        "passedOnAllCandidateDomains": { "type": "boolean" },
+        "rejectedOnAllCandidateDomains": { "type": "boolean" }
+      }
+    },
+    "networkCompletion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baselineEvidenceSha256", "nativeEvidenceSha256", "completionRoutineObserved",
+        "wsaGetOverlappedResultObserved", "getQueuedCompletionStatusObserved",
+        "getQueuedCompletionStatusExObserved", "cases"
+      ],
+      "properties": {
+        "baselineEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "completionRoutineObserved": { "type": "integer", "minimum": 1 },
+        "wsaGetOverlappedResultObserved": { "type": "integer", "minimum": 1 },
+        "getQueuedCompletionStatusObserved": { "type": "integer", "minimum": 1 },
+        "getQueuedCompletionStatusExObserved": { "type": "integer", "minimum": 1 },
+        "cases": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": { "$ref": "#/$defs/networkCase" }
+        }
+      }
+    },
+    "networkCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case", "hookInstalled", "apiCallResult", "apiCallResultExpected",
+        "bytesTransferred", "traceRecordCount", "matchingRecordCount", "payloadMatch",
+        "analyzerParseCompleted", "traceIntegrity", "analyzerError", "traceFileSize"
+      ],
+      "properties": {
+        "case": { "enum": ["send", "WSASend", "recv", "WSARecv", "WSARecvOverlapped"] },
+        "hookInstalled": { "const": true },
+        "apiCallResult": { "type": "integer" },
+        "apiCallResultExpected": { "type": "integer" },
+        "bytesTransferred": { "type": "integer", "minimum": 1 },
+        "traceRecordCount": { "type": "integer", "minimum": 1 },
+        "matchingRecordCount": { "type": "integer", "minimum": 1 },
+        "payloadMatch": { "const": true },
+        "analyzerParseCompleted": { "const": true },
+        "traceIntegrity": { "const": true },
+        "analyzerError": { "type": "null" },
+        "traceFileSize": { "type": "integer", "minimum": 25 }
+      }
+    },
+    "sharedRing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "nativeEvidenceSha256", "version", "attempted",
+        "producerReady", "producerClosed", "consumerReady", "consumerClosed",
+        "consumerFailure", "consumerDrainVerified", "domainPendingTotal",
+        "targetProcessId", "producerProcessId", "consumerProcessId", "nativeProcessId",
+        "crossProcessNegativeCount",
+        "accepted", "dropped", "sampled", "highWaterMark", "consumerLag",
+        "consumedPayloads", "batchMaximumItems", "batchAccepted",
+        "batchCount",
+        "batchEventSignalDelta", "batchLockAcquisitionDelta", "batchContractPassed",
+        "priorityContractPassed", "priorityResults", "laneContractPassed", "laneResults",
+        "wirePriorityCounts",
+        "priorityMismatches", "sequenceOrdered", "invalidPayloads", "domainDropTotal",
+        "domainWriteFailureTotal", "batchValidationWriteFailureCount",
+        "domainPendingAfterDrain", "domainsWithAcceptedHighWater",
+        "domainsWithDropAccounting", "crossProcess", "domainResults"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "version": { "const": 4 },
+        "producerReady": { "const": true },
+        "producerClosed": { "const": true },
+        "consumerReady": { "const": false },
+        "consumerClosed": { "const": true },
+        "consumerFailure": { "const": 0 },
+        "consumerDrainVerified": { "const": true },
+        "domainPendingTotal": { "const": 0 },
+        "targetProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "producerProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "consumerProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "nativeProcessId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+        "crossProcessNegativeCount": { "const": 2 },
+        "attempted": { "type": "integer", "minimum": 257 },
+        "accepted": { "type": "integer", "minimum": 1 },
+        "dropped": { "type": "integer", "minimum": 0 },
+        "sampled": { "type": "integer", "minimum": 0 },
+        "highWaterMark": { "type": "integer", "minimum": 0, "maximum": 256 },
+        "consumerLag": { "const": 0 },
+        "consumedPayloads": { "type": "integer", "minimum": 1 },
+        "batchMaximumItems": { "const": 8 },
+        "batchAccepted": { "type": "integer", "minimum": 2 },
+        "batchCount": { "type": "integer", "minimum": 1 },
+        "batchEventSignalDelta": { "type": "integer", "minimum": 1 },
+        "batchLockAcquisitionDelta": { "type": "integer", "minimum": 1 },
+        "batchContractPassed": { "const": true },
+        "priorityContractPassed": { "const": true },
+        "priorityResults": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/priorityResult" }
+        },
+        "laneContractPassed": { "const": true },
+        "laneResults": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/laneResult" }
+        },
+        "wirePriorityCounts": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "type": "integer", "minimum": 1 }
+        },
+        "priorityMismatches": { "const": 0 },
+        "sequenceOrdered": { "const": true },
+        "invalidPayloads": { "const": 0 },
+        "domainDropTotal": { "type": "integer", "minimum": 0 },
+        "domainWriteFailureTotal": { "const": 2 },
+        "batchValidationWriteFailureCount": { "const": 2 },
+        "domainPendingAfterDrain": { "const": 0 },
+        "domainsWithAcceptedHighWater": { "const": 25 },
+        "domainsWithDropAccounting": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "crossProcess": { "const": true },
+        "domainResults": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "items": { "$ref": "#/$defs/domainCounter" }
+        }
+      }
+    },
+    "priorityResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "priority", "laneAccepted", "laneDropped", "laneDropReason",
+        "samplingProbeDropped", "samplingProbeDropReason"
+      ],
+      "properties": {
+        "priority": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "laneAccepted": { "const": 1 },
+        "laneDropped": { "const": 0 },
+        "laneDropReason": { "const": 0 },
+        "samplingProbeDropped": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "samplingProbeDropReason": { "type": "integer", "enum": [0, 10] }
+      }
+    },
+    "laneResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "priority", "accepted", "consumed", "dropped", "sampled",
+        "firstDroppedSequence", "lastDroppedSequence", "lastDropReason",
+        "highWaterMark", "consumerLag", "passed"
+      ],
+      "properties": {
+        "priority": { "type": "integer", "minimum": 0, "maximum": 3 },
+        "accepted": { "type": "integer", "minimum": 1 },
+        "consumed": { "type": "integer", "minimum": 1 },
+        "dropped": { "type": "integer", "minimum": 0 },
+        "sampled": { "type": "integer", "minimum": 0 },
+        "firstDroppedSequence": { "type": "integer", "minimum": 0 },
+        "lastDroppedSequence": { "type": "integer", "minimum": 0 },
+        "lastDropReason": { "type": "integer", "minimum": 0, "maximum": 11 },
+        "highWaterMark": { "type": "integer", "minimum": 0, "maximum": 64 },
+        "consumerLag": { "const": 0 },
+        "passed": { "const": true }
+      }
+    },
+    "domainCounter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domainIndex", "domain", "accepted", "dropped", "highWater", "pending",
+        "writeFailures"
+      ],
+      "properties": {
+        "domainIndex": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "domain": { "type": "string", "minLength": 1 },
+        "accepted": { "type": "integer", "minimum": 1 },
+        "dropped": { "type": "integer", "minimum": 0 },
+        "highWater": { "type": "integer", "minimum": 1 },
+        "pending": { "const": 0 },
+        "writeFailures": { "type": "integer", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "semanticAdmissionCap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "nativeEvidenceSha256", "contractPassed",
+        "sharedLedgerPassed", "liveStateUntouched", "hardLimit",
+        "lowPriorityCeiling", "results"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "contractPassed": { "const": true },
+        "sharedLedgerPassed": { "const": true },
+        "liveStateUntouched": { "const": true },
+        "hardLimit": { "const": 2000000 },
+        "lowPriorityCeiling": { "const": 1500000 },
+        "results": {
+          "type": "array", "minItems": 2, "maxItems": 2,
+          "prefixItems": [
+            { "$ref": "#/$defs/semanticAdmissionLowPriorityResult" },
+            { "$ref": "#/$defs/semanticAdmissionAuthoritativeResult" }
+          ],
+          "items": false
+        }
+      }
+    },
+    "semanticAdmissionLowPriorityResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "priority", "domainIndex", "domain", "acceptedAtBoundary", "droppedAtBoundary",
+        "dropReason", "firstDroppedSequence", "lastDroppedSequence"
+      ],
+      "properties": {
+        "priority": { "const": 3 },
+        "domainIndex": { "const": 24 },
+        "domain": { "const": "Snapshot" },
+        "acceptedAtBoundary": { "const": 1 },
+        "droppedAtBoundary": { "const": 1 },
+        "dropReason": { "const": 8 },
+        "firstDroppedSequence": { "type": "integer", "minimum": 1 },
+        "lastDroppedSequence": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "semanticAdmissionAuthoritativeResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "priority", "domainIndex", "domain", "acceptedBeyondLegacyHardLimit",
+        "droppedBeyondLegacyHardLimit", "dropReason", "firstDroppedSequence", "lastDroppedSequence"
+      ],
+      "properties": {
+        "priority": { "const": 0 },
+        "domainIndex": { "const": 0 },
+        "domain": { "const": "Network" },
+        "acceptedBeyondLegacyHardLimit": { "const": 1 },
+        "droppedBeyondLegacyHardLimit": { "const": 0 },
+        "dropReason": { "const": 0 },
+        "firstDroppedSequence": { "const": 0 },
+        "lastDroppedSequence": { "const": 0 }
+      }
+    },
+    "injectorResultV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion", "status", "code", "injectionAttempted", "moduleWasEverLoaded",
+        "moduleLoadStateVerified", "moduleSnapshotVerified", "moduleAbsent",
+        "targetProcessExited", "targetIdentityVerified", "probeReady", "stopSucceeded",
+        "unloadSafe", "moduleUnloaded", "moduleResidentInactive", "strictUnloadVerified",
+        "cleanupRetriable", "injectionMode", "suspendedThreadCount", "primaryThreadId",
+        "extraReferenceRequested", "extraReferenceLoaded",
+        "extraReferenceNegativeFirstFreeLibraryStillPresent",
+        "extraReferenceNegativeNotClaimedUnloaded", "extraReferenceReleasedThenModuleAbsent"
+      ],
+      "properties": {
+        "schemaVersion": { "const": 2 },
+        "status": { "type": "string", "minLength": 1 },
+        "code": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "injectionAttempted": { "type": "boolean" },
+        "moduleWasEverLoaded": { "type": "boolean" },
+        "moduleLoadStateVerified": { "type": "boolean" },
+        "moduleSnapshotVerified": { "type": "boolean" },
+        "moduleAbsent": { "type": "boolean" },
+        "targetProcessExited": { "type": "boolean" },
+        "targetIdentityVerified": { "type": "boolean" },
+        "probeReady": { "type": "boolean" },
+        "stopSucceeded": { "type": "boolean" },
+        "unloadSafe": { "type": "boolean" },
+        "moduleUnloaded": { "type": "boolean" },
+        "moduleResidentInactive": { "type": "boolean" },
+        "strictUnloadVerified": { "type": "boolean" },
+        "cleanupRetriable": { "type": "boolean" },
+        "injectionMode": {
+          "enum": ["None", "PausePrimaryRemoteThreadResume", "PauseResumeThenRemoteThreadComplete"]
+        },
+        "suspendedThreadCount": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "primaryThreadId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "extraReferenceRequested": { "type": "boolean" },
+        "extraReferenceLoaded": { "type": "boolean" },
+        "extraReferenceNegativeFirstFreeLibraryStillPresent": { "type": "boolean" },
+        "extraReferenceNegativeNotClaimedUnloaded": { "type": "boolean" },
+        "extraReferenceReleasedThenModuleAbsent": { "type": "boolean" }
+      }
+    },
+    "injectorAttachResultV2": {
+      "allOf": [
+        { "$ref": "#/$defs/injectorResultV2" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": { "const": 2 },
+            "status": { "const": "ATTACHED" },
+            "code": { "const": 0 },
+            "injectionAttempted": { "const": true },
+            "moduleWasEverLoaded": { "const": true },
+            "moduleLoadStateVerified": { "const": true },
+            "moduleSnapshotVerified": { "const": false },
+            "moduleAbsent": { "const": false },
+            "targetProcessExited": { "const": false },
+            "targetIdentityVerified": { "const": true },
+            "probeReady": { "const": true },
+            "stopSucceeded": { "const": false },
+            "unloadSafe": { "const": false },
+            "moduleUnloaded": { "const": false },
+            "moduleResidentInactive": { "const": false },
+            "strictUnloadVerified": { "const": false },
+            "cleanupRetriable": { "const": true },
+            "injectionMode": {
+              "enum": ["PausePrimaryRemoteThreadResume", "PauseResumeThenRemoteThreadComplete"]
+            },
+            "suspendedThreadCount": { "const": 1 },
+            "primaryThreadId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+            "extraReferenceRequested": { "const": true },
+            "extraReferenceLoaded": { "const": true },
+            "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": false },
+            "extraReferenceNegativeNotClaimedUnloaded": { "const": false },
+            "extraReferenceReleasedThenModuleAbsent": { "const": false }
+          }
+        }
+      ]
+    },
+    "injectorDetachResultV2": {
+      "allOf": [
+        { "$ref": "#/$defs/injectorResultV2" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": { "const": 2 },
+            "status": { "const": "DETACHED" },
+            "code": { "const": 0 },
+            "injectionAttempted": { "const": true },
+            "moduleWasEverLoaded": { "const": true },
+            "moduleLoadStateVerified": { "const": true },
+            "moduleSnapshotVerified": { "const": true },
+            "moduleAbsent": { "const": true },
+            "targetProcessExited": { "const": false },
+            "targetIdentityVerified": { "const": true },
+            "probeReady": { "const": false },
+            "stopSucceeded": { "const": true },
+            "unloadSafe": { "const": true },
+            "moduleUnloaded": { "const": true },
+            "moduleResidentInactive": { "const": false },
+            "strictUnloadVerified": { "const": true },
+            "cleanupRetriable": { "const": false },
+            "injectionMode": {
+              "enum": ["PausePrimaryRemoteThreadResume", "PauseResumeThenRemoteThreadComplete"]
+            },
+            "suspendedThreadCount": { "const": 1 },
+            "primaryThreadId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+            "extraReferenceRequested": { "const": true },
+            "extraReferenceLoaded": { "const": true },
+            "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": true },
+            "extraReferenceNegativeNotClaimedUnloaded": { "const": true },
+            "extraReferenceReleasedThenModuleAbsent": { "const": true }
+          }
+        }
+      ]
+    },
+    "injectorIdentityBlockedResultV2": {
+      "allOf": [
+        { "$ref": "#/$defs/injectorResultV2" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "schemaVersion": { "const": 2 },
+            "status": { "const": "EVIDENCE_BLOCKED_BUILD_MISMATCH" },
+            "code": { "const": 193 },
+            "injectionAttempted": { "const": false },
+            "moduleWasEverLoaded": { "const": false },
+            "moduleLoadStateVerified": { "const": true },
+            "moduleSnapshotVerified": { "const": true },
+            "moduleAbsent": { "const": true },
+            "targetProcessExited": { "const": false },
+            "targetIdentityVerified": { "const": false },
+            "probeReady": { "const": false },
+            "stopSucceeded": { "const": false },
+            "unloadSafe": { "const": false },
+            "moduleUnloaded": { "const": false },
+            "moduleResidentInactive": { "const": false },
+            "strictUnloadVerified": { "const": true },
+            "cleanupRetriable": { "const": false },
+            "injectionMode": { "const": "None" },
+            "suspendedThreadCount": { "const": 0 },
+            "primaryThreadId": { "const": 0 },
+            "extraReferenceRequested": { "const": false },
+            "extraReferenceLoaded": { "const": false },
+            "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": false },
+            "extraReferenceNegativeNotClaimedUnloaded": { "const": false },
+            "extraReferenceReleasedThenModuleAbsent": { "const": false }
+          }
+        }
+      ]
+    },
+    "lifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "productEvidenceSha256", "nativeEvidenceSha256", "attachResult", "detachResult",
+        "attachResultPath", "attachResultSha256", "detachResultPath", "detachResultSha256",
+        "productionIdentityGate", "productionIdentityGatePath", "productionIdentityGateSha256",
+        "strictInjectorResultParserNegativeCount",
+        "moduleUnloaded", "moduleResidentInactive", "moduleSnapshotVerified",
+        "moduleAbsent", "unloadSafe", "extraReferenceNegativeFirstFreeLibraryStillPresent",
+        "extraReferenceNegativeNotClaimedUnloaded",
+        "extraReferenceReleasedThenModuleAbsent", "restoreFaultLifecyclePath",
+        "restoreFaultLifecycleSha256", "restoreFaultLifecycle", "restoreFaultResidentNegativePassed",
+        "iatOwnerLifecycleSelfTestPassed", "iatOwnerGoneRetired",
+        "iatAddressReuseNotClobbered", "iatReplacementCasRestored",
+        "iatOriginalNotClobbered", "iatThirdPartyNotClobbered",
+        "pendingAtStopDeferredCount", "pendingAtStopRetryDrainedCount",
+        "pendingAtStopDeferredAttempts"
+      ],
+      "properties": {
+        "productEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "attachResult": { "$ref": "#/$defs/injectorAttachResultV2" },
+        "attachResultPath": { "$ref": "#/$defs/portablePath" },
+        "attachResultSha256": { "$ref": "#/$defs/sha256" },
+        "detachResult": { "$ref": "#/$defs/injectorDetachResultV2" },
+        "detachResultPath": { "$ref": "#/$defs/portablePath" },
+        "detachResultSha256": { "$ref": "#/$defs/sha256" },
+        "productionIdentityGate": { "$ref": "#/$defs/injectorIdentityBlockedResultV2" },
+        "productionIdentityGatePath": { "$ref": "#/$defs/portablePath" },
+        "productionIdentityGateSha256": { "$ref": "#/$defs/sha256" },
+        "strictInjectorResultParserNegativeCount": { "type": "integer", "minimum": 10 },
+        "moduleUnloaded": { "const": true },
+        "moduleResidentInactive": { "const": false },
+        "moduleSnapshotVerified": { "const": true },
+        "moduleAbsent": { "const": true },
+        "unloadSafe": { "const": true },
+        "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": true },
+        "extraReferenceNegativeNotClaimedUnloaded": { "const": true },
+        "extraReferenceReleasedThenModuleAbsent": { "const": true },
+        "restoreFaultLifecyclePath": { "$ref": "#/$defs/portablePath" },
+        "restoreFaultLifecycleSha256": { "$ref": "#/$defs/sha256" },
+        "restoreFaultLifecycle": { "$ref": "#/$defs/restoreFaultLifecycle" },
+        "restoreFaultResidentNegativePassed": { "const": true },
+        "iatOwnerLifecycleSelfTestPassed": { "const": true },
+        "iatOwnerGoneRetired": { "const": true },
+        "iatAddressReuseNotClobbered": { "const": true },
+        "iatReplacementCasRestored": { "const": true },
+        "iatOriginalNotClobbered": { "const": true },
+        "iatThirdPartyNotClobbered": { "const": true },
+        "pendingAtStopDeferredCount": { "const": 0 },
+        "pendingAtStopRetryDrainedCount": { "const": 0 },
+        "pendingAtStopDeferredAttempts": { "const": 0 }
+      }
+    },
+    "restoreFaultLifecycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SchemaId","SchemaVersion","ProcessId","ModuleBase","Requested","ArmExportResolved","ArmCallCompleted","ArmIdentityAuthorized",
+        "ArmSucceeded","FirstStopCallCompleted","FirstStopRejected","FirstStopIdentityAuthorized","FirstCanUnloadCallCompleted","FirstCanUnloadIdentityAuthorized","FirstCanUnloadRejected","FirstSnapshotVerified",
+        "FirstSnapshotModulePresent","FirstSnapshotModuleIdentityMatched","NoFreeLibraryBeforeRetry","FreeLibraryCallCountAtEntry","FreeLibraryCallCountBeforeRetry","FreeLibraryCallCountDeltaBeforeRetry","DllExportThreadCountAtEntry","DllExportThreadCountAtExit",
+        "DllExportThreadCountDelta","DllExportIdentityRejectDelta","WaitReadyAuthorizationAttemptCount","WaitReadyAuthorizationRejectedCount","WaitReadyRemoteThreadCreateCount","ArmAuthorizationAttemptCount","ArmAuthorizationRejectedCount","ArmRemoteThreadCreateCount",
+        "StopAuthorizationAttemptCount","StopAuthorizationRejectedCount","StopRemoteThreadCreateCount","CanUnloadAuthorizationAttemptCount","CanUnloadAuthorizationRejectedCount","CanUnloadRemoteThreadCreateCount","CleanupOwnerRetained","RetryStopCallCompleted",
+        "RetryStopSucceeded","RetryStopIdentityAuthorized","RetryCanUnloadCallCompleted","RetryCanUnloadIdentityAuthorized","RetryCanUnloadSucceeded","FreeLibraryThreadCreated","FreeLibraryThreadCompleted","FreeLibrarySucceeded",
+        "FreeLibraryCallCount","FreeLibraryCallCountAtExit","ReleaseIdentityVerified","ReleaseTokenConsumedOnce","VerifiedAbsentSnapshotCount","ModuleAbsent","TargetAliveAfter","Passed"
+      ],
+      "properties": {
+        "SchemaId":{"const":"God2RestoreFaultLifecycle"},"SchemaVersion":{"const":1},"ProcessId":{"type":"integer","minimum":1},"ModuleBase":{"type":"integer","minimum":1},
+        "Requested":{"const":true},"ArmExportResolved":{"const":true},"ArmCallCompleted":{"const":true},"ArmIdentityAuthorized":{"const":true},"ArmSucceeded":{"const":true},
+        "FirstStopCallCompleted":{"const":true},"FirstStopRejected":{"const":true},"FirstStopIdentityAuthorized":{"const":true},"FirstCanUnloadCallCompleted":{"const":true},"FirstCanUnloadIdentityAuthorized":{"const":true},"FirstCanUnloadRejected":{"const":true},
+        "FirstSnapshotVerified":{"const":true},"FirstSnapshotModulePresent":{"const":true},"FirstSnapshotModuleIdentityMatched":{"const":true},"NoFreeLibraryBeforeRetry":{"const":true},
+        "FreeLibraryCallCountAtEntry":{"const":0},"FreeLibraryCallCountBeforeRetry":{"const":0},"FreeLibraryCallCountDeltaBeforeRetry":{"const":0},
+        "DllExportThreadCountAtEntry":{"const":2},"DllExportThreadCountAtExit":{"const":6},"DllExportThreadCountDelta":{"const":4},"DllExportIdentityRejectDelta":{"const":0},
+        "WaitReadyAuthorizationAttemptCount":{"const":1},"WaitReadyAuthorizationRejectedCount":{"const":0},"WaitReadyRemoteThreadCreateCount":{"const":1},
+        "ArmAuthorizationAttemptCount":{"const":1},"ArmAuthorizationRejectedCount":{"const":0},"ArmRemoteThreadCreateCount":{"const":1},
+        "StopAuthorizationAttemptCount":{"const":2},"StopAuthorizationRejectedCount":{"const":0},"StopRemoteThreadCreateCount":{"const":2},
+        "CanUnloadAuthorizationAttemptCount":{"const":2},"CanUnloadAuthorizationRejectedCount":{"const":0},"CanUnloadRemoteThreadCreateCount":{"const":2},
+        "CleanupOwnerRetained":{"const":true},"RetryStopCallCompleted":{"const":true},"RetryStopSucceeded":{"const":true},"RetryStopIdentityAuthorized":{"const":true},
+        "RetryCanUnloadCallCompleted":{"const":true},"RetryCanUnloadIdentityAuthorized":{"const":true},"RetryCanUnloadSucceeded":{"const":true},
+        "FreeLibraryThreadCreated":{"const":true},"FreeLibraryThreadCompleted":{"const":true},"FreeLibrarySucceeded":{"const":true},"FreeLibraryCallCount":{"const":1},"FreeLibraryCallCountAtExit":{"const":1},
+        "ReleaseIdentityVerified":{"const":true},"ReleaseTokenConsumedOnce":{"const":true},"VerifiedAbsentSnapshotCount":{"const":2},"ModuleAbsent":{"const":true},"TargetAliveAfter":{"const":true},"Passed":{"const":true}
+      }
+    },
+    "faultIsolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nativeEvidenceSha256", "passed", "results"],
+      "properties": {
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "passed": { "const": true },
+        "results": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "items": { "$ref": "#/$defs/faultIsolationRow" }
+        }
+      }
+    },
+    "faultIsolationRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domainIndex", "domain", "faultInjected", "affectedDomainDisabled",
+        "privateDiagnosticAttributed", "privateDiagnosticSinkWritten", "runtimeDiagnosticEmitted",
+        "otherDomainsEnabledAtFault", "otherDomainsEnabledMask",
+        "otherDomainsRemainEnabledMeasured", "otherDomainContinued"
+      ],
+      "properties": {
+        "domainIndex": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "domain": { "type": "string", "minLength": 1 },
+        "faultInjected": { "const": true },
+        "affectedDomainDisabled": { "const": true },
+        "privateDiagnosticAttributed": { "const": true },
+        "privateDiagnosticSinkWritten": { "const": true },
+        "runtimeDiagnosticEmitted": { "const": false },
+        "otherDomainsEnabledAtFault": { "const": 1 },
+        "otherDomainsEnabledMask": { "type": "string", "pattern": "^0x[0-9A-F]{8}$" },
+        "otherDomainsRemainEnabledMeasured": { "const": true },
+        "otherDomainContinued": { "const": true }
+      }
+    },
+    "asyncDiagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nativeEvidenceSha256", "hookThreadFileIoOperations", "queuePassed",
+        "ringNullFallbackPassed", "ringNullSemanticLossCount",
+        "capacity", "enqueued", "flushed", "dropped", "writeFailures",
+        "highWater", "pending", "domainResults"
+      ],
+      "properties": {
+        "nativeEvidenceSha256": { "$ref": "#/$defs/sha256" },
+        "hookThreadFileIoOperations": { "const": 0 },
+        "ringNullFallbackPassed": { "const": true },
+        "ringNullSemanticLossCount": { "const": 1 },
+        "queuePassed": { "const": true },
+        "capacity": { "type": "integer", "minimum": 16, "maximum": 65536 },
+        "enqueued": { "type": "integer", "minimum": 16 },
+        "flushed": { "type": "integer", "minimum": 16 },
+        "dropped": { "const": 25 },
+        "writeFailures": { "const": 0 },
+        "highWater": { "type": "integer", "minimum": 1, "maximum": 65536 },
+        "pending": { "const": 0 },
+        "domainResults": {
+          "type": "array",
+          "minItems": 25,
+          "maxItems": 25,
+          "items": { "$ref": "#/$defs/asyncDiagnosticDomainRow" }
+        }
+      }
+    },
+    "asyncDiagnosticDomainRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domainIndex", "domain", "dropped", "writeFailures", "evidenceIncomplete"],
+      "properties": {
+        "domainIndex": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "domain": { "type": "string", "minLength": 1 },
+        "dropped": { "const": 1 },
+        "writeFailures": { "const": 1 },
+        "evidenceIncomplete": { "const": true }
+      }
+    },
+    "enhancedCaptureStatusSchemaBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "schemaId"],
+      "properties": {
+        "path": {
+          "const": "tools/God2.PacketCapture/ultimate/assets/schemas/enhanced-capture-status.schema.json"
+        },
+        "sha256": { "const": "85C19A1D6963FC6CD99DA54DAD21325EAD7E554873B3928EB22AF8D0B16B7F01" },
+        "schemaId": {
+          "const": "https://god2.local/schemas/enhanced-capture-status.schema.json"
+        }
+      }
+    },
+    "bridgeAwareStatusV3Binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaPath", "schemaSha256", "schemaId", "reportPath", "reportSha256", "report"],
+      "properties": {
+        "schemaPath": { "const": "tools/God2.PacketCapture/ultimate/assets/schemas/enhanced-capture-status-v3.schema.json" },
+        "schemaSha256": { "const": "17A5F64EFC2418BA34B6FA46D97812E6BD84F12191671A4401B3F7D77CE032DD" },
+        "schemaId": { "const": "https://god2.local/schemas/enhanced-capture-status-v3.schema.json" },
+        "reportPath": { "$ref": "#/$defs/portablePath" },
+        "reportSha256": { "$ref": "#/$defs/sha256" },
+        "report": { "$ref": "#/$defs/bridgeAwareStatusV3" }
+      }
+    },
+    "bridgeAwareStatusV3": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SchemaVersion", "GeneratedAtUtc", "AuthorityProfile", "OfficialRuntimeObserved",
+        "ExtendedReady", "NetworkBridgeReady", "InternalBridgeReady", "StrictUnloadVerified",
+        "ModuleAbsent", "TargetAliveAfterUnload", "BridgeSchemaId", "BridgePhase", "BridgeState",
+        "BridgeNoDllPointers", "DllPointerCount", "WritableExecutablePageCount", "ObserverRundown",
+        "PendingApplicationCallbacks", "ExactPersistentOriginalPointerCount", "ExactEntryPointerCount",
+        "ExactCompletionThunkCount", "IatRestored", "HotpatchRestored", "RestoreFaultLifecyclePassed",
+        "RestoreFaultFreeLibraryCallCount", "RestoreFaultVerifiedAbsentSnapshotCount",
+        "ProductEvidenceSHA256", "NativeEvidenceSHA256", "RestoreFaultEvidenceSHA256"
+      ],
+      "properties": {
+        "SchemaVersion": { "const": "god2-enhanced-capture-status-v3" },
+        "GeneratedAtUtc": { "type": "string", "format": "date-time" },
+        "AuthorityProfile": { "enum": ["OfficialExactClient", "TestOnlyExactFixture"] },
+        "OfficialRuntimeObserved": { "type": "boolean" },
+        "ExtendedReady": { "type": "boolean" },
+        "NetworkBridgeReady": { "const": true },
+        "InternalBridgeReady": { "type": "boolean" },
+        "StrictUnloadVerified": { "const": true },
+        "ModuleAbsent": { "const": true },
+        "TargetAliveAfterUnload": { "const": true },
+        "BridgeSchemaId": { "const": "god2-unload-neutral-bridge-v1" },
+        "BridgePhase": { "const": "Detached" },
+        "BridgeState": { "const": "RetainedPassThrough" },
+        "BridgeNoDllPointers": { "const": true },
+        "DllPointerCount": { "const": 0 },
+        "WritableExecutablePageCount": { "const": 0 },
+        "ObserverRundown": { "const": 0 },
+        "PendingApplicationCallbacks": { "const": 0 },
+        "ExactPersistentOriginalPointerCount": { "const": 7 },
+        "ExactEntryPointerCount": { "const": 11 },
+        "ExactCompletionThunkCount": { "const": 256 },
+        "IatRestored": { "const": true },
+        "HotpatchRestored": { "const": true },
+        "RestoreFaultLifecyclePassed": { "const": true },
+        "RestoreFaultFreeLibraryCallCount": { "const": 1 },
+        "RestoreFaultVerifiedAbsentSnapshotCount": { "const": 2 },
+        "ProductEvidenceSHA256": { "$ref": "#/$defs/sha256" },
+        "NativeEvidenceSHA256": { "$ref": "#/$defs/sha256" },
+        "RestoreFaultEvidenceSHA256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "inputBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "file"],
+      "properties": {
+        "role": {
+          "enum": [
+            "GUI_SOURCE", "MAIN_SOURCE", "EVIDENCE_SOURCE", "SHARED_RING_HEADER",
+            "ULTIMATE_HEADER", "ULTIMATE_SOURCE", "RESOURCE_HEADER", "RESOURCE_SCRIPT",
+            "PROBE_SOURCE", "INJECTOR_SOURCE", "SELFTEST_CLIENT_SOURCE",
+            "NETWORK_SELFTEST_SCRIPT", "PRODUCT_SELFTEST_SCRIPT", "ACCEPTANCE_SCRIPT",
+            "ACCEPTANCE_SCHEMA", "ENHANCED_CAPTURE_STATUS_SCHEMA", "BRIDGE_AWARE_STATUS_V3_SCHEMA",
+            "SHARED_HEALTH_AVAILABILITY_SCHEMA", "CANDIDATE_MAP_AVAILABILITY_SCHEMA", "PROBE_PAYLOAD",
+            "INJECTOR_PAYLOAD", "BUILT_PROBE",
+            "BUILT_INJECTOR", "NETWORK_EVIDENCE", "PRODUCT_EVIDENCE",
+            "EVIDENCE_FIXTURE_REPORT", "RESTORE_FAULT_LIFECYCLE_EVIDENCE",
+            "ATTACH_RESULT_EVIDENCE", "DETACH_RESULT_EVIDENCE",
+            "PRODUCTION_IDENTITY_GATE_EVIDENCE", "NATIVE_PROBE_SELFTEST_EVIDENCE",
+            "NATIVE_SEMANTIC_WIRE_EVIDENCE",
+            "NATIVE_SEMANTIC_WIRE_VERIFICATION_EVIDENCE",
+            "ULTIMATE_NATIVE_WIRE_REPORT_EVIDENCE", "DEEP_PROBE_CANDIDATE_MAP_EVIDENCE",
+            "SEMANTIC_SELFTEST_EVIDENCE",
+            "ULTIMATE_SELFTEST_EVIDENCE",
+            "CANONICAL_V1_SEMANTIC_WIRE_EVIDENCE",
+            "CANONICAL_V1_SEMANTIC_WIRE_BINDING_EVIDENCE",
+            "NONCANONICAL_V1_COMPATIBILITY_FIXTURE_EVIDENCE",
+            "GUI_SMOKE_EVIDENCE"
+          ]
+        },
+        "file": { "$ref": "#/$defs/fileIdentity" }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseBuiltAfterAllBoundSources", "networkEvidenceAfterAllBoundInputs",
+        "productEvidenceAfterAllBoundInputs", "evidenceFixtureGeneratedAfterRelease",
+        "nativeProbeEvidenceAfterAllBoundInputs",
+        "executableSelfTestsGeneratedAfterRelease",
+        "guiSmokeGeneratedAfterRelease", "releaseLastWriteTimeUtc",
+        "newestBoundSourceLastWriteTimeUtc", "networkEvidenceLastWriteTimeUtc",
+        "newestNetworkInputLastWriteTimeUtc", "productEvidenceLastWriteTimeUtc",
+        "evidenceFixtureLastWriteTimeUtc",
+        "nativeProbeEvidenceLastWriteTimeUtc", "newestProductInputLastWriteTimeUtc",
+        "acceptanceScriptSha256", "acceptanceSchemaSha256", "guiSourceSha256", "mainSourceSha256",
+        "evidenceSourceSha256", "enhancedCaptureStatusSchemaSha256", "bridgeAwareStatusV3SchemaSha256",
+        "sharedHealthAvailabilitySchemaSha256", "candidateMapAvailabilitySchemaSha256"
+      ],
+      "properties": {
+        "releaseBuiltAfterAllBoundSources": { "const": true },
+        "networkEvidenceAfterAllBoundInputs": { "const": true },
+        "productEvidenceAfterAllBoundInputs": { "const": true },
+        "evidenceFixtureGeneratedAfterRelease": { "const": true },
+        "nativeProbeEvidenceAfterAllBoundInputs": { "const": true },
+        "executableSelfTestsGeneratedAfterRelease": { "const": true },
+        "guiSmokeGeneratedAfterRelease": {
+          "oneOf": [
+            { "const": true },
+            { "type": "null" }
+          ]
+        },
+        "releaseLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "newestBoundSourceLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "networkEvidenceLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "newestNetworkInputLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "productEvidenceLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "evidenceFixtureLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "nativeProbeEvidenceLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "newestProductInputLastWriteTimeUtc": { "type": "string", "format": "date-time" },
+        "acceptanceScriptSha256": { "$ref": "#/$defs/sha256" },
+        "acceptanceSchemaSha256": { "$ref": "#/$defs/sha256" },
+        "guiSourceSha256": { "const": "A926CEDF8A7E4A7CCFE5285C40229622CE813BB1B46A196EF476430F2BAD13C7" },
+        "mainSourceSha256": { "const": "A538AE061331AFA96076708AF35E28865C59AAD049857A79CCF1EA4EDC11F409" },
+        "evidenceSourceSha256": { "const": "030C27FF76FDBF0F262087DD147C166CFFE037E72AE2CDD9F7C7EA4FCDBD40AA" },
+        "enhancedCaptureStatusSchemaSha256": { "const": "85C19A1D6963FC6CD99DA54DAD21325EAD7E554873B3928EB22AF8D0B16B7F01" },
+        "bridgeAwareStatusV3SchemaSha256": { "const": "17A5F64EFC2418BA34B6FA46D97812E6BD84F12191671A4401B3F7D77CE032DD" },
+        "sharedHealthAvailabilitySchemaSha256": { "const": "CE259621B2E7C4A6A74FB6E5C0BBC417A6C55BE61375AAE51E01539CAE14F2B0" },
+        "candidateMapAvailabilitySchemaSha256": { "const": "2C6E012269AAD9C7D4BF05B512568169DDB9C54711DD4775E85FA6FDFEC70B33" }
+      }
+    },
+    "testEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "status", "total", "passed", "failed"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "status": { "enum": ["PASS", "BLOCKED"] },
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "guiVisibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status", "evidenceObserved", "path", "expectedSmokeKeys",
+        "DllTwentyFiveDomainStatusContract", "DllStrictUnloadResultContract",
+        "DllStrictUnloadFinalizationContract", "DllCancelResultReadBeforeCleanupContract",
+        "DllEnhancedCaptureConsumerStateLifecycle",
+        "ThreeLanguageDllStrictUnloadContract",
+        "SharedTransportSlotReuseDomainAccounting", "enhancedCaptureStatusSchemaVersion",
+        "initialStrictUnloadVerified", "expectedExecutableSha256",
+        "observedExecutableSha256", "executableSha256Bound", "unloadPolicy"
+      ],
+      "properties": {
+        "status": { "enum": ["PASS", "PENDING_GUI_SMOKE_VISIBILITY_INPUT", "BLOCKED_GUI_SMOKE_GATE"] },
+        "evidenceObserved": { "type": "boolean" },
+        "path": {
+          "oneOf": [
+            { "$ref": "#/$defs/portablePath" },
+            { "type": "null" }
+          ]
+        },
+        "expectedSmokeKeys": {
+          "type": "array",
+          "minItems": 11,
+          "maxItems": 11,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "DllEnhancedCaptureStatusVisible", "DllEnhancedCaptureAutoEnabled",
+              "ThreeLanguageDllEnhancedCaptureStatus", "ThreeLanguageDllEnhancedCaptureHelp",
+              "DllTwentyFiveDomainStatusContract", "DllStrictUnloadResultContract",
+              "ThreeLanguageDllStrictUnloadContract", "SharedTransportSlotReuseDomainAccounting",
+              "DllStrictUnloadFinalizationContract", "DllCancelResultReadBeforeCleanupContract",
+              "DllEnhancedCaptureConsumerStateLifecycle"
+            ]
+          }
+        },
+        "DllTwentyFiveDomainStatusContract": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "DllStrictUnloadResultContract": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "DllStrictUnloadFinalizationContract": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "DllCancelResultReadBeforeCleanupContract": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "DllEnhancedCaptureConsumerStateLifecycle": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "ThreeLanguageDllStrictUnloadContract": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "SharedTransportSlotReuseDomainAccounting": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "enhancedCaptureStatusSchemaVersion": {
+          "oneOf": [
+            { "const": "god2-enhanced-capture-status-v2" },
+            { "type": "null" }
+          ]
+        },
+        "initialStrictUnloadVerified": {
+          "oneOf": [
+            { "const": false },
+            { "type": "null" }
+          ]
+        },
+        "unloadPolicy": {
+          "oneOf": [
+            { "const": "QuiesceRestoreDrainAndProveModuleAbsent;OtherwiseEvidenceBlockedAndBoundedRetry;NeverReportResidentInactiveAsStopped" },
+            { "type": "null" }
+          ]
+        },
+        "expectedExecutableSha256": { "$ref": "#/$defs/sha256" },
+        "observedExecutableSha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        },
+        "executableSha256Bound": { "enum": ["PASS", "FAIL", "PENDING"] }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "status", "scope", "evidence"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+        "status": { "enum": ["PASS", "FAIL", "PENDING"] },
+        "scope": { "enum": ["DLL", "RELEASE_EXE", "GUI"] },
+        "evidence": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

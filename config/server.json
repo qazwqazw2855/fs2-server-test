@@ -1,0 +1,18 @@
+{
+    "_comment": "伺服器核心執行設定；官方固定玩法不在此設定。",
+    "_version": "1.0",
+    "_example": {
+        "name": "God2 Classic Server",
+        "environment": "Production",
+        "maximumPlayers": 1000,
+        "battleEngineMode": "LegacyPrimary"
+    },
+    "name": "God2 Classic Server",
+    "_name": "用途：Console 顯示與服務辨識名稱。預設值：God2 Classic Server。可接受範圍：非空白文字。是否需要重新啟動：是。影響：只影響管理辨識與日誌標示，不改變官方玩法。",
+    "environment": "Production",
+    "_environment": "用途：標示目前執行環境。預設值：Development。可接受範圍：Development、Staging、Production 或其他非空白環境名稱。是否需要重新啟動：是。影響：影響管理辨識，不改變玩家資料或官方流程。",
+    "maximumPlayers": 1000,
+    "_maximumPlayers": "用途：允許同時在線玩家上限。預設值：1000。可接受範圍：1 到 100000。是否需要重新啟動：是。影響：達到上限後限制新連線，不修改已在線玩家資料。",
+    "battleEngineMode": "LegacyPrimary",
+    "_battleEngineMode": "用途：選擇戰鬥執行引擎。預設值：LegacyPrimary。可接受範圍：LegacyPrimary、ActorShadow、ActorPrimary、ActorPrimaryWithLegacyFallbackDisabled。是否需要重新啟動：是。影響：正式環境維持 LegacyPrimary；Actor 模式必須經明確驗證，且衍生副作用後不得靜默回退。"
+}

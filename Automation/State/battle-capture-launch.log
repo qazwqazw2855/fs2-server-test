@@ -1,0 +1,8 @@
+﻿Enhanced capture did not reach ATTACHED. 
+At C:\Users\SeiHo\Desktop\Simao\God2\God2 Classic Server\Automation\Start-ContinuousEnhancedCapture.ps1:99 char:9
++         throw "Enhanced capture did not reach ATTACHED. $errorText"
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Enhanced captur...each ATTACHED. :String) [], RuntimeException
+    + FullyQualifiedErrorId : Enhanced capture did not reach ATTACHED. 
+ 
+

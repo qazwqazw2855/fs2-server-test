@@ -1,0 +1,26 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-07-31T08:01:23.1002145+00:00",
+    "clientBuildId":  "god2-opt-6b127086e0c0",
+    "status":  "Blocked",
+    "selectedCapturePath":  "A.CurrentOfficialClientToCurrentOfficialServer",
+    "selectedPathActivation":  "BlockedBeforeClientLaunch",
+    "automaticPathEvaluations":  3,
+    "qualifyingCaptureCount":  0,
+    "captureAttempts":  0,
+    "rawBattleSamples":  0,
+    "captureDropCount":  0,
+    "inventedOpcodes":  0,
+    "fakeNetworkBytes":  0,
+    "blocker":  {
+                    "code":  "OfficialAuthenticationAuthorityUnavailable",
+                    "stage":  "CapturePathResolution",
+                    "reason":  "The approved DPAPI automation credential authority is explicitly private-local only. No approved official account/session or automated quick-login authority exists.",
+                    "effect":  "The official world cannot be entered automatically, so no safe encounter or Battle capture may start.",
+                    "userCredentialRequested":  false,
+                    "userOperationRequested":  false
+                },
+    "captures":  [
+
+                 ]
+}

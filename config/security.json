@@ -1,0 +1,18 @@
+{
+    "_comment": "登入、封包與連線安全設定；官方固定安全檢查不得關閉。",
+    "_version": "1.0",
+    "_example": {
+        "replayProtectionRequired": true,
+        "packetValidationRequired": true,
+        "authenticationValidationRequired": true,
+        "connectionLimit": 1000
+    },
+    "replayProtectionRequired": true,
+    "_replayProtectionRequired": "用途：強制封包重放防護。預設值：true。可接受範圍：必須為 true。是否需要重新啟動：是。影響：保護玩家 session 與交易流程，不能關閉。",
+    "packetValidationRequired": true,
+    "_packetValidationRequired": "用途：強制封包格式與安全驗證。預設值：true。可接受範圍：必須為 true。是否需要重新啟動：是。影響：阻擋異常封包進入 gameplay pipeline，不能關閉。",
+    "authenticationValidationRequired": true,
+    "_authenticationValidationRequired": "用途：強制帳號登入驗證。預設值：true。可接受範圍：必須為 true。是否需要重新啟動：是。影響：保護帳號與角色資料，不能關閉。",
+    "connectionLimit": 1000,
+    "_connectionLimit": "用途：同時連線數上限。預設值：1000。可接受範圍：1 到 100000。是否需要重新啟動：是。影響：限制連線壓力，超過上限的新連線會被拒絕。"
+}

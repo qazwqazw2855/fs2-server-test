@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "Unified Server OfficialProtocolCompletion reports",
+  "sourcePolicy": "Knowledge and evidence only; no Unified Server architecture/runtime/dependency migrated.",
+  "evidenceRoot": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion",
+  "requiredTopics": [
+    "verified-opcodes",
+    "unknown-opcodes",
+    "packet-families",
+    "protocol-field-map",
+    "protocol-visibility-boundary",
+    "heartbeat",
+    "login",
+    "character",
+    "world transfer",
+    "movement",
+    "runtime protocol knowledge",
+    "official packet evidence",
+    "official login evidence",
+    "official world evidence",
+    "2026-08-06 captured packet evidence",
+    "2026-08-06 captured packet evidence batch2"
+  ],
+  "verifiedOpcodes": [
+    {
+      "id": "world-heartbeat-05007ACCEC",
+      "family": "Heartbeat",
+      "opcodeCandidate": "7ACC",
+      "length": 5,
+      "confidence": "High",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "gameFeature": "世界連線心跳/閒置保活",
+      "functionDescription": "客戶端在世界場景閒置時送出的保活封包，用來維持連線與世界 session 活性；payload 仍為加密或混淆內容。"
+    },
+    {
+      "id": "world-heartbeat-05003D09A5",
+      "family": "Heartbeat",
+      "opcodeCandidate": "3D09",
+      "length": 5,
+      "confidence": "MediumHigh",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "gameFeature": "世界連線心跳/替代閒置保活",
+      "functionDescription": "客戶端閒置時出現的另一組保活封包，功能同樣是維持世界連線活性；差異 payload 尚未解碼。"
+    },
+    {
+      "id": "world-movement-client-10-byte-family",
+      "family": "Movement",
+      "opcodeCandidate": "80BA",
+      "length": 10,
+      "confidence": "MediumHigh",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json"
+      ],
+      "gameFeature": "角色走路移動同步",
+      "functionDescription": "客戶端走路移動時送出的世界移動同步封包，已能對應移動行為；座標、方向與序號欄位尚未完全證實。"
+    }
+  ],
+  "unknownOpcodes": [
+    {
+      "id": "world-npc-interaction-client-8-byte-candidate",
+      "family": "NPC",
+      "opcodeCandidate": "7758",
+      "length": 8,
+      "confidence": "Medium",
+      "status": "RawCandidateOnly",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/*npc*.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/npc-*.txt"
+      ],
+      "gameFeature": "NPC 對話/互動請求候選",
+      "functionDescription": "玩家點擊 NPC 時送出的互動請求候選封包，可對應 NPC 對話或功能入口；NPC/object/座標欄位位置尚未解碼。"
+    },
+    {
+      "id": "world-merchant-interaction-client-8-byte-candidate",
+      "family": "Merchant",
+      "opcodeCandidate": "77B5",
+      "length": 8,
+      "confidence": "LowMedium",
+      "status": "VisualVerifiedRawUnknown",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/shop-open-2.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-*.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-*.txt"
+      ],
+      "gameFeature": "商人開店/交易互動請求候選",
+      "functionDescription": "玩家點擊商人或商店入口時送出的互動候選封包，可對應開店、買賣或商店分類入口；交易欄位尚未解碼。"
+    },
+    {
+      "id": "world-logout-client-5-byte-candidate",
+      "family": "Logout",
+      "opcodeCandidate": "AC9D",
+      "length": 5,
+      "confidence": "Medium",
+      "status": "RawCandidateOnly",
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+      ],
+      "gameFeature": "角色登出回選單請求候選",
+      "functionDescription": "玩家按下登出並回到伺服器/角色選擇流程時送出的請求候選封包；登出模式欄位尚未解碼。"
+    },
+    {
+      "id": "capture-20260806-login-handshake-c2s-208-candidate",
+      "family": "Login",
+      "opcodeCandidate": null,
+      "length": 208,
+      "confidence": "Medium",
+      "status": "CaptureCandidateOnly",
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "gameFeature": "登入握手/帳號連線初始化候選",
+      "functionDescription": "客戶端進入登入流程時送出的 208-byte 握手候選封包，對應帳號連線初始化；payload 仍為加密或混淆內容。"
+    },
+    {
+      "id": "capture-20260806-client-keepalive-c2s-5-candidate",
+      "family": "Heartbeat",
+      "opcodeCandidate": null,
+      "length": 5,
+      "confidence": "Medium",
+      "status": "CaptureCandidateOnly",
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "gameFeature": "客戶端高頻保活/遊戲 tick 候選",
+      "functionDescription": "登入或世界流程中反覆出現的 5-byte 客戶端保活候選封包，用來維持 session 或推進 tick；payload 語意尚未解碼。"
+    },
+    {
+      "id": "capture-20260806-client-action-c2s-20-candidate",
+      "family": "Movement",
+      "opcodeCandidate": null,
+      "length": 20,
+      "confidence": "Medium",
+      "status": "CaptureCandidateOnly",
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "gameFeature": "角色動作或移動同步候選",
+      "functionDescription": "客戶端送出的 20-byte 行為候選封包，可對應移動或其他玩家操作；座標、方向、坐騎、技能或序號欄位尚未證實。"
+    },
+    {
+      "id": "capture-20260806-server-world-delta-s2c-20-candidate",
+      "family": "WorldState",
+      "opcodeCandidate": null,
+      "length": 20,
+      "confidence": "Medium",
+      "status": "CaptureCandidateOnly",
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "gameFeature": "世界狀態同步/實體更新候選",
+      "functionDescription": "服務端推送給客戶端的 20-byte 世界狀態差異候選封包，可能承載玩家、NPC、怪物或元件更新；欄位歸屬尚未證實。"
+    },
+    {
+      "id": "capture-20260806-server-world-delta-s2c-14-candidate",
+      "family": "WorldState",
+      "opcodeCandidate": null,
+      "length": 14,
+      "confidence": "Medium",
+      "status": "CaptureCandidateOnly",
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "gameFeature": "世界狀態同步/短實體更新候選",
+      "functionDescription": "服務端推送給客戶端的 14-byte 世界狀態差異候選封包，可能承載 NPC、怪物、玩家、寵物、神仙或坐騎狀態；欄位語意尚未證實。"
+    }
+  ],
+  "packetFamilies": [
+    {
+      "family": "Launcher",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "OutOfRuntimeScope",
+      "evidence": [
+        "Official Launcher opened official client"
+      ]
+    },
+    {
+      "family": "Login",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official login reached server selection and character flow"
+      ]
+    },
+    {
+      "family": "CharacterList",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official server selection and character screen displayed"
+      ]
+    },
+    {
+      "family": "CharacterCreate",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/create-character-success.json"
+      ]
+    },
+    {
+      "family": "CharacterDelete",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterRename",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterSelect",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "WorldTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "Heartbeat",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "VerifiedLocalRaw",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ]
+    },
+    {
+      "family": "Movement",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+      ],
+      "subfamilies": [
+        {
+          "name": "WalkingMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+          "evidence": [
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+          ]
+        },
+        {
+          "name": "MountedMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "NotRecoveredToday",
+          "evidence": [
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-1.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-2.json"
+          ],
+          "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+        }
+      ],
+      "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+    },
+    {
+      "family": "NPC",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/fist-master-dialog-opened.json"
+      ]
+    },
+    {
+      "family": "Merchant",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-buy-interface-opened.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-sell-success.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-buy-success.txt"
+      ]
+    },
+    {
+      "family": "Inventory",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NoServerPacketIsolatedForOpen",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/inventory-open-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/inventory-window-opened.json"
+      ]
+    },
+    {
+      "family": "Item",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official notes: item gain, mount item use, crafting materials, rewards"
+      ]
+    },
+    {
+      "family": "Quest",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-accepted-task-journal-visible.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-complete-weapon-master.json"
+      ]
+    },
+    {
+      "family": "Portal",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+      ]
+    },
+    {
+      "family": "MapTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+      ]
+    },
+    {
+      "family": "Mount",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mount-success.json"
+      ]
+    },
+    {
+      "family": "Unmount",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/dismount-success.json"
+      ]
+    },
+    {
+      "family": "Combat",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-145358/action-notes/battle-started.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/battle-result-exp-48.txt"
+      ]
+    },
+    {
+      "family": "Skill",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official user note: character used skill during battle"
+      ]
+    },
+    {
+      "family": "Drop",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "Pickup",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "Logout",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+      ]
+    },
+    {
+      "family": "ClientClose",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NoProtocolFrameExpected",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/client-close-1.json"
+      ]
+    }
+  ],
+  "protocolFieldMap": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-07-26T16:45:00+08:00",
+    "commonFrameStructure": {
+      "lengthPrefix": {
+        "offset": 0,
+        "length": 2,
+        "encoding": "uint16le",
+        "status": "VerifiedAcrossSamples",
+        "examples": [
+          "0500",
+          "0800",
+          "0A00",
+          "0C00",
+          "1300",
+          "4700",
+          "D000",
+          "A101"
+        ]
+      },
+      "opcode": {
+        "offset": 2,
+        "length": "Unknown",
+        "encoding": "EncryptedOrObfuscatedCandidate",
+        "status": "Unknown",
+        "rule": "Do not treat bytes 2..3 as confirmed opcode until repeated differential analysis ties them to action semantics."
+      }
+    },
+    "families": [
+      {
+        "family": "Heartbeat",
+        "knownFields": [
+          {
+            "name": "frameLength",
+            "offset": 0,
+            "length": 2
+          }
+        ],
+        "unknownFields": [
+          {
+            "name": "payload",
+            "offset": 2,
+            "length": 3
+          }
+        ],
+        "fixedBytes": [
+          "05007ACCEC",
+          "05003D09A5"
+        ],
+        "changingBytes": []
+      },
+      {
+        "family": "Movement",
+        "knownFields": [
+          {
+            "name": "frameLength",
+            "offset": 0,
+            "length": 2
+          },
+          {
+            "name": "familyPrefixCandidate",
+            "offset": 2,
+            "length": 3,
+            "fixedValue": "80BAD7"
+          }
+        ],
+        "unknownFields": [
+          {
+            "name": "coordinateOrSequenceOrDirection",
+            "offset": 5,
+            "length": 5
+          }
+        ],
+        "fixedBytes": [
+          {
+            "offset": 0,
+            "value": "0A0080BAD7"
+          }
+        ],
+        "changingBytes": [
+          {
+            "offset": 5,
+            "samples": [
+              "C34DA69488",
+              "C44EA79586"
+            ]
+          }
+        ],
+        "mountState": "Unknown; do not merge mounted movement with walking movement yet."
+      },
+      {
+        "family": "NPC",
+        "knownFields": [
+          {
+            "name": "frameLength",
+            "offset": 0,
+            "length": 2
+          }
+        ],
+        "unknownFields": [
+          {
+            "name": "npcIdOrObjectId",
+            "offset": 2,
+            "length": 6
+          }
+        ],
+        "fixedBytes": [
+          "0800775884CB3F09"
+        ],
+        "changingBytes": [],
+        "responsePacketRelationship": "Unknown"
+      },
+      {
+        "family": "Merchant",
+        "knownFields": [
+          {
+            "name": "frameLength",
+            "offset": 0,
+            "length": 2
+          }
+        ],
+        "unknownFields": [
+          {
+            "name": "merchantOrShopPayload",
+            "offset": 2,
+            "length": 6
+          }
+        ],
+        "fixedBytes": [],
+        "changingBytes": [],
+        "responsePacketRelationship": "Unknown; official visual evidence confirms behavior only."
+      },
+      {
+        "family": "Logout",
+        "knownFields": [
+          {
+            "name": "frameLength",
+            "offset": 0,
+            "length": 2
+          }
+        ],
+        "unknownFields": [
+          {
+            "name": "logoutPayload",
+            "offset": 2,
+            "length": 3
+          }
+        ],
+        "fixedBytes": [
+          "0500AC9D30"
+        ],
+        "changingBytes": [],
+        "responsePacketRelationship": "Return to server-selection/login flow observed locally and officially, raw response not decoded today."
+      }
+    ],
+    "officialCaptureLimitations": [
+      "No scanned official pcapng contained the known startup, map-ready, heartbeat, movement, NPC, merchant, or logout byte patterns.",
+      "UU captures are transport/accelerator evidence and cannot be used as raw game opcode proof without a decrypted/local-loopback raw capture path."
+    ]
+  },
+  "protocolVisibilityBoundary": {
+    "rule": "Only raw repeated frame evidence or source-backed frozen startup evidence may promote a packet to verified raw opcode. Visual official-client success is evidence, but not raw opcode proof.",
+    "clientToServer": "Decode length prefix and classify family; semantic fields remain Unknown until cross-verified.",
+    "serverToClient": "Do not fabricate responses; keep raw response packets Unknown until recovered."
+  },
+  "heartbeat": [
+    {
+      "id": "world-heartbeat-05007ACCEC",
+      "family": "Heartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": "7ACC",
+      "confidence": "High",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 5
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 3,
+          "reason": "Encrypted/obfuscated heartbeat payload not decoded."
+        }
+      ],
+      "samples": [],
+      "fixedBytes": "05007ACCEC"
+    },
+    {
+      "id": "world-heartbeat-05003D09A5",
+      "family": "Heartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": "3D09",
+      "confidence": "MediumHigh",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 5
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 3,
+          "reason": "Alternate idle payload not decoded."
+        }
+      ],
+      "samples": [],
+      "fixedBytes": "05003D09A5"
+    }
+  ],
+  "movement": [
+    {
+      "id": "world-movement-client-10-byte-family",
+      "family": "Movement",
+      "direction": "ClientToServer",
+      "length": 10,
+      "opcode": null,
+      "opcodeCandidate": "80BA",
+      "confidence": "MediumHigh",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 10
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 2,
+          "reason": "Opcode candidate only; encryption/obfuscation not decoded."
+        },
+        {
+          "offset": 5,
+          "length": 5,
+          "reason": "Likely movement state but coordinates/direction/sequence are not proven."
+        }
+      ],
+      "samples": [
+        "0A0080BAD7C34DA69488",
+        "0A0080BAD7C44EA79586"
+      ],
+      "fixedBytes": [
+        {
+          "offset": 0,
+          "bytes": "0A0080BAD7"
+        }
+      ]
+    }
+  ],
+  "login": {
+    "required": [
+      "TRANSPORT_CONNECTED",
+      "LOGIN_SOCKET_ACCEPTED",
+      "SESSION_CREATED",
+      "SESSION_TOKEN_ISSUED",
+      "HEARTBEAT_ACCEPTED",
+      "TRANSPORT_STABLE",
+      "LOGIN_REQUEST_RECEIVED",
+      "ACCOUNT_AUTHENTICATED",
+      "LOGIN_RESPONSE_ACCEPTED",
+      "WORLD_TRANSFER_TOKEN_ISSUED",
+      "CHARACTER_LIST_SENT",
+      "CHARACTER_SELECTED",
+      "WORLD_TRANSFER_VALIDATED",
+      "PLAYER_ENTERED_WORLD"
+    ],
+    "observed": [
+      "CLIENT_PROCESS_STARTED",
+      "CLIENT_WINDOW_READY",
+      "LOGIN_UI_READY",
+      "CREDENTIALS_ENTERED"
+    ],
+    "firstMissing": "LOGIN_SOCKET_ACCEPTED",
+    "blocker": "Visible Official Client does not yet prove a socket accept/session path against staging LoginServer."
+  },
+  "character": [
+    {
+      "family": "CharacterList",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official server selection and character screen displayed"
+      ]
+    },
+    {
+      "family": "CharacterCreate",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/create-character-success.json"
+      ]
+    },
+    {
+      "family": "CharacterDelete",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterRename",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterSelect",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    }
+  ],
+  "worldTransfer": [
+    {
+      "family": "WorldTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "Portal",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+      ]
+    },
+    {
+      "family": "MapTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+      ]
+    }
+  ],
+  "runtimeProtocolKnowledge": [
+    {
+      "family": "Launcher",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "OutOfRuntimeScope",
+      "evidence": [
+        "Official Launcher opened official client"
+      ]
+    },
+    {
+      "family": "Login",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official login reached server selection and character flow"
+      ]
+    },
+    {
+      "family": "CharacterList",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official server selection and character screen displayed"
+      ]
+    },
+    {
+      "family": "CharacterCreate",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/create-character-success.json"
+      ]
+    },
+    {
+      "family": "CharacterDelete",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterRename",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "CharacterSelect",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "WorldTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "Heartbeat",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "VerifiedLocalRaw",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ]
+    },
+    {
+      "family": "Movement",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+      ],
+      "subfamilies": [
+        {
+          "name": "WalkingMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+          "evidence": [
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+          ]
+        },
+        {
+          "name": "MountedMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "NotRecoveredToday",
+          "evidence": [
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-1.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-2.json"
+          ],
+          "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+        }
+      ],
+      "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+    },
+    {
+      "family": "NPC",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/fist-master-dialog-opened.json"
+      ]
+    },
+    {
+      "family": "Merchant",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-buy-interface-opened.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-sell-success.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-buy-success.txt"
+      ]
+    },
+    {
+      "family": "Inventory",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NoServerPacketIsolatedForOpen",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/inventory-open-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/inventory-window-opened.json"
+      ]
+    },
+    {
+      "family": "Item",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official notes: item gain, mount item use, crafting materials, rewards"
+      ]
+    },
+    {
+      "family": "Quest",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-accepted-task-journal-visible.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-complete-weapon-master.json"
+      ]
+    },
+    {
+      "family": "Portal",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+      ]
+    },
+    {
+      "family": "MapTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+      ]
+    },
+    {
+      "family": "Mount",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mount-success.json"
+      ]
+    },
+    {
+      "family": "Unmount",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/dismount-success.json"
+      ]
+    },
+    {
+      "family": "Combat",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-145358/action-notes/battle-started.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/battle-result-exp-48.txt"
+      ]
+    },
+    {
+      "family": "Skill",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official user note: character used skill during battle"
+      ]
+    },
+    {
+      "family": "Drop",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "Pickup",
+      "officialVisualStatus": "NotCapturedToday",
+      "rawOpcodeStatus": "NOT_YET_RECOVERED",
+      "evidence": []
+    },
+    {
+      "family": "Logout",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+      ]
+    },
+    {
+      "family": "ClientClose",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NoProtocolFrameExpected",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/client-close-1.json"
+      ]
+    }
+  ],
+  "officialPacketEvidence": [
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-2.json",
+    "Artifacts/OfficialServerCapture/20260726-132540/action-notes/*npc*.json",
+    "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/npc-*.txt",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/shop-open-2.json",
+    "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-*.txt",
+    "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-*.txt",
+    "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+    "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+  ],
+  "officialLoginEvidence": [
+    {
+      "required": [
+        "TRANSPORT_CONNECTED",
+        "LOGIN_SOCKET_ACCEPTED",
+        "SESSION_CREATED",
+        "SESSION_TOKEN_ISSUED",
+        "HEARTBEAT_ACCEPTED",
+        "TRANSPORT_STABLE",
+        "LOGIN_REQUEST_RECEIVED",
+        "ACCOUNT_AUTHENTICATED",
+        "LOGIN_RESPONSE_ACCEPTED",
+        "WORLD_TRANSFER_TOKEN_ISSUED",
+        "CHARACTER_LIST_SENT",
+        "CHARACTER_SELECTED",
+        "WORLD_TRANSFER_VALIDATED",
+        "PLAYER_ENTERED_WORLD"
+      ],
+      "observed": [
+        "CLIENT_PROCESS_STARTED",
+        "CLIENT_WINDOW_READY",
+        "LOGIN_UI_READY",
+        "CREDENTIALS_ENTERED"
+      ],
+      "firstMissing": "LOGIN_SOCKET_ACCEPTED",
+      "blocker": "Visible Official Client does not yet prove a socket accept/session path against staging LoginServer."
+    },
+    {
+      "status": "PASS_FROZEN",
+      "note": "Used only as server regression evidence; not counted as OfficialClientTransport PASS.",
+      "observed": [
+        "LoginAccepted",
+        "CharacterListReady",
+        "CharacterSelected",
+        "WorldTransferStarted",
+        "WorldSessionEstablished",
+        "PlayerEnteredWorld"
+      ],
+      "evidence": "Reports/BuiltInOfficialClientE2E/20260728-080552/summary.json"
+    }
+  ],
+  "officialWorldEvidence": [
+    {
+      "family": "WorldTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "BaselineKnownBeforeToday",
+      "evidence": [
+        "Official enter-world success notes"
+      ]
+    },
+    {
+      "family": "Movement",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+      ],
+      "subfamilies": [
+        {
+          "name": "WalkingMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "VerifiedLocalRawFamilyOnly",
+          "evidence": [
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+            "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+          ]
+        },
+        {
+          "name": "MountedMovement",
+          "officialVisualStatus": "Observed",
+          "rawOpcodeStatus": "NotRecoveredToday",
+          "evidence": [
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-1.json",
+            "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-2.json"
+          ],
+          "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+        }
+      ],
+      "mountAnalysis": "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+    },
+    {
+      "family": "NPC",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/fist-master-dialog-opened.json"
+      ]
+    },
+    {
+      "family": "Merchant",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-buy-interface-opened.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-sell-success.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-buy-success.txt"
+      ]
+    },
+    {
+      "family": "Inventory",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NoServerPacketIsolatedForOpen",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/inventory-open-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/inventory-window-opened.json"
+      ]
+    },
+    {
+      "family": "Quest",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-accepted-task-journal-visible.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-complete-weapon-master.json"
+      ]
+    },
+    {
+      "family": "Portal",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+      ]
+    },
+    {
+      "family": "MapTransfer",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+      ]
+    },
+    {
+      "family": "Combat",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Artifacts/OfficialServerCapture/20260726-145358/action-notes/battle-started.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/battle-result-exp-48.txt"
+      ]
+    },
+    {
+      "family": "Skill",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "NotRecoveredToday",
+      "evidence": [
+        "Official user note: character used skill during battle"
+      ]
+    },
+    {
+      "family": "Logout",
+      "officialVisualStatus": "Observed",
+      "rawOpcodeStatus": "CandidateLocalRawOnly",
+      "evidence": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+      ]
+    }
+  ],
+  "packets": [
+    {
+      "id": "world-heartbeat-05007ACCEC",
+      "family": "Heartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": "7ACC",
+      "confidence": "High",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 5
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 3,
+          "reason": "Encrypted/obfuscated heartbeat payload not decoded."
+        }
+      ],
+      "samples": [],
+      "fixedBytes": "05007ACCEC",
+      "gameFeature": "世界連線心跳/閒置保活",
+      "functionDescription": "客戶端在世界場景閒置時送出的保活封包，用來維持連線與世界 session 活性；payload 仍為加密或混淆內容。"
+    },
+    {
+      "id": "world-heartbeat-05003D09A5",
+      "family": "Heartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": "3D09",
+      "confidence": "MediumHigh",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 5
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 3,
+          "reason": "Alternate idle payload not decoded."
+        }
+      ],
+      "samples": [],
+      "fixedBytes": "05003D09A5",
+      "gameFeature": "世界連線心跳/替代閒置保活",
+      "functionDescription": "客戶端閒置時出現的另一組保活封包，功能同樣是維持世界連線活性；差異 payload 尚未解碼。"
+    },
+    {
+      "id": "world-movement-client-10-byte-family",
+      "family": "Movement",
+      "direction": "ClientToServer",
+      "length": 10,
+      "opcode": null,
+      "opcodeCandidate": "80BA",
+      "confidence": "MediumHigh",
+      "recoveryStatus": "VerifiedRawEvidence",
+      "verified": true,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le",
+          "value": 10
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 2,
+          "reason": "Opcode candidate only; encryption/obfuscation not decoded."
+        },
+        {
+          "offset": 5,
+          "length": 5,
+          "reason": "Likely movement state but coordinates/direction/sequence are not proven."
+        }
+      ],
+      "samples": [
+        "0A0080BAD7C34DA69488",
+        "0A0080BAD7C44EA79586"
+      ],
+      "fixedBytes": [
+        {
+          "offset": 0,
+          "bytes": "0A0080BAD7"
+        }
+      ],
+      "gameFeature": "角色走路移動同步",
+      "functionDescription": "客戶端走路移動時送出的世界移動同步封包，已能對應移動行為；座標、方向與序號欄位尚未完全證實。"
+    },
+    {
+      "id": "world-npc-interaction-client-8-byte-candidate",
+      "family": "NPC",
+      "direction": "ClientToServer",
+      "length": 8,
+      "opcode": null,
+      "opcodeCandidate": "7758",
+      "confidence": "Medium",
+      "recoveryStatus": "RawCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-2.json",
+        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/*npc*.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/npc-*.txt"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "name": "npcId",
+          "status": "Unknown",
+          "note": "Same NPC produced repeat frame; field location not decoded."
+        },
+        {
+          "name": "objectId",
+          "status": "Unknown"
+        },
+        {
+          "name": "coordinate",
+          "status": "Unknown"
+        },
+        {
+          "name": "sequence",
+          "status": "Unknown"
+        }
+      ],
+      "samples": [
+        "0800775884CB3F09",
+        "0800775884CB3F09"
+      ],
+      "fixedBytes": "0800775884CB3F09",
+      "gameFeature": "NPC 對話/互動請求候選",
+      "functionDescription": "玩家點擊 NPC 時送出的互動請求候選封包，可對應 NPC 對話或功能入口；NPC/object/座標欄位位置尚未解碼。"
+    },
+    {
+      "id": "world-merchant-interaction-client-8-byte-candidate",
+      "family": "Merchant",
+      "direction": "ClientToServer",
+      "length": 8,
+      "opcode": null,
+      "opcodeCandidate": "77B5",
+      "confidence": "LowMedium",
+      "recoveryStatus": "VisualVerifiedRawUnknown",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/shop-open-2.json",
+        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-*.txt",
+        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-*.txt"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "name": "npcId",
+          "status": "Unknown"
+        },
+        {
+          "name": "merchantId",
+          "status": "Unknown"
+        },
+        {
+          "name": "menuOption",
+          "status": "Unknown"
+        },
+        {
+          "name": "shopCategory",
+          "status": "Unknown"
+        }
+      ],
+      "samples": [
+        "080077B5F3D73FB8"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "商人開店/交易互動請求候選",
+      "functionDescription": "玩家點擊商人或商店入口時送出的互動候選封包，可對應開店、買賣或商店分類入口；交易欄位尚未解碼。"
+    },
+    {
+      "id": "world-logout-client-5-byte-candidate",
+      "family": "Logout",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": "AC9D",
+      "confidence": "Medium",
+      "recoveryStatus": "RawCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "name": "logoutMode",
+          "status": "Unknown",
+          "note": "User clicked 登出, not 離開; local raw evidence returned client to server selection."
+        }
+      ],
+      "samples": [
+        "0500AC9D30"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "角色登出回選單請求候選",
+      "functionDescription": "玩家按下登出並回到伺服器/角色選擇流程時送出的請求候選封包；登出模式欄位尚未解碼。"
+    },
+    {
+      "id": "capture-20260806-login-handshake-c2s-208-candidate",
+      "family": "Login",
+      "direction": "ClientToServer",
+      "length": 208,
+      "opcode": null,
+      "opcodeCandidate": null,
+      "confidence": "Medium",
+      "recoveryStatus": "CaptureCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 206,
+          "reason": "Encrypted/obfuscated login handshake payload; opcode and field semantics vary and remain unknown."
+        }
+      ],
+      "samples": [],
+      "fixedBytes": [
+        {
+          "offset": 0,
+          "bytes": "D00094EDF9D04733"
+        },
+        {
+          "offset": 0,
+          "bytes": "D00075CC9C8CA49F"
+        }
+      ],
+      "gameFeature": "登入握手/帳號連線初始化候選",
+      "functionDescription": "客戶端進入登入流程時送出的 208-byte 握手候選封包，對應帳號連線初始化；payload 仍為加密或混淆內容。"
+    },
+    {
+      "id": "capture-20260806-client-keepalive-c2s-5-candidate",
+      "family": "Heartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "opcode": null,
+      "opcodeCandidate": null,
+      "confidence": "Medium",
+      "recoveryStatus": "CaptureCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 3,
+          "reason": "High-frequency keepalive/tick candidate payload remains unknown."
+        }
+      ],
+      "samples": [
+        "0500452B7B",
+        "0500926836",
+        "0500481E8D"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "客戶端高頻保活/遊戲 tick 候選",
+      "functionDescription": "登入或世界流程中反覆出現的 5-byte 客戶端保活候選封包，用來維持 session 或推進 tick；payload 語意尚未解碼。"
+    },
+    {
+      "id": "capture-20260806-client-action-c2s-20-candidate",
+      "family": "Movement",
+      "direction": "ClientToServer",
+      "length": 20,
+      "opcode": null,
+      "opcodeCandidate": null,
+      "confidence": "Medium",
+      "recoveryStatus": "CaptureCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 18,
+          "reason": "Client action/movement candidate; coordinates/direction/mount/skill/sequence not proven."
+        }
+      ],
+      "samples": [
+        "14004A314E713F59075F64DE02F0874D408536D8",
+        "14004A2661664059075F64DE02F087737675362A"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "角色動作或移動同步候選",
+      "functionDescription": "客戶端送出的 20-byte 行為候選封包，可對應移動或其他玩家操作；座標、方向、坐騎、技能或序號欄位尚未證實。"
+    },
+    {
+      "id": "capture-20260806-server-world-delta-s2c-20-candidate",
+      "family": "WorldState",
+      "direction": "ServerToClient",
+      "length": 20,
+      "opcode": null,
+      "opcodeCandidate": null,
+      "confidence": "Medium",
+      "recoveryStatus": "CaptureCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 18,
+          "reason": "Server world-state delta candidate; entity/component field ownership not proven."
+        }
+      ],
+      "samples": [
+        "1400FB805A673F59073F43DF02F0878545C60CDB",
+        "14009675B4C2EE07CF710D59068EB0139EC3ECCF"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "世界狀態同步/實體更新候選",
+      "functionDescription": "服務端推送給客戶端的 20-byte 世界狀態差異候選封包，可能承載玩家、NPC、怪物或元件更新；欄位歸屬尚未證實。"
+    },
+    {
+      "id": "capture-20260806-server-world-delta-s2c-14-candidate",
+      "family": "WorldState",
+      "direction": "ServerToClient",
+      "length": 14,
+      "opcode": null,
+      "opcodeCandidate": null,
+      "confidence": "Medium",
+      "recoveryStatus": "CaptureCandidateOnly",
+      "verified": false,
+      "recovered": true,
+      "evidenceSource": [
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+        "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+      ],
+      "knownFields": [
+        {
+          "name": "frameLength",
+          "offset": 0,
+          "length": 2,
+          "encoding": "uint16le"
+        }
+      ],
+      "unknownFields": [
+        {
+          "offset": 2,
+          "length": 12,
+          "reason": "Server world-state delta candidate; NPC/monster/player/pet/immortal/mount semantics remain unverified."
+        }
+      ],
+      "samples": [
+        "0E004B3158663F48E76410DE02FC",
+        "0E004624B2C1EE1A1F77E3580681"
+      ],
+      "fixedBytes": [],
+      "gameFeature": "世界狀態同步/短實體更新候選",
+      "functionDescription": "服務端推送給客戶端的 14-byte 世界狀態差異候選封包，可能承載 NPC、怪物、玩家、寵物、神仙或坐騎狀態；欄位語意尚未證實。"
+    }
+  ],
+  "remaining": [
+    "CharacterDelete raw request/response",
+    "CharacterRename raw request/response",
+    "CharacterListRefresh raw request/response",
+    "Mounted movement raw diff versus walking movement",
+    "Mount raw request/response",
+    "Unmount raw request/response",
+    "Portal/MapTransfer raw request/response",
+    "MerchantOpen raw request/response",
+    "Buy raw request/response",
+    "Sell raw request/response",
+    "InventoryMove raw request/response",
+    "Equip raw request/response",
+    "Unequip raw request/response",
+    "QuestAccept raw request/response",
+    "QuestComplete raw request/response",
+    "CombatStart raw request/response",
+    "BasicAttack raw request/response",
+    "Skill raw request/response",
+    "DropItem raw request/response",
+    "PickUpItem raw request/response"
+  ]
+}

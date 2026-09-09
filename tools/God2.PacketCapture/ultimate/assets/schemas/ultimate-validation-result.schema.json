@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/ultimate-validation-result.schema.json",
+  "title":"God2 portable validation result envelope",
+  "type":"object",
+  "required":["SchemaVersion","CompletedAtUtc","FinalStatus","ProductVersion","IntegrityStatus","ExecutableSHA256","ObservedClientSHA256","ObservedGpu","CpuAuthority","AiModelStatus","ResultManifestPath"],
+  "properties":{
+    "SchemaVersion":{"const":1},
+    "CompletedAtUtc":{"type":"string","format":"date-time"},
+    "FinalStatus":{"enum":["ULTIMATE_LIVE_DEEP_RECOVERY_EVIDENCE_PASS","EVIDENCE_BLOCKED_EXTERNAL_LIVE_GATE_PENDING","EvidenceBlockedUnconfirmedProbe","EvidenceBlockedModelUnavailable","RTX5070_PHYSICAL_VALIDATION_PASS","RTX5070_PHYSICAL_VALIDATION_GPU_16_VERIFIED_AI_MODEL_BLOCKED","RTX5070_PHYSICAL_VALIDATION_BLOCKED_GPU_IMPLEMENTATIONS_UNAVAILABLE","RTX5070_PHYSICAL_VALIDATION_BLOCKED_WRONG_GPU","RTX5070_PHYSICAL_VALIDATION_BLOCKED_WRONG_OS","RTX5070_VALIDATION_PACKAGE_INTEGRITY_FAIL"]},
+    "ProductVersion":{"const":"1.3.0.0"},
+    "IntegrityStatus":{"enum":["PASS","FAIL"]},
+    "ExecutableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "ObservedClientSHA256":{"type":["string","null"],"pattern":"^[A-F0-9]{64}$"},
+    "ObservedGpu":{"type":["string","null"]},
+    "CpuAuthority":{"enum":["Preserved","Mismatch","NotEvaluated"]},
+    "AiModelStatus":{"const":"EvidenceBlockedModelUnavailable"},
+    "ResultManifestPath":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}

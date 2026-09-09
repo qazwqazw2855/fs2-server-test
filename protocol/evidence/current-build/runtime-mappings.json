@@ -1,0 +1,912 @@
+[
+  {
+    "family": "BattleBasicAttack",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleBasicAttack."
+  },
+  {
+    "family": "BattleCommand12",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleCommand12."
+  },
+  {
+    "family": "BattleCommand20",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleCommand20."
+  },
+  {
+    "family": "BattleDeath",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleDeath."
+  },
+  {
+    "family": "BattleFleeFailure",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleFleeFailure."
+  },
+  {
+    "family": "BattleFleeSuccess",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleFleeSuccess."
+  },
+  {
+    "family": "BattleSettlement",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for BattleSettlement."
+  },
+  {
+    "family": "CharacterCreate",
+    "existingRuntime": "Character Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CharacterCreate."
+  },
+  {
+    "family": "CharacterCreateCandidate",
+    "existingRuntime": "Character Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CharacterCreateCandidate."
+  },
+  {
+    "family": "CharacterDelete",
+    "existingRuntime": "Character Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CharacterDelete."
+  },
+  {
+    "family": "CharacterDeleteCandidate",
+    "existingRuntime": "Character Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CharacterDeleteCandidate."
+  },
+  {
+    "family": "CharacterLevelUp",
+    "existingRuntime": "Character Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CharacterLevelUp."
+  },
+  {
+    "family": "CompanionAcquisitionCandidate",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for CompanionAcquisitionCandidate."
+  },
+  {
+    "family": "Crafting",
+    "existingRuntime": "Crafting/Inventory Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for Crafting."
+  },
+  {
+    "family": "DecodedServerOpcode0x01",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x01."
+  },
+  {
+    "family": "DecodedServerOpcode0x02",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x02."
+  },
+  {
+    "family": "DecodedServerOpcode0x03",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x03."
+  },
+  {
+    "family": "DecodedServerOpcode0x07",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x07."
+  },
+  {
+    "family": "DecodedServerOpcode0x18",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x18."
+  },
+  {
+    "family": "DecodedServerOpcode0x1D",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x1D."
+  },
+  {
+    "family": "DecodedServerOpcode0x1E",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x1E."
+  },
+  {
+    "family": "DecodedServerOpcode0x1F",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x1F."
+  },
+  {
+    "family": "DecodedServerOpcode0x24",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x24."
+  },
+  {
+    "family": "DecodedServerOpcode0x28",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x28."
+  },
+  {
+    "family": "DecodedServerOpcode0x2E",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x2E."
+  },
+  {
+    "family": "DecodedServerOpcode0x30",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x30."
+  },
+  {
+    "family": "DecodedServerOpcode0x31",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x31."
+  },
+  {
+    "family": "DecodedServerOpcode0x36",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x36."
+  },
+  {
+    "family": "DecodedServerOpcode0x3A",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x3A."
+  },
+  {
+    "family": "DecodedServerOpcode0x3B",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x3B."
+  },
+  {
+    "family": "DecodedServerOpcode0x41",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x41."
+  },
+  {
+    "family": "DecodedServerOpcode0x43",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x43."
+  },
+  {
+    "family": "DecodedServerOpcode0x44",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x44."
+  },
+  {
+    "family": "DecodedServerOpcode0x4B",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x4B."
+  },
+  {
+    "family": "DecodedServerOpcode0x4C",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x4C."
+  },
+  {
+    "family": "DecodedServerOpcode0x5C",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x5C."
+  },
+  {
+    "family": "DecodedServerOpcode0x5D",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x5D."
+  },
+  {
+    "family": "DecodedServerOpcode0x5F",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x5F."
+  },
+  {
+    "family": "DecodedServerOpcode0x61",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x61."
+  },
+  {
+    "family": "DecodedServerOpcode0x68",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x68."
+  },
+  {
+    "family": "DecodedServerOpcode0x6A",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x6A."
+  },
+  {
+    "family": "DecodedServerOpcode0x71",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x71."
+  },
+  {
+    "family": "DecodedServerOpcode0x72",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x72."
+  },
+  {
+    "family": "DecodedServerOpcode0x74",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x74."
+  },
+  {
+    "family": "DecodedServerOpcode0x7A",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x7A."
+  },
+  {
+    "family": "DecodedServerOpcode0x82",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x82."
+  },
+  {
+    "family": "DecodedServerOpcode0x83",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x83."
+  },
+  {
+    "family": "DecodedServerOpcode0x85",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x85."
+  },
+  {
+    "family": "DecodedServerOpcode0x86",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x86."
+  },
+  {
+    "family": "DecodedServerOpcode0x88",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x88."
+  },
+  {
+    "family": "DecodedServerOpcode0x89",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0x89."
+  },
+  {
+    "family": "DecodedServerOpcode0xB2",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0xB2."
+  },
+  {
+    "family": "DecodedServerOpcode0xBB",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0xBB."
+  },
+  {
+    "family": "DecodedServerOpcode0xDA",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0xDA."
+  },
+  {
+    "family": "DecodedServerOpcode0xE5",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for DecodedServerOpcode0xE5."
+  },
+  {
+    "family": "Defend",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for Defend."
+  },
+  {
+    "family": "EnemySkillReceived",
+    "existingRuntime": "Skill/Status Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for EnemySkillReceived."
+  },
+  {
+    "family": "EquipArmor",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for EquipArmor."
+  },
+  {
+    "family": "EquipWeapon",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for EquipWeapon."
+  },
+  {
+    "family": "EquipmentSwitch",
+    "existingRuntime": "Inventory/Equipment Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for EquipmentSwitch."
+  },
+  {
+    "family": "ExperienceGain",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for ExperienceGain."
+  },
+  {
+    "family": "GodCompanionAcquisition",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for GodCompanionAcquisition."
+  },
+  {
+    "family": "MountEquip",
+    "existingRuntime": "Mount boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for MountEquip."
+  },
+  {
+    "family": "MountEquipmentCandidate",
+    "existingRuntime": "Inventory/Equipment Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for MountEquipmentCandidate."
+  },
+  {
+    "family": "MountLoyaltyDecrease",
+    "existingRuntime": "Mount boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for MountLoyaltyDecrease."
+  },
+  {
+    "family": "MountRideRejectedLowLoyalty",
+    "existingRuntime": "Mount boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for MountRideRejectedLowLoyalty."
+  },
+  {
+    "family": "MountUnequip",
+    "existingRuntime": "Mount boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for MountUnequip."
+  },
+  {
+    "family": "OutOfCombatHeal",
+    "existingRuntime": "Skill/Status Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for OutOfCombatHeal."
+  },
+  {
+    "family": "PetDeploy",
+    "existingRuntime": "Pet boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PetDeploy."
+  },
+  {
+    "family": "PetRecall",
+    "existingRuntime": "Pet boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PetRecall."
+  },
+  {
+    "family": "PetStateCandidate",
+    "existingRuntime": "Pet boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PetStateCandidate."
+  },
+  {
+    "family": "PetWalk",
+    "existingRuntime": "Pet boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PetWalk."
+  },
+  {
+    "family": "PetWithdraw",
+    "existingRuntime": "Pet boundary (evidence-only)",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PetWithdraw."
+  },
+  {
+    "family": "PortalMapTransfer",
+    "existingRuntime": "World Interaction Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PortalMapTransfer."
+  },
+  {
+    "family": "PortalMapTransferCandidate",
+    "existingRuntime": "World Interaction Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PortalMapTransferCandidate."
+  },
+  {
+    "family": "PositionSwap",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for PositionSwap."
+  },
+  {
+    "family": "QuestBattleEnter",
+    "existingRuntime": "Quest Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for QuestBattleEnter."
+  },
+  {
+    "family": "QuestScriptedTransfer",
+    "existingRuntime": "Quest Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for QuestScriptedTransfer."
+  },
+  {
+    "family": "QuestSubmitAfterCrafting",
+    "existingRuntime": "Crafting/Inventory Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for QuestSubmitAfterCrafting."
+  },
+  {
+    "family": "QuestSubmitCandidate",
+    "existingRuntime": "Quest Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for QuestSubmitCandidate."
+  },
+  {
+    "family": "QuestTransferCandidate",
+    "existingRuntime": "Quest Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for QuestTransferCandidate."
+  },
+  {
+    "family": "RewardItemGain",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for RewardItemGain."
+  },
+  {
+    "family": "ShopOpen",
+    "existingRuntime": "Shop/Inventory Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for ShopOpen."
+  },
+  {
+    "family": "ShopSell",
+    "existingRuntime": "Shop/Inventory Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for ShopSell."
+  },
+  {
+    "family": "ShopSellCandidate",
+    "existingRuntime": "Shop/Inventory Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for ShopSellCandidate."
+  },
+  {
+    "family": "StrategistFormationSkill",
+    "existingRuntime": "Skill/Status Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for StrategistFormationSkill."
+  },
+  {
+    "family": "SwordsmanSingleTargetSkill",
+    "existingRuntime": "Skill/Status Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for SwordsmanSingleTargetSkill."
+  },
+  {
+    "family": "TaoistBattleSkill",
+    "existingRuntime": "Battle Runtime",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for TaoistBattleSkill."
+  },
+  {
+    "family": "UnequipArmor",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for UnequipArmor."
+  },
+  {
+    "family": "UnequipWeapon",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for UnequipWeapon."
+  },
+  {
+    "family": "WildEncounterEnter",
+    "existingRuntime": "Existing semantic runtime boundary requires explicit mapping",
+    "semanticBoundary": "SemanticCommandCandidate",
+    "status": "RuntimeMutationBlocked",
+    "exactlyOnceRequired": true,
+    "directDatabaseAccessAllowed": false,
+    "runtimeIntegrated": false,
+    "blocker": "DecoderVerified and authoritative serializer gates are incomplete for WildEncounterEnter."
+  }
+]

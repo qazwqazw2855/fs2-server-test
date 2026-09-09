@@ -1,0 +1,26 @@
+{
+    "schemaVersion":  1,
+    "status":  "PASS",
+    "productionEligibility":  "EvidenceBlocked",
+    "existingCandidates":  [
+                               {
+                                   "source":  "BattleActorCommandType.MonsterAi",
+                                   "finding":  "Contract enum value exists."
+                               },
+                               {
+                                   "source":  "world content",
+                                   "finding":  "Monster definitions and combat stats exist; latest preflight observed 208 monsters."
+                               },
+                               {
+                                   "source":  "BattleArchitectureV2Actor.Supported",
+                                   "finding":  "MonsterAi is not accepted by the current supported production actor command set."
+                               }
+                           ],
+    "unknowns":  [
+                     "Official target-selection policy",
+                     "Official action-choice policy",
+                     "Official decision timing",
+                     "Client/server ownership of monster decisions"
+                 ],
+    "mutation":  "None"
+}

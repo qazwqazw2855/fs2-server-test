@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase3-batch1-v1",
+  "generatedAtUtc": "2026-07-29T21:10:00Z",
+  "preChangeGoldenRegression": {
+    "status": "PASS",
+    "serverRun": "Artifacts/Runtime/ServerRuns/phase3-prechange-golden-20260730-050225",
+    "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-050252",
+    "matrix": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-050252/world-capture-matrix/world-packet-matrix.json"
+  },
+  "movementMode": {
+    "enum": [
+      "Unknown",
+      "Walking",
+      "Mounted"
+    ],
+    "currentMode": "MountedVisualBaseline",
+    "walkingEvidence": "not captured locally; official visual walking notes exist but no unique raw unmount/movement payload is isolated yet",
+    "coordinateScaleStatus": "blocked until unmounted movement evidence is captured",
+    "appearanceStateCandidateEvidence": [
+      {
+        "source": "world screenshot",
+        "artifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-050252/world-Idle30s-before.png",
+        "evidence": "character kero is visibly riding a mount"
+      },
+      {
+        "source": "PlayerSpawn frame",
+        "frame": "WorldBootstrapSequence frame 1",
+        "fields": [
+          {
+            "offset": "0x23",
+            "name": "appearanceStateFieldCandidateA",
+            "value": "0x02",
+            "semantic": "unverified"
+          },
+          {
+            "offset": "0x24",
+            "name": "appearanceStateFieldCandidateB",
+            "value": "0x02",
+            "semantic": "unverified"
+          }
+        ],
+        "evidence": "same frame is present when kero appears visually mounted; offset semantics are not verified as mount flags"
+      }
+    ]
+  },
+  "movementPacket": {
+    "packetName": "WorldMovementC2S10",
+    "direction": "ClientToServer",
+    "length": 10,
+    "encodedSample": "0A0080B8D9C14BA69488",
+    "decodedSample": "0A00803859F9125F86D7",
+    "parserRva": "god2_opt.exe+0x0047BB68",
+    "serverHandler": "TcpNetworkHost.TryHandleOfficialWorldMovement",
+    "serverUpdates": {
+      "status": "PASS",
+      "phase3PrechangeHandledCount": 13,
+      "fields": [
+        "WorldXCandidate",
+        "WorldYCandidate",
+        "WorldDirectionCandidate",
+        "WorldMovementCount"
+      ]
+    },
+    "fieldMap": [
+      {
+        "offset": "0x00..0x01",
+        "name": "length",
+        "type": "uint16le",
+        "value": "0x000A"
+      },
+      {
+        "offset": "0x02",
+        "name": "worldMovementMarker",
+        "type": "byte",
+        "value": "0x80"
+      },
+      {
+        "offset": "0x03",
+        "name": "directionOrStep",
+        "type": "byte",
+        "value": "0x38"
+      },
+      {
+        "offset": "0x04",
+        "name": "directionComplementCandidate",
+        "type": "byte",
+        "value": "0x59"
+      },
+      {
+        "offset": "0x05..0x06",
+        "name": "rawX",
+        "type": "uint16le",
+        "value": 4857
+      },
+      {
+        "offset": "0x07..0x08",
+        "name": "rawY",
+        "type": "uint16le",
+        "value": 34399
+      },
+      {
+        "offset": "0x09",
+        "name": "trailerOrChecksum",
+        "type": "byte",
+        "value": "0xD7"
+      }
+    ]
+  },
+  "directionEnum": {
+    "enum": [
+      "Unknown",
+      "North",
+      "South",
+      "East",
+      "West",
+      "NorthEast",
+      "NorthWest",
+      "SouthEast",
+      "SouthWest"
+    ],
+    "mountedStepMapping": [
+      {
+        "step": "0x35",
+        "direction": "NorthWest"
+      },
+      {
+        "step": "0x36",
+        "direction": "West"
+      },
+      {
+        "step": "0x37",
+        "direction": "SouthWest"
+      },
+      {
+        "step": "0x38",
+        "direction": "South"
+      },
+      {
+        "step": "0x39",
+        "direction": "SouthEast"
+      },
+      {
+        "step": "0x3A",
+        "direction": "East"
+      },
+      {
+        "step": "0x3B",
+        "direction": "NorthEast"
+      }
+    ],
+    "notYetObserved": [
+      "North"
+    ],
+    "status": "enum established; one facing value still requires unmounted or controlled turn evidence"
+  },
+  "coordinateMapping": {
+    "rawCoordinate": "decoded WorldMovementC2S10 rawX/rawY",
+    "worldCoordinate": "not fixed",
+    "tileCoordinate": "not fixed",
+    "screenCoordinate": "capture screenshots record client-space movement scenario but no scale is committed",
+    "reason": "all movement evidence is mounted; speed/mode must be separated before scale is made official"
+  },
+  "playerSpawn": {
+    "packetName": "WorldPlayerSpawnFrame128",
+    "direction": "ServerToClient",
+    "bootstrapFrameIndex": 1,
+    "length": 128,
+    "decodedPrefix": "80001F02F0CFAA6B65726F0000000000000000F47F5F0300000000000000000000000002020000040000000138E30232",
+    "fields": [
+      {
+        "offset": "0x02",
+        "name": "opcode",
+        "value": "0x1F"
+      },
+      {
+        "offset": "0x07..0x0A",
+        "name": "characterName",
+        "value": "kero"
+      },
+      {
+        "offset": "0x13..0x16",
+        "name": "characterId",
+        "type": "uint32le",
+        "value": "0x035F7FF4"
+      },
+      {
+        "offset": "0x23",
+        "name": "appearanceStateFieldCandidateA",
+        "value": "0x02",
+        "semantic": "unverified"
+      },
+      {
+        "offset": "0x24",
+        "name": "appearanceStateFieldCandidateB",
+        "value": "0x02",
+        "semantic": "unverified"
+      },
+      {
+        "offset": "0x2C",
+        "name": "directionOrPose",
+        "value": "0x38"
+      }
+    ],
+    "builder": "OfficialClientWorldProtocolFrames.ParseCurrentPlayerSpawn",
+    "serverBuilderStatus": "template-backed parser/builder contract added; full field builder waits for verified appearance/state/mount source, so 0x23/0x24 remain candidates"
+  },
+  "visibilityAoi": {
+    "firstPacket": "WorldPlayerSpawnFrame128",
+    "classification": "self entity enter / spawn visibility",
+    "secondClientEvidence": "not captured",
+    "nextRequiredEvidence": "second local test client to observe other-player EntityEnter, EntityUpdate, EntityLeave"
+  }
+}

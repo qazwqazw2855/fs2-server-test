@@ -1,0 +1,525 @@
+{
+  "Domain": "Portal",
+  "SourceCategory": "primary:portals;related:maps",
+  "SourceArtifact": "portals/portals.official.json;maps/maps.official.json",
+  "DeclaredRecordCount": 68,
+  "RelatedSourceRecordCount": 69,
+  "IndexedRecordCount": 68,
+  "VerificationStatus": "Recovered; NumericMapIdUnverified | Recovered; TransferTriggerUnverified",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "area",
+    "canEvidence",
+    "canRecord",
+    "destinationMapIdCandidate",
+    "destinationPosition",
+    "displayNameCandidate",
+    "exitRegions",
+    "id",
+    "kind",
+    "mbd",
+    "numericMapId",
+    "numericMapIdStatus",
+    "officialVisualEvidence",
+    "packedMbdCandidate",
+    "resourceName",
+    "roomGroupId",
+    "sourceMapId",
+    "sourcePosition",
+    "spawnPosition",
+    "triggerCondition",
+    "unknownFields"
+  ],
+  "MissingFields": [
+    "crossReferenceEvidence",
+    "destinationPosition",
+    "exactClientResourcePath",
+    "exactDestinationMapId",
+    "exactDialogueOptionId",
+    "exactSourceMapId",
+    "exitRegionCoordinates",
+    "gameplaySemanticValidation",
+    "numericMapId",
+    "packetRuntimeValidation",
+    "portalTriggerRecord",
+    "serverDestinationMapId",
+    "serverMapId",
+    "serverOpcode",
+    "serverPacket",
+    "sourcePosition",
+    "spawnPosition",
+    "triggerCondition"
+  ],
+  "Entities": [
+    {
+      "Id": "client:can-link/array/1",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "E80BCAE482837A17E95F320ECC5B29BD9E33CFE5126129EB08039FF45966E6D9"
+    },
+    {
+      "Id": "client:can-link/array/10",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "0D691CF5325BA1719B98688137895C3763265C7DBECB878F421EAE1B4206939D"
+    },
+    {
+      "Id": "client:can-link/array/11",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "3F7F63BAF5421C76C96FA7AC2A56747075F490651BCF95AF79A4A91BD2B72A79"
+    },
+    {
+      "Id": "client:can-link/array/12",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "D5132D55D8013E29A41BD647D345854587FC95CF896B835441E4F74F7C34ED36"
+    },
+    {
+      "Id": "client:can-link/array/13",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "9EF76432925803536FA269181966C76FB5084975276DFF482960DDF7A3FA2D2B"
+    },
+    {
+      "Id": "client:can-link/array/14",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "C289217E21608E69A506123788B09C07EF4A826A8F212E50CE85615DACCB559F"
+    },
+    {
+      "Id": "client:can-link/array/15",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "A02971A0805AB9E7DECE201B237EA0B7817D06FE47A62D25D255576900C76C5E"
+    },
+    {
+      "Id": "client:can-link/array/16",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "2CB5DE4CF260154EBB939D52F545E1325E337CF9E6E5E08B8FB7B2C44431DDE6"
+    },
+    {
+      "Id": "client:can-link/array/17",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "F362D565B34B41AA5ADB1F4845E23F2A054898C22674D038B04F3F7A17C267CC"
+    },
+    {
+      "Id": "client:can-link/array/18",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "036B4CC90E9CDC471B16605ECA22930C61D6A22ED92B754CD10B9244C6E974F2"
+    },
+    {
+      "Id": "client:can-link/array/19",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "F7ACAF3689B95DFBFB6E8A24967DE36F00C99BD3539F97F11354937BDD9FEBC9"
+    },
+    {
+      "Id": "client:can-link/array/2",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "B98F6C794AC9C3E1F2A6FD7A9F2E5413F14B70A6E68E5F68B38034C8A294884D"
+    },
+    {
+      "Id": "client:can-link/array/3",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "8379327DFC271A24BE25F0358F9B09BFCB254318DBBAB2FC18BD6A980B8AD0DB"
+    },
+    {
+      "Id": "client:can-link/array/4",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "480C0570493D4AD43F88E4F0EE81EF8AE4CA5FC8074D5374AC6EC42AF69DF631"
+    },
+    {
+      "Id": "client:can-link/array/5",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "E7BBAE56C5737F401D5256150ED06F54FDD5DAA79D5A9F9ED73D10CBBE23C99C"
+    },
+    {
+      "Id": "client:can-link/array/6",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "FE02582119666EA61706FC3CC2D6912CA2491BED9CB4656A325503A03EE54C48"
+    },
+    {
+      "Id": "client:can-link/array/7",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "F73DECB781278BFDD0F5F42B9C689FF9EC45B02DD9B5E9BFAC3EE6A2EB5FC14B"
+    },
+    {
+      "Id": "client:can-link/array/8",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "FB73097943AF9506CDECF404469F8FA3790DA36D15C93E92D2D3E09914FB545A"
+    },
+    {
+      "Id": "client:can-link/array/9",
+      "References": {
+        "sourceMapId": "client:map/array/array"
+      },
+      "RecordHash": "BD8A2AF6BE3614AD0BA297024CB8560E5B4165240FF47C1D1C8F4F4C1058D49B"
+    },
+    {
+      "Id": "client:can-link/island03/1",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "CC98CB0611F22EC3C5F52E42114BEBD3DC13427584068E2127282A42FD0AD634"
+    },
+    {
+      "Id": "client:can-link/island03/10",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "AC6474CEE154AB134DB4E07938E988DB23FAF6FEE6D85DF633D6A3E177FE6826"
+    },
+    {
+      "Id": "client:can-link/island03/11",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "34CAD3E7788AD3ED9E70054620A593417172FE9B5D225175295E8DA94A53517F"
+    },
+    {
+      "Id": "client:can-link/island03/12",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "D657151F4BAD61010662B917AA6A0BB05695E8A86086305A403A96AAD8ACE3C7"
+    },
+    {
+      "Id": "client:can-link/island03/13",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "24A4027DF57C694DB3E349C33AC513A06D4F3FFCCED35C16E22CB8DA984C7339"
+    },
+    {
+      "Id": "client:can-link/island03/14",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "1869FFFDFC5B2ECAAA441BD3B4FD5A22D1AE084E60B99F42061000946136DF7D"
+    },
+    {
+      "Id": "client:can-link/island03/15",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "E58597E47B56453C39CF43CE086CB4CDA333AC1444B4BB6C821699A9AFFB6C77"
+    },
+    {
+      "Id": "client:can-link/island03/2",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "92EB302FD4B92B8C950A521D605E661954D0C1E838C39F17D175A7163C9A1210"
+    },
+    {
+      "Id": "client:can-link/island03/3",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "10E14C16DD381FF9F3FA5B6E3670A00E88E417C687790C01EEC506453DA7FC27"
+    },
+    {
+      "Id": "client:can-link/island03/4",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "473A71171BEF89AD946E6282DA441910C64D4DFA8CF4C834B88A2348C4D85C62"
+    },
+    {
+      "Id": "client:can-link/island03/5",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "844013436CD3E0AC70674B2EB0000754483E2C8F2C424C42578C4F18CAB10D0D"
+    },
+    {
+      "Id": "client:can-link/island03/6",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "7CEE71E4893E231C5254B2E1A268269A2B3AC8CCBC73D3BFF417900E6C1B377B"
+    },
+    {
+      "Id": "client:can-link/island03/7",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "69B5581D4CD862E98FFBFCD302E99CCF1CBBC2738E1E959D3478E216DD5E8849"
+    },
+    {
+      "Id": "client:can-link/island03/8",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "E72A08E1C449A58FA56B4F2E46FBF36F0BF8F2D9D1FB9FB7AB16080FA7B03172"
+    },
+    {
+      "Id": "client:can-link/island03/9",
+      "References": {
+        "sourceMapId": "client:map/island03/island03"
+      },
+      "RecordHash": "38DD822084B6E90EC2376FAC11520CA407A676394E08242286056AD7F432A8A6"
+    },
+    {
+      "Id": "client:can-link/south003/1",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "822DA51050ED0125260D94B36AA61998227AB6B272D2544604C21FD6E461A2EA"
+    },
+    {
+      "Id": "client:can-link/south003/10",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "103DD56D55C6786D591C302197A096FDFF9DB7F2C815904BDBA0F6746EE2D6E6"
+    },
+    {
+      "Id": "client:can-link/south003/11",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "859BC21217A5F72143194E0F90BD65BB49F107DCD882FD7306DAF4AF0AE10993"
+    },
+    {
+      "Id": "client:can-link/south003/12",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "7BB332D5B3A8949235A71D7805586A0B35DFAD9D16342FCD9C60798B74F30D40"
+    },
+    {
+      "Id": "client:can-link/south003/13",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "557C8A368A9DECD2CE5879F0519641D3566D068CCC668BE4F9EAEA4B398F1812"
+    },
+    {
+      "Id": "client:can-link/south003/14",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "E6DBFF2A8AA679FA8C4E7FA779C8CE3A25C4EE0B76AEE5CD06CD7537AB6E1F59"
+    },
+    {
+      "Id": "client:can-link/south003/15",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "5FBAA6B11CE225C1027B173FB2DEE0564DFF7CAAB68C739DE89A4E2B4D63C597"
+    },
+    {
+      "Id": "client:can-link/south003/16",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "B1EEC761B3852875022B35BF4DFC146633158D7DE1E9B4F52D73FBF8F93FDADD"
+    },
+    {
+      "Id": "client:can-link/south003/17",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "7136AA9451FAB8C9D108216B9317D0580E3BF68D6EBDDFF85C3561A465C1695F"
+    },
+    {
+      "Id": "client:can-link/south003/18",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "03743A92C4D87C67A3D2FF37B8835CAEF6A5DC5333E1F00C9FE1A4ECB45FB1E0"
+    },
+    {
+      "Id": "client:can-link/south003/2",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "5F30A2BF56E4B44AFD955A5326878A3F60ACEF274082F68BDD8C0BA8054AC126"
+    },
+    {
+      "Id": "client:can-link/south003/3",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "53606B06F150251C45F159A4CA450356FD9AA695255919114E88E5BD2081E490"
+    },
+    {
+      "Id": "client:can-link/south003/4",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "EC0A8A5C2CC316C4E6FA72BD0A48A3CEEEFE6CA8C5BB82AB5DF65CEF53556D8F"
+    },
+    {
+      "Id": "client:can-link/south003/5",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "24E9CC1C84F1740FE4E7946781260C0EF80B4AC25B04CD4D5A716F93FBD683B1"
+    },
+    {
+      "Id": "client:can-link/south003/6",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "051BCBD2C91EE21EF9751146DA8DC87187123EF0A333680467AAB81D0C8EC0D3"
+    },
+    {
+      "Id": "client:can-link/south003/7",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "01C8C22FA1E21DCCB8DFC434DC8CEC63A5D53ADAD98E3787A58BF3FCB7494876"
+    },
+    {
+      "Id": "client:can-link/south003/8",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "FB56F26850E991910A50A912FF4DF86CC8743E4702C5105B7005FDC2E597A1F8"
+    },
+    {
+      "Id": "client:can-link/south003/9",
+      "References": {
+        "sourceMapId": "client:map/south003/south003"
+      },
+      "RecordHash": "CD05BAA642205D70A41AEA0759E80470A9E6BD73A16D1132FF69842100B5CD70"
+    },
+    {
+      "Id": "client:can-link/tong/1",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "D560410C95EBEEADAF469A84754C6CCE6CAD4A1E2B106DA8E79A027383E81493"
+    },
+    {
+      "Id": "client:can-link/tong/10",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "10A27F1923645A36EC2FC3F48162897FEEFA269CEF7CA63C9E14DC1A6BEB01A3"
+    },
+    {
+      "Id": "client:can-link/tong/11",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "7AFE6707D410CC8062DBF023CEDBD4B2F6119127F772AE88D9587E71B8DC3D26"
+    },
+    {
+      "Id": "client:can-link/tong/12",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "A54DAFFF00C41DF31E2602656103373D456F660709B561E251C009DBEE76918B"
+    },
+    {
+      "Id": "client:can-link/tong/13",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "63FA623BDB54202C94D2EE4A6FBD244F78E0432E18576EBB647D1999D97E2A1E"
+    },
+    {
+      "Id": "client:can-link/tong/2",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "062C5003B1963498D4F2E7F6915D6E1A86FC103C01AC84310258B2706B070933"
+    },
+    {
+      "Id": "client:can-link/tong/3",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "3FA6939CD300C1485ECB0E1B052E699461B24EFD9DB391F8D03D1167E935B031"
+    },
+    {
+      "Id": "client:can-link/tong/4",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "D1829B3D45D71BC41D0D62A00E7F6352933CFE67B6F124A80047912086552642"
+    },
+    {
+      "Id": "client:can-link/tong/5",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "176182BFCF73D89B7A50C190ED5F8CF6355BB6A8BE708575BE8DB8CC9B0F9227"
+    },
+    {
+      "Id": "client:can-link/tong/6",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "832DC656EF202C719E3D174E586DD18281CA6AC3CD70C79971B19D360B13B389"
+    },
+    {
+      "Id": "client:can-link/tong/7",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "49D60CB3DE759C5A231E70028AE7F6DE3F661A358BCB78ED7689730DD81B709D"
+    },
+    {
+      "Id": "client:can-link/tong/8",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "11B7C9674D1EAF789A950F82945E739FA0BB8EFA79EFDFF93937B7E377F6655B"
+    },
+    {
+      "Id": "client:can-link/tong/9",
+      "References": {
+        "sourceMapId": "client:map/tong/tong"
+      },
+      "RecordHash": "FEC2CF40B2203F2437C7F88078023037D04967B02CCC1DC362087D11727C5B82"
+    },
+    {
+      "Id": "official-observed/kunlun-portal-to-secret-room",
+      "References": {},
+      "RecordHash": "5A97B9068F0A8C336EE30D6C2825D334A912C35AAECF7E08783CD12646617AF1"
+    },
+    {
+      "Id": "official-observed/training-room-entry",
+      "References": {},
+      "RecordHash": "DB4A3CFCC7DD3684D3398529BAF8DCA4D024E95051B2BEFEC32268C96F981A45"
+    },
+    {
+      "Id": "official-observed/yuanshi-transfer-to-fenghua",
+      "References": {},
+      "RecordHash": "8C73DF054229463EFA29FB2B5E025D93F30573BAE78FCA89C368CCE83A4DEAAF"
+    }
+  ]
+}

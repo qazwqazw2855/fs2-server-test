@@ -1,0 +1,28 @@
+﻿{
+    "stoppedAtUtc":  "2026-08-12T16:11:36.8920049+00:00",
+    "runDir":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\ElevatedAutomationHost\\host-run-20260813-000406\\attempt-405-trace",
+    "detach":  "pass",
+    "detachStage":  "TraceDetached",
+    "analyzerExitCode":  null,
+    "report":  "",
+    "files":  [
+                  {
+                      "path":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\ElevatedAutomationHost\\host-run-20260813-000406\\attempt-405-trace\\sensitive\\trace.bin",
+                      "lengthBytes":  24,
+                      "sha256":  "080AF7D205CFF7F40053458F16860001FF9E84E7DF31FCF218729C31BFA52978",
+                      "lastWriteTime":  "2026-08-13 00:04:06.568"
+                  },
+                  {
+                      "path":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\ElevatedAutomationHost\\host-run-20260813-000406\\attempt-405-trace\\general.log",
+                      "lengthBytes":  5712,
+                      "sha256":  "3C527E0C91FC6F4478B1F182DD7C3BAFDC074D25CDD8423F029CDED2276D896C",
+                      "lastWriteTime":  "2026-08-13 00:11:36.543"
+                  },
+                  {
+                      "path":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\ElevatedAutomationHost\\host-run-20260813-000406\\attempt-405-trace\\attach-result.json",
+                      "lengthBytes":  802,
+                      "sha256":  "1EA19A3BF88CF3ED0B38250BD84CB83ED6454881D292BAE049AB8FE11A6E3E61",
+                      "lastWriteTime":  "2026-08-13 00:04:06.568"
+                  }
+              ]
+}

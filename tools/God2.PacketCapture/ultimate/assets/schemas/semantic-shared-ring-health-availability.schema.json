@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/semantic-shared-ring-health-availability.schema.json",
+  "title": "God2 semantic shared-ring health availability v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "SchemaVersion", "Status", "RequiredSchemaVersion", "Promotable", "Reason"
+  ],
+  "properties": {
+    "SchemaVersion": { "const": "god2-semantic-shared-ring-health-availability-v1" },
+    "Status": { "const": "EvidenceBlockedSharedTransportHealthUnavailable" },
+    "RequiredSchemaVersion": { "const": "god2-semantic-shared-ring-health-v4" },
+    "Promotable": { "const": false },
+    "Reason": { "type": "string", "minLength": 1 }
+  }
+}

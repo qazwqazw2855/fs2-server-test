@@ -1,0 +1,41 @@
+{
+  "SchemaVersion": "official-current-mission-slot-sync-v1",
+  "ClientBuildId": "god2-opt-6b127086e0c0",
+  "ClientSha256": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B",
+  "Direction": "ServerToClient",
+  "Opcode": "0xDF",
+  "State": "World",
+  "CanonicalApplicationRecordLength": 3,
+  "BoundaryEvidence": "The exact-current consumer reads only payload[0] and payload[1]. Three bytes is the canonical minimal application record; it is not yet an observed live frame boundary.",
+  "RuntimeSnapshotSha256": "EBC80CB5C86B8A91EA0CA3B3E5112ABD879493C7DDFE22134B9CA1B5F3F791AB",
+  "Handler": {
+    "Rva": "0x0008EB8F",
+    "Behavior": "Passes applicationRecord+1 to consumer RVA 0x0012C840.",
+    "Inspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-df-world-handler-inspection.json",
+    "InspectionSha256": "5E0098282AE6CC2FFEE94A224A74711477B5C91F1D18BE02FFAA8EB170EB4732"
+  },
+  "Consumer": {
+    "Rva": "0x0012C840",
+    "Inspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-df-consumer-inspection.json",
+    "InspectionSha256": "83741E5B1242C300EC31323DF7681739B55C57F49BCFB06DC33B13B170AC2FF8",
+    "DataFlow": [
+      "payload[1] selects a 40-byte row in the current mission UI state",
+      "payload[0] is stored as the row's raw state byte",
+      "raw state zero clears the row's associated word before list refresh"
+    ]
+  },
+  "Fields": [
+    { "ApplicationOffset": 1, "PayloadOffset": 0, "Width": 1, "Meaning": "Raw mission-slot state" },
+    { "ApplicationOffset": 2, "PayloadOffset": 1, "Width": 1, "Meaning": "Mission-slot index" }
+  ],
+  "PublicBetaDisposition": {
+    "ArchiveSha256": "75BA3B07058F83581B0E7DC40B8469ABF413ED5CF4271CBDC497D340D907598D",
+    "PublicBetaLength": 13,
+    "CurrentDisposition": "RejectedAsChanged",
+    "Reason": "The public-beta subtype/u32-slot/u32-value layout is incompatible with the exact-current three-byte payload consumer."
+  },
+  "SlotPolicy": "The codec conservatively limits producers to the public-beta-evidenced 15 slots; current runtime emission remains disabled until a live current record confirms the boundary and slot range.",
+  "PromotionStatus": "ExactCurrentStaticMinimalLayout_RuntimeRegistrationPendingOfficialClientAcceptance",
+  "NetworkBytesEmitted": false,
+  "ClientMemoryWritten": false
+}

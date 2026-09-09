@@ -1,0 +1,288 @@
+﻿{
+    "schemaVersion":  2,
+    "generatedAt":  "2026-07-26T16:45:00+08:00",
+    "policy":  "Unknown fields remain Unknown; official visual evidence does not become raw opcode evidence.",
+    "unknownPackets":  [
+                           {
+                               "id":  "world-npc-interaction-client-8-byte-candidate",
+                               "family":  "NPC",
+                               "direction":  "ClientToServer",
+                               "length":  8,
+                               "opcode":  null,
+                               "opcodeCandidate":  "7758",
+                               "samples":  [
+                                               "0800775884CB3F09",
+                                               "0800775884CB3F09"
+                                           ],
+                               "fixedBytes":  "0800775884CB3F09",
+                               "changingBytes":  [
+
+                                                 ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "npcId",
+                                                          "status":  "Unknown",
+                                                          "note":  "Same NPC produced repeat frame; field location not decoded."
+                                                      },
+                                                      {
+                                                          "name":  "objectId",
+                                                          "status":  "Unknown"
+                                                      },
+                                                      {
+                                                          "name":  "coordinate",
+                                                          "status":  "Unknown"
+                                                      },
+                                                      {
+                                                          "name":  "sequence",
+                                                          "status":  "Unknown"
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Official visual sessions prove NPC dialogue exists, but raw ServerToClient dialogue responses were not recovered from today pcapng files.",
+                               "evidenceSource":  [
+                                                      "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+                                                      "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-2.json",
+                                                      "Artifacts/OfficialServerCapture/20260726-132540/action-notes/*npc*.json",
+                                                      "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/npc-*.txt"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "RawCandidateOnly"
+                           },
+                           {
+                               "id":  "world-merchant-interaction-client-8-byte-candidate",
+                               "family":  "Merchant",
+                               "direction":  "ClientToServer",
+                               "length":  8,
+                               "opcode":  null,
+                               "opcodeCandidate":  "77B5",
+                               "samples":  [
+                                               "080077B5F3D73FB8"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "npcId",
+                                                          "status":  "Unknown"
+                                                      },
+                                                      {
+                                                          "name":  "merchantId",
+                                                          "status":  "Unknown"
+                                                      },
+                                                      {
+                                                          "name":  "menuOption",
+                                                          "status":  "Unknown"
+                                                      },
+                                                      {
+                                                          "name":  "shopCategory",
+                                                          "status":  "Unknown"
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Official UU visual notes confirm merchant open, insufficient-currency buy failure, sell success, and buy success; raw request/response bytes are not recovered.",
+                               "evidenceSource":  [
+                                                      "Artifacts/GameplayPacketRecovery/Latest/action-correlations/shop-open-2.json",
+                                                      "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-*.txt",
+                                                      "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-*.txt"
+                                                  ],
+                               "confidence":  "LowMedium",
+                               "status":  "VisualVerifiedRawUnknown"
+                           },
+                           {
+                               "id":  "world-logout-client-5-byte-candidate",
+                               "family":  "Logout",
+                               "direction":  "ClientToServer",
+                               "length":  5,
+                               "opcode":  null,
+                               "opcodeCandidate":  "AC9D",
+                               "samples":  [
+                                               "0500AC9D30"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "logoutMode",
+                                                          "status":  "Unknown",
+                                                          "note":  "User clicked 登出, not 離開; local raw evidence returned client to server selection."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Official UU final logout succeeded visually; raw official logout frame not recovered from pcapng.",
+                               "evidenceSource":  [
+                                                      "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+                                                      "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "RawCandidateOnly"
+                           },
+                           {
+                               "id":  "capture-20260806-login-handshake-c2s-208-candidate",
+                               "family":  "Login",
+                               "direction":  "ClientToServer",
+                               "length":  208,
+                               "opcode":  null,
+                               "opcodeCandidate":  null,
+                               "samplePrefixes":  [
+                                                     "D00094EDF9D04733",
+                                                     "D00075CC9C8CA49F"
+                                                 ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "frameLength",
+                                                          "status":  "Recovered",
+                                                          "note":  "Little-endian length prefix equals 208."
+                                                      },
+                                                      {
+                                                          "name":  "encryptedOrObfuscatedLoginHandshakePayload",
+                                                          "status":  "Unknown",
+                                                          "note":  "Observed in two process-scoped x86 God2_opt.exe Winsock capture sessions; opcode and field semantics vary and remain unknown."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Observed near login/handshake flow as Candidate only. It does not unlock login serializer or credential field semantics.",
+                               "evidenceSource":  [
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "CaptureCandidateOnly"
+                           },
+                           {
+                               "id":  "capture-20260806-client-keepalive-c2s-5-candidate",
+                               "family":  "Heartbeat",
+                               "direction":  "ClientToServer",
+                               "length":  5,
+                               "opcode":  null,
+                               "opcodeCandidate":  null,
+                               "samples":  [
+                                               "0500452B7B",
+                                               "0500926836",
+                                               "0500481E8D"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "frameLength",
+                                                          "status":  "Recovered"
+                                                      },
+                                                      {
+                                                          "name":  "keepAliveOrTickPayload",
+                                                          "status":  "Unknown",
+                                                          "note":  "High-frequency 5-byte ClientToServer candidates observed 284 times across two sessions."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Candidate keepalive/tick evidence only; not promoted to verified heartbeat because payload varies and field semantics are unknown.",
+                               "evidenceSource":  [
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "CaptureCandidateOnly"
+                           },
+                           {
+                               "id":  "capture-20260806-client-action-c2s-20-candidate",
+                               "family":  "Movement",
+                               "direction":  "ClientToServer",
+                               "length":  20,
+                               "opcode":  null,
+                               "opcodeCandidate":  null,
+                               "samples":  [
+                                               "14004A314E713F59075F64DE02F0874D408536D8",
+                                               "14004A2661664059075F64DE02F087737675362A"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "frameLength",
+                                                          "status":  "Recovered"
+                                                      },
+                                                      {
+                                                          "name":  "clientActionOrMovementPayload",
+                                                          "status":  "Unknown",
+                                                          "note":  "Repeated 20-byte ClientToServer movement/action candidates; coordinate, direction, mount, skill, and sequence fields are not proven."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Candidate only; does not replace the existing movement evidence gate or prove walking/mounted movement fields.",
+                               "evidenceSource":  [
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "CaptureCandidateOnly"
+                           },
+                           {
+                               "id":  "capture-20260806-server-world-delta-s2c-20-candidate",
+                               "family":  "WorldState",
+                               "direction":  "ServerToClient",
+                               "length":  20,
+                               "opcode":  null,
+                               "opcodeCandidate":  null,
+                               "samples":  [
+                                               "1400FB805A673F59073F43DF02F0878545C60CDB",
+                                               "14009675B4C2EE07CF710D59068EB0139EC3ECCF"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "frameLength",
+                                                          "status":  "Recovered"
+                                                      },
+                                                      {
+                                                          "name":  "serverWorldStateDeltaPayload",
+                                                          "status":  "Unknown",
+                                                          "note":  "Repeated 20-byte ServerToClient world-state candidates; entity/component field ownership is not proven."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Candidate only; does not unlock NPC, monster, character, pet, immortal, or mount serializers.",
+                               "evidenceSource":  [
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "CaptureCandidateOnly"
+                           },
+                           {
+                               "id":  "capture-20260806-server-world-delta-s2c-14-candidate",
+                               "family":  "WorldState",
+                               "direction":  "ServerToClient",
+                               "length":  14,
+                               "opcode":  null,
+                               "opcodeCandidate":  null,
+                               "samples":  [
+                                               "0E004B3158663F48E76410DE02FC",
+                                               "0E004624B2C1EE1A1F77E3580681"
+                                           ],
+                               "possibleFields":  [
+                                                      {
+                                                          "name":  "frameLength",
+                                                          "status":  "Recovered"
+                                                      },
+                                                      {
+                                                          "name":  "serverWorldStateDeltaPayload",
+                                                          "status":  "Unknown",
+                                                          "note":  "Repeated 14-byte ServerToClient world-state candidates; NPC, monster, player, pet, immortal, and mount semantics remain unverified."
+                                                      }
+                                                  ],
+                               "responseRelationship":  "Candidate only; retained as evidence for future entity observation correlation.",
+                               "evidenceSource":  [
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.json",
+                                                      "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CapturedPacketEvidence.20260806.Batch2.json"
+                                                  ],
+                               "confidence":  "Medium",
+                               "status":  "CaptureCandidateOnly"
+                           }
+                       ],
+    "notYetRecovered":  [
+                            "CharacterDelete raw request/response",
+                            "CharacterRename raw request/response",
+                            "CharacterListRefresh raw request/response",
+                            "Mounted movement raw diff versus walking movement",
+                            "Mount raw request/response",
+                            "Unmount raw request/response",
+                            "Portal/MapTransfer raw request/response",
+                            "MerchantOpen raw request/response",
+                            "Buy raw request/response",
+                            "Sell raw request/response",
+                            "InventoryMove raw request/response",
+                            "Equip raw request/response",
+                            "Unequip raw request/response",
+                            "QuestAccept raw request/response",
+                            "QuestComplete raw request/response",
+                            "CombatStart raw request/response",
+                            "BasicAttack raw request/response",
+                            "Skill raw request/response",
+                            "DropItem raw request/response",
+                            "PickUpItem raw request/response"
+                        ]
+}
+

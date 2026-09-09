@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "sourceRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838",
+  "sourceTrace": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838/attempt-1-trace/metadata.jsonl",
+  "sourceServerLog": "Artifacts/Runtime/ServerRuns/world-role-20260730-verify/stdout2.log",
+  "worldSocket": "0x000006C0",
+  "classificationStatus": "first-pass-captured-not-yet-implemented",
+  "records": [
+    {
+      "name": "WorldEntryAckCandidate",
+      "direction": "ClientToServer",
+      "encodedLength": 41,
+      "sendCallerRva": "0x0007BB68",
+      "timing": "immediately after verified world bootstrap frames",
+      "classification": "candidate world-entry acknowledgement or client-ready bootstrap response",
+      "handlerStatus": "captured as unknown; do not implement without parser evidence and regression"
+    },
+    {
+      "name": "WorldClientBootstrapFollowUpCandidate",
+      "direction": "ClientToServer",
+      "encodedLength": 71,
+      "sendCallerRva": "0x0007BB68",
+      "timing": "after world bootstrap and before sustained idle heartbeat",
+      "classification": "candidate spawn/visibility/bootstrap follow-up request",
+      "handlerStatus": "captured as unknown; next World Protocol Recovery target"
+    },
+    {
+      "name": "WorldUiOrStateAckCandidate",
+      "direction": "ClientToServer",
+      "encodedLength": 12,
+      "sendCallerRva": "0x0007BB68",
+      "timing": "after world screen is visible",
+      "classification": "candidate UI/world-state acknowledgement",
+      "handlerStatus": "captured as unknown"
+    },
+    {
+      "name": "WorldHeartbeat",
+      "direction": "ClientToServer",
+      "encodedLength": 5,
+      "observedCount": 198,
+      "sendCallerRva": "0x0007BB68",
+      "classification": "sustained in-world heartbeat or idle world traffic",
+      "handlerStatus": "captured and used by WorldReady regression gate"
+    },
+    {
+      "name": "ServerDecodedUnknownPayloads",
+      "direction": "ClientToServer",
+      "decodedLengths": [206, 39, 69, 10],
+      "classification": "server-side decoded unknown world payloads observed after InWorld promotion",
+      "handlerStatus": "preserved as first World Protocol Recovery queue"
+    }
+  ],
+  "invariants": [
+    "Do not alter verified Login or World bootstrap bytes while classifying unknown packets.",
+    "Do not promote any unknown packet handler without a protocol record and regression test.",
+    "Do not use process alive, HWND alive, white screen, or TCP Established as WorldReady."
+  ]
+}

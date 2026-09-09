@@ -1,0 +1,1725 @@
+{
+    "category": "portals",
+    "source": "God2 Classic Unified Server/Data/Runtime/Maps/map-portals.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 294213,
+    "recordCount": 68,
+    "recoveredFields": [
+        "canEvidence",
+        "destinationMapIdCandidate",
+        "destinationPosition",
+        "id",
+        "kind",
+        "officialVisualEvidence",
+        "sourceMapId",
+        "sourcePosition",
+        "triggerCondition",
+        "unknownFields"
+    ],
+    "missingFields": [
+        "destinationPosition",
+        "exactClientResourcePath",
+        "exactDestinationMapId",
+        "exactDialogueOptionId",
+        "exactSourceMapId",
+        "numericMapId",
+        "serverMapId",
+        "serverOpcode",
+        "serverPacket",
+        "sourcePosition",
+        "triggerCondition",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Recovered; TransferTriggerUnverified",
+    "recoveryProgress": "Recovered from runtime map/portal data; pending DAT + resource + packet + runtime cross-reference for unresolved destination candidates.",
+    "canDirectImportToGameplay": false,
+    "notes": "CAN resource links and observed transfers preserved; coordinates, triggers, and server opcodes are not verified.",
+    "records": [
+        {
+            "id": "client:can-link/island03/1",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cave12/cave12",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 1,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/2",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cave09/cave09",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 2,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/3",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cityi2/cityi2",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 3,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/4",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/konfu",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 4,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/5",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/gr01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 5,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/6",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/gr02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 6,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/7",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/gr03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 7,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/8",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/gr04",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 8,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/9",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/hofu",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 9,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/10",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/god03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 10,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/11",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cave08/cave08",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 11,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/12",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cave01/cave01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 12,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/13",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cave10/cave10",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 13,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/14",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/indoor/tp_nor_r",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 14,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/island03/15",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/island03/cityi4/cityi4",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/island03/Island03.can",
+                "recordIndex": 15,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/1",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom/sroom",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 1,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/2",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array06/array06",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 2,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/3",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array07/array07",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 3,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/4",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array04/array04",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 4,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/5",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array01/array01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 5,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/6",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array05/array05",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 6,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/7",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array03/array03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 7,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/8",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array02/array02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 8,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/9",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom02/sroom02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 9,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/10",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array08/array08",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 10,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/11",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array09/array09",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 11,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/12",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array10/array10",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 12,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/13",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array11/array11",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 13,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/14",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array12/array12",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 14,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/15",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/array13/array13",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 15,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/16",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom03/sroom03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 16,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 1036,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/17",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom04/sroom04",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 17,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 1100,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/18",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom05/sroom05",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 18,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 1164,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/array/19",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/array/array",
+            "destinationMapIdCandidate": "client:map/array/sroom06/sroom06",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/array/array.Can",
+                "recordIndex": 19,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 1228,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/1",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tower3/tower3",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 1,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/2",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tong4/tong4",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 2,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/3",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/indoor/towertop",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 3,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/4",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tong3/tong3",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 4,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/5",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tong2/tong2",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 5,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/6",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tong1/tong1",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 6,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/7",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tongwar1/tongwar1",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 7,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/8",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/reborn/reborn",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 8,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/9",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/mazeto04/mazeto04",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 9,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/10",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/mazeto03/mazeto03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 10,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/11",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/mazeto02/mazeto02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 11,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/12",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/mazeto01/mazeto01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 12,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/tong/13",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/tong/tong",
+            "destinationMapIdCandidate": "client:map/tong/tonggem/tonggem",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/tong/TONG.Can",
+                "recordIndex": 13,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/1",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/shl01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 1,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/2",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/mazes01/mazes01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 2,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/3",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/citys07/citys07",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 3,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/4",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/shl02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 4,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/5",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/mhl01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 5,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/6",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/shr01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 6,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/7",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/mhr01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 7,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/8",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/mhl02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 8,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/9",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/god01",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 9,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/10",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/mazes02/mazes02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 10,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/11",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/god02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 11,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/12",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/shr02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 12,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/13",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/mhr02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 13,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/14",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/god03",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 14,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/15",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/citys08/citys08",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 15,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/16",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/roads07/roads07",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 16,
+                "recordType": 2,
+                "recordTypeMeaningCandidate": "childMapMetadata",
+                "byteOffset": 1036,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/17",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/tp_nor_l",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 17,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 1100,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "client:can-link/south003/18",
+            "kind": "clientResourceRoomLinkCandidate",
+            "sourceMapId": "client:map/south003/south003",
+            "destinationMapIdCandidate": "client:map/south003/indoor/tp_nor_r",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "unknown; CAN lists related resources but does not encode a verified click/walk/NPC trigger in decoded fields",
+            "canEvidence": {
+                "sourcePath": "Original/Data2/map/south003/South003.can",
+                "recordIndex": 18,
+                "recordType": 1,
+                "recordTypeMeaningCandidate": "indoorOrRoomModel",
+                "byteOffset": 1164,
+                "rawRecordLength": 64
+            },
+            "officialVisualEvidence": [],
+            "unknownFields": [
+                "sourcePosition",
+                "destinationPosition",
+                "triggerCondition",
+                "serverOpcode",
+                "serverMapId"
+            ]
+        },
+        {
+            "id": "official-observed/kunlun-portal-to-secret-room",
+            "kind": "officialVisualTransfer",
+            "sourceMapIdCandidate": "client:map/island03/island03",
+            "destinationMapIdCandidate": "unknown:神仙密室-or-world-grid",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "walk into visible portal / user reached portal entrance then map changed",
+            "evidenceFiles": [
+                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+            ],
+            "unknownFields": [
+                "exactClientResourcePath",
+                "numericMapId",
+                "sourcePosition",
+                "destinationPosition",
+                "serverPacket"
+            ]
+        },
+        {
+            "id": "official-observed/training-room-entry",
+            "kind": "officialVisualTransfer",
+            "sourceMapIdCandidate": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/array/sroom-or-sroom02",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "walk into training-room door / user reported map switched",
+            "evidenceFiles": [
+                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json"
+            ],
+            "unknownFields": [
+                "exactSourceMapId",
+                "exactDestinationMapId",
+                "numericMapId",
+                "sourcePosition",
+                "destinationPosition",
+                "serverPacket"
+            ]
+        },
+        {
+            "id": "official-observed/yuanshi-transfer-to-fenghua",
+            "kind": "officialVisualTransfer",
+            "sourceMapIdCandidate": "client:map/island03/island03",
+            "destinationMapIdCandidate": "client:map/south003/south003",
+            "sourcePosition": null,
+            "destinationPosition": null,
+            "triggerCondition": "NPC dialogue confirmation at 元始天尊",
+            "evidenceFiles": [
+                "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/npc-transfer-confirm-prompt.txt",
+                "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+            ],
+            "unknownFields": [
+                "exactDialogueOptionId",
+                "numericMapId",
+                "sourcePosition",
+                "destinationPosition",
+                "serverPacket"
+            ]
+        }
+    ]
+}

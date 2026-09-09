@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase4-npc-v1",
+  "phase": "Phase 4 - NPC World Recovery",
+  "generatedAtUtc": "2026-07-30T01:45:00Z",
+  "scope": "NPC Spawn, NPC Interaction, NPC Update, NPC Despawn, Entity Catalog. No walking, mount, coordinate scale, MovementSpeedModel, quest, skill, or combat.",
+  "frozenBaseline": {
+    "firstContactGolden": "PASS",
+    "worldBootstrap": "COMPLETE",
+    "playerSpawnBuilder": "COMPLETE_STRUCTURAL",
+    "heartbeat": "COMPLETE",
+    "walkingMountCoordinateScale": "Deferred"
+  },
+  "spawnTimeline": {
+    "sourceMatrix": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-083011/world-capture-matrix/world-packet-matrix.json",
+    "scenario": "Idle30s after WorldReady",
+    "clientStayedStill": true,
+    "packetSummary": {
+      "totalPackets": 79,
+      "clientToServer": 79,
+      "serverToClient": 0,
+      "lengths": {
+        "ClientToServer:5": 67,
+        "ClientToServer:10": 11,
+        "ClientToServer:8": 1
+      }
+    },
+    "firstNpcSpawnS2C": "NOT_FOUND",
+    "conclusion": "No new ServerToClient packet appears after WorldReady in the current idle/movement capture matrix; NPC Spawn S2C is not present in this evidence set."
+  },
+  "npcInteractionMatrix": {
+    "status": "SEED_ONLY_NO_DISTANCE_MATRIX_CAPTURED",
+    "knownCandidate": {
+      "packetName": "NpcInteractionC2S8Candidate",
+      "knowledgeId": "world-npc-interaction-client-8-byte-candidate",
+      "encodedHex": "0800775884CB3F09",
+      "length": 8,
+      "opcodeCandidate": "7758",
+      "classification": "C2S evidence-only; purpose and field offsets not decoded"
+    },
+    "currentLocalMatrixFinding": {
+      "single8BytePacketInCurrentWorldMatrix": "080077B5F3D73FB8",
+      "classification": "Merchant interaction candidate, not NPC",
+      "scenario": "MoveLeft"
+    },
+    "requiredMatrix": [
+      "far distance",
+      "medium distance",
+      "near distance",
+      "single click",
+      "double click",
+      "different NPC"
+    ]
+  },
+  "npcSpawn": {
+    "status": "BLOCKED_NO_S2C_RAW_PACKET",
+    "builder": "EvidenceGatedOfficialNpcWorldProtocol.BuildNpcSpawn",
+    "builderResult": "protocol.npc_s2c_evidence_required",
+    "requiredFields": [
+      "EntityId",
+      "NPCId",
+      "MapId",
+      "RawX",
+      "RawY",
+      "Direction",
+      "State",
+      "Model",
+      "NamePointer",
+      "UnknownFields"
+    ]
+  },
+  "npcUpdate": {
+    "status": "BLOCKED_NO_S2C_RAW_PACKET",
+    "builder": "EvidenceGatedOfficialNpcWorldProtocol.BuildNpcUpdate",
+    "builderResult": "protocol.npc_s2c_evidence_required"
+  },
+  "npcDespawn": {
+    "status": "BLOCKED_NO_S2C_RAW_PACKET",
+    "builder": "EvidenceGatedOfficialNpcWorldProtocol.BuildNpcDespawn",
+    "builderResult": "protocol.npc_s2c_evidence_required"
+  },
+  "entityCatalog": {
+    "status": "STARTED",
+    "runtimeType": "OfficialWorldEntityType",
+    "entries": [
+      {
+        "entityType": "Player",
+        "packetFamily": "PlayerSpawn",
+        "recoveryStatus": "Recovered",
+        "evidence": "PlayerSpawnS2C128 from frozen world bootstrap"
+      },
+      {
+        "entityType": "NPC",
+        "packetFamily": "NPC",
+        "recoveryStatus": "NeedsRecovery",
+        "evidence": "C2S interaction candidate exists; S2C spawn/update/despawn missing"
+      },
+      {
+        "entityType": "Monster",
+        "packetFamily": "Monster",
+        "recoveryStatus": "NeedsRecovery",
+        "evidence": "Deferred; out of Phase 4 scope"
+      },
+      {
+        "entityType": "Unknown",
+        "packetFamily": "Unknown",
+        "recoveryStatus": "NeedsRecovery",
+        "evidence": "Fallback for unclassified entity packets"
+      }
+    ]
+  },
+  "bootstrapRefinement": {
+    "npcSpawnAfterBootstrap": "NOT_OBSERVED",
+    "evidence": "WorldReady idle matrix has no S2C after bootstrap; current world visual likely has no NPC spawned by local server bootstrap yet."
+  },
+  "protocolRecords": {
+    "NpcInteraction": "world-npc-interaction-client-8-byte-candidate remains evidence-only",
+    "NpcSpawn": "blocked by missing S2C raw packet",
+    "NpcUpdate": "blocked by missing S2C raw packet",
+    "NpcDespawn": "blocked by missing S2C raw packet"
+  },
+  "regression": {
+    "releaseBuild": "PASS full solution Release build; 0 warnings, 0 errors",
+    "runtimeOfficial": "PASS 10/10",
+    "protocolOfficialWorld": "PASS NPC protocol gate + official packet classification 3/3",
+    "phase4EvidenceGate": "PASS Phase4/Phase36 2/2",
+    "goldenClientRegression": "UNCHANGED_FROM_FREEZE; no launcher/client rerun in this catalog pass"
+  },
+  "nextBlocker": "Need an NPC Spawn ServerToClient raw packet. Current WorldReady idle capture contains no S2C packets after bootstrap, and the only local 8-byte packet in the matrix is merchant C2S, not NPC spawn."
+}

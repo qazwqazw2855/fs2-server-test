@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "local-player-entity-layout-v1",
+  "phase": "Phase 3.5 - Local Player Entity Localization",
+  "generatedAtUtc": "2026-07-30T00:35:16.294096Z",
+  "status": "NOT_VERIFIED",
+  "sourceTrace": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-083011/attempt-1-trace/general.log",
+  "serverRun": "Artifacts/Runtime/ServerRuns/phase35-localplayer-regression-20260730-083009",
+  "anchorLocalization": {
+    "nameBased": {
+      "status": "HEAP_STRING_HITS_ONLY",
+      "asciiHits": 5,
+      "utf16Hits": 0,
+      "samples": [
+        {
+          "label": "name-ascii-kero",
+          "sampleStart": "0x0FD6C4B4",
+          "prefixHex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 67 01 62 FF 01 00 00 00 FF FF FF 00"
+        },
+        {
+          "label": "name-ascii-kero",
+          "sampleStart": "0x0FD6D378",
+          "prefixHex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 3D FF 3F 00 01 00 00 00 FF FF FF 00"
+        },
+        {
+          "label": "name-ascii-kero",
+          "sampleStart": "0x0FDA3C4D",
+          "prefixHex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 67 01 AF 00 01 00 00 00 00 00 00 00 20 20 20 20 20"
+        },
+        {
+          "label": "name-ascii-kero",
+          "sampleStart": "0x0FDA3DF1",
+          "prefixHex": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 66 01 AE 00 01 00 00 00 FF FF FF 00 20 20 20 20 20"
+        },
+        {
+          "label": "name-ascii-kero",
+          "sampleStart": "0x156793F1",
+          "prefixHex": "48 7F 00 00 00 00 00 FF FF FF FF 00 00 00 00 FF FF 07 00 00 00 04 00 90 01 F6 00 25 00 40 00 35 00 00 00 75 01 00 00 C1 00 00 00 9A 01 00 00 01 01 00 00 FF FF FF 00 FF FF FF 00 20 20 20 20 20"
+        }
+      ],
+      "rejection": "No pointer-reference owner object was proven; hits may be UI/resource/string cache."
+    },
+    "characterIdBased": {
+      "status": "NO_NON_STACK_HIT",
+      "candidateLE": "F4 7F 5F 03",
+      "hitsAfterStackExclusion": 0
+    },
+    "coordinateCorrelation": {
+      "status": "NO_STABLE_RAW_XY_FIELD",
+      "initialXHits": 29,
+      "initialYHits": 143,
+      "candidateCount": 172,
+      "firstAllCoordinateCandidatesEliminatedAtMovementIndex": 5,
+      "latestFilter": {
+        "index": 13,
+        "rawX": 2028,
+        "rawY": 42830,
+        "directionHex": "0x3A",
+        "activeX": 0,
+        "activeY": 0,
+        "activeDirection": 0,
+        "matchedX": 0,
+        "matchedY": 0,
+        "matchedDirection": 0,
+        "totalCandidates": 172
+      },
+      "reason": "Exact packet raw X/Y values were not persistent in writable non-stack memory across movement matrix."
+    }
+  },
+  "entityBaseAcquisition": "NOT_FOUND",
+  "characterIdOffset": "NOT_FOUND",
+  "nameOffset": "NOT_FOUND",
+  "movementComponentPointerOffset": "NOT_FOUND",
+  "rawXOffset": "NOT_FOUND",
+  "rawYOffset": "NOT_FOUND",
+  "directionOffset": "NOT_FOUND",
+  "movementWriter": {
+    "status": "NOT_CAPTURED",
+    "sendPathStack": "god2_opt.exe+0x0007BB68;god2_opt.exe+0x0007DC3E;god2_opt.exe+0x004AD5FC;god2_opt.exe+0x00089049;KERNEL32.DLL+0x000211A0;KERNELBASE.dll+0x0010EAAB;ntdll.dll+0x0005B0B9;god2_opt.exe+0x00391DDF;god2_opt.exe+0x00391DF2;god2_opt.exe+0x0038D23B;god2_opt.exe+0x00359421;god2_opt.exe+0x0036149D;god2_opt.exe+0x0035E7C0;god2_opt.exe+0x0035A09F;god2_opt.exe+0x0035A0C4;god2_opt.exe+0x004A4290",
+    "knownSendCallerRva": "god2_opt.exe+0x0007BB68",
+    "reason": "No stable coordinate address remained, so bounded page guard / hardware write breakpoint was not armed."
+  },
+  "rejectedFalsePositive": {
+    "run": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-082431",
+    "reason": "Initial coordinate/name candidates were on current stack allocation around 0x00176000 and were rejected as packet/temporary buffers."
+  },
+  "confidence": "LOW_NEGATIVE_EVIDENCE_ONLY"
+}

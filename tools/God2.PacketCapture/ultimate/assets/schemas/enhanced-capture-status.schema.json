@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/enhanced-capture-status.schema.json",
+  "title": "God2 x86 DLL enhanced capture status v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "SchemaVersion", "UpdatedAtUtc", "Requested", "Status", "Detail",
+    "WasEverAttached", "ProbeReady", "StrictUnloadVerified", "FailureKind",
+    "InjectionAttempted", "ModuleWasEverLoaded", "ModuleLoadStateVerified",
+    "ModuleSnapshotVerified", "ModuleAbsent", "TargetProcessExited",
+    "TargetIdentityVerified", "InjectorPresent", "ProbePresent",
+    "InjectorPayloadValidated", "ProbePayloadValidated",
+    "TargetExecutable", "TargetArchitecture",
+    "ProbeScope", "ProbeDomainCount", "ProbeDomains",
+    "ConfirmedExactBuildDomainCount", "ConfirmedExactBuildDomains",
+    "CandidateOnlyDomainCount", "CandidateOnlyStatus", "DeepProbeCandidateMapSchema",
+    "CandidatePromotionGateCount", "CandidateAbiSafetyGateCount",
+    "CandidateActivationGateCount", "CandidateAbiSafetyContract",
+    "SemanticEventContract", "SharedTransportContract", "InjectionSequence",
+    "ReadinessHandshake", "PayloadStaging", "PayloadDacl",
+    "PayloadMandatoryLabel", "SemanticIpcBinding", "PayloadLaunchMode",
+    "UnloadPolicy", "Apis", "InputAndWindowHooks"
+  ],
+  "properties": {
+    "SchemaVersion": { "const": "god2-enhanced-capture-status-v2" },
+    "UpdatedAtUtc": { "type": "string", "minLength": 1 },
+    "Requested": { "type": "boolean" },
+    "Status": {
+      "enum": [
+        "WaitingForVerifiedX86Process", "Disabled", "Active",
+        "StoppedDuringAttach", "Stopped", "EvidenceBlocked"
+      ]
+    },
+    "Detail": { "type": "string" },
+    "WasEverAttached": { "type": "boolean" },
+    "ProbeReady": { "type": "boolean" },
+    "StrictUnloadVerified": { "type": "boolean" },
+    "InjectionAttempted": { "type": "boolean" },
+    "ModuleWasEverLoaded": { "type": "boolean" },
+    "ModuleLoadStateVerified": { "type": "boolean" },
+    "ModuleSnapshotVerified": { "type": "boolean" },
+    "ModuleAbsent": { "type": "boolean" },
+    "TargetProcessExited": { "type": "boolean" },
+    "TargetIdentityVerified": { "type": "boolean" },
+    "FailureKind": { "type": "string" },
+    "InjectorPresent": { "type": "boolean" },
+    "ProbePresent": { "type": "boolean" },
+    "InjectorPayloadValidated": { "type": "boolean" },
+    "ProbePayloadValidated": { "type": "boolean" },
+    "TargetExecutable": { "const": "God2_opt.exe" },
+    "TargetArchitecture": { "const": "x86" },
+    "ProbeScope": { "const": "WinsockTransport+PostDecrypt+PreEncrypt+HandlerDecoded" },
+    "ProbeDomainCount": { "const": 25 },
+    "ProbeDomains": {
+      "const": "Network,Parser,Serializer,Handler,Object,Allocation,VTable,Factory,ManagerLookup,Registry,ResourceDecode,Mutation,TaintSeed,FormulaOperand,Quest,Map,Portal,NPC,Monster,Battle,Inventory,Item,Skill,Pet/Mount,Snapshot"
+    },
+    "ConfirmedExactBuildDomainCount": { "const": 4 },
+    "ConfirmedExactBuildDomains": { "const": "Network,Parser,Serializer,Handler" },
+    "CandidateOnlyDomainCount": { "const": 21 },
+    "CandidateOnlyStatus": { "const": "EvidenceBlockedUnconfirmedProbe" },
+    "DeepProbeCandidateMapSchema": { "const": "god2-deep-probe-candidate-map-v2" },
+    "CandidatePromotionGateCount": { "const": 10 },
+    "CandidateAbiSafetyGateCount": { "const": 4 },
+    "CandidateActivationGateCount": { "const": 14 },
+    "CandidateAbiSafetyContract": { "const": "ArgumentContract;ReturnValueLifetime;ThreadContext;ReentrancyRisk" },
+    "SemanticEventContract": { "const": "God2SemanticEvent;SchemaVersion=2;StrictTypes;25EventTypes" },
+    "SharedTransportContract": {
+      "const": "VersionedBounded25DomainPriorityRing;Priority0AuthoritativeTo3Candidate;BatchPublishing;Sequence;PerDomainDropAndWriteFailureCounters;FirstLastDroppedSequence;Reason;ConsumerLag"
+    },
+    "InjectionSequence": { "const": "PauseVerifiedPrimaryThread,RemoteThreadLoadLibraryW,ResumePrimaryThread" },
+    "ReadinessHandshake": { "const": "God2TraceProbeWaitReady" },
+    "PayloadStaging": { "const": "ProtectedProgramDataRandomDirectory" },
+    "PayloadDacl": { "const": "Protected:SYSTEM+AdministratorsFull;CurrentUserReadExecuteOnly;EveryoneAbsent" },
+    "PayloadMandatoryLabel": { "const": "MediumNoWriteUp" },
+    "SemanticIpcBinding": { "const": "DuplicatedTargetHandlesV2;NoNamedObjectAuthority" },
+    "PayloadLaunchMode": { "const": "AlreadyElevatedCreateProcessW" },
+    "UnloadPolicy": {
+      "const": "QuiesceRestoreDrainAndProveModuleAbsent;OtherwiseEvidenceBlockedAndBoundedRetry;NeverReportResidentInactiveAsStopped"
+    },
+    "Apis": {
+      "const": "send,WSASend,recv,WSARecv,OverlappedWSARecvCompletionRoutine,WSAGetOverlappedResult,GetQueuedCompletionStatus,GetQueuedCompletionStatusEx,PostDecrypt,PreEncrypt,HandlerDecoded"
+    },
+    "InputAndWindowHooks": { "const": "Disabled" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "Status": { "const": "Active" } }, "required": ["Status"] },
+      "then": {
+        "properties": {
+          "Requested": { "const": true },
+          "WasEverAttached": { "const": true },
+          "ProbeReady": { "const": true },
+          "StrictUnloadVerified": { "const": false },
+          "InjectionAttempted": { "const": true },
+          "ModuleWasEverLoaded": { "const": true },
+          "ModuleLoadStateVerified": { "const": true },
+          "ModuleAbsent": { "const": false },
+          "TargetProcessExited": { "const": false },
+          "TargetIdentityVerified": { "const": true },
+          "InjectorPayloadValidated": { "const": true },
+          "ProbePayloadValidated": { "const": true }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "Status": { "enum": ["Stopped", "StoppedDuringAttach"] } }, "required": ["Status"] },
+      "then": {
+        "properties": {
+          "ProbeReady": { "const": false },
+          "StrictUnloadVerified": { "const": true }
+        },
+        "anyOf": [
+          {
+            "properties": {
+              "ModuleWasEverLoaded": { "const": true },
+              "ModuleLoadStateVerified": { "const": true },
+              "ModuleAbsent": { "const": true },
+              "TargetIdentityVerified": { "const": true }
+            },
+            "anyOf": [
+              { "properties": { "TargetProcessExited": { "const": true } } },
+              { "properties": { "ModuleSnapshotVerified": { "const": true } } }
+            ]
+          },
+          {
+            "properties": {
+              "ModuleWasEverLoaded": { "const": false },
+              "ModuleLoadStateVerified": { "const": true },
+              "ModuleAbsent": { "const": true }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": { "properties": { "Status": { "const": "EvidenceBlocked" } }, "required": ["Status"] },
+      "then": {
+        "properties": {
+          "ProbeReady": { "const": false }
+        }
+      }
+    }
+  ]
+}

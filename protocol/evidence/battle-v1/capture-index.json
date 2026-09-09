@@ -1,0 +1,51 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-07-31T07:27:29.7440670+00:00",
+    "currentBuildId":  "god2-opt-6b127086e0c0",
+    "qualifyingBattleCaptureCount":  0,
+    "importedRawCaptureCount":  0,
+    "restrictedExternalEvidence":  [
+                                       {
+                                           "evidenceId":  "official-uu-merchant-battle-pcapng",
+                                           "type":  "TransportCapture",
+                                           "sourcePath":  "ExternalEvidence/OfficialServerCapture/20260726-154723-UU-merchant-retry/official-server-uu-merchant-battle.pcapng",
+                                           "sha256":  "8859047A7A08BE49DB122F56EB5FEA7AA18A37B03E8D8D13C841031BB7D4DCDB",
+                                           "length":  410919852,
+                                           "clientBuildId":  "unknown",
+                                           "classification":  "Restricted",
+                                           "rawBattleBytesQualifying":  false,
+                                           "notes":  "Visual/transport evidence only; existing raw scan found no known game frame. Not imported into formal capture storage."
+                                       },
+                                       {
+                                           "evidenceId":  "official-uu-post-battle-pcapng",
+                                           "type":  "TransportCapture",
+                                           "sourcePath":  "ExternalEvidence/OfficialServerCapture/20260726-160753-UU-post-battle/official-server-uu-post-battle-merchant.pcapng",
+                                           "sha256":  "1DB3F942AE3B3F6A76E8268430C4527E3B50094D5CC8F52C0E5B308EB167403C",
+                                           "length":  393621372,
+                                           "clientBuildId":  "unknown",
+                                           "classification":  "Restricted",
+                                           "rawBattleBytesQualifying":  false,
+                                           "notes":  "Visual/transport evidence only; no decrypted Battle opcode or dynamic field map."
+                                       }
+                                   ],
+    "infrastructure":  {
+                           "sequence":  "Interlocked monotonic per capture session",
+                           "queue":  "Bounded non-blocking",
+                           "queueFullPolicy":  "DropNewestAndCount",
+                           "stages":  [
+                                          "SocketRaw",
+                                          "FramedEncrypted",
+                                          "FramedDecrypted",
+                                          "PayloadCompressed",
+                                          "PayloadDecompressed",
+                                          "OpcodeDispatched",
+                                          "SemanticMapped",
+                                          "SerializerOutput"
+                                      ],
+                           "rawStorageDefault":  "Restricted",
+                           "replayNetworkSideEffects":  0,
+                           "replayDatabaseSideEffects":  0,
+                           "replayRewardSideEffects":  0,
+                           "replayQuestSideEffects":  0
+                       }
+}

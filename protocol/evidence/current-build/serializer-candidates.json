@@ -1,0 +1,740 @@
+[
+  {
+    "candidateId": "serializer-01",
+    "family": "DecodedServerOpcode0x01",
+    "observationCount": 5,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-02",
+    "family": "DecodedServerOpcode0x02",
+    "observationCount": 3,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-03",
+    "family": "DecodedServerOpcode0x03",
+    "observationCount": 16,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-07",
+    "family": "DecodedServerOpcode0x07",
+    "observationCount": 2,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-18",
+    "family": "DecodedServerOpcode0x18",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-1d",
+    "family": "DecodedServerOpcode0x1D",
+    "observationCount": 2,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-1e",
+    "family": "DecodedServerOpcode0x1E",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-1f",
+    "family": "DecodedServerOpcode0x1F",
+    "observationCount": 3,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-24",
+    "family": "DecodedServerOpcode0x24",
+    "observationCount": 28,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-28",
+    "family": "DecodedServerOpcode0x28",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-2e",
+    "family": "DecodedServerOpcode0x2E",
+    "observationCount": 10,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-30",
+    "family": "DecodedServerOpcode0x30",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-31",
+    "family": "DecodedServerOpcode0x31",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-36",
+    "family": "DecodedServerOpcode0x36",
+    "observationCount": 39,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-3a",
+    "family": "DecodedServerOpcode0x3A",
+    "observationCount": 6,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-3b",
+    "family": "DecodedServerOpcode0x3B",
+    "observationCount": 6,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-41",
+    "family": "DecodedServerOpcode0x41",
+    "observationCount": 39,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-43",
+    "family": "DecodedServerOpcode0x43",
+    "observationCount": 2,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-44",
+    "family": "DecodedServerOpcode0x44",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-4b",
+    "family": "DecodedServerOpcode0x4B",
+    "observationCount": 8,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-4c",
+    "family": "DecodedServerOpcode0x4C",
+    "observationCount": 3,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-5c",
+    "family": "DecodedServerOpcode0x5C",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-5d",
+    "family": "DecodedServerOpcode0x5D",
+    "observationCount": 69,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-5f",
+    "family": "DecodedServerOpcode0x5F",
+    "observationCount": 79,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-61",
+    "family": "DecodedServerOpcode0x61",
+    "observationCount": 6,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-68",
+    "family": "DecodedServerOpcode0x68",
+    "observationCount": 2,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-6a",
+    "family": "DecodedServerOpcode0x6A",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-71",
+    "family": "DecodedServerOpcode0x71",
+    "observationCount": 3,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-72",
+    "family": "DecodedServerOpcode0x72",
+    "observationCount": 67,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-74",
+    "family": "DecodedServerOpcode0x74",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-7a",
+    "family": "DecodedServerOpcode0x7A",
+    "observationCount": 6,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-82",
+    "family": "DecodedServerOpcode0x82",
+    "observationCount": 5,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-83",
+    "family": "DecodedServerOpcode0x83",
+    "observationCount": 15,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-85",
+    "family": "DecodedServerOpcode0x85",
+    "observationCount": 16,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-86",
+    "family": "DecodedServerOpcode0x86",
+    "observationCount": 172,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-88",
+    "family": "DecodedServerOpcode0x88",
+    "observationCount": 8,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-89",
+    "family": "DecodedServerOpcode0x89",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-b2",
+    "family": "DecodedServerOpcode0xB2",
+    "observationCount": 9,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-bb",
+    "family": "DecodedServerOpcode0xBB",
+    "observationCount": 27,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-da",
+    "family": "DecodedServerOpcode0xDA",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  },
+  {
+    "candidateId": "serializer-e5",
+    "family": "DecodedServerOpcode0xE5",
+    "observationCount": 1,
+    "status": "SerializerBlockedByEvidence",
+    "unknownRequiredDynamicFields": [
+      "entity ID",
+      "item/skill/map IDs",
+      "HP/MP/EXP/level",
+      "result code",
+      "counts",
+      "sequence",
+      "opaque required bytes"
+    ],
+    "productionBytesEmitted": false,
+    "serializerVerified": false,
+    "notes": "Decoded prefixes are observation evidence only; no fixed payload replay is permitted."
+  }
+]

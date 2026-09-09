@@ -1,0 +1,2584 @@
+{
+    "category": "maps",
+    "source": "God2 Classic Unified Server/Data/Runtime/Maps/map-portals.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 294213,
+    "recordCount": 69,
+    "recoveredFields": [
+        "area",
+        "canRecord",
+        "displayNameCandidate",
+        "exitRegions",
+        "id",
+        "mbd",
+        "numericMapId",
+        "numericMapIdStatus",
+        "packedMbdCandidate",
+        "resourceName",
+        "roomGroupId",
+        "spawnPosition",
+        "unknownFields"
+    ],
+    "missingFields": [
+        "exitRegionCoordinates",
+        "numericMapId",
+        "portalTriggerRecord",
+        "serverDestinationMapId",
+        "spawnPosition",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Recovered; NumericMapIdUnverified",
+    "recoveryProgress": "Recovered from runtime map/portal data; pending DAT + resource + packet cross-reference for numeric map id, spawn position, exit regions, portal triggers, and server destination ids.",
+    "canDirectImportToGameplay": false,
+    "notes": "Official client map resources recovered; numeric map id, dimensions, and server map id are not verified for gameplay import.",
+    "records": [
+        {
+            "id": "client:map/island03/island03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "island03.mdt",
+            "canRecord": {
+                "index": 0,
+                "type": 0,
+                "typeMeaningCandidate": "rootMapMetadata",
+                "name": "island03.mdt",
+                "byteOffset": 12,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/island03/island03.mbd",
+                "sha256": "a4aa72fd851a2ecce3dd45ed3ef76c1c72a5bc50270f57ee733a8fe671b4caed",
+                "sizeBytes": 2763072,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 20,
+                "gridHeightCandidate": 52,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cave12/cave12",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cave12/cave12.mdt",
+            "canRecord": {
+                "index": 1,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cave12/cave12.mdt",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/island03/cave12/cave12.mbd",
+                "sha256": "6bd4f0a65a61ce76fea17c00af7068a17095ecdf09748649f3304b187f959389",
+                "sizeBytes": 596924,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 13,
+                "gridHeightCandidate": 13,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cave09/cave09",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cave09/cave09.mdt",
+            "canRecord": {
+                "index": 2,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cave09/cave09.mdt",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/island03/cave09/cave09.mbd",
+                "sha256": "3ad80a0a2dc5c32e46760d6cb121b4d67f47b0473096f7d9b0d611c77a1116a9",
+                "sizeBytes": 134276,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 7,
+                "gridHeightCandidate": 7,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cityi2/cityi2",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cityi2/cityi2.mdt",
+            "canRecord": {
+                "index": 3,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cityi2/cityi2.mdt",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/island03/cityi2/cityi2.mbd",
+                "sha256": "eba7aa7ae1ddc0381c7fe30d452fa251345aa9310386948b5eaf080c37d78e59",
+                "sizeBytes": 434536,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 12,
+                "gridHeightCandidate": 12,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/konfu",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/konfu.hmd",
+            "canRecord": {
+                "index": 4,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/konfu.hmd",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/gr01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/gr01.hmd",
+            "canRecord": {
+                "index": 5,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/gr01.hmd",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/gr02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/gr02.hmd",
+            "canRecord": {
+                "index": 6,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/gr02.hmd",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/gr03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/gr03.hmd",
+            "canRecord": {
+                "index": 7,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/gr03.hmd",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/gr04",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/gr04.hmd",
+            "canRecord": {
+                "index": 8,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/gr04.hmd",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/hofu",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/hofu.hmd",
+            "canRecord": {
+                "index": 9,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/hofu.hmd",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/god03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/god03.hmd",
+            "canRecord": {
+                "index": 10,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/god03.hmd",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cave08/cave08",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cave08/cave08.mdt",
+            "canRecord": {
+                "index": 11,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cave08/cave08.mdt",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/island03/cave08/cave08.mbdZ",
+                "sha256": "0d0395ab144e000deb15a3d584bf68f810def9a8e615cb2f09a829fc30e815e3",
+                "sizeBytes": 21434,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cave01/cave01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cave01/cave01.mdt",
+            "canRecord": {
+                "index": 12,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cave01/cave01.mdt",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/island03/cave01/cave01.mbdZ",
+                "sha256": "e1c162b98c21a9ecad52ac09b14352be3816206a442b4ff9b9f0220da51fe9f4",
+                "sizeBytes": 22366,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cave10/cave10",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cave10/cave10.mdt",
+            "canRecord": {
+                "index": 13,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cave10/cave10.mdt",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/island03/cave10/cave10.mbdZ",
+                "sha256": "5f151255491f6864e704d19b0b2d2bab366b81b8a9a1756e17eb518663a2f2dc",
+                "sizeBytes": 27757,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/indoor/tp_nor_r",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "indoor/tp_nor_r.hmd",
+            "canRecord": {
+                "index": 14,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/tp_nor_r.hmd",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/island03/cityi4/cityi4",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "island03",
+            "roomGroupId": "client:roomGroup/island03",
+            "displayNameCandidate": "昆仑仙界3 / 崑崙仙界3",
+            "resourceName": "cityi4/cityi4.mdt",
+            "canRecord": {
+                "index": 15,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "cityi4/cityi4.mdt",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/island03/cityi4/cityi4.mbd",
+                "sha256": "12da6a816f8bc706f2db7bc366eb3bfdda303c31d0414f2e717f291bf098a1e4",
+                "sizeBytes": 95416,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 6,
+                "gridHeightCandidate": 6,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array.mdt",
+            "canRecord": {
+                "index": 0,
+                "type": 0,
+                "typeMeaningCandidate": "rootMapMetadata",
+                "name": "array.mdt",
+                "byteOffset": 12,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array.mbdZ",
+                "sha256": "d1fcdac5d0567ea7a54aa11df115fdae56b54fa7980c2168ff2af6e2091a5d9e",
+                "sizeBytes": 13275,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom/sroom",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom/sroom.mdt",
+            "canRecord": {
+                "index": 1,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom/sroom.mdt",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/sroom/sroom.mbdZ",
+                "sha256": "c592b4a74dfea3cc70eb55998d64798c376d5efa111d278ae4b7f8a265239bad",
+                "sizeBytes": 18726,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array06/array06",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array06/array06.mdt",
+            "canRecord": {
+                "index": 2,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array06/array06.mdt",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/array/array06/array06.mbd",
+                "sha256": "9a8577c8b26266e18cac1dc643b52eb46c3214b1ccb1d0de75c390a418229c1b",
+                "sizeBytes": 423856,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 12,
+                "gridHeightCandidate": 10,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array07/array07",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array07/array07.mdt",
+            "canRecord": {
+                "index": 3,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array07/array07.mdt",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/array/array07/array07.mbd",
+                "sha256": "f9f96b69bf37669b5dd75cd76d06ce82c62950529d8248531f3ab638ea74c1af",
+                "sizeBytes": 353216,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 10,
+                "gridHeightCandidate": 10,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array04/array04",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array04/array04.mdt",
+            "canRecord": {
+                "index": 4,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array04/array04.mdt",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array04/array04.mbdZ",
+                "sha256": "74447e6d39b02bc5460172408680ea7bb3dcc6bb65b66eec5ac1d56f690bd1de",
+                "sizeBytes": 22490,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array01/array01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array01/array01.mdt",
+            "canRecord": {
+                "index": 5,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array01/array01.mdt",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/array/array01/array01.mbd",
+                "sha256": "71f714442b093d73d6c13df3296ddab412d18e3eedf1ec3aeec8f868f4f4f7e5",
+                "sizeBytes": 226064,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 8,
+                "gridHeightCandidate": 8,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array05/array05",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array05/array05.mdt",
+            "canRecord": {
+                "index": 6,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array05/array05.mdt",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array05/array05.mbdZ",
+                "sha256": "0cd70158a9fe297546cc9c64fb26266083bdc983fc928902eaa7d0d950719b8a",
+                "sizeBytes": 56831,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array03/array03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array03/array03.mdt",
+            "canRecord": {
+                "index": 7,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array03/array03.mdt",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array03/array03.mbdZ",
+                "sha256": "c31f92ef9d8d9568e7c4252fec5269db00a0c17ff8f01caa7957eeedaa9a0c9a",
+                "sizeBytes": 59487,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array02/array02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array02/array02.mdt",
+            "canRecord": {
+                "index": 8,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array02/array02.mdt",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array02/array02.mbdZ",
+                "sha256": "b368f8c647dea7e942bda8afceb2e7ff91feef23de95a6382c4f1bc2ea93f760",
+                "sizeBytes": 35482,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom02/sroom02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom02/sroom02.mdt",
+            "canRecord": {
+                "index": 9,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom02/sroom02.mdt",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/array/sroom02/sroom02.mbd",
+                "sha256": "c0bf4919cdf3dce7e34cf358c49ea89fa7bedf0f1d6e7a0a6fe7536e8f9ce355",
+                "sizeBytes": 88316,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 5,
+                "gridHeightCandidate": 5,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array08/array08",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array08/array08.mdt",
+            "canRecord": {
+                "index": 10,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array08/array08.mdt",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array08/array08.mbdZ",
+                "sha256": "b1ab9b4b4f9d6a65535c30f82359039884d036ddc4311f31eb3dce5d87eacea0",
+                "sizeBytes": 79424,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array09/array09",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array09/array09.mdt",
+            "canRecord": {
+                "index": 11,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array09/array09.mdt",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array09/array09.mbdZ",
+                "sha256": "e8771d57f61501d28976311b1ecfc0f17dd1471498662592436f71d9447b6825",
+                "sizeBytes": 37641,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array10/array10",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array10/array10.mdt",
+            "canRecord": {
+                "index": 12,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array10/array10.mdt",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array10/array10.mbdZ",
+                "sha256": "7d21d11ffc465f4acb8fff6167e224ca9a93c2809cf747116d20c0c7f36df3ae",
+                "sizeBytes": 33358,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array11/array11",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array11/array11.mdt",
+            "canRecord": {
+                "index": 13,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array11/array11.mdt",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array11/array11.mbdZ",
+                "sha256": "ca5218747a378857b79d8f437822ee9a6285c559a3577f0d1758c6ac32c76e30",
+                "sizeBytes": 104098,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array12/array12",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array12/array12.mdt",
+            "canRecord": {
+                "index": 14,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array12/array12.mdt",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array12/array12.mbdZ",
+                "sha256": "18944b6f7f1791dcbf235851a8a0bd847ae984cc0dffc30742f9e373718212a5",
+                "sizeBytes": 96464,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/array13/array13",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "array13/array13.mdt",
+            "canRecord": {
+                "index": 15,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "array13/array13.mdt",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/array13/array13.mbdZ",
+                "sha256": "0fb3e9d417924017e47f135a26affca24df498168076e65fa140f16520c15772",
+                "sizeBytes": 57256,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom03/sroom03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom03/sroom03.mdt",
+            "canRecord": {
+                "index": 16,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom03/sroom03.mdt",
+                "byteOffset": 1036,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/sroom03/sroom03.mbdZ",
+                "sha256": "f52d7895d8860adc3896318adf354f91a5172bdbcf955fa4f2217d9c82597a4e",
+                "sizeBytes": 18244,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom04/sroom04",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom04/sroom04.mdt",
+            "canRecord": {
+                "index": 17,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom04/sroom04.mdt",
+                "byteOffset": 1100,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/sroom04/sroom04.mbdZ",
+                "sha256": "fcefdd80d0fe70ff2a625d3535b2b64b59acc7f4d89942513d88a6a47b18ad02",
+                "sizeBytes": 18122,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom05/sroom05",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom05/sroom05.mdt",
+            "canRecord": {
+                "index": 18,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom05/sroom05.mdt",
+                "byteOffset": 1164,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/array/sroom05/sroom05.mbd",
+                "sha256": "18b9a9e7cd17bbdb03a51def07cb54209d76448a8fb66f5087a3b3e4f58f58e0",
+                "sizeBytes": 88316,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 5,
+                "gridHeightCandidate": 5,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/array/sroom06/sroom06",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "array",
+            "roomGroupId": "client:roomGroup/array",
+            "displayNameCandidate": "練功房 / battle training rooms",
+            "resourceName": "sroom06/sroom06.mdt",
+            "canRecord": {
+                "index": 19,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "sroom06/sroom06.mdt",
+                "byteOffset": 1228,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/array/sroom06/sroom06.mbdZ",
+                "sha256": "aff94febb70f3e9bdd6b9f7affb3ef073d44bec8f6b66aa0188a2058d781c043",
+                "sizeBytes": 18094,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tong",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tong.mdt",
+            "canRecord": {
+                "index": 0,
+                "type": 0,
+                "typeMeaningCandidate": "rootMapMetadata",
+                "name": "tong.mdt",
+                "byteOffset": 12,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/tong.mbdZ",
+                "sha256": "37f68dfda7db8bc13246da1f24b1ce8426fc281ca252454aad66c7b1ca6ea1ce",
+                "sizeBytes": 11518,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tower3/tower3",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tower3/tower3.mdt",
+            "canRecord": {
+                "index": 1,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tower3/tower3.mdt",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/tower3/tower3.mbdZ",
+                "sha256": "477b0a0cf2688f7c143e8dace0201909b08932583d502a4fe7d9df924bea0a98",
+                "sizeBytes": 31698,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tong4/tong4",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tong4/tong4.mdt",
+            "canRecord": {
+                "index": 2,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tong4/tong4.mdt",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/tong4/tong4.mbdZ",
+                "sha256": "81c4637997ac6ea57626516f840471a843a0423ef7f52d2e76bca1c4848c297b",
+                "sizeBytes": 104197,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/indoor/towertop",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "indoor/towertop.hmd",
+            "canRecord": {
+                "index": 3,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/towertop.hmd",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tong3/tong3",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tong3/tong3.mdt",
+            "canRecord": {
+                "index": 4,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tong3/tong3.mdt",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/tong/tong3/tong3.mbd",
+                "sha256": "a63f96a812598a73d86aaddb605ae960272c13e599a2a5467140cec4b77b2f76",
+                "sizeBytes": 515780,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 13,
+                "gridHeightCandidate": 13,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tong2/tong2",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tong2/tong2.mdt",
+            "canRecord": {
+                "index": 5,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tong2/tong2.mdt",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/tong/tong2/tong2.mbd",
+                "sha256": "4f38365e9df09246378bdd77342676ce81f6bb42bd05ef478dce2ce20e341d27",
+                "sizeBytes": 515780,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 13,
+                "gridHeightCandidate": 13,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tong1/tong1",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tong1/tong1.mdt",
+            "canRecord": {
+                "index": 6,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tong1/tong1.mdt",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "mbd": {
+                "sourcePath": "Original/Data2/map/tong/tong1/tong1.mbd",
+                "sha256": "1fd077e348e78e48a88d9154ee2e7b099df077d99b133a1a547a7a2e83df6cf1",
+                "sizeBytes": 515780,
+                "magic": "MBD v1.2",
+                "gridWidthCandidate": 13,
+                "gridHeightCandidate": 13,
+                "evidence": "First 16 bytes parse as ASCII magic plus two little-endian 32-bit grid dimension candidates."
+            },
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tongwar1/tongwar1",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tongwar1/tongwar1.mdt",
+            "canRecord": {
+                "index": 7,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tongwar1/tongwar1.mdt",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/tongwar1/tongwar1.mbdZ",
+                "sha256": "769877f7fe2e5a670962b674c91e4fe0d54d4d4f2327dff3695c8c552e3afc80",
+                "sizeBytes": 56333,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/reborn/reborn",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "reborn/reborn.mdt",
+            "canRecord": {
+                "index": 8,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "reborn/reborn.mdt",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/mazeto04/mazeto04",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "mazeto04/mazeto04.mdt",
+            "canRecord": {
+                "index": 9,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazeto04/mazeto04.mdt",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/mazeto04/mazeto04.mbdZ",
+                "sha256": "6c1d8733c850b61fe7f2d04d32ffd7b3a3673adf9e01ac7e30941c8187f7cca8",
+                "sizeBytes": 62912,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/mazeto03/mazeto03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "mazeto03/mazeto03.mdt",
+            "canRecord": {
+                "index": 10,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazeto03/mazeto03.mdt",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/mazeto03/mazeto03.mbdZ",
+                "sha256": "2c18d590245c89b04155a265b3b37f9329b083689b36493863ddb301552d5c0b",
+                "sizeBytes": 63021,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/mazeto02/mazeto02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "mazeto02/mazeto02.mdt",
+            "canRecord": {
+                "index": 11,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazeto02/mazeto02.mdt",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/mazeto02/mazeto02.mbdZ",
+                "sha256": "3d0ddc8a0c98a87a31f770a068cda43e299ea894903bb4e5d9002403dc4837de",
+                "sizeBytes": 73052,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/mazeto01/mazeto01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "mazeto01/mazeto01.mdt",
+            "canRecord": {
+                "index": 12,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazeto01/mazeto01.mdt",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/mazeto01/mazeto01.mbdZ",
+                "sha256": "deb5835cb58e41a469e67e9b9473e69f3afc1729871337530c85defda68671b0",
+                "sizeBytes": 81431,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/tong/tonggem/tonggem",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "tong",
+            "roomGroupId": "client:roomGroup/tong",
+            "displayNameCandidate": "Tong map group",
+            "resourceName": "tonggem/tonggem.mdt",
+            "canRecord": {
+                "index": 13,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "tonggem/tonggem.mdt",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/tong/tonggem/tonggem.mbdZ",
+                "sha256": "2e7a1a2ad7ba5ce03a6ec29341dd851f24fa762309e6beb4ec26a6f1453fc29c",
+                "sizeBytes": 118954,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/south003",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "south003.mdt",
+            "canRecord": {
+                "index": 0,
+                "type": 0,
+                "typeMeaningCandidate": "rootMapMetadata",
+                "name": "south003.mdt",
+                "byteOffset": 12,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/south003.mbdZ",
+                "sha256": "e2e3b990287a8db79fad43eb27d5a534aa179301d7f69ef0a0893356ec7784cc",
+                "sizeBytes": 922080,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/shl01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/shl01.hmd",
+            "canRecord": {
+                "index": 1,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/shl01.hmd",
+                "byteOffset": 76,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/mazes01/mazes01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "mazes01/mazes01.mdt",
+            "canRecord": {
+                "index": 2,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazes01/mazes01.mdt",
+                "byteOffset": 140,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/mazes01/mazes01.mbdZ",
+                "sha256": "d84ecc3f6a34cd169b184db9c0cf900c940b2ba0008002fc304f0f4b35f6309d",
+                "sizeBytes": 510722,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/citys07/citys07",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "citys07/citys07.mdt",
+            "canRecord": {
+                "index": 3,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "citys07/citys07.mdt",
+                "byteOffset": 204,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/citys07/citys07.mbdZ",
+                "sha256": "6a5a16904b9e97ddd94b1c8c16a2ff9fa1802f30be884310d4a0bfadc9f62dae",
+                "sizeBytes": 66246,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/shl02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/shl02.hmd",
+            "canRecord": {
+                "index": 4,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/shl02.hmd",
+                "byteOffset": 268,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/mhl01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/mhl01.hmd",
+            "canRecord": {
+                "index": 5,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/mhl01.hmd",
+                "byteOffset": 332,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/shr01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/shr01.hmd",
+            "canRecord": {
+                "index": 6,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/shr01.hmd",
+                "byteOffset": 396,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/mhr01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/mhr01.hmd",
+            "canRecord": {
+                "index": 7,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/mhr01.hmd",
+                "byteOffset": 460,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/mhl02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/mhl02.hmd",
+            "canRecord": {
+                "index": 8,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/mhl02.hmd",
+                "byteOffset": 524,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/god01",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/god01.hmd",
+            "canRecord": {
+                "index": 9,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/god01.hmd",
+                "byteOffset": 588,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/mazes02/mazes02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "mazes02/mazes02.mdt",
+            "canRecord": {
+                "index": 10,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "mazes02/mazes02.mdt",
+                "byteOffset": 652,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/mazes02/mazes02.mbdZ",
+                "sha256": "1343ce8c478b209996246a6ace324a968e502ac36cc74e79bf8bb3511a1017fc",
+                "sizeBytes": 51038,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/god02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/god02.hmd",
+            "canRecord": {
+                "index": 11,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/god02.hmd",
+                "byteOffset": 716,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/shr02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/shr02.hmd",
+            "canRecord": {
+                "index": 12,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/shr02.hmd",
+                "byteOffset": 780,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/mhr02",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/mhr02.hmd",
+            "canRecord": {
+                "index": 13,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/mhr02.hmd",
+                "byteOffset": 844,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/god03",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/god03.hmd",
+            "canRecord": {
+                "index": 14,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/god03.hmd",
+                "byteOffset": 908,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/citys08/citys08",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "citys08/citys08.mdt",
+            "canRecord": {
+                "index": 15,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "citys08/citys08.mdt",
+                "byteOffset": 972,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/citys08/citys08.mbdZ",
+                "sha256": "2abc607f2c6682611a280613d3ef31e5e0a29945614f06f594fdd7f02b30d2f8",
+                "sizeBytes": 45805,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/roads07/roads07",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "roads07/roads07.mdt",
+            "canRecord": {
+                "index": 16,
+                "type": 2,
+                "typeMeaningCandidate": "childMapMetadata",
+                "name": "roads07/roads07.mdt",
+                "byteOffset": 1036,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": {
+                "sourcePath": "Original/Data2/map/south003/roads07/roads07.mbdZ",
+                "sha256": "facd7f5a3bb249d66ef870641e69995d764ab2f15f4da9dc288640aefcfca173",
+                "sizeBytes": 32362,
+                "note": "Packed 05 16 wrapper candidate; dimensions not decoded in Phase 2.1 minimal stage."
+            },
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/tp_nor_l",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/tp_nor_l.hmd",
+            "canRecord": {
+                "index": 17,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/tp_nor_l.hmd",
+                "byteOffset": 1100,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        },
+        {
+            "id": "client:map/south003/indoor/tp_nor_r",
+            "numericMapId": null,
+            "numericMapIdStatus": "unknownFromClientResourcePhase2_1",
+            "area": "south003",
+            "roomGroupId": "client:roomGroup/south003",
+            "displayNameCandidate": "楓華鎮 candidate",
+            "resourceName": "indoor/tp_nor_r.hmd",
+            "canRecord": {
+                "index": 18,
+                "type": 1,
+                "typeMeaningCandidate": "indoorOrRoomModel",
+                "name": "indoor/tp_nor_r.hmd",
+                "byteOffset": 1164,
+                "rawRecordLength": 64
+            },
+            "mbd": null,
+            "packedMbdCandidate": null,
+            "spawnPosition": {
+                "x": null,
+                "y": null,
+                "status": "unknown",
+                "note": "Not present in CAN header/records or first MBD header fields; requires server packet/runtime or deeper MDT/MBD record decoding."
+            },
+            "exitRegions": [],
+            "unknownFields": [
+                "numericMapId",
+                "spawnPosition",
+                "exitRegionCoordinates",
+                "portalTriggerRecord",
+                "serverDestinationMapId"
+            ]
+        }
+    ]
+}

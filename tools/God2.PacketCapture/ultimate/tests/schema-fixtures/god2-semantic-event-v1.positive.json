@@ -1,0 +1,1 @@
+{"SchemaId":"God2SemanticEvent","SchemaVersion":1,"EventType":"PacketBoundary","SemanticEventId":"v1-type-0","Sequence":2000,"Timestamp":"2026-01-01T00:00:00.000Z","ThreadId":7,"ProcessId":42,"SessionId":"V1Matrix","ClientBuildId":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B","ModuleId":"God2_opt.exe","RVA":0,"CallsiteRVA":0,"SensitiveValue":false}

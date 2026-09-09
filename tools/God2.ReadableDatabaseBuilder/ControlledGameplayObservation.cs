@@ -1,0 +1,1 @@
+﻿namespace God2.ReadableDatabaseBuilder;

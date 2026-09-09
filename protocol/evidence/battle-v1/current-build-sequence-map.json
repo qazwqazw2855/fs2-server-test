@@ -1,0 +1,9 @@
+{
+    "schemaVersion":  1,
+    "currentBuildCaptureSequenceCount":  0,
+    "status":  "Blocked",
+    "sequences":  [
+
+                  ],
+    "blocker":  "OfficialAuthenticationAuthorityUnavailable"
+}

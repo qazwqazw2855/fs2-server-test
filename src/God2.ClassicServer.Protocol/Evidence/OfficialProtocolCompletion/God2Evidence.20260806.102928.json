@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "god2-evidence-package-20260806-102928-v1",
+  "generatedAtUtc": "2026-08-06T10:29:36.655Z",
+  "evidenceSourceId": "god2-evidence-package-20260806-102928",
+  "sourcePackage": {
+    "fileName": "God2Evidence_20260806_102928_65BBF007-6117-419F-BF8E-F3C7C95B8809.zip",
+    "sha256": "6C8D52617F652F522610ABDB3D4DB1B381E0A21A08B8E60E4A574AC66F7E9951",
+    "fileSize": 54973439,
+    "entryCount": 35,
+    "toolVersion": "1.0.1",
+    "packageValidationStatus": "PassWithWarnings",
+    "blockers": [],
+    "warning": "ETW attributed JSONL is empty; raw ETL remains retained in the external source package."
+  },
+  "session": {
+    "sessionId": "65BBF007-6117-419F-BF8E-F3C7C95B8809",
+    "originalCaptureDirectoryId": "2026-08-06_18-14-15_05A7F156-259E-4110-A553-2C125ED962CC",
+    "analysisRunId": "7D843178-F12E-4993-8EF2-991AD9FD324D",
+    "targetExecutable": "God2_opt.exe",
+    "targetProcessId": 368,
+    "targetArchitecture": "x86",
+    "captureSource": "OptInX86Dll",
+    "captureStages": ["Transport", "PreEncrypt", "PostDecrypt", "HandlerDecoded"],
+    "cleanupStatus": "Completed",
+    "captureRecordCount": 5797,
+    "transportChunkCount": 3482,
+    "transportClientToServerCount": 767,
+    "transportServerToClientCount": 2715,
+    "transportPayloadBytes": 44327,
+    "decodedMessageCount": 1685,
+    "handlerObservationCount": 630,
+    "protocolFramePromotionCount": 0,
+    "gameplayCandidateCount": 0,
+    "verifiedGameplayClassificationCount": 0
+  },
+  "decodedFrameEvidence": {
+    "status": "RecoveredStructuralEvidenceOnly",
+    "envelope": "uint16le frame length at offsets 0..1",
+    "opcodeByte": "decoded byte at offset 2",
+    "lengthPrefixValidatedCount": 1685,
+    "lengthPrefixMismatchCount": 0,
+    "directionalOpcodeFamilyCount": 64,
+    "clientToServer": {
+      "captureStage": "PreEncrypt",
+      "recordCount": 786,
+      "uniquePayloadCount": 483,
+      "opcodeFamilyCount": 29,
+      "minimumFrameLength": 5,
+      "maximumFrameLength": 208
+    },
+    "serverToClient": {
+      "captureStage": "PostDecrypt",
+      "recordCount": 899,
+      "uniquePayloadCount": 490,
+      "opcodeFamilyCount": 35,
+      "minimumFrameLength": 5,
+      "maximumFrameLength": 1254
+    },
+    "dominantFamilies": [
+      {"direction":"ClientToServer","opcode":"0x2E","observedCount":367,"frameLengths":[10],"uniquePayloadCount":367},
+      {"direction":"ClientToServer","opcode":"0x30","observedCount":136,"frameLengths":[5],"uniquePayloadCount":1},
+      {"direction":"ClientToServer","opcode":"0x35","observedCount":112,"frameLengths":[20],"uniquePayloadCount":46},
+      {"direction":"ClientToServer","opcode":"0x6D","observedCount":33,"frameLengths":[5],"uniquePayloadCount":1},
+      {"direction":"ClientToServer","opcode":"0x36","observedCount":33,"frameLengths":[12],"uniquePayloadCount":3},
+      {"direction":"ClientToServer","opcode":"0x66","observedCount":17,"frameLengths":[7],"uniquePayloadCount":14},
+      {"direction":"ServerToClient","opcode":"0x5D","observedCount":388,"uniquePayloadCount":115},
+      {"direction":"ServerToClient","opcode":"0x5F","observedCount":167,"uniquePayloadCount":166},
+      {"direction":"ServerToClient","opcode":"0x86","observedCount":131,"uniquePayloadCount":41},
+      {"direction":"ServerToClient","opcode":"0xE6","observedCount":3,"frameLengths":[53,95],"uniquePayloadCount":3}
+    ],
+    "exhaustivePayloadFreeCatalog": "src/God2.ClassicServer.Protocol/OfficialEvidencePackage20260806Catalog.cs"
+  },
+  "handlerEvidence": {
+    "status": "RecoveredStructuralEvidenceOnly",
+    "handlerObservationCount": 630,
+    "handlerFamilyCount": 8,
+    "uniquePayloadCount": 246,
+    "minimumPayloadLength": 2,
+    "maximumPayloadLength": 121,
+    "families": [
+      {"opcode":"0x86","observedCount":337,"payloadLength":17,"uniquePayloadCount":103,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x83","observedCount":125,"payloadLength":15,"uniquePayloadCount":85,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x85","observedCount":92,"payloadLength":2,"uniquePayloadCount":1,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x88","observedCount":33,"payloadLength":121,"uniquePayloadCount":33,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x1C","observedCount":23,"payloadLength":45,"uniquePayloadCount":14,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x89","observedCount":8,"payloadLength":57,"uniquePayloadCount":7,"handlerAddress":"0x005470B3"},
+      {"opcode":"0x38","observedCount":6,"payloadLength":2,"uniquePayloadCount":1,"handlerAddress":"0x0054709B"},
+      {"opcode":"0x87","observedCount":6,"payloadLength":3,"uniquePayloadCount":2,"handlerAddress":"0x0054709B"}
+    ]
+  },
+  "serverApplication": {
+    "appliedAs": "Decoded frame and handler structural evidence only",
+    "verifiedGameplayPromotions": 0,
+    "registeredDecodedKnowledgeIds": [
+      "evidence-package-20260806-c2s-opcode-2e-10",
+      "evidence-package-20260806-c2s-opcode-30-5",
+      "evidence-package-20260806-c2s-opcode-35-20",
+      "evidence-package-20260806-c2s-opcode-6d-5",
+      "evidence-package-20260806-c2s-opcode-36-12",
+      "evidence-package-20260806-c2s-opcode-66-7"
+    ],
+    "battleEvidenceUpdate": {
+      "family": "BattleResultCandidate",
+      "decodedOpcode": "0xE6",
+      "additionalObservations": 3,
+      "aggregateObservations": 8,
+      "serializerEnabled": false,
+      "fieldSemanticsStatus": "Unknown"
+    },
+    "mutationPolicy": "No raw sensitive payload is copied into the repository. No NPC, monster, character, inventory, mount, skill, quest, party, formula or production gameplay row is promoted without verified field semantics."
+  },
+  "sensitiveDataPolicy": {
+    "sourceContainsAuthenticationPayload": true,
+    "rawPayloadRetainedInRepository": false,
+    "credentialTextRetainedInRepository": false,
+    "storedData": "Aggregate counts, structural fields, package SHA-256, session identity and evidence provenance only"
+  }
+}

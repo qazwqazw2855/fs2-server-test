@@ -1,0 +1,10 @@
+{
+    "schemaVersion":  1,
+    "infrastructureStatus":  "PASS",
+    "officialFixtureStatus":  "BlockedByEvidence",
+    "fixtureCount":  0,
+    "fixtures":  [
+
+                 ],
+    "blocker":  "No qualifying raw current-build battle packet set; fake fixture bytes are prohibited."
+}

@@ -1,0 +1,45 @@
+{
+    "category": "equipment",
+    "source": "God2 Classic Unified Server/Data/Runtime/EquipmentRules/equipment-rule.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 1214,
+    "recordCount": 1,
+    "recoveredFields": [
+        "id",
+        "itemType",
+        "runtimeEligibility",
+        "slot",
+        "sourceFile",
+        "unknownFields",
+        "validationStatus"
+    ],
+    "missingFields": [
+        "classRestrictions",
+        "equipmentSlot",
+        "jobRestrictions",
+        "requirements",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Unverified; EquipmentRulesOnly",
+    "recoveryProgress": "Equipment rule evidence preserved; pending item/equipment stat, model, icon, skill, and packet cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Only equipment rule evidence exists; full equipment templates and stats still need recovery.",
+    "records": [
+        {
+            "id": "client:equipment-rule/wpn",
+            "itemType": "WPN",
+            "slot": null,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "runtimeEligibility": false,
+            "sourceFile": "Data/Runtime/Items/item.runtime.json",
+            "unknownFields": [
+                "equipmentSlot",
+                "classRestrictions",
+                "jobRestrictions",
+                "requirements"
+            ]
+        }
+    ]
+}

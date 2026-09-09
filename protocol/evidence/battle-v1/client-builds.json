@@ -1,0 +1,47 @@
+{
+    "schemaVersion":  1,
+    "generatedAtUtc":  "2026-07-31T07:27:29.7440670+00:00",
+    "builds":  [
+                   {
+                       "clientBuildId":  "god2-opt-6b127086e0c0",
+                       "god2OptSha256":  "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B",
+                       "launcherSha256":  "1A92E92C9FC71A21ADFB0FE84B307202A1044A3D707C4BE9703CDC42C394845E",
+                       "fileVersionCandidate":  "1.0.0.1",
+                       "productVersionCandidate":  "1.0.0.1",
+                       "architecture":  "x86",
+                       "locale":  "zh-TW candidate; locale is not asserted from executable hash alone",
+                       "protocolVariant":  "official-classic-client; battle wire variant unrecovered",
+                       "god2Opt":  {
+                                       "label":  "OfficialClient/God2_opt.exe",
+                                       "length":  2145792,
+                                       "lastWriteTimeUtc":  "2026-07-14T08:33:10.5433519Z"
+                                   },
+                       "launcher":  {
+                                        "label":  "OfficialClient/Launcher.exe",
+                                        "length":  474624,
+                                        "lastWriteTimeUtc":  "2024-10-09T04:01:36.0000000Z"
+                                    },
+                       "moduleHashes":  {
+                                            "OfficialClient/CrashRpt.dll":  "D3FDE6BE2679203F1FB2DDDDBD401B96D2AF74F3556EFEF492ED3F0125196CA8",
+                                            "OfficialClient/msvcp140.dll":  "4C801BF951A4934902C54258F0793F5B4F3656F93395511E0B6030E6091A494A",
+                                            "OfficialClient/node.dll":  "D71E7B06F9AAD5B971EBEBB7444E8F73FAF8DDD74AD9724870C1949B53B7A799",
+                                            "OfficialClient/SkinMagic.dll":  "AC4464DB65500AF39AB0E0BBD8DE728C92DC32CEE565B7230232353DA49D6054",
+                                            "OfficialClient/ucrtbase.dll":  "7C915D3AB1AFB5A7F763223EC1E602FF2A74732AEE61B0F5543A2951631529FB",
+                                            "OfficialClient/vcruntime140.dll":  "5EC591478F09937F1EFE005B9886EC54C2F4B1CFD6033DE910F6EAA7622A3569",
+                                            "OfficialClient/WebView2Loader.dll":  "6F59AD578FDE1F65C44B6935DAB0901F014B5268E056B930FB34C0919F1BF4B9",
+                                            "OfficialClient/zlibwapi.dll":  "D6B1A734495FB277CA9A0688CAC926C283E8E7B5CA1D3B79F34232A9A1F9DBA9"
+                                        },
+                       "relevantConfigHashes":  {
+                                                    "OfficialClient/client_p.godZ":  "9F2ADB70954439DC2E9A49516647A03F9AC33F9CCB294E8EAD318D05FBA9978C",
+                                                    "OfficialClient/ctserver.ini":  "F2CD55327C0CB7466520FC61449F5024A381B2AA3E805965F7116F15CFCC13DE",
+                                                    "OfficialClient/God2Con.csvZ":  "2D0E0C833FCFB5C01DB793593F28F4275C408993AD6492A91363665EFA3E193D",
+                                                    "OfficialClient/God2Con2.csvZ":  "E9D00EBE03B255A37B61339E749DBEDEFD069B4F7554DC4E7971F80584B75F98",
+                                                    "OfficialClient/LauncherVersion.ini":  "08406820D4B69CFD4BBAA43B1F7F11098F3726D6979D0E2CB5D0E423BFC77CF4"
+                                                },
+                       "excludedSensitiveFiles":  [
+                                                      "OfficialClient/cookies.dat"
+                                                  ],
+                       "recordedAtUtc":  "2026-07-31T07:27:29.7440670+00:00"
+                   }
+               ]
+}

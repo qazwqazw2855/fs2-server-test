@@ -1,0 +1,216 @@
+{
+    "schemaVersion":  1,
+    "gateChanges":  0,
+    "actorPrimaryEnabled":  false,
+    "defaultEngine":  "LegacyPrimary",
+    "fakeNetworkBytes":  0,
+    "gates":  [
+                  {
+                      "family":  "EncounterTrigger",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "BattleEnter",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "Formation",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "PlayerSpawn",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "PetSpawn",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "EnemySpawn",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "RoundStart",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "CommandWindow",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "BasicAttackClientCommand",
+                      "direction":  "ClientToServer",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "EvidenceBlocked",
+                      "gate":  "BlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "SkillClientCommand",
+                      "direction":  "ClientToServer",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "EvidenceBlocked",
+                      "gate":  "BlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "ItemClientCommand",
+                      "direction":  "ClientToServer",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "EvidenceBlocked",
+                      "gate":  "BlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "DefendClientCommand",
+                      "direction":  "ClientToServer",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "EvidenceBlocked",
+                      "gate":  "BlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "FleeClientCommand",
+                      "direction":  "ClientToServer",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "EvidenceBlocked",
+                      "gate":  "BlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "ActionConfirmation",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "ActionStart",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "Damage",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "Healing",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "StatusApplyRemove",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "DeathRevive",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "RoundEnd",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "BattleEnd",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "Reward",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  },
+                  {
+                      "family":  "WorldResume",
+                      "direction":  "ServerToClient",
+                      "currentBuildSampleCount":  0,
+                      "opcode":  null,
+                      "confidence":  "SerializerBlockedByEvidence",
+                      "gate":  "SerializerBlockedByEvidence",
+                      "changedThisSprint":  false
+                  }
+              ]
+}

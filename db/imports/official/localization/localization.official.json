@@ -1,0 +1,610 @@
+{
+    "category": "localization",
+    "source": "God2 Classic Unified Server/Data/Runtime/Localization/localization.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 42275,
+    "recordCount": 34,
+    "recoveredFields": [
+        "fallbackRule",
+        "id",
+        "languages",
+        "rowCount",
+        "runtimeEligibility",
+        "sourcePath",
+        "unknownFields",
+        "validationStatus"
+    ],
+    "missingFields": [
+        "englishVariant",
+        "languageMapping",
+        "localizationKeySemantics",
+        "traditionalChineseVariant",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Recovered; TableManifestOnly",
+    "recoveryProgress": "Localization manifests recovered; pending string table extraction and row-level key/value cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Localization table manifests recovered; rows are not expanded into key/value import records.",
+    "records": [
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission01-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission01.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission02-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission02.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/newmount_skill_desc-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NewMount_skill_Desc.csvZ",
+            "rowCount": 47,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission03-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission03.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission07-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission07.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission08-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission08.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission06-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission06.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission04-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission04.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission05-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission05.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/multimessage01-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/MultiMessage01.csvZ",
+            "rowCount": 3533,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/message-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+            "rowCount": 3143,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/gamedata-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/gamedata.csvZ",
+            "rowCount": 31679,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/multimessage02-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/MultiMessage02.csvZ",
+            "rowCount": 3785,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/multimessage03-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/MultiMessage03.csvZ",
+            "rowCount": 4489,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/multimessage04-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/MultiMessage04.csvZ",
+            "rowCount": 1137,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission09-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission09.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data3/patch/comm/message2-csvz",
+            "sourcePath": "Original/Data3/patch/comm/Message2.csvZ",
+            "rowCount": 54,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data3/comm/message2-csvz",
+            "sourcePath": "Original/Data3/comm/Message2.csvZ",
+            "rowCount": 54,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission13-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission13.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission14-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission14.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission12-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission12.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission10-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission10.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission11-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission11.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcmission15-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission15.csvZ",
+            "rowCount": 602,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcnormal03-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcNormal03.csvZ",
+            "rowCount": 54,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcnormal01-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCNormal01.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/comm/npcnormal02-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCNormal02.csvZ",
+            "rowCount": 1002,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data/patch/skill-csvz",
+            "sourcePath": "Original/Data/Patch/Skill.csvZ",
+            "rowCount": 7,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/lang1-csvz",
+            "sourcePath": "Original/lang1.csvZ",
+            "rowCount": 47,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/lang2-csvz",
+            "sourcePath": "Original/lang2.csvZ",
+            "rowCount": 47,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/god2con-csvz",
+            "sourcePath": "Original/God2Con.csvZ",
+            "rowCount": 40,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/god2con2-csvz",
+            "sourcePath": "Original/God2Con2.csvZ",
+            "rowCount": 39,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/npc-csvz",
+            "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+            "rowCount": 329,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        },
+        {
+            "id": "client:localization-table/original/data2/patch/npchead-csvz",
+            "sourcePath": "Original/Data2/Patch/NpcHead.csvZ",
+            "rowCount": 114,
+            "languages": [
+                "zh-Hans-or-GBK-source"
+            ],
+            "fallbackRule": "server catalog preserves source text; UI fallback handled by LocalizationCatalog",
+            "validationStatus": "DecodedTableOnly",
+            "runtimeEligibility": true,
+            "unknownFields": [
+                "languageMapping",
+                "localizationKeySemantics",
+                "traditionalChineseVariant",
+                "englishVariant"
+            ]
+        }
+    ]
+}

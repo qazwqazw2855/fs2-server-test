@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase31-v1",
+  "phase": "Phase 3.1 - Walking Recovery / Coordinate Baseline",
+  "completedAtLocal": "2026-07-30T06:23:00+08:00",
+  "goldenRegression": {
+    "status": "PASS",
+    "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-061702",
+    "serverRun": "Artifacts/Runtime/ServerRuns/phase31-final-mounted-20260730-061639",
+    "worldReady": true,
+    "movementPacketCount": 14,
+    "launcherPreserved": true
+  },
+  "mountedBaseline": {
+    "movementMode": "MountedVisualBaseline",
+    "playerSpawnDecodedPrefix": "80 00 1F 02 F0 CF AA 6B 65 72 6F 00 00 00 00 00 00 00 00 F4 7F 5F 03 00 00 00 00 00 00 00 00 00 00 00 00 02 02 00 00 04 00 00 00 01 38 E3 02 32",
+    "parserResult": 125,
+    "firstMovementDecoded": "0A00803859F9125F86D7",
+    "movementLength": 10,
+    "xOffset": "5..6",
+    "yOffset": "7..8",
+    "directionOffset": "3",
+    "playerSpawnOffset35Candidate": "0x02",
+    "playerSpawnOffset36Candidate": "0x02",
+    "candidateSemantic": "unverified appearance/state fields; not a confirmed mount-state semantic"
+  },
+  "walkingAttempts": [
+    {
+      "name": "PlayerSpawn appearance/state both cleared",
+      "playerSpawnOffset35": "0x00",
+      "playerSpawnOffset36": "0x00",
+      "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-053327",
+      "result": "FAIL",
+      "parserResult": 0,
+      "firstBlocker": "PlayerSpawn parser did not accept modified frame as valid world spawn"
+    },
+    {
+      "name": "PlayerSpawn offset36 candidate cleared only",
+      "playerSpawnOffset35": "0x02",
+      "playerSpawnOffset36": "0x00",
+      "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-054458",
+      "result": "FAIL",
+      "parserResult": 0,
+      "protocolObservation": "world bootstrap activity and heartbeat existed, but screen stayed CharacterSelectReady",
+      "firstBlocker": "Clearing offset36 candidate alone does not produce a valid Walking world visual state"
+    },
+    {
+      "name": "PlayerSpawn offset35 candidate cleared only",
+      "playerSpawnOffset35": "0x00",
+      "playerSpawnOffset36": "0x02",
+      "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-055652",
+      "result": "FAIL",
+      "parserResult": 0,
+      "protocolObservation": "world bootstrap frames continued, but screen stayed CharacterSelectReady",
+      "firstBlocker": "Clearing offset35 candidate alone does not produce a valid Walking world visual state"
+    },
+    {
+      "name": "CharacterList and PlayerSpawn appearance/state aligned to 0x00/0x02",
+      "characterListOffsets21_22": "00 02",
+      "playerSpawnOffsets35_36": "00 02",
+      "hostRun": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-060910",
+      "result": "FAIL",
+      "protocolObservation": "ServerSelection response was sent, but Client returned to LoginScreen and did not reach CharacterSelect",
+      "firstBlocker": "CharacterList offsets 21/22 are not safe Walking controls"
+    }
+  ],
+  "conclusion": {
+    "walkingEvidence": "FAIL",
+    "coordinateScaleStatus": "NOT_FIXED",
+    "movementSpeedModelStatus": "BLOCKED_UNTIL_VALID_WALKING_SAMPLE",
+    "nextFirstBlocker": "Need a valid mount/unmount state source beyond PlayerSpawn offset35/36 and CharacterList offset21/22; likely a later WorldStateBootstrap frame, equipment/model field, or an unisolated C2S/S2C state transition.",
+    "appearanceStateConclusion": "0x02/0x02 is part of the current legal mounted visual baseline, but offset35/36 and CharacterList offset21/22 are not verified mount flags and cannot be used as official semantics."
+  }
+}

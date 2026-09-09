@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "god2-17173-source-seeds.v1",
+  "gameIdentity": {
+    "titleZhTw": "封神2：仙界傳",
+    "siteIdentity": "仙界传专区",
+    "host": "xjz.17173.com",
+    "clientIdentity": "God2"
+  },
+  "policy": {
+    "authority": "HistoricalGuideEvidence",
+    "promotion": "StageOnlyUntilCurrentPatchPacketOrClientEvidenceMatches",
+    "unknownProbability": "PreserveNull",
+    "rawHtmlPersistence": false,
+    "maximumPages": 250,
+    "maximumDepth": 2
+  },
+  "sources": [
+    { "id": "17173:map", "url": "https://xjz.17173.com/map/map.htm", "pathPrefix": "/map/", "domain": "MapEvidence" },
+    { "id": "17173:monster", "url": "https://xjz.17173.com/monster/monster.htm", "pathPrefix": "/monster/", "domain": "MonsterStatEvidence" },
+    { "id": "17173:monster2", "url": "https://xjz.17173.com/monster2/monster.htm", "pathPrefix": "/monster2/", "domain": "MonsterEvidence" },
+    { "id": "17173:item", "url": "https://xjz.17173.com/item2/item.htm", "pathPrefix": "/item2/", "domain": "ItemEvidence" },
+    { "id": "17173:skill", "url": "https://xjz.17173.com/skill/skill.htm", "pathPrefix": "/skill/", "domain": "SkillNumericEvidence" },
+    { "id": "17173:quest", "url": "https://xjz.17173.com/quest/quest.htm", "pathPrefix": "/quest/", "domain": "QuestEvidence" },
+    { "id": "17173:god", "url": "https://xjz.17173.com/god2/god.htm", "pathPrefix": "/god2/", "domain": "SkillNumericEvidence" },
+    { "id": "17173:pet", "url": "https://xjz.17173.com/senso/senso.htm", "pathPrefix": "/senso/", "domain": "PetEvidence" }
+  ]
+}

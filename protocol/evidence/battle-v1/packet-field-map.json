@@ -1,0 +1,374 @@
+{
+    "schemaVersion":  1,
+    "policy":  "Unknown remains unknown; no production constants are inferred.",
+    "families":  [
+                     {
+                         "family":  "EncounterTrigger",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "BattleEnter",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "Formation",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "PlayerSpawn",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "PetSpawn",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "EnemySpawn",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "RoundStart",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "CommandWindow",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "BasicAttackClientCommand",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "SkillClientCommand",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "ItemClientCommand",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "DefendClientCommand",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "FleeClientCommand",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "ActionConfirmation",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "ActionStart",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "Damage",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "Healing",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "StatusApplyRemove",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "DeathRevive",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "RoundEnd",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "BattleEnd",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "Reward",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     },
+                     {
+                         "family":  "WorldResume",
+                         "opcode":  null,
+                         "verifiedFields":  [
+
+                                            ],
+                         "candidateFields":  [
+
+                                             ],
+                         "unknownRequiredFields":  [
+                                                       "battle-specific opcode",
+                                                       "battle-specific payload layout",
+                                                       "required dynamic fields"
+                                                   ],
+                         "productionWritable":  false
+                     }
+                 ]
+}

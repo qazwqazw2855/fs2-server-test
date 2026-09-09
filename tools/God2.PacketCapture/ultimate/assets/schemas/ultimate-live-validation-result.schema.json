@@ -1,0 +1,44 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/ultimate-live-validation-result.schema.json",
+  "title":"God2 Ultimate live validation summary",
+  "type":"object",
+  "required":["SchemaVersion","ValidatedAtUtc","FinalStatus","ValidationScope","IntegrityStatus","PackageIntegrity","ResultIntegrity","ExecutableSHA256","ExecutableFileVersion","TargetClientSHA256","ExactBuildIdentity","ProbeMapStatus","SharedTransportStatus","SegmentManifestStatus","RecoveryBundleStatus","CaptureCoreStatus","DeepRuntimeStatus","DeepRuntimeVerifiedDomainCount","DeepRuntimeRequiredDomainCount","OperationSpecificGpuStatus","GameStabilityStatus","OverheadStatus","UltimateCompletionEligible","RecoveryBundleSHA256","RecoveryPackageId","ProductionDatabaseConnectionAttempted","ProductionDatabaseMutationAttempted","GuiExitCode"],
+  "properties":{
+    "SchemaVersion":{"const":"god2-ultimate-live-validation-result-v2"},
+    "ValidatedAtUtc":{"type":"string","format":"date-time"},
+    "FinalStatus":{"enum":["ULTIMATE_LIVE_DEEP_RECOVERY_EVIDENCE_PASS","EVIDENCE_BLOCKED_EXTERNAL_DEEP_RUNTIME_GATE","EVIDENCE_BLOCKED_LIVE_VALIDATION_INCOMPLETE"]},
+    "ValidationScope":{"const":"ExactBuildCaptureCoreAndDeepRuntimeGate"},
+    "IntegrityStatus":{"const":"MANIFEST_VERIFIED_AFTER_SUMMARY_WRITE"},
+    "PackageIntegrity":{"const":"MANIFEST_VERIFIED_AFTER_SUMMARY_WRITE"},
+    "ResultIntegrity":{"const":"MANIFEST_VERIFIED_AFTER_SUMMARY_WRITE"},
+    "ExecutableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "ExecutableFileVersion":{"const":"1.3.0.0"},
+    "TargetClientSHA256":{"const":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"},
+    "ExactBuildIdentity":{"type":"boolean"},
+    "ProbeMapStatus":{"enum":["THREE_VERIFIED_CHOKE_POINTS_AND_21_BLOCKED_DOMAINS_BOUND","EvidenceBlocked"]},
+    "SharedTransportStatus":{"enum":["PASS","EvidenceBlocked"]},
+    "SegmentManifestStatus":{"enum":["PASS","EvidenceBlocked"]},
+    "RecoveryBundleStatus":{"enum":["PASS","EvidenceBlocked"]},
+    "CaptureCoreStatus":{"enum":["PASS","EvidenceBlocked"]},
+    "DeepRuntimeStatus":{"enum":["PASS","EVIDENCE_BLOCKED_EXTERNAL_DEEP_RUNTIME_GATE"]},
+    "DeepRuntimeVerifiedDomainCount":{"type":"integer","minimum":0,"maximum":25},
+    "DeepRuntimeRequiredDomainCount":{"const":25},
+    "OperationSpecificGpuStatus":{"const":"EvidenceBlockedNotEvaluatedByLiveRunner"},
+    "GameStabilityStatus":{"const":"EvidenceBlockedNoBoundStabilityTelemetry"},
+    "OverheadStatus":{"const":"EvidenceBlockedNoBoundOverheadMeasurement"},
+    "UltimateCompletionEligible":{"const":false},
+    "RecoveryBundleSHA256":{"type":"string","pattern":"^(?:[A-F0-9]{64})?$"},
+    "RecoveryPackageId":{"type":"string","pattern":"^[A-Za-z0-9._-]{1,200}$"},
+    "ProductionDatabaseConnectionAttempted":{"const":false},
+    "ProductionDatabaseMutationAttempted":{"const":false},
+    "GuiExitCode":{"type":"integer"}
+  },
+  "allOf":[
+    {
+      "if":{"properties":{"FinalStatus":{"const":"ULTIMATE_LIVE_DEEP_RECOVERY_EVIDENCE_PASS"}},"required":["FinalStatus"]},
+      "then":{"properties":{"CaptureCoreStatus":{"const":"PASS"},"DeepRuntimeStatus":{"const":"PASS"},"DeepRuntimeVerifiedDomainCount":{"const":25}}}
+    }
+  ],
+  "additionalProperties":false
+}

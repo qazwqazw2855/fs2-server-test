@@ -1,0 +1,24 @@
+{
+    "category": "icons",
+    "source": "Official Client Recovery cross-reference queue",
+    "format": "Pending Cross Reference Inventory",
+    "sourceSizeBytes": 0,
+    "recordCount": 0,
+    "recoveredFields": [],
+    "missingFields": [
+        "DAT scan",
+        "Lua scan",
+        "Script scan",
+        "Resource scan",
+        "Localization scan",
+        "Model scan",
+        "Packet scan",
+        "Runtime scan",
+        "Identifier scan"
+    ],
+    "verificationStatus": "Needs Recovery; CrossReferencePending",
+    "recoveryProgress": "Queued for item + skill + UI resource + texture cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Icon records are in scope and await official resource extraction.",
+    "records": []
+}

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>仙界傳 II 怪物戰鬥屬性反推器</title>
+  <style>
+    :root{--ink:#17211d;--paper:#f3ead8;--card:#fffaf0;--jade:#176b59;--gold:#c88924;--red:#a33b2f;--line:#d4c4a5;--muted:#746b5c;--shadow:0 16px 45px #382b1918}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 0,#fff7db 0,transparent 28%),linear-gradient(135deg,#e8dcc3,#f8f1e4 48%,#d8e6dc);font-family:"Noto Serif TC","Microsoft JhengHei",serif;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(90deg,transparent 49.5%,#8a795922 50%,transparent 50.5%),linear-gradient(transparent 49.5%,#8a795922 50%,transparent 50.5%);background-size:42px 42px}
+    main{width:min(1180px,calc(100% - 28px));margin:28px auto 60px;position:relative}.hero{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:18px;border-bottom:3px solid var(--ink);padding:8px 4px 16px}.eyebrow{color:var(--red);font-weight:800;letter-spacing:.18em;font-size:.78rem}.hero h1{font-size:clamp(2rem,5vw,4rem);line-height:.95;margin:8px 0 0;letter-spacing:-.04em}.hero p{max-width:430px;margin:0;color:var(--muted);line-height:1.7}
+    .grid{display:grid;grid-template-columns:1fr 1.35fr;gap:18px}.card{background:#fffaf0e8;border:1px solid var(--line);box-shadow:var(--shadow);padding:22px;backdrop-filter:blur(8px)}.card h2{font-size:1.08rem;margin:0 0 17px;display:flex;align-items:center;gap:9px}.num{display:grid;place-items:center;width:27px;height:27px;background:var(--ink);color:white;border-radius:50%;font-family:Georgia,serif}
+    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fields.five{grid-template-columns:repeat(5,minmax(0,1fr))}.field{display:grid;gap:6px}.field.wide{grid-column:1/-1}label{font-size:.78rem;font-weight:800;color:var(--muted);letter-spacing:.04em}input,select,button{font:inherit}input,select{width:100%;border:1px solid var(--line);background:#fffdf8;padding:11px 12px;color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--jade);box-shadow:0 0 0 3px #176b5917}.element input{text-align:center;padding-inline:4px}.element label{text-align:center}.metal{border-top:4px solid #b2a48d}.wood{border-top:4px solid #4e8b58}.water{border-top:4px solid #357ca0}.fire{border-top:4px solid #bd4b35}.earth{border-top:4px solid #a77a34}
+    .note{padding:12px 14px;background:#f0e4ca;border-left:4px solid var(--gold);font-size:.84rem;line-height:1.6;margin-top:14px}.note strong{color:var(--red)}.formula{font-family:Consolas,monospace;background:var(--ink);color:#f8e9bc;padding:13px 15px;margin-top:14px;line-height:1.65;font-size:.8rem;overflow:auto}
+    .obs-head{display:grid;grid-template-columns:1fr 1.8fr 1fr .8fr 36px;gap:8px;margin-bottom:8px}.obs{display:grid;grid-template-columns:1fr 1.8fr 1fr .8fr 36px;gap:8px;margin-bottom:8px}.obs button{border:0;background:#ead9c7;color:var(--red);font-size:1.2rem;cursor:pointer}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button.primary,button.secondary{border:0;padding:12px 18px;font-weight:900;cursor:pointer}.primary{background:var(--jade);color:white}.secondary{background:#ded0b6;color:var(--ink)}button:hover{filter:brightness(.96);transform:translateY(-1px)}
+    .result{grid-column:1/-1;background:var(--ink);color:#f8f1df;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}.result h2{color:#ead6a7}.answer{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(2.8rem,8vw,6.3rem);line-height:1;color:#f0c66e;margin:12px 0}.status{font-size:.88rem;color:#cfc5b1;line-height:1.7}.candidate-list{font-family:Consolas,monospace;color:#f8e9bc;overflow-wrap:anywhere}.audit{border-left:1px solid #ffffff2a;padding-left:24px}.audit ul{padding-left:18px;line-height:1.8;color:#d9d0c0}.ok{color:#74d1ad}.bad{color:#ff8f7f}
+    .full{grid-column:1/-1}.tiny{font-size:.74rem;color:var(--muted);line-height:1.55;margin-top:10px}.stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}.stat{border:1px solid #ffffff25;padding:12px 8px}.stat b{display:block;color:#cfc5b1;font-size:.72rem}.stat strong{display:block;color:#f0c66e;font:700 1.45rem Georgia,serif;margin-top:5px;overflow-wrap:anywhere}
+    @media(max-width:800px){main{margin-top:14px}.hero{display:block}.hero p{margin-top:14px}.grid{grid-template-columns:1fr}.result{grid-template-columns:1fr}.audit{border-left:0;border-top:1px solid #ffffff2a;padding:18px 0 0}.fields.five{grid-template-columns:repeat(5,1fr)}.obs-head{display:none}.obs{grid-template-columns:1fr 1fr}.obs button{grid-column:2}.stat-grid{grid-template-columns:repeat(2,1fr)}.card{padding:17px}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div><div class="eyebrow">BATTLE EVIDENCE / 戰鬥取證</div><h1>怪物屬性<br>反推器</h1></div>
+    <p>利用雙方實際傷害反推怪物雙攻、雙防、單一五行值及物理技能基礎威力。只填沒有觸發必殺或爆擊的正常傷害。</p>
+  </header>
+
+  <section class="grid">
+    <article class="card">
+      <h2><span class="num">1</span>你的面板數值</h2>
+      <div class="fields">
+        <div class="field"><label>物理攻擊</label><input id="patk" type="number" min="0" value="0"></div>
+        <div class="field"><label>法術攻擊</label><input id="matk" type="number" min="0" value="0"></div>
+        <div class="field"><label>物理防禦（本次使用）</label><input id="pdef" type="number" min="0" value="0"></div>
+        <div class="field"><label>法術防禦</label><input id="mdef" type="number" min="0" value="0"></div>
+      </div>
+      <h2 style="margin-top:22px"><span class="num">2</span>你的五行屬性</h2>
+      <div class="fields five">
+        <div class="field element metal"><label>金</label><input id="metal" type="number" min="0" value="0"></div>
+        <div class="field element wood"><label>木</label><input id="wood" type="number" min="0" value="0"></div>
+        <div class="field element water"><label>水</label><input id="water" type="number" min="0" value="0"></div>
+        <div class="field element fire"><label>火</label><input id="fire" type="number" min="0" value="0"></div>
+        <div class="field element earth"><label>土</label><input id="earth" type="number" min="0" value="0"></div>
+      </div>
+      <div class="note"><strong>計算規則：</strong>物理攻擊固定為無屬性，不使用五行。金、木、水、火、土只參與魔攻與魔防的傷害計算。</div>
+    </article>
+
+    <article class="card">
+      <h2><span class="num">3</span>計算規則</h2>
+      <div class="fields">
+        <div class="field"><label>隨機倍率下限</label><input id="randomMin" type="number" min="0.01" step="0.01" value="0.9"></div>
+        <div class="field"><label>隨機倍率上限</label><input id="randomMax" type="number" min="0.01" step="0.01" value="1"></div>
+        <div class="field"><label>角色物理減傷％</label><input id="reduction" type="number" min="0" max="99.99" step="0.01" value="0"></div>
+        <div class="field"><label>取整方式</label><select id="rounding"><option value="floor" selected>無條件捨去</option><option value="nearest">四捨五入</option><option value="ceil">無條件進位</option></select></div>
+        <div class="field"><label>搜尋物攻上限</label><input id="searchMax" type="number" min="100" max="1000000" value="10000"></div>
+        <div class="field"><label>怪物單一五行種類</label><select id="monsterElement"><option value="metal">金</option><option value="wood">木</option><option value="water">水</option><option value="fire">火</option><option value="earth">土</option></select></div>
+        <div class="field"><label>五行值搜尋上限</label><input id="elementMax" type="number" min="10" max="10000" value="1000"></div>
+      </div>
+      <div class="formula">物理：物攻 − 物防；物理技能基礎威力：技能傷害 − 普攻傷害成分<br>魔法：魔攻 ＋ 攻擊者同系÷5 ＋ 目標被剋系÷5 − 魔防 − 目標反剋系÷5 − 目標同系÷10</div>
+    </article>
+
+    <article class="card full">
+      <h2><span class="num">4</span>實戰傷害觀測</h2>
+      <div class="obs-head"><label>正常傷害</label><label>觀測類型</label><label>攻擊元素</label><label>技能係數</label><span></span></div>
+      <div id="observations"></div>
+      <div class="actions"><button class="secondary" id="add" type="button">＋ 新增一筆</button><button class="primary" id="calculate" type="button">反推怪物物攻</button><button class="secondary" id="reset" type="button">清除觀測</button></div>
+      <div class="tiny">技能係數填 1 代表一倍。物理技能會在怪物物攻算出後改算該招基礎威力。魔防與五行值有兩個未知數，至少需要兩組具不同五行作用的我方魔法傷害才能分離。</div>
+    </article>
+
+    <article class="card result" aria-live="polite">
+      <div>
+        <h2><span class="num">5</span>反推結果</h2>
+        <div class="stat-grid"><div class="stat"><b>怪物物攻</b><strong id="monsterPatk">－</strong></div><div class="stat"><b>怪物魔攻</b><strong id="monsterMatk">－</strong></div><div class="stat"><b>怪物物防</b><strong id="monsterPdef">－</strong></div><div class="stat"><b>怪物魔防</b><strong id="monsterMdef">－</strong></div><div class="stat"><b>怪物五行值</b><strong id="monsterElemValue">－</strong></div></div>
+        <div class="status" id="status">輸入至少一筆大於 0 的受傷數字。</div>
+        <div class="candidate-list" id="candidateList"></div>
+      </div>
+      <div class="audit"><h2>取證判讀</h2><ul id="audit"><li>單筆觀測只能得到公式下的候選值。</li><li>多筆結果交集只剩一個整數時，才可列為高可信候選。</li><li>公式本身未經台版官方驗證前，不標記為官方定值。</li></ul></div>
+    </article>
+  </section>
+</main>
+<script>
+  const $=id=>document.getElementById(id);
+  const savedIds=['patk','matk','pdef','mdef','metal','wood','water','fire','earth','randomMin','randomMax','reduction','rounding','searchMax','monsterElement','elementMax'];
+  const numeric=id=>Number($(id).value);
+  const rounders={floor:Math.floor,nearest:Math.round,ceil:Math.ceil};
+
+  const elementOptions='<option value="none">無</option><option value="metal">金</option><option value="wood">木</option><option value="water">水</option><option value="fire">火</option><option value="earth">土</option>';
+  function addObservation(damage='',type='incomingPhysicalNormal',element='none',coefficient='1'){
+    const row=document.createElement('div');row.className='obs';
+    row.innerHTML=`<input class="damage" type="number" min="1" placeholder="例如：33" value="${damage}"><select class="type"><option value="incomingPhysicalNormal">怪物普通物攻打我</option><option value="incomingPhysicalDefending">我防禦時怪物普攻</option><option value="incomingPhysicalSkill">怪物物理技能打我</option><option value="incomingMagic">怪物魔法技能打我</option><option value="outgoingPhysical">我普通物攻打怪</option><option value="outgoingMagic">我魔法技能打怪</option></select><select class="attack-element">${elementOptions}</select><input class="coefficient" type="number" min="0.01" step="0.01" value="${coefficient}"><button type="button" title="刪除">×</button>`;
+    row.querySelector('.type').value=type;row.querySelector('.attack-element').value=element;
+    const syncElement=()=>{const magic=row.querySelector('.type').value==='incomingMagic'||row.querySelector('.type').value==='outgoingMagic',select=row.querySelector('.attack-element');select.disabled=!magic;if(!magic)select.value='none';else if(select.value==='none')select.value='metal';};
+    row.querySelector('.type').addEventListener('change',syncElement);syncElement();
+    row.querySelector('button').onclick=()=>row.remove();$('observations').appendChild(row);
+  }
+
+  function physicalRange(attack,defense,coefficient,cfg){
+    const raw=Math.max(1,attack-defense)*coefficient*(1-cfg.reduction/100),r=rounders[cfg.rounding];
+    return [r(raw*cfg.randomMin),r(raw*cfg.randomMax)];
+  }
+  const overcomes={metal:'wood',wood:'earth',earth:'water',water:'fire',fire:'metal'};
+  function relationCoefficient(attackElement,targetElement){
+    if(targetElement===overcomes[attackElement])return .2;
+    if(overcomes[targetElement]===attackElement)return -.2;
+    if(targetElement===attackElement)return -.1;
+    return 0;
+  }
+  function targetElementAdjustment(attackElement,targetElements){
+    const weak=targetElements[overcomes[attackElement]]||0;
+    const counterName=Object.keys(overcomes).find(key=>overcomes[key]===attackElement);
+    const counter=targetElements[counterName]||0;
+    const same=targetElements[attackElement]||0;
+    return weak/5-counter/5-same/10;
+  }
+  function magicRange(base,coefficient,cfg){
+    const value=Math.max(1,base)*coefficient*(1-cfg.reduction/100),r=rounders[cfg.rounding];
+    return [r(value*cfg.randomMin),r(value*cfg.randomMax)];
+  }
+  function predictedRange(patk,obs,cfg){
+    const effectiveDefense=obs.type==='incomingPhysicalDefending'?Math.floor(cfg.pdef*1.5):cfg.pdef;
+    return physicalRange(patk,effectiveDefense,1,cfg);
+  }
+
+  function calculate(){
+    const cfg={patk:numeric('patk'),matk:numeric('matk'),pdef:numeric('pdef'),mdef:numeric('mdef'),randomMin:numeric('randomMin'),randomMax:numeric('randomMax'),reduction:numeric('reduction'),rounding:$('rounding').value,searchMax:Math.floor(numeric('searchMax')),monsterElement:$('monsterElement').value,elementMax:Math.floor(numeric('elementMax')),playerElements:{metal:numeric('metal'),wood:numeric('wood'),water:numeric('water'),fire:numeric('fire'),earth:numeric('earth')}};
+    const obs=[...document.querySelectorAll('.obs')].map(row=>({damage:Number(row.querySelector('.damage').value),type:row.querySelector('.type').value,element:row.querySelector('.attack-element').value,coefficient:Number(row.querySelector('.coefficient').value)})).filter(x=>x.damage>0);
+    const invalid=Object.values(cfg).some(v=>typeof v==='number'&&!Number.isFinite(v))||cfg.randomMin<=0||cfg.randomMax<cfg.randomMin||cfg.reduction<0||cfg.reduction>=100||cfg.searchMax<1;
+    if(!obs.length||invalid){$('answer').textContent='輸入不完整';$('status').innerHTML='<span class="bad">請檢查傷害、倍率、隨機範圍與搜尋上限。</span>';return;}
+    const normalIncoming=obs.filter(x=>x.type==='incomingPhysicalNormal'||x.type==='incomingPhysicalDefending'),physicalOutgoing=obs.filter(x=>x.type==='outgoingPhysical'),magicOutgoing=obs.filter(x=>x.type==='outgoingMagic'),magicIncoming=obs.filter(x=>x.type==='incomingMagic'),physicalSkills=obs.filter(x=>x.type==='incomingPhysicalSkill');
+    const candidates=[];
+    for(let attack=0;attack<=cfg.searchMax;attack++){
+      if(normalIncoming.every(o=>{const [lo,hi]=predictedRange(attack,o,cfg);return o.damage>=lo&&o.damage<=hi;}))candidates.push(attack);
+    }
+    const pdefCandidates=[];for(let d=0;d<=cfg.searchMax;d++)if(physicalOutgoing.every(o=>{const [lo,hi]=physicalRange(cfg.patk,d,o.coefficient,{...cfg,reduction:0,defending:1});return o.damage>=lo&&o.damage<=hi;}))pdefCandidates.push(d);
+    const magicPairs=[];if(magicOutgoing.length)for(let e=0;e<=cfg.elementMax;e++)for(let d=0;d<=cfg.searchMax;d++){if(magicOutgoing.every(o=>{const ownSame=cfg.playerElements[o.element]/5,base=cfg.matk+ownSame-d+relationCoefficient(o.element,cfg.monsterElement)*e,[lo,hi]=magicRange(base,o.coefficient,{...cfg,reduction:0});return o.damage>=lo&&o.damage<=hi;})){magicPairs.push([d,e]);if(magicPairs.length>20000)break;}if(magicPairs.length>20000)break;}
+    const possibleElements=magicPairs.length?[...new Set(magicPairs.map(x=>x[1]))]:Array.from({length:cfg.elementMax+1},(_,i)=>i),matkCandidates=[];
+    if(magicIncoming.length)for(let a=0;a<=cfg.searchMax;a++){if(possibleElements.some(e=>magicIncoming.every(o=>{const attackerSame=o.element===cfg.monsterElement?e/5:0,playerEffect=targetElementAdjustment(o.element,cfg.playerElements),base=a+attackerSame+playerEffect-cfg.mdef,[lo,hi]=magicRange(base,o.coefficient,cfg);return o.damage>=lo&&o.damage<=hi;})))matkCandidates.push(a);}
+    const show=(id,list)=>$(id).textContent=!list.length?'－':list.length===1?list[0]:`${list[0]}–${list[list.length-1]}`;
+    show('monsterPatk',normalIncoming.length?candidates:[]);show('monsterPdef',physicalOutgoing.length?pdefCandidates:[]);show('monsterMatk',matkCandidates);
+    const mdefs=[...new Set(magicPairs.map(x=>x[0]))].sort((a,b)=>a-b),elems=[...new Set(magicPairs.map(x=>x[1]))].sort((a,b)=>a-b);show('monsterMdef',mdefs);show('monsterElemValue',elems);
+    const skillResults=physicalSkills.map((o,i)=>{if(!normalIncoming.length||!candidates.length)return `物理技能 ${i+1}：需先提供怪物普通物攻`;const bases=candidates.map(a=>{const normal=Math.max(1,a-cfg.pdef);return Math.max(0,Math.round(o.damage/o.coefficient/(1-cfg.reduction/100)-normal));});return `物理技能 ${i+1} 基礎威力候選：${Math.min(...bases)}${Math.min(...bases)===Math.max(...bases)?'':'–'+Math.max(...bases)}`;});
+    $('status').innerHTML='<span class="ok">已依目前公式分別計算有觀測資料的項目。</span>';
+    $('candidateList').innerHTML=skillResults.join('<br>')+(magicPairs.length?`<br>魔防／五行聯立候選組數：${magicPairs.length}`:'');
+    $('audit').innerHTML=`<li>共使用 ${obs.length} 筆正常、未爆擊傷害。</li><li>防禦觀測依目前兩組實測使用物防 × 1.5。</li><li>怪物物攻只由普通物攻打我計算；物理技能只計算技能基礎威力。</li><li>怪物魔防與五行值以我方魔法傷害聯立。</li><li>公式未經台版官方完整驗證前，結果仍屬候選證據。</li>`;
+    save();
+  }
+
+  function save(){const state={};savedIds.forEach(id=>state[id]=$(id).value);localStorage.setItem('god2MonsterAttackCalculatorV2',JSON.stringify(state));}
+  try{const state=JSON.parse(localStorage.getItem('god2MonsterAttackCalculatorV2'));if(state)savedIds.forEach(id=>{if(state[id]!==undefined)$(id).value=state[id]});}catch{}
+  $('add').onclick=()=>addObservation();$('calculate').onclick=calculate;$('reset').onclick=()=>{$('observations').innerHTML='';addObservation();['monsterPatk','monsterMatk','monsterPdef','monsterMdef','monsterElemValue'].forEach(id=>$(id).textContent='－');$('status').textContent='輸入至少一筆大於 0 的正常傷害。';$('candidateList').textContent='';};
+  savedIds.forEach(id=>$(id).addEventListener('change',save));addObservation();
+</script>
+</body>
+</html>

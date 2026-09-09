@@ -1,0 +1,318 @@
+﻿[
+  {
+    "ClusterId": "cluster-063D35278A20",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 72,
+    "Prefix": "sha256:6924607093FA",
+    "FirstSeen": "22353",
+    "LastSeen": "22353",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-264.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-2738EC400E61",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 71,
+    "Prefix": "sha256:A4F68D3EF95D",
+    "FirstSeen": "9945",
+    "LastSeen": "9945",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-128.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-770F1E502E60",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 6,
+    "Prefix": "sha256:5D9E872AE4E3",
+    "FirstSeen": "2797",
+    "LastSeen": "2797",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-76.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-797ABFD32DCB",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 41,
+    "Prefix": "sha256:837DF268D855",
+    "FirstSeen": "8295",
+    "LastSeen": "8295",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-115.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-84194B41AAF5",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 19,
+    "Prefix": "sha256:BC69ABAA2C31",
+    "FirstSeen": "0",
+    "LastSeen": "0",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-54.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-99A4C337D56D",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 208,
+    "Prefix": "sha256:03088CA0BB0B",
+    "FirstSeen": "108",
+    "LastSeen": "108",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Login"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-66.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-9C10432B5FEB",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 19,
+    "Prefix": "sha256:F59FB262D121",
+    "FirstSeen": "7970",
+    "LastSeen": "7970",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-92.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-AFB0FB6278D7",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 208,
+    "Prefix": "sha256:2EB431709BBD",
+    "FirstSeen": "8085",
+    "LastSeen": "8085",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Login"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-104.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-C2B2BDC1566D",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 8,
+    "Prefix": "sha256:4D6648A4DD48",
+    "FirstSeen": "37143",
+    "LastSeen": "37143",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-820.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-C38FB11E66FF",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 8,
+    "Prefix": "sha256:C95767C5C336",
+    "FirstSeen": "112939",
+    "LastSeen": "112939",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-1398.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-DEC6EAA4C8E0",
+    "SampleCount": 2,
+    "Direction": "ClientToServer",
+    "FrameLength": 37,
+    "Prefix": "sha256:B8E306BFB624",
+    "FirstSeen": "196073",
+    "LastSeen": "219189",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-4948.0",
+      "sensitive/trace.bin#seq-7777.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-DF0D4A5F13DF",
+    "SampleCount": 4,
+    "Direction": "ClientToServer",
+    "FrameLength": 8,
+    "Prefix": "sha256:94A79487CE4B",
+    "FirstSeen": "22256",
+    "LastSeen": "114940",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Medium",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-252.0",
+      "sensitive/trace.bin#seq-1055.0",
+      "sensitive/trace.bin#seq-1418.0",
+      "sensitive/trace.bin#seq-1442.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  },
+  {
+    "ClusterId": "cluster-F315D63A6FAA",
+    "SampleCount": 1,
+    "Direction": "ClientToServer",
+    "FrameLength": 37,
+    "Prefix": "sha256:0E8A6319FD53",
+    "FirstSeen": "467405",
+    "LastSeen": "467405",
+    "AssociatedActions": [
+      "Unmarked"
+    ],
+    "AssociatedStates": [
+      "Unknown"
+    ],
+    "CandidateFamilies": [
+      "Unknown"
+    ],
+    "Confidence": "Low",
+    "RawReferences": [
+      "sensitive/trace.bin#seq-39098.0"
+    ],
+    "ExclusionReason": "ActionableUnknown",
+    "NextRequiredControlledAction": "Controlled action capture with explicit marker and state snapshot."
+  }
+]

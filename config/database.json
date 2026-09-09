@@ -1,0 +1,30 @@
+{
+    "_comment": "MariaDB 資料庫設定；MariaDB 是正式服務端資料的唯一權威來源。",
+    "_version": "1.1",
+    "_example": {
+        "host": "127.0.0.1",
+        "port": 3306,
+        "databaseName": "god2",
+        "username": "god2_server",
+        "password": "",
+        "passwordSource": "EnvironmentVariable",
+        "passwordEnvironmentVariable": "GOD2_DB_PASSWORD",
+        "connectionTimeoutSeconds": 2
+    },
+    "host": "127.0.0.1",
+    "_host": "用途：MariaDB 主機 IP 或 DNS 名稱。預設值：127.0.0.1。可接受範圍：可連線的 IP 或主機名稱。是否需要重新啟動：是。影響：設定錯誤會讓 Server 無法連線資料庫並停止 Ready。",
+    "port": 3306,
+    "_port": "用途：MariaDB 連線 Port。預設值：3306。可接受範圍：1 到 65535。是否需要重新啟動：是。影響：設定錯誤會造成資料庫連線失敗。",
+    "databaseName": "god2",
+    "_databaseName": "用途：正式服務端連線資料庫名稱。預設值：god2。可接受範圍：目前固定使用 god2；此 schema 是連線入口與戰鬥 runtime schema。說明：正式靜態資料在 god2_game，玩家資料在 god2_player，管理/驗證資料在 god2_game_meta，研究證據在 god2_research。是否需要重新啟動：是。影響：改錯會讓 migration 版本與 runtime 狀態表找不到。",
+    "username": "god2_server",
+    "_username": "用途：God2 Classic Server 使用的 MariaDB 帳號。預設值：god2_server。可接受範圍：MariaDB 內存在且具必要權限的帳號。是否需要重新啟動：是。影響：帳號或權限錯誤會使 bootstrap、migration 或 import 失敗。",
+    "password": "",
+    "_password": "用途：當 passwordSource 為 ConfigValue 時提供 MariaDB 密碼；EnvironmentVariable 模式應保持空白。預設值：空字串。可接受範圍：空字串或合法 MariaDB 密碼。是否需要重新啟動：是。影響：不得輸出到日誌或 artifact。",
+    "passwordSource": "EnvironmentVariable",
+    "_passwordSource": "用途：決定資料庫密碼解析來源。預設值：EnvironmentVariable。可接受範圍：EnvironmentVariable、ConfigValue。是否需要重新啟動：是。影響：來源設定不符會使密碼解析 fail-closed。",
+    "passwordEnvironmentVariable": "GOD2_DB_PASSWORD",
+    "_passwordEnvironmentVariable": "用途：EnvironmentVariable 模式讀取 MariaDB 密碼的環境變數名稱。預設值：GOD2_DB_PASSWORD。可接受範圍：非空白的合法環境變數名稱。是否需要重新啟動：是。影響：名稱錯誤會使密碼解析 fail-closed。",
+    "connectionTimeoutSeconds": 2,
+    "_connectionTimeoutSeconds": "用途：MariaDB 連線逾時秒數。預設值：2。可接受範圍：1 到 60。是否需要重新啟動：是。影響：數值過低可能造成慢速連線失敗；過高會延長故障等待時間。"
+}

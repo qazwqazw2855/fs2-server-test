@@ -1,0 +1,10 @@
+﻿{
+    "active":  true,
+    "sessionId":  "battle-live-20260811-074807-801817a2",
+    "sessionDir":  "C:\\Users\\SeiHo\\AppData\\Local\\God2Classic\\PacketCapture\\Sessions\\Codex\\battle-live-20260811-074807-801817a2",
+    "clientPid":  4120,
+    "workerPid":  12740,
+    "stopEvent":  "Local\\God2SemanticRecovery.OfficialHeadlessStop.801817a2427145f08b97ab1439c797aa",
+    "observeSeconds":  600,
+    "startedAtUtc":  "2026-08-10T23:48:08.4875823+00:00"
+}

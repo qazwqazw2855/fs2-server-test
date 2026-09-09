@@ -1,0 +1,1656 @@
+{
+  "SchemaVersion": "packet-reader-writer-model-v1",
+  "ClientBuildId": "god2-opt-6b127086e0c0",
+  "Inbound": {
+    "FramingReaderRva": "0x0007C0B0",
+    "DecodeRva": "0x00078D70",
+    "LengthPrefix": "UInt16LittleEndian",
+    "Checksum": "sum(payload)\u002B0x3C compared with final byte",
+    "Encryption": "rolling previous-byte plus build-local key table; conditional",
+    "Compression": "signed-length flag with RLE control byte 0xC0 and low-six-bit repeat count",
+    "StateDispatch": [
+      {
+        "State": "Login",
+        "DispatchKind": "IndexedJumpTable",
+        "FunctionRva": "0x0007E8F0",
+        "JumpRva": "0x0007E95B",
+        "TableRva": "0x0007EDDC",
+        "IndexTableRva": "0x0007EDF8",
+        "OpcodeCount": 27,
+        "UniqueHandlerCount": 7,
+        "DefaultHandlerRva": "0x0007EB83",
+        "DefaultOpcodeCount": 21
+      },
+      {
+        "State": "World",
+        "DispatchKind": "DirectJumpTable",
+        "FunctionRva": "0x0008E490",
+        "JumpRva": "0x0008E536",
+        "TableRva": "0x000911A8",
+        "OpcodeCount": 254,
+        "UniqueHandlerCount": 199,
+        "DefaultHandlerRva": "0x0008F281",
+        "DefaultOpcodeCount": 48
+      },
+      {
+        "State": "Battle",
+        "DispatchKind": "IndexedJumpTable",
+        "FunctionRva": "0x00146E00",
+        "JumpRva": "0x00146E80",
+        "TableRva": "0x001474AC",
+        "IndexTableRva": "0x001475A8",
+        "OpcodeCount": 252,
+        "UniqueHandlerCount": 62,
+        "DefaultHandlerRva": "0x00147116",
+        "DefaultOpcodeCount": 184
+      }
+    ]
+  },
+  "Outbound": {
+    "FrameBuilderRva": "0x00078EA0",
+    "ContextWriterRva": "0x00078F40",
+    "OpcodeFrameBuilderRva": "0x0007C2B0",
+    "OpcodeLengthTableVa": "0x00894090",
+    "TransportWriteCallerRva": "0x0007BB68",
+    "Policies": [
+      {
+        "Opcode": "0x00",
+        "Kind": "Fixed",
+        "RawPolicy": 205,
+        "FixedFrameLength": 205,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x01",
+        "Kind": "Fixed",
+        "RawPolicy": 205,
+        "FixedFrameLength": 205,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x02",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x03",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x04",
+        "Kind": "Fixed",
+        "RawPolicy": 205,
+        "FixedFrameLength": 205,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x05",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x06",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x07",
+        "Kind": "Fixed",
+        "RawPolicy": 205,
+        "FixedFrameLength": 205,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x08",
+        "Kind": "Fixed",
+        "RawPolicy": 205,
+        "FixedFrameLength": 205,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x09",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0A",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0B",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0C",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0D",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0E",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x0F",
+        "Kind": "Fixed",
+        "RawPolicy": 33,
+        "FixedFrameLength": 33,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x10",
+        "Kind": "Fixed",
+        "RawPolicy": 33,
+        "FixedFrameLength": 33,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x11",
+        "Kind": "Fixed",
+        "RawPolicy": 37,
+        "FixedFrameLength": 37,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x12",
+        "Kind": "Fixed",
+        "RawPolicy": 37,
+        "FixedFrameLength": 37,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x13",
+        "Kind": "Fixed",
+        "RawPolicy": 37,
+        "FixedFrameLength": 37,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x14",
+        "Kind": "Fixed",
+        "RawPolicy": 37,
+        "FixedFrameLength": 37,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x15",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x16",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x17",
+        "Kind": "Fixed",
+        "RawPolicy": 45,
+        "FixedFrameLength": 45,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x18",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x19",
+        "Kind": "Fixed",
+        "RawPolicy": 54,
+        "FixedFrameLength": 54,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1A",
+        "Kind": "Fixed",
+        "RawPolicy": 38,
+        "FixedFrameLength": 38,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1B",
+        "Kind": "Fixed",
+        "RawPolicy": 45,
+        "FixedFrameLength": 45,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1C",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1D",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1E",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x1F",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x20",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x21",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x22",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x23",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x24",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x25",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x26",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x27",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x28",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x29",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2A",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2B",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2C",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2D",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2E",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x2F",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x30",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x31",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x32",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x33",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x34",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x35",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x36",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x37",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x38",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x39",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3A",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3B",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3C",
+        "Kind": "Fixed",
+        "RawPolicy": 37,
+        "FixedFrameLength": 37,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3D",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3E",
+        "Kind": "Fixed",
+        "RawPolicy": 33,
+        "FixedFrameLength": 33,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x3F",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x40",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x41",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x42",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x43",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x44",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x45",
+        "Kind": "Fixed",
+        "RawPolicy": 41,
+        "FixedFrameLength": 41,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x46",
+        "Kind": "Fixed",
+        "RawPolicy": 33,
+        "FixedFrameLength": 33,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x47",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x48",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x49",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4A",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4B",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4C",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4D",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4E",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x4F",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x50",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x51",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x52",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x53",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x54",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x55",
+        "Kind": "Fixed",
+        "RawPolicy": 33,
+        "FixedFrameLength": 33,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x56",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x57",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x58",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x59",
+        "Kind": "Fixed",
+        "RawPolicy": 19,
+        "FixedFrameLength": 19,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5A",
+        "Kind": "Fixed",
+        "RawPolicy": 19,
+        "FixedFrameLength": 19,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5B",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5C",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5D",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5E",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x5F",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x60",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x61",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x62",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x63",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x64",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x65",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x66",
+        "Kind": "Fixed",
+        "RawPolicy": 4,
+        "FixedFrameLength": 4,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x67",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x68",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x69",
+        "Kind": "Fixed",
+        "RawPolicy": 45,
+        "FixedFrameLength": 45,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6A",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6B",
+        "Kind": "Fixed",
+        "RawPolicy": 4,
+        "FixedFrameLength": 4,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6C",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6D",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6E",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x6F",
+        "Kind": "Fixed",
+        "RawPolicy": 23,
+        "FixedFrameLength": 23,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x70",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x71",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x72",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x73",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x74",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x75",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x76",
+        "Kind": "Fixed",
+        "RawPolicy": 18,
+        "FixedFrameLength": 18,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x77",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x78",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x79",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7A",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7B",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7C",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7D",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7E",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x7F",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x80",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x81",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x82",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x83",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x84",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x85",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x86",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x87",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x88",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x89",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8A",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8B",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8C",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8D",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8E",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x8F",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x90",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x91",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x92",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x93",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x94",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x95",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x96",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x97",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x98",
+        "Kind": "Fixed",
+        "RawPolicy": 13,
+        "FixedFrameLength": 13,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x99",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9A",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9B",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9C",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9D",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9E",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0x9F",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA0",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA1",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA2",
+        "Kind": "Fixed",
+        "RawPolicy": 7,
+        "FixedFrameLength": 7,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA3",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA4",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA5",
+        "Kind": "Fixed",
+        "RawPolicy": 11,
+        "FixedFrameLength": 11,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA6",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA7",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA8",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xA9",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAA",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAB",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAC",
+        "Kind": "Fixed",
+        "RawPolicy": 13,
+        "FixedFrameLength": 13,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAD",
+        "Kind": "Fixed",
+        "RawPolicy": 13,
+        "FixedFrameLength": 13,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAE",
+        "Kind": "Fixed",
+        "RawPolicy": 13,
+        "FixedFrameLength": 13,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xAF",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB0",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB1",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB2",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB3",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB4",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB5",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB6",
+        "Kind": "Fixed",
+        "RawPolicy": 19,
+        "FixedFrameLength": 19,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB7",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB8",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xB9",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBA",
+        "Kind": "Fixed",
+        "RawPolicy": 13,
+        "FixedFrameLength": 13,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBB",
+        "Kind": "Fixed",
+        "RawPolicy": 85,
+        "FixedFrameLength": 85,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBC",
+        "Kind": "Fixed",
+        "RawPolicy": 121,
+        "FixedFrameLength": 121,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBD",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBE",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xBF",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC0",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC1",
+        "Kind": "Fixed",
+        "RawPolicy": 17,
+        "FixedFrameLength": 17,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC2",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC3",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC4",
+        "Kind": "Fixed",
+        "RawPolicy": 49,
+        "FixedFrameLength": 49,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC5",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC6",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC7",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC8",
+        "Kind": "Fixed",
+        "RawPolicy": 29,
+        "FixedFrameLength": 29,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xC9",
+        "Kind": "Fixed",
+        "RawPolicy": 41,
+        "FixedFrameLength": 41,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCA",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCB",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCC",
+        "Kind": "Fixed",
+        "RawPolicy": 18,
+        "FixedFrameLength": 18,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCD",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCE",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xCF",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD0",
+        "Kind": "Fixed",
+        "RawPolicy": 121,
+        "FixedFrameLength": 121,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD1",
+        "Kind": "Fixed",
+        "RawPolicy": 3,
+        "FixedFrameLength": 3,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD2",
+        "Kind": "Fixed",
+        "RawPolicy": 121,
+        "FixedFrameLength": 121,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD3",
+        "Kind": "Fixed",
+        "RawPolicy": 25,
+        "FixedFrameLength": 25,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD4",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD5",
+        "Kind": "Variable",
+        "RawPolicy": -2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD6",
+        "Kind": "Fixed",
+        "RawPolicy": 4,
+        "FixedFrameLength": 4,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD7",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD8",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xD9",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDA",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDB",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDC",
+        "Kind": "Fixed",
+        "RawPolicy": 4,
+        "FixedFrameLength": 4,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDD",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDE",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xDF",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xE0",
+        "Kind": "Fixed",
+        "RawPolicy": 21,
+        "FixedFrameLength": 21,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xE1",
+        "Kind": "Fixed",
+        "RawPolicy": 5,
+        "FixedFrameLength": 5,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xE2",
+        "Kind": "Fixed",
+        "RawPolicy": 9,
+        "FixedFrameLength": 9,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xE3",
+        "Kind": "Fixed",
+        "RawPolicy": 61,
+        "FixedFrameLength": 61,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      },
+      {
+        "Opcode": "0xE4",
+        "Kind": "Fixed",
+        "RawPolicy": 2,
+        "FixedFrameLength": 2,
+        "Evidence": "Read-only runtime table VA 0x00894090 (within the captured 0x00893F90 context window); no client memory writes."
+      }
+    ]
+  },
+  "Safety": {
+    "ClientWriteAccessUsed": false,
+    "ClientBinaryModified": false,
+    "ProductionBytesEmitted": false
+  }
+}

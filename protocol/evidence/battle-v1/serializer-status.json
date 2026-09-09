@@ -1,0 +1,134 @@
+{
+    "schemaVersion":  1,
+    "currentBuildId":  "god2-opt-6b127086e0c0",
+    "registeredProductionBattleSerializers":  0,
+    "fakeNetworkBytes":  0,
+    "families":  [
+                     {
+                         "family":  "EncounterTrigger",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "BattleEnter",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "Formation",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "PlayerSpawn",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "PetSpawn",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "EnemySpawn",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "RoundStart",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "CommandWindow",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "ActionConfirmation",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "ActionStart",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "Damage",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "Healing",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "StatusApplyRemove",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "DeathRevive",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "RoundEnd",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "BattleEnd",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "Reward",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "WorldResume",
+                         "status":  "SerializerBlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "clientAcceptanceCount":  0,
+                         "productionRegistered":  false
+                     }
+                 ]
+}

@@ -1,0 +1,471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/native-semantic-wire-verification-v1.schema.json",
+  "title": "God2 native semantic wire verification v1",
+  "$comment": "Closed PASS evidence emitted by the final release reader for the immutable 25-line DLL native semantic-event fixture.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaId",
+    "schemaVersion",
+    "inputPath",
+    "inputSHA256",
+    "eventTypeDigest",
+    "inputLineCount",
+    "allEventTypesUnique",
+    "passed",
+    "totals",
+    "rows",
+    "error"
+  ],
+  "properties": {
+    "schemaId": { "const": "God2NativeSemanticWireVerification" },
+    "schemaVersion": { "const": 1 },
+    "inputPath": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._-]+\\.jsonl$"
+    },
+    "inputSHA256": { "$ref": "#/$defs/sha256" },
+    "eventTypeDigest": {
+      "const": "A354EB5BB9E7632C8712DA37E6DADDFEC1ED8ED0984C38E2FCBB32C100C6958C"
+    },
+    "inputLineCount": { "const": 25 },
+    "allEventTypesUnique": { "const": true },
+    "passed": { "const": true },
+    "totals": { "$ref": "#/$defs/totals" },
+    "rows": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "prefixItems": [
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 1 },
+                "definitionIndex": { "const": 0 },
+                "eventType": { "const": "PacketBoundary" },
+                "dispatchSink": { "const": "ProtocolRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 2 },
+                "definitionIndex": { "const": 1 },
+                "eventType": { "const": "ParserRead" },
+                "dispatchSink": { "const": "ProtocolRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 3 },
+                "definitionIndex": { "const": 2 },
+                "eventType": { "const": "SerializerWrite" },
+                "dispatchSink": { "const": "ProtocolRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 4 },
+                "definitionIndex": { "const": 3 },
+                "eventType": { "const": "HandlerInvocation" },
+                "dispatchSink": { "const": "ProtocolRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 5 },
+                "definitionIndex": { "const": 4 },
+                "eventType": { "const": "HandlerArgument" },
+                "dispatchSink": { "const": "ProtocolRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 6 },
+                "definitionIndex": { "const": 5 },
+                "eventType": { "const": "ObjectAllocated" },
+                "dispatchSink": { "const": "ObjectRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 7 },
+                "definitionIndex": { "const": 6 },
+                "eventType": { "const": "ObjectDestroyed" },
+                "dispatchSink": { "const": "ObjectRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 8 },
+                "definitionIndex": { "const": 7 },
+                "eventType": { "const": "ObjectResolved" },
+                "dispatchSink": { "const": "ObjectRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 9 },
+                "definitionIndex": { "const": 8 },
+                "eventType": { "const": "ObjectLookup" },
+                "dispatchSink": { "const": "ObjectRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 10 },
+                "definitionIndex": { "const": 9 },
+                "eventType": { "const": "RegistryLocated" },
+                "dispatchSink": { "const": "RegistryRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 11 },
+                "definitionIndex": { "const": 10 },
+                "eventType": { "const": "RegistryEnumerated" },
+                "dispatchSink": { "const": "RegistryRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 12 },
+                "definitionIndex": { "const": 11 },
+                "eventType": { "const": "ResourceRead" },
+                "dispatchSink": { "const": "ResourceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 13 },
+                "definitionIndex": { "const": 12 },
+                "eventType": { "const": "ResourceDecoded" },
+                "dispatchSink": { "const": "ResourceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 14 },
+                "definitionIndex": { "const": 13 },
+                "eventType": { "const": "ResourceDeserialized" },
+                "dispatchSink": { "const": "ResourceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 15 },
+                "definitionIndex": { "const": 14 },
+                "eventType": { "const": "StateMutation" },
+                "dispatchSink": { "const": "MutationRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 16 },
+                "definitionIndex": { "const": 15 },
+                "eventType": { "const": "TaintSeed" },
+                "dispatchSink": { "const": "ValueProvenanceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 17 },
+                "definitionIndex": { "const": 16 },
+                "eventType": { "const": "TaintPropagation" },
+                "dispatchSink": { "const": "ValueProvenanceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 18 },
+                "definitionIndex": { "const": 17 },
+                "eventType": { "const": "ValueFlow" },
+                "dispatchSink": { "const": "ValueProvenanceRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 19 },
+                "definitionIndex": { "const": 18 },
+                "eventType": { "const": "FormulaOperand" },
+                "dispatchSink": { "const": "FormulaRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 20 },
+                "definitionIndex": { "const": 19 },
+                "eventType": { "const": "FormulaResult" },
+                "dispatchSink": { "const": "FormulaRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 21 },
+                "definitionIndex": { "const": 20 },
+                "eventType": { "const": "FunctionRoleCandidate" },
+                "dispatchSink": { "const": "CandidateLedger" },
+                "promotionPolicy": { "const": "NoPromotion" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 22 },
+                "definitionIndex": { "const": 21 },
+                "eventType": { "const": "UIAnchor" },
+                "dispatchSink": { "const": "ContentRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 23 },
+                "definitionIndex": { "const": 22 },
+                "eventType": { "const": "SnapshotObject" },
+                "dispatchSink": { "const": "SnapshotRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 24 },
+                "definitionIndex": { "const": 23 },
+                "eventType": { "const": "SnapshotEdge" },
+                "dispatchSink": { "const": "SnapshotRecovery" },
+                "promotionPolicy": { "const": "StandardEvidenceGates" }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/verificationRow" },
+            {
+              "properties": {
+                "wireLine": { "const": 25 },
+                "definitionIndex": { "const": 24 },
+                "eventType": { "const": "ProbeDiagnostic" },
+                "dispatchSink": { "const": "DiagnosticLedger" },
+                "promotionPolicy": { "const": "NoPromotion" }
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "error": { "const": "" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readerAcceptedCount",
+        "sourceTokenBoundCount",
+        "fixturePayloadBoundCount",
+        "authorityFailClosedCount",
+        "dispatchCount",
+        "roundTripCount",
+        "corruptionRejectedCount",
+        "versionRejectedCount",
+        "promotionPolicyCount"
+      ],
+      "properties": {
+        "readerAcceptedCount": { "const": 25 },
+        "sourceTokenBoundCount": { "const": 25 },
+        "fixturePayloadBoundCount": { "const": 25 },
+        "authorityFailClosedCount": { "const": 25 },
+        "dispatchCount": { "const": 25 },
+        "roundTripCount": { "const": 25 },
+        "corruptionRejectedCount": { "const": 25 },
+        "versionRejectedCount": { "const": 25 },
+        "promotionPolicyCount": { "const": 25 }
+      }
+    },
+    "verificationRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wireLine",
+        "definitionIndex",
+        "eventType",
+        "readerAccepted",
+        "sourceTokenBound",
+        "fixturePayloadBound",
+        "authorityFailClosed",
+        "dispatchPassed",
+        "roundTripPassed",
+        "corruptionRejected",
+        "versionRejected",
+        "promotionPolicyPassed",
+        "dispatchSink",
+        "promotionPolicy"
+      ],
+      "properties": {
+        "wireLine": { "type": "integer", "minimum": 1, "maximum": 25 },
+        "definitionIndex": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "eventType": {
+          "enum": ["PacketBoundary","ParserRead","SerializerWrite","HandlerInvocation","HandlerArgument","ObjectAllocated","ObjectDestroyed","ObjectResolved","ObjectLookup","RegistryLocated","RegistryEnumerated","ResourceRead","ResourceDecoded","ResourceDeserialized","StateMutation","TaintSeed","TaintPropagation","ValueFlow","FormulaOperand","FormulaResult","FunctionRoleCandidate","UIAnchor","SnapshotObject","SnapshotEdge","ProbeDiagnostic"]
+        },
+        "readerAccepted": { "const": true },
+        "sourceTokenBound": { "const": true },
+        "fixturePayloadBound": { "const": true },
+        "authorityFailClosed": { "const": true },
+        "dispatchPassed": { "const": true },
+        "roundTripPassed": { "const": true },
+        "corruptionRejected": { "const": true },
+        "versionRejected": { "const": true },
+        "promotionPolicyPassed": { "const": true },
+        "dispatchSink": {
+          "enum": ["ProtocolRecovery","ObjectRecovery","RegistryRecovery","ResourceRecovery","MutationRecovery","ValueProvenanceRecovery","FormulaRecovery","CandidateLedger","ContentRecovery","SnapshotRecovery","DiagnosticLedger"]
+        },
+        "promotionPolicy": {
+          "enum": ["StandardEvidenceGates", "NoPromotion"]
+        }
+      }
+    }
+  }
+}
+

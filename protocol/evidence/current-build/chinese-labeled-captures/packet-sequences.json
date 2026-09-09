@@ -1,0 +1,2337 @@
+[
+  {
+    "captureSessionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A",
+    "expectedSequenceCandidates": [
+      "BattleEnter",
+      "CommandWindow",
+      "BasicAttack",
+      "ActionEffect",
+      "BattleSettlement",
+      "CharacterLevelUp"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-001",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 73,
+        "endSequence": 73,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-002",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 74,
+        "endSequence": 81,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-003",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 82,
+        "endSequence": 84,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-004",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 87,
+        "endSequence": 91,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-005",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 94,
+        "endSequence": 95,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-006",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 96,
+        "endSequence": 100,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-007",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 103,
+        "endSequence": 114,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-008",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 115,
+        "endSequence": 130,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-009",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 133,
+        "endSequence": 134,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-010",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 135,
+        "endSequence": 139,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-011",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 142,
+        "endSequence": 156,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-012",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 157,
+        "endSequence": 158,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/tx-013",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 161,
+        "endSequence": 258,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 9,
+    "heartbeatExcludedCount": 15,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-042033-\u5C40\u5916\u5730\u5716\u6CBB\u7642",
+    "expectedSequenceCandidates": [
+      "WorldIdle",
+      "HealTrigger",
+      "HealResult",
+      "WorldResume"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-042033-\u5C40\u5916\u5730\u5716\u6CBB\u7642/tx-001",
+        "labelCandidate": "OutOfCombatHeal",
+        "startSequence": 1,
+        "endSequence": 183,
+        "directionPattern": "No actionable outbound frame survived infrastructure and connection exclusion.",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 7,
+    "heartbeatExcludedCount": 13,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272",
+    "expectedSequenceCandidates": [
+      "CharacterList",
+      "CharacterDelete",
+      "CharacterListRefresh",
+      "CharacterCreate",
+      "CharacterListRefresh"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/tx-001",
+        "labelCandidate": "CharacterDelete",
+        "startSequence": 4,
+        "endSequence": 39,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "LoginAuthenticationCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/tx-002",
+        "labelCandidate": "CharacterDelete",
+        "startSequence": 42,
+        "endSequence": 52,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/tx-003",
+        "labelCandidate": "CharacterCreate",
+        "startSequence": 53,
+        "endSequence": 84,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "CharacterCreateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/tx-004",
+        "labelCandidate": "CharacterCreate",
+        "startSequence": 87,
+        "endSequence": 103,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 0,
+    "heartbeatExcludedCount": 11,
+    "auxiliaryConnectionExcludedCount": 16
+  },
+  {
+    "captureSessionId": "host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9",
+    "expectedSequenceCandidates": [
+      "CraftRequest",
+      "InventoryUpdate",
+      "QuestSubmit",
+      "QuestProgressOrCompletion"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/tx-001",
+        "labelCandidate": "Crafting",
+        "startSequence": 9,
+        "endSequence": 51,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "QuestSubmitCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/tx-002",
+        "labelCandidate": "Crafting",
+        "startSequence": 52,
+        "endSequence": 60,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "QuestSubmitCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/tx-003",
+        "labelCandidate": "QuestSubmitAfterCrafting",
+        "startSequence": 61,
+        "endSequence": 90,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "QuestSubmitCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 4,
+    "heartbeatExcludedCount": 52,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB",
+    "expectedSequenceCandidates": [
+      "PortalTrigger",
+      "WorldDetach",
+      "MapInitialization",
+      "WorldResume"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-001",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 18,
+        "endSequence": 26,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-002",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 29,
+        "endSequence": 36,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-003",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 39,
+        "endSequence": 48,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-004",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 51,
+        "endSequence": 61,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-005",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 64,
+        "endSequence": 71,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/tx-006",
+        "labelCandidate": "PortalMapTransfer",
+        "startSequence": 74,
+        "endSequence": 93,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PortalMapTransferCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 8,
+    "heartbeatExcludedCount": 30,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5",
+    "expectedSequenceCandidates": [
+      "MountEquip",
+      "AppearanceState",
+      "MountUnequip",
+      "AppearanceState",
+      "MovementExcluded"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-001",
+        "labelCandidate": "MountEquip",
+        "startSequence": 9,
+        "endSequence": 19,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-002",
+        "labelCandidate": "MountEquip",
+        "startSequence": 20,
+        "endSequence": 33,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-003",
+        "labelCandidate": "MountEquip",
+        "startSequence": 34,
+        "endSequence": 43,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-004",
+        "labelCandidate": "MountEquip",
+        "startSequence": 44,
+        "endSequence": 54,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-005",
+        "labelCandidate": "MountEquip",
+        "startSequence": 55,
+        "endSequence": 65,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-006",
+        "labelCandidate": "MountUnequip",
+        "startSequence": 66,
+        "endSequence": 77,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-007",
+        "labelCandidate": "MountUnequip",
+        "startSequence": 78,
+        "endSequence": 83,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-008",
+        "labelCandidate": "MountUnequip",
+        "startSequence": 84,
+        "endSequence": 95,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-009",
+        "labelCandidate": "MountUnequip",
+        "startSequence": 96,
+        "endSequence": 124,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/tx-010",
+        "labelCandidate": "MountUnequip",
+        "startSequence": 125,
+        "endSequence": 155,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "MountEquipmentCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 6,
+    "heartbeatExcludedCount": 48,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-043412-\u7372\u5F97\u795E\u4ED9",
+    "expectedSequenceCandidates": [
+      "AcquisitionTrigger",
+      "CompanionStateUpdate",
+      "InventoryOrUiUpdate"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-043412-\u7372\u5F97\u795E\u4ED9/tx-001",
+        "labelCandidate": "GodCompanionAcquisition",
+        "startSequence": 7,
+        "endSequence": 43,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "CompanionAcquisitionCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 1,
+    "heartbeatExcludedCount": 19,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5",
+    "expectedSequenceCandidates": [
+      "PetDeploy",
+      "PetState",
+      "PetWithdraw",
+      "PetWalk",
+      "PetRecall"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-001",
+        "labelCandidate": "PetDeploy",
+        "startSequence": 3,
+        "endSequence": 7,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-002",
+        "labelCandidate": "PetDeploy",
+        "startSequence": 8,
+        "endSequence": 9,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-003",
+        "labelCandidate": "PetDeploy",
+        "startSequence": 12,
+        "endSequence": 16,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-004",
+        "labelCandidate": "PetDeploy",
+        "startSequence": 17,
+        "endSequence": 18,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-005",
+        "labelCandidate": "PetWithdraw",
+        "startSequence": 21,
+        "endSequence": 25,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-006",
+        "labelCandidate": "PetWithdraw",
+        "startSequence": 26,
+        "endSequence": 27,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-007",
+        "labelCandidate": "PetWithdraw",
+        "startSequence": 30,
+        "endSequence": 35,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-008",
+        "labelCandidate": "PetWalk",
+        "startSequence": 38,
+        "endSequence": 42,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-009",
+        "labelCandidate": "PetWalk",
+        "startSequence": 43,
+        "endSequence": 47,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-010",
+        "labelCandidate": "PetWalk",
+        "startSequence": 48,
+        "endSequence": 49,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-011",
+        "labelCandidate": "PetRecall",
+        "startSequence": 52,
+        "endSequence": 56,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-012",
+        "labelCandidate": "PetRecall",
+        "startSequence": 57,
+        "endSequence": 61,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/tx-013",
+        "labelCandidate": "PetRecall",
+        "startSequence": 62,
+        "endSequence": 71,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "PetStateCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 0,
+    "heartbeatExcludedCount": 12,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA",
+    "expectedSequenceCandidates": [
+      "QuestBattleEnter",
+      "CommandWindow",
+      "FormationSkill",
+      "PositionSwap",
+      "Defend",
+      "EnemySkillEffect"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-001",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 6,
+        "endSequence": 7,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-002",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 10,
+        "endSequence": 17,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-003",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 18,
+        "endSequence": 22,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-004",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 23,
+        "endSequence": 27,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-005",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 30,
+        "endSequence": 30,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-006",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 31,
+        "endSequence": 36,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-007",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 37,
+        "endSequence": 38,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-008",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 41,
+        "endSequence": 45,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-009",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 48,
+        "endSequence": 48,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-010",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 49,
+        "endSequence": 54,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-011",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 57,
+        "endSequence": 61,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-012",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 62,
+        "endSequence": 63,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-013",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 66,
+        "endSequence": 66,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-014",
+        "labelCandidate": "QuestBattleEnter",
+        "startSequence": 67,
+        "endSequence": 72,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-015",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 73,
+        "endSequence": 74,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-016",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 77,
+        "endSequence": 85,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-017",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 86,
+        "endSequence": 90,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-018",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 91,
+        "endSequence": 92,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-019",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 95,
+        "endSequence": 95,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-020",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 96,
+        "endSequence": 100,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-021",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 103,
+        "endSequence": 108,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-022",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 111,
+        "endSequence": 119,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-023",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 122,
+        "endSequence": 126,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-024",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 127,
+        "endSequence": 128,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-025",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 131,
+        "endSequence": 140,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-026",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 141,
+        "endSequence": 142,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-027",
+        "labelCandidate": "StrategistFormationSkill",
+        "startSequence": 145,
+        "endSequence": 149,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-028",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 152,
+        "endSequence": 156,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-029",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 159,
+        "endSequence": 160,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-030",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 163,
+        "endSequence": 168,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-031",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 171,
+        "endSequence": 175,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-032",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 178,
+        "endSequence": 180,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-033",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 183,
+        "endSequence": 187,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-034",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 190,
+        "endSequence": 194,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-035",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 195,
+        "endSequence": 199,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-036",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 200,
+        "endSequence": 204,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-037",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 207,
+        "endSequence": 207,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-038",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 208,
+        "endSequence": 215,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-039",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 216,
+        "endSequence": 220,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-040",
+        "labelCandidate": "PositionSwap",
+        "startSequence": 221,
+        "endSequence": 225,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-041",
+        "labelCandidate": "Defend",
+        "startSequence": 228,
+        "endSequence": 228,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-042",
+        "labelCandidate": "Defend",
+        "startSequence": 229,
+        "endSequence": 237,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-043",
+        "labelCandidate": "Defend",
+        "startSequence": 238,
+        "endSequence": 239,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-044",
+        "labelCandidate": "Defend",
+        "startSequence": 242,
+        "endSequence": 250,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-045",
+        "labelCandidate": "Defend",
+        "startSequence": 251,
+        "endSequence": 255,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-046",
+        "labelCandidate": "Defend",
+        "startSequence": 256,
+        "endSequence": 257,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-047",
+        "labelCandidate": "Defend",
+        "startSequence": 258,
+        "endSequence": 266,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-048",
+        "labelCandidate": "Defend",
+        "startSequence": 269,
+        "endSequence": 276,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-049",
+        "labelCandidate": "Defend",
+        "startSequence": 277,
+        "endSequence": 285,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-050",
+        "labelCandidate": "Defend",
+        "startSequence": 288,
+        "endSequence": 288,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-051",
+        "labelCandidate": "Defend",
+        "startSequence": 289,
+        "endSequence": 293,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-052",
+        "labelCandidate": "Defend",
+        "startSequence": 294,
+        "endSequence": 302,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-053",
+        "labelCandidate": "Defend",
+        "startSequence": 305,
+        "endSequence": 306,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-054",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 309,
+        "endSequence": 318,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-055",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 321,
+        "endSequence": 323,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-056",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 326,
+        "endSequence": 334,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-057",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 335,
+        "endSequence": 339,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-058",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 342,
+        "endSequence": 354,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-059",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 357,
+        "endSequence": 362,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-060",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 365,
+        "endSequence": 374,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-061",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 377,
+        "endSequence": 384,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-062",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 385,
+        "endSequence": 390,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-063",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 393,
+        "endSequence": 402,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-064",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 403,
+        "endSequence": 411,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-065",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 414,
+        "endSequence": 419,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/tx-066",
+        "labelCandidate": "EnemySkillReceived",
+        "startSequence": 420,
+        "endSequence": 434,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 1,
+    "heartbeatExcludedCount": 38,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001",
+    "expectedSequenceCandidates": [
+      "QuestTrigger",
+      "WorldDetach",
+      "MapInitialization",
+      "QuestProgress",
+      "WorldResume"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001/tx-001",
+        "labelCandidate": "QuestScriptedTransfer",
+        "startSequence": 20,
+        "endSequence": 21,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001/tx-002",
+        "labelCandidate": "QuestScriptedTransfer",
+        "startSequence": 24,
+        "endSequence": 28,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "QuestTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001/tx-003",
+        "labelCandidate": "QuestScriptedTransfer",
+        "startSequence": 29,
+        "endSequence": 46,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "QuestTransferCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001/tx-004",
+        "labelCandidate": "QuestScriptedTransfer",
+        "startSequence": 49,
+        "endSequence": 80,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "QuestTransferCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 2,
+    "heartbeatExcludedCount": 7,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177",
+    "expectedSequenceCandidates": [
+      "WildEncounterEnter",
+      "BattleInitialization",
+      "BasicAttack",
+      "ActionEffect",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-001",
+        "labelCandidate": "WildEncounterEnter",
+        "startSequence": 91,
+        "endSequence": 95,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-002",
+        "labelCandidate": "WildEncounterEnter",
+        "startSequence": 96,
+        "endSequence": 100,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-003",
+        "labelCandidate": "WildEncounterEnter",
+        "startSequence": 103,
+        "endSequence": 111,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-004",
+        "labelCandidate": "WildEncounterEnter",
+        "startSequence": 112,
+        "endSequence": 127,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-005",
+        "labelCandidate": "WildEncounterEnter",
+        "startSequence": 130,
+        "endSequence": 131,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-006",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 132,
+        "endSequence": 144,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-007",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 147,
+        "endSequence": 149,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-008",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 152,
+        "endSequence": 212,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-009",
+        "labelCandidate": "BattleBasicAttack",
+        "startSequence": 215,
+        "endSequence": 215,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-010",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 216,
+        "endSequence": 220,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-011",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 223,
+        "endSequence": 234,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-012",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 235,
+        "endSequence": 251,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-013",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 254,
+        "endSequence": 254,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-014",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 255,
+        "endSequence": 271,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-015",
+        "labelCandidate": "ExperienceGain",
+        "startSequence": 274,
+        "endSequence": 275,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-016",
+        "labelCandidate": "ExperienceGain",
+        "startSequence": 278,
+        "endSequence": 331,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-017",
+        "labelCandidate": "ExperienceGain",
+        "startSequence": 334,
+        "endSequence": 334,
+        "directionPattern": "C2S",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-018",
+        "labelCandidate": "ExperienceGain",
+        "startSequence": 335,
+        "endSequence": 351,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-019",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 354,
+        "endSequence": 373,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003EC2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-020",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 376,
+        "endSequence": 377,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-021",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 380,
+        "endSequence": 380,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/tx-022",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 381,
+        "endSequence": 419,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 35,
+    "heartbeatExcludedCount": 20,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3",
+    "expectedSequenceCandidates": [
+      "ShopOpen",
+      "ShopCatalog",
+      "ShopSell",
+      "InventoryUpdate",
+      "MoneyUpdate"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/tx-001",
+        "labelCandidate": "ShopOpen",
+        "startSequence": 5,
+        "endSequence": 39,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "ShopSellCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/tx-002",
+        "labelCandidate": "ShopOpen",
+        "startSequence": 40,
+        "endSequence": 44,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/tx-003",
+        "labelCandidate": "ShopOpen",
+        "startSequence": 45,
+        "endSequence": 45,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "ShopSellCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/tx-004",
+        "labelCandidate": "ShopSell",
+        "startSequence": 46,
+        "endSequence": 67,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "ShopSellCandidate"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/tx-005",
+        "labelCandidate": "ShopSell",
+        "startSequence": 70,
+        "endSequence": 72,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "ShopSellCandidate"
+        ]
+      }
+    ],
+    "movementExcludedCount": 2,
+    "heartbeatExcludedCount": 13,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A",
+    "expectedSequenceCandidates": [
+      "BattleInitialization",
+      "SingleTargetSkill",
+      "ActionEffect",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain",
+      "CharacterLevelUp"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-001",
+        "labelCandidate": "SwordsmanSingleTargetSkill",
+        "startSequence": 2,
+        "endSequence": 3,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-002",
+        "labelCandidate": "SwordsmanSingleTargetSkill",
+        "startSequence": 4,
+        "endSequence": 8,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-003",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 9,
+        "endSequence": 17,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-004",
+        "labelCandidate": "BattleSettlement",
+        "startSequence": 18,
+        "endSequence": 25,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-005",
+        "labelCandidate": "ExperienceGain",
+        "startSequence": 26,
+        "endSequence": 34,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-006",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 35,
+        "endSequence": 42,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-007",
+        "labelCandidate": "RewardItemGain",
+        "startSequence": 45,
+        "endSequence": 49,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/tx-008",
+        "labelCandidate": "CharacterLevelUp",
+        "startSequence": 50,
+        "endSequence": 79,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 0,
+    "heartbeatExcludedCount": 11,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668",
+    "expectedSequenceCandidates": [
+      "EquipArmor",
+      "EquipmentState",
+      "EquipWeapon",
+      "EquipmentState",
+      "UnequipArmor",
+      "UnequipWeapon"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-001",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 9,
+        "endSequence": 17,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-002",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 20,
+        "endSequence": 28,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-003",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 29,
+        "endSequence": 34,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-004",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 37,
+        "endSequence": 43,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-005",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 46,
+        "endSequence": 54,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-006",
+        "labelCandidate": "EquipArmor",
+        "startSequence": 55,
+        "endSequence": 60,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-007",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 63,
+        "endSequence": 68,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-008",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 71,
+        "endSequence": 83,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-009",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 84,
+        "endSequence": 92,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-010",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 95,
+        "endSequence": 100,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-011",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 103,
+        "endSequence": 111,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-012",
+        "labelCandidate": "EquipWeapon",
+        "startSequence": 112,
+        "endSequence": 120,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-013",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 123,
+        "endSequence": 128,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-014",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 131,
+        "endSequence": 139,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-015",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 140,
+        "endSequence": 149,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-016",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 152,
+        "endSequence": 157,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-017",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 160,
+        "endSequence": 166,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-018",
+        "labelCandidate": "UnequipArmor",
+        "startSequence": 169,
+        "endSequence": 177,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-019",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 180,
+        "endSequence": 185,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-020",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 188,
+        "endSequence": 196,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-021",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 197,
+        "endSequence": 202,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-022",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 205,
+        "endSequence": 216,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-023",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 219,
+        "endSequence": 228,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/tx-024",
+        "labelCandidate": "UnequipWeapon",
+        "startSequence": 231,
+        "endSequence": 240,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "EquipmentSwitch"
+        ]
+      }
+    ],
+    "movementExcludedCount": 0,
+    "heartbeatExcludedCount": 37,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD",
+    "expectedSequenceCandidates": [
+      "BattleInitialization",
+      "SkillCommand",
+      "ActionEffect",
+      "ResourceUpdate"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-001",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 58,
+        "endSequence": 62,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-002",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 63,
+        "endSequence": 67,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-003",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 70,
+        "endSequence": 77,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-004",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 78,
+        "endSequence": 84,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-005",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 87,
+        "endSequence": 94,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-006",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 95,
+        "endSequence": 99,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/tx-007",
+        "labelCandidate": "TaoistBattleSkill",
+        "startSequence": 102,
+        "endSequence": 131,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 11,
+    "heartbeatExcludedCount": 9,
+    "auxiliaryConnectionExcludedCount": 0
+  },
+  {
+    "captureSessionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750",
+    "expectedSequenceCandidates": [
+      "FleeCommand",
+      "FleeSuccess",
+      "FleeCommand",
+      "FleeFailure",
+      "BattleDeath",
+      "MountLoyaltyDecrease",
+      "MountRideRejected"
+    ],
+    "transactions": [
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-001",
+        "labelCandidate": "BattleFleeSuccess",
+        "startSequence": 2,
+        "endSequence": 7,
+        "directionPattern": "C2S-\u003EC2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12",
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-002",
+        "labelCandidate": "BattleFleeSuccess",
+        "startSequence": 8,
+        "endSequence": 12,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-003",
+        "labelCandidate": "BattleFleeSuccess",
+        "startSequence": 15,
+        "endSequence": 16,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-004",
+        "labelCandidate": "BattleFleeSuccess",
+        "startSequence": 19,
+        "endSequence": 44,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-005",
+        "labelCandidate": "BattleFleeSuccess",
+        "startSequence": 47,
+        "endSequence": 47,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-006",
+        "labelCandidate": "BattleFleeFailure",
+        "startSequence": 48,
+        "endSequence": 55,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-007",
+        "labelCandidate": "BattleFleeFailure",
+        "startSequence": 56,
+        "endSequence": 64,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-008",
+        "labelCandidate": "BattleFleeFailure",
+        "startSequence": 67,
+        "endSequence": 71,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-009",
+        "labelCandidate": "BattleFleeFailure",
+        "startSequence": 72,
+        "endSequence": 88,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-010",
+        "labelCandidate": "BattleFleeFailure",
+        "startSequence": 91,
+        "endSequence": 95,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-011",
+        "labelCandidate": "BattleDeath",
+        "startSequence": 96,
+        "endSequence": 97,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-012",
+        "labelCandidate": "BattleDeath",
+        "startSequence": 100,
+        "endSequence": 111,
+        "directionPattern": "C2S-\u003ES2C-\u003EC2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-013",
+        "labelCandidate": "BattleDeath",
+        "startSequence": 112,
+        "endSequence": 116,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-014",
+        "labelCandidate": "BattleDeath",
+        "startSequence": 119,
+        "endSequence": 123,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-015",
+        "labelCandidate": "BattleDeath",
+        "startSequence": 126,
+        "endSequence": 127,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-016",
+        "labelCandidate": "MountLoyaltyDecrease",
+        "startSequence": 128,
+        "endSequence": 129,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-017",
+        "labelCandidate": "MountLoyaltyDecrease",
+        "startSequence": 132,
+        "endSequence": 139,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-018",
+        "labelCandidate": "MountLoyaltyDecrease",
+        "startSequence": 140,
+        "endSequence": 144,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-019",
+        "labelCandidate": "MountLoyaltyDecrease",
+        "startSequence": 147,
+        "endSequence": 151,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-020",
+        "labelCandidate": "MountLoyaltyDecrease",
+        "startSequence": 154,
+        "endSequence": 155,
+        "directionPattern": "C2S",
+        "candidateFamilies": [
+          "BattleCommand12"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-021",
+        "labelCandidate": "MountRideRejectedLowLoyalty",
+        "startSequence": 156,
+        "endSequence": 157,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-022",
+        "labelCandidate": "MountRideRejectedLowLoyalty",
+        "startSequence": 160,
+        "endSequence": 167,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-023",
+        "labelCandidate": "MountRideRejectedLowLoyalty",
+        "startSequence": 168,
+        "endSequence": 169,
+        "directionPattern": "C2S-\u003ES2C",
+        "candidateFamilies": [
+          "BattleCommand20"
+        ]
+      },
+      {
+        "transactionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/tx-024",
+        "labelCandidate": "MountRideRejectedLowLoyalty",
+        "startSequence": 172,
+        "endSequence": 258,
+        "directionPattern": "C2S-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C-\u003ES2C",
+        "candidateFamilies": []
+      }
+    ],
+    "movementExcludedCount": 6,
+    "heartbeatExcludedCount": 20,
+    "auxiliaryConnectionExcludedCount": 0
+  }
+]

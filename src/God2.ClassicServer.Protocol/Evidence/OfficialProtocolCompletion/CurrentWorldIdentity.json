@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "current-world-identity-v1",
+  "generatedAtUtc": "2026-07-30T04:16:12Z",
+  "frozenCompatibility": {
+    "status": "PRESERVED",
+    "officialBootstrapMapIdentity": "NOT_FULLY_DECODED",
+    "evidence": "Frozen Player Bootstrap and InWorld golden path remain unchanged."
+  },
+  "dbBackedExperimental": {
+    "mapId": 1785918668,
+    "sceneId": 1,
+    "regionId": "r_b720effd89db741cf7bb9830f6a01bee",
+    "name": "DbBackedExperimental Fenghua town candidate",
+    "playerSpawnPoint": {
+      "x": 4860,
+      "y": 34399,
+      "z": 0,
+      "direction": "South"
+    },
+    "source": "NormalizedContent:Phase4DbBackedRuntime",
+    "confidence": 0.78,
+    "evidence": [
+      "DB map catalog contains map r_b720effd89db741cf7bb9830f6a01bee / Fenghua town candidate.",
+      "Mounted movement baseline raw coordinate is used as the test player spawn point.",
+      "Portal catalog has source portal coverage for this map.",
+      "Frozen official bootstrap remains isolated and is not reinterpreted as DB-backed MapRuntime."
+    ]
+  },
+  "nextIdentityGap": "Official frozen bootstrap map/resource identity is not fully decoded; DbBackedExperimental uses a normalized map identity isolated from Golden compatibility."
+}

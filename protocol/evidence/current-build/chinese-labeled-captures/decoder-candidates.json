@@ -1,0 +1,273 @@
+[
+  {
+    "candidateId": "decoder-battlecommand12",
+    "family": "BattleCommand12",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      12
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin#seq-40.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-94.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-133.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin#seq-30.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin#seq-48.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin#seq-66.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin#seq-77.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin#seq-95.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-battlecommand20",
+    "family": "BattleCommand20",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      20
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-74.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-82.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-87.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-96.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-103.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-107.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-115.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin#seq-122.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-charactercreatecandidate",
+    "family": "CharacterCreateCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "CharacterList",
+    "frameLengths": [
+      48
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/attempt-42337-trace/sensitive/trace.bin#seq-53.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-equipmentswitch",
+    "family": "EquipmentSwitch",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      7,
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-33.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-9.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-20.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-29.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-37.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-46.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-55.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin#seq-63.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-mountequipmentcandidate",
+    "family": "MountEquipmentCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-9.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-10.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-20.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-21.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-34.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-38.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-44.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin#seq-45.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-petstatecandidate",
+    "family": "PetStateCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-3.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-8.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-12.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-17.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-21.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-26.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-30.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin#seq-38.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-portalmaptransfercandidate",
+    "family": "PortalMapTransferCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-18.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-29.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-39.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-51.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-64.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin#seq-74.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-questsubmitcandidate",
+    "family": "QuestSubmitCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/attempt-42708-trace/sensitive/trace.bin#seq-9.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/attempt-42708-trace/sensitive/trace.bin#seq-52.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/attempt-42708-trace/sensitive/trace.bin#seq-61.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  },
+  {
+    "candidateId": "decoder-shopsellcandidate",
+    "family": "ShopSellCandidate",
+    "clientBuildId": "god2-opt-6b127086e0c0",
+    "requiredState": "InWorld",
+    "frameLengths": [
+      8
+    ],
+    "schema": "little-endian UInt16 frame length at offset 0; remaining required bytes retained opaque",
+    "goldenSamples": [
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin#seq-5.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin#seq-45.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin#seq-46.0",
+      "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin#seq-70.0"
+    ],
+    "negativeCases": [
+      "wrong build",
+      "wrong protocol state",
+      "length mismatch",
+      "truncated payload",
+      "oversized payload"
+    ],
+    "output": "SemanticCommandCandidate only",
+    "decoderVerified": false,
+    "runtimeMutationAllowed": false,
+    "status": "DecoderCandidate",
+    "blocker": "Encrypted/opaque required fields and stable semantic identifiers are not recovered."
+  }
+]

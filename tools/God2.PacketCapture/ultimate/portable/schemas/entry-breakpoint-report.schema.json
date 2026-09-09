@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["SchemaVersion", "Authority", "CandidateCount", "FunctionStartBreakpointContractPassed", "ABIEntryEvidenceValidCount", "CompleteCorrelationCount", "CallingConventionVerifiedCount", "ArgumentContractVerifiedCount", "ReturnValueLifetimeVerifiedCount", "Rows"],
+  "properties": {
+    "SchemaVersion": { "const": "god2-entry-breakpoint-report-v1" },
+    "Authority": { "type": "object" },
+    "CandidateCount": { "const": 2 },
+    "FunctionStartBreakpointContractPassed": { "const": true },
+    "ABIEntryEvidenceValidCount": { "type": "integer", "minimum": 0, "maximum": 2 },
+    "CompleteCorrelationCount": { "type": "integer", "minimum": 0 },
+    "CallingConventionVerifiedCount": { "type": "integer", "minimum": 0 },
+    "ArgumentContractVerifiedCount": { "type": "integer", "minimum": 0 },
+    "ReturnValueLifetimeVerifiedCount": { "type": "integer", "minimum": 0 },
+    "Rows": { "type": "array", "minItems": 2, "maxItems": 2 }
+  }
+}

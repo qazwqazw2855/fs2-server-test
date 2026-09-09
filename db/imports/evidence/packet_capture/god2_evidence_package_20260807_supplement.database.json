@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "god2-evidence-package-20260807-supplement-v1",
+  "evidenceSourceId": "god2-evidence-package-20260807-supplement",
+  "evidenceSha256": "F3FDBAF3ED4F703525E821865A9A49DA26DA48F41F3B12381A5B8C79E6F2246B",
+  "sourcePackageSha256": [
+    "48C85FA534DB6C221A8AD06B24DFE4326E83DF70BB27640C8C534C6F431C3B2E",
+    "0778A6AA3C7F0EEB6F48A99BEE0015F0F6AB43C399F7BB3203A272425D506A57"
+  ],
+  "sessions": [
+    {
+      "sessionId": "870DB7D9-B96A-4F38-B225-8C7EA3D9A7E6",
+      "runtimeSessionId": "24F5213C-845B-4F76-B67E-74597D9EACC4",
+      "analysisRunId": "2C0C1826-56B6-4D5D-80C9-2883817FB0A4",
+      "targetProcessId": 9852,
+      "captureRecordCount": 2475,
+      "transportChunkCount": 1547,
+      "clientToServerTransportCount": 312,
+      "serverToClientTransportCount": 1235,
+      "transportPayloadBytes": 20467,
+      "decodedMessageCount": 727,
+      "handlerObservationCount": 201,
+      "candidateProtocolFrameCount": 426,
+      "strongLogicalMessageCount": 404
+    },
+    {
+      "sessionId": "2C820B07-0A81-459A-B04A-7C5936A015F5",
+      "runtimeSessionId": "D4D971DF-4FC8-4753-9890-B4585BF181A0",
+      "analysisRunId": "75EAC599-BBD7-4AD3-9A10-586774EA440A",
+      "targetProcessId": 5700,
+      "captureRecordCount": 2254,
+      "transportChunkCount": 1286,
+      "clientToServerTransportCount": 286,
+      "serverToClientTransportCount": 1000,
+      "transportPayloadBytes": 24580,
+      "decodedMessageCount": 617,
+      "handlerObservationCount": 351,
+      "candidateProtocolFrameCount": 578,
+      "strongLogicalMessageCount": 0
+    }
+  ],
+  "aggregateTotals": {
+    "captureRecords": 4729,
+    "transportChunks": 2833,
+    "decodedMessages": 1344,
+    "handlerObservations": 552,
+    "candidateProtocolFrames": 1004,
+    "supplementalStructuralFamilies": 62,
+    "supplementalStructuralObservations": 87,
+    "supplementalUniqueFrames": 85,
+    "strongStageMappings": 604,
+    "strongFrameHandlerGroups": 17,
+    "verifiedGameplayClassifications": 0
+  },
+  "evidenceReference": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/God2Evidence.20260807.Supplement.json",
+  "serverApplication": {
+    "catalogClass": "God2.ClassicServer.Protocol.OfficialEvidencePackage20260807SupplementCatalog",
+    "appliedAs": "Payload-free decoded-frame structural and stage-correlation evidence only",
+    "handlerFamiliesAdded": 0,
+    "productionHandlersAdded": 0,
+    "verifiedGameplayPromotions": 0,
+    "productionEnabled": false
+  }
+}

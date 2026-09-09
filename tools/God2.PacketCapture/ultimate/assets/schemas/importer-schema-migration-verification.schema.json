@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/importer-schema-migration-verification.schema.json",
+  "title":"God2 importer offline schema migration verification",
+  "type":"object",
+  "required":["mode","productionConnectionAttempted","productionMutationAttempted","parsedMigrationCount","parsedStatementCount","tableCount","columnCount","schemaModelSha256","candidateAdditiveOnly","candidateAppliedToModel","candidateSecondApplyNoOp","candidateAddedTables","findings"],
+  "properties":{
+    "mode":{"const":"DETERMINISTIC_SQL_MIGRATION_MODEL_REPLAY_READ_ONLY"},
+    "productionConnectionAttempted":{"const":false},
+    "productionMutationAttempted":{"const":false},
+    "parsedMigrationCount":{"const":59},
+    "parsedStatementCount":{"type":"integer","minimum":1},
+    "tableCount":{"type":"integer","minimum":1},
+    "columnCount":{"type":"integer","minimum":1},
+    "schemaModelSha256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},
+    "candidateAdditiveOnly":{"const":true},
+    "candidateAppliedToModel":{"const":true},
+    "candidateSecondApplyNoOp":{"const":true},
+    "candidateAddedTables":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "findings":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":false
+}

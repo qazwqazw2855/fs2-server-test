@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "god2-monster-intelligence-hud-policy-v1",
+  "mode": "ReadOnlyEvidenceOverlay",
+  "identity": {
+    "required": [
+      "encounterNumber",
+      "battlePosition",
+      "descriptorSequence",
+      "descriptorSha256",
+      "descriptorSpeciesSignatureSha256",
+      "monsterNameBytesSha256"
+    ],
+    "replacementRule": "A newer same-position descriptor immediately closes the old epoch; no value may fall back to the prior monster while the new name snapshot is pending.",
+    "pkAndFriendlyRule": "Never decode friendly actors or enemy PK-player branches as ordinary monster identities."
+  },
+  "sourcePriority": [
+    "OfficialExactRuntime",
+    "OfficialCausallyBound",
+    "OfficialStaticExact",
+    "CrossValidatedDerived",
+    "DerivedCandidate",
+    "UnavailableNotGuessed"
+  ],
+  "fields": {
+    "name": ["OfficialExactRuntime"],
+    "level": ["OfficialExactRuntime"],
+    "maximumHp": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "currentHp": ["OfficialCausallyBound"],
+    "maximumMp": ["OfficialCausallyBound"],
+    "currentMp": ["OfficialCausallyBound"],
+    "physicalAttack": ["CrossValidatedDerived", "DerivedCandidate"],
+    "physicalDefense": ["CrossValidatedDerived", "DerivedCandidate"],
+    "strength": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "constitution": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "intelligence": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "speed": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "metal": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "wood": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "water": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "fire": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "earth": ["OfficialCausallyBound", "CrossValidatedDerived"],
+    "skills": ["OfficialCausallyBound", "OfficialStaticExact"],
+    "experience": ["OfficialCausallyBound"]
+  },
+  "display": {
+    "exactMarker": "●",
+    "crossValidatedMarker": "◆",
+    "candidateMarker": "△",
+    "unavailableMarker": "—",
+    "neverRenderRawPointers": true,
+    "neverRenderUnboundValues": true,
+    "retainOriginalClientNameBytes": true
+  },
+  "safety": {
+    "gameMemoryWrites": false,
+    "packetWrites": false,
+    "serverRequestsAdded": false,
+    "unknownValuesDefault": null
+  },
+  "primaryAttributePromotion": {
+    "controlledCalibration": "At least three distinct known player/pet PK profiles for primary attributes, current/maximum MP, and all five element values; four one-variable vectors are preferred.",
+    "directRepresentation": "Exact scalar agreement in the 0xE00 actor snapshot is necessary but not sufficient.",
+    "consumerProof": "The same field must be observed while an exact-build battle consumer reads the actor object.",
+    "monsterTransfer": "The proven field offset and consumer instruction must both recur on a named ordinary-monster actor.",
+    "officialReplication": "Repeat the same mapping on the official service before marking an attribute exact.",
+    "absenceMeaning": "No scalar match proves only that the raw primary attribute is absent from the captured battle actor, not from the server."
+  }
+}

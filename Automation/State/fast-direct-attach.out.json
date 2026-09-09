@@ -1,0 +1,9 @@
+﻿{
+    "exit":  0,
+    "pid":  396,
+    "traceRoot":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Artifacts\\ClientInstrumentation\\OfficialEvidenceLauncher\\fast-20260817-172327-396",
+    "output":  [
+                   "PID=396",
+                   "MODULE=0x6D030000"
+               ]
+}

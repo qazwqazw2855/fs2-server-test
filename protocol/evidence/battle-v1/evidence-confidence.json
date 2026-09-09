@@ -1,0 +1,24 @@
+{
+    "schemaVersion":  1,
+    "orderedLevels":  [
+                          "Missing",
+                          "Candidate",
+                          "ObservedOnce",
+                          "ObservedRepeated",
+                          "CrossValidated",
+                          "DecoderVerified",
+                          "SerializerCandidate",
+                          "SerializerVerified",
+                          "ProductionReady",
+                          "EvidenceBlocked",
+                          "SerializerBlockedByEvidence"
+                      ],
+    "currentBattleConfidence":  "EvidenceBlocked",
+    "promotionRules":  [
+                           "Current client build hash must match.",
+                           "Raw evidence must have safe provenance and hashes.",
+                           "Client-to-server ProductionReady requires at least three decoder samples and ten negative tests.",
+                           "Server-to-client ProductionReady requires at least three serializer tests and three official client acceptances.",
+                           "Any unknown required dynamic field blocks production."
+                       ]
+}

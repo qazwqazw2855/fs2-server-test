@@ -1,0 +1,29 @@
+{
+    "schemaVersion":  1,
+    "status":  "PASS",
+    "productionEligibility":  "EvidenceBlocked",
+    "existingCandidates":  [
+                               {
+                                   "source":  "TurnBasedBattleRuntime",
+                                   "candidate":  "Participant InitiativeCandidate; descending order; null falls back to zero",
+                                   "confidence":  "ExistingRuntimeBehavior"
+                               },
+                               {
+                                   "source":  "LegacyCompatibleBattleInitiativePlanner",
+                                   "candidate":  "Delegates to existing IBattleTurnOrderPolicy and records an initiative snapshot",
+                                   "confidence":  "ExistingRuntimeBehavior"
+                               },
+                               {
+                                   "source":  "AttackPower",
+                                   "candidate":  "Combat stat exists, but no official-client wire evidence proves it is the initiative formula",
+                                   "confidence":  "NotProtocolEvidence"
+                               }
+                           ],
+    "unknowns":  [
+                     "Official client initiative field",
+                     "Tie-break rule",
+                     "Speed/agility contribution",
+                     "Random contribution"
+                 ],
+    "mutation":  "None"
+}

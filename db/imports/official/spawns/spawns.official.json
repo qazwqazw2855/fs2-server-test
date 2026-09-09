@@ -1,0 +1,1967 @@
+{
+    "category": "spawns",
+    "source": "God2 Classic Unified Server/Data/Runtime/Spawns/spawn.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 135788,
+    "recordCount": 69,
+    "recoveredFields": [
+        "id",
+        "mapId",
+        "provenance",
+        "runtimeEligibility",
+        "spawnKind",
+        "templateId",
+        "unknownFields",
+        "validationStatus",
+        "x",
+        "y"
+    ],
+    "missingFields": [
+        "respawnSeconds",
+        "spawnCondition",
+        "templateId",
+        "x",
+        "y",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Unverified; Needs Recovery",
+    "recoveryProgress": "Evidence preserved from runtime spawn candidates; pending map, monster/NPC, packet, and runtime cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Spawn candidates are evidence-only; template, coordinates, and respawn rules are not recovered.",
+    "records": [
+        {
+            "id": "client:spawn-candidate/client-map/island03/island03",
+            "mapId": "client:map/island03/island03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/island03",
+                "sourceOffset": 12,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cave12/cave12",
+            "mapId": "client:map/island03/cave12/cave12",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cave12/cave12",
+                "sourceOffset": 76,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cave09/cave09",
+            "mapId": "client:map/island03/cave09/cave09",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cave09/cave09",
+                "sourceOffset": 140,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cityi2/cityi2",
+            "mapId": "client:map/island03/cityi2/cityi2",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cityi2/cityi2",
+                "sourceOffset": 204,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/konfu",
+            "mapId": "client:map/island03/indoor/konfu",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/konfu",
+                "sourceOffset": 268,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/gr01",
+            "mapId": "client:map/island03/indoor/gr01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/gr01",
+                "sourceOffset": 332,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/gr02",
+            "mapId": "client:map/island03/indoor/gr02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/gr02",
+                "sourceOffset": 396,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/gr03",
+            "mapId": "client:map/island03/indoor/gr03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/gr03",
+                "sourceOffset": 460,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/gr04",
+            "mapId": "client:map/island03/indoor/gr04",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/gr04",
+                "sourceOffset": 524,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/hofu",
+            "mapId": "client:map/island03/indoor/hofu",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/hofu",
+                "sourceOffset": 588,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/god03",
+            "mapId": "client:map/island03/indoor/god03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/god03",
+                "sourceOffset": 652,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cave08/cave08",
+            "mapId": "client:map/island03/cave08/cave08",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cave08/cave08",
+                "sourceOffset": 716,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cave01/cave01",
+            "mapId": "client:map/island03/cave01/cave01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cave01/cave01",
+                "sourceOffset": 780,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cave10/cave10",
+            "mapId": "client:map/island03/cave10/cave10",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cave10/cave10",
+                "sourceOffset": 844,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/indoor/tp_nor_r",
+            "mapId": "client:map/island03/indoor/tp_nor_r",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/indoor/tp_nor_r",
+                "sourceOffset": 908,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/island03/cityi4/cityi4",
+            "mapId": "client:map/island03/cityi4/cityi4",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/island03/cityi4/cityi4",
+                "sourceOffset": 972,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array",
+            "mapId": "client:map/array/array",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array",
+                "sourceOffset": 12,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom/sroom",
+            "mapId": "client:map/array/sroom/sroom",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom/sroom",
+                "sourceOffset": 76,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array06/array06",
+            "mapId": "client:map/array/array06/array06",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array06/array06",
+                "sourceOffset": 140,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array07/array07",
+            "mapId": "client:map/array/array07/array07",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array07/array07",
+                "sourceOffset": 204,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array04/array04",
+            "mapId": "client:map/array/array04/array04",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array04/array04",
+                "sourceOffset": 268,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array01/array01",
+            "mapId": "client:map/array/array01/array01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array01/array01",
+                "sourceOffset": 332,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array05/array05",
+            "mapId": "client:map/array/array05/array05",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array05/array05",
+                "sourceOffset": 396,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array03/array03",
+            "mapId": "client:map/array/array03/array03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array03/array03",
+                "sourceOffset": 460,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array02/array02",
+            "mapId": "client:map/array/array02/array02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array02/array02",
+                "sourceOffset": 524,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom02/sroom02",
+            "mapId": "client:map/array/sroom02/sroom02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom02/sroom02",
+                "sourceOffset": 588,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array08/array08",
+            "mapId": "client:map/array/array08/array08",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array08/array08",
+                "sourceOffset": 652,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array09/array09",
+            "mapId": "client:map/array/array09/array09",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array09/array09",
+                "sourceOffset": 716,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array10/array10",
+            "mapId": "client:map/array/array10/array10",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array10/array10",
+                "sourceOffset": 780,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array11/array11",
+            "mapId": "client:map/array/array11/array11",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array11/array11",
+                "sourceOffset": 844,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array12/array12",
+            "mapId": "client:map/array/array12/array12",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array12/array12",
+                "sourceOffset": 908,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/array13/array13",
+            "mapId": "client:map/array/array13/array13",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/array13/array13",
+                "sourceOffset": 972,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom03/sroom03",
+            "mapId": "client:map/array/sroom03/sroom03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom03/sroom03",
+                "sourceOffset": 1036,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom04/sroom04",
+            "mapId": "client:map/array/sroom04/sroom04",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom04/sroom04",
+                "sourceOffset": 1100,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom05/sroom05",
+            "mapId": "client:map/array/sroom05/sroom05",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom05/sroom05",
+                "sourceOffset": 1164,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/array/sroom06/sroom06",
+            "mapId": "client:map/array/sroom06/sroom06",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/array/sroom06/sroom06",
+                "sourceOffset": 1228,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tong",
+            "mapId": "client:map/tong/tong",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tong",
+                "sourceOffset": 12,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tower3/tower3",
+            "mapId": "client:map/tong/tower3/tower3",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tower3/tower3",
+                "sourceOffset": 76,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tong4/tong4",
+            "mapId": "client:map/tong/tong4/tong4",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tong4/tong4",
+                "sourceOffset": 140,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/indoor/towertop",
+            "mapId": "client:map/tong/indoor/towertop",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/indoor/towertop",
+                "sourceOffset": 204,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tong3/tong3",
+            "mapId": "client:map/tong/tong3/tong3",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tong3/tong3",
+                "sourceOffset": 268,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tong2/tong2",
+            "mapId": "client:map/tong/tong2/tong2",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tong2/tong2",
+                "sourceOffset": 332,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tong1/tong1",
+            "mapId": "client:map/tong/tong1/tong1",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tong1/tong1",
+                "sourceOffset": 396,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tongwar1/tongwar1",
+            "mapId": "client:map/tong/tongwar1/tongwar1",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tongwar1/tongwar1",
+                "sourceOffset": 460,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/reborn/reborn",
+            "mapId": "client:map/tong/reborn/reborn",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/reborn/reborn",
+                "sourceOffset": 524,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/mazeto04/mazeto04",
+            "mapId": "client:map/tong/mazeto04/mazeto04",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/mazeto04/mazeto04",
+                "sourceOffset": 588,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/mazeto03/mazeto03",
+            "mapId": "client:map/tong/mazeto03/mazeto03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/mazeto03/mazeto03",
+                "sourceOffset": 652,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/mazeto02/mazeto02",
+            "mapId": "client:map/tong/mazeto02/mazeto02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/mazeto02/mazeto02",
+                "sourceOffset": 716,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/mazeto01/mazeto01",
+            "mapId": "client:map/tong/mazeto01/mazeto01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/mazeto01/mazeto01",
+                "sourceOffset": 780,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/tong/tonggem/tonggem",
+            "mapId": "client:map/tong/tonggem/tonggem",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/tong/tonggem/tonggem",
+                "sourceOffset": 844,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/south003",
+            "mapId": "client:map/south003/south003",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/south003",
+                "sourceOffset": 12,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/shl01",
+            "mapId": "client:map/south003/indoor/shl01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/shl01",
+                "sourceOffset": 76,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/mazes01/mazes01",
+            "mapId": "client:map/south003/mazes01/mazes01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/mazes01/mazes01",
+                "sourceOffset": 140,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/citys07/citys07",
+            "mapId": "client:map/south003/citys07/citys07",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/citys07/citys07",
+                "sourceOffset": 204,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/shl02",
+            "mapId": "client:map/south003/indoor/shl02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/shl02",
+                "sourceOffset": 268,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/mhl01",
+            "mapId": "client:map/south003/indoor/mhl01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/mhl01",
+                "sourceOffset": 332,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/shr01",
+            "mapId": "client:map/south003/indoor/shr01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/shr01",
+                "sourceOffset": 396,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/mhr01",
+            "mapId": "client:map/south003/indoor/mhr01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/mhr01",
+                "sourceOffset": 460,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/mhl02",
+            "mapId": "client:map/south003/indoor/mhl02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/mhl02",
+                "sourceOffset": 524,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/god01",
+            "mapId": "client:map/south003/indoor/god01",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/god01",
+                "sourceOffset": 588,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/mazes02/mazes02",
+            "mapId": "client:map/south003/mazes02/mazes02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/mazes02/mazes02",
+                "sourceOffset": 652,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/god02",
+            "mapId": "client:map/south003/indoor/god02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/god02",
+                "sourceOffset": 716,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/shr02",
+            "mapId": "client:map/south003/indoor/shr02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/shr02",
+                "sourceOffset": 780,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/mhr02",
+            "mapId": "client:map/south003/indoor/mhr02",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/mhr02",
+                "sourceOffset": 844,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/god03",
+            "mapId": "client:map/south003/indoor/god03",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/god03",
+                "sourceOffset": 908,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/citys08/citys08",
+            "mapId": "client:map/south003/citys08/citys08",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/citys08/citys08",
+                "sourceOffset": 972,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/roads07/roads07",
+            "mapId": "client:map/south003/roads07/roads07",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/roads07/roads07",
+                "sourceOffset": 1036,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/tp_nor_l",
+            "mapId": "client:map/south003/indoor/tp_nor_l",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/tp_nor_l",
+                "sourceOffset": 1100,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        },
+        {
+            "id": "client:spawn-candidate/client-map/south003/indoor/tp_nor_r",
+            "mapId": "client:map/south003/indoor/tp_nor_r",
+            "templateId": null,
+            "spawnKind": "map-entry-or-respawn-candidate",
+            "x": null,
+            "y": null,
+            "runtimeEligibility": false,
+            "validationStatus": "UnresolvedEvidenceOnly",
+            "provenance": {
+                "sourceFile": "Data/Runtime/Maps/map-portals.runtime.json",
+                "sourceRecord": null,
+                "originalIdentifier": "client:map/south003/indoor/tp_nor_r",
+                "sourceOffset": 1164,
+                "sourceHash": null,
+                "normalizationResult": "PreservedEvidence",
+                "validationStatus": "EvidenceOnly",
+                "confidence": "candidate",
+                "extractorVersion": "StaticResourceRecovery.1"
+            },
+            "unknownFields": [
+                "templateId",
+                "x",
+                "y",
+                "respawnSeconds",
+                "spawnCondition"
+            ]
+        }
+    ]
+}

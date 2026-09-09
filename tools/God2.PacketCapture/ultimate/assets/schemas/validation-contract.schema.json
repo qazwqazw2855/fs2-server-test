@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/validation-contract.schema.json",
+  "title":"God2 portable validation contract",
+  "type":"object",
+  "required":["SchemaVersion","ProductVersion","PackageKind","GeneratedAtUtc","ContractStatusAtPackaging","ExternalExecutionRequired","IntegrityStatus","PassMustComeFromResultPackage","PackagedExecutableSHA256","TargetClientSHA256","TargetGpu","NativeEntrypointStatus"],
+  "properties":{
+    "SchemaVersion":{"const":1},
+    "ProductVersion":{"const":"1.3.0.0"},
+    "PackageKind":{"enum":["live","rtx5070"]},
+    "GeneratedAtUtc":{"type":"string","format":"date-time"},
+    "ContractStatusAtPackaging":{"type":"string","minLength":1},
+    "ExternalExecutionRequired":{"const":true},
+    "IntegrityStatus":{"const":"STRUCTURE_VERIFIED"},
+    "PassMustComeFromResultPackage":{"const":true},
+    "PackagedExecutableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "TargetClientSHA256":{"type":["string","null"],"pattern":"^[A-F0-9]{64}$"},
+    "TargetGpu":{"type":["string","null"]},
+    "NativeEntrypointStatus":{"type":"string","minLength":1}
+  },
+  "additionalProperties":false
+}

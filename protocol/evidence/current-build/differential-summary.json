@@ -1,0 +1,23 @@
+﻿{
+  "InputFrames": 369,
+  "FramesAfterKnownInfrastructureExclusion": 114,
+  "MovementExcluded": 91,
+  "HeartbeatExcluded": 164,
+  "KnownPacketExcludedFromUnknown": 97,
+  "UnknownQueueBeforeFiltering": 369,
+  "UnknownQueueAfterFiltering": 13,
+  "UnknownActionableClusters": 13,
+  "DynamicDimensions": [
+    "Same Family",
+    "Same Direction",
+    "Same Frame Length",
+    "Same Prefix",
+    "Same Suffix",
+    "Changed Bytes",
+    "Constant Bytes",
+    "Session Dynamic",
+    "Battle Dynamic",
+    "Unknown Dynamic",
+    "Encrypted/Opaque"
+  ]
+}

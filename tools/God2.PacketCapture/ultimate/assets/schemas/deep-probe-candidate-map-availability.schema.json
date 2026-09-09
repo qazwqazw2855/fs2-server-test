@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/deep-probe-candidate-map-availability.schema.json",
+  "title": "God2 deep-probe candidate-map availability v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "SchemaVersion", "Status", "RequiredSchemaVersion", "Promotable",
+    "DomainCount", "ConfirmedContractDomainCount", "CandidateOnlyBlockedDomainCount",
+    "Reason"
+  ],
+  "properties": {
+    "SchemaVersion": { "const": "god2-deep-probe-candidate-map-availability-v1" },
+    "Status": { "const": "EvidenceBlockedCandidateMapUnavailable" },
+    "RequiredSchemaVersion": { "const": "god2-deep-probe-candidate-map-v2" },
+    "Promotable": { "const": false },
+    "DomainCount": { "const": 25 },
+    "ConfirmedContractDomainCount": { "const": 4 },
+    "CandidateOnlyBlockedDomainCount": { "const": 21 },
+    "Reason": { "type": "string", "minLength": 1 }
+  }
+}

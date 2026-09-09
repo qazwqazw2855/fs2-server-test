@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/deep-probe-candidate-map-v3.schema.json",
+  "title": "God2 deep-probe candidate map v3",
+  "$comment": "Closed, fail-closed contract for exact-file identity plus bounded pre-attach runtime-image discovery. Static scores and hypotheses can never permit activation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["SchemaVersion","GeneratedAtUtc","Authority","TargetExecutable","TargetSHA256","Architecture","DiscoveryPolicy","AnalysisBounds","PE","SeedFunctions","CandidateCount","Candidates","ActivationAllowedCount","PromotionEligibleCount","Status"],
+  "properties": {
+    "SchemaVersion": {"const":"god2-deep-probe-candidate-map-v3"},
+    "GeneratedAtUtc": {"type":"string","format":"date-time"},
+    "Authority": {"$ref":"#/$defs/authority"},
+    "TargetExecutable": {"const":"God2_opt.exe"},
+    "TargetVersion": {"const":"1.0.0.1"},
+    "TargetSHA256": {"const":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"},
+    "Architecture": {"const":"x86"},
+    "FileSize": {"type":"integer","minimum":1},
+    "ImageBase": {"$ref":"#/$defs/rva"},
+    "EntryRVA": {"$ref":"#/$defs/rva"},
+    "SizeOfImage": {"type":"integer","minimum":1,"maximum":16777216},
+    "DiscoveryPolicy": {"type":"string","minLength":1},
+    "AnalysisBounds": {"$ref":"#/$defs/bounds"},
+    "PE": {"$ref":"#/$defs/pe"},
+    "SeedFunctions": {"type":"array","minItems":3,"maxItems":3,"items":{"$ref":"#/$defs/seed"}},
+    "CandidateDomainCount": {"const":21},
+    "CandidateCount": {"type":"integer","minimum":21,"maximum":84},
+    "Candidates": {"type":"array","minItems":21,"maxItems":84,"items":{"$ref":"#/$defs/candidate"}},
+    "ActivationAllowedCount": {"const":0},
+    "PromotionEligibleCount": {"const":0},
+    "Status": {"const":"EVIDENCE_BLOCKED_STATIC_HYPOTHESES_REQUIRE_CONTRACT_ACQUISITION"}
+  },
+  "$defs": {
+    "sha": {"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "rva": {"type":"string","pattern":"^0x[0-9A-F]{8}$"},
+    "byteString": {"type":"string","pattern":"^(?:[0-9A-F]{2})(?: [0-9A-F]{2})*$"},
+    "authority": {
+      "type":"object","additionalProperties":false,
+      "required":["AuthorityProfile","SessionId","SourceArtifact","SourceSHA256","TargetExecutable","TargetVersion","TargetSHA256","TargetProcessId","TargetProcessCreationTime","CurrentSessionObserved","HistoricalEvidenceReused","FixtureOnly","PromotionEligible","StaticAnalysisOnly"],
+      "properties":{
+        "AuthorityProfile":{"const":"ExactBinaryStaticAnalysis"},"SessionId":{"type":"string","minLength":1},
+        "SourceArtifact":{"type":"string","minLength":1},"SourceSHA256":{"$ref":"#/$defs/sha"},
+        "TargetExecutable":{"const":"God2_opt.exe"},"TargetVersion":{"const":"1.0.0.1"},
+        "TargetSHA256":{"const":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"},
+        "TargetProcessId":{"type":"integer","minimum":1},"TargetProcessCreationTime":{"type":"string","format":"date-time"},
+        "CurrentSessionObserved":{"const":false},"HistoricalEvidenceReused":{"const":false},
+        "FixtureOnly":{"const":false},"PromotionEligible":{"const":false},"StaticAnalysisOnly":{"const":true}
+      }
+    },
+    "bounds": {
+      "type":"object","additionalProperties":false,
+      "required":["MaximumCandidatesPerDomain","MaximumGraphDepth","MaximumFunctionBytes","FileBytesRead","ProcessOpenedReadOnly","RuntimeImageObserved","MemoryWritten","TargetExecutedByAnalyzer","NetworkTrafficGeneratedByAnalyzer"],
+      "properties":{
+        "MaximumCandidatesPerDomain":{"type":"integer","minimum":1,"maximum":4},
+        "MaximumGraphDepth":{"type":"integer","minimum":1,"maximum":4},
+        "MaximumFunctionBytes":{"type":"integer","minimum":512,"maximum":16384},
+        "FileBytesRead":{"type":"integer","minimum":1,"maximum":16777216},
+        "ProcessOpenedReadOnly":{"const":true},"RuntimeImageObserved":{"const":true},
+        "MemoryWritten":{"const":false},"TargetExecutedByAnalyzer":{"const":false},
+        "NetworkTrafficGeneratedByAnalyzer":{"const":false}
+      }
+    },
+    "section": {
+      "type":"object","additionalProperties":false,
+      "required":["Index","Name","RVA","VirtualSize","RawOffset","RawSize","Characteristics","Executable","Writable","Readable","RawBacked"],
+      "properties":{
+        "Index":{"type":"integer","minimum":0,"maximum":95},"Name":{"type":"string","minLength":1},
+        "RVA":{"type":"integer","minimum":0},"VirtualSize":{"type":"integer","minimum":0},
+        "RawOffset":{"type":"integer","minimum":0},"RawSize":{"type":"integer","minimum":0},
+        "Characteristics":{"$ref":"#/$defs/rva"},"Executable":{"type":"boolean"},
+        "Writable":{"type":"boolean"},"Readable":{"type":"boolean"},"RawBacked":{"type":"boolean"}
+      }
+    },
+    "symbol": {
+      "type":"object","additionalProperties":false,"required":["Name","Ordinal","IATRVA"],
+      "properties":{"Name":{"type":["string","null"]},"Ordinal":{"type":["integer","null"],"minimum":0,"maximum":65535},"IATRVA":{"$ref":"#/$defs/rva"}}
+    },
+    "import": {
+      "type":"object","additionalProperties":false,"required":["Module","SymbolCount","Symbols"],
+      "properties":{"Module":{"type":"string","minLength":1},"SymbolCount":{"type":"integer","minimum":0,"maximum":4096},"Symbols":{"type":"array","maxItems":4096,"items":{"$ref":"#/$defs/symbol"}}}
+    },
+    "vtable": {
+      "type":"object","additionalProperties":false,"required":["RVA","VirtualAddress","Section","EntryCount","Entries"],
+      "properties":{"RVA":{"$ref":"#/$defs/rva"},"VirtualAddress":{"$ref":"#/$defs/rva"},"Section":{"type":"string","minLength":1},"EntryCount":{"type":"integer","minimum":4},"Entries":{"type":"array","minItems":4,"items":{"$ref":"#/$defs/rva"}}}
+    },
+    "pe": {
+      "type":"object","additionalProperties":false,
+      "required":["Machine","OptionalMagic","SectionCount","Sections","ImportDirectoryRVA","ImportDirectorySize","ImportModuleCount","IATEntryCount","Imports","DirectRelativeCallCount","VtableLikeTableCount","VtableLikeTables"],
+      "properties":{
+        "Machine":{"const":"0x014C"},"OptionalMagic":{"const":"0x010B"},
+        "SectionCount":{"type":"integer","minimum":1,"maximum":96},"Sections":{"type":"array","minItems":1,"maxItems":96,"items":{"$ref":"#/$defs/section"}},
+        "ImportDirectoryRVA":{"$ref":"#/$defs/rva"},"ImportDirectorySize":{"type":"integer","minimum":0},
+        "ImportModuleCount":{"type":"integer","minimum":0,"maximum":512},"IATEntryCount":{"type":"integer","minimum":0},
+        "Imports":{"type":"array","maxItems":512,"items":{"$ref":"#/$defs/import"}},
+        "DirectRelativeCallCount":{"type":"integer","minimum":1},"VtableLikeTableCount":{"type":"integer","minimum":0,"maximum":256},
+        "VtableLikeTables":{"type":"array","maxItems":256,"items":{"$ref":"#/$defs/vtable"}}
+      }
+    },
+    "rawBoundary": {
+      "type":"object","additionalProperties":false,
+      "required":["Status","StartRVA","EndRVA","StartRvaValue","EndRvaValue","StartOffset","EndOffset","Confidence","EndKind"],
+      "properties":{"Status":{"type":"string"},"StartRVA":{"$ref":"#/$defs/rva"},"EndRVA":{"$ref":"#/$defs/rva"},"StartRvaValue":{"type":"integer","minimum":0},"EndRvaValue":{"type":"integer","minimum":0},"StartOffset":{"type":"integer","minimum":0},"EndOffset":{"type":"integer","minimum":0},"Confidence":{"type":"string"},"EndKind":{"type":"string"}}
+    },
+    "seed": {
+      "type":"object","additionalProperties":false,
+      "required":["Domain","RVA","Section","Bytes","ExpectedCallsites","ExactCallsitesVerified","ExactBytesPresent","FunctionBoundary"],
+      "properties":{"Domain":{"enum":["Parser","Serializer","Handler"]},"RVA":{"$ref":"#/$defs/rva"},"Section":{"type":"string","minLength":1},"Bytes":{"$ref":"#/$defs/byteString"},"ExpectedCallsites":{"type":"array","items":{"$ref":"#/$defs/rva"}},"ExactCallsitesVerified":{"type":"array","items":{"$ref":"#/$defs/rva"}},"ExactBytesPresent":{"const":true},"FunctionBoundary":{"$ref":"#/$defs/rawBoundary"}}
+    },
+    "boundary": {
+      "type":"object","additionalProperties":false,"required":["Status","StartRVA","EndRVA","Confidence","EndKind"],
+      "properties":{"Status":{"type":"string"},"StartRVA":{"$ref":"#/$defs/rva"},"EndRVA":{"$ref":"#/$defs/rva"},"Confidence":{"type":"string"},"EndKind":{"type":"string"}}
+    },
+    "argument": {
+      "type":"object","additionalProperties":false,"required":["Location","Role","Verified"],
+      "properties":{"Location":{"type":"string"},"Role":{"type":"string"},"Verified":{"const":false}}
+    },
+    "return": {
+      "type":"object","additionalProperties":false,"required":["Register","StackBytes","LifetimeVerified"],
+      "properties":{"Register":{"const":"EAX"},"StackBytes":{"type":["integer","null"],"minimum":0,"maximum":65535},"LifetimeVerified":{"const":false}}
+    },
+    "readerWriter": {
+      "type":"object","additionalProperties":false,"required":["ThisFieldReads","ThisFieldWrites","RepeatedObjectOffsets","StackArgumentReads"],
+      "properties":{"ThisFieldReads":{"type":"integer","minimum":0},"ThisFieldWrites":{"type":"integer","minimum":0},"RepeatedObjectOffsets":{"type":"array","items":{"type":"string"}},"StackArgumentReads":{"type":"integer","minimum":0}}
+    },
+    "consumer": {
+      "type":"object","additionalProperties":false,"required":["SeedDomain","GraphDepth","DirectCalls","FanIn","Classification","RuntimeVerified"],
+      "properties":{"SeedDomain":{"enum":["Parser","Serializer","Handler"]},"GraphDepth":{"type":"integer","minimum":1},"DirectCalls":{"type":"array","items":{"$ref":"#/$defs/rva"}},"FanIn":{"type":"integer","minimum":0},"Classification":{"const":"HYPOTHESIS_ONLY_CONSUMER_SHAPE"},"RuntimeVerified":{"const":false}}
+    },
+    "cfg": {
+      "type":"object","additionalProperties":false,"required":["ConditionalBranches","BackwardBranches","DirectCalls","IndirectCalls"],
+      "properties":{"ConditionalBranches":{"type":"integer","minimum":0},"BackwardBranches":{"type":"integer","minimum":0},"DirectCalls":{"type":"integer","minimum":0},"IndirectCalls":{"type":"integer","minimum":0}}
+    },
+    "dataFlow": {
+      "type":"object","additionalProperties":false,"required":["ArithmeticOperations","Comparisons","ImmediatePushes","VtableLikeReferences"],
+      "properties":{"ArithmeticOperations":{"type":"integer","minimum":0},"Comparisons":{"type":"integer","minimum":0},"ImmediatePushes":{"type":"integer","minimum":0},"VtableLikeReferences":{"type":"array","items":{"$ref":"#/$defs/rva"}}}
+    },
+    "gates": {
+      "type":"object","additionalProperties":false,
+      "required":["ExactTargetIdentity","ExecutableSection","ExactCandidateBytes","CallingConventionVerified","TypedRuntimeEvidence","RepeatedCausalObservation","ContradictionsResolved","StableObjectOrContext","VerifiedConsumerOrMutation","SensitiveMaskContract","ArgumentContractVerified","ReturnValueLifetimeVerified","ThreadContextVerified","ReentrancyRiskVerified"],
+      "properties":{"ExactTargetIdentity":{"const":true},"ExecutableSection":{"const":true},"ExactCandidateBytes":{"const":true},"CallingConventionVerified":{"const":false},"TypedRuntimeEvidence":{"const":false},"RepeatedCausalObservation":{"const":false},"ContradictionsResolved":{"const":false},"StableObjectOrContext":{"const":false},"VerifiedConsumerOrMutation":{"const":false},"SensitiveMaskContract":{"const":false},"ArgumentContractVerified":{"const":false},"ReturnValueLifetimeVerified":{"const":false},"ThreadContextVerified":{"const":false},"ReentrancyRiskVerified":{"const":false}}
+    },
+    "candidate": {
+      "type":"object","additionalProperties":false,
+      "required":["Domain","CandidateId","Module","RVA","CallsiteRVAs","ExecutableSection","Bytes","ByteMask","FunctionBoundary","PrologueEpilogue","CallingConventionCandidate","ArgumentCandidates","ReturnCandidate","ThreadContextCandidate","ReentrancyRisk","ReaderWriterRelation","ConsumerRelation","ControlFlowSummary","DataFlowSummary","StaticScore","RuntimeObservationCount","Contradictions","PromotionGateStatus","PromotionGates","ActivationAllowed","PromotionEligible"],
+      "properties":{
+        "Domain":{"enum":["Object","Allocation","VTable","Factory","ManagerLookup","Registry","ResourceDecode","Mutation","TaintSeed","FormulaOperand","Quest","Map","Portal","NPC","Monster","Battle","Inventory","Item","Skill","Pet/Mount","Snapshot"]},
+        "CandidateId":{"type":"string","minLength":1},"Module":{"const":"God2_opt.exe"},"RVA":{"$ref":"#/$defs/rva"},
+        "CallsiteRVAs":{"type":"array","maxItems":64,"items":{"$ref":"#/$defs/rva"}},"ExecutableSection":{"type":"string","minLength":1},
+        "Bytes":{"$ref":"#/$defs/byteString"},"ByteMask":{"$ref":"#/$defs/byteString"},"FunctionBoundary":{"$ref":"#/$defs/boundary"},
+        "PrologueEpilogue":{"type":"object","additionalProperties":false,"required":["Prologue","Epilogue","RuntimeVerified"],"properties":{"Prologue":{"$ref":"#/$defs/byteString"},"Epilogue":{"$ref":"#/$defs/byteString"},"RuntimeVerified":{"const":false}}},
+        "CallingConventionCandidate":{"type":"string","minLength":1},"ArgumentCandidates":{"type":"array","items":{"$ref":"#/$defs/argument"}},
+        "ReturnCandidate":{"$ref":"#/$defs/return"},"ThreadContextCandidate":{"const":"UNKNOWN_RUNTIME_OBSERVATION_REQUIRED"},"ReentrancyRisk":{"const":"UNKNOWN_RUNTIME_OBSERVATION_REQUIRED"},
+        "ReaderWriterRelation":{"$ref":"#/$defs/readerWriter"},"ConsumerRelation":{"$ref":"#/$defs/consumer"},"ControlFlowSummary":{"$ref":"#/$defs/cfg"},"DataFlowSummary":{"$ref":"#/$defs/dataFlow"},
+        "StaticScore":{"type":"number","minimum":0,"maximum":100},"RuntimeObservationCount":{"const":0},
+        "Contradictions":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},
+        "PromotionGateStatus":{"const":"EVIDENCE_BLOCKED_RUNTIME_AND_ABI_GATES"},"PromotionGates":{"$ref":"#/$defs/gates"},
+        "ActivationAllowed":{"const":false},"PromotionEligible":{"const":false},
+        "AuthorityProfile":{"const":"ExactBinaryStaticAnalysis"},"SessionId":{"type":"string","minLength":1},
+        "SourceArtifact":{"type":"string","minLength":1},"SourceSHA256":{"$ref":"#/$defs/sha"},
+        "TargetExecutable":{"const":"God2_opt.exe"},"TargetVersion":{"const":"1.0.0.1"},"TargetSHA256":{"$ref":"#/$defs/sha"},
+        "TargetProcessId":{"type":"integer","minimum":1},"TargetProcessCreationTime":{"type":"string","format":"date-time"},
+        "CurrentSessionObserved":{"const":false},"HistoricalEvidenceReused":{"const":false},"FixtureOnly":{"const":false}
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+#include "Resource.h"
+#include "Version.h"
+#include <winver.h>
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION GOD2_FILE_VERSION
+ PRODUCTVERSION GOD2_FILE_VERSION
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS VOS_NT_WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "RayCat\0"
+            VALUE "FileDescription", "God2 Semantic Recovery Engine Ultimate\0"
+            VALUE "FileVersion", GOD2_FILE_VERSION_STRING
+            VALUE "InternalName", "God2SemanticRecoveryEngine\0"
+            VALUE "LegalCopyright", "Copyright (C) RayCat\0"
+            VALUE "OriginalFilename", "God2SemanticRecoveryEngine.exe\0"
+            VALUE "ProductName", "God2 Semantic Recovery Engine Ultimate Private Edition\0"
+            VALUE "ProductVersion", GOD2_FILE_VERSION_STRING
+            VALUE "Comments", "Author Discord: raycat66\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END
+
+IDI_GOD2_PACKET_CAPTURE ICON "assets\\God2PacketCapture.ico"
+IDR_X86_PACKET_PROBE RCDATA "payload\\x86\\God2PacketCaptureProbe.dll"
+IDR_X86_PACKET_INJECTOR RCDATA "payload\\x86\\God2PacketCaptureInjector.exe"

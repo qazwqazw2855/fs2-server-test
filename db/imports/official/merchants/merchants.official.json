@@ -1,0 +1,623 @@
+{
+    "category": "merchants",
+    "source": "God2 Classic Unified Server/Data/Runtime/Merchants/merchant.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 349735,
+    "recordCount": 16,
+    "recoveredFields": [
+        "evidence",
+        "id",
+        "inventoryStatus",
+        "merchantRelationStatus",
+        "name",
+        "npcTemplateId",
+        "npcType",
+        "resourcePath",
+        "shopReference",
+        "unknownFields"
+    ],
+    "missingFields": [
+        "buyList",
+        "currencyRules",
+        "dialogBranchRules",
+        "scriptId",
+        "sellRules",
+        "serverMerchantId",
+        "shopInventoryId",
+        "spawnMapId",
+        "spawnPosition",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Recovered; InventoryUnverified",
+    "recoveryProgress": "Recovered from runtime merchant data; pending NPC, item, price, dialog, and packet cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Merchant candidates recovered; shop inventory, prices, and transaction rules are not verified.",
+    "records": [
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2767-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2767-rom",
+            "name": "店小二",
+            "npcType": {
+                "code": 0,
+                "label": "一般NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2767.ROM",
+            "merchantRelationStatus": "merchantNameCandidateOnly",
+            "shopReference": null,
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 78,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2771-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2771-rom",
+            "name": "商人1",
+            "npcType": {
+                "code": 0,
+                "label": "一般NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2771.ROM",
+            "merchantRelationStatus": "merchantNameCandidateOnly",
+            "shopReference": null,
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 82,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2772-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2772-rom",
+            "name": "商人2",
+            "npcType": {
+                "code": 0,
+                "label": "一般NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2772.ROM",
+            "merchantRelationStatus": "merchantNameCandidateOnly",
+            "shopReference": null,
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 83,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2783-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2783-rom",
+            "name": "狐狸商",
+            "npcType": {
+                "code": 0,
+                "label": "一般NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2783.ROM",
+            "merchantRelationStatus": "merchantNameCandidateOnly",
+            "shopReference": null,
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 94,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data-rom-npc-npc2501-rom",
+            "npcTemplateId": "client:npc-template/data/rom/npc/npc2501-rom",
+            "name": "武器防具",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data/rom/npc/npc2501.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/装备屋",
+                "label": "装备屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 107,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data-rom-npc-npc2502-rom",
+            "npcTemplateId": "client:npc-template/data/rom/npc/npc2502-rom",
+            "name": "炼丹房",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data/rom/npc/npc2502.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/炼丹房",
+                "label": "炼丹房",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 108,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data-rom-npc-npc2503-rom",
+            "npcTemplateId": "client:npc-template/data/rom/npc/npc2503-rom",
+            "name": "杂货店",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data/rom/npc/npc2503.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 109,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data-rom-npc-npc2504-rom",
+            "npcTemplateId": "client:npc-template/data/rom/npc/npc2504-rom",
+            "name": "酒店客栈",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data/rom/npc/npc2504.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/酒楼",
+                "label": "酒楼",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 110,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2605-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2605-rom",
+            "name": "商店1",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2605.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 211,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2606-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2606-rom",
+            "name": "商店2",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2606.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 212,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2607-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2607-rom",
+            "name": "商店3",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2607.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 213,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2608-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2608-rom",
+            "name": "商店4",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2608.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 214,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2609-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2609-rom",
+            "name": "商店5",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2609.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 215,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2643-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2643-rom",
+            "name": "杂货老板",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2643.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 249,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2644-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2644-rom",
+            "name": "商店老板",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2644.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/道具屋",
+                "label": "道具屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 250,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        },
+        {
+            "id": "client:merchant-template/data2-rom-npc-npc2645-rom",
+            "npcTemplateId": "client:npc-template/data2/rom/npc/npc2645-rom",
+            "name": "武器店老板",
+            "npcType": {
+                "code": 2,
+                "label": "老板NPC",
+                "status": "clientCsvCandidate"
+            },
+            "resourcePath": "data2/rom/npc/npc2645.ROM",
+            "merchantRelationStatus": "merchantCandidateByNpcCsvTypeAndName",
+            "shopReference": {
+                "id": "client:shop-dialog/装备屋",
+                "label": "装备屋",
+                "sourcePath": "Original/Data2/Patch/Comm/message.csvZ",
+                "status": "dialogGroupCandidate",
+                "inventoryStatus": "unknownFromPhase2_2ClientEvidence"
+            },
+            "inventoryStatus": "unknownFromPhase2_2ClientEvidence",
+            "evidence": [
+                {
+                    "sourcePath": "Original/Data2/Patch/NPC.csvZ",
+                    "sourceLine": 251,
+                    "kind": "NPC.csv template/name/type"
+                }
+            ],
+            "unknownFields": [
+                "serverMerchantId",
+                "shopInventoryId",
+                "buyList",
+                "sellRules",
+                "currencyRules",
+                "dialogBranchRules",
+                "scriptId",
+                "spawnMapId",
+                "spawnPosition"
+            ]
+        }
+    ]
+}

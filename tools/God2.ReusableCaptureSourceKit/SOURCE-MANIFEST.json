@@ -1,0 +1,192 @@
+﻿{
+    "schemaVersion":  "god2-reusable-capture-source-kit-v1",
+    "createdAtUtc":  "2026-08-17T14:36:40.5290210Z",
+    "source":  "tools/God2.ClientInstrumentation",
+    "files":  [
+                  {
+                      "path":  "docs/CODEX-OPERATOR-WORKFLOW.zh-TW.md",
+                      "bytes":  3993,
+                      "sha256":  "45990FB30820A06C1EF02FE5DF473EA1A7014083D995C187DFA87F439F3ABC8C"
+                  },
+                  {
+                      "path":  "docs/PORTING-GUIDE.zh-TW.md",
+                      "bytes":  2856,
+                      "sha256":  "195F9D7DD73C5C00E7436DEAADD5D4C3D8682D12231C9B2F8715A626F1251BCA"
+                  },
+                  {
+                      "path":  "generic/game-adapter.example.json",
+                      "bytes":  682,
+                      "sha256":  "FD0047B5DB6E07A6DDA1DDCB95EEADCE7F03CA13209EB46E5E395936C1643C9E"
+                  },
+                  {
+                      "path":  "generic/generic-probe-plan.example.json",
+                      "bytes":  526,
+                      "sha256":  "3FAA5A10CC9A75D77F4C34C78045A504A7160FDF289F9F661F374AEABC5CBF7E"
+                  },
+                  {
+                      "path":  "generic/generic-probe-plan-v1.schema.json",
+                      "bytes":  2338,
+                      "sha256":  "8D8F7BC7808C49587C4B317920FE4FF6F69283F940EEFDD8A5E6B8F35B3A8D0A"
+                  },
+                  {
+                      "path":  "generic/Invoke-GenericProbePlan.ps1",
+                      "bytes":  8555,
+                      "sha256":  "2F571150FBD85DEA9CE8C72DEE520D81A53AC2698F69FC91EBF040AFC51DF290"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  1635,
+                      "sha256":  "6E7FA8945AE33ED0862D332CD84238A0471EE61AEA3981A4F35414F1EE071135"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/README.md",
+                      "bytes":  3885,
+                      "sha256":  "FF1FDE9EC10AC8BD63BB3F46ECBF591DD75E6D88D2AEA5A3C9F76E1E68045796"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Analyze-LoginTrial.ps1",
+                      "bytes":  547,
+                      "sha256":  "91F343CD5A02853099F606FF0931F8A0958C424327E060A77E2EA4905AA74249"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Build-Instrumentation.ps1",
+                      "bytes":  5870,
+                      "sha256":  "13B7B16E6F8CBC3F2482F1F1BE754048DCB65E3DDA06C802D1A04A0135BC098D"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Ensure-TestAccounts.ps1",
+                      "bytes":  488,
+                      "sha256":  "573757651989670CF708B04001BB164CBC487E831B1694C6E08D25EC055EB6B1"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Inspect-OfficialClientMemory.ps1",
+                      "bytes":  2205,
+                      "sha256":  "0B68224BF25C21D86116D9BF62D06AC63C4ADA3C5BDC8ACAE36F4746CD296E57"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-ElevatedAutomationHost.ps1",
+                      "bytes":  11233,
+                      "sha256":  "0BFBBD9E5887CDCACC169EE5CE1EA5D591D2D1D02FD69D8AA0CD132D23E182FC"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-ElevatedAutomationSupervisor.ps1",
+                      "bytes":  2180,
+                      "sha256":  "FB4608DA210FBE4130FE17F5503A1A0F4E7E59DABAA3BA9ABA2D9EECBFE83FDB"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-GenericProbeRemoteCommandSelfTest.ps1",
+                      "bytes":  3377,
+                      "sha256":  "F00E533D6CC6A0D73EDB39E7FC9311FE7961A3659DEFCD820D44ECF4718CFDE5"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-InstrumentationEndpointSmoke.ps1",
+                      "bytes":  2086,
+                      "sha256":  "5FBAC15E91AB3BCBB607AA809446BC027800E43238C9F804BAA803DBEA00A88A"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-InstrumentationSelfTest.ps1",
+                      "bytes":  4533,
+                      "sha256":  "FFEA8F6D8AE9387261065B0B611F03DDDF1932C925521A4F00CF59DBA953BEFF"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-LauncherAutomationRecord.ps1",
+                      "bytes":  731,
+                      "sha256":  "DAF16B0DC70C5C9E9F914BC5333480E20A1D59893BCF4996AB81AF742E17F330"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-LauncherAutomationReplay.ps1",
+                      "bytes":  581,
+                      "sha256":  "C1AA847C322FE00E92FE1035D319BAFB078F149CCF8668963E3C4B863ADDF68C"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-OfficialClientRuntime.ps1",
+                      "bytes":  37210,
+                      "sha256":  "F5EA9EACB2F74CFCF27D7B7759759BFBE7F01ADD91BE5B6C12539C24F1E13E00"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-ProductInjectorSelfTest.ps1",
+                      "bytes":  193174,
+                      "sha256":  "E0E24F7D66E2FB7EE9B7F2AD6323545F83F0B9FBE7CC1B02454DEE5B611F9D3D"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Invoke-RestoreFaultLifecycle.ps1",
+                      "bytes":  6610,
+                      "sha256":  "FFE3276755ED06AEB1C1D60111EBEAEF3CDA709E1550591AC9581D681ECEEC1C"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/OfficialRuntimeControl.ps1",
+                      "bytes":  1970,
+                      "sha256":  "66234969835394FC84DF21EDB75B64ECB479EC44CC21CACCD909750A0B5F8EB1"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Prepare-LoginTrial.ps1",
+                      "bytes":  2979,
+                      "sha256":  "09269AB6246A98BB27EE604D30106470C510F14CBCDD80A7E6963664C2ADB2AE"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Start-ElevatedAutomationHost.ps1",
+                      "bytes":  4153,
+                      "sha256":  "ADAFBA3D7C2913D7365179676612758486D81C3F9F3395DA2BE9C9C27B09C297"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Start-InstrumentationEndpoint.ps1",
+                      "bytes":  2432,
+                      "sha256":  "8C33695023AD95159260575C5E696EF6120AED590547A105851145DCCD138C42"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Start-LoginTrial.ps1",
+                      "bytes":  3323,
+                      "sha256":  "17F2ACE307E26A8905770E10A924851B3A6421CD7470993B57EB84B77C16809F"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Stop-InstrumentationEndpoint.ps1",
+                      "bytes":  1337,
+                      "sha256":  "CDBAF0AB86BC6F9753CCAF3F39673429AE9F615B838988D59E938F1F2BA869F7"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Stop-LoginTrial.ps1",
+                      "bytes":  1330,
+                      "sha256":  "4B27DC4BC72C45292F3AE26047AD41AAF1CAB7AA24C6B05A44A52FF04DDCB57A"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/scripts/Wait-LoginSample.ps1",
+                      "bytes":  2265,
+                      "sha256":  "A886F562875557F46B38C023900FD51DE827B44ED60D28C95C7393F127C5DFC3"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/GenericProbePlan.cpp",
+                      "bytes":  33185,
+                      "sha256":  "A2C243DDF701C0BCE36D04145A8E37FD3CD7FA1D6F0318E6230BCF22F76F7275"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/GenericProbePlan.h",
+                      "bytes":  4708,
+                      "sha256":  "227363F7251980E2517991E4F4F9099C4FA76820B94C69D3FD2292E4DF67E6EA"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/GenericProbePlanSelfTest.cpp",
+                      "bytes":  5324,
+                      "sha256":  "3E9F5FDB1BDA352C0D48FC9C175BC0DE0CEE2986DF8ED8F46E40770D4CD61A76"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/God2ClientTraceLauncher.cpp",
+                      "bytes":  25100,
+                      "sha256":  "7B49D41F3B0EC8407CC59D0010B70D7D9A6444BDC97DCA6C7D32CC10C1D0D2D5"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/God2ClientTraceProbe.cpp",
+                      "bytes":  1057433,
+                      "sha256":  "9E9D8CE2407CC003F16696F624DA4028DF063BD8DBC2B80E9543D536F2C1B72F"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/God2PacketCaptureInjector.cpp",
+                      "bytes":  125744,
+                      "sha256":  "5D6FBF6E32314BFAAC715D940EB3E4544F3F00305061F8BE81F677359F804FD2"
+                  },
+                  {
+                      "path":  "reference/God2.ClientInstrumentation/src/God2TraceSelfTestClient.cpp",
+                      "bytes":  74265,
+                      "sha256":  "24242D7F43720F17691E0AA387EB3A8957E6B9C5080B23D5D80BC3FEFFCC1D8E"
+                  }
+              ]
+}

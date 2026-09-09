@@ -1,0 +1,56 @@
+{
+  "Domain": "Equipment",
+  "SourceCategory": "primary:equipment;related:items",
+  "SourceArtifact": "equipment/equipment.official.json;items/items.official.json",
+  "DeclaredRecordCount": 1,
+  "RelatedSourceRecordCount": 17418,
+  "IndexedRecordCount": 1,
+  "VerificationStatus": "Unverified; EquipmentRulesOnly | VerifiedExactCurrentClientStaticCatalog; GameplaySemanticsUnverified",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "clientItemId",
+    "confidence",
+    "crossReferences",
+    "description",
+    "formalCanonicalBindingStatus",
+    "id",
+    "idSemantics",
+    "itemType",
+    "name",
+    "presentInFormalBaseline",
+    "priceCandidates",
+    "rawFields",
+    "resourceReferences",
+    "runtimeEligibility",
+    "runtimeEligible",
+    "slot",
+    "sourceFile",
+    "sourcePath",
+    "sourceRecordIndex",
+    "sourceSha256",
+    "subtype",
+    "unknownFields",
+    "validationStatus"
+  ],
+  "MissingFields": [
+    "classRestrictions",
+    "crossReferenceEvidence",
+    "durability",
+    "equipmentSlot",
+    "gameplaySemanticValidation",
+    "itemInstanceId",
+    "jobRestrictions",
+    "packetRuntimeValidation",
+    "requirements",
+    "serverAuthoritativeId",
+    "stackLimit",
+    "weight"
+  ],
+  "Entities": [
+    {
+      "Id": "client:equipment-rule/wpn",
+      "References": {},
+      "RecordHash": "7CBFFD2DA005CBB1B57DB07F334FAACB1DE1E7A3F6307AEB3CBE2F5773C31E6C"
+    }
+  ]
+}

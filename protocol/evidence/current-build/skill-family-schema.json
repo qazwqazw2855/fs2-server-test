@@ -1,0 +1,113 @@
+{
+  "SchemaVersion": "skill-family-schema-v1",
+  "GenericCommand": [
+    "actorId",
+    "skillId",
+    "targetIds",
+    "round",
+    "commandWindow",
+    "flags",
+    "unknownFields"
+  ],
+  "CatalogDriven": true,
+  "PerSkillHandlerCount": 0,
+  "Families": [
+    {
+      "FamilyId": 1,
+      "Name": "BasicAttack",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 2,
+      "Name": "SingleTargetDamage",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 3,
+      "Name": "MultiTargetDamage",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 4,
+      "Name": "SingleTargetHeal",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 5,
+      "Name": "MultiTargetHeal",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 6,
+      "Name": "Buff",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 7,
+      "Name": "Debuff",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 8,
+      "Name": "StatusRemove",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 9,
+      "Name": "ResourceRestore",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 10,
+      "Name": "Revive",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 11,
+      "Name": "Formation",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 12,
+      "Name": "PositionSwap",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 13,
+      "Name": "Summon",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 14,
+      "Name": "PetCommand",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 15,
+      "Name": "Passive",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    },
+    {
+      "FamilyId": 16,
+      "Name": "TriggeredEffect",
+      "RuntimeMapping": "God2.ClassicServer.Runtime.SkillActionRuntime",
+      "ProtocolHandler": "GeneralizedGameplayCommand.Skill"
+    }
+  ],
+  "OfficialWireStatus": "EvidenceBlocked"
+}

@@ -1,0 +1,16 @@
+{
+    "command":  "CleanupReplayProcesses",
+    "stoppedProcesses":  [
+                             {
+                                 "processId":  19324,
+                                 "processName":  "God2_opt"
+                             },
+                             {
+                                 "processId":  18784,
+                                 "processName":  "God2ClassicLauncher"
+                             }
+                         ],
+    "remainingClientCount":  0,
+    "remainingLauncherCount":  0,
+    "completedAtUtc":  "2026-08-12T09:07:16.0164726+00:00"
+}

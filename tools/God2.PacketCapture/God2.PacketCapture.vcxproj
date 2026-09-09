@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{B36BDB4A-7AF8-4DFE-9F63-17EF04781E4A}</ProjectGuid>
+    <RootNamespace>God2PacketCapture</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <VcpkgRoot Condition="'$(VcpkgRoot)'==''">$(USERPROFILE)\dev\vcpkg\</VcpkgRoot>
+    <VcpkgTriplet>x64-windows-static</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)..\..\Release\Debug\</OutDir><IntDir>$(ProjectDir)..\..\Build\God2.PacketCapture\Debug\</IntDir>
+    <TargetName>God2SemanticRecoveryEngine</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)..\..\Release\</OutDir><IntDir>$(ProjectDir)..\..\Build\God2.PacketCapture\Release\</IntDir>
+    <TargetName>God2SemanticRecoveryEngine</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel><SDLCheck>true</SDLCheck><LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary><PreprocessorDefinitions>_WIN32_WINNT=0x0601;WINVER=0x0601;NTDDI_VERSION=0x06010000;WIN32_LEAN_AND_MEAN;NOMINMAX;SQLITE_THREADSAFE=1;SQLITE_OMIT_LOAD_EXTENSION;SQLITE_DEFAULT_MEMSTATUS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/utf-8 /FS %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)installed\$(VcpkgTriplet)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link><SubSystem>Windows</SubSystem><AdditionalLibraryDirectories>$(VcpkgRoot)installed\$(VcpkgTriplet)\debug\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>minizipsd.lib;zsd.lib;user32.lib;gdi32.lib;comctl32.lib;comdlg32.lib;shell32.lib;advapi32.lib;version.lib;ole32.lib;ws2_32.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies><AdditionalManifestDependencies>type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*' %(AdditionalManifestDependencies)</AdditionalManifestDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel><SDLCheck>true</SDLCheck><FunctionLevelLinking>true</FunctionLevelLinking>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <IntrinsicFunctions>true</IntrinsicFunctions><LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary><PreprocessorDefinitions>_WIN32_WINNT=0x0601;WINVER=0x0601;NTDDI_VERSION=0x06010000;WIN32_LEAN_AND_MEAN;NOMINMAX;NDEBUG;SQLITE_THREADSAFE=1;SQLITE_OMIT_LOAD_EXTENSION;SQLITE_DEFAULT_MEMSTATUS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/utf-8 /FS %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(VcpkgRoot)installed\$(VcpkgTriplet)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link><SubSystem>Windows</SubSystem><EnableCOMDATFolding>true</EnableCOMDATFolding><OptimizeReferences>true</OptimizeReferences><GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VcpkgRoot)installed\$(VcpkgTriplet)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories><AdditionalDependencies>minizips.lib;zs.lib;user32.lib;gdi32.lib;comctl32.lib;comdlg32.lib;shell32.lib;advapi32.lib;version.lib;ole32.lib;ws2_32.lib;psapi.lib;%(AdditionalDependencies)</AdditionalDependencies><AdditionalManifestDependencies>type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='amd64' publicKeyToken='6595b64144ccf1df' language='*' %(AdditionalManifestDependencies)</AdditionalManifestDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ActionGrouping.cpp" /><ClCompile Include="AutomaticSemantic.cpp" /><ClCompile Include="CaptureBackends.cpp" /><ClCompile Include="Core.cpp" /><ClCompile Include="EtwConsumer.cpp" /><ClCompile Include="EvidencePackage.cpp" /><ClCompile Include="Gameplay.cpp" /><ClCompile Include="GpuAcceleration.cpp" />
+    <ClCompile Include="Gui.cpp" /><ClCompile Include="Main.cpp" /><ClCompile Include="Rtx5070Validation.cpp" /><ClCompile Include="SemanticRecovery.cpp" /><ClCompile Include="Storage.cpp" /><ClCompile Include="Transport.cpp" /><ClCompile Include="UltimateRecovery.cpp" />
+    <ClCompile Include="third_party\sqlite3.c"><CompileAs>CompileAsC</CompileAs><WarningLevel>TurnOffAllWarnings</WarningLevel><TreatWarningAsError>false</TreatWarningAsError><DisableSpecificWarnings>4996</DisableSpecificWarnings><RunCodeAnalysis>false</RunCodeAnalysis><ExcludedFromBuild Condition="'$(God2FirstPartyAnalysis)'=='true'">true</ExcludedFromBuild></ClCompile>
+  </ItemGroup>
+  <ItemGroup><ResourceCompile Include="EmbeddedResources.rc" /></ItemGroup>
+  <ItemGroup><Manifest Include="God2.PacketCapture.manifest" /></ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActionGrouping.h" /><ClInclude Include="AutomaticSemantic.h" /><ClInclude Include="Core.h" /><ClInclude Include="EtwConsumer.h" /><ClInclude Include="EvidencePackage.h" /><ClInclude Include="Gameplay.h" /><ClInclude Include="GpuAcceleration.h" /><ClInclude Include="Gui.h" /><ClInclude Include="Storage.h" />
+    <ClInclude Include="Resource.h" /><ClInclude Include="Rtx5070Validation.h" /><ClInclude Include="SemanticRecovery.h" /><ClInclude Include="SharedSemanticRing.h" /><ClInclude Include="Transport.h" /><ClInclude Include="UltimateRecovery.h" /><ClInclude Include="Version.h" /><ClInclude Include="third_party\sqlite3.h" />
+  </ItemGroup>
+  <Target Name="SyncEmbeddedInstrumentationPayloads" BeforeTargets="ResourceCompile">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)scripts\Sync-EmbeddedInstrumentationPayloads.ps1&quot; -RepositoryRoot &quot;$(ProjectDir)..\..&quot; -Configuration $(Configuration)" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

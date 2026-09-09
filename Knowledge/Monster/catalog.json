@@ -1,0 +1,1734 @@
+{
+  "Domain": "Monster",
+  "SourceCategory": "primary:monsters;related:drop_tables\u002Bspawns",
+  "SourceArtifact": "monsters/monsters.official.json;drop_tables/drop_tables.official.json;spawns/spawns.official.json",
+  "DeclaredRecordCount": 208,
+  "RelatedSourceRecordCount": 277,
+  "IndexedRecordCount": 208,
+  "VerificationStatus": "Recovered; CombatStatsUnverified | Unverified; EvidenceOnly | Unverified; Needs Recovery",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "aggroCandidate",
+    "aiCandidate",
+    "animationReferences",
+    "attributeCandidates",
+    "clientMonsterId",
+    "confidence",
+    "dropReferences",
+    "id",
+    "levelCandidate",
+    "mapId",
+    "mapReferences",
+    "modelResourceReferences",
+    "monsterTemplateId",
+    "monsterType",
+    "movementCandidate",
+    "name",
+    "provenance",
+    "questReferences",
+    "rawFields",
+    "runtimeEligibility",
+    "serverAuthoritativeId",
+    "skillReferences",
+    "sourcePath",
+    "sourceRecordIndex",
+    "sourceSha256",
+    "spawnKind",
+    "spawnReferences",
+    "templateId",
+    "unknownFields",
+    "validationStatus",
+    "x",
+    "y"
+  ],
+  "MissingFields": [
+    "aggroSemantics",
+    "aiSemantics",
+    "crossReferenceEvidence",
+    "damage",
+    "dropItems",
+    "dropRates",
+    "gameplaySemanticValidation",
+    "hp",
+    "level",
+    "mapSpawnBinding",
+    "ownershipRules",
+    "packetRuntimeValidation",
+    "partyRules",
+    "quantities",
+    "questDropRules",
+    "respawn",
+    "respawnSeconds",
+    "serverAuthoritativeId",
+    "spawnCondition",
+    "templateId",
+    "x",
+    "y"
+  ],
+  "Entities": [
+    {
+      "Id": "client:monster/fight-eny/1",
+      "Name": "\u6D77\u67F1",
+      "References": {
+        "clientMonsterId": "1"
+      },
+      "RecordHash": "F098FE4FACA13FE51831DF9D9B4D95CBCDADBF17E3E9FABE824D48CDD979B7FB"
+    },
+    {
+      "Id": "client:monster/fight-eny/10",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "10"
+      },
+      "RecordHash": "8DA4217A7B55363BAC2EF35848FAC5704F561D61D32887843EB15534B3CF5090"
+    },
+    {
+      "Id": "client:monster/fight-eny/100",
+      "Name": "\u7389\u9F0E\u771F\u4EBA",
+      "References": {
+        "clientMonsterId": "100"
+      },
+      "RecordHash": "0348881636613CC6F9BE9777533938BB3A7FB7F806905A49BF47EC85DA8E5A0A"
+    },
+    {
+      "Id": "client:monster/fight-eny/101",
+      "Name": "\u77F3\u77F6\u5A18\u5A18",
+      "References": {
+        "clientMonsterId": "101"
+      },
+      "RecordHash": "7D140E2A10D435D9F4A7D8FCB340AD969E14FB8EFCF03733CAE6126938CE43DF"
+    },
+    {
+      "Id": "client:monster/fight-eny/102",
+      "Name": "\u9633\u4EFB",
+      "References": {
+        "clientMonsterId": "102"
+      },
+      "RecordHash": "C412C88EC96923CC24999FB3E2DCA7DFA373375D6D43E6F6A8F1A80228B2A1E5"
+    },
+    {
+      "Id": "client:monster/fight-eny/103",
+      "Name": "\u674E\u9756",
+      "References": {
+        "clientMonsterId": "103"
+      },
+      "RecordHash": "98EA86986816463E4071CF572CCB1DACF55AD2B0EBA2C180A3204362593006BB"
+    },
+    {
+      "Id": "client:monster/fight-eny/104",
+      "Name": "\u5D07\u9ED1\u864E",
+      "References": {
+        "clientMonsterId": "104"
+      },
+      "RecordHash": "323FA3DF03CC2036B48EDBCD4BEBEEE33FBCA8AFAFF95A141144FF4EA5F02A3D"
+    },
+    {
+      "Id": "client:monster/fight-eny/105",
+      "Name": "\u91D1\u5149\u5723\u6BCD",
+      "References": {
+        "clientMonsterId": "105"
+      },
+      "RecordHash": "BF472B66B6207BD724C6A555503BCC2233AF1361C526288129145495783BDAC3"
+    },
+    {
+      "Id": "client:monster/fight-eny/106",
+      "Name": "\u8D64\u7CBE\u5B50",
+      "References": {
+        "clientMonsterId": "106"
+      },
+      "RecordHash": "DCFD92580D44FD5D95AAEDFCD7D1E95424B589BA500A2AF3E5E0D1F4771BF7EE"
+    },
+    {
+      "Id": "client:monster/fight-eny/107",
+      "Name": "\u571F\u884C\u5B59",
+      "References": {
+        "clientMonsterId": "107"
+      },
+      "RecordHash": "EB7425C8544969B963CC5EE1FD12AEBCF623BCB7A4E63FA5583DC8A4D2797B82"
+    },
+    {
+      "Id": "client:monster/fight-eny/108",
+      "Name": "\u4E91\u4E2D\u5B50",
+      "References": {
+        "clientMonsterId": "108"
+      },
+      "RecordHash": "3BE4880472CE6003CC9A086363AA5518F1958A5D149707A1356B6E3058846366"
+    },
+    {
+      "Id": "client:monster/fight-eny/109",
+      "Name": "\u666E\u8D24\u771F\u4EBA",
+      "References": {
+        "clientMonsterId": "109"
+      },
+      "RecordHash": "62910989E12065B3926FE3F704ADFE37D312A3A305A6F827DB856168D939E51E"
+    },
+    {
+      "Id": "client:monster/fight-eny/11",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "11"
+      },
+      "RecordHash": "9BA661F2EB634BF7F23415BBB69298160601B42A1D85127EA1329C8103671743"
+    },
+    {
+      "Id": "client:monster/fight-eny/110",
+      "Name": "\u54EA\u54A4",
+      "References": {
+        "clientMonsterId": "110"
+      },
+      "RecordHash": "DF6BA9D8D90C5F9CE98C490AED8415790424C2EA6C57F3DEB3F76206B10AB0E1"
+    },
+    {
+      "Id": "client:monster/fight-eny/111",
+      "Name": "\u6768\u622C",
+      "References": {
+        "clientMonsterId": "111"
+      },
+      "RecordHash": "905D81F952A90B800C86FF49109056F15D48B694015545D4C36FF410AECDD235"
+    },
+    {
+      "Id": "client:monster/fight-eny/112",
+      "Name": "\u9EC4\u5929\u5316",
+      "References": {
+        "clientMonsterId": "112"
+      },
+      "RecordHash": "C206FF1FD9A0C91F0F4D8139A4B67EC42816CF3077FD047C3B6E7ED0B64EA26B"
+    },
+    {
+      "Id": "client:monster/fight-eny/113",
+      "Name": "\u8D75\u516C\u660E",
+      "References": {
+        "clientMonsterId": "113"
+      },
+      "RecordHash": "A1484B86966597B8F48E10BA6E24E47445B6C03D6099C8E79BC6983FB8140ACD"
+    },
+    {
+      "Id": "client:monster/fight-eny/114",
+      "Name": "\u9F99\u5409\u516C\u4E3B",
+      "References": {
+        "clientMonsterId": "114"
+      },
+      "RecordHash": "DCE49956F0F1C7ACD990550960691F69586E288A5349FB3F6344422F4CDE45CA"
+    },
+    {
+      "Id": "client:monster/fight-eny/115",
+      "Name": "\u4E91\u9704\u4E09\u59CA\u59B9",
+      "References": {
+        "clientMonsterId": "115"
+      },
+      "RecordHash": "9C84B76F59CB4021BBB7BA92BA4BC2DAD3BE7E441324CEAD3292E721670A6AD8"
+    },
+    {
+      "Id": "client:monster/fight-eny/116",
+      "Name": "\u59DC\u5B50\u7259",
+      "References": {
+        "clientMonsterId": "116"
+      },
+      "RecordHash": "913E0A4830240214AF34929F91943CA048CCBD9D09D551C1E74E9AF31A35B883"
+    },
+    {
+      "Id": "client:monster/fight-eny/117",
+      "Name": "\u95FB\u4EF2",
+      "References": {
+        "clientMonsterId": "117"
+      },
+      "RecordHash": "07CE9BA95E1835AC8B489675D6EE5C79991B19EDDA3DDDD0A50874CFDEB34873"
+    },
+    {
+      "Id": "client:monster/fight-eny/118",
+      "Name": "\u9EC4\u98DE\u864E",
+      "References": {
+        "clientMonsterId": "118"
+      },
+      "RecordHash": "BF981A7DF0841852AEB6AACA684041CF025AC9E6A4B2E577B6EA34BC69C97F81"
+    },
+    {
+      "Id": "client:monster/fight-eny/119",
+      "Name": "\u7533\u516C\u8C79",
+      "References": {
+        "clientMonsterId": "119"
+      },
+      "RecordHash": "CB291B09C7862217CDDF013749B54279356D0A185F7E1734B8B829C89F8B63DC"
+    },
+    {
+      "Id": "client:monster/fight-eny/12",
+      "Name": "\u8840\u541E",
+      "References": {
+        "clientMonsterId": "12"
+      },
+      "RecordHash": "E49A1DD842EAD450372C955D2017121C8FADE40878612E2DC5B651BB6D793A33"
+    },
+    {
+      "Id": "client:monster/fight-eny/120",
+      "Name": "\u592A\u4E59\u771F\u4EBA",
+      "References": {
+        "clientMonsterId": "120"
+      },
+      "RecordHash": "4C7FC6DEE06B0A9E74D88CAF3043D48E157540A8B7DD2B499BA08714826B4EE0"
+    },
+    {
+      "Id": "client:monster/fight-eny/121",
+      "Name": "\u96F7\u9707\u5B50",
+      "References": {
+        "clientMonsterId": "121"
+      },
+      "RecordHash": "DA21724C82441EE323935DEA845F3AD4931009507338FB157B04483AB9EDEBCD"
+    },
+    {
+      "Id": "client:monster/fight-eny/122",
+      "Name": "\u80E1\u559C\u5A9A",
+      "References": {
+        "clientMonsterId": "122"
+      },
+      "RecordHash": "D2AD54877B0D66DCB58D5A37E27127F4353DF87ED7E8579850245DF00F75FDB4"
+    },
+    {
+      "Id": "client:monster/fight-eny/123",
+      "Name": "\u738B\u8D35\u4EBA",
+      "References": {
+        "clientMonsterId": "123"
+      },
+      "RecordHash": "8CEF2A585470ACAEEE6ADD23105D20DEF7ECEF8E8463F607EA0AE3642A8D2362"
+    },
+    {
+      "Id": "client:monster/fight-eny/124",
+      "Name": "\u59B2\u5DF1",
+      "References": {
+        "clientMonsterId": "124"
+      },
+      "RecordHash": "AB1A74A0CA4A75EFA5CC523B9DE6DE7A5B7162CE861BA7202A34CD82965BD72A"
+    },
+    {
+      "Id": "client:monster/fight-eny/125",
+      "Name": "\u62F3\u5934\u5E08\u5085",
+      "References": {
+        "clientMonsterId": "125"
+      },
+      "RecordHash": "4743B2A05320EAE6D95FB4106E0EDDA923F1047236675BF9373C1DC78A985178"
+    },
+    {
+      "Id": "client:monster/fight-eny/126",
+      "Name": "\u58EB\u5175",
+      "References": {
+        "clientMonsterId": "126"
+      },
+      "RecordHash": "6E00706044405498BE48AFAE444D929FD921E238BF1D181690854053A72513B8"
+    },
+    {
+      "Id": "client:monster/fight-eny/13",
+      "Name": "\u98DF\u5C38\u9E1F",
+      "References": {
+        "clientMonsterId": "13"
+      },
+      "RecordHash": "952F720DE659D7219FAB4066B0C674FF43B7D8134ADAAFC65E4E0F17EE43204D"
+    },
+    {
+      "Id": "client:monster/fight-eny/131",
+      "Name": "\u5C0F\u5C0F\u5E74",
+      "References": {
+        "clientMonsterId": "131"
+      },
+      "RecordHash": "28EA3A3E7B96E95CBF3BBA26FDFB7449E8DD6DA792C58D62105DC857BD182D4A"
+    },
+    {
+      "Id": "client:monster/fight-eny/135",
+      "Name": "\u5C71\u8D3C\u5934\u76EE",
+      "References": {
+        "clientMonsterId": "135"
+      },
+      "RecordHash": "EA3DFE82D79F209F4F00A522A0A06F4D8B87510BF969899BAC92CCFBBA37B3D6"
+    },
+    {
+      "Id": "client:monster/fight-eny/136",
+      "Name": "\u96EA\u5973",
+      "References": {
+        "clientMonsterId": "136"
+      },
+      "RecordHash": "452844FA38011A54904577C18B41B69A209EEDC1643746952685B87BA51D1D3A"
+    },
+    {
+      "Id": "client:monster/fight-eny/137",
+      "Name": "\u76D7\u8D3C\u9A91\u5175",
+      "References": {
+        "clientMonsterId": "137"
+      },
+      "RecordHash": "A619592F14E57A68012E0410DE4C699F3C84BF8DDFAD9E4437B3FA33C36F9D37"
+    },
+    {
+      "Id": "client:monster/fight-eny/138",
+      "Name": "\u4EBA\u7C7B\u9A91\u5175",
+      "References": {
+        "clientMonsterId": "138"
+      },
+      "RecordHash": "2F68B95A04408557C3C3DC42E2623E56EA26358B012CD9B0DB267F607B76CDEF"
+    },
+    {
+      "Id": "client:monster/fight-eny/139",
+      "Name": "\u79C3\u9E70",
+      "References": {
+        "clientMonsterId": "139"
+      },
+      "RecordHash": "38EA656A17A58F1FBFAEF528FC8F026DE8267D9D23DF6A4D81E992102F8646C9"
+    },
+    {
+      "Id": "client:monster/fight-eny/14",
+      "Name": "\u767D\u7709",
+      "References": {
+        "clientMonsterId": "14"
+      },
+      "RecordHash": "D1978C9AAD3CD0353CBFD138EC4FE15471A73842CD094D73830C7BCAB6B37098"
+    },
+    {
+      "Id": "client:monster/fight-eny/140",
+      "Name": "\u91CE\u732A",
+      "References": {
+        "clientMonsterId": "140"
+      },
+      "RecordHash": "9B8CAAD3A9D7974391354B264F895689E2F5A640A8284172A4EA37D19D4939A7"
+    },
+    {
+      "Id": "client:monster/fight-eny/141",
+      "Name": "\u96C9\u9E21",
+      "References": {
+        "clientMonsterId": "141"
+      },
+      "RecordHash": "BDEBB322EFE7E6D611F617C5DBF67ADE2AAF907DF82319C8405790177A0C89E2"
+    },
+    {
+      "Id": "client:monster/fight-eny/142",
+      "Name": "\u5927\u89D2\u7F8A",
+      "References": {
+        "clientMonsterId": "142"
+      },
+      "RecordHash": "198FEA9A0CFA89F8A2F6DDA296B1E737DA76A24A444488EA1CEFFFB4CDCF9223"
+    },
+    {
+      "Id": "client:monster/fight-eny/143",
+      "Name": "\u7266\u725B",
+      "References": {
+        "clientMonsterId": "143"
+      },
+      "RecordHash": "79669EA3FFA9B45F36E9C43DE061C735F67C2A68ECF3ECEBA2CC7ADC0F9A4732"
+    },
+    {
+      "Id": "client:monster/fight-eny/144",
+      "Name": "\u5927\u718A",
+      "References": {
+        "clientMonsterId": "144"
+      },
+      "RecordHash": "AE81DC1FB1CB19D598ADEF42B7BE860F946446F32DDD19E40A22E88033489781"
+    },
+    {
+      "Id": "client:monster/fight-eny/145",
+      "Name": "\u96EA\u602A",
+      "References": {
+        "clientMonsterId": "145"
+      },
+      "RecordHash": "B0C6FC62637ACF4F9A5FB6EBC745BFF6D471D2783D662AD8957BB1D571712D1E"
+    },
+    {
+      "Id": "client:monster/fight-eny/146",
+      "Name": "\u4F01\u9E45",
+      "References": {
+        "clientMonsterId": "146"
+      },
+      "RecordHash": "241D5A87A2BD837757BDB9F42D296ABC4F9FBB144301533B7F2365F78C8B013E"
+    },
+    {
+      "Id": "client:monster/fight-eny/147",
+      "Name": "\u4F01\u9E45\u9A91\u6D77\u8C79",
+      "References": {
+        "clientMonsterId": "147"
+      },
+      "RecordHash": "21B8DDE42D882F846B4199DE9650E63A757D185D795A8B5CB8C7C5704AC7C800"
+    },
+    {
+      "Id": "client:monster/fight-eny/148",
+      "Name": "\u6D77\u8C79",
+      "References": {
+        "clientMonsterId": "148"
+      },
+      "RecordHash": "B8230B79EBA22EFD40F668324C07E4D87F187E527C0BC7AD27E4BF2739C3C419"
+    },
+    {
+      "Id": "client:monster/fight-eny/149",
+      "Name": "\u5723\u8BDE\u8001\u4EBA",
+      "References": {
+        "clientMonsterId": "149"
+      },
+      "RecordHash": "A348DF6BD5881F04F7D71D11FEE9E722D11B16410A52B910E68A37A5C022145F"
+    },
+    {
+      "Id": "client:monster/fight-eny/15",
+      "Name": "\u9E33\u9E2D",
+      "References": {
+        "clientMonsterId": "15"
+      },
+      "RecordHash": "F4D5E3C7F4A2115519FC3EDAD60A2BC778CF215DF22D3ADC08C1F789ACF07812"
+    },
+    {
+      "Id": "client:monster/fight-eny/150",
+      "Name": "\u5DE8\u8C61",
+      "References": {
+        "clientMonsterId": "150"
+      },
+      "RecordHash": "B9B1F1AE99AC5CD3C9E52CBDC875E0D979A9B48F2A426156194DCD3CAFC016D8"
+    },
+    {
+      "Id": "client:monster/fight-eny/151",
+      "Name": "\u59CB\u7956\u9E1F",
+      "References": {
+        "clientMonsterId": "151"
+      },
+      "RecordHash": "2722A0DAD0BBA67241772217A633522EA083B5A2979D9F5F92E093756B935468"
+    },
+    {
+      "Id": "client:monster/fight-eny/152",
+      "Name": "\u74E2\u866B",
+      "References": {
+        "clientMonsterId": "152"
+      },
+      "RecordHash": "CABDC43B03873B4976DA223F9BA67451EC34325F768B514BB2791634257AED17"
+    },
+    {
+      "Id": "client:monster/fight-eny/153",
+      "Name": "\u7532\u866B",
+      "References": {
+        "clientMonsterId": "153"
+      },
+      "RecordHash": "5BEFC7471D6A30A57C4EC0697CA756C00BB0B2633B1445216B51550E49DF676A"
+    },
+    {
+      "Id": "client:monster/fight-eny/154",
+      "Name": "\u8718\u86DB",
+      "References": {
+        "clientMonsterId": "154"
+      },
+      "RecordHash": "295CF3263534C344A7357B72042CE42DC27BBB62F8687228A23407CDF8C1715F"
+    },
+    {
+      "Id": "client:monster/fight-eny/155",
+      "Name": "\u8717\u725B",
+      "References": {
+        "clientMonsterId": "155"
+      },
+      "RecordHash": "72E56261039984752BCA5F5B53C29C499B2DD02F69C9FE367A48883BC49943BD"
+    },
+    {
+      "Id": "client:monster/fight-eny/156",
+      "Name": "\u795E\u9B3C\u6218\u58EB\u9650\u5B9A\u7248",
+      "References": {
+        "clientMonsterId": "156"
+      },
+      "RecordHash": "6C8820EC3AB4D776EDA87C0BD65B0EE2E08D5091FF10E4A4F0B8DD3E9454B242"
+    },
+    {
+      "Id": "client:monster/fight-eny/157",
+      "Name": "\u957F\u6BDB\u96EA\u602A",
+      "References": {
+        "clientMonsterId": "157"
+      },
+      "RecordHash": "1DEAC9BD117642DD8415AD420C88F000DB72C32A98626C33DAC3FF172224C9D4"
+    },
+    {
+      "Id": "client:monster/fight-eny/158",
+      "Name": "\u4E4C\u62C9\u8349",
+      "References": {
+        "clientMonsterId": "158"
+      },
+      "RecordHash": "96854B4F26778BD29DCB68CE1965C16F6718F8FABE12A561957D1B5F80E4CA7B"
+    },
+    {
+      "Id": "client:monster/fight-eny/159",
+      "Name": "\u4F4E\u7B49\u86C7\u65CF",
+      "References": {
+        "clientMonsterId": "159"
+      },
+      "RecordHash": "9615C58205D67A3AFD5A673E1A25C309577435B461E5360FBBF2883F3ACB9A25"
+    },
+    {
+      "Id": "client:monster/fight-eny/16",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "16"
+      },
+      "RecordHash": "CC1DE6985E06E62BA4444C3FD9821A544F32D3C46D8710CFE2077FB436ED9886"
+    },
+    {
+      "Id": "client:monster/fight-eny/160",
+      "Name": "\u86C7\u65CF\u5973\u738B",
+      "References": {
+        "clientMonsterId": "160"
+      },
+      "RecordHash": "4E3E6DA443E4DB4E9A347CC0FB2985A65F2C2EDA8DE8120F84C748EFF020AC07"
+    },
+    {
+      "Id": "client:monster/fight-eny/161",
+      "Name": "\u6728\u5236\u673A\u5173\u4EBA",
+      "References": {
+        "clientMonsterId": "161"
+      },
+      "RecordHash": "7C1FAF0943FB2C0463AE3C0C0783E9B47B92CB97CBF1F61392DCEAE046B57160"
+    },
+    {
+      "Id": "client:monster/fight-eny/162",
+      "Name": "\u4E5D\u9ECE\u56FD\u4E3B\u6559",
+      "References": {
+        "clientMonsterId": "162"
+      },
+      "RecordHash": "871D7A78CE1086A9DF4FE1C9C723358268D3B2CBA09BEA0E153FBEA893E9611C"
+    },
+    {
+      "Id": "client:monster/fight-eny/163",
+      "Name": "\u9ED1\u8863\u4EBA",
+      "References": {
+        "clientMonsterId": "163"
+      },
+      "RecordHash": "12E5FB4759B38B9514A8C6A007E3D5A8911C3177E3E4F35E1D96E90A85AE1813"
+    },
+    {
+      "Id": "client:monster/fight-eny/164",
+      "Name": "\u86C7\u65CF\u9AB7\u9AC5\u62A4\u536B",
+      "References": {
+        "clientMonsterId": "164"
+      },
+      "RecordHash": "E968CC309326D0937E2CF54388AF0F46F6A9A49C6CAD6018F427BDC6B2590A44"
+    },
+    {
+      "Id": "client:monster/fight-eny/165",
+      "Name": "\u96EA\u8C82",
+      "References": {
+        "clientMonsterId": "165"
+      },
+      "RecordHash": "B792070CB78F59A3677D098769245633F20DEA172B5F61E06EAA5B351B9017A4"
+    },
+    {
+      "Id": "client:monster/fight-eny/166",
+      "Name": "\u72D0\u65CF\u4F8D\u536B",
+      "References": {
+        "clientMonsterId": "166"
+      },
+      "RecordHash": "6F5622D5FB46FAB47865D34DB6FA7608FA41B28AF9176684492BBC57A4A8B059"
+    },
+    {
+      "Id": "client:monster/fight-eny/167",
+      "Name": "\u72FC\u738B",
+      "References": {
+        "clientMonsterId": "167"
+      },
+      "RecordHash": "93EE7014C1C114CAC633746347408E1E717E3113DA61CAA8D22EFF7548AA5BDE"
+    },
+    {
+      "Id": "client:monster/fight-eny/168",
+      "Name": "\u96EA\u5973",
+      "References": {
+        "clientMonsterId": "168"
+      },
+      "RecordHash": "219615732767571C03B3754A6A436DB0683B655DAAEC430836FD318FEF0098A6"
+    },
+    {
+      "Id": "client:monster/fight-eny/169",
+      "Name": "\u4E94\u5C3E\u9B54\u738B",
+      "References": {
+        "clientMonsterId": "169"
+      },
+      "RecordHash": "4AD9ECB54CD7A0EDBF3C1EE5E832A4CC5D82A3AFC9AC054F071B980E81A51D4D"
+    },
+    {
+      "Id": "client:monster/fight-eny/17",
+      "Name": "\u5C71\u9B45",
+      "References": {
+        "clientMonsterId": "17"
+      },
+      "RecordHash": "E123D8FFC9D3421E04D67C0077D107FE0437D1449A46F1C7974438B5D137D151"
+    },
+    {
+      "Id": "client:monster/fight-eny/170",
+      "Name": "\u4E03\u5C3E\u9B54\u738B",
+      "References": {
+        "clientMonsterId": "170"
+      },
+      "RecordHash": "145797C266D2FBE324BE14C7E45AE333F6AA9A0B154B17D3A0B2BBBD1BE3CCD1"
+    },
+    {
+      "Id": "client:monster/fight-eny/171",
+      "Name": "\u70BD\u78F7\u6218\u9A91",
+      "References": {
+        "clientMonsterId": "171"
+      },
+      "RecordHash": "C4BE3FDB5C23F1111C6839BB0EF9F0DBBFDF7F8E07FE98941F8E03F7FB709238"
+    },
+    {
+      "Id": "client:monster/fight-eny/172",
+      "Name": "\u9177\u590F\u5C0F\u718A\u718A",
+      "References": {
+        "clientMonsterId": "172"
+      },
+      "RecordHash": "721459918626383CFE2406B91936BC67396E4B08A2D3AC4DF3A7B3F80E2817BF"
+    },
+    {
+      "Id": "client:monster/fight-eny/173",
+      "Name": "\u767D\u5929\u541B",
+      "References": {
+        "clientMonsterId": "173"
+      },
+      "RecordHash": "273675C503651C2DF00D1201305C8C9105642F63470CEF927D5293D9749335E6"
+    },
+    {
+      "Id": "client:monster/fight-eny/174",
+      "Name": "\u59DA\u5929\u541B",
+      "References": {
+        "clientMonsterId": "174"
+      },
+      "RecordHash": "4F39DB9667D47964A405DA728B0D194B5C0D75A1EF1E6C8775AD818DC2B77B9F"
+    },
+    {
+      "Id": "client:monster/fight-eny/175",
+      "Name": "\u79E6\u5929\u541B",
+      "References": {
+        "clientMonsterId": "175"
+      },
+      "RecordHash": "AEDD34CA883758960358108A356924896D14E16AA0B3DB49DC54D8156B362A1E"
+    },
+    {
+      "Id": "client:monster/fight-eny/176",
+      "Name": "\u8881\u5929\u541B",
+      "References": {
+        "clientMonsterId": "176"
+      },
+      "RecordHash": "B21FB1F5DCA8EF74587A99DE64A6AE9F382C85677125613D13A797A6DC8C1ECB"
+    },
+    {
+      "Id": "client:monster/fight-eny/177",
+      "Name": "\u8D75\u5929\u541B",
+      "References": {
+        "clientMonsterId": "177"
+      },
+      "RecordHash": "E9B7E7F963C16FC544E5EB8852C16AE9B1A3089C5D7A3367DE6B62B69DBD3247"
+    },
+    {
+      "Id": "client:monster/fight-eny/178",
+      "Name": "\u91D1\u955C",
+      "References": {
+        "clientMonsterId": "178"
+      },
+      "RecordHash": "63A1F3451280E8802CC9384F15A568C2540C924166EBE1A10B4C4A4CCBEAA942"
+    },
+    {
+      "Id": "client:monster/fight-eny/179",
+      "Name": "\u4E07\u5203\u8F66",
+      "References": {
+        "clientMonsterId": "179"
+      },
+      "RecordHash": "AD5CBADA562F8741C63F36F7F2AE8C329E76F732C3DA059F7046B60CCD169409"
+    },
+    {
+      "Id": "client:monster/fight-eny/18",
+      "Name": "\u8D64\u9B3C",
+      "References": {
+        "clientMonsterId": "18"
+      },
+      "RecordHash": "E8FFA7C089CA0505E361DADBAF1BF27080C0ACD625551C98DD01B61267836F2C"
+    },
+    {
+      "Id": "client:monster/fight-eny/180",
+      "Name": "\u5F6D\u9075",
+      "References": {
+        "clientMonsterId": "180"
+      },
+      "RecordHash": "BEE665E61E481A57AF74438F761F0D92ECA330397D47FD12A4B7124C4CF1257C"
+    },
+    {
+      "Id": "client:monster/fight-eny/181",
+      "Name": "\u8463\u5929\u541B",
+      "References": {
+        "clientMonsterId": "181"
+      },
+      "RecordHash": "7962269070E94FBA87230F9FC2D518451D9326168A8D71440411923544458816"
+    },
+    {
+      "Id": "client:monster/fight-eny/182",
+      "Name": "\u5F20\u5929\u541B",
+      "References": {
+        "clientMonsterId": "182"
+      },
+      "RecordHash": "891ABCB07DDA0E56EB36B4E8FFDD2A7E1CAC61A097D4FC2DF105A8160BB4942B"
+    },
+    {
+      "Id": "client:monster/fight-eny/183",
+      "Name": "\u72D0\u72F8\u796D\u53F8",
+      "References": {
+        "clientMonsterId": "183"
+      },
+      "RecordHash": "16396B1081BE001415DEB340E0F0351F5BE5EEC602126B5BB6EAC3EB4CA7D1D7"
+    },
+    {
+      "Id": "client:monster/fight-eny/184",
+      "Name": "\u72D0\u72F8",
+      "References": {
+        "clientMonsterId": "184"
+      },
+      "RecordHash": "30CB0CFCFB0FBEF218174DFFF4A5FFCE11EE6184C95CEE4E74EB6FC529940059"
+    },
+    {
+      "Id": "client:monster/fight-eny/185",
+      "Name": "\u72D0\u72F8\u5C0F\u4E11",
+      "References": {
+        "clientMonsterId": "185"
+      },
+      "RecordHash": "38855FE4B680A550BC1BF3A496181BA615114B56A1F079378E02ED0971347CE5"
+    },
+    {
+      "Id": "client:monster/fight-eny/186",
+      "Name": "\u5343\u5E74\u4EBA\u8518",
+      "References": {
+        "clientMonsterId": "186"
+      },
+      "RecordHash": "3EF57796054ECAF254332740130A74D372EDB89972E1A16DC3181F880DFACA49"
+    },
+    {
+      "Id": "client:monster/fight-eny/187",
+      "Name": "\u6B66\u672F\u5B97\u5E08",
+      "References": {
+        "clientMonsterId": "187"
+      },
+      "RecordHash": "411E1D5DA2A41C1CC2872A1ECAC3BBBADBA62F4AE368D387BE0756C3DFE83CAB"
+    },
+    {
+      "Id": "client:monster/fight-eny/188",
+      "Name": "\u679C\u529B\u65B0\u5175\u5668\u539F\u578B",
+      "References": {
+        "clientMonsterId": "188"
+      },
+      "RecordHash": "7101974A832EE4732561E7CABB98F330B1377EEA51D7D48E4AF1282ED13D89BE"
+    },
+    {
+      "Id": "client:monster/fight-eny/189",
+      "Name": "\u714C\u661F\u9AC5\u864E",
+      "References": {
+        "clientMonsterId": "189"
+      },
+      "RecordHash": "1AA093AFFB5700366A81C61B94B47D75D50DA9E1CFCD9A7690FA0A07D91C919E"
+    },
+    {
+      "Id": "client:monster/fight-eny/19",
+      "Name": "\u9B54\u517D",
+      "References": {
+        "clientMonsterId": "19"
+      },
+      "RecordHash": "B3854A8B0E0BD4D6F2617E245938176E2DC31E1ACBC992EE619E2D7126E0C32A"
+    },
+    {
+      "Id": "client:monster/fight-eny/190",
+      "Name": "\u98DE\u9B42\u9B47\u86C7",
+      "References": {
+        "clientMonsterId": "190"
+      },
+      "RecordHash": "CB8B4D2B7D8CF70480C194F25C15EED57B76DB863E33BC2DD1FD7B515BDA763C"
+    },
+    {
+      "Id": "client:monster/fight-eny/191",
+      "Name": "\u9AA8\u7070\u575B",
+      "References": {
+        "clientMonsterId": "191"
+      },
+      "RecordHash": "6F9FB30C0657332A64998F78917D3692F2D8423A66A7EFEFC5F402201394683E"
+    },
+    {
+      "Id": "client:monster/fight-eny/192",
+      "Name": "\u68FA\u6728\u602A",
+      "References": {
+        "clientMonsterId": "192"
+      },
+      "RecordHash": "04DDB92255076B54CFDEE683B224CFCD831563AB9CEEEC7625F30FA126EE1F32"
+    },
+    {
+      "Id": "client:monster/fight-eny/193",
+      "Name": "\u9AB7\u9AC5\u8C79",
+      "References": {
+        "clientMonsterId": "193"
+      },
+      "RecordHash": "506AD442BE049F6BCDEE7FD632AF13E9EA9CFA250478F55A33D5C7A3BEC28319"
+    },
+    {
+      "Id": "client:monster/fight-eny/194",
+      "Name": "\u9AB7\u9AC5\u72D7",
+      "References": {
+        "clientMonsterId": "194"
+      },
+      "RecordHash": "26599D60A84BFB3DE1F30CA432C07ADC99C313EB4B0CC1C32D0D3214A5ACA877"
+    },
+    {
+      "Id": "client:monster/fight-eny/195",
+      "Name": "\u9AB7\u9AC5\u7F8A",
+      "References": {
+        "clientMonsterId": "195"
+      },
+      "RecordHash": "112554C90C07473C8F86EB1DBC18F09561E52557030AB2F8CFCE24FA170DE1D0"
+    },
+    {
+      "Id": "client:monster/fight-eny/196",
+      "Name": "\u8759\u8760",
+      "References": {
+        "clientMonsterId": "196"
+      },
+      "RecordHash": "2E5D32506826A64F10CE409967099B18E9F631E305BE79BDCAA86F7D9A4F25EF"
+    },
+    {
+      "Id": "client:monster/fight-eny/197",
+      "Name": "\u65E0\u5C3E\u72FC",
+      "References": {
+        "clientMonsterId": "197"
+      },
+      "RecordHash": "3BE687F8B5AC32DA6A9D8F879FA32AA7DC6E5CF27F9393E7398A916D95F7CA08"
+    },
+    {
+      "Id": "client:monster/fight-eny/198",
+      "Name": "\u5B9D\u6811(\u5927\u9646\u7528)",
+      "References": {
+        "clientMonsterId": "198"
+      },
+      "RecordHash": "EC2187007283D3FCA64C0E54E588648BC3643CA9EF92563C633F9FDDE1802C1D"
+    },
+    {
+      "Id": "client:monster/fight-eny/199",
+      "Name": "\u5927\u4E3B\u6559",
+      "References": {
+        "clientMonsterId": "199"
+      },
+      "RecordHash": "220ABB2DE26189375ECC3ADDBFE2183B6A151D3431D62BE274DFB07A04931F1A"
+    },
+    {
+      "Id": "client:monster/fight-eny/2",
+      "Name": "\u9762\u5305\u8548",
+      "References": {
+        "clientMonsterId": "2"
+      },
+      "RecordHash": "E93AFB2884422CE29CC556BE2C8DE82D8C6D4781506A6037031C428E53865E73"
+    },
+    {
+      "Id": "client:monster/fight-eny/20",
+      "Name": "\u5DE8\u7075",
+      "References": {
+        "clientMonsterId": "20"
+      },
+      "RecordHash": "A87CBA0AA544C169235D08343214572844B8849A760E211A05DF1EF6380B1ABD"
+    },
+    {
+      "Id": "client:monster/fight-eny/200",
+      "Name": "\u76F8\u6251\u624B",
+      "References": {
+        "clientMonsterId": "200"
+      },
+      "RecordHash": "D00863834375B41B6BF30B414B251307B56AB1051BFBE30184208E03DCFF7944"
+    },
+    {
+      "Id": "client:monster/fight-eny/201",
+      "Name": "\u9A6C\u9762",
+      "References": {
+        "clientMonsterId": "201"
+      },
+      "RecordHash": "53D379BA2EA3737D0E01E322E0E18C0660CC8DB0702B059DB312A9E6B1DA3D8F"
+    },
+    {
+      "Id": "client:monster/fight-eny/202",
+      "Name": "\u7280\u725B",
+      "References": {
+        "clientMonsterId": "202"
+      },
+      "RecordHash": "3884D2190A6BD12C8D0A730D1C2DE98C504D414A0DF2B975C0E9B51727BB8E6F"
+    },
+    {
+      "Id": "client:monster/fight-eny/203",
+      "Name": "\u5154\u5B50\u6B66\u58EB",
+      "References": {
+        "clientMonsterId": "203"
+      },
+      "RecordHash": "0928BC112E2A16F6A4C9CA87CAA1C3852749AF3CB844287B44B348FB703B38F2"
+    },
+    {
+      "Id": "client:monster/fight-eny/204",
+      "Name": "\u65A7\u5934\u5E2E\u77EE",
+      "References": {
+        "clientMonsterId": "204"
+      },
+      "RecordHash": "3960F155DD5F4B10C401444C12AF0EC3344BBF747BED333421FB237A31B24AE9"
+    },
+    {
+      "Id": "client:monster/fight-eny/205",
+      "Name": "\u65A7\u5934\u5E2E\u9AD8",
+      "References": {
+        "clientMonsterId": "205"
+      },
+      "RecordHash": "15568208DFE79583E884C62071782D0653D142EFB2E3DA7D84BFB72784E95743"
+    },
+    {
+      "Id": "client:monster/fight-eny/206",
+      "Name": "\u706B\u661F\u5927\u738B",
+      "References": {
+        "clientMonsterId": "206"
+      },
+      "RecordHash": "4B7E5F9BF0BFB6595980A2BC101824C2C738A51EC7603563E89B8625BE2ACCEC"
+    },
+    {
+      "Id": "client:monster/fight-eny/207",
+      "Name": "\u86C7",
+      "References": {
+        "clientMonsterId": "207"
+      },
+      "RecordHash": "7AAA139853E85FD9A16C311E731021F6EA4953392DDAA759790513E8813EBF8E"
+    },
+    {
+      "Id": "client:monster/fight-eny/208",
+      "Name": "\u5927\u5934\u9A6C",
+      "References": {
+        "clientMonsterId": "208"
+      },
+      "RecordHash": "A738FFE185E3E105DA17729B08DD65D656CEFEEFDC52DBF312E1B1FA398653C8"
+    },
+    {
+      "Id": "client:monster/fight-eny/209",
+      "Name": "\u5927\u5934\u9A6C",
+      "References": {
+        "clientMonsterId": "209"
+      },
+      "RecordHash": "ACA37B6239BBE0652401BB46DE759FA25A4C27A566ADC7857A63E7A1DB9311EE"
+    },
+    {
+      "Id": "client:monster/fight-eny/21",
+      "Name": "\u68EE\u6797\u77EE\u4EBA",
+      "References": {
+        "clientMonsterId": "21"
+      },
+      "RecordHash": "8E6C1F0A220159072211C055E65F9AF4AC4CA0448BF781E48804410F8ADEE621"
+    },
+    {
+      "Id": "client:monster/fight-eny/210",
+      "Name": "\u4E07\u4EDE\u8F66",
+      "References": {
+        "clientMonsterId": "210"
+      },
+      "RecordHash": "4F2E8A8A2A6DA654C6E5514113ABF64F87E9493BB59D1BFDB82EE94516368629"
+    },
+    {
+      "Id": "client:monster/fight-eny/211",
+      "Name": "\u9ED1V\u718A",
+      "References": {
+        "clientMonsterId": "211"
+      },
+      "RecordHash": "8C2688237529373DAEE53882DDE434FDD7382A87CA3A6C17F0CB15AF22242A2E"
+    },
+    {
+      "Id": "client:monster/fight-eny/212",
+      "Name": "\u7194\u5CA9\u602A",
+      "References": {
+        "clientMonsterId": "212"
+      },
+      "RecordHash": "929D9F870E8BF126411FA4A373D519E2C1885E78D0C75BE845897807C9E68298"
+    },
+    {
+      "Id": "client:monster/fight-eny/213",
+      "Name": "\u77F3\u72EE\u5B50",
+      "References": {
+        "clientMonsterId": "213"
+      },
+      "RecordHash": "F858C5487A55AF8BE7EAB483EF9FBF03EAE100FF2EB8DBDE4C99FF2E0CACFFFF"
+    },
+    {
+      "Id": "client:monster/fight-eny/214",
+      "Name": "\u5BA4\u706B\u732A",
+      "References": {
+        "clientMonsterId": "214"
+      },
+      "RecordHash": "F20FFF8714DC9E72D5A52C41BBEAF282645CCF1542295A33E0ABDD36F86E9425"
+    },
+    {
+      "Id": "client:monster/fight-eny/215",
+      "Name": "\u7EA2\u5B69\u513F",
+      "References": {
+        "clientMonsterId": "215"
+      },
+      "RecordHash": "8318F3666444625A6111E0FE243F76B7B4E165A12ED47F7FEEF4D86571ED1BEB"
+    },
+    {
+      "Id": "client:monster/fight-eny/22",
+      "Name": "\u4E09\u773C",
+      "References": {
+        "clientMonsterId": "22"
+      },
+      "RecordHash": "B07D2F62D94030B6316705E690196B24AAD925BA630697B311988680B3603126"
+    },
+    {
+      "Id": "client:monster/fight-eny/23",
+      "Name": "\u543C\u517D",
+      "References": {
+        "clientMonsterId": "23"
+      },
+      "RecordHash": "B9C5EBB910B6FF2038CEF38FD7045E190829FE9722E783786472D8E7ED6F1F9B"
+    },
+    {
+      "Id": "client:monster/fight-eny/24",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "24"
+      },
+      "RecordHash": "6242B8D42FFE8E73800841A11175D6906C56E9EF97468439B18E246BE3656650"
+    },
+    {
+      "Id": "client:monster/fight-eny/25",
+      "Name": "\u9614\u5634\u864E",
+      "References": {
+        "clientMonsterId": "25"
+      },
+      "RecordHash": "6DD323C631FE74382C33ECFC2446C2295806281431C5449EAD629380EE03481E"
+    },
+    {
+      "Id": "client:monster/fight-eny/26",
+      "Name": "\u54EE\u5929\u72AC",
+      "References": {
+        "clientMonsterId": "26"
+      },
+      "RecordHash": "ADAEB2E24ADCBF37B99A997E86448BF1ACA38E6F81ADDEE0CC1F26DE43FFC004"
+    },
+    {
+      "Id": "client:monster/fight-eny/27",
+      "Name": "\u9B3C\u72D0",
+      "References": {
+        "clientMonsterId": "27"
+      },
+      "RecordHash": "EB150DAF6F717E615C60BA728129080FA80B4944318E54572407D03FADDEDE85"
+    },
+    {
+      "Id": "client:monster/fight-eny/28",
+      "Name": "\u571F\u602A",
+      "References": {
+        "clientMonsterId": "28"
+      },
+      "RecordHash": "FC2B97316392F69D7C7F60AA74C8971BE7D8FF791C699B284FCF4C499B3B3901"
+    },
+    {
+      "Id": "client:monster/fight-eny/29",
+      "Name": "\u8986\u5730\u9F20",
+      "References": {
+        "clientMonsterId": "29"
+      },
+      "RecordHash": "243D6BC0ADCE244D0BA2E1A7107BBACC18565CA492640D7E70780F1981D85144"
+    },
+    {
+      "Id": "client:monster/fight-eny/3",
+      "Name": "\u9B54\u773C",
+      "References": {
+        "clientMonsterId": "3"
+      },
+      "RecordHash": "960CA8EABA76783C27EBE38F90F07A1A182CD30A37A83455E5D0ECCB2754B957"
+    },
+    {
+      "Id": "client:monster/fight-eny/30",
+      "Name": "\u91CE\u5154",
+      "References": {
+        "clientMonsterId": "30"
+      },
+      "RecordHash": "0D121C8A72D3AE635FDC32CFD9D4479A256C099BE7C1B68B9F27E8C051C64F8F"
+    },
+    {
+      "Id": "client:monster/fight-eny/31",
+      "Name": "\u786C\u68D8\u9F99",
+      "References": {
+        "clientMonsterId": "31"
+      },
+      "RecordHash": "C9D1A5D4ACB35464B6774B7693F0B3A26A7888813397E1227C3C6878BC6A79AA"
+    },
+    {
+      "Id": "client:monster/fight-eny/32",
+      "Name": "\u7075\u8DB3",
+      "References": {
+        "clientMonsterId": "32"
+      },
+      "RecordHash": "8571A6189590BE8102A545AB0B13F7E58250C4E2D11F46C8739029F86E23308D"
+    },
+    {
+      "Id": "client:monster/fight-eny/33",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "33"
+      },
+      "RecordHash": "1CDA7ECC45C93D33F8F5E57D9D2CB45756670AC8E30955D18AFF5A87DEC2B9DB"
+    },
+    {
+      "Id": "client:monster/fight-eny/34",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "34"
+      },
+      "RecordHash": "CA8DE0141F7C0CA0799AE5D1F338AAA7724A1899CD29166819707B2D2EA74D41"
+    },
+    {
+      "Id": "client:monster/fight-eny/35",
+      "Name": "\u5DE8\u7FC5\u866B",
+      "References": {
+        "clientMonsterId": "35"
+      },
+      "RecordHash": "7EC9D25EEB96F841E0AC7D9F30398429C25A431EF51AEB163E9298032E70E1C4"
+    },
+    {
+      "Id": "client:monster/fight-eny/36",
+      "Name": "\u7C89\u8747",
+      "References": {
+        "clientMonsterId": "36"
+      },
+      "RecordHash": "69D9001AF7A2FE94063310DE35DB1955B12EB128B89CF4F828D79F74C00E545B"
+    },
+    {
+      "Id": "client:monster/fight-eny/37",
+      "Name": "\u5DE8\u7FD4\u866B",
+      "References": {
+        "clientMonsterId": "37"
+      },
+      "RecordHash": "11AFA85A5F6C119F62996867AF7D3902514882F72373ACF90CBB50D72E33AE52"
+    },
+    {
+      "Id": "client:monster/fight-eny/38",
+      "Name": "\u76FE\u866B",
+      "References": {
+        "clientMonsterId": "38"
+      },
+      "RecordHash": "8AC02563ADDE832B4AE41C4EF017AA4D8AFD005D2167573956A5ABA0FAC7338C"
+    },
+    {
+      "Id": "client:monster/fight-eny/39",
+      "Name": "\u9489\u866B",
+      "References": {
+        "clientMonsterId": "39"
+      },
+      "RecordHash": "C36497407C9B6F5F9BE196D0A680727B1BB85F1856AA829777C81EF81ACDC4DC"
+    },
+    {
+      "Id": "client:monster/fight-eny/4",
+      "Name": "\u571F\u866B",
+      "References": {
+        "clientMonsterId": "4"
+      },
+      "RecordHash": "A2208A5B095884A28318E019C6B1BA9D70481C56F78A9ED1282773DCBF53E1C8"
+    },
+    {
+      "Id": "client:monster/fight-eny/40",
+      "Name": "\u523D\u5B50\u866B",
+      "References": {
+        "clientMonsterId": "40"
+      },
+      "RecordHash": "28944D40A3F31FFE38185C44A7B4FBFA232F618658E3A4A62879DDAA2CF02622"
+    },
+    {
+      "Id": "client:monster/fight-eny/41",
+      "Name": "\u4E94\u70B9\u6843\u82B1\u9A79",
+      "References": {
+        "clientMonsterId": "41"
+      },
+      "RecordHash": "AA95990F1F11C4B3C242F73729AE5BCD3FC5619796EF251CCCEADDBB5D117F58"
+    },
+    {
+      "Id": "client:monster/fight-eny/42",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "42"
+      },
+      "RecordHash": "2D404855BDC01E92904484F6DAD8A0B3726C7299567413404CB0B23F1F1DA7D6"
+    },
+    {
+      "Id": "client:monster/fight-eny/43",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "43"
+      },
+      "RecordHash": "0E976D51EB9D2FFBB7A9C9A4A69877A02417F2C50659A16F3C0FE88BCD319A0D"
+    },
+    {
+      "Id": "client:monster/fight-eny/44",
+      "Name": "\u677F\u89D2\u9752\u725B",
+      "References": {
+        "clientMonsterId": "44"
+      },
+      "RecordHash": "8BFB07CBC28C52DC0F51B45F6EC9CB5F9AE8B602FAD7582E607BE5CADA83F334"
+    },
+    {
+      "Id": "client:monster/fight-eny/45",
+      "Name": "\u4E94\u8272\u795E\u725B",
+      "References": {
+        "clientMonsterId": "45"
+      },
+      "RecordHash": "890819721F76E1EF2C05F8078CEBF74D686F4837EB72E8933D9BA5DFB8E8C51C"
+    },
+    {
+      "Id": "client:monster/fight-eny/46",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "46"
+      },
+      "RecordHash": "442457EB4320794FA1338ACC695EBC427A11B6101828C3A0B1776B4676E8D7A4"
+    },
+    {
+      "Id": "client:monster/fight-eny/47",
+      "Name": "\u9CB8\u9F99",
+      "References": {
+        "clientMonsterId": "47"
+      },
+      "RecordHash": "320007694196B313EEB4A611628B225DDC25840E41DF0876DB0C22962E07CB09"
+    },
+    {
+      "Id": "client:monster/fight-eny/48",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "48"
+      },
+      "RecordHash": "C0C9DD3A9B36FA8B8848E151475B435FE8A4BDE2CAB9E48D02D6DF2BC56E1364"
+    },
+    {
+      "Id": "client:monster/fight-eny/49",
+      "Name": "\u82CD\u9CB8",
+      "References": {
+        "clientMonsterId": "49"
+      },
+      "RecordHash": "316D5C2CC09EF1F57AAA9DB47CC34CBD06FE9D8050B2FF9CDFFCAC625B368758"
+    },
+    {
+      "Id": "client:monster/fight-eny/5",
+      "Name": "\u9B3C\u706B",
+      "References": {
+        "clientMonsterId": "5"
+      },
+      "RecordHash": "3165285FE670EE26975321C895445A2C4BE70B06371D07260B1FFF5452D4E5A1"
+    },
+    {
+      "Id": "client:monster/fight-eny/50",
+      "Name": "\u72FC",
+      "References": {
+        "clientMonsterId": "50"
+      },
+      "RecordHash": "74D9A8ADCAD47DEF338D9F5374739A07213F28C696052262CA341901A5353095"
+    },
+    {
+      "Id": "client:monster/fight-eny/51",
+      "Name": "\u8C79",
+      "References": {
+        "clientMonsterId": "51"
+      },
+      "RecordHash": "AAC1CF12A12EFBB7B09D6767728DFF197FC2BC16E775966605D61D53602364DD"
+    },
+    {
+      "Id": "client:monster/fight-eny/52",
+      "Name": "\u718A",
+      "References": {
+        "clientMonsterId": "52"
+      },
+      "RecordHash": "F9547E6CFB0E15A764F10D36A13C9170AF2EC7EB839CD71CB8F54828982B3A88"
+    },
+    {
+      "Id": "client:monster/fight-eny/53",
+      "Name": "\u864E",
+      "References": {
+        "clientMonsterId": "53"
+      },
+      "RecordHash": "2FEBDD68210D31D6FB535D88B17635ADB1C3FC74B6C24B590E8CE4ED3F73CD53"
+    },
+    {
+      "Id": "client:monster/fight-eny/54",
+      "Name": "\u7A7F\u5C71\u7532",
+      "References": {
+        "clientMonsterId": "54"
+      },
+      "RecordHash": "C3B86D933B35AB08DD8CA16156025C0A18A7BCF4C505F4F4B060C6AECA8D5AC9"
+    },
+    {
+      "Id": "client:monster/fight-eny/55",
+      "Name": "\u9A6C\u8D3C",
+      "References": {
+        "clientMonsterId": "55"
+      },
+      "RecordHash": "A99EF9046D6F0838B6306466ADE87838A772FD247324A1C65196693C927B3A8E"
+    },
+    {
+      "Id": "client:monster/fight-eny/56",
+      "Name": "\u5F3A\u718A",
+      "References": {
+        "clientMonsterId": "56"
+      },
+      "RecordHash": "C6A8192AACBCF0B674FFE7803BA9668D24D8E29393A1F78815FB161FF90BC7C2"
+    },
+    {
+      "Id": "client:monster/fight-eny/57",
+      "Name": "\u7C98\u6E7F",
+      "References": {
+        "clientMonsterId": "57"
+      },
+      "RecordHash": "48B4076CA79CCB117B8E5F5B2F81A0A8A5F0FE3121C12DE6D46E8C680A6C08BF"
+    },
+    {
+      "Id": "client:monster/fight-eny/58",
+      "Name": "\u82D4\u602A",
+      "References": {
+        "clientMonsterId": "58"
+      },
+      "RecordHash": "5D42F3712005CCF588F3793C32DCDB6AEA502D395014C70ACAB22E47B5B8A8F1"
+    },
+    {
+      "Id": "client:monster/fight-eny/59",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "59"
+      },
+      "RecordHash": "FE466D21E81BC0363D7B7421FFDA68F159E7172E538006CD92D137C3DC8A6750"
+    },
+    {
+      "Id": "client:monster/fight-eny/6",
+      "Name": "\u6028\u7075",
+      "References": {
+        "clientMonsterId": "6"
+      },
+      "RecordHash": "A8B96199F3057FAB73005DC92AF9A30D7F251117564782D9C6A0A450FFAB8451"
+    },
+    {
+      "Id": "client:monster/fight-eny/60",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "60"
+      },
+      "RecordHash": "6C0FCDBC736BDEF4EC823F71271EE67CC082D2C441AE62359C3CFEC70453E3CF"
+    },
+    {
+      "Id": "client:monster/fight-eny/61",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "61"
+      },
+      "RecordHash": "4E82327C194C21FDA0D4EAF60E72FCA16FE59416FB2321D919CF1BC46D4CC4CE"
+    },
+    {
+      "Id": "client:monster/fight-eny/62",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "62"
+      },
+      "RecordHash": "75CAA38A800F756B3096549C030EFD6F71DD95C1477570EC5858F7C50A68EA0F"
+    },
+    {
+      "Id": "client:monster/fight-eny/63",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "63"
+      },
+      "RecordHash": "89C4D44D5F0A688DD3E82C4717E43BA3675FC719B49C4871FED58C97FD701216"
+    },
+    {
+      "Id": "client:monster/fight-eny/64",
+      "Name": "\u901A\u5929\u6559\u4E3B",
+      "References": {
+        "clientMonsterId": "64"
+      },
+      "RecordHash": "26476ECF39B46D277CBD77670C4253657BBD71B64F67DF6C3CEEE7C11C0333BA"
+    },
+    {
+      "Id": "client:monster/fight-eny/65",
+      "Name": "\u79E6\u5929\u541B",
+      "References": {
+        "clientMonsterId": "65"
+      },
+      "RecordHash": "785F9C8BE78CE4932AF4F3BF7E69ABCAB24332358E61E58B3F7A814614028C4D"
+    },
+    {
+      "Id": "client:monster/fight-eny/66",
+      "Name": "\u8D75\u5929\u541B",
+      "References": {
+        "clientMonsterId": "66"
+      },
+      "RecordHash": "07DE6D4C3E08264351E86307AF4AFB15A20751D40F371A5975171792757C3742"
+    },
+    {
+      "Id": "client:monster/fight-eny/67",
+      "Name": "\u5B59\u5929\u541B",
+      "References": {
+        "clientMonsterId": "67"
+      },
+      "RecordHash": "512AC5FD7BDB809A80115B3E3EC6D7026AA97664C74DB2FFAA8F76C09F78006B"
+    },
+    {
+      "Id": "client:monster/fight-eny/68",
+      "Name": "\u5F20\u5929\u541B",
+      "References": {
+        "clientMonsterId": "68"
+      },
+      "RecordHash": "D87FB93603C6B4CB13E43E45EB893FCF728E33DB35AF2CF66818A6689DDE4ADA"
+    },
+    {
+      "Id": "client:monster/fight-eny/69",
+      "Name": "\u955C\u5B50",
+      "References": {
+        "clientMonsterId": "69"
+      },
+      "RecordHash": "521DC0162C7B2B3EB2516C29F7A71706D082037C3CBBD36D8DB39C6AFBB0154C"
+    },
+    {
+      "Id": "client:monster/fight-eny/7",
+      "Name": "\u6C10\u517D",
+      "References": {
+        "clientMonsterId": "7"
+      },
+      "RecordHash": "43CF15066EA666FBDB0BF22C1CDF9CF1E8FA9481BC0F8177F2FF4EE23F6DCA74"
+    },
+    {
+      "Id": "client:monster/fight-eny/70",
+      "Name": "\u4E91\u9704\u4E09\u59CA\u59B9",
+      "References": {
+        "clientMonsterId": "70"
+      },
+      "RecordHash": "1EBCBFB204EB785BB9F3D62D938F10BF12F8672AE1BC89A044F96816B3F95162"
+    },
+    {
+      "Id": "client:monster/fight-eny/71",
+      "Name": "\u5929\u5C06",
+      "References": {
+        "clientMonsterId": "71"
+      },
+      "RecordHash": "D3598F7F482D3DDE7A1BE339606C55F1FA66D9DB9F5CF58C760D8B84738472B6"
+    },
+    {
+      "Id": "client:monster/fight-eny/72",
+      "Name": "\u5929\u5175",
+      "References": {
+        "clientMonsterId": "72"
+      },
+      "RecordHash": "A33F3650B81998CC3D6A42C736B9974DF3D21DBF2A8BFBA62F5DF6E1B1BF1C53"
+    },
+    {
+      "Id": "client:monster/fight-eny/73",
+      "Name": "\u8463\u5929\u541B",
+      "References": {
+        "clientMonsterId": "73"
+      },
+      "RecordHash": "DDBF5420C1FD6BCB346BFA01307FF82A4C71DAE1B18C6A7E1046597C1609A4A8"
+    },
+    {
+      "Id": "client:monster/fight-eny/74",
+      "Name": "\u8881\u5929\u541B",
+      "References": {
+        "clientMonsterId": "74"
+      },
+      "RecordHash": "53BA58A504FB17325972242B3D2B8DC414A2620397A02D7C1C0574922C3A2C96"
+    },
+    {
+      "Id": "client:monster/fight-eny/75",
+      "Name": "\u59DA\u5929\u541B",
+      "References": {
+        "clientMonsterId": "75"
+      },
+      "RecordHash": "190DA9B7B030954D547EF14D59EA103A81A9619B3D7EDD43393D8D7E1975DAA7"
+    },
+    {
+      "Id": "client:monster/fight-eny/76",
+      "Name": "\u9AB7\u9AC5",
+      "References": {
+        "clientMonsterId": "76"
+      },
+      "RecordHash": "FC6DB90DDA23E4A3497DD29A2AA5A06105C400378A40AF41F68A1E22488B05E7"
+    },
+    {
+      "Id": "client:monster/fight-eny/77",
+      "Name": "\u50F5\u5C38",
+      "References": {
+        "clientMonsterId": "77"
+      },
+      "RecordHash": "2B89E1715667818B3277885DA6C205F45628E5B111FD2167F10FE91ABDA5AD10"
+    },
+    {
+      "Id": "client:monster/fight-eny/78",
+      "Name": "\u5029\u5973",
+      "References": {
+        "clientMonsterId": "78"
+      },
+      "RecordHash": "9180785C6F7E4AFB4FE9023E78A1B699FC25C7960E3686FDD6C4B07457A3E2AA"
+    },
+    {
+      "Id": "client:monster/fight-eny/79",
+      "Name": "\u9E92\u9E9F",
+      "References": {
+        "clientMonsterId": "79"
+      },
+      "RecordHash": "2DD9941DF476E9D55402ED0DDEC9F2197A03B12B56E10B75172DC145477E6041"
+    },
+    {
+      "Id": "client:monster/fight-eny/8",
+      "Name": "\u6811\u7075",
+      "References": {
+        "clientMonsterId": "8"
+      },
+      "RecordHash": "7B8E94D607C3C63E77F4460ADF50495A13DB463C2676DC1BBE7FFDACD9B4F6CC"
+    },
+    {
+      "Id": "client:monster/fight-eny/80",
+      "Name": "\u9752\u9F99",
+      "References": {
+        "clientMonsterId": "80"
+      },
+      "RecordHash": "57A43DFFF6BDF3F507DE6E44ECC2EDD348BE1611E55D0F4B886997926F0A227A"
+    },
+    {
+      "Id": "client:monster/fight-eny/81",
+      "Name": "\u767D\u864E",
+      "References": {
+        "clientMonsterId": "81"
+      },
+      "RecordHash": "67A2A6EB9FF8809E27525D24A896E879F304E2B00C53EAB659E4DDDE3FA2DA6C"
+    },
+    {
+      "Id": "client:monster/fight-eny/82",
+      "Name": "\u6731\u96C0",
+      "References": {
+        "clientMonsterId": "82"
+      },
+      "RecordHash": "61AFC818FD255579CD57D507202DFD3B1E586DF0511F1F7BB18BBC16CC07A082"
+    },
+    {
+      "Id": "client:monster/fight-eny/83",
+      "Name": "\u7384\u6B66",
+      "References": {
+        "clientMonsterId": "83"
+      },
+      "RecordHash": "0A5957BBA755A96C223151555265A9759A6B907EF4A7ED601D619E0376E55DFD"
+    },
+    {
+      "Id": "client:monster/fight-eny/84",
+      "Name": "\u4E07\u5203\u8F66",
+      "References": {
+        "clientMonsterId": "84"
+      },
+      "RecordHash": "E88BE4AB455408933AF71BAD9302800DD9013204ED57062F25503EA566F162B0"
+    },
+    {
+      "Id": "client:monster/fight-eny/85",
+      "Name": "\u767D\u5929\u541B",
+      "References": {
+        "clientMonsterId": "85"
+      },
+      "RecordHash": "FF0B2A5FC55C6BDB634D365FE76DEDD2B208AB37580EEDAAC7F50A33458F977D"
+    },
+    {
+      "Id": "client:monster/fight-eny/86",
+      "Name": "\u738B\u5929\u541B",
+      "References": {
+        "clientMonsterId": "86"
+      },
+      "RecordHash": "8E12C2687F0685D4FCEAE86847B942A3DA8E43F8E2C87F7D62C1515BDBD31B15"
+    },
+    {
+      "Id": "client:monster/fight-eny/87",
+      "Name": "\u5E7D\u9B42",
+      "References": {
+        "clientMonsterId": "87"
+      },
+      "RecordHash": "52255F9A525B4AAE2F9F905E4FE8367080915810133845C740748D1FA960D512"
+    },
+    {
+      "Id": "client:monster/fight-eny/88",
+      "Name": "\u67AB\u6811\u602A",
+      "References": {
+        "clientMonsterId": "88"
+      },
+      "RecordHash": "3084C1893A635A580DA74F5177205C80D9BC8E20E4F06F880278AF3B77AB574D"
+    },
+    {
+      "Id": "client:monster/fight-eny/89",
+      "Name": "\u868C\u7CBE",
+      "References": {
+        "clientMonsterId": "89"
+      },
+      "RecordHash": "35101155427A0FD5479709A2C645638B62EE99B6F9CEECFA1D2DB50BC650CC64"
+    },
+    {
+      "Id": "client:monster/fight-eny/9",
+      "Name": "",
+      "References": {
+        "clientMonsterId": "9"
+      },
+      "RecordHash": "9B3A461A6A12F55FEA2833CDB97095868EEE4956486B96015E8B7CFCBF32E2AC"
+    },
+    {
+      "Id": "client:monster/fight-eny/90",
+      "Name": "\u5C71\u53C9",
+      "References": {
+        "clientMonsterId": "90"
+      },
+      "RecordHash": "540BF84BFE239A0D1BE8A5CFE9F3856F59BD77CE3F44C9A69106F695ECAD59F9"
+    },
+    {
+      "Id": "client:monster/fight-eny/91",
+      "Name": "\u77F3\u5934\u9B3C",
+      "References": {
+        "clientMonsterId": "91"
+      },
+      "RecordHash": "13BD0B627FD64B141B2E6E46679EFD47983E4D3825C71E22E91A34CAF8611D3B"
+    },
+    {
+      "Id": "client:monster/fight-eny/92",
+      "Name": "\u5C0F\u738B?\u5973\u9053",
+      "References": {
+        "clientMonsterId": "92"
+      },
+      "RecordHash": "4FB051D4D8E2DC586E3BF64177D49786A0D8D68F0A46A25A427C09AE859B1D3C"
+    },
+    {
+      "Id": "client:monster/fight-eny/93",
+      "Name": "\u5C0F\u738B?\u7537\u9053",
+      "References": {
+        "clientMonsterId": "93"
+      },
+      "RecordHash": "CDBC463EF2D62BF0E29FF51410E1B029AFE646425569F6C773D4DAB1E71F7A4A"
+    },
+    {
+      "Id": "client:monster/fight-eny/94",
+      "Name": "\u5927\u5E74",
+      "References": {
+        "clientMonsterId": "94"
+      },
+      "RecordHash": "EECCEFE38488504A9CD91F2770192C9527D539834BE196AEC3DE8C1512BA1B82"
+    },
+    {
+      "Id": "client:monster/fight-eny/95",
+      "Name": "\u6B66\u5409",
+      "References": {
+        "clientMonsterId": "95"
+      },
+      "RecordHash": "09827F4F0BE5248306355457C590BBCC345D77C664E7BC34F3AD2CABB2E8B86A"
+    },
+    {
+      "Id": "client:monster/fight-eny/96",
+      "Name": "\u5F20\u594E",
+      "References": {
+        "clientMonsterId": "96"
+      },
+      "RecordHash": "076C1D7D79B85823C5146C8D894DCBEAF10442624515E42A8F5EE1848AEBC874"
+    },
+    {
+      "Id": "client:monster/fight-eny/97",
+      "Name": "\u9AD8\u5170\u82F1",
+      "References": {
+        "clientMonsterId": "97"
+      },
+      "RecordHash": "BD485849CBCB51045CAB3D6AD0371613188C19DA18641704FF65204716736CA3"
+    },
+    {
+      "Id": "client:monster/fight-eny/98",
+      "Name": "\u9093\u5A75\u7389",
+      "References": {
+        "clientMonsterId": "98"
+      },
+      "RecordHash": "F20E4D7DF895D784D5A08ACFA857CDC9E5B29B0023695E38AB113ED2A2685F70"
+    },
+    {
+      "Id": "client:monster/fight-eny/99",
+      "Name": "\u6148\u822A\u9053\u4EBA",
+      "References": {
+        "clientMonsterId": "99"
+      },
+      "RecordHash": "881ED24A7767DF51758D5AC43A00D3A0281734F604137344E80D3585EF7E7366"
+    }
+  ]
+}

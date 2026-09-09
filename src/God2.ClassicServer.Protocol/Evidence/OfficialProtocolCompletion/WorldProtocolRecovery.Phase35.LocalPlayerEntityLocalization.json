@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase35-v1",
+  "phase": "Phase 3.5 - Local Player Entity Localization",
+  "generatedAtUtc": "2026-07-30T00:35:16.294096Z",
+  "answers": {
+    "localPlayerEntity": "NOT_VERIFIED",
+    "entityResolverPointerChain": "NOT_FOUND",
+    "characterIdNameCrossValidation": "FAILED: name hits exist, characterId non-stack hit absent, coordinate candidate eliminated",
+    "rawXYDirectionOffsets": "NOT_FOUND",
+    "movementWriterRvaAndCallStack": {
+      "status": "NOT_CAPTURED",
+      "sendPathStack": "god2_opt.exe+0x0007BB68;god2_opt.exe+0x0007DC3E;god2_opt.exe+0x004AD5FC;god2_opt.exe+0x00089049;KERNEL32.DLL+0x000211A0;KERNELBASE.dll+0x0010EAAB;ntdll.dll+0x0005B0B9;god2_opt.exe+0x00391DDF;god2_opt.exe+0x00391DF2;god2_opt.exe+0x0038D23B;god2_opt.exe+0x00359421;god2_opt.exe+0x0036149D;god2_opt.exe+0x0035E7C0;god2_opt.exe+0x0035A09F;god2_opt.exe+0x0035A0C4;god2_opt.exe+0x004A4290",
+      "knownSendCallerRva": "god2_opt.exe+0x0007BB68",
+      "reason": "No stable coordinate address remained, so bounded page guard / hardware write breakpoint was not armed."
+    },
+    "entityRegistryOrSingleton": "NOT_FOUND",
+    "appearanceEquipmentModelComponent": "NOT_FOUND",
+    "goldenRegression": "PASS",
+    "nextFirstBlocker": "Need non-stack persistent local-player anchor. Current raw movement packet X/Y values are transmit-frame values, not stored as exact persistent local-player coordinates."
+  },
+  "evidenceFiles": {
+    "layout": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/LocalPlayerEntityLayout.json",
+    "components": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/LocalPlayerComponentMap.json"
+  },
+  "regression": {
+    "releaseBuild": "PASS",
+    "instrumentationBuild": "PASS",
+    "runtimeOfficial": "PASS 9/9",
+    "worldReady": "PASS",
+    "movementRegression": "PASS movement packets captured",
+    "stopAll": "PASS after retry; God2_opt=0 Launcher=1"
+  },
+  "scanSafety": {
+    "stackExcluded": true,
+    "fullScanOnlyOnce": true,
+    "bytesScanned": 102309888,
+    "regionsScanned": 442,
+    "candidateCapHit": false,
+    "credentialsPersisted": "NO"
+  }
+}

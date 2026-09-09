@@ -1,0 +1,249 @@
+{
+  "SchemaVersion": 2,
+  "GeneratedAtUtc": "2026-07-28T16:38:04.7404058+00:00",
+  "Policy": "Only VERIFIED_RAW packet segments are stored here. Packet role verification is independent from field-semantic verification. Unknown credential/result fields do not enable runtime mutation.",
+  "Migrated": [
+    {
+      "EvidenceId": "world-heartbeat-05003D09A5",
+      "SourcePath": "../God2 Classic Unified Server/Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/world-heartbeat-05003D09A5.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "05003D09A5",
+      "SHA256": "581AD141B5DEA5320765B6868787B9F1AA6C8C70CD82B6AD31394422918A4DA5",
+      "RepeatedVerificationCount": 41,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "f881eef2f52c4d5faa94b96917151ed1; idle-baseline.json; source transport raw file retained read-only in Unified Server"
+    },
+    {
+      "EvidenceId": "world-heartbeat-05007ACCEC",
+      "SourcePath": "../God2 Classic Unified Server/Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/world-heartbeat-05007ACCEC.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "05007ACCEC",
+      "SHA256": "7B5FD5D3C0A9E91948763962FE439C1E79001DCD96CF17F97211768B9DCBF88F",
+      "RepeatedVerificationCount": 9,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "f881eef2f52c4d5faa94b96917151ed1; idle-baseline.json; source transport raw file retained read-only in Unified Server"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60525-49-235-177-12-2592-servertoclient-01-54b82a7b7d2d",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-handshake-19-54b82a7b7d2d.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "13009492E8242B93D3D8EBFDD6532E55AD6D94",
+      "SHA256": "54B82A7B7D2DB3702F9A2B3EA2A3044D85FB89961BDBF8928B4D5D209FD0A7FB",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60525-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60525-49-235-177-12-2592-clienttoserver-01-4a6f258c86b2",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-client-handshake-19-4a6f258c86b2.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "13004316ABE047EC88CF0133487C571383F69F",
+      "SHA256": "4A6F258C86B23A84D1070C4E327AF634944B1263C6974F7652D45B6DD52768A9",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60525-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60525-49-235-177-12-2592-servertoclient-02-bad8acdca13f",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-followup-6-bad8acdca13f.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "06009AB00574",
+      "SHA256": "BAD8ACDCA13F92795FE7DFC47D303CB38CBD548FFCB2BF8DB8A57E67310F0348",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60525-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60525-49-235-177-12-2592-clienttoserver-02-ca4f32d2125c",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-request-208-ca4f32d2125c.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "D00095A40B494DD60F1C11F719925B52AA6A7CAE5C8B41E4A742F5CD31BFED073F60F0588B7141D9F3E2889CF166CCB1F743A57D073C207E3D572CA4F6FF07E990B49DB30B41E0D08F8634D39795DCA5AD6959EE0F15C10D31933075ECDD2B4237A8099CCC8E46B2ADE3F1194FCC155D57F41F683BC02E7BCC1D888A5997FCD376144C4196017C65952446D6E3B380C13D0C805355E56FAE531EBC4A05D482859520EC0C304189DC98B7837219F124BAA6D80218232B8A9011BD551CB73DC63EDBF6736464F875E2E3EDD955BA2F0958",
+      "SHA256": "CA4F32D2125CEA3B8543BE3A25AE6FBDD7C8B094791828A411949FB1F6471A0A",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60525-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60525-49-235-177-12-2592-servertoclient-03-04104e82b860",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-success-bootstrap-417-04104e82b860.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "A1018EBD0B494DD60F1C11F719925B52AA6A7CAE5C8B41E4A742F5CD31BFED073F60F0588B7141D9F3E2889CF166CCB1F743A57D073C207E3D572CA4F6FF07E990B49DB30B41E0D08F8634D39795DCA5AD6959EE0F15C10D31933075ECDD2B4237A8099CCC8E46B2ADE3F1194FCC155D57F41F683BC02E7BCC1D888A5997FCD376144C4196017C65952446D6E3B380C13D0C805355E56FAE531EBC4A05D48262A846ECC9398B89DC98B7837219F124BAA6D80218232B8A9011BD551CB73DC63EDBF6736464F875E2E3EDD955BA2F0932E08337247240853CE97F7F555482D6E891BB6AB9FDCB4976E0CB27E793183A07253394CEFDBD6E075277D3955B3EA56901999C8FE51F299DD0D5EAF6E1502B4DAE674F88D630700DB347F6AEAF4E8CE539118228917141D7F7E4889CEF6DCFB1F73DAF81073C229049572C9EF50A07E992BDAAB30B3FF0DE8F862FD69DAA62016A5177FE1616C10D2F963575ECE32B4837A807A0CE8E46B0B6E6F11951CE195D57EE31743BC03478D71D888854A4FCD37C1C5A4196FD7F6C9B244ADCE2B880CB4C0A9D724D0BB09D5A1EBC4A05D4828528",
+      "SHA256": "04104E82B860E3EBD036F0002344D1940F14342CAE03EF592A5FBE8763E48EB5",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60525-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60720-49-235-177-12-2592-servertoclient-01-0120582ebef6",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-handshake-19-0120582ebef6.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "13007039D11E28A7073CCFEFB6E10EEBDB6280",
+      "SHA256": "0120582EBEF65B15EA16AC287D6A6E75FFE7029A201430DAAEC0613C2246EF64",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60720-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60720-49-235-177-12-2592-clienttoserver-01-80982628a175",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-client-handshake-19-80982628a175.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "1300BF07720DF2D2D2F9CD5B53363975EDE161",
+      "SHA256": "80982628A175D213CE3FA43F9BAEA840605B4A61CC0422941630D1C27CC543D2",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60720-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60720-49-235-177-12-2592-servertoclient-02-f865e7835b61",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-followup-6-f865e7835b61.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "0600FB17EE4A",
+      "SHA256": "F865E7835B61BE4A265BD9A451BE7CA19F1E1BBFF1BBDA321AEE707F3BE1C7D2",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60720-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60720-49-235-177-12-2592-clienttoserver-02-d8e99afead7e",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-request-208-d8e99afead7e.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "D000FE09125F4ECA63382D09B9003BE8D85F1C4B7B72099BADAFDCBE4186207C406650F5AA580990F94F6F8BC12D1B4CF639451A2623E83543C41393C6C656848FAA3D502A28A88795F31BC2675C2B40AC5FF98B2EFC89C437001764BCA47ADD369EA939EB750E69B350D8081F9364F856EABF055AA7F632D28A6F79295E4B6E750AECDEB5E8441C9B912DC5B37ACF5C3C0220F074CC3765598BA339D59BD1CB9B3C8C6CD87251819E146A61E9B87355A5CEA2B542125247172A3C0B870415D9DAEC130183DF3D99E95AC0448AF65843",
+      "SHA256": "D8E99AFEAD7EDFBBFB3E544BC75A5D73B864D7627B513928B8DCE81FFDA46BA1",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60720-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-60720-49-235-177-12-2592-servertoclient-03-4425d35db2be",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-success-bootstrap-417-4425d35db2be.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "A101F722125F4ECA63382D09B9003BE8D85F1C4B7B72099BADAFDCBE4186207C406650F5AA580990F94F6F8BC12D1B4CF639451A2623E83543C41393C6C656848FAA3D502A28A88795F31BC2675C2B40AC5FF98B2EFC89C437001764BCA47ADD369EA939EB750E69B350D8081F9364F856EABF055AA7F632D28A6F79295E4B6E750AECDEB5E8441C9B912DC5B37ACF5C3C0220F074CC3765598BA339D59BD1CB9B3C8C7CE87251819E146A61E9B87355A5CEA2B542125247172A3C0B870415D9DAEC130183DF3D99E95AC0448AF658C5DF79D7C187274DF1EB0A76862449238390B10A581CB2112DEA380ED663DF89A2241D346B1CA436B658E4BA882B05F404049B7836CE1528B10439C6E4C1DE0BEBDC642FD3B72738B4BDB6DD9D7F15E180380722C9B058099201516F8BBF361E4CF6374F1E2623EA374FC4138DC5D1568491A34A502A2AA89595F318C96D6FF3DA514F178F33FD89C439091C64BC9E7EE3369EA741ED750E67B853D808219568F856E8D1115AA7FC41DD8A6F77246B4B6E7B06FADEB5EC4717A19131CBB27FCF5241043D1576ECE856608BA339D59BD12051",
+      "SHA256": "4425D35DB2BE08B94178FC59513CA8318D0F3995F1C15A3538B7C01FE31DF5DF",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-60720-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62130-49-235-177-12-2592-servertoclient-01-f365e0c4f272",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-handshake-19-f365e0c4f272.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "130047A27F493C2028265DD2178DCAE4143671",
+      "SHA256": "F365E0C4F272CB53AB0B014BA94386830A9AE8BCBD3E6C95F7DDBE3D13CEA195",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62130-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62130-49-235-177-12-2592-clienttoserver-01-4b871557e461",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-client-handshake-19-4b871557e461.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "13004F50E4A4839095EEA6B2E6937AD43C2BEB",
+      "SHA256": "4B871557E461D31A631172DF183BEB48959CF6E13B2E5EB7E8CB260F9458223E",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62130-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62130-49-235-177-12-2592-servertoclient-02-5209abd97b1c",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-followup-6-5209abd97b1c.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "060094809C17",
+      "SHA256": "5209ABD97B1CBFE903289BA9D915A923C60F66288BC1569BEA15BEADA616A187",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62130-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62130-49-235-177-12-2592-clienttoserver-02-3399f8d051f7",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-request-208-3399f8d051f7.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "D000919478AC3A43463E9B1C5AECF7E1113326D1A93EBC256A1189D5E00B7F7B0D3E4A7BD824BC1AB6B11CA422AABA4DA9614FA054EF9BBF0026C0AC2743F58542D247D658F45B115255C8DBC8D9CA415F8703115CC83C4EF462C47D1D2119DEE9C6B3BF1941C1F370B28521801003F90912C98B8873A9BC8FEC1C928ADBEA6F2832F664E3B4F7A658F3DADE14F76E5DEF2A2A76A298EAEF16ED505236187021473E962F7DF4041B5B86177A4A35125658F6AC3B70DE05D1D48CE924E881B4DA8D141D87B1ABF023A6BC6D5DEB73F7A4",
+      "SHA256": "3399F8D051F7749386B6C0507FCCCE72D74D0EBDFDFF9BA1B4A237EDDDF9AE05",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62130-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62130-49-235-177-12-2592-servertoclient-03-eaab54f5893d",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-success-bootstrap-417-eaab54f5893d.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "A101A8AD78AC3A43463E9B1C5AECF7E1113326D1A93EBC256A1189D5E00B7F7B0D3E4A7BD824BC1AB6B11CA422AABA4DA9614FA054EF9BBF0026C0AC2743F58542D247D658F45B115255C8DBC8D9CA415F8703115CC83C4EF462C47D1D2119DEE9C6B3BF1941C1F370B28521801003F90912C98B8873A9BC8FEC1C928ADBEA6F2832F664E3B4F7A658F3DADE14F76E5DEF2A2A76A298EAEF16ED5052361870C65664961ED93D041B5B86177A4A35125658F6AC3B70DE05D1D48CE924E881B4DA8D141D87B1ABF023A6BC6D5DEB73F7C692A1DD47B5F3007B262C2B5D85CEC48443D910D64A7EC4C39B9ABBEFC45C28A3D74542F14A70F1481546679D8C829305AFB34F9F7C4C342A252358DF228AC7DE1730196D05FBA54272188AB6E09A8281EB2F2843DE24BC18BEB31CA420B1BD4DA95F59A454EF95D10C26C0A6244EF58540DB54D658EE531F5255CBDECEEE54DD1CB72D1961C93C4EEE63C97D1D1F1DE4E9C6ADC31B41C1ED73B58521821A07F90910C3978873A7B79AEC1C9083E8EA6F2A3E0464E3B0FCAD5EF3D6E411FC6E67FE2C3B8BC8981FDC1DED50523618702145",
+      "SHA256": "EAAB54F5893D29976BA2F514653C937AB2A96BCFBD406D969801BD552EC8E3E8",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62130-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62173-49-235-177-12-2592-servertoclient-01-031350eaeb98",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-handshake-19-031350eaeb98.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "130087422005C854A48D3543786AD4088473B3",
+      "SHA256": "031350EAEB98B72844BD5E143A7FCBF0770497B8A5270BA229B8D5EB67D722B7",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62173-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62173-49-235-177-12-2592-clienttoserver-01-446946994369",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-client-handshake-19-446946994369.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "13000599D903332603A19892BF5C5E3480F035",
+      "SHA256": "446946994369FC16339C1292BBF5333269D03A9E1490BC7A7FEC518F5DDBCF57",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62173-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62173-49-235-177-12-2592-servertoclient-02-18cdf283a9a6",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-server-followup-6-18cdf283a9a6.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "06004A603D53",
+      "SHA256": "18CDF283A9A6910928DBDBCC60DF6E4B48A2781EE8D376C1B959E18E544C5911",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62173-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62173-49-235-177-12-2592-clienttoserver-02-bc4eeb76f105",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-request-208-bc4eeb76f105.bin",
+      "Direction": "ClientToServer",
+      "RawHex": "D000477443682E97C2E933AD7F89010581701839A64F2EEAF8BE6A788176E0FB18225CE3D5352EDF445EFD05813DDBCD8E05410851000D848ED3A10D86D616052776393E5505CDD6E002A93C276CEBC1442BF57959D9AE13820FA5DE7CB43A5ECE6AA527165233B8FE5F6682DFA32479EEB6BBF385841B811D99FDF3E96E0BEF0DD6E8CCE0C5696BE6A0BB3F738A8FDDD4CE1CDE9FA95CB4A49A31B395AB9146F3088886444E76D2E923F8DBA9C833D63D9A9EA36DEF77966239CA854714D55A72B80FEFAEBC62E834694EBE4A061891",
+      "SHA256": "BC4EEB76F105D21FD55EB90B20326A83C0727BCAF0E1636A5680B2A7C64542E3",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62173-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    },
+    {
+      "EvidenceId": "official-192-168-68-55-62173-49-235-177-12-2592-servertoclient-03-41de0956d91e",
+      "SourcePath": "unified-readonly/Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+      "DestinationPath": "src/God2.ClassicServer.Protocol/Evidence/ProtocolEvidenceRecovery/VerifiedRaw/Login/login-success-bootstrap-417-41de0956d91e.bin",
+      "Direction": "ServerToClient",
+      "RawHex": "A1015E8D43682E97C2E933AD7F89010581701839A64F2EEAF8BE6A788176E0FB18225CE3D5352EDF445EFD05813DDBCD8E05410851000D848ED3A10D86D616052776393E5505CDD6E002A93C276CEBC1442BF57959D9AE13820FA5DE7CB43A5ECE6AA527165233B8FE5F6682DFA32479EEB6BBF385841B811D99FDF3E96E0BEF0DD6E8CCE0C5696BE6A0BB3F738A8FDDD4CE1CDE9FA95CB4A49A31B395AB9146F30888B6544E76D2E923F8DBA9C833D63D9A9EA36DEF77966239CA854714D55A72B80FEFAEBC62E834694EBE4A061846773DCBAFBC047A2278FB0C00E459E304287DFE3E478F36802D479C5023EF4923BCF1305947815F05A3F348FEEB15B4859C578F3F1D00C85EA18A30508367D10A87752B05000C1B0704C36B173F25A101D0D316ABDB352EE14860FD057F46DECD8E0B430C5100138E9AD3A11385E116052977463E550BE1E4E002A63F2D5F335DF913138160DAAE13801AAADE7CAE3E64CE6AAB2B185233BA05626682E1A52879EEBCB5FF858415922899FDEDE47B0BEF13DAF6CCE0C96E66ECA0B741728F8FE7D9D80903C3CFCD97AB9A31B395AB91A13A",
+      "SHA256": "41DE0956D91E72AE0B376128F9F21634489906497454F91A0FC73B87376FD839",
+      "RepeatedVerificationCount": 4,
+      "VerificationStatus": "VERIFIED_RAW",
+      "Lineage": "official-192-168-68-55-62173-49-235-177-12-2592; OfficialDirectLogin; application frame boundary and causal role verified by LoginDeepRecovery"
+    }
+  ]
+}

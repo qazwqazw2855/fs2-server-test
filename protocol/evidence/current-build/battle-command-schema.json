@@ -1,0 +1,46 @@
+{
+  "SchemaVersion": "battle-command-schema-v1",
+  "ClientBuildId": "god2-opt-6b127086e0c0",
+  "Envelope": {
+    "Required": [
+      "actorId",
+      "actionType",
+      "battleReference",
+      "round",
+      "commandWindow"
+    ],
+    "Optional": [
+      "skillId",
+      "itemId",
+      "targetIds",
+      "formation",
+      "positionSwap",
+      "flags"
+    ],
+    "Unknown": "offset-indexed byte regions preserved unchanged",
+    "ActionTypes": [
+      "BasicAttack",
+      "Skill",
+      "Item",
+      "Defend",
+      "Flee",
+      "Formation",
+      "PositionSwap"
+    ]
+  },
+  "Decoder": {
+    "State": "Battle.CommandWindowOpen",
+    "BuildLocked": true,
+    "LengthValidated": true,
+    "MutatesRuntime": false,
+    "Status": "DecoderCandidate",
+    "Blocker": "Required dynamic official-wire fields remain opaque; semantic model is executable but official-wire mutation remains closed."
+  },
+  "Serializer": {
+    "Source": "AuthoritativeGameplayResult only",
+    "RejectCapturedPacketIdentifier": true,
+    "RejectFixedResponseIdentifier": true,
+    "ProductionBytesEmitted": false,
+    "Status": "SerializerBlockedByEvidence"
+  }
+}

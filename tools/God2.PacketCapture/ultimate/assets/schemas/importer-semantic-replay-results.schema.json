@@ -1,0 +1,35 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/importer-semantic-replay-results.schema.json",
+  "title":"God2 importer deterministic offline semantic replay results",
+  "type":"object",
+  "required":["mode","fixtureStatus","caseCount","equivalentCount","counterexampleCount","cases"],
+  "properties":{
+    "mode":{"const":"DETERMINISTIC_OFFLINE_JSON_STATE_TWIN"},
+    "fixtureStatus":{"const":"REPLAY_FIXTURE_EXECUTED"},
+    "caseCount":{"const":1},
+    "equivalentCount":{"const":1},
+    "counterexampleCount":{"const":0},
+    "cases":{"type":"array","minItems":1,"maxItems":1,"items":{"$ref":"#/$defs/replayCase"}}
+  },
+  "$defs":{
+    "sha256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},
+    "replayCase":{
+      "type":"object",
+      "required":["caseId","domain","status","mutationCount","oracle","sourceEvidence","plaintextPacketHash","semanticEventHash","finding"],
+      "properties":{
+        "caseId":{"type":"string","minLength":1},
+        "domain":{"type":"string","minLength":1},
+        "status":{"const":"SEMANTICALLY_EQUIVALENT"},
+        "mutationCount":{"type":"integer","minimum":0},
+        "oracle":{"type":"object","required":["equivalent","expectedHash","actualHash","counterexample"],"properties":{"equivalent":{"const":true},"expectedHash":{"$ref":"#/$defs/sha256"},"actualHash":{"$ref":"#/$defs/sha256"},"counterexample":{"type":"null"}},"additionalProperties":false},
+        "sourceEvidence":{"type":"string","minLength":1},
+        "plaintextPacketHash":{"oneOf":[{"$ref":"#/$defs/sha256"},{"type":"null"}]},
+        "semanticEventHash":{"oneOf":[{"$ref":"#/$defs/sha256"},{"type":"null"}]},
+        "finding":{"type":"null"}
+      },
+      "additionalProperties":false
+    }
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,457 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase33-v1",
+  "phase": "Phase 3.3 - Mount State Parser-Guided Recovery",
+  "generatedAtUtc": "2026-07-29T23:05:10.461847Z",
+  "scope": "Mount visual/state source recovery only; no NPC/monster/quest/skill/combat/AOI changes.",
+  "goldenPathFreeze": "UNCHANGED",
+  "regression": {
+    "buildRelease": "PASS",
+    "instrumentationReleaseBuild": "PASS",
+    "runtimeOfficialTests": "PASS 9/9",
+    "protocolOfficialWorldTests": "PASS 3/3",
+    "integrationPhase33EvidenceGate": "PASS 2/2",
+    "latestFullClientGoldenEvidence": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-065930",
+    "latestServerRun": "Artifacts/Runtime/ServerRuns/phase33-golden-regression-20260730-065928",
+    "latestFullClientStage": "WorldReady",
+    "stopAllRetry": "PASS; God2_opt remaining=0; Launcher remaining=1",
+    "phase32MountedRegression": "PASS"
+  },
+  "semanticCorrections": {
+    "status": "PASS",
+    "correction": "PlayerSpawn 0x23/0x24 and CharacterList 0x15/0x16 remain appearance/state candidates only; no independent MountedFlag semantic is assigned.",
+    "forbiddenPermanentNames": [
+      "MountedFlag=0x02",
+      "appearanceMode 0x02 = Mounted",
+      "stateFlags 0x02 = Mounted"
+    ]
+  },
+  "worldBootstrapParserMap": {
+    "sourceTrace": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-065930/attempt-1-trace/general.log",
+    "frameCount": 12,
+    "importantBoundary": "Probe maps common packet decoder at god2_opt.exe+0x78D70 called from +0x78A48 and world dispatcher stack candidates +0x7C0EB/+0x8E4F1. It still does not map the per-frame semantic parser or local-player appearance/equipment write target.",
+    "frames": [
+      {
+        "frameIndex": 0,
+        "encodedLength": 6,
+        "decodedLengthPrefixCaptured": 3,
+        "encodedOpcodeCandidate": "0xA9",
+        "decodedOpcodeCandidate": "0x01",
+        "purposeCandidateFromFrozenEvidence": "WorldFirstFollowUp",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 3,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;winmm.dll+0x000047A0;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0007CF40;USER32.dll+0x00041C0B;god2_opt.exe+0x000056F0;USER32.dll+0x000382CA;USER32.dll+0x0003850F;USER32.dll+0x0003830C;nvgpucomp32.dll+0x00E40C67;god2_opt.exe+0x00034B89;god2_opt.exe+0x0013A954;god2_opt.exe+0x00045DD0;god2_opt.exe+0x00040D7B;god2_opt.exe+0x00047D2A;KERNEL32.DLL+0x000211A0",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "06 00 A9 6D B7 E8",
+        "decodedPrefixHex": "06 00 01"
+      },
+      {
+        "frameIndex": 1,
+        "encodedLength": 128,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x8F",
+        "decodedOpcodeCandidate": "0x1F",
+        "purposeCandidateFromFrozenEvidence": "PlayerSpawn",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 125,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;KERNEL32.DLL+0x000211A0;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0007C8B0;god2_opt.exe+0x00044F5C;god2_opt.exe+0x0038E4E3;god2_opt.exe+0x0036B520;god2_opt.exe+0x0036B513;winmm.dll+0x000047A0;god2_opt.exe+0x003511F0;god2_opt.exe+0x0007D075;god2_opt.exe+0x0007D091;god2_opt.exe+0x00045E32;god2_opt.exe+0x00040D7B;god2_opt.exe+0x00047D2A;god2_opt.exe+0x004AD198",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "80 00 8F B9 39 F4 B4 6A 74 EE 3D 2A C5 37 20 D7 CC 4F 4F 6A A5 B5 54 2B 73 19 43 4E FC CC 5C 0E E6 40 53 06 F7 4B F8 21 C3 B9 D6 3B 77 37 80 CF",
+        "decodedPrefixHex": "80 00 1F 02 F0 CF AA 6B 65 72 6F 00 00 00 00 00 00 00 00 F4 7F 5F 03 00 00 00 00 00 00 00 00 00 00 00 00 02 02 00 00 04 00 00 00 01 38 E3 02 32"
+      },
+      {
+        "frameIndex": 2,
+        "encodedLength": 320,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0xAC",
+        "decodedOpcodeCandidate": "0x02",
+        "purposeCandidateFromFrozenEvidence": "WorldMapAndSceneBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 317,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;winmm.dll+0x000047A0;god2_opt.exe+0x0007C0EB;KERNEL32.DLL+0x000211A0;god2_opt.exe+0x0007CD09;god2_opt.exe+0x00045029;god2_opt.exe+0x00047D58;god2_opt.exe+0x004AD198;+0x0003E3E8;ntdll.dll+0x00047462;ntdll.dll+0x00048F4B;+0x0003F65A;+0x0003F662;ntdll.dll+0x0004531A;ntdll.dll+0x00038551;advapi32.dll+0x0001F150",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "40 01 AC 9E C7 C5 3F A5 66 FB 9E BB C5 37 20 D7 CC 4F 4F 96 C8 63 F8 28 73 33 C6 27 7C 4C 57 03 FF 59 55 08 F7 49 F7 9E 40 DA 35 5D CD 0F BF 3F",
+        "decodedPrefixHex": "40 01 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2A D9 00 80 00 05 10 1B 02 00 00 00 00 01 80 01 60 01 60 31 00 60 00"
+      },
+      {
+        "frameIndex": 3,
+        "encodedLength": 752,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x83",
+        "decodedOpcodeCandidate": "0x2B",
+        "purposeCandidateFromFrozenEvidence": "WorldStaticStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 749,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008F2A1;winmm.dll+0x000047A0;god2_opt.exe+0x00360065;god2_opt.exe+0x00340061;god2_opt.exe+0x00240065;god2_opt.exe+0x00350041;god2_opt.exe+0x002F0074;god2_opt.exe+0x0021006D;god2_opt.exe+0x00290074;god2_opt.exe+0x002E006F;god2_opt.exe+0x002F0048;god2_opt.exe+0x00340073;god2_opt.exe+0x00350072;ntdll.dll+0x00038551",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "F0 02 83 7B 93 C5 3F B1 84 FD 9E 85 FB 37 20 12 9B 4F 4F 12 5D 01 72 0D 9C 1E 43 4E F4 D4 5C 0E E8 42 53 08 F8 4A F8 1D BF B9 D6 3C 42 E2 9F DF",
+        "decodedPrefixHex": "F0 02 2B CC 00 00 00 1C 02 00 00 36 00 00 00 CF 00 00 00 8C 1F 83 09 2C 05 00 00 00 08 00 00 00 02 00 00 00 01 00 00 00 00 00 00 00 04 00 00 00"
+      },
+      {
+        "frameIndex": 4,
+        "encodedLength": 68,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x0E",
+        "decodedOpcodeCandidate": "0x9C",
+        "purposeCandidateFromFrozenEvidence": "WorldAcceptedParserFrame",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008F2A1;winmm.dll+0x000047A0;god2_opt.exe+0x00240065;god2_opt.exe+0x00350041;god2_opt.exe+0x002F0074;god2_opt.exe+0x0021006D;god2_opt.exe+0x00290074;god2_opt.exe+0x002E006F;god2_opt.exe+0x002F0048;god2_opt.exe+0x00340073;god2_opt.exe+0x00350072;ntdll.dll+0x00038551;ntdll.dll+0x000385A8;god2_opt.exe+0x00340061",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "44 00 0E 00 78 D2 C7 C5 3F B6 CC FB 77 BB C5 28 2D 00 3C 93 84 CB 3F BA DB 9B 9E F9 61 39 91 24 8B 18 9A D1 12 77 14 48 2A D2 49 4E E7 81 2C E3",
+        "decodedPrefixHex": "44 00 9C F8 49 44 C4 AC FF 44 2A 6A D8 DC CF 86 65 CC 21 EC 50 18 D1 C7 61 21 C6 67 02 F5 C0 76 F1 69 62 79 66 58 44 27 C4 AD 46 34 F7 6C 61 67"
+      },
+      {
+        "frameIndex": 5,
+        "encodedLength": 182,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0xFB",
+        "decodedOpcodeCandidate": "0xB3",
+        "purposeCandidateFromFrozenEvidence": "WorldStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "B6 00 FB 77 BB C5 09 56 D7 CC 4F 40 5C E6 3C F8 28 CE 0E 00 78 D2 C7 C5 3F B6 CC FB 77 BB C5 28 2D 00 3C 93 84 CB 3F BA DB 9B 9E 19 C1 39 91 24",
+        "decodedPrefixHex": "B6 00 B3 58 AC D4 7A 77 0A 3B B6 33 E4 3F 23 02 E6 B9 0A 60 D0 63 9C 07 4D 70 19 B4 39 4A 21 1B FC 44 AD E2 5F 23 E4 F9 27 CB 0F 32 D3 88 AE 9B"
+      },
+      {
+        "frameIndex": 6,
+        "encodedLength": 36,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x18",
+        "decodedOpcodeCandidate": "0x96",
+        "purposeCandidateFromFrozenEvidence": "WorldUiBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "24 00 18 9A C9 1A 7B 10 48 2A D2 49 4E E7 81 84 CF 93 08 25 69 44 0E B1 68 86 03 C4 5A 34 2D 00 3C 93 84 CB",
+        "decodedPrefixHex": "24 00 96 98 FE D7 E5 86 AC 7F F7 EB AE 06 5D F0 2D 3B 82 3F E6 07 F1 E8 F5 88 38 DE 80 78 E7 0D DB F8 D9 FE 5F 23 E4 F9 27 CB 0F 32 D3 88 AE 9B"
+      },
+      {
+        "frameIndex": 7,
+        "encodedLength": 63,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0xDB",
+        "decodedOpcodeCandidate": "0xD3",
+        "purposeCandidateFromFrozenEvidence": "WorldStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "3F 00 DB 9B 9E 79 E1 39 91 24 8B 18 9A D1 12 75 16 48 2A D2 49 4E E7 81 84 CF 33 68 25 69 44 0E B1 68 92 0F C0 56 7A 2D 00 3C 93 84 CB 3F BA DB",
+        "decodedPrefixHex": "3F 00 D3 54 87 3D E5 FF FC D5 18 BD 28 96 5C C6 9C FD 62 EA A9 CE E7 B6 A7 37 B9 E3 BA 7D 95 6D AE FE C1 5A 93 8A 08 08 39 BA 05 BD 50 13 08 34"
+      },
+      {
+        "frameIndex": 8,
+        "encodedLength": 42,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x49",
+        "decodedOpcodeCandidate": "0x61",
+        "purposeCandidateFromFrozenEvidence": "WorldStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "2A 00 49 4E E7 81 9C BB B7 E8 25 69 44 0E B1 68 82 FF F6 5C 64 2D 00 3C 93 84 CB 3F BA DB 9B 9E 79 E1 39 91 24 8B 18 9A DD 0E",
+        "decodedPrefixHex": "2A 00 61 6F B1 1B C6 50 03 16 B3 07 88 B3 22 93 3D 97 30 B6 7A D0 C8 5C 4C 27 E1 30 72 A3 A4 EC 79 28 42 59 34 16 FE BF E3 92 05 BD 50 13 08 34"
+      },
+      {
+        "frameIndex": 9,
+        "encodedLength": 67,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x48",
+        "decodedOpcodeCandidate": "0x66",
+        "purposeCandidateFromFrozenEvidence": "WorldStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "43 00 48 2A D2 49 4E E7 81 2C E3 2F 68 25 69 44 0E B1 68 8A 07 C2 58 06 2D 00 3C 93 84 CB 3F BA DB 9B 9E F9 61 39 91 24 8B 18 9A D5 16 77 14 48",
+        "decodedPrefixHex": "43 00 66 58 B7 5D B6 9C 81 50 37 45 EE 00 4F 22 20 C6 F7 0F 30 F3 93 5D A5 42 BB 8A 02 03 60 4C 7B 60 17 EE 8C FC 63 E4 68 0F 57 BE 1A 81 34 F5"
+      },
+      {
+        "frameIndex": 10,
+        "encodedLength": 88,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x07",
+        "decodedOpcodeCandidate": "0xA7",
+        "purposeCandidateFromFrozenEvidence": "WorldStateBootstrap",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "58 00 07 00 4D F8 95 24 6D 0E 00 78 D2 C7 C5 3F B6 CC FB 77 BB C5 28 2D 00 3C 93 84 CB 3F BA DB 9B 9E 59 01 39 91 24 8B 18 9A D1 12 77 14 48 2A",
+        "decodedPrefixHex": "58 00 A7 C3 47 7C 5E 61 66 55 0F D2 CB C5 20 F8 0E 93 39 D8 2D FD D5 70 E5 46 16 20 51 3E 20 AF 06 D8 D2 39 F9 D7 AB C3 9A BF CC 76 45 33 BA 91"
+      },
+      {
+        "frameIndex": 11,
+        "encodedLength": 26,
+        "decodedLengthPrefixCaptured": 48,
+        "encodedOpcodeCandidate": "0x10",
+        "decodedOpcodeCandidate": "0x9E",
+        "purposeCandidateFromFrozenEvidence": "WorldBootstrapTerminator",
+        "clientDecodeGate": {
+          "decoderRva": "0x00078D70",
+          "callSiteRva": "0x00078A48",
+          "returnRva": "0x00078A4D",
+          "result": 0,
+          "resultMeaning": "decode routine/gate result, not semantic frame parser result",
+          "stack": "god2_opt.exe+0x00078A4D;god2_opt.exe+0x0007C0EB;god2_opt.exe+0x0008E4F1;winmm.dll+0x000047A0;nvd3dum.dll+0x01765610;nvd3dum.dll+0x014FD411;nvd3dum.dll+0x01510DF7;nvd3dum.dll+0x01510A73;nvd3dum.dll+0x015105EE;nvd3dum.dll+0x015106EF;nvd3dum.dll+0x014B6863;nvd3dum.dll+0x01466BD9;ntdll.dll+0x0005C300;nvd3dum.dll+0x014675EF;ntdll.dll+0x0005C38F;ntdll.dll+0x0005C21C",
+          "worldDispatcherRvaCandidates": [
+            "god2_opt.exe+0x0007C0EB",
+            "god2_opt.exe+0x0008E4F1"
+          ]
+        },
+        "semanticParserRva": "NOT_MAPPED_YET",
+        "primaryWriteRegion": "NOT_MAPPED_YET",
+        "appearanceEquipmentStateReference": "UNKNOWN",
+        "parserMapStatus": "decode gate and world dispatcher stack mapped; semantic per-frame parser/write target still unresolved",
+        "encodedPrefixHex": "1A 00 10 48 2A D2 49 4E E7 81 2C E3 AF E8 25 69 44 0E B1 68 86 03 C2 58 06 09",
+        "decodedPrefixHex": "1A 00 9E 32 31 6C A2 07 8A 04 8A E2 18 E9 1C 8A 72 CD B5 2F 91 13 49 39 A6 7A 16 20 51 3E 20 AF 06 D8 D2 39 F9 D7 AB C3 9A BF CC 76 45 33 BA 91"
+      }
+    ],
+    "priorityFrames": [
+      5,
+      7,
+      8,
+      9,
+      10
+    ],
+    "priorityFrameStatus": "world dispatcher stack captured; no verified appearance/equipment/state parser RVA yet"
+  },
+  "mountVisualLinkage": {
+    "resourceName": "NMP0154",
+    "rawItemId": 30754,
+    "clientDisplayId": 29318,
+    "officialImportLinkage": [
+      {
+        "pattern": "NMP0154",
+        "path": "db/imports/official/items/items.official.json",
+        "count": 2
+      },
+      {
+        "pattern": "30754",
+        "path": "db/imports/official/items/items.official.json",
+        "count": 4
+      },
+      {
+        "pattern": "29318",
+        "path": "db/imports/official/items/items.official.json",
+        "count": 6
+      },
+      {
+        "pattern": "29318",
+        "path": "db/imports/official/npcs/npcs.official.json",
+        "count": 1
+      }
+    ],
+    "clientBinaryDirectReferenceSearch": {
+      "path": "C:\\Users\\SeiHo\\Desktop\\XJZ2\\god2_opt.exe",
+      "exists": true,
+      "NMP0154_ascii_hits": [],
+      "NMP0154_utf16le_hits": [],
+      "30754_u16le_hits_sample": [
+        "0xEBF3",
+        "0x13EB7",
+        "0x2244C",
+        "0x31D5A",
+        "0x4D3AD",
+        "0x5393B",
+        "0x6B41A",
+        "0x6BAAF",
+        "0x7444C",
+        "0x8F232",
+        "0x993DD",
+        "0xA6F6D",
+        "0xAA315",
+        "0xDDAD9",
+        "0x109014",
+        "0x10C5A8",
+        "0x11AA41",
+        "0x125D0F",
+        "0x13486F",
+        "0x13A9A9"
+      ],
+      "30754_u32le_hits_sample": [],
+      "29318_u16le_hits_sample": [
+        "0x1E11",
+        "0x223BE",
+        "0x284DB",
+        "0x332F7",
+        "0x4769D",
+        "0x48E33",
+        "0x5981A",
+        "0x7475C",
+        "0x8B48E",
+        "0x8D65E",
+        "0x93DB9",
+        "0x948A7",
+        "0xB54C3",
+        "0xBF5A0",
+        "0xC2EC8",
+        "0xD949A",
+        "0xF3BC0",
+        "0xF64EF",
+        "0xFE3C7",
+        "0x1040C6"
+      ],
+      "29318_u32le_hits_sample": []
+    },
+    "bootstrapPrefixIdHits": [],
+    "status": "PARTIAL: official item import links 30754 -> 29318 -> NMP0154, but network field -> item/equipment slot -> client model creation is not yet proven."
+  },
+  "mountSlotEquipmentSlot": {
+    "status": "NOT_LOCALIZED",
+    "reason": "No verified bootstrap/player-spawn field has been traced to 30754/29318/NMP0154 or to a mounted visual creation/write target."
+  },
+  "worldActionStateC2S5Candidate": {
+    "packet": "050011C79E",
+    "temporaryName": "WorldActionStateC2S5Candidate",
+    "classification": "shared world tick/action-state candidate; not mount/unmount",
+    "reason": "Observed in walking/mounted/inventory/mount/dismount windows from official capture; not unique to mount-state transitions. No required S2C response proven.",
+    "mustNotRenameTo": "Unmount",
+    "relatedCurrentLocal5ByteFamily": [
+      "05003D09A5",
+      "05007ACCEC"
+    ]
+  },
+  "nativeUnmountOperation": {
+    "status": "NOT_FOUND",
+    "evidence": "Official action notes include mount-success and dismount-success timestamps, but packet windows do not isolate a unique unmount C2S/S2C sequence. Client resource/text search has not produced a verified command handler."
+  },
+  "walkingRecovery": {
+    "walkingVisible": "NO",
+    "walkingMovementCaptured": "NO",
+    "coordinateScale": "NOT_FIXED",
+    "movementSpeedModel": "BLOCKED_UNTIL_WALKING_EVIDENCE"
+  },
+  "nextFirstBlocker": "Post-decode semantic parser/write-target instrumentation is still missing. Need hook packet dispatcher after god2_opt.exe+0x78A4D / world dispatcher +0x7C0EB/+0x8E4F1 or watch local-player appearance/equipment component writes to identify which frame controls mount visual/state."
+}

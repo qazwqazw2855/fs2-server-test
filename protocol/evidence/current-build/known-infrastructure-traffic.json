@@ -1,0 +1,29 @@
+﻿{
+  "Movement": {
+    "Name": "Movement",
+    "Status": "ServerSupported",
+    "CapturePolicy": "IgnoreByDefault",
+    "AnalysisPolicy": "Exclude",
+    "UnknownQueuePolicy": "Never",
+    "ReenableConditions": [
+      "ExplicitRegressionRequest",
+      "MovementFailure",
+      "CoordinateDesync",
+      "DirectionFailure",
+      "PortalPositionFailure"
+    ]
+  },
+  "Heartbeat": {
+    "Name": "Heartbeat",
+    "Status": "ServerSupported",
+    "CapturePolicy": "IgnoreByDefault",
+    "AnalysisPolicy": "Exclude",
+    "UnknownQueuePolicy": "Never",
+    "ReenableConditions": [
+      "ExplicitRegressionRequest",
+      "HeartbeatFailure",
+      "KeepAliveFailure",
+      "DisconnectDetectionFailure"
+    ]
+  }
+}

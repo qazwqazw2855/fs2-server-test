@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS `official_skill_book_catalog` (
+    `OfficialClientItemId` int NOT NULL COMMENT '官方客戶端技能書編號',
+    `OfficialDisplayId` int NULL COMMENT '官方顯示編號',
+    `SkillNameZhTw` varchar(256) NOT NULL COMMENT '技能名稱（繁體中文）',
+    `DescriptionZhTw` varchar(500) NULL COMMENT '技能書用途說明（繁體中文）',
+    `SkillModeZhTw` varchar(32) NULL COMMENT '技能、主動技能、被動技能或特殊技能',
+    `SkillCategoryZhTw` varchar(128) NULL COMMENT '劍技、刀技、咒術等技能分類',
+    `SkillLevel` int NULL COMMENT '官方標示階級；不適用時為空',
+    `MpCost` int NULL COMMENT '官方標示魔力消耗；不適用時為空',
+    `AttackRange` int NULL COMMENT '官方標示攻擊距離；不適用時為空',
+    `TargetScopeZhTw` varchar(256) NULL COMMENT '官方標示作用範圍',
+    `OfficialEffectTextZhTw` varchar(1500) NULL COMMENT '已排除純數字機器欄位的官方效果文字',
+    `SystemSellPrice` int NULL COMMENT '官方客戶端標示系統售價',
+    `SystemRecyclePrice` int NULL COMMENT '官方客戶端標示回收價',
+    `EvidenceStatusZhTw` varchar(96) NOT NULL COMMENT '官方靜態恢復或實機驗證狀態',
+    `LiveVerified` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否已有受控實機操作佐證',
+    `ObservedAtUtc` datetime(6) NULL COMMENT '實機驗證時間',
+    PRIMARY KEY (`OfficialClientItemId`),
+    CONSTRAINT `CK_OfficialSkillBookCatalog_LiveVerified` CHECK (`LiveVerified` IN (0,1))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

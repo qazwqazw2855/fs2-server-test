@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/injector-result-v2.schema.json",
+  "title": "God2 packet-capture injector formal result v2",
+  "$comment": "Closed formal profile consumed by Invoke-ProductInjectorSelfTest.ps1. The injector can emit additional diagnostic statuses, but they are not formal attach/detach/identity evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "code",
+    "injectionAttempted",
+    "moduleWasEverLoaded",
+    "moduleLoadStateVerified",
+    "moduleSnapshotVerified",
+    "moduleAbsent",
+    "targetProcessExited",
+    "targetIdentityVerified",
+    "probeReady",
+    "stopSucceeded",
+    "unloadSafe",
+    "moduleUnloaded",
+    "moduleResidentInactive",
+    "strictUnloadVerified",
+    "cleanupRetriable",
+    "injectionMode",
+    "suspendedThreadCount",
+    "primaryThreadId",
+    "extraReferenceRequested",
+    "extraReferenceLoaded",
+    "extraReferenceNegativeFirstFreeLibraryStillPresent",
+    "extraReferenceNegativeNotClaimedUnloaded",
+    "extraReferenceReleasedThenModuleAbsent"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "status": {
+      "enum": [
+        "ATTACHED",
+        "DETACHED",
+        "EVIDENCE_BLOCKED_BUILD_MISMATCH"
+      ]
+    },
+    "code": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "injectionAttempted": { "type": "boolean" },
+    "moduleWasEverLoaded": { "type": "boolean" },
+    "moduleLoadStateVerified": { "type": "boolean" },
+    "moduleSnapshotVerified": { "type": "boolean" },
+    "moduleAbsent": { "type": "boolean" },
+    "targetProcessExited": { "type": "boolean" },
+    "targetIdentityVerified": { "type": "boolean" },
+    "probeReady": { "type": "boolean" },
+    "stopSucceeded": { "type": "boolean" },
+    "unloadSafe": { "type": "boolean" },
+    "moduleUnloaded": { "type": "boolean" },
+    "moduleResidentInactive": { "type": "boolean" },
+    "strictUnloadVerified": { "type": "boolean" },
+    "cleanupRetriable": { "type": "boolean" },
+    "injectionMode": {
+      "enum": [
+        "None",
+        "PausePrimaryRemoteThreadResume",
+        "PauseResumeThenRemoteThreadComplete"
+      ]
+    },
+    "suspendedThreadCount": { "type": "integer", "minimum": 0, "maximum": 1 },
+    "primaryThreadId": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+    "extraReferenceRequested": { "type": "boolean" },
+    "extraReferenceLoaded": { "type": "boolean" },
+    "extraReferenceNegativeFirstFreeLibraryStillPresent": { "type": "boolean" },
+    "extraReferenceNegativeNotClaimedUnloaded": { "type": "boolean" },
+    "extraReferenceReleasedThenModuleAbsent": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["status"],
+        "properties": { "status": { "const": "ATTACHED" } }
+      },
+      "then": {
+        "properties": {
+          "code": { "const": 0 },
+          "injectionAttempted": { "const": true },
+          "moduleWasEverLoaded": { "const": true },
+          "moduleLoadStateVerified": { "const": true },
+          "moduleSnapshotVerified": { "const": false },
+          "moduleAbsent": { "const": false },
+          "targetProcessExited": { "const": false },
+          "targetIdentityVerified": { "const": true },
+          "probeReady": { "const": true },
+          "stopSucceeded": { "const": false },
+          "unloadSafe": { "const": false },
+          "moduleUnloaded": { "const": false },
+          "moduleResidentInactive": { "const": false },
+          "strictUnloadVerified": { "const": false },
+          "cleanupRetriable": { "const": true },
+          "injectionMode": {
+            "enum": [
+              "PausePrimaryRemoteThreadResume",
+              "PauseResumeThenRemoteThreadComplete"
+            ]
+          },
+          "suspendedThreadCount": { "const": 1 },
+          "primaryThreadId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+          "extraReferenceRequested": { "const": true },
+          "extraReferenceLoaded": { "const": true },
+          "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": false },
+          "extraReferenceNegativeNotClaimedUnloaded": { "const": false },
+          "extraReferenceReleasedThenModuleAbsent": { "const": false }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["status"],
+        "properties": { "status": { "const": "DETACHED" } }
+      },
+      "then": {
+        "properties": {
+          "code": { "const": 0 },
+          "injectionAttempted": { "const": true },
+          "moduleWasEverLoaded": { "const": true },
+          "moduleLoadStateVerified": { "const": true },
+          "moduleSnapshotVerified": { "const": true },
+          "moduleAbsent": { "const": true },
+          "targetProcessExited": { "const": false },
+          "targetIdentityVerified": { "const": true },
+          "probeReady": { "const": false },
+          "stopSucceeded": { "const": true },
+          "unloadSafe": { "const": true },
+          "moduleUnloaded": { "const": true },
+          "moduleResidentInactive": { "const": false },
+          "strictUnloadVerified": { "const": true },
+          "cleanupRetriable": { "const": false },
+          "injectionMode": {
+            "enum": [
+              "PausePrimaryRemoteThreadResume",
+              "PauseResumeThenRemoteThreadComplete"
+            ]
+          },
+          "suspendedThreadCount": { "const": 1 },
+          "primaryThreadId": { "type": "integer", "minimum": 1, "maximum": 4294967295 },
+          "extraReferenceRequested": { "const": true },
+          "extraReferenceLoaded": { "const": true },
+          "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": true },
+          "extraReferenceNegativeNotClaimedUnloaded": { "const": true },
+          "extraReferenceReleasedThenModuleAbsent": { "const": true }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": ["status"],
+        "properties": { "status": { "const": "EVIDENCE_BLOCKED_BUILD_MISMATCH" } }
+      },
+      "then": {
+        "properties": {
+          "code": { "const": 193 },
+          "injectionAttempted": { "const": false },
+          "moduleWasEverLoaded": { "const": false },
+          "moduleLoadStateVerified": { "const": true },
+          "moduleSnapshotVerified": { "const": true },
+          "moduleAbsent": { "const": true },
+          "targetProcessExited": { "const": false },
+          "targetIdentityVerified": { "const": false },
+          "probeReady": { "const": false },
+          "stopSucceeded": { "const": false },
+          "unloadSafe": { "const": false },
+          "moduleUnloaded": { "const": false },
+          "moduleResidentInactive": { "const": false },
+          "strictUnloadVerified": { "const": true },
+          "cleanupRetriable": { "const": false },
+          "injectionMode": { "const": "None" },
+          "suspendedThreadCount": { "const": 0 },
+          "primaryThreadId": { "const": 0 },
+          "extraReferenceRequested": { "const": false },
+          "extraReferenceLoaded": { "const": false },
+          "extraReferenceNegativeFirstFreeLibraryStillPresent": { "const": false },
+          "extraReferenceNegativeNotClaimedUnloaded": { "const": false },
+          "extraReferenceReleasedThenModuleAbsent": { "const": false }
+        }
+      }
+    }
+  ]
+}

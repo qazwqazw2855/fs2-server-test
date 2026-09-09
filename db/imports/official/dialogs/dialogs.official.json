@@ -1,0 +1,264 @@
+{
+    "category": "dialogs",
+    "source": "God2 Classic Unified Server/Data/Runtime/Npcs/npc.runtime.json",
+    "format": "Decoded Runtime JSON",
+    "sourceSizeBytes": 1911115,
+    "recordCount": 18,
+    "recoveredFields": [
+        "id",
+        "maxDialogId",
+        "minDialogId",
+        "relationStatus",
+        "rowCount",
+        "sourcePath",
+        "unknownFields"
+    ],
+    "missingFields": [
+        "dialogBranchConditions",
+        "npcTemplateRelation",
+        "scriptRelation",
+        "crossReferenceEvidence",
+        "gameplaySemanticValidation",
+        "packetRuntimeValidation"
+    ],
+    "verificationStatus": "Recovered; DialogRowsUnexpanded",
+    "recoveryProgress": "Dialog catalog recovered from NPC runtime evidence; pending string table, NPC, quest, script, and packet cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Dialog catalog manifests recovered; dialog rows and NPC links are not expanded into importable records.",
+    "records": [
+        {
+            "id": "client:dialog-catalog/comm/npcnormal01-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCNormal01.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 1,
+            "maxDialogId": 1000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcnormal02-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCNormal02.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 1001,
+            "maxDialogId": 2000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcnormal03-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcNormal03.csvZ",
+            "rowCount": 52,
+            "minDialogId": 2001,
+            "maxDialogId": 2052,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission01-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission01.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 1,
+            "maxDialogId": 1000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission02-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission02.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 1001,
+            "maxDialogId": 2000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission03-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission03.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 2,
+            "maxDialogId": 3000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission04-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission04.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 3001,
+            "maxDialogId": 4000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission05-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission05.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 4001,
+            "maxDialogId": 5000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission06-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission06.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 5001,
+            "maxDialogId": 6000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission07-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission07.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 6,
+            "maxDialogId": 7000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission08-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission08.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 7001,
+            "maxDialogId": 8000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission09-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NPCMission09.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 8001,
+            "maxDialogId": 9000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission10-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission10.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 9001,
+            "maxDialogId": 10000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission11-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission11.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 10001,
+            "maxDialogId": 11000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission12-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission12.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 11001,
+            "maxDialogId": 12000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission13-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission13.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 12001,
+            "maxDialogId": 13000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission14-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission14.csvZ",
+            "rowCount": 1000,
+            "minDialogId": 13001,
+            "maxDialogId": 14000,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        },
+        {
+            "id": "client:dialog-catalog/comm/npcmission15-csvz",
+            "sourcePath": "Original/Data2/Patch/Comm/NpcMission15.csvZ",
+            "rowCount": 600,
+            "minDialogId": 14001,
+            "maxDialogId": 14600,
+            "relationStatus": "catalogAvailable_messageToNpcRelationUnknown",
+            "unknownFields": [
+                "npcTemplateRelation",
+                "scriptRelation",
+                "dialogBranchConditions"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/ultimate-recovery-bundle-manifest.schema.json",
+  "title":"God2 Ultimate recovery bundle manifest",
+  "type":"object",
+  "required":["schemaVersion","packageId","clientBuild","files"],
+  "properties":{
+    "schemaVersion":{"const":"god2-ultimate-package-manifest-v1"},
+    "packageId":{"type":"string","pattern":"^[A-Za-z0-9._-]{1,160}$"},
+    "clientBuild":{
+      "type":"object",
+      "required":["executable","architecture","fileVersion","sha256","validationStatus","exactBindingValidated","recoveryAttestationStatus","computedSha256","computedFileVersion","computedArchitecture"],
+      "properties":{
+        "executable":{"const":"God2_opt.exe"},
+        "architecture":{"const":"x86"},
+        "fileVersion":{"const":"1.0.0.1"},
+        "sha256":{"const":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"},
+        "validationStatus":{"enum":["ExactClientIdentityComputedAndValidated","EvidenceBlockedClientIdentityNotComputed","EvidenceBlockedClientBuildMismatch","EvidenceBlockedRecoveryBuildAttestationUnavailable","EvidenceBlockedRecoveryBuildAttestationIncomplete","EvidenceBlockedRecoveryBuildMismatch","EvidenceBlockedRecoverySessionProcessMismatch"]},
+        "exactBindingValidated":{"type":"boolean"},
+        "recoveryAttestationStatus":{"enum":["ExactRecoveryEventBuildSessionProcessAttested","EvidenceBlockedRecoveryBuildAttestationUnavailable","EvidenceBlockedRecoveryBuildAttestationIncomplete","EvidenceBlockedRecoveryBuildMismatch","EvidenceBlockedRecoverySessionProcessMismatch"]},
+        "computedSha256":{"type":["string","null"],"pattern":"^[A-Fa-f0-9]{64}$"},
+        "computedFileVersion":{"type":["string","null"],"enum":["1.0.0.1",null]},
+        "computedArchitecture":{"type":["string","null"],"enum":["x86",null]}
+      },
+      "allOf":[
+        {
+          "if":{"properties":{"exactBindingValidated":{"const":true}},"required":["exactBindingValidated"]},
+          "then":{"properties":{"validationStatus":{"const":"ExactClientIdentityComputedAndValidated"},"recoveryAttestationStatus":{"const":"ExactRecoveryEventBuildSessionProcessAttested"},"computedSha256":{"const":"6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"},"computedFileVersion":{"const":"1.0.0.1"},"computedArchitecture":{"const":"x86"}}}
+        },
+        {
+          "if":{"properties":{"validationStatus":{"const":"EvidenceBlockedClientIdentityNotComputed"}},"required":["validationStatus"]},
+          "then":{"properties":{"exactBindingValidated":{"const":false},"computedSha256":{"const":null},"computedFileVersion":{"const":null},"computedArchitecture":{"const":null}}}
+        }
+      ],
+      "additionalProperties":false
+    },
+    "files":{"type":"array","minItems":1,"items":{"type":"object","required":["relativePath","sizeBytes","sha256","provenance","authority","schemaVersion"],"properties":{"relativePath":{"type":"string","minLength":1},"sizeBytes":{"type":"integer","minimum":0},"sha256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},"provenance":{"type":"string","minLength":1},"authority":{"enum":["VERIFIED","OBSERVED","DERIVED","HYPOTHESIS","UNKNOWN","UNKNOWN_SERVER_ONLY","REJECTED"]},"schemaVersion":{"type":"string","pattern":"^god2-[a-z0-9.-]+-v[0-9]+$"}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

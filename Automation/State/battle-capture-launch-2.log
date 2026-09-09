@@ -1,0 +1,8 @@
+﻿Enhanced capture did not reach ATTACHED. workerExitCode= stdout=[] stderr=[]
+At C:\Users\SeiHo\Desktop\Simao\God2\God2 Classic Server\Automation\Start-ContinuousEnhancedCapture.ps1:105 char:9
++         throw "Enhanced capture did not reach ATTACHED. $exitDetail s ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Enhanced captur...ut=[] stderr=[]:String) [], RuntimeException
+    + FullyQualifiedErrorId : Enhanced capture did not reach ATTACHED. workerExitCode= stdout=[] stderr=[]
+ 
+

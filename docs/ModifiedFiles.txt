@@ -1,0 +1,106 @@
+Created:
+
+- God2ClassicServer.sln
+- Start_Server.bat
+- README.md
+- src/God2.ClassicServer.Domain
+- src/God2.ClassicServer.Application
+- src/God2.ClassicServer.Protocol
+- src/God2.ClassicServer.Persistence
+- src/God2.ClassicServer.Infrastructure
+- src/God2.ClassicServer.Runtime
+- src/God2.ClassicServer.ConsoleHost
+- tests/God2.ClassicServer.Domain.Tests
+- tests/God2.ClassicServer.Application.Tests
+- tests/God2.ClassicServer.Protocol.Tests
+- tests/God2.ClassicServer.Persistence.Tests
+- tests/God2.ClassicServer.Runtime.Tests
+- tests/God2.ClassicServer.IntegrationTests
+- config JSON files
+- localization resources
+- required docs
+
+Second round updates:
+
+- Added MySqlConnector persistence dependency.
+- Added MariaDB database bootstrap implementation.
+- Added `__SchemaVersion` creation.
+- Added SQL migration runner.
+- Added database/schema migrations 001-003.
+- Added startup event details for Database Connected, Database Created, Migration NNN, and Database Ready.
+- Added migration and bootstrap tests.
+
+Phase 2 updates:
+
+- Added migrations 004-020.
+- Reworked every config JSON with `_comment`, `_version`, `_example`, 4-space formatting, and Traditional Chinese per-field explanations.
+- Added configuration validation ranges and required-true checks.
+- Improved validation errors to include file name, field name, current value, and legal value.
+- Added docs/README_Config.md.
+- Added config/config.schema.md.
+
+Official runtime import update:
+
+- Added formal runtime table import from recovered official data.
+- Kept `official_import_*` as import cache/log tables only.
+- Added `Official Runtime Import Count` console output.
+- Live MariaDB confirmed formal table counts: items 17,407; monsters 208; npcs 319; quests 418.
+
+Unified Server modifications: 0
+Launcher modifications: 0
+
+Unified Runtime Finalization Sprint updates:
+
+- docs/ProtocolRuntime.md
+- docs/ProtocolCoverage.md
+- docs/TestResults.md
+- docs/ModifiedFiles.txt
+- src/God2.ClassicServer.ConsoleHost/ConsoleEntry.cs
+- src/God2.ClassicServer.Runtime/RuntimeServices.cs
+- tests/God2.ClassicServer.Runtime.Tests/RuntimeFoundationTests.cs
+
+Unified Server modifications: 0
+Launcher modifications: 0
+
+Phase 5-7 runtime updates:
+
+- docs/ProtocolRuntime.md
+- docs/LoginRuntime.md
+- docs/CharacterRuntime.md
+- docs/ProtocolCoverage.md
+- docs/ModifiedFiles.txt
+- docs/TestResults.md
+- src/God2.ClassicServer.Protocol/ProtocolRuntime.cs
+- src/God2.ClassicServer.Protocol/Knowledge/phase5-7-runtime-recovery-boundary.json
+- src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/Phase5-7RuntimeEvidence.md
+- src/God2.ClassicServer.Runtime/RuntimeFoundation.cs
+- src/God2.ClassicServer.Runtime/RuntimeServices.cs
+- src/God2.ClassicServer.ConsoleHost/ConsoleEntry.cs
+- tests/God2.ClassicServer.Protocol.Tests/ProtocolFoundationTests.cs
+- tests/God2.ClassicServer.Runtime.Tests/RuntimeFoundationTests.cs
+
+Unified Server modifications: 0
+Launcher modifications: 0
+
+Unified Login / World runtime updates:
+
+- config/network.json
+- docs/ProtocolRuntime.md
+- docs/ProtocolCoverage.md
+- docs/CharacterRuntime.md
+- docs/ModifiedFiles.txt
+- docs/TestResults.md
+- src/God2.ClassicServer.Application/Configuration/ServerConfiguration.cs
+- src/God2.ClassicServer.Application/Startup/StartupPipeline.cs
+- src/God2.ClassicServer.ConsoleHost/ConsoleEntry.cs
+- src/God2.ClassicServer.Protocol/ProtocolRuntime.cs
+- src/God2.ClassicServer.Protocol/Knowledge/phase5-7-runtime-recovery-boundary.json
+- src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/Phase5-7RuntimeEvidence.md
+- src/God2.ClassicServer.Runtime/RuntimeFoundation.cs
+- src/God2.ClassicServer.Runtime/RuntimeServices.cs
+- tests/God2.ClassicServer.Application.Tests/ApplicationFoundationTests.cs
+- tests/God2.ClassicServer.IntegrationTests/ArchitectureAndHostTests.cs
+- tests/God2.ClassicServer.Runtime.Tests/RuntimeFoundationTests.cs
+
+Unified Server modifications: 0
+Launcher modifications: 0

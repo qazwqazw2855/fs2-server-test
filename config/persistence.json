@@ -1,0 +1,12 @@
+{
+    "_comment": "持久化營運設定；MariaDB 是正式資料權威。",
+    "_version": "1.0",
+    "_example": {
+        "autosaveIntervalSeconds": 300,
+        "backupIntervalMinutes": 60
+    },
+    "autosaveIntervalSeconds": 300,
+    "_autosaveIntervalSeconds": "用途：玩家資料定期自動保存間隔秒數；重要交易仍需立即保存。預設值：300。可接受範圍：10 到 86400。是否需要重新啟動：是。影響：數值越低資料保存越頻繁，資料庫寫入壓力也越高。",
+    "backupIntervalMinutes": 60,
+    "_backupIntervalMinutes": "用途：資料庫備份建議間隔分鐘數；0 表示不由 Server 排程備份。預設值：60。可接受範圍：0 到 10080。是否需要重新啟動：是。影響：影響備份頻率與磁碟空間使用。"
+}

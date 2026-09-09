@@ -1,0 +1,22 @@
+{
+  "OfficialA": {
+    "Account": "",
+    "Password": "",
+    "Class": "Swordsman"
+  },
+  "OfficialB": {
+    "Account": "",
+    "Password": "",
+    "Class": "Taoist"
+  },
+  "OfficialC": {
+    "Account": "",
+    "Password": "",
+    "Class": "Pharmacist"
+  },
+  "OfficialD": {
+    "Account": "",
+    "Password": "",
+    "Class": "Warlock"
+  }
+}

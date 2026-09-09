@@ -1,0 +1,12 @@
+{
+  "name": "god2-packet-capture",
+  "version-string": "1.0.3",
+  "dependencies": [
+    {
+      "name": "minizip",
+      "features": [
+        "unofficial-iowin32"
+      ]
+    }
+  ]
+}

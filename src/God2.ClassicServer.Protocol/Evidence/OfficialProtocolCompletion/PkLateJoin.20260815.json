@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "clientBuildId": "god2-opt-6b127086e0c0",
+  "capturedAtLocalDate": "2026-08-15",
+  "scenario": "three-client-pk-assistance-join-defend-escape",
+  "traces": [
+    {
+      "role": "existing-participant-wang",
+      "path": "Artifacts/ClientInstrumentation/OfficialEvidenceLauncher/PKLateJoinAnalysis-20260815/trace-wang.snapshot.bin",
+      "sha256": "B58C99CBF91EDCD99C3AB75D0F72B298C56CE1928DE0026112F5DE074DA4E901"
+    },
+    {
+      "role": "existing-participant-xia",
+      "path": "Artifacts/ClientInstrumentation/OfficialEvidenceLauncher/PKLateJoinAnalysis-20260815/trace-xia.snapshot.bin",
+      "sha256": "A3E335D1E24B186500A99BD96D2C529AE637AC36CDF8E8ED8C866A0D01C50B20"
+    },
+    {
+      "role": "joining-participant-kero",
+      "path": "Artifacts/ClientInstrumentation/OfficialEvidenceLauncher/PKLateJoinAnalysis-20260815/trace-kero.snapshot.bin",
+      "sha256": "79F10C01D6485A70DDAA597A2263D919A75B31735813DA18EFB8C4746EF510FD"
+    }
+  ],
+  "recovered": {
+    "joinRequest": {
+      "sequence": 4327,
+      "direction": "ClientToServer",
+      "captureStage": "PreEncrypt",
+      "frameHex": "0C006AFE000000F2000000FA",
+      "sha256": "9CD2644836F8A09BFD273F8A3194EB84B5CF14F02DCCEF9334CD840D53281669",
+      "joiningEntityId": 254,
+      "battleAnchorEntityId": 242
+    },
+    "joinerBootstrap": {
+      "sequence": 4336,
+      "direction": "ServerToClient",
+      "captureStage": "PostDecrypt",
+      "opcode": "0x82",
+      "length": 364,
+      "sha256": "10230E3B1BC665A6EE034921E41A1B5B9EBBDA0A3D3AD5519B162C58E3F8BA74"
+    },
+    "existingParticipantSync": [
+      {
+        "traceRole": "wang",
+        "sequence": 81091,
+        "opcode": "0x86",
+        "length": 676,
+        "sha256": "5115534B04DFE59940051968976466642011A970DFF6A80690E589A8BDFFF992"
+      },
+      {
+        "traceRole": "xia",
+        "sequence": 81136,
+        "opcode": "0x86",
+        "length": 676,
+        "sha256": "5DAF10A148C37583862FBF69A8387556C443E405A711E26462B24B8EB391B1D5"
+      }
+    ],
+    "flee": {
+      "requestSequence": 15647,
+      "requestOpcode": "0x35",
+      "actionCode": 11,
+      "settlementSequence": 15665,
+      "settlementOpcode": "0x89",
+      "settlementLength": 57,
+      "settlementSha256": "E9F0119654B1F9734121426E094EEAC52645561016EE4BA4BBCB12D0DABD8F80"
+    }
+  },
+  "blocked": [
+    "0x36 remains a repeating battle-boundary acknowledgement candidate and is not labeled as help",
+    "active-battle authority lookup and participant admission policy are not recovered",
+    "current-build roster/state record construction is not sufficiently complete for runtime serialization"
+  ],
+  "legacyPublicBetaArchive": {
+    "path": "C:/Users/SeiHo/Desktop/FS2TW-research-evidence-20260815.zip",
+    "sha256": "75BA3B07058F83581B0E7DC40B8469ABF413ED5CF4271CBDC497D340D907598D",
+    "classification": "static-cross-version-only"
+  }
+}

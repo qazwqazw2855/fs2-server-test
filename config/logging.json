@@ -1,0 +1,15 @@
+{
+    "_comment": "日誌輸出設定；日誌不得輸出資料庫密碼或玩家明文密碼。",
+    "_version": "1.0",
+    "_example": {
+        "logLevel": "Information",
+        "console": true,
+        "file": false
+    },
+    "logLevel": "Information",
+    "_logLevel": "用途：最低日誌等級。預設值：Information。可接受範圍：Trace、Debug、Information、Warning、Error、Critical。是否需要重新啟動：是。影響：影響管理員可見的診斷詳細程度，不改變玩家資料。",
+    "console": true,
+    "_console": "用途：是否輸出日誌到 Console。預設值：true。可接受範圍：true 或 false。是否需要重新啟動：是。影響：影響管理員即時觀察 Server 狀態。",
+    "file": false,
+    "_file": "用途：保留的檔案日誌開關，目前正式 Runtime 僅使用單一 Console。預設值：false。可接受範圍：目前僅支援 false。是否需要重新啟動：是。影響：設為 true 會在啟動驗證階段明確拒絕，避免管理員誤以為檔案日誌已啟用。"
+}

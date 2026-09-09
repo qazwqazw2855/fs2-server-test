@@ -1,0 +1,24 @@
+{
+    "category": "resource_tables",
+    "source": "Official Client Recovery cross-reference queue",
+    "format": "Pending Cross Reference Inventory",
+    "sourceSizeBytes": 0,
+    "recordCount": 0,
+    "recoveredFields": [],
+    "missingFields": [
+        "DAT scan",
+        "Lua scan",
+        "Script scan",
+        "Resource scan",
+        "Localization scan",
+        "Model scan",
+        "Packet scan",
+        "Runtime scan",
+        "Identifier scan"
+    ],
+    "verificationStatus": "Needs Recovery; CrossReferencePending",
+    "recoveryProgress": "Queued for resource manifest, DAT, container, model, texture, icon, sound, music, and effect cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "Resource table records are in scope and await official table decoding.",
+    "records": []
+}

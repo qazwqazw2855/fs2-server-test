@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/ultimate-live-result-manifest.schema.json",
+  "title":"God2 Ultimate live result inventory",
+  "type":"object",
+  "required":["schemaVersion","packageId","finalStatus","executableSHA256","files"],
+  "properties":{
+    "schemaVersion":{"const":"god2-ultimate-live-result-manifest-v1"},
+    "packageId":{"type":"string","pattern":"^[A-Za-z0-9._-]{1,200}$"},
+    "finalStatus":{"enum":["ULTIMATE_LIVE_DEEP_RECOVERY_EVIDENCE_PASS","EVIDENCE_BLOCKED_EXTERNAL_DEEP_RUNTIME_GATE","EVIDENCE_BLOCKED_LIVE_VALIDATION_INCOMPLETE"]},
+    "executableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "files":{"type":"array","minItems":2,"items":{"type":"object","required":["relativePath","sizeBytes","sha256"],"properties":{"relativePath":{"type":"string","minLength":1},"sizeBytes":{"type":"integer","minimum":0},"sha256":{"type":"string","pattern":"^[A-F0-9]{64}$"}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

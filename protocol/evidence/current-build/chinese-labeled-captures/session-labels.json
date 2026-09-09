@@ -1,0 +1,683 @@
+[
+  {
+    "captureSessionId": "host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A",
+    "originalChineseLabel": "\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A",
+    "normalizedSessionAlias": "battle-basic-attack-level-up",
+    "primaryDomain": "Battle",
+    "actionLabels": [
+      "BattleBasicAttack",
+      "CharacterLevelUp"
+    ],
+    "positiveLabels": [
+      "BattleBasicAttack",
+      "CharacterLevelUp"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": true,
+    "worldRelated": false,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": true,
+    "expectedSequenceCandidates": [
+      "BattleEnter",
+      "CommandWindow",
+      "BasicAttack",
+      "ActionEffect",
+      "BattleSettlement",
+      "CharacterLevelUp"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-041700-\u6230\u9B25\u666E\u901A\u653B\u64CA\u002B\u5C0D\u5C40\u5B8C\u89D2\u8272\u5347\u7D1A/attempt-41658-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-042033-\u5C40\u5916\u5730\u5716\u6CBB\u7642",
+    "originalChineseLabel": "\u5C40\u5916\u5730\u5716\u6CBB\u7642",
+    "normalizedSessionAlias": "out-of-combat-map-heal",
+    "primaryDomain": "Skill",
+    "actionLabels": [
+      "OutOfCombatHeal"
+    ],
+    "positiveLabels": [
+      "OutOfCombatHeal"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": true,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "WorldIdle",
+      "HealTrigger",
+      "HealResult",
+      "WorldResume"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042033-\u5C40\u5916\u5730\u5716\u6CBB\u7642/attempt-42032-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272",
+    "originalChineseLabel": "\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272",
+    "normalizedSessionAlias": "character-delete-create",
+    "primaryDomain": "CharacterLifecycle",
+    "actionLabels": [
+      "CharacterDelete",
+      "CharacterCreate"
+    ],
+    "positiveLabels": [
+      "CharacterDelete",
+      "CharacterCreate"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": false,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "CharacterList",
+      "CharacterDelete",
+      "CharacterListRefresh",
+      "CharacterCreate",
+      "CharacterListRefresh"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042338-\u522A\u9664\u89D2\u8272\u002B\u5275\u7ACB\u89D2\u8272/attempt-42337-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9",
+    "originalChineseLabel": "\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9",
+    "normalizedSessionAlias": "craft-and-submit-quest",
+    "primaryDomain": "InventoryQuest",
+    "actionLabels": [
+      "Crafting",
+      "QuestSubmitAfterCrafting"
+    ],
+    "positiveLabels": [
+      "Crafting",
+      "QuestSubmitAfterCrafting"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": false,
+    "inventoryRelated": true,
+    "equipmentRelated": false,
+    "questRelated": true,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "CraftRequest",
+      "InventoryUpdate",
+      "QuestSubmit",
+      "QuestProgressOrCompletion"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042709-\u5408\u6210\u002B\u63D0\u4EA4\u5408\u6210\u4EFB\u52D9/attempt-42708-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB",
+    "originalChineseLabel": "\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB",
+    "normalizedSessionAlias": "portal-map-transfer",
+    "primaryDomain": "World",
+    "actionLabels": [
+      "PortalMapTransfer"
+    ],
+    "positiveLabels": [
+      "PortalMapTransfer"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": true,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": true,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "PortalTrigger",
+      "WorldDetach",
+      "MapInitialization",
+      "WorldResume"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-042951-\u9032\u50B3\u9001\u5730\u5716\u5207\u63DB/attempt-42950-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5",
+    "originalChineseLabel": "\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5",
+    "normalizedSessionAlias": "mount-equip-unequip",
+    "primaryDomain": "Mount",
+    "actionLabels": [
+      "MountEquip",
+      "MountUnequip"
+    ],
+    "positiveLabels": [
+      "MountEquip",
+      "MountUnequip"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": true,
+    "inventoryRelated": false,
+    "equipmentRelated": true,
+    "questRelated": false,
+    "mountRelated": true,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "MountEquip",
+      "AppearanceState",
+      "MountUnequip",
+      "AppearanceState",
+      "MovementExcluded"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043148-\u7A7F\u6234\u5750\u9A0E\u002B\u5378\u4E0B\u5750\u9A0E\u002B\u79FB\u52D5/attempt-43147-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-043412-\u7372\u5F97\u795E\u4ED9",
+    "originalChineseLabel": "\u7372\u5F97\u795E\u4ED9",
+    "normalizedSessionAlias": "god-companion-acquisition",
+    "primaryDomain": "Companion",
+    "actionLabels": [
+      "GodCompanionAcquisition"
+    ],
+    "positiveLabels": [
+      "GodCompanionAcquisition"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": false,
+    "inventoryRelated": true,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": true,
+    "expectedSequenceCandidates": [
+      "AcquisitionTrigger",
+      "CompanionStateUpdate",
+      "InventoryOrUiUpdate"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043412-\u7372\u5F97\u795E\u4ED9/attempt-43411-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5",
+    "originalChineseLabel": "\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5",
+    "normalizedSessionAlias": "pet-deploy-withdraw-walk-recall",
+    "primaryDomain": "Pet",
+    "actionLabels": [
+      "PetDeploy",
+      "PetWithdraw",
+      "PetWalk",
+      "PetRecall"
+    ],
+    "positiveLabels": [
+      "PetDeploy",
+      "PetWithdraw",
+      "PetWalk",
+      "PetRecall"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": true,
+    "inventoryRelated": false,
+    "equipmentRelated": true,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": true,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "PetDeploy",
+      "PetState",
+      "PetWithdraw",
+      "PetWalk",
+      "PetRecall"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-043725-\u6230\u5BF5\u6B04\u4F4D\u88DD\u5099\u51FA\u6230\u002B\u5378\u4E0B\u51FA\u6230\u002B\u6E9C\u5BF5\u002B\u6536\u5BF5/attempt-43724-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA",
+    "originalChineseLabel": "\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA",
+    "normalizedSessionAlias": "quest-battle-strategist-formation-defend",
+    "primaryDomain": "BattleQuest",
+    "actionLabels": [
+      "QuestBattleEnter",
+      "StrategistFormationSkill",
+      "PositionSwap",
+      "Defend",
+      "EnemySkillReceived"
+    ],
+    "positiveLabels": [
+      "QuestBattleEnter",
+      "StrategistFormationSkill",
+      "PositionSwap",
+      "Defend",
+      "EnemySkillReceived"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Strategist",
+    "battleRelated": true,
+    "worldRelated": false,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": true,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "QuestBattleEnter",
+      "CommandWindow",
+      "FormationSkill",
+      "PositionSwap",
+      "Defend",
+      "EnemySkillEffect"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044049-\u4EFB\u52D9\u6230\u9B25\u002B\u8B00\u58EB\u6280\u80FD\u64FA\u9663\u002B\u63DB\u4F4D\u002B\u9632\u79A6\u002B\u88AB\u6575\u65B9\u6280\u80FD\u653B\u64CA/attempt-44048-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001",
+    "originalChineseLabel": "\u4EFB\u52D9\u50B3\u9001",
+    "normalizedSessionAlias": "quest-scripted-transfer",
+    "primaryDomain": "WorldQuest",
+    "actionLabels": [
+      "QuestScriptedTransfer"
+    ],
+    "positiveLabels": [
+      "QuestScriptedTransfer"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": true,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": true,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": true,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "QuestTrigger",
+      "WorldDetach",
+      "MapInitialization",
+      "QuestProgress",
+      "WorldResume"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-044723-\u4EFB\u52D9\u50B3\u9001/attempt-44722-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177",
+    "originalChineseLabel": "\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177",
+    "normalizedSessionAlias": "wild-encounter-basic-attack-settlement-rewards",
+    "primaryDomain": "Battle",
+    "actionLabels": [
+      "WildEncounterEnter",
+      "BattleBasicAttack",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain"
+    ],
+    "positiveLabels": [
+      "WildEncounterEnter",
+      "BattleBasicAttack",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": true,
+    "worldRelated": true,
+    "inventoryRelated": true,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": true,
+    "expectedSequenceCandidates": [
+      "WildEncounterEnter",
+      "BattleInitialization",
+      "BasicAttack",
+      "ActionEffect",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045124-\u91CE\u5916\u8E29\u660E\u96F7\u89F8\u767C\u6230\u9B25\u002B\u666E\u901A\u653B\u64CA\u002B\u6230\u9B25\u5F8C\u7D50\u7B97\u7372\u5F97\u7D93\u9A57\u002B\u9053\u5177/attempt-45123-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3",
+    "originalChineseLabel": "\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3",
+    "normalizedSessionAlias": "shop-open-sell-gem",
+    "primaryDomain": "InventoryShop",
+    "actionLabels": [
+      "ShopOpen",
+      "ShopSell"
+    ],
+    "positiveLabels": [
+      "ShopOpen",
+      "ShopSell"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": false,
+    "inventoryRelated": true,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "ShopOpen",
+      "ShopCatalog",
+      "ShopSell",
+      "InventoryUpdate",
+      "MoneyUpdate"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-045830-\u958B\u555F\u5546\u5E97\u8CE3\u51FA\u5BF6\u77F3/attempt-45829-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A",
+    "originalChineseLabel": "\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A",
+    "normalizedSessionAlias": "swordsman-skill-settlement-level-up",
+    "primaryDomain": "Battle",
+    "actionLabels": [
+      "SwordsmanSingleTargetSkill",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain",
+      "CharacterLevelUp"
+    ],
+    "positiveLabels": [
+      "SwordsmanSingleTargetSkill",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain",
+      "CharacterLevelUp"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Swordsman",
+    "battleRelated": true,
+    "worldRelated": false,
+    "inventoryRelated": true,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": true,
+    "expectedSequenceCandidates": [
+      "BattleInitialization",
+      "SingleTargetSkill",
+      "ActionEffect",
+      "BattleSettlement",
+      "ExperienceGain",
+      "RewardItemGain",
+      "CharacterLevelUp"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050350-\u528D\u5BA2\u6230\u9B25\u65BD\u653E\u55AE\u9AD4\u6280\u80FD\u002B\u6230\u9B25\u7D50\u675F\u7D50\u7B97\u7D93\u9A57\u7372\u5F97\u7269\u54C1\u002B\u89D2\u8272\u5347\u7D1A/attempt-50349-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668",
+    "originalChineseLabel": "\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668",
+    "normalizedSessionAlias": "equipment-wear-remove",
+    "primaryDomain": "Equipment",
+    "actionLabels": [
+      "EquipArmor",
+      "EquipWeapon",
+      "UnequipArmor",
+      "UnequipWeapon"
+    ],
+    "positiveLabels": [
+      "EquipArmor",
+      "EquipWeapon",
+      "UnequipArmor",
+      "UnequipWeapon"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": false,
+    "worldRelated": false,
+    "inventoryRelated": true,
+    "equipmentRelated": true,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "EquipArmor",
+      "EquipmentState",
+      "EquipWeapon",
+      "EquipmentState",
+      "UnequipArmor",
+      "UnequipWeapon"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-050659-\u7A7F\u4E0A\u88DD\u5099\u7A7F\u4E0A\u6B66\u5668\u002B\u5378\u4E0B\u88DD\u5099\u5378\u4E0B\u6B66\u5668/attempt-50658-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD",
+    "originalChineseLabel": "\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD",
+    "normalizedSessionAlias": "taoist-battle-skill",
+    "primaryDomain": "Battle",
+    "actionLabels": [
+      "TaoistBattleSkill"
+    ],
+    "positiveLabels": [
+      "TaoistBattleSkill"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Taoist",
+    "battleRelated": true,
+    "worldRelated": false,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": false,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "BattleInitialization",
+      "SkillCommand",
+      "ActionEffect",
+      "ResourceUpdate"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-051341-\u4ED9\u9053\u8077\u696D\u6230\u9B25\u65BD\u653E\u6280\u80FD/attempt-51340-trace/sensitive/trace.bin"
+  },
+  {
+    "captureSessionId": "host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750",
+    "originalChineseLabel": "\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750",
+    "normalizedSessionAlias": "battle-flee-death-mount-loyalty",
+    "primaryDomain": "BattleMount",
+    "actionLabels": [
+      "BattleFleeSuccess",
+      "BattleFleeFailure",
+      "BattleDeath",
+      "MountLoyaltyDecrease",
+      "MountRideRejectedLowLoyalty"
+    ],
+    "positiveLabels": [
+      "BattleFleeSuccess",
+      "BattleFleeFailure",
+      "BattleDeath",
+      "MountLoyaltyDecrease",
+      "MountRideRejectedLowLoyalty"
+    ],
+    "negativeLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "characterClassCandidate": "Unknown",
+    "battleRelated": true,
+    "worldRelated": false,
+    "inventoryRelated": false,
+    "equipmentRelated": false,
+    "questRelated": false,
+    "mountRelated": true,
+    "petRelated": false,
+    "portalRelated": false,
+    "rewardRelated": false,
+    "expectedSequenceCandidates": [
+      "FleeCommand",
+      "FleeSuccess",
+      "FleeCommand",
+      "FleeFailure",
+      "BattleDeath",
+      "MountLoyaltyDecrease",
+      "MountRideRejected"
+    ],
+    "excludedLabels": [
+      "Movement",
+      "Heartbeat"
+    ],
+    "confidence": "High",
+    "rawReference": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260801-051602-\u6230\u9B25\u9003\u8DD1\u6210\u529F\u002B\u6230\u900F\u9003\u8DD1\u5931\u6557\u002B\u6230\u9B25\u4E2D\u6B7B\u4EA1\u002B\u5750\u9A0E\u5FE0\u8AA0\u964D\u4F4E\u002B\u5750\u9A0E\u5FE0\u8AA0\u592A\u4F4E\u7121\u6CD5\u4E58\u5750/attempt-51601-trace/sensitive/trace.bin"
+  }
+]

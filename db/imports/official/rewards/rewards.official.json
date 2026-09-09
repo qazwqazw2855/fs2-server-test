@@ -1,0 +1,24 @@
+{
+    "category": "rewards",
+    "source": "God2 Classic Unified Server/Data/Runtime/Quests/quest.runtime.json + God2 Classic Unified Server/Data/Runtime/Npcs/npc.runtime.json",
+    "format": "Pending Derived Recovery Inventory",
+    "sourceSizeBytes": 4308235,
+    "recordCount": 0,
+    "recoveredFields": [],
+    "missingFields": [
+        "DAT scan",
+        "Lua scan",
+        "Script scan",
+        "Resource scan",
+        "Localization scan",
+        "Model scan",
+        "Packet scan",
+        "Runtime scan",
+        "Identifier scan"
+    ],
+    "verificationStatus": "Needs Recovery; CrossReferencePending",
+    "recoveryProgress": "Queued for reward extraction from quest, NPC, dialog, script, item, and localization cross-reference.",
+    "canDirectImportToGameplay": false,
+    "notes": "No independent reward table is confirmed; rewards must be derived from quest, NPC, dialog, and script evidence without inventing values.",
+    "records": []
+}

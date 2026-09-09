@@ -1,0 +1,36 @@
+{
+    "schemaVersion":  1,
+    "generatedAt":  "2026-07-28T16:20:04.7863582+08:00",
+    "directServerE2E":  {
+                            "status":  "PASS_FROZEN",
+                            "runId":  "20260728-080552",
+                            "summaryPath":  "Reports/BuiltInOfficialClientE2E/20260728-080552/summary.json",
+                            "result":  "DirectServerE2E PASS: PLAYER_ENTERED_WORLD observed from WorldServer; gameplay foundation completed."
+                        },
+    "officialClientTransport":  {
+                                    "status":  "PARTIAL",
+                                    "latestVisibleRunId":  "20260728-055224",
+                                    "latestVisibleResult":  "Unknown or unhandled Official Client dialog blocked E2E. Title=Protection Error; Text=Protection Error 確定 Error: 157/r/n; Result=Unknown dialog requires a verified handler before E2E can continue.",
+                                    "evidence":  [
+                                                     "Reports/BuiltInOfficialClientE2E/20260728-055224/summary.json",
+                                                     "Reports/BuiltInOfficialClientE2E/20260728-054941/summary.json"
+                                                 ],
+                                    "firstMissingMilestone":  "LOGIN_SOCKET_ACCEPTED"
+                                },
+    "visibleMilestones":  {
+                              "VisibleOfficialClientLogin":  "FAIL",
+                              "VisibleCharacterSelection":  "FAIL",
+                              "VisibleWorldEntry":  "FAIL",
+                              "VisibleMovement":  "FAIL",
+                              "VisibleCombat":  "FAIL",
+                              "VisibleImmortalSkill":  "FAIL",
+                              "VisibleBattlePetSkill":  "FAIL",
+                              "VisiblePersistence":  "FAIL"
+                          },
+    "headlessReadiness":  {
+                              "runId":  "20260728-102910",
+                              "readiness":  true,
+                              "clientE2EStatus":  "Deferred",
+                              "productionImportExecuted":  false
+                          }
+}

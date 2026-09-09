@@ -1,0 +1,12 @@
+config/test-accounts.local.json
+**/bin/
+**/obj/
+*.sensitive.bin
+runtime/protocol-evidence/
+/Artifacts/
+/backups/
+/logs/
+/Reports/
+*.obj
+*.pdb
+*.nativecodeanalysis.xml

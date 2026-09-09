@@ -1,0 +1,1777 @@
+{
+    "schema_version":  2,
+    "source":  "God2_Decrypted_Packet_Corpus",
+    "source_zip_sha256":  "0FF384925A67E1B31CC2934FD1499E0BE3AFFEFD912A3E694E1166D7CB93BC5D",
+    "packet_definitions":  112,
+    "plaintext_samples":  96,
+    "entries":  [
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-00",
+                        "direction":  "C2S",
+                        "opcode":  0,
+                        "header_size":  3,
+                        "lengths":  [
+                                        208
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "21C55C9BC64BA15C0972AA0D59F210F797D301676B76BD9DD08E621AF54DCF93"
+                    },
+                    {
+                        "id":  "wire-evidence-world-logout-client-5-byte-candidate",
+                        "direction":  "C2S",
+                        "opcode":  2,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "12F67A1E0C0402FF9296C564961C87D550A7F3F75946311E83452D8E1BF263EB"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-04",
+                        "direction":  "C2S",
+                        "opcode":  4,
+                        "header_size":  3,
+                        "lengths":  [
+                                        208
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "2A3A78BA57C170C835F737C4DCE61B0CDEBAC105F50F26782F5E1771D5CE215D"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-0a",
+                        "direction":  "C2S",
+                        "opcode":  10,
+                        "header_size":  3,
+                        "lengths":  [
+                                        20
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "9D62ECAB30952257C28DCB75BCD404FFA41E9A445E4C5291C897722A3E078E95"
+                    },
+                    {
+                        "id":  "runtime-portal-activate",
+                        "direction":  "C2S",
+                        "opcode":  12,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "7973DB63D026DFD06C00C1D7F29E4B1E9A647652D1566D1FC13F5D6F8A223AA7"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-1a",
+                        "direction":  "C2S",
+                        "opcode":  26,
+                        "header_size":  3,
+                        "lengths":  [
+                                        41
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "41E94540304EBEEFD27DB9C712273108F7750CB751594779C9A307140C2B0935"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-1c",
+                        "direction":  "C2S",
+                        "opcode":  28,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C121BBC395A0E700B0C57129B38564F203305ACFCB8E1CBF2EB314457F0FDC76"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-1d",
+                        "direction":  "C2S",
+                        "opcode":  29,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-1f",
+                        "direction":  "C2S",
+                        "opcode":  31,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "780630A6070CDCB62EE1B72BD77CA0D007087026570095130DD55B820A1563EF"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-20",
+                        "direction":  "C2S",
+                        "opcode":  32,
+                        "header_size":  3,
+                        "lengths":  [
+                                        20
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "A78D0ADD8D71DB24DDB59EA737D82CE6131294129D8F947261CA550158401E61"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-21",
+                        "direction":  "C2S",
+                        "opcode":  33,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "8424B01FF3D758B8001F2751247E345140853A45EBF60FA598E63B6464DDCCE8"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-23",
+                        "direction":  "C2S",
+                        "opcode":  35,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "0190F7B20646B92E2B26FE20A4420860BB189C57341723605971DFC6C556D7B9"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-25",
+                        "direction":  "C2S",
+                        "opcode":  37,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "74F5BE637644765F879A20EAC2B5422254AE42BB02B1AB703E32A0B3E3982615"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-28",
+                        "direction":  "C2S",
+                        "opcode":  40,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "40E123618DE7D21ECCDD2A413B7F17E0AAB42631E87640D0297E41014747435D"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-2e",
+                        "direction":  "C2S",
+                        "opcode":  46,
+                        "header_size":  3,
+                        "lengths":  [
+                                        10
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "3FD1C6D304DFE88A59AB785F5616E2CACC8E6BE76C36B53EA8C778CEFE939CA7"
+                    },
+                    {
+                        "id":  "wire-evidence-world-movement-client-10-byte-family",
+                        "direction":  "C2S",
+                        "opcode":  46,
+                        "header_size":  3,
+                        "lengths":  [
+                                        10
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "24DB53B18237BA21C60E27906EB2C0F802CCCB3936F85CCAFAB5104D43830C4D"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-30",
+                        "direction":  "C2S",
+                        "opcode":  48,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "BBFEE2260A44D0ECAA98347DC91624DE43A5EAE51F596B5308C2EA1A64B07DB7"
+                    },
+                    {
+                        "id":  "wire-evidence-world-heartbeat-05007ACCEC",
+                        "direction":  "C2S",
+                        "opcode":  48,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "BBFEE2260A44D0ECAA98347DC91624DE43A5EAE51F596B5308C2EA1A64B07DB7"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-35",
+                        "direction":  "C2S",
+                        "opcode":  53,
+                        "header_size":  3,
+                        "lengths":  [
+                                        20
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "721E2B83B844D4CE3EFDAED1DDB89A5BEF10334C900ECCA60F0AE95220908CB0"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-36",
+                        "direction":  "C2S",
+                        "opcode":  54,
+                        "header_size":  3,
+                        "lengths":  [
+                                        12
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "D19C8831DE54F82CAFCB84AC4A03430D844B749036754DECD3E6EF5CE552C359"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-37",
+                        "direction":  "C2S",
+                        "opcode":  55,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "284C60EDD6067817BFB89FACBE236B594B0DEC5A40EFBB68A6A202660E5A8922"
+                    },
+                    {
+                        "id":  "wire-evidence-world-merchant-interaction-client-8-byte-candidate",
+                        "direction":  "C2S",
+                        "opcode":  55,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "284C60EDD6067817BFB89FACBE236B594B0DEC5A40EFBB68A6A202660E5A8922"
+                    },
+                    {
+                        "id":  "wire-evidence-world-npc-interaction-client-8-byte-candidate",
+                        "direction":  "C2S",
+                        "opcode":  55,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C96009C3D91CE126C0CC3DFD200126027C4BA57886FC1276C135E6FE565097A4"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-38",
+                        "direction":  "C2S",
+                        "opcode":  56,
+                        "header_size":  3,
+                        "lengths":  [
+                                        12
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "79D967F33EEB99F77867DD1851D5EE4444E3D8B3A4D8A21D050D9AFEA5F321E6"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-39",
+                        "direction":  "C2S",
+                        "opcode":  57,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "0B8EF0C2918B8FA092C86240854AE1631F14901AD34F66A1BBA3285A63F73AC0"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-66",
+                        "direction":  "C2S",
+                        "opcode":  102,
+                        "header_size":  3,
+                        "lengths":  [
+                                        7
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-68",
+                        "direction":  "C2S",
+                        "opcode":  104,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-6d",
+                        "direction":  "C2S",
+                        "opcode":  109,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C131E9FC156A1E50FA0621DCDA619C23BD386E03BBE6322DA85525E406892313"
+                    },
+                    {
+                        "id":  "wire-evidence-world-heartbeat-05003D09A5",
+                        "direction":  "C2S",
+                        "opcode":  109,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C131E9FC156A1E50FA0621DCDA619C23BD386E03BBE6322DA85525E406892313"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-85",
+                        "direction":  "C2S",
+                        "opcode":  133,
+                        "header_size":  3,
+                        "lengths":  [
+                                        10
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "36C69E428267FE78420722831238728FF541B3258A1BED9A65BF35DFFABE4206"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-86",
+                        "direction":  "C2S",
+                        "opcode":  134,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "7874328D75F581368A52A82F87D96968BEBF8618038E4B0F790D095F8306D683"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-9a",
+                        "direction":  "C2S",
+                        "opcode":  154,
+                        "header_size":  3,
+                        "lengths":  [
+                                        71
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "CF36549FDF7769C8341105D289451159D684F4735D2D9EF964B17409240C7A60"
+                    },
+                    {
+                        "id":  "runtime-login-request-sanitized",
+                        "direction":  "C2S",
+                        "opcode":  165,
+                        "header_size":  3,
+                        "lengths":  [
+                                        208
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "SanitizedVerifiedSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "91F3FB4473DCA486B70282B6D1D3C3C2E79C1813E890367B7C03D60F2AC1E494"
+                    },
+                    {
+                        "id":  "runtime-server-selection-request",
+                        "direction":  "C2S",
+                        "opcode":  166,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "BC5C007787DAB24457649C2EC647F89253F82585B2CE089447CBDF2DAD299D41"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-a6",
+                        "direction":  "C2S",
+                        "opcode":  166,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "BC5C007787DAB24457649C2EC647F89253F82585B2CE089447CBDF2DAD299D41"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-ab",
+                        "direction":  "C2S",
+                        "opcode":  171,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-b5",
+                        "direction":  "C2S",
+                        "opcode":  181,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "41216663E3BB2C284EA0C7156AE1D88FB59DAD69417015E3C6D76641CD227778"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-c2s-opcode-c2",
+                        "direction":  "C2S",
+                        "opcode":  194,
+                        "header_size":  3,
+                        "lengths":  [
+                                        12
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-login-client-handshake",
+                        "direction":  "C2S",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        19
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "F22AA6D2DD62AAF65461DE63F2C753C23CE9817CDF1BC2B0540C646A99BABC4B"
+                    },
+                    {
+                        "id":  "wire-evidence-capture-20260806-client-action-c2s-20-candidate",
+                        "direction":  "C2S",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        20
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "CRYPTO_UNVERIFIED",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "wire-evidence-capture-20260806-client-keepalive-c2s-5-candidate",
+                        "direction":  "C2S",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "CRYPTO_UNVERIFIED",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "wire-evidence-capture-20260806-login-handshake-c2s-208-candidate",
+                        "direction":  "C2S",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        208
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "CRYPTO_UNVERIFIED",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-world-client-handshake",
+                        "direction":  "C2S",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        19
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "7C392CDD43A7BE2E06BD3771E3BE2F70B0AD9DB060E758F64FEDC0599D93E9F5"
+                    },
+                    {
+                        "id":  "runtime-login-version-followup",
+                        "direction":  "S2C",
+                        "opcode":  1,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "86E91459D9D2B930677775A7309C21D83C3E71CCCADC2542D8238CBFC6353F58"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-01",
+                        "direction":  "S2C",
+                        "opcode":  1,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "86E91459D9D2B930677775A7309C21D83C3E71CCCADC2542D8238CBFC6353F58"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-00",
+                        "direction":  "S2C",
+                        "opcode":  1,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "5C72537E5F1B0D2F3C7A4A2796484F25BADEFD10D18B8631DC3ED0C64B13A496"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-02",
+                        "direction":  "S2C",
+                        "opcode":  2,
+                        "header_size":  3,
+                        "lengths":  [
+                                        26,
+                                        320
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "B0837934E2AA71A0C552160C4F54B20FF8073F81737CC0CF8E19E3B2DB910D3A"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-02",
+                        "direction":  "S2C",
+                        "opcode":  2,
+                        "header_size":  3,
+                        "lengths":  [
+                                        320
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "B0837934E2AA71A0C552160C4F54B20FF8073F81737CC0CF8E19E3B2DB910D3A"
+                    },
+                    {
+                        "id":  "runtime-character-list-bootstrap",
+                        "direction":  "S2C",
+                        "opcode":  7,
+                        "header_size":  3,
+                        "lengths":  [
+                                        78
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "1E087135069D6891DD725F8CF00FB41C591F829EDC1CEA0577CA6B4E36B09567"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-07",
+                        "direction":  "S2C",
+                        "opcode":  7,
+                        "header_size":  3,
+                        "lengths":  [
+                                        78
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "C425DAECCEB590F16FB1ED0A7822AECF34C5FA11F92DEC81C5BEBE319A5AC1CE"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-1c",
+                        "direction":  "S2C",
+                        "opcode":  28,
+                        "header_size":  1,
+                        "lengths":  [
+                                        45
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "3C6334BB7FB6458B4CB9C254CBAE3072B4099A2AD6A69D8ECE03972CB38C9826"
+                    },
+                    {
+                        "id":  "runtime-login-success-bootstrap",
+                        "direction":  "S2C",
+                        "opcode":  29,
+                        "header_size":  3,
+                        "lengths":  [
+                                        417
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "DB09EE5646E60EFB84F74FCE652AF5E7451DC4DF5A80D484538F8B7AB4E3EE1D"
+                    },
+                    {
+                        "id":  "runtime-login-failure",
+                        "direction":  "S2C",
+                        "opcode":  30,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "E09C9E20719C45431214098C38603755CC552416B4B81447AAC354F46A68C813"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-01",
+                        "direction":  "S2C",
+                        "opcode":  31,
+                        "header_size":  3,
+                        "lengths":  [
+                                        128
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "F138177CBE23A43E441004CC0E29A07ED1F863631244AEB9EC101CA2D63A8F44"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-1f",
+                        "direction":  "S2C",
+                        "opcode":  31,
+                        "header_size":  3,
+                        "lengths":  [
+                                        128
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "1B8106D46D80F5DA73D78C1A7349CF77D7A6EF0201027AF05B9A3D83C4F505C6"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-22",
+                        "direction":  "S2C",
+                        "opcode":  34,
+                        "header_size":  3,
+                        "lengths":  [
+                                        28
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "DF8D298CAF2455BD1B87BDD5BD5D20E5732BE94CA754BFDAD34BBE942ABB491C"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-23",
+                        "direction":  "S2C",
+                        "opcode":  35,
+                        "header_size":  3,
+                        "lengths":  [
+                                        20,
+                                        1254
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-03",
+                        "direction":  "S2C",
+                        "opcode":  43,
+                        "header_size":  3,
+                        "lengths":  [
+                                        752
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "A19FFB01241C8B49F8CE4014AF18516F51874F235488DD8A0FF0C0C3A3BD57C8"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-2e",
+                        "direction":  "S2C",
+                        "opcode":  46,
+                        "header_size":  3,
+                        "lengths":  [
+                                        154
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "249E718D44AE79CA9995C0E735741E6E9102A29E69D527DABE41B52F6906AE03"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-36",
+                        "direction":  "S2C",
+                        "opcode":  54,
+                        "header_size":  3,
+                        "lengths":  [
+                                        14,
+                                        25
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "4F445606B53911F781DCB53165E121CF74954B44F5124E6284F0A980829D3693"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-38",
+                        "direction":  "S2C",
+                        "opcode":  56,
+                        "header_size":  1,
+                        "lengths":  [
+                                        2
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "1C96E48E878555CFF4B927725E35986F2E6C4B6E900CA05E658A5317C7FAF73A"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-3a",
+                        "direction":  "S2C",
+                        "opcode":  58,
+                        "header_size":  3,
+                        "lengths":  [
+                                        10
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "FB2C318C160A5BBB82BF6AAFF9CB539BBF03EB46708F13A41004166DE23B93AE"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-3b",
+                        "direction":  "S2C",
+                        "opcode":  59,
+                        "header_size":  3,
+                        "lengths":  [
+                                        40
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "2CEFD79D352FD0010ED9F7BD0C5C6690CFE11FAABE5AADA506082BA73F2349CD"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-3f",
+                        "direction":  "S2C",
+                        "opcode":  63,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "B91E1BDD982D9BB75A5374C41BEA7339015A6037627F582B04E661F2E723B6D5"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-41",
+                        "direction":  "S2C",
+                        "opcode":  65,
+                        "header_size":  3,
+                        "lengths":  [
+                                        25,
+                                        45,
+                                        145,
+                                        155,
+                                        161
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C459B1F029BF52ED65FC15C65EF5D9CA4510A72B591EF47C3B6BA482CC30815A"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-42",
+                        "direction":  "S2C",
+                        "opcode":  66,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-4b",
+                        "direction":  "S2C",
+                        "opcode":  75,
+                        "header_size":  3,
+                        "lengths":  [
+                                        23
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "587ADA50C45FB9121041C2E44787669BA4E87D9C7BBD0E264EF92C56094D7CFA"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-5c",
+                        "direction":  "S2C",
+                        "opcode":  92,
+                        "header_size":  3,
+                        "lengths":  [
+                                        57
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-5d",
+                        "direction":  "S2C",
+                        "opcode":  93,
+                        "header_size":  3,
+                        "lengths":  [
+                                        5,
+                                        8,
+                                        10,
+                                        14,
+                                        15,
+                                        16,
+                                        20,
+                                        26,
+                                        31,
+                                        36,
+                                        47,
+                                        52,
+                                        57,
+                                        73,
+                                        78,
+                                        215,
+                                        460,
+                                        539
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "CBBFA15D2CD69CE308010EFF61702DF2E801FA4B796E1C5AB55F65D1B7468B09"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-5f",
+                        "direction":  "S2C",
+                        "opcode":  95,
+                        "header_size":  3,
+                        "lengths":  [
+                                        24,
+                                        26,
+                                        29,
+                                        31,
+                                        45,
+                                        47,
+                                        92
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "9E83914B46C1C5A9A92371DE9A15DBB5BEF6F8CF50F65BC100B4DD36ED203E6F"
+                    },
+                    {
+                        "id":  "runtime-npc-position",
+                        "direction":  "S2C",
+                        "opcode":  96,
+                        "header_size":  3,
+                        "lengths":  [
+                                        24
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "54E7889876D33FAA10EE9479059875EB8CCE43A96734CA3428D6DD4E05C5D922"
+                    },
+                    {
+                        "id":  "runtime-map-transition",
+                        "direction":  "S2C",
+                        "opcode":  97,
+                        "header_size":  3,
+                        "lengths":  [
+                                        12
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "958A53D71D62829CAC0D35E4CE7F96CF4174B1BF8A0A6F878BC90CDBD43483CC"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-61",
+                        "direction":  "S2C",
+                        "opcode":  97,
+                        "header_size":  3,
+                        "lengths":  [
+                                        12
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "CEFF57C13D7646123F81B9BB8DFBEB0F192E19D2DFE33403D59A4F601E35048F"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-08",
+                        "direction":  "S2C",
+                        "opcode":  97,
+                        "header_size":  3,
+                        "lengths":  [
+                                        42
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "8A9BAD2366AE096CB6A3CC4B82CFEAEFCC03E9C7E15E6D990D079E5FB3B63B0C"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-09",
+                        "direction":  "S2C",
+                        "opcode":  102,
+                        "header_size":  3,
+                        "lengths":  [
+                                        67
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "0355C2C467C0A3B9BBB7B690C700BA88BE63B85DA5B83F664C56D6F2F2C614C1"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-68",
+                        "direction":  "S2C",
+                        "opcode":  104,
+                        "header_size":  3,
+                        "lengths":  [
+                                        16
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "7B5D34F33494C2F068B9ECDC69D15EAFA7FBE6D0249DABB531F51493CACFBB9E"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-71",
+                        "direction":  "S2C",
+                        "opcode":  113,
+                        "header_size":  3,
+                        "lengths":  [
+                                        29,
+                                        50,
+                                        52,
+                                        71,
+                                        94
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "EA52E005FF2FECF203840E29B6CD9D3459944439B9D5890E557846992F09386C"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-72",
+                        "direction":  "S2C",
+                        "opcode":  114,
+                        "header_size":  3,
+                        "lengths":  [
+                                        45,
+                                        69,
+                                        87,
+                                        129,
+                                        140,
+                                        171,
+                                        439
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "27BF371D31F6DE38FBA088DA4AD5E34E0527095331FE68D553BAF9B98012A71E"
+                    },
+                    {
+                        "id":  "runtime-npc-spawn",
+                        "direction":  "S2C",
+                        "opcode":  114,
+                        "header_size":  3,
+                        "lengths":  [
+                                        24
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "42D1E1143DE6C8F80723AC9A90477CB3858B1004D7E4801F804ACF9A304C4D10"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-74",
+                        "direction":  "S2C",
+                        "opcode":  116,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8,
+                                        13,
+                                        76,
+                                        83
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "038F0CFD3B75EE159E8FBFC8080FC949C47D93D5FD4B6EEE684FDED4C36675CC"
+                    },
+                    {
+                        "id":  "runtime-npc-despawn",
+                        "direction":  "S2C",
+                        "opcode":  117,
+                        "header_size":  3,
+                        "lengths":  [
+                                        8
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "0907D78D7AB278B06720829688D3CF2D7BAC1B85B415DB40126047C83D436CCF"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-77",
+                        "direction":  "S2C",
+                        "opcode":  119,
+                        "header_size":  3,
+                        "lengths":  [
+                                        10,
+                                        31
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-npc-dialog-result",
+                        "direction":  "S2C",
+                        "opcode":  122,
+                        "header_size":  3,
+                        "lengths":  [
+                                        58
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "A4BC3C7B2E4B573D31EFF8109AB95B78CACD3E8C1B7BE98DE0DFCFFF2F27316C"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-7a",
+                        "direction":  "S2C",
+                        "opcode":  122,
+                        "header_size":  3,
+                        "lengths":  [
+                                        30,
+                                        31,
+                                        58
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  true,
+                        "plaintext_sha256":  "17DEDB58C5865B611D517E2F22CB5E07D7A002E5BDA2008C4917630A33F295F4"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-82",
+                        "direction":  "S2C",
+                        "opcode":  130,
+                        "header_size":  3,
+                        "lengths":  [
+                                        458,
+                                        537,
+                                        616
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "08403924364302994F00A3910CE895BB220BC699E4DF3743D890001889383A98"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-83",
+                        "direction":  "S2C",
+                        "opcode":  131,
+                        "header_size":  1,
+                        "lengths":  [
+                                        15
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "095C74DD2E622812F1B36F156B9122910BF46E3034BDA727949C9DF69D21F63C"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-85",
+                        "direction":  "S2C",
+                        "opcode":  133,
+                        "header_size":  1,
+                        "lengths":  [
+                                        2
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "E85D40821EA195CFCD54D959DA32612CBCEF91535733EC599ADF4C6FD663752E"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-85",
+                        "direction":  "S2C",
+                        "opcode":  133,
+                        "header_size":  3,
+                        "lengths":  [
+                                        258,
+                                        262,
+                                        267,
+                                        275,
+                                        278,
+                                        279,
+                                        284,
+                                        290,
+                                        297,
+                                        308
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "5A4CC9D31AA5375AD380B7FF09F4A998A1C389C41E1C05A0F2F5A7B85372CEBD"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-86",
+                        "direction":  "S2C",
+                        "opcode":  134,
+                        "header_size":  1,
+                        "lengths":  [
+                                        17
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "A376B6A5FBB364698809C0FF834CC1C24EC39EF7C8A58A207E3CE7602C085D67"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-86",
+                        "direction":  "S2C",
+                        "opcode":  134,
+                        "header_size":  3,
+                        "lengths":  [
+                                        20,
+                                        37,
+                                        54,
+                                        69,
+                                        86,
+                                        103,
+                                        105,
+                                        107,
+                                        110,
+                                        112,
+                                        114,
+                                        136,
+                                        201,
+                                        243,
+                                        258,
+                                        275,
+                                        290,
+                                        292,
+                                        295,
+                                        520,
+                                        528
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "53CDC6F9AE7D47782A302C42B2B61CB8A8A938C8B9D402CE2DA420A27369F1B9"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-87",
+                        "direction":  "S2C",
+                        "opcode":  135,
+                        "header_size":  1,
+                        "lengths":  [
+                                        3
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "397381ECA13D0322F42F9365E6D25DB4AF151336D92204A1CDA91DF778DFC4D4"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-88",
+                        "direction":  "S2C",
+                        "opcode":  136,
+                        "header_size":  1,
+                        "lengths":  [
+                                        121
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "9BF9F8EB04FEE897C477990EF9B33D1E84A005C38582ADBC1DAAD29DB8F7D28B"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-88",
+                        "direction":  "S2C",
+                        "opcode":  136,
+                        "header_size":  3,
+                        "lengths":  [
+                                        192,
+                                        229
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "969A799BE7F37583094F4AA2111DA514D73B9DCA9629C6700CAEA8F1BEB35F35"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-handler-decoded-opcode-89",
+                        "direction":  "S2C",
+                        "opcode":  137,
+                        "header_size":  1,
+                        "lengths":  [
+                                        57
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  true,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "C1B2E2B8EB8059F7DBA61EF9BCD20816203BB358FC0BBC306F84DA915EEFF727"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-89",
+                        "direction":  "S2C",
+                        "opcode":  137,
+                        "header_size":  3,
+                        "lengths":  [
+                                        184
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "5EFADC619200F94E50898643A8F330D4DA11E50863F09AB058BA5D9BFFA1521A"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-06",
+                        "direction":  "S2C",
+                        "opcode":  150,
+                        "header_size":  3,
+                        "lengths":  [
+                                        36
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "0F936781840667F134FE2E5F59296387FA09EC2DC4B5A8818422CDBAA733A2EB"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-04",
+                        "direction":  "S2C",
+                        "opcode":  156,
+                        "header_size":  3,
+                        "lengths":  [
+                                        68
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "60028C87F7D587AEDECF55DAB1AE17F682B2560E5A0ED429530ECFF5E18A81FC"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-11",
+                        "direction":  "S2C",
+                        "opcode":  158,
+                        "header_size":  3,
+                        "lengths":  [
+                                        26
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "03902BE9FB25202C12FB70818BC00F4ECEAE1120461FC1E251A6F11C4F9FC49B"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-10",
+                        "direction":  "S2C",
+                        "opcode":  167,
+                        "header_size":  3,
+                        "lengths":  [
+                                        88
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "9762165AAB3673816A34D0F2E6C9DF66FD173D16DBE34FE199E6991D59527450"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-b2",
+                        "direction":  "S2C",
+                        "opcode":  178,
+                        "header_size":  3,
+                        "lengths":  [
+                                        120,
+                                        146,
+                                        148,
+                                        167,
+                                        220
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "90ADE1620D2866EBA2F56BD6143DF675E1D74FA3D9A4467ECEF29377B48564AC"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-05",
+                        "direction":  "S2C",
+                        "opcode":  179,
+                        "header_size":  3,
+                        "lengths":  [
+                                        182
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "4735E74FE71835DD01A157F5249A413797935045B16F11D91ECE82705194AF8A"
+                    },
+                    {
+                        "id":  "runtime-portal-prelude",
+                        "direction":  "S2C",
+                        "opcode":  187,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "7F047316C5F45BFF2E145BDCEB5410D02114B73AE862202683908E73C51DFDE6"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-bb",
+                        "direction":  "S2C",
+                        "opcode":  187,
+                        "header_size":  3,
+                        "lengths":  [
+                                        6,
+                                        29,
+                                        56
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "AB6DB488C85222FF91A77791075A5CC833977ABDBAC9777BD63B3CD80E0E0C41"
+                    },
+                    {
+                        "id":  "runtime-world-bootstrap-07",
+                        "direction":  "S2C",
+                        "opcode":  211,
+                        "header_size":  3,
+                        "lengths":  [
+                                        63
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "CD8E4283E3C554975B2F9FEDAD822444EADC740787845FCF989BB8AC73E412D8"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-e5",
+                        "direction":  "S2C",
+                        "opcode":  229,
+                        "header_size":  3,
+                        "lengths":  [
+                                        14,
+                                        35,
+                                        38
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "CA9098C30EBAA6CCBE8CA2AA8A2325DC3A7B054F4A4B35FD20187F5729370CB7"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-e6",
+                        "direction":  "S2C",
+                        "opcode":  230,
+                        "header_size":  3,
+                        "lengths":  [
+                                        53,
+                                        95
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PLAINTEXT_RECOVERED",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "A26E87F6B5046430B6FC32D1987CD520BF3BB896112F02F66F6F979CDB194216"
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-ee",
+                        "direction":  "S2C",
+                        "opcode":  238,
+                        "header_size":  3,
+                        "lengths":  [
+                                        100
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "evidence-package-20260806-s2c-opcode-f5",
+                        "direction":  "S2C",
+                        "opcode":  245,
+                        "header_size":  3,
+                        "lengths":  [
+                                        32,
+                                        53
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "INCOMPLETE_DEFINITION",
+                        "crypto_verified":  true,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-login-server-handshake",
+                        "direction":  "S2C",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        19
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "76370EEDE87FFC63748941E461A887BFCB3288DC19F7D1F4B34E5B80E8B33701"
+                    },
+                    {
+                        "id":  "wire-evidence-capture-20260806-server-world-delta-s2c-14-candidate",
+                        "direction":  "S2C",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        14
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "CRYPTO_UNVERIFIED",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "wire-evidence-capture-20260806-server-world-delta-s2c-20-candidate",
+                        "direction":  "S2C",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        20
+                                    ],
+                        "plaintext_available":  false,
+                        "status":  "CRYPTO_UNVERIFIED",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  null
+                    },
+                    {
+                        "id":  "runtime-world-server-handshake",
+                        "direction":  "S2C",
+                        "opcode":  null,
+                        "header_size":  2,
+                        "lengths":  [
+                                        19
+                                    ],
+                        "plaintext_available":  true,
+                        "status":  "PlaintextSample",
+                        "crypto_verified":  false,
+                        "parser_verified":  false,
+                        "builder_verified":  false,
+                        "plaintext_sha256":  "E98F4FD7C202DAB42F18D64FF9158E25EB4F45084F9A21B96C76CABD440557A0"
+                    }
+                ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/importer-offline-verification.schema.json",
+  "title":"God2 importer complete offline implementation verification",
+  "type":"object",
+  "required":["schemaVersion","status","compiledServer","migrationModel","replay","productionDatabaseConnectionAttempted","productionDatabaseMutationAttempted","fakeNetworkByteCount"],
+  "properties":{
+    "schemaVersion":{"const":"god2-offline-recovery-verification-v1"},
+    "status":{"const":"OFFLINE_VERIFICATION_COMPLETE"},
+    "compiledServer":{"$ref":"importer-compiled-server-contracts.schema.json"},
+    "migrationModel":{"$ref":"importer-schema-migration-verification.schema.json"},
+    "replay":{"$ref":"importer-semantic-replay-results.schema.json"},
+    "productionDatabaseConnectionAttempted":{"const":false},
+    "productionDatabaseMutationAttempted":{"const":false},
+    "fakeNetworkByteCount":{"const":0}
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,754 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/deep-probe-candidate-map-v2.schema.json",
+  "title": "God2 deep-probe candidate map v2",
+  "$comment": "Closed writer/reader contract for the ordered 25-domain candidate discovery map. Exact-target and identity-blocked reports are both represented without promoting candidate-only domains.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "SchemaVersion",
+    "ClientSHA256",
+    "ClientSha256Expected",
+    "Architecture",
+    "DiscoveryPolicy",
+    "CandidateVerificationEngine",
+    "UnconfirmedProbePolicy",
+    "CandidateSchemaVersion",
+    "TargetIdentityVerified",
+    "EngineBounds",
+    "DomainCount",
+    "Domains"
+  ],
+  "properties": {
+    "SchemaVersion": { "const": "god2-deep-probe-candidate-map-v2" },
+    "ClientSHA256": {
+      "type": "string",
+      "pattern": "^(?:[A-F0-9]{64}|UNKNOWN_UNVERIFIED)$"
+    },
+    "ClientSha256Expected": {
+      "const": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"
+    },
+    "Architecture": { "const": "x86" },
+    "DiscoveryPolicy": {
+      "const": "ExecutableCodeAndExactSignaturesOnly;NoWritableMemoryScan;NoSensitiveValueLogging"
+    },
+    "CandidateVerificationEngine": {
+      "const": "BoundedExecutableCallGraphPlusExactCandidateBytesPlusPromotionHardGate"
+    },
+    "UnconfirmedProbePolicy": { "const": "EvidenceBlockedUnconfirmedProbe" },
+    "CandidateSchemaVersion": { "const": "god2-deep-probe-candidate-v1" },
+    "TargetIdentityVerified": { "type": "boolean" },
+    "EngineBounds": { "$ref": "#/$defs/engineBounds" },
+    "DomainCount": { "const": 25 },
+    "Domains": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "prefixItems": [
+        {
+          "allOf": [
+            { "$ref": "#/$defs/confirmedDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Network" },
+                "Probe": { "const": "WinsockTransport" },
+                "Candidates": { "const": ["send","WSASend","recv","WSARecv"] },
+                "CandidateCount": { "const": 4 }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/confirmedDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Parser" },
+                "Probe": { "const": "PacketDecode.FrameBoundary" },
+                "Candidates": { "const": [{"callsiteRva":"0x00078A48","targetRva":"0x00078D70","verification":"ExactCallTarget"}] },
+                "CandidateCount": { "const": 1 }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/confirmedDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Serializer" },
+                "Probe": { "const": "OutboundEnqueue.FrameBuilder" },
+                "Candidates": { "const": [{"targetRva":"0x0007FC10","signature":"55 8B EC 56 57","verification":"ExactInstructionBytes"}] },
+                "CandidateCount": { "const": 1 }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/confirmedDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Handler" },
+                "Probe": { "const": "Battle.HandlerRecordLength" },
+                "Candidates": { "const": [{"callsiteRvas":["0x00147096","0x001470AE"],"targetRva":"0x0007F940","verification":"BothExactCallTargets"}] },
+                "CandidateCount": { "const": 1 }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Object" },
+                "Probe": { "const": "ObjectResolver" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Allocation" },
+                "Probe": { "const": "AllocationProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "VTable" },
+                "Probe": { "const": "VTableProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Factory" },
+                "Probe": { "const": "FactoryProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "ManagerLookup" },
+                "Probe": { "const": "ManagerLookupProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Registry" },
+                "Probe": { "const": "RegistryProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "ResourceDecode" },
+                "Probe": { "const": "ResourceDecodeProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Mutation" },
+                "Probe": { "const": "MutationProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "TaintSeed" },
+                "Probe": { "const": "TaintSeedProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "FormulaOperand" },
+                "Probe": { "const": "FormulaOperandProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Quest" },
+                "Probe": { "const": "QuestProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Map" },
+                "Probe": { "const": "MapProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Portal" },
+                "Probe": { "const": "PortalProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "NPC" },
+                "Probe": { "const": "NPCProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Monster" },
+                "Probe": { "const": "MonsterProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Battle" },
+                "Probe": { "const": "BattleProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Inventory" },
+                "Probe": { "const": "InventoryProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Serializer" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Item" },
+                "Probe": { "const": "ItemProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Skill" },
+                "Probe": { "const": "SkillProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Pet/Mount" },
+                "Probe": { "const": "PetMountProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Handler" } }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            { "$ref": "#/$defs/candidateOnlyDomain" },
+            {
+              "properties": {
+                "Domain": { "const": "Snapshot" },
+                "Probe": { "const": "SnapshotProbe" },
+                "DiscoveryPlan": {
+                  "properties": { "SeedDomain": { "const": "Parser" } }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["TargetIdentityVerified"],
+        "properties": { "TargetIdentityVerified": { "const": true } }
+      },
+      "then": {
+        "properties": {
+          "ClientSHA256": {
+            "const": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"
+          },
+          "Domains": {
+            "prefixItems": [
+              {},
+              {},
+              {},
+              {},
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": true } } } } }
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "ClientSHA256": {
+            "oneOf": [
+              { "const": "UNKNOWN_UNVERIFIED" },
+              {
+                "type": "string",
+                "pattern": "^[A-F0-9]{64}$",
+                "not": {
+                  "const": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"
+                }
+              }
+            ]
+          },
+          "Domains": {
+            "prefixItems": [
+              { "properties": { "Status": { "const": "CurrentTargetIdentityBlocked" }, "Authority": { "const": "UNKNOWN" }, "VerificationStatus": { "const": "EvidenceBlockedExactIdentityMismatch" } } },
+              { "properties": { "Status": { "const": "CurrentTargetIdentityBlocked" }, "Authority": { "const": "UNKNOWN" }, "VerificationStatus": { "const": "EvidenceBlockedExactIdentityMismatch" } } },
+              { "properties": { "Status": { "const": "CurrentTargetIdentityBlocked" }, "Authority": { "const": "UNKNOWN" }, "VerificationStatus": { "const": "EvidenceBlockedExactIdentityMismatch" } } },
+              { "properties": { "Status": { "const": "CurrentTargetIdentityBlocked" }, "Authority": { "const": "UNKNOWN" }, "VerificationStatus": { "const": "EvidenceBlockedExactIdentityMismatch" } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } },
+              { "properties": { "VerificationContract": { "properties": { "ExactTargetIdentity": { "const": false } } } } }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "engineBounds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ScanRadiusBytes",
+        "MaximumCandidatesPerDomain",
+        "SignatureBytes",
+        "WritableMemoryScanned"
+      ],
+      "properties": {
+        "ScanRadiusBytes": { "const": 256 },
+        "MaximumCandidatesPerDomain": { "const": 4 },
+        "SignatureBytes": { "const": 8 },
+        "WritableMemoryScanned": { "const": false }
+      }
+    },
+    "confirmedDomain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Domain",
+        "Probe",
+        "Status",
+        "Authority",
+        "Candidates",
+        "CandidateCount",
+        "VerificationStatus"
+      ],
+      "properties": {
+        "Domain": { "enum": ["Network", "Parser", "Serializer", "Handler"] },
+        "Probe": {
+          "enum": [
+            "WinsockTransport",
+            "PacketDecode.FrameBoundary",
+            "OutboundEnqueue.FrameBuilder",
+            "Battle.HandlerRecordLength"
+          ]
+        },
+        "Status": { "enum": ["Active", "CurrentTargetIdentityBlocked"] },
+        "Authority": { "enum": ["VERIFIED", "UNKNOWN"] },
+        "Candidates": { "type": "array", "minItems": 1, "maxItems": 4 },
+        "CandidateCount": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "VerificationStatus": {
+          "enum": ["PASS", "EvidenceBlockedExactIdentityMismatch"]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["Status"],
+            "properties": { "Status": { "const": "Active" } }
+          },
+          "then": {
+            "properties": {
+              "Authority": { "const": "VERIFIED" },
+              "VerificationStatus": { "const": "PASS" }
+            }
+          },
+          "else": {
+            "properties": {
+              "Authority": { "const": "UNKNOWN" },
+              "VerificationStatus": { "const": "EvidenceBlockedExactIdentityMismatch" }
+            }
+          }
+        }
+      ]
+    },
+    "candidateOnlyDomain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Domain",
+        "Probe",
+        "Status",
+        "Authority",
+        "DiscoveryPlan",
+        "Candidates",
+        "CandidateCount",
+        "VerificationContract",
+        "VerificationStatus",
+        "InstallationPolicy",
+        "SafeNextAction"
+      ],
+      "properties": {
+        "Domain": { "enum": ["Object","Allocation","VTable","Factory","ManagerLookup","Registry","ResourceDecode","Mutation","TaintSeed","FormulaOperand","Quest","Map","Portal","NPC","Monster","Battle","Inventory","Item","Skill","Pet/Mount","Snapshot"] },
+        "Probe": { "enum": ["ObjectResolver","AllocationProbe","VTableProbe","FactoryProbe","ManagerLookupProbe","RegistryProbe","ResourceDecodeProbe","MutationProbe","TaintSeedProbe","FormulaOperandProbe","QuestProbe","MapProbe","PortalProbe","NPCProbe","MonsterProbe","BattleProbe","InventoryProbe","ItemProbe","SkillProbe","PetMountProbe","SnapshotProbe"] },
+        "Status": { "const": "EvidenceBlockedUnconfirmedProbe" },
+        "Authority": { "const": "UNKNOWN" },
+        "DiscoveryPlan": { "$ref": "#/$defs/discoveryPlan" },
+        "Candidates": {
+          "type": "array",
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/candidate" }
+        },
+        "CandidateCount": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "VerificationContract": { "$ref": "#/$defs/verificationContract" },
+        "VerificationStatus": {
+          "enum": [
+            "EvidenceBlockedNoExecutableCallCandidate",
+            "EvidenceBlockedCandidateRequiresTypedRuntimeVerification"
+          ]
+        },
+        "InstallationPolicy": { "const": "NeverInstallUntilAllVerificationGatesPass" },
+        "SafeNextAction": {
+          "const": "CollectExactBuildRepeatedTypedRuntimeEvidenceAndVerifyCallingConvention"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": ["CandidateCount"],
+            "properties": { "CandidateCount": { "const": 0 } }
+          },
+          "then": {
+            "properties": {
+              "Candidates": { "maxItems": 0 },
+              "VerificationContract": {
+                "properties": {
+                  "ExecutableSection": { "const": false },
+                  "ExactCandidateBytes": { "const": false }
+                }
+              },
+              "VerificationStatus": {
+                "const": "EvidenceBlockedNoExecutableCallCandidate"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "Candidates": { "minItems": 1 },
+              "VerificationContract": {
+                "properties": {
+                  "ExecutableSection": { "const": true },
+                  "ExactCandidateBytes": { "const": true }
+                }
+              },
+              "VerificationStatus": {
+                "const": "EvidenceBlockedCandidateRequiresTypedRuntimeVerification"
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "CandidateCount": { "const": 1 } } },
+          "then": { "properties": { "Candidates": { "minItems": 1, "maxItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "CandidateCount": { "const": 2 } } },
+          "then": { "properties": { "Candidates": { "minItems": 2, "maxItems": 2 } } }
+        },
+        {
+          "if": { "properties": { "CandidateCount": { "const": 3 } } },
+          "then": { "properties": { "Candidates": { "minItems": 3, "maxItems": 3 } } }
+        },
+        {
+          "if": { "properties": { "CandidateCount": { "const": 4 } } },
+          "then": { "properties": { "Candidates": { "minItems": 4, "maxItems": 4 } } }
+        }
+      ]
+    },
+    "discoveryPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SeedDomain",
+        "Strategy",
+        "TypedEvidenceRequired",
+        "CausalEvidenceRequired"
+      ],
+      "properties": {
+        "SeedDomain": { "enum": ["Parser", "Serializer", "Handler"] },
+        "Strategy": { "const": "BoundedDirectCallTargetsFromVerifiedSeed" },
+        "TypedEvidenceRequired": { "type": "string", "minLength": 1 },
+        "CausalEvidenceRequired": { "type": "string", "minLength": 1 }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "CallsiteRva",
+        "TargetRva",
+        "DiscoveryProvenance",
+        "Signature",
+        "SignatureMask",
+        "ModuleSection",
+        "CallingConventionState",
+        "ArgumentContractState",
+        "ReturnValueLifetimeState",
+        "ThreadContextState",
+        "ReentrancyRiskState",
+        "Risk",
+        "VerificationState",
+        "RejectionReason"
+      ],
+      "properties": {
+        "CallsiteRva": { "type": "string", "pattern": "^0x[0-9A-Fa-f]{8}$" },
+        "TargetRva": { "type": "string", "pattern": "^0x[0-9A-Fa-f]{8}$" },
+        "DiscoveryProvenance": {
+          "type": "string",
+          "pattern": "^VerifiedSeed:(?:Parser|Serializer|Handler);BoundedExecutableDirectCall$"
+        },
+        "Signature": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{2}(?: [0-9A-F]{2}){7}$"
+        },
+        "SignatureMask": { "const": "FF FF FF FF FF FF FF FF" },
+        "ModuleSection": {
+          "type": "string",
+          "pattern": "^(?:[A-Za-z0-9._$]{1,8}|ExecutableSection)$"
+        },
+        "CallingConventionState": { "const": "UNKNOWN" },
+        "ArgumentContractState": { "const": "UNKNOWN" },
+        "ReturnValueLifetimeState": { "const": "UNKNOWN" },
+        "ThreadContextState": { "const": "UNKNOWN" },
+        "ReentrancyRiskState": { "const": "UNKNOWN" },
+        "Risk": { "const": "High" },
+        "VerificationState": { "const": "CandidateOnly" },
+        "RejectionReason": {
+          "const": "InsufficientTypedDomainCorrelationAndCausalEvidence"
+        }
+      }
+    },
+    "verificationContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ExactTargetIdentity",
+        "ExecutableSection",
+        "ExactCandidateBytes",
+        "CallingConventionVerified",
+        "TypedRuntimeEvidence",
+        "RepeatedCausalObservation",
+        "ContradictionsResolved",
+        "StableObjectOrContext",
+        "VerifiedConsumerOrMutation",
+        "SensitiveMaskContract",
+        "ArgumentContractVerified",
+        "ReturnValueLifetimeVerified",
+        "ThreadContextVerified",
+        "ReentrancyRiskVerified",
+        "PromotionGateCount",
+        "AbiSafetyGateCount",
+        "TotalGateCount"
+      ],
+      "properties": {
+        "ExactTargetIdentity": { "type": "boolean" },
+        "ExecutableSection": { "type": "boolean" },
+        "ExactCandidateBytes": { "type": "boolean" },
+        "CallingConventionVerified": { "const": false },
+        "TypedRuntimeEvidence": { "const": false },
+        "RepeatedCausalObservation": { "const": false },
+        "ContradictionsResolved": { "const": false },
+        "StableObjectOrContext": { "const": false },
+        "VerifiedConsumerOrMutation": { "const": false },
+        "SensitiveMaskContract": { "const": false },
+        "ArgumentContractVerified": { "const": false },
+        "ReturnValueLifetimeVerified": { "const": false },
+        "ThreadContextVerified": { "const": false },
+        "ReentrancyRiskVerified": { "const": false },
+        "PromotionGateCount": { "const": 10 },
+        "AbiSafetyGateCount": { "const": 4 },
+        "TotalGateCount": { "const": 14 }
+      }
+    }
+  }
+}

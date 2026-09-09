@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/importer-formal-identity-fail-closed.schema.json",
+  "title": "God2 formal importer trusted-identity fail-closed result",
+  "type": "object",
+  "required": [
+    "status",
+    "code",
+    "message",
+    "productionDatabaseConnectionAttempted",
+    "productionDatabaseMutationAttempted"
+  ],
+  "properties": {
+    "status": {"const": "RECOVERY_BUNDLE_IMPORTER_BLOCKED"},
+    "code": {"const": "build_identity.validation_status_not_trusted"},
+    "message": {
+      "type": "string",
+      "pattern": "expected ExactClientIdentityComputedAndValidated; found EvidenceBlockedClientIdentityNotComputed\\.$"
+    },
+    "productionDatabaseConnectionAttempted": {"const": false},
+    "productionDatabaseMutationAttempted": {"const": false}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,170 @@
+{
+    "schemaVersion":  1,
+    "generatedAt":  "2026-07-26T16:45:00+08:00",
+    "commonFrameStructure":  {
+                                 "lengthPrefix":  {
+                                                      "offset":  0,
+                                                      "length":  2,
+                                                      "encoding":  "uint16le",
+                                                      "status":  "VerifiedAcrossSamples",
+                                                      "examples":  [
+                                                                       "0500",
+                                                                       "0800",
+                                                                       "0A00",
+                                                                       "0C00",
+                                                                       "1300",
+                                                                       "4700",
+                                                                       "D000",
+                                                                       "A101"
+                                                                   ]
+                                                  },
+                                 "opcode":  {
+                                                "offset":  2,
+                                                "length":  "Unknown",
+                                                "encoding":  "EncryptedOrObfuscatedCandidate",
+                                                "status":  "Unknown",
+                                                "rule":  "Do not treat bytes 2..3 as confirmed opcode until repeated differential analysis ties them to action semantics."
+                                            }
+                             },
+    "families":  [
+                     {
+                         "family":  "Heartbeat",
+                         "knownFields":  [
+                                             {
+                                                 "name":  "frameLength",
+                                                 "offset":  0,
+                                                 "length":  2
+                                             }
+                                         ],
+                         "unknownFields":  [
+                                               {
+                                                   "name":  "payload",
+                                                   "offset":  2,
+                                                   "length":  3
+                                               }
+                                           ],
+                         "fixedBytes":  [
+                                            "05007ACCEC",
+                                            "05003D09A5"
+                                        ],
+                         "changingBytes":  [
+
+                                           ]
+                     },
+                     {
+                         "family":  "Movement",
+                         "knownFields":  [
+                                             {
+                                                 "name":  "frameLength",
+                                                 "offset":  0,
+                                                 "length":  2
+                                             },
+                                             {
+                                                 "name":  "familyPrefixCandidate",
+                                                 "offset":  2,
+                                                 "length":  3,
+                                                 "fixedValue":  "80BAD7"
+                                             }
+                                         ],
+                         "unknownFields":  [
+                                               {
+                                                   "name":  "coordinateOrSequenceOrDirection",
+                                                   "offset":  5,
+                                                   "length":  5
+                                               }
+                                           ],
+                         "fixedBytes":  [
+                                            {
+                                                "offset":  0,
+                                                "value":  "0A0080BAD7"
+                                            }
+                                        ],
+                         "changingBytes":  [
+                                               {
+                                                   "offset":  5,
+                                                   "samples":  [
+                                                                   "C34DA69488",
+                                                                   "C44EA79586"
+                                                               ]
+                                               }
+                                           ],
+                         "mountState":  "Unknown; do not merge mounted movement with walking movement yet."
+                     },
+                     {
+                         "family":  "NPC",
+                         "knownFields":  [
+                                             {
+                                                 "name":  "frameLength",
+                                                 "offset":  0,
+                                                 "length":  2
+                                             }
+                                         ],
+                         "unknownFields":  [
+                                               {
+                                                   "name":  "npcIdOrObjectId",
+                                                   "offset":  2,
+                                                   "length":  6
+                                               }
+                                           ],
+                         "fixedBytes":  [
+                                            "0800775884CB3F09"
+                                        ],
+                         "changingBytes":  [
+
+                                           ],
+                         "responsePacketRelationship":  "Unknown"
+                     },
+                     {
+                         "family":  "Merchant",
+                         "knownFields":  [
+                                             {
+                                                 "name":  "frameLength",
+                                                 "offset":  0,
+                                                 "length":  2
+                                             }
+                                         ],
+                         "unknownFields":  [
+                                               {
+                                                   "name":  "merchantOrShopPayload",
+                                                   "offset":  2,
+                                                   "length":  6
+                                               }
+                                           ],
+                         "fixedBytes":  [
+
+                                        ],
+                         "changingBytes":  [
+
+                                           ],
+                         "responsePacketRelationship":  "Unknown; official visual evidence confirms behavior only."
+                     },
+                     {
+                         "family":  "Logout",
+                         "knownFields":  [
+                                             {
+                                                 "name":  "frameLength",
+                                                 "offset":  0,
+                                                 "length":  2
+                                             }
+                                         ],
+                         "unknownFields":  [
+                                               {
+                                                   "name":  "logoutPayload",
+                                                   "offset":  2,
+                                                   "length":  3
+                                               }
+                                           ],
+                         "fixedBytes":  [
+                                            "0500AC9D30"
+                                        ],
+                         "changingBytes":  [
+
+                                           ],
+                         "responsePacketRelationship":  "Return to server-selection/login flow observed locally and officially, raw response not decoded today."
+                     }
+                 ],
+    "officialCaptureLimitations":  [
+                                       "No scanned official pcapng contained the known startup, map-ready, heartbeat, movement, NPC, merchant, or logout byte patterns.",
+                                       "UU captures are transport/accelerator evidence and cannot be used as raw game opcode proof without a decrypted/local-loopback raw capture path."
+                                   ]
+}

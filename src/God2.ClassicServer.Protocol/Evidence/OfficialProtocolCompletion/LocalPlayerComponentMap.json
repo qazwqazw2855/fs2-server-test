@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "local-player-component-map-v1",
+  "phase": "Phase 3.5 - Local Player Component Localization",
+  "generatedAtUtc": "2026-07-30T00:35:16.294096Z",
+  "status": "BLOCKED_LOCAL_PLAYER_ENTITY_NOT_VERIFIED",
+  "movementComponent": "NOT_FOUND",
+  "appearanceComponent": "NOT_FOUND",
+  "equipmentComponent": "NOT_FOUND",
+  "animationComponent": "NOT_FOUND",
+  "modelRenderComponent": "NOT_FOUND",
+  "stateStatusComponent": "NOT_FOUND",
+  "reason": "Local player entity base/pointer chain was not localized; bounded component inspection cannot start."
+}

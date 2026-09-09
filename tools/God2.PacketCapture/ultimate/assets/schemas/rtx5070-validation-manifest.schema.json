@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/rtx5070-validation-manifest.schema.json",
+  "title":"God2 RTX 5070 validation cryptographic linkage",
+  "type":"object",
+  "required":["SchemaVersion","ExecutableSHA256","WorkloadMatrixSHA256","ValidationRunId","ProcessCreationTimeUtc"],
+  "properties":{
+    "SchemaVersion":{"const":"god2-rtx5070-validation-manifest-v1"},
+    "ExecutableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "WorkloadMatrixSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "ValidationRunId":{"type":"string","pattern":"^[A-Za-z0-9._-]{8,160}$"},
+    "ProcessCreationTimeUtc":{"type":"string","format":"date-time"}
+  },
+  "additionalProperties":false
+}

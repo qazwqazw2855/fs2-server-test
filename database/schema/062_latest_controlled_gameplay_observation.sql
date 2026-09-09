@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS `latest_controlled_gameplay_observation` (
+    `SessionLabelZhTw` varchar(128) NOT NULL COMMENT '最新受控實測批次名稱',
+    `StartedAtUtc` datetime(6) NOT NULL COMMENT '擷取開始時間',
+    `EndedAtUtc` datetime(6) NOT NULL COMMENT '擷取結束時間',
+    `SkillCommandCount` int NOT NULL COMMENT '已解碼的技能命令次數',
+    `DistinctTargetPatternCount` int NOT NULL COMMENT '不同目標位置樣式數量',
+    `SkillActionCode` int NOT NULL COMMENT '受控實測確認的技能動作碼',
+    `ActionParameterCandidate` bigint NULL COMMENT '命令內一致但語意尚未唯一證明的參數值',
+    `BattlePositionCandidate` int NULL COMMENT '命令內一致但角色位置語意仍待交叉驗證的值',
+    `NoBattlePetConfirmed` tinyint(1) NOT NULL COMMENT '使用者是否確認戰寵未出戰',
+    `ImmortalLevelUpConfirmed` tinyint(1) NOT NULL COMMENT '使用者是否確認同一窗口發生神仙升級',
+    `MonsterCombatConfirmed` tinyint(1) NOT NULL COMMENT '是否確認同一窗口存在怪物戰鬥目標',
+    `MonsterIdentityStatusZhTw` varchar(256) NOT NULL COMMENT '本次怪物與官方怪物模板的對應狀態',
+    `SkillIdentityStatusZhTw` varchar(256) NOT NULL COMMENT '技能名稱或編號的驗證狀態',
+    `ProgressionBindingStatusZhTw` varchar(256) NOT NULL COMMENT '神仙升級與封包欄位的驗證狀態',
+    `RuntimeReady` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否已足以啟用正式執行邏輯',
+    PRIMARY KEY (`SessionLabelZhTw`),
+    CONSTRAINT `CK_LatestControlledGameplay_NoBattlePet` CHECK (`NoBattlePetConfirmed` IN (0,1)),
+    CONSTRAINT `CK_LatestControlledGameplay_ImmortalLevelUp` CHECK (`ImmortalLevelUpConfirmed` IN (0,1)),
+    CONSTRAINT `CK_LatestControlledGameplay_MonsterCombat` CHECK (`MonsterCombatConfirmed` IN (0,1)),
+    CONSTRAINT `CK_LatestControlledGameplay_RuntimeReady` CHECK (`RuntimeReady` IN (0,1))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

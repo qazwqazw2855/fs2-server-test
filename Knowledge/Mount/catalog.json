@@ -1,0 +1,362 @@
+{
+  "Domain": "Mount",
+  "SourceCategory": "primary:immortals;related:items",
+  "SourceArtifact": "immortals/immortals.official.json;items/items.official.json",
+  "DeclaredRecordCount": 34,
+  "RelatedSourceRecordCount": 17418,
+  "IndexedRecordCount": 34,
+  "VerificationStatus": "VerifiedExactClientStaticIdentity; RuntimeSemanticsEvidenceBlocked | VerifiedExactCurrentClientStaticCatalog; GameplaySemanticsUnverified",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "clientCatalogId",
+    "clientDisplayId",
+    "clientItemId",
+    "clientPresentationValue",
+    "confidence",
+    "crossReferences",
+    "description",
+    "formalCanonicalBindingStatus",
+    "id",
+    "idSemantics",
+    "itemType",
+    "name",
+    "presentInFormalBaseline",
+    "priceCandidates",
+    "rawFields",
+    "resourceKey",
+    "resourceReferences",
+    "runtimeEligible",
+    "sourcePath",
+    "sourceRecordIndex",
+    "sourceSha256",
+    "subtype"
+  ],
+  "MissingFields": [
+    "attributes",
+    "baseHp",
+    "baseMp",
+    "crossReferenceEvidence",
+    "durability",
+    "equipmentSlot",
+    "gameplaySemanticValidation",
+    "growthFormula",
+    "itemInstanceId",
+    "loginWireResourceId",
+    "ownershipRules",
+    "packetRuntimeValidation",
+    "requirements",
+    "serverAuthoritativeId",
+    "skills",
+    "spawnOrGrantRules",
+    "stackLimit",
+    "weight"
+  ],
+  "Entities": [
+    {
+      "Id": "client:immortal:god/2801",
+      "Name": "\u59DC\u5B50\u7259",
+      "References": {
+        "clientCatalogId": "2801",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "8BE6BB5923485396AC2C76A3ACDB9BDAFA415D30CD53D362FF9C42905C812570"
+    },
+    {
+      "Id": "client:immortal:god/2802",
+      "Name": "\u9127\u5B0B\u7389",
+      "References": {
+        "clientCatalogId": "2802",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "EF1C1506464D4D7F51C43FB37268DD89BB6720868C39DA8EF17859B90DCF09A6"
+    },
+    {
+      "Id": "client:immortal:god/2803",
+      "Name": "\u694A\u6229",
+      "References": {
+        "clientCatalogId": "2803",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "8607FB77D5743FAB73080C7D0AABA2CD872ADC1338430F33A0CE14F3C748CD16"
+    },
+    {
+      "Id": "client:immortal:god/2804",
+      "Name": "\u738B\u8CB4\u4EBA",
+      "References": {
+        "clientCatalogId": "2804",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "35EE5C5B1E9540B222CB40826C44B68E7FBFAFA71E2731EC415F9273173425CD"
+    },
+    {
+      "Id": "client:immortal:god/2805",
+      "Name": "\u805E\u4EF2",
+      "References": {
+        "clientCatalogId": "2805",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "7E9FEA7BC1D8F0DB87C96528629D77F4A6DD69C7D0FAF82CBF1A9138D5AFE22E"
+    },
+    {
+      "Id": "client:immortal:god/2806",
+      "Name": "\u9F8D\u5409\u516C\u4E3B",
+      "References": {
+        "clientCatalogId": "2806",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "2A1A1B2E929B84EC6ECDCC24832C2E5E6B9E702DF2C6F3E229608A5E595A9FE1"
+    },
+    {
+      "Id": "client:immortal:god/2807",
+      "Name": "\u674E\u54EA\u5412",
+      "References": {
+        "clientCatalogId": "2807",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "0B91D506B16478CA2A314A0DF5F89BFE8132D1C55F4A9215B959764EA3CB3097"
+    },
+    {
+      "Id": "client:immortal:god/2808",
+      "Name": "\u59B2\u5DF1",
+      "References": {
+        "clientCatalogId": "2808",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "FDE7DFBD31AC3905464C2C374B00347E2D65D40D93B7C44E8370306B2880A7DF"
+    },
+    {
+      "Id": "client:immortal:god/2809",
+      "Name": "\u7533\u516C\u8C79",
+      "References": {
+        "clientCatalogId": "2809",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "671826BAE88900A648FA53EA87FC25DD62F2ABC70BD979F6740361F81639A242"
+    },
+    {
+      "Id": "client:immortal:god/2810",
+      "Name": "\u80E1\u559C\u5A9A",
+      "References": {
+        "clientCatalogId": "2810",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "31D21233A705349CEC7AECD3EB6B36327767A198E9A74BF9D52B2555738F8C17"
+    },
+    {
+      "Id": "client:immortal:god/2811",
+      "Name": "\u96F2\u9704\u4E09\u59CA\u59B9",
+      "References": {
+        "clientCatalogId": "2811",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "858F7DF430E52CB026A8F19DBF8829F363521F73094396EE33CF1B6E250E044C"
+    },
+    {
+      "Id": "client:immortal:god/2812",
+      "Name": "\u8D99\u516C\u660E",
+      "References": {
+        "clientCatalogId": "2812",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "0833334710329B3B60EFB8CD961A7E378F0A287FD61B7139D6D8EE3437253E15"
+    },
+    {
+      "Id": "client:immortal:god/2813",
+      "Name": "\u9EC3\u98DB\u864E",
+      "References": {
+        "clientCatalogId": "2813",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "A3373808AF21A8C22E77B59973D0C3C02C2ADD156E2A64C0E4199DCAC6625398"
+    },
+    {
+      "Id": "client:immortal:god/2814",
+      "Name": "\u96F7\u9707\u5B50",
+      "References": {
+        "clientCatalogId": "2814",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "9E04C8EE2170A13A53C8850BB7FA35410B780C467306FB15342FE0D9C9E5D3B1"
+    },
+    {
+      "Id": "client:immortal:god/2815",
+      "Name": "\u592A\u4E59\u771F\u4EBA",
+      "References": {
+        "clientCatalogId": "2815",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "1C93F24518E0B0484BA99E6C6BF609A161D23DF5D96BE5697ED4D5505B6D0785"
+    },
+    {
+      "Id": "client:immortal:god/2816",
+      "Name": "\u9EC3\u5929\u5316",
+      "References": {
+        "clientCatalogId": "2816",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "8D18A05AAD4220F4A6E72E163A031BA24A5D9A53E4EF5C1F12E52610F8FF035D"
+    },
+    {
+      "Id": "client:immortal:god/2817",
+      "Name": "\u6B66\u5409",
+      "References": {
+        "clientCatalogId": "2817",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "2559FBC783006874E183F45056D707332EB2AC1004E949591E8A5623D40EC644"
+    },
+    {
+      "Id": "client:immortal:god/2818",
+      "Name": "\u5F35\u594E",
+      "References": {
+        "clientCatalogId": "2818",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "2D4E7B83416D89A21B4DB0B8F1C2DBB90E2B9F91C9ECDD8A7C454052B2E306BD"
+    },
+    {
+      "Id": "client:immortal:god/2819",
+      "Name": "\u9AD8\u862D\u82F1",
+      "References": {
+        "clientCatalogId": "2819",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "82170732C6D5FD7449C200FEC8211FC7117AD1E5D848FD474CBE456294D740C6"
+    },
+    {
+      "Id": "client:immortal:god/2820",
+      "Name": "\u6148\u822A\u9053\u4EBA",
+      "References": {
+        "clientCatalogId": "2820",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "A3E4F65B2260E3F2BDEBB5F582BE7E88A20BBC65AC9A307D9270CD763DC3D96A"
+    },
+    {
+      "Id": "client:immortal:god/2821",
+      "Name": "\u7389\u9F0E\u771F\u4EBA",
+      "References": {
+        "clientCatalogId": "2821",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "0AFBBB3E2A84D9F9909D98AE291CF0887EB7D5F7548F8E330FECAC04BE0D3409"
+    },
+    {
+      "Id": "client:immortal:god/2822",
+      "Name": "\u77F3\u78EF\u5A18\u5A18",
+      "References": {
+        "clientCatalogId": "2822",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "E2D4D27432886EE4E420127D76537B94F1DECFF0DA050E17E878926C44858CFB"
+    },
+    {
+      "Id": "client:immortal:god/2823",
+      "Name": "\u694A\u4EFB",
+      "References": {
+        "clientCatalogId": "2823",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "FB5DE5EB3D7CD4A24219FECE19EF9E6F4FF134DBA75C4BA6BAA61D296AE160E0"
+    },
+    {
+      "Id": "client:immortal:god/2824",
+      "Name": "\u5D07\u9ED1\u864E",
+      "References": {
+        "clientCatalogId": "2824",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "847671923F23AFCC6B52F996CA1B72EE7A33534B3D37C78DF693248241E83935"
+    },
+    {
+      "Id": "client:immortal:god/2825",
+      "Name": "\u674E\u9756",
+      "References": {
+        "clientCatalogId": "2825",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "67349CF91FCC4034B721F72432B9DB20F076A94CAB0EAD58EB51252CA432ABA7"
+    },
+    {
+      "Id": "client:immortal:god/2826",
+      "Name": "\u91D1\u5149\u8056\u6BCD",
+      "References": {
+        "clientCatalogId": "2826",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "AA9A6C4595686F23C1FD9E6324BA8BF77BBA5722359CDA8E7ECDC4CD94B24DED"
+    },
+    {
+      "Id": "client:immortal:god/2827",
+      "Name": "\u8D64\u7CBE\u5B50",
+      "References": {
+        "clientCatalogId": "2827",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "EDAC52A91D65DDD9EACCCECCD29C18E86B5E9A5562D3A5F4176D18929BAABC2C"
+    },
+    {
+      "Id": "client:immortal:god/2828",
+      "Name": "\u571F\u884C\u5B6B",
+      "References": {
+        "clientCatalogId": "2828",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "7F10AF88A253421D6B80B3827521C8B2524B18BFBF4E33712D8E07B3695204F2"
+    },
+    {
+      "Id": "client:immortal:god/2829",
+      "Name": "\u96F2\u4E2D\u5B50",
+      "References": {
+        "clientCatalogId": "2829",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "EC3A55C6ACB99AA64093EF2161EBD18D539EB41F568B981FAA4304661D46A4FF"
+    },
+    {
+      "Id": "client:immortal:god/2830",
+      "Name": "\u666E\u8CE2\u771F\u4EBA",
+      "References": {
+        "clientCatalogId": "2830",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "0F92C0607E71D631ED460E6C52C4B0CB144A13D353564B866B13998989702247"
+    },
+    {
+      "Id": "client:immortal:god/2831",
+      "Name": "\u9EC3\u5E1D",
+      "References": {
+        "clientCatalogId": "2831",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "074A3BD8937A21F4EB14F3CB149AECF53340044D792EB32A02A09B61643537D6"
+    },
+    {
+      "Id": "client:immortal:god/2832",
+      "Name": "\u795E\u8FB2",
+      "References": {
+        "clientCatalogId": "2832",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "BD215E5901AA77F6FF5D48E52C16D32372E62AD694F13CA0984F17D583D69321"
+    },
+    {
+      "Id": "client:immortal:god/2833",
+      "Name": "\u4F0F\u7FB2",
+      "References": {
+        "clientCatalogId": "2833",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "77836150D608C0DADDC4A32CECE0458DA65F672BD06AEF855E87F7628B1AAEAF"
+    },
+    {
+      "Id": "client:immortal:god/2834",
+      "Name": "\u5973\u5AA7",
+      "References": {
+        "clientCatalogId": "2834",
+        "clientDisplayId": "1"
+      },
+      "RecordHash": "0CE7B2E169790DFCC89E292CCBA8486466C9FC6C4C2B30B2E9D4234B3EBBC9F0"
+    }
+  ]
+}

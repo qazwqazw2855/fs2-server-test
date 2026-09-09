@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase36-priority-reset-v1",
+  "phase": "Phase 3.6 - World Protocol Recovery Priority Reset",
+  "generatedAtUtc": "2026-07-30T01:20:00Z",
+  "scope": "World bootstrap, PlayerSpawn, character/server selection builders, heartbeat, world packet catalog, and NPC spawn entrypoint.",
+  "deferredUntilOfficialWalkingEvidence": [
+    "Walking Recovery",
+    "Mount State Recovery",
+    "Coordinate Scale Recovery",
+    "Mounted flag semantics",
+    "NMP0154 network linkage",
+    "Walking parser",
+    "MovementSpeedModel"
+  ],
+  "freeze": {
+    "firstContactGolden": "PASS",
+    "goldenArtifact": "Artifacts/OfficialClientFirstContact/Golden/20260730-041612",
+    "doNotModify": [
+      "Launcher",
+      "Login Handshake",
+      "Login Version Follow-up 0600ED7CEE11",
+      "208-byte LoginRequest",
+      "Server Group",
+      "Server Selection",
+      "Character Select",
+      "World Handshake",
+      "World First S2C 0600A96DB7E8",
+      "World Bootstrap 1778 bytes",
+      "InWorld heartbeat"
+    ]
+  },
+  "bootstrap": {
+    "status": "COMPLETE_12_OF_12_FRAMES_CATALOGED",
+    "catalog": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/WorldBootstrapSequence.json",
+    "builder": "OfficialClientWorldProtocolFrames.BuildWorldBootstrapAfterHandshake",
+    "sequenceLength": 1778,
+    "frameCount": 12,
+    "parserEvidence": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/WorldSemanticDispatchMap.json"
+  },
+  "playerSpawn": {
+    "status": "STRUCTURAL_BUILDER_COMPLETE_FIELD_SEMANTICS_PARTIAL",
+    "packetName": "PlayerSpawnS2C128",
+    "direction": "ServerToClient",
+    "length": 128,
+    "decodedOpcode": "0x1F",
+    "builder": "OfficialClientWorldProtocolFrames.BuildPlayerSpawnFrame128",
+    "parser": "god2_opt.exe+0x0007C8B0 via decoder god2_opt.exe+0x00078D70",
+    "successCondition": "decodeResult=125 and kero visible in world",
+    "fieldMap": [
+      { "offset": "0x00..0x01", "name": "length", "type": "uint16le", "value": 128, "status": "VERIFIED" },
+      { "offset": "0x02", "name": "opcode", "type": "byte", "value": "0x1F", "status": "VERIFIED" },
+      { "offset": "0x03..0x06", "name": "reservedOrParserState", "type": "bytes", "status": "RESERVED_SEMANTIC_DEFERRED" },
+      { "offset": "0x07..0x0A", "name": "characterName", "type": "ascii-null-terminated", "value": "kero", "status": "VERIFIED" },
+      { "offset": "0x13..0x16", "name": "characterId", "type": "uint32le", "value": "0x035F7FF4", "status": "VERIFIED_FOR_GOLDEN_CHARACTER" },
+      { "offset": "0x23", "name": "appearanceStateFieldCandidateA", "type": "byte", "value": "0x02", "status": "CANDIDATE_SEMANTIC_DEFERRED" },
+      { "offset": "0x24", "name": "appearanceStateFieldCandidateB", "type": "byte", "value": "0x02", "status": "CANDIDATE_SEMANTIC_DEFERRED" },
+      { "offset": "0x2C", "name": "directionOrPose", "type": "byte", "value": "0x38", "status": "CORRELATED_WITH_CURRENT_VISUAL_BASELINE" },
+      { "offset": "remaining", "name": "appearanceEquipmentMapHpMpStateReserved", "type": "bytes", "status": "STRUCTURAL_PLACEHOLDER; semantic decode deferred until parser or differential evidence" }
+    ],
+    "notReplayPolicy": "Builder slices the verified 128-byte frame from the frozen 1778-byte world bootstrap; permanent field-level generation is blocked until semantic fields are proven."
+  },
+  "characterAndServerBuilders": {
+    "loginSuccessServerGroupBootstrap": {
+      "status": "BUILDER_ADDED",
+      "builder": "OfficialClientLoginProtocolFrames.BuildLoginSuccessServerGroupBootstrap",
+      "length": 417,
+      "notes": "Echo fields come from 208-byte LoginRequest; server-list endpoints are patched to 127.0.0.1:2592 and checksum is recomputed."
+    },
+    "serverSelectionCharacterListBootstrap": {
+      "status": "BUILDER_ADDED",
+      "builder": "OfficialClientLoginProtocolFrames.BuildServerSelectionCharacterListBootstrap",
+      "length": 78,
+      "dependency": "C2S decoded opcode 0xA6 selected server request"
+    },
+    "serverGroupList": {
+      "status": "BUILDER_COVERED_BY_LOGIN_SUCCESS_BOOTSTRAP",
+      "builder": "OfficialClientLoginProtocolFrames.BuildLoginSuccessServerGroupBootstrap"
+    }
+  },
+  "heartbeat": {
+    "status": "COMPLETE_KEEPALIVE_CLASSIFICATION",
+    "packetName": "WorldHeartbeatC2S5",
+    "direction": "ClientToServer",
+    "length": 5,
+    "samples": [
+      "05007ACCEC",
+      "05003D09A5",
+      "050011C79E"
+    ],
+    "classification": "KeepAliveOrIdleTick",
+    "sequenceStatus": "NOT_PROVEN",
+    "tickStatus": "NOT_PROVEN",
+    "ackStatus": "NO_REQUIRED_SERVER_RESPONSE_OBSERVED",
+    "builder": "WorldHeartbeatBuilder deferred for C2S receive classification; server accepts the family and does not generate it.",
+    "evidence": "Idle30s contains sustained 5-byte cadence; movement adds 10-byte movement while 5-byte cadence continues."
+  },
+  "worldPacketCatalog": {
+    "status": "FIRST_BATCH_CLASSIFIED_NO_LONGER_GENERIC_UNKNOWN",
+    "records": [
+      {
+        "packetName": "WorldEntryReadyAckC2S41",
+        "direction": "ClientToServer",
+        "encodedLength": 41,
+        "decodedLength": 39,
+        "classification": "entry-bootstrap-correlated client ready acknowledgement",
+        "serverHandler": "capture-only; no response required by current golden path",
+        "evidence": "world-packet-matrix count=1 before movement windows"
+      },
+      {
+        "packetName": "WorldBootstrapFollowUpRequestC2S71",
+        "direction": "ClientToServer",
+        "encodedLength": 71,
+        "decodedLength": 69,
+        "classification": "entry-bootstrap-correlated follow-up request",
+        "serverHandler": "capture-only; no response required by current golden path",
+        "evidence": "world-packet-matrix count=1 after entry ack"
+      },
+      {
+        "packetName": "WorldUiStateAckC2S12",
+        "direction": "ClientToServer",
+        "encodedLength": 12,
+        "decodedLength": 10,
+        "classification": "world UI/state acknowledgement",
+        "serverHandler": "capture-only; no response required by current golden path",
+        "evidence": "world-packet-matrix count=1 after bootstrap follow-up"
+      },
+      {
+        "packetName": "WorldLargeDecodedStateC2S206",
+        "direction": "ClientToServer",
+        "encodedLength": null,
+        "decodedLength": 206,
+        "classification": "decoded payload observed in server-side unknown world queue; raw frame boundary not yet mapped to one visible packet",
+        "serverHandler": "capture-only",
+        "evidence": "world-unknown-first-batch ServerDecodedUnknownPayloads"
+      },
+      {
+        "packetName": "WorldSingleByteDecodedStateC2S1",
+        "direction": "ClientToServer",
+        "encodedLength": null,
+        "decodedLength": 1,
+        "classification": "decoded control/status payload observed in server-side unknown world queue",
+        "serverHandler": "capture-only",
+        "evidence": "world-unknown-first-batch ServerDecodedUnknownPayloads"
+      }
+    ]
+  },
+  "npcSpawnNext": {
+    "status": "ENTRYPOINT_IDENTIFIED_NOT_STARTED",
+    "firstPacket": "world-npc-interaction-client-8-byte-candidate",
+    "direction": "ClientToServer",
+    "length": 8,
+    "sample": "0800775884CB3F09",
+    "nextRequiredWork": "NPC Spawn/Despawn/Update S2C packets only; no NPC AI."
+  },
+  "regression": {
+    "releaseBuild": "PASS full solution Release build; 0 warnings, 0 errors",
+    "runtimeOfficial": "PASS 10/10",
+    "protocolOfficialWorld": "PASS 3/3",
+    "integrationEvidenceGate": "PASS Phase35/Phase36 2/2",
+    "goldenClientRegression": "UNCHANGED_FROM_FREEZE; no launcher/client rerun in this documentation-only catalog pass"
+  },
+  "nextBlocker": "NPC Spawn S2C packet is not yet recovered; only NPC interaction C2S 8-byte candidate is present."
+}

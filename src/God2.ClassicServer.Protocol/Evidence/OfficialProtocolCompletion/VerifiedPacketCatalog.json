@@ -1,0 +1,230 @@
+{
+    "schemaVersion":  2,
+    "generatedAt":  "2026-07-26T16:45:00+08:00",
+    "scope":  "Protocol knowledge base; raw opcode verification only. Official UU gameplay captures from 2026-07-26 were used for visual coverage, but did not expose byte-identical raw game frames in pcapng binary scan.",
+    "rawVerificationRules":  [
+                                 "Verified packets require repeated raw frame evidence or exact source-backed frozen startup evidence.",
+                                 "Visual official-client success alone is not enough to mark an opcode verified.",
+                                 "Unknown encrypted/obfuscated fields remain Unknown."
+                             ],
+    "verifiedPackets":  [
+                            {
+                                "id":  "world-heartbeat-05007ACCEC",
+                                "family":  "Heartbeat",
+                                "direction":  "ClientToServer",
+                                "length":  5,
+                                "opcode":  null,
+                                "opcodeCandidate":  "7ACC",
+                                "frameStructure":  [
+                                                       {
+                                                           "offset":  0,
+                                                           "length":  2,
+                                                           "name":  "lengthPrefixLe",
+                                                           "value":  "0500",
+                                                           "status":  "Verified",
+                                                           "note":  "Little-endian frame length equals 5."
+                                                       },
+                                                       {
+                                                           "offset":  2,
+                                                           "length":  3,
+                                                           "name":  "payload",
+                                                           "value":  "7ACCEC",
+                                                           "status":  "Unknown",
+                                                           "note":  "Observed as recurring idle heartbeat; semantic fields unknown."
+                                                       }
+                                                   ],
+                                "fixedBytes":  "05007ACCEC",
+                                "changingBytes":  [
+
+                                                  ],
+                                "knownFields":  [
+                                                    {
+                                                        "name":  "frameLength",
+                                                        "offset":  0,
+                                                        "length":  2,
+                                                        "encoding":  "uint16le",
+                                                        "value":  5
+                                                    }
+                                                ],
+                                "unknownFields":  [
+                                                      {
+                                                          "offset":  2,
+                                                          "length":  3,
+                                                          "reason":  "Encrypted/obfuscated heartbeat payload not decoded."
+                                                      }
+                                                  ],
+                                "evidenceSource":  [
+                                                       "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+                                                   ],
+                                "confidence":  "High",
+                                "repeatedVerificationCount":  9,
+                                "implementationStatus":  "Already supported by OfficialWorldFastTrack heartbeat classifier."
+                            },
+                            {
+                                "id":  "world-heartbeat-05003D09A5",
+                                "family":  "Heartbeat",
+                                "direction":  "ClientToServer",
+                                "length":  5,
+                                "opcode":  null,
+                                "opcodeCandidate":  "3D09",
+                                "frameStructure":  [
+                                                       {
+                                                           "offset":  0,
+                                                           "length":  2,
+                                                           "name":  "lengthPrefixLe",
+                                                           "value":  "0500",
+                                                           "status":  "Verified",
+                                                           "note":  "Little-endian frame length equals 5."
+                                                       },
+                                                       {
+                                                           "offset":  2,
+                                                           "length":  3,
+                                                           "name":  "payload",
+                                                           "value":  "3D09A5",
+                                                           "status":  "Unknown",
+                                                           "note":  "Observed as recurring idle frame in local raw evidence; semantic fields unknown."
+                                                       }
+                                                   ],
+                                "fixedBytes":  "05003D09A5",
+                                "changingBytes":  [
+
+                                                  ],
+                                "knownFields":  [
+                                                    {
+                                                        "name":  "frameLength",
+                                                        "offset":  0,
+                                                        "length":  2,
+                                                        "encoding":  "uint16le",
+                                                        "value":  5
+                                                    }
+                                                ],
+                                "unknownFields":  [
+                                                      {
+                                                          "offset":  2,
+                                                          "length":  3,
+                                                          "reason":  "Alternate idle payload not decoded."
+                                                      }
+                                                  ],
+                                "evidenceSource":  [
+                                                       "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+                                                   ],
+                                "confidence":  "MediumHigh",
+                                "repeatedVerificationCount":  41,
+                                "implementationStatus":  "Should be accepted as heartbeat/idle frame, not treated as gameplay action."
+                            },
+                            {
+                                "id":  "world-movement-client-10-byte-family",
+                                "family":  "Movement",
+                                "direction":  "ClientToServer",
+                                "length":  10,
+                                "opcode":  null,
+                                "opcodeCandidate":  "80BA",
+                                "frameStructure":  [
+                                                       {
+                                                           "offset":  0,
+                                                           "length":  2,
+                                                           "name":  "lengthPrefixLe",
+                                                           "value":  "0A00",
+                                                           "status":  "Verified",
+                                                           "note":  "Little-endian frame length equals 10."
+                                                       },
+                                                       {
+                                                           "offset":  2,
+                                                           "length":  3,
+                                                           "name":  "familyPrefixCandidate",
+                                                           "value":  "80BAD7",
+                                                           "status":  "RepeatConfirmed",
+                                                           "note":  "Fixed across two isolated movement clicks."
+                                                       },
+                                                       {
+                                                           "offset":  5,
+                                                           "length":  5,
+                                                           "name":  "movementPayload",
+                                                           "value":  "Unknown",
+                                                           "status":  "Unknown",
+                                                           "note":  "Changes between repeated clicks; candidate coordinate, direction, tick, sequence, or state bytes."
+                                                       }
+                                                   ],
+                                "samples":  [
+                                                {
+                                                    "hex":  "0A0080BAD7C34DA69488",
+                                                    "evidence":  "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+                                                    "timestampUtc":  "2026-07-26T04:29:22.0757666+00:00"
+                                                },
+                                                {
+                                                    "hex":  "0A0080BAD7C44EA79586",
+                                                    "evidence":  "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+                                                    "timestampUtc":  "2026-07-26T04:31:20.682627+00:00"
+                                                }
+                                            ],
+                                "fixedBytes":  [
+                                                   {
+                                                       "offset":  0,
+                                                       "bytes":  "0A0080BAD7"
+                                                   }
+                                               ],
+                                "changingBytes":  [
+                                                      {
+                                                          "offset":  5,
+                                                          "length":  5,
+                                                          "values":  [
+                                                                         "C34DA69488",
+                                                                         "C44EA79586"
+                                                                     ]
+                                                      }
+                                                  ],
+                                "knownFields":  [
+                                                    {
+                                                        "name":  "frameLength",
+                                                        "offset":  0,
+                                                        "length":  2,
+                                                        "encoding":  "uint16le",
+                                                        "value":  10
+                                                    }
+                                                ],
+                                "unknownFields":  [
+                                                      {
+                                                          "offset":  2,
+                                                          "length":  2,
+                                                          "reason":  "Opcode candidate only; encryption/obfuscation not decoded."
+                                                      },
+                                                      {
+                                                          "offset":  5,
+                                                          "length":  5,
+                                                          "reason":  "Likely movement state but coordinates/direction/sequence are not proven."
+                                                      }
+                                                  ],
+                                "evidenceSource":  [
+                                                       "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+                                                       "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json"
+                                                   ],
+                                "confidence":  "MediumHigh",
+                                "repeatedVerificationCount":  2,
+                                "implementationStatus":  "Classified as movement family; field decoding incomplete."
+                            }
+                        ],
+    "officialCaptureRawScan":  {
+                                   "date":  "2026-07-26",
+                                   "result":  "NoKnownRawFramePatternMatched",
+                                   "scannedPatterns":  [
+                                                           "startup world frames",
+                                                           "map-ready frames",
+                                                           "heartbeat frames",
+                                                           "movement candidates",
+                                                           "NPC/merchant/logout candidates"
+                                                       ],
+                                   "scannedFiles":  [
+                                                        "Artifacts/OfficialServerCapture/20260726-131342/official-server-capture.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-132540/official-server-capture-disconnect.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-141503/official-server-capture-pet-disconnect.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-fist-page4-disconnect.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-145358/official-server-capture-logout.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-154330-UU-wide/official-server-uu-logout.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-154531-UU-merchant/official-server-uu-reenter-stale-session.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/official-server-uu-merchant-battle.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/official-server-uu-post-battle-merchant.pcapng",
+                                                        "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/official-server-uu-final-logout.pcapng"
+                                                    ],
+                                   "conclusion":  "Today official captures verify gameplay behavior and sequencing, but do not add raw verified opcodes."
+                               }
+}

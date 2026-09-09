@@ -1,0 +1,54 @@
+{
+    "schemaVersion": 1,
+    "generatedAtUtc": "2026-07-28T00:00:00Z",
+    "scope": "Phase 5-7 protocol runtime recovery boundary",
+    "implementedRuntimeBoundaries": [
+        "TCP ingress frame accumulation",
+        "Packet length validation",
+        "Packet size limit",
+        "Protocol stage validation",
+        "Single Login / World TCP listener",
+        "Session refresh before each frame",
+        "Single production runtime composition",
+        "Per-connection packet sequence validation",
+        "Disconnect cleanup observers",
+        "Unknown packet capture",
+        "Checksum boundary without guessed checksum algorithm",
+        "Encryption boundary without guessed encryption algorithm",
+        "Service-level login authentication",
+        "Service-level character list/create/delete/rename/select"
+    ],
+    "needsProtocolRecovery": [
+        {
+            "family": "Login",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet handler gated"
+        },
+        {
+            "family": "CharacterList",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet serializer gated"
+        },
+        {
+            "family": "CharacterCreate",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet handler gated"
+        },
+        {
+            "family": "CharacterDelete",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet handler gated"
+        },
+        {
+            "family": "CharacterRename",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet handler gated"
+        },
+        {
+            "family": "CharacterSelect",
+            "missing": "Raw request and response packet definitions",
+            "runtimeStatus": "Service implemented; packet handler gated"
+        }
+    ],
+    "policy": "No opcode, checksum, encryption, sequence, or response byte format is promoted without official raw evidence."
+}

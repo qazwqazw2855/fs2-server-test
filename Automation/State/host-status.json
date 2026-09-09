@@ -1,0 +1,33 @@
+{
+    "schemaVersion":  1,
+    "sessionId":  "22aeb16b8e9548fda324b5223852c609",
+    "hostPid":  17440,
+    "integrityLevel":  "High",
+    "integrityRid":  12288,
+    "userSessionId":  2,
+    "desktopName":  "Default",
+    "startedAtUtc":  "2026-08-17T09:41:26.5364739+00:00",
+    "heartbeatAtUtc":  "2026-08-17T09:41:26.7668562+00:00",
+    "launcherPid":  null,
+    "clientPid":  null,
+    "launcherHwnd":  null,
+    "clientHwnd":  null,
+    "launcherPath":  null,
+    "clientPath":  null,
+    "launcherIntegrityRid":  null,
+    "clientIntegrityRid":  null,
+    "launcherSessionId":  null,
+    "clientSessionId":  null,
+    "databaseSecretAvailable":  false,
+    "databaseSecretSource":  "NotRequestedByAutomationHost",
+    "databaseSecretFailureCode":  "NONE",
+    "currentStage":  "HostFailed",
+    "lastError":  {
+                      "message":  "AttachTraceOnly cannot find target HWND.",
+                      "script":  "C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Automation\\God2AutomationHost.ps1",
+                      "line":  4336,
+                      "command":  "                throw \"AttachTraceOnly cannot find target HWND.\"\n",
+                      "position":  "At C:\\Users\\SeiHo\\Desktop\\Simao\\God2\\God2 Classic Server\\Automation\\God2AutomationHost.ps1:4336 char:17\r\n+                 throw \"AttachTraceOnly cannot find target HWND.\"\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+                  },
+    "ready":  false
+}

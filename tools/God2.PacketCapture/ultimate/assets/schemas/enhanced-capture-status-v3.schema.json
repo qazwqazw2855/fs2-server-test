@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://god2.local/schemas/enhanced-capture-status-v3.schema.json",
+  "title": "God2 bridge-aware enhanced capture authority v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "SchemaVersion", "GeneratedAtUtc", "AuthorityProfile", "OfficialRuntimeObserved",
+    "ExtendedReady", "NetworkBridgeReady", "InternalBridgeReady", "StrictUnloadVerified",
+    "ModuleAbsent", "TargetAliveAfterUnload", "BridgeSchemaId", "BridgePhase", "BridgeState",
+    "BridgeNoDllPointers", "DllPointerCount", "WritableExecutablePageCount", "ObserverRundown",
+    "PendingApplicationCallbacks", "ExactPersistentOriginalPointerCount", "ExactEntryPointerCount",
+    "ExactCompletionThunkCount", "IatRestored", "HotpatchRestored", "RestoreFaultLifecyclePassed",
+    "RestoreFaultFreeLibraryCallCount", "RestoreFaultVerifiedAbsentSnapshotCount",
+    "ProductEvidenceSHA256", "NativeEvidenceSHA256", "RestoreFaultEvidenceSHA256"
+  ],
+  "properties": {
+    "SchemaVersion": { "const": "god2-enhanced-capture-status-v3" },
+    "GeneratedAtUtc": { "type": "string", "format": "date-time" },
+    "AuthorityProfile": { "enum": ["OfficialExactClient", "TestOnlyExactFixture"] },
+    "OfficialRuntimeObserved": { "type": "boolean" },
+    "ExtendedReady": { "type": "boolean" },
+    "NetworkBridgeReady": { "const": true },
+    "InternalBridgeReady": { "type": "boolean" },
+    "StrictUnloadVerified": { "const": true },
+    "ModuleAbsent": { "const": true },
+    "TargetAliveAfterUnload": { "const": true },
+    "BridgeSchemaId": { "const": "god2-unload-neutral-bridge-v1" },
+    "BridgePhase": { "const": "Detached" },
+    "BridgeState": { "const": "RetainedPassThrough" },
+    "BridgeNoDllPointers": { "const": true },
+    "DllPointerCount": { "const": 0 },
+    "WritableExecutablePageCount": { "const": 0 },
+    "ObserverRundown": { "const": 0 },
+    "PendingApplicationCallbacks": { "const": 0 },
+    "ExactPersistentOriginalPointerCount": { "const": 7 },
+    "ExactEntryPointerCount": { "const": 11 },
+    "ExactCompletionThunkCount": { "const": 256 },
+    "IatRestored": { "const": true },
+    "HotpatchRestored": { "const": true },
+    "RestoreFaultLifecyclePassed": { "const": true },
+    "RestoreFaultFreeLibraryCallCount": { "const": 1 },
+    "RestoreFaultVerifiedAbsentSnapshotCount": { "const": 2 },
+    "ProductEvidenceSHA256": { "type": "string", "pattern": "^[0-9A-F]{64}$" },
+    "NativeEvidenceSHA256": { "type": "string", "pattern": "^[0-9A-F]{64}$" },
+    "RestoreFaultEvidenceSHA256": { "type": "string", "pattern": "^[0-9A-F]{64}$" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "AuthorityProfile": { "const": "OfficialExactClient" } }, "required": ["AuthorityProfile"] },
+      "then": {
+        "properties": {
+          "OfficialRuntimeObserved": { "const": true },
+          "ExtendedReady": { "const": true },
+          "InternalBridgeReady": { "const": true }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "AuthorityProfile": { "const": "TestOnlyExactFixture" } }, "required": ["AuthorityProfile"] },
+      "then": {
+        "properties": {
+          "OfficialRuntimeObserved": { "const": false },
+          "ExtendedReady": { "const": false },
+          "InternalBridgeReady": { "const": false }
+        }
+      }
+    }
+  ]
+}

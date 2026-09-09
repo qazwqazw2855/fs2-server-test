@@ -1,0 +1,30 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/importer-compiled-server-contracts.schema.json",
+  "title":"God2 importer compiled server contract verification",
+  "type":"object",
+  "required":["mode","buildOutputExecutedByImporter","assemblyCount","contracts"],
+  "properties":{
+    "mode":{"const":"LOADED_COMPILED_ASSEMBLY_REFLECTION_READ_ONLY"},
+    "buildOutputExecutedByImporter":{"const":false},
+    "assemblyCount":{"const":3},
+    "contracts":{"type":"array","minItems":13,"maxItems":13,"items":{"$ref":"#/$defs/contract"}}
+  },
+  "$defs":{
+    "nonEmptyStrings":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "contract":{
+      "type":"object",
+      "required":["domain","status","requiredSymbols","verifiedSymbols","missingSymbols","assemblyEvidence"],
+      "properties":{
+        "domain":{"type":"string","minLength":1},
+        "status":{"const":"COMPILED_CONTRACT_VERIFIED"},
+        "requiredSymbols":{"$ref":"#/$defs/nonEmptyStrings"},
+        "verifiedSymbols":{"$ref":"#/$defs/nonEmptyStrings"},
+        "missingSymbols":{"type":"array","maxItems":0},
+        "assemblyEvidence":{"$ref":"#/$defs/nonEmptyStrings"}
+      },
+      "additionalProperties":false
+    }
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,2387 @@
+{
+  "Domain": "NPC",
+  "SourceCategory": "primary:npcs;related:dialogs\u002Bspawns",
+  "SourceArtifact": "npcs/npcs.official.json;dialogs/dialogs.official.json;spawns/spawns.official.json",
+  "DeclaredRecordCount": 319,
+  "RelatedSourceRecordCount": 87,
+  "IndexedRecordCount": 319,
+  "VerificationStatus": "Recovered; DialogRowsUnexpanded | Recovered; SpawnDialogBindingUnverified | Unverified; Needs Recovery",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "action",
+    "crossReferences",
+    "dialogReferences",
+    "headReference",
+    "id",
+    "mapId",
+    "maxDialogId",
+    "merchantRelation",
+    "minDialogId",
+    "name",
+    "note",
+    "npcType",
+    "palette",
+    "provenance",
+    "relationStatus",
+    "resource",
+    "resourcePath",
+    "rowCount",
+    "runtimeEligibility",
+    "scriptReferences",
+    "shadowIndex",
+    "shopReference",
+    "source",
+    "sourcePath",
+    "spawnInformation",
+    "spawnKind",
+    "templateId",
+    "templateIndex",
+    "templateIndexStatus",
+    "templatePosition",
+    "unknownFields",
+    "validationStatus",
+    "x",
+    "y"
+  ],
+  "MissingFields": [
+    "action",
+    "crossReferenceEvidence",
+    "dialogBinding",
+    "dialogBranchConditions",
+    "gameplaySemanticValidation",
+    "npcTemplateRelation",
+    "packetRuntimeValidation",
+    "palette",
+    "respawnSeconds",
+    "scriptBinding",
+    "scriptRelation",
+    "serverNpcId",
+    "shadowIndex",
+    "spawnCondition",
+    "spawnMapId",
+    "spawnPosition",
+    "templateId",
+    "templateIndexWhenBlank",
+    "templatePositionSemantics",
+    "x",
+    "y"
+  ],
+  "Entities": [
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2501-rom",
+      "Name": "\u6B66\u5668\u9632\u5177",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u88C5\u5907\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u88C5\u5907\u5C4B",
+        "dialogReferences[0].messageIds[0]": "1",
+        "dialogReferences[0].messageIds[1]": "2",
+        "dialogReferences[0].messageIds[2]": "3",
+        "dialogReferences[0].messageIds[3]": "4",
+        "dialogReferences[0].messageIds[4]": "5",
+        "dialogReferences[0].messageIds[5]": "6",
+        "dialogReferences[0].messageIds[6]": "7",
+        "dialogReferences[0].messageIds[7]": "8",
+        "dialogReferences[0].messageIds[8]": "9",
+        "shopReference.id": "client:shop-dialog/\u88C5\u5907\u5C4B"
+      },
+      "RecordHash": "5278CF474578C3545EB6094DCA60437D6AB50D6F7B0F0EED6F1A6BD5BE0578DA"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2502-rom",
+      "Name": "\u70BC\u4E39\u623F",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u70BC\u4E39\u623F",
+        "dialogReferences[0].id": "client:shop-dialog/\u70BC\u4E39\u623F",
+        "dialogReferences[0].messageIds[0]": "10",
+        "dialogReferences[0].messageIds[1]": "11",
+        "dialogReferences[0].messageIds[2]": "12",
+        "dialogReferences[0].messageIds[3]": "13",
+        "dialogReferences[0].messageIds[4]": "14",
+        "dialogReferences[0].messageIds[5]": "15",
+        "dialogReferences[0].messageIds[6]": "16",
+        "dialogReferences[0].messageIds[7]": "17",
+        "dialogReferences[0].messageIds[8]": "18",
+        "shopReference.id": "client:shop-dialog/\u70BC\u4E39\u623F"
+      },
+      "RecordHash": "381C3CDECAE975F2C5A4976D7C8DEF8251591A4FAB4FB5922722E8FDF8711607"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2503-rom",
+      "Name": "\u6742\u8D27\u5E97",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "4A2924C26759844D8B1A038124979F1AEECE9B22A8A61430AEBBC474B5D7D08F"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2504-rom",
+      "Name": "\u9152\u5E97\u5BA2\u6808",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9152\u697C",
+        "dialogReferences[0].id": "client:shop-dialog/\u9152\u697C",
+        "dialogReferences[0].messageIds[0]": "28",
+        "dialogReferences[0].messageIds[1]": "29",
+        "dialogReferences[0].messageIds[2]": "30",
+        "dialogReferences[0].messageIds[3]": "31",
+        "shopReference.id": "client:shop-dialog/\u9152\u697C"
+      },
+      "RecordHash": "A58B3497A0C1A14C3FEC04E32E58CE16A02578DAEFC5C594C6581C649FE41E37"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2505-rom",
+      "Name": "\u5E2E\u6D3E\u4F1A\u9986",
+      "References": {},
+      "RecordHash": "BC8817DBC007B13E54DAA5D5743C981A1F6D4DA9DE11D661E8D47886A0C58F41"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2506-rom",
+      "Name": "\u6253\u9640\u87BA",
+      "References": {},
+      "RecordHash": "AB6E4DCDAC0E4F040CD357F1DB944161E1A7D6863EE925288AC706C0ED013665"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2507-rom",
+      "Name": "\u89C2\u4F17",
+      "References": {},
+      "RecordHash": "A8F433F7AB2529512F8364E9F875F1C0DA710413CAB8BFC9F2C515334B7EBF04"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2508-rom",
+      "Name": "\u4E0B\u68CB",
+      "References": {},
+      "RecordHash": "D4D1C9B4EA12A06158E60AADDD6259AD8A9F69A9E477F16340F4AE93511AE557"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2510-rom",
+      "Name": "\u79E6\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/90",
+        "headReference[0].id": "client:npc-head/90"
+      },
+      "RecordHash": "C42EA446CA9EE7DB2B54A71433E5EC46DE495B06A1867DA36E43C19D90D0B985"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2511-rom",
+      "Name": "\u8D75\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/91",
+        "headReference[0].id": "client:npc-head/91"
+      },
+      "RecordHash": "E8F00A24EC00240851FFC9B36AC227E1D3C74EA56481BDFC187E9B4C14D2C282"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2512-rom",
+      "Name": "\u5B59\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/92",
+        "headReference[0].id": "client:npc-head/92"
+      },
+      "RecordHash": "AD2C617FDB8851AD5E0451097AB7AE950D8145E517199F02E88B41B9D7A4E73E"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2513-rom",
+      "Name": "\u5F20\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/93",
+        "headReference[0].id": "client:npc-head/93"
+      },
+      "RecordHash": "D62292485135B14C661A7A200D45DF4D5D9274CA19B0426EE30BF0075E8AB3F0"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2515-rom",
+      "Name": "\u5C01\u795E\u53F0\u4E00\u5C42",
+      "References": {},
+      "RecordHash": "0B0DC1FB77C9CF7821DFDDF488E23FEE078CFE064672F43A9BF6158BCAA3F614"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2516-rom",
+      "Name": "\u5C01\u795E\u53F0\u4E8C\u5C42",
+      "References": {},
+      "RecordHash": "11920A454A1E5F9E9C2C1EDA765AE80C3921B699AEC4F7C497135944DE05F0DA"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2517-rom",
+      "Name": "\u5C01\u795E\u53F0\u4E09\u5C42",
+      "References": {},
+      "RecordHash": "C040B683D09E9F88D4436536D0A8C9F927288BB2A4D6CF99AA44F9FB255C5E63"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2518-rom",
+      "Name": "\u5C01\u795E\u53F0\u56DB\u5C42",
+      "References": {},
+      "RecordHash": "FED31C4F2907AA23873798C677AF922D41D1B4C7C27A41B314BAD98B3E6D5A96"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2519-rom",
+      "Name": "\u516C\u5E03\u680F",
+      "References": {},
+      "RecordHash": "0A5FB62DCA7CE0CE8E11FB7F61D0EF92A29724DF9269D5538C7010F9617DADF3"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2528-rom",
+      "Name": "\u98CE\u543C\u9635\u67F1\u5B5001",
+      "References": {},
+      "RecordHash": "D0C2CF32A682CA9C28D547FCB8B44218E73C6FAE38C873E08CBAD9B07FD92B07"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2529-rom",
+      "Name": "\u98CE\u543C\u9635\u67F1\u5B5002",
+      "References": {},
+      "RecordHash": "9F327658FF4A61C891806E58ECF2528A13FD1FD766878D949B89DA16020312CA"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2530-rom",
+      "Name": "\u98CE\u543C\u9635\u67F1\u5B5003",
+      "References": {},
+      "RecordHash": "C1EA1F5D84E632183453B404E4277F4D0DDE11F8DCD21F2299E4AD7E18FCD000"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2531-rom",
+      "Name": "\u98CE\u543C\u9635\u67F1\u5B5004",
+      "References": {},
+      "RecordHash": "EF4769E62DCB21DF066370830F61C238B98E8E13CFF78835BDE6C31EF9F9B114"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2532-rom",
+      "Name": "\u52B2\u91CF\u5C0F\u5B50",
+      "References": {},
+      "RecordHash": "2002D4FCAD9479532DD730EFD2AB8A88A512934C1A90CF6FB28595B16C93BF86"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2542-rom",
+      "Name": "\u65AD\u520001",
+      "References": {},
+      "RecordHash": "27368225FD354BFDFDA9BA03CB1E8C950E057D874C29B978E67A6E8FD8D7E62C"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2543-rom",
+      "Name": "\u65AD\u520002",
+      "References": {},
+      "RecordHash": "0A6A554BCCBF81442EAE1A441ACC8B0FD61A2DD3D260460F7B8A6EBA5C8F8A58"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2544-rom",
+      "Name": "\u65AD\u525101",
+      "References": {},
+      "RecordHash": "CA811C831777DE826CE5BF341A6276B54E1C08403C33C3A82234CF68184D6A88"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2545-rom",
+      "Name": "\u65AD\u65A701",
+      "References": {},
+      "RecordHash": "405577C217A9418CAE4822CD16F6DA0761D31DD6F08865CF609E182AA804ABD3"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2546-rom",
+      "Name": "\u65AD\u65A702",
+      "References": {},
+      "RecordHash": "FBA85FCBE16FF4B812973AC646B1C74C2EBD5F04DF731C6A8E3B8E9135A9A121"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2547-rom",
+      "Name": "\u65AD\u68CD01",
+      "References": {},
+      "RecordHash": "70B819EC81388097473F2B6DB104B3A4E1B5552EAC4DC68E2B0F711F10D3E6B8"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2548-rom",
+      "Name": "\u65AD\u67AA01",
+      "References": {},
+      "RecordHash": "82F2384646060D542E271D19D76DF7B58D7ED1566DC49EFA91CFCE744C73ED26"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2549-rom",
+      "Name": "\u65AD\u5F1301",
+      "References": {},
+      "RecordHash": "27A2E91248A62916C03E4833A5E02123A898AB96BDF40BDD23755C42D3B5B0D6"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2552-rom",
+      "Name": "\u706B\u5899",
+      "References": {},
+      "RecordHash": "DCEC38CAC878ED9EEB428908FD9CCCDA7778BB2A9AED8FE4229C9E2C50153E52"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2553-rom",
+      "Name": "\u91D1\u9CCC\u67F1",
+      "References": {},
+      "RecordHash": "9A6FCB2C2B6B7EDC83C35CF27DEB05CF8340262DD56B5127E6C12A2220CDD680"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2554-rom",
+      "Name": "\u724C\u697C\u8349\u5730\u4F20\u9001\u70B9",
+      "References": {},
+      "RecordHash": "695ACE52C1B7788D3921103CEDE890F2E2AB43DB627A99D5A9B56BA05D572EFB"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2555-rom",
+      "Name": "\u6708\u7709\u82F1\u96C4\u53F0\u4E00\u5C42",
+      "References": {},
+      "RecordHash": "E998CC42C1B9C6BFF9C9CF65CF079CE51E030EFB81D287114BBA2DE6CACBB01B"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2556-rom",
+      "Name": "\u6708\u7709\u82F1\u96C4\u53F0\u4E8C\u5C42",
+      "References": {},
+      "RecordHash": "4BC6020DC6DA36F5C773A40B35E360C96D1EF50C7434C8D7324601D553FAC8D0"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2557-rom",
+      "Name": "\u6708\u7709\u82F1\u96C4\u53F0\u4E09\u5C42",
+      "References": {},
+      "RecordHash": "C849FFD497C92EB426AD3C567010A3EA6DE7B1F6667A3B991677B92DD717B829"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2558-rom",
+      "Name": "\u6708\u7709\u82F1\u96C4\u53F0\u56DB\u5C42",
+      "References": {},
+      "RecordHash": "23E6A0764AC0D2706C6F7B3372ABE3E145F5EB01D337CD3B78BDDC056AC9D86E"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2559-rom",
+      "Name": "\u6280\u7814\u53821",
+      "References": {},
+      "RecordHash": "8E390937165C02E55C874B13A0B4651C6D1F9F527B7268A93ACD897E8A932E16"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2560-rom",
+      "Name": "\u6280\u7814\u53822",
+      "References": {},
+      "RecordHash": "395D3A0D64990597E8D2904BB5A161046D846A0E56E4271C2F06293815A294F2"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2561-rom",
+      "Name": "\u6280\u7814\u53823",
+      "References": {},
+      "RecordHash": "A3C0E7EF85D242A696A6F6A38119ABE625FD0B27B1C253AD5CA1D98CBF09E75D"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2562-rom",
+      "Name": "\u6280\u7814\u53824",
+      "References": {},
+      "RecordHash": "D183E71FD1FEA245E5684D18061766B2B05E55FCEE20B5C7D3E7A687B12F201B"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2563-rom",
+      "Name": "\u6280\u7814\u53825",
+      "References": {},
+      "RecordHash": "E4C88A6649F79B48048A8E36226EB2A17DCDEB7E1846368879679A88EF18E76C"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2564-rom",
+      "Name": "\u795E\u575B1",
+      "References": {},
+      "RecordHash": "3D444174250E51F4D159C45A03735A2C6E4D2DFCB0202A56790DB6AD0FAB3477"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2565-rom",
+      "Name": "\u795E\u575B2",
+      "References": {},
+      "RecordHash": "1EDA42C09E2AAD6B90249D3A23ADFD00DDB8A64C8933961AFB9C25D243C702D3"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2566-rom",
+      "Name": "\u795E\u575B3",
+      "References": {},
+      "RecordHash": "F319670FE0071707EAB85E87306654721E803A91DC960A32EAF0B473AEFE37D6"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2567-rom",
+      "Name": "\u795E\u575B4",
+      "References": {},
+      "RecordHash": "C144B3BA299C6B2FB98677F4B6D4433ECCCFAA52FFDF20AEFC4E3FC07C767019"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2568-rom",
+      "Name": "\u795E\u575B5",
+      "References": {},
+      "RecordHash": "1271BDCA0582D92AAF73E7E60275C4E586066DDC56A265AF8C06657A630CC399"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2702-rom",
+      "Name": "\u8001\u7537 a2",
+      "References": {},
+      "RecordHash": "4FD6057035BAD8EE3CE61F47839E51670DE8974BC7C42FCC2CBF67EE1718587D"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2718-rom",
+      "Name": "\u5723\u8BDENPC",
+      "References": {},
+      "RecordHash": "090A594FD293230A385B9FA4D1C7FA8A8AB08EF7172F35D22591C23EBBB8B122"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2719-rom",
+      "Name": "\u8FC7\u5E74NPC",
+      "References": {},
+      "RecordHash": "A1403B3BD3BDAC7076F42B4A60A347B683DEC2B0238752C06E37B4D9D162B0A9"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2802-rom",
+      "Name": "\u7F8A",
+      "References": {},
+      "RecordHash": "9AC7F9B64712828404F19FEB9CA3C2DBC71E437D7277B1200165EE43226BC905"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc2804-rom",
+      "Name": "\u7EF5\u7F8A",
+      "References": {},
+      "RecordHash": "B1B82885E21D8E6E77AE1C1D65F81F131540B290AFA2F82574384D4C53B7F929"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3001-rom",
+      "Name": "\u9635\u6CD51",
+      "References": {},
+      "RecordHash": "C344BDD9FB0A6F532664C6B1A8102DA377883E61B41367E5BEE3D09AF99804C7"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3002-rom",
+      "Name": "\u9635\u6CD52",
+      "References": {},
+      "RecordHash": "A80FCCC61D63D15463F4B3E18BCE70B8175F65C293CB04DF2E226B16651BC12A"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3003-rom",
+      "Name": "\u9635\u6CD53",
+      "References": {},
+      "RecordHash": "B42978E21EFDD088350CCE66C4E5358FA8C1554B6CC99BB41AD5035F27204664"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3004-rom",
+      "Name": "\u9635\u6CD54",
+      "References": {},
+      "RecordHash": "83FBDE35419AA2130C8B18C09D40B7CDE8630F07D7022108C5207D8B6091D77F"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3005-rom",
+      "Name": "\u9635\u6CD55",
+      "References": {},
+      "RecordHash": "8D892FB2DD5F191DE2DBEECB63C2550E80D6BB72C22417EF4E26CEED37506672"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3006-rom",
+      "Name": "\u9635\u6CD56",
+      "References": {},
+      "RecordHash": "73D2750E9694B660EDD65821FA2480C93B8D09DD890E3781DE65F1375347480A"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3007-rom",
+      "Name": "\u9635\u6CD57",
+      "References": {},
+      "RecordHash": "C993A827B15396D8A2963E17F469A69AB0D60E66F4F66ECA6388E361BABCA9B5"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3008-rom",
+      "Name": "\u9635\u6CD58",
+      "References": {},
+      "RecordHash": "B1B91BB87EA98229C055837D1246CA86B6966929B81069A189D8A29F80227D96"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3009-rom",
+      "Name": "\u9635\u6CD59",
+      "References": {},
+      "RecordHash": "17DFD58FEFE7CD65C851B008B4BF7181C1C3AB3809585EC7C4F1B8C36A7955A4"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3010-rom",
+      "Name": "\u9635\u6CD510",
+      "References": {},
+      "RecordHash": "B9B89D15E53D48E07B8512AE5A5F1E83E04CFF4EDAFF19CE9F06CA83D1D43EE7"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3011-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B901",
+      "References": {},
+      "RecordHash": "8D0638485B33357E63A336DD3A1857C555E6F304B02CA75BF0E0F0BB0B1B1ACA"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3012-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B902",
+      "References": {},
+      "RecordHash": "E0784DE0F9900E2668A7B199ACE89DA9FE990BF7AC6B4D7FEBF18FF8831BC75D"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3013-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B903",
+      "References": {},
+      "RecordHash": "EFF619371D25BCB3E9967C27A06D1B75ED859A2D0D42E7A8BFFB53EA919C32A8"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3014-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B904",
+      "References": {},
+      "RecordHash": "D377A32F7088D22FF481C62C5A9133EFBCA894389AA0814619918BF0641A1802"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3015-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B905",
+      "References": {},
+      "RecordHash": "9E92A32DE8914DABF30D247E1BA4D7B10B0556BDACC6786E1F617D4771A09610"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3016-rom",
+      "Name": "\u53E4\u57CE\u4F20\u70B906",
+      "References": {},
+      "RecordHash": "747C3FE5EE9EF4A6FEF45971576457ED2B7D3116D000BF2DB6015FAF659ED42D"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3019-rom",
+      "Name": "\u5723\u517D\u8FF7\u5BAB\u5165\u53E3",
+      "References": {},
+      "RecordHash": "219658A7A56A343BDCBCB872C4FEC3D0FAAF9DB959CD83C579FF006028B11F0D"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3020-rom",
+      "Name": "\u9635\u6CD511",
+      "References": {},
+      "RecordHash": "DEB8E9B85B1E91414C1C946BD0C998AB7786A5E3B2F934BCBEC6F17100F4A0DE"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3021-rom",
+      "Name": "\u9635\u6CD512",
+      "References": {},
+      "RecordHash": "E2A38B4EC1752777AC593E51E8D7730DB34F7005F82700EAA8FE1AD6C3C470E0"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3022-rom",
+      "Name": "\u9635\u6CD513",
+      "References": {},
+      "RecordHash": "51997BC32E86EEF004B0F35897B2638F65D63175C09623ED9F42F8F719030CE9"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3023-rom",
+      "Name": "\u5723\u517D\u8FF7\u5BAB\u5185\u90E8\u4F20\u9001\u70B9",
+      "References": {},
+      "RecordHash": "710D7F66B409392A7761ED012BD1F053CC5693936925754F87422B3C5B714F18"
+    },
+    {
+      "Id": "client:npc-template/data/rom/npc/npc3024-rom",
+      "Name": "\u5723\u517D\u8FF7\u5BAB\u5185\u90E8\u51FA\u53E3",
+      "References": {},
+      "RecordHash": "5198B9EC6F9A21AD64E40E248F6B3DD4846FD426F402A1CF40F395069E4A3CDF"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2401-rom",
+      "Name": "\u9F20\u6807\u6307\u5B9A\u70B9",
+      "References": {},
+      "RecordHash": "4AC40F02B7D87649224FF915C825285ACC3898E99D20A9D72FCBED5C42C47211"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2509-rom",
+      "Name": "\u901A\u5929\u6559\u4E3B",
+      "References": {},
+      "RecordHash": "84D0A378165AA4EFFDA524480B7FDB2009924F5CF3FBF0405F9B8A0BFDAB6EE4"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2514-rom",
+      "Name": "\u955C\u5B50",
+      "References": {},
+      "RecordHash": "39EAED697012C949738E8D70B52973FB27DFDA4DB1E043264E0DF5D44EC6DF0E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2520-rom",
+      "Name": "\u8463\u5929\u541B",
+      "References": {},
+      "RecordHash": "ABF34D5D5B23B77A779E45C3886621E6DA28CC782E058366E0629743CC704168"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2521-rom",
+      "Name": "\u8881\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/110",
+        "headReference[0].id": "client:npc-head/110"
+      },
+      "RecordHash": "18A254533119BBC90F845AEC1885D9F5E088B3FEFA62548B9245E0C268161EB2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2522-rom",
+      "Name": "\u59DA\u5929\u541B",
+      "References": {},
+      "RecordHash": "E3A5FC75E88BF3C9F40C0F38465D01C50CAD3D1D719240C58AE1A2FA79C3F072"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2523-rom",
+      "Name": "\u91D1\u5471\u5471",
+      "References": {},
+      "RecordHash": "0C9100BD3D3B7107DEA05C4AE8600F38B0E71349B28C1D7E166F47E13B64A646"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2533-rom",
+      "Name": "\u4E07\u5203\u8F66",
+      "References": {},
+      "RecordHash": "057BDD3BD9509584C6FDF02F94F4D8C862CE7C471BBF0541E03C71C42AAA5DA4"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2534-rom",
+      "Name": "\u767D\u5929\u541B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/109",
+        "headReference[0].id": "client:npc-head/109"
+      },
+      "RecordHash": "070B2FEA8B3D457A3D5D2AF48AD09FFC92561EE68846832664CD0CF4F14C5D83"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2535-rom",
+      "Name": "\u738B\u5929\u541B",
+      "References": {},
+      "RecordHash": "1EE6F9BA8AA6F6A4B7A89E7ED207FA0E83DC33E83BFEE91D370BA76FFD6D191C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2536-rom",
+      "Name": "\u9AD8\u58EE\u7537\u53D7\u4F24",
+      "References": {},
+      "RecordHash": "DA685FF7BDF15C2BDA580E16C87F1F2285F6BB221DB53343AD15D10DE32974E6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2537-rom",
+      "Name": "\u77EE\u58EE\u7537\u53D7\u4F24",
+      "References": {},
+      "RecordHash": "DEA78B5306F696718293372A3D6C9DDB204D6D6338F608EADDC54BA081583806"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2538-rom",
+      "Name": "\u4E66\u751F\u53D7\u4F24",
+      "References": {},
+      "RecordHash": "51BDFEDEE0B85AE61ACBFD6F64D2BDACC17AC0DCBADB9ED30A75294328FDFC08"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2539-rom",
+      "Name": "\u9AD8\u58EE\u7537\u5C38\u4F53",
+      "References": {},
+      "RecordHash": "DEB476721CB2584C735781D52B63F1BD1AA7010632FB6740EBE3553453EEEA63"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2540-rom",
+      "Name": "\u77EE\u58EE\u7537\u5C38\u4F53",
+      "References": {},
+      "RecordHash": "9297320597C28FE495B5DB42D78EC432DB68B4130F3383E41283AA66F774E3D0"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2541-rom",
+      "Name": "\u4E66\u751F\u5C38\u4F53",
+      "References": {},
+      "RecordHash": "CD78C223FDCACC1BAC7D3C0334B5F28685E4A73A72E7005FE1B59B9F69D3CE0B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2550-rom",
+      "Name": "\u5B9D\u7BB1",
+      "References": {},
+      "RecordHash": "A66F831ED0D4BEA770003CE2FE91E5146D5DC5482B5F38C800862778FCAF8C3F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2551-rom",
+      "Name": "\u5367\u5E8A\u8001\u4EBA",
+      "References": {},
+      "RecordHash": "3B4F35FDBB45B15B10C9D7086D3A5C86A05C7B3720A3EC811A62EFE28FD3A06D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2569-rom",
+      "Name": "\u4ED9\u82B1",
+      "References": {},
+      "RecordHash": "6228E5865806E140E6E18AB912A2186D4EF4E9398A90AF752E0664637739955B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2570-rom",
+      "Name": "\u4ED9\u8349",
+      "References": {},
+      "RecordHash": "735B044BC69AF23216C4FBEF778FA9DE603C2AB5FE83C7669CE84F9D52794185"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2571-rom",
+      "Name": "\u4ED9\u53F6",
+      "References": {},
+      "RecordHash": "9ECBB12E5E14803D22350469F7C888C2383D01D7645CB7AAAE0276342A7FCDEF"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2572-rom",
+      "Name": "\u5143\u59CB\u5929\u5C0A",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/44",
+        "crossReferences[1].targetId": "official-observed/npc-yuanshi-dialog",
+        "headReference[0].id": "client:npc-head/44",
+        "spawnInformation.candidates[0].evidenceId": "official-observed/npc-yuanshi-dialog"
+      },
+      "RecordHash": "163A199B54C07DB46059921BE773B7F192821267B512E92BC2BF41AEF69D63F6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2573-rom",
+      "Name": "\u6B66\u7F0E\u5E08\u5085",
+      "References": {},
+      "RecordHash": "8E59486978929F8C9A16C82FFF6F76116420381E7B59DB182C1134F51A2FC900"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2574-rom",
+      "Name": "\u9632\u7F0E\u5E08\u5085",
+      "References": {},
+      "RecordHash": "FC625CE03C66B13FF92F4E2695D22D7248D7723D3B2413DBEDF19D20CDA9CFE8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2575-rom",
+      "Name": "\u4E39\u7F0E\u5E08\u5085",
+      "References": {},
+      "RecordHash": "294D74FAC1A936402CB8379841A9EBC1C3EC31C1B478573D818B01D2B4F7105A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2576-rom",
+      "Name": "\u6CD5\u7F0E\u5E08\u5085",
+      "References": {},
+      "RecordHash": "FCA1B67E37A1CF44467E1039CF451D591ADC7EB5990150360E39EBD2D89A8E9B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2577-rom",
+      "Name": "\u5251\u804C\u795E\u5E95\u5EA7",
+      "References": {},
+      "RecordHash": "E74B441643080E3A0F6E47407D9993EF7E35807F2918BBDA35744D77C2419563"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2578-rom",
+      "Name": "\u4ED9\u804C\u795E\u5E95\u5EA7",
+      "References": {},
+      "RecordHash": "A6ED1D48866B4FB64E4D929F3766EA66C3C8C7B57836F89E4697B80F023382D3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2579-rom",
+      "Name": "\u836F\u804C\u795E\u5E95\u5EA7",
+      "References": {},
+      "RecordHash": "FA7FF64D81F1A0F8371D6A4CD846799A3D0C6C84F923431FDE1932EAFA099DC3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2580-rom",
+      "Name": "\u8C0B\u804C\u795E\u5E95\u5EA7",
+      "References": {},
+      "RecordHash": "56C08C73B8DDBCB35B3B7A033F24D8E2D69F82CC285D09018DCC525DD29E4BB1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2581-rom",
+      "Name": "\u5E03\u544A\u680Fnpc",
+      "References": {},
+      "RecordHash": "B934829D8B9A0788F9D2952BF83781B018D836074E5DFFAB1CD6002CD7D19305"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2582-rom",
+      "Name": "\u8DEF\u724Cnpc",
+      "References": {},
+      "RecordHash": "7917596940D86A4E37E2C01C87FA473C125B2A8344BBDEABD196613D8DC07F50"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2583-rom",
+      "Name": "\u6D77\u62A5npc",
+      "References": {},
+      "RecordHash": "DA8F312676E146E101CF3164B3AA3F401849FA44DD3FCE4775B6077AC1A24049"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2584-rom",
+      "Name": "\u6606\u543E\u5E03\u544A\u680Fnpc",
+      "References": {},
+      "RecordHash": "8AFB79A38520340194E1D7DBF1B725600967B408DC1D58FDD1C73AD6FF3B7AA2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2585-rom",
+      "Name": "\u6CD5\u575B1",
+      "References": {},
+      "RecordHash": "96F5D0B127CECDD5F659597EA35B004DC38A1576BBB3C96A1507D4B0310A1005"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2586-rom",
+      "Name": "\u6CD5\u575B2",
+      "References": {},
+      "RecordHash": "71B04BA11B6443A00C76E2E16454550A89450E971ABF824DCCF308C8E640E14E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2587-rom",
+      "Name": "\u6CD5\u575B3",
+      "References": {},
+      "RecordHash": "98CF58E3FF230295B07F970EB9A6C9D9F725B3539B6035B26F7EA1FDE2C7800A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2588-rom",
+      "Name": "\u6CD5\u575B4",
+      "References": {},
+      "RecordHash": "D552126321ADC6E8850559A62FB673B42757B1E36B87AA20CC369793D32A18EB"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2589-rom",
+      "Name": "\u6CD5\u575B5",
+      "References": {},
+      "RecordHash": "3E977B51A2E5012727DC248B70375274ABC444AF02A180CAA9B22BF1C980607A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2590-rom",
+      "Name": "\u91D1\u5E931",
+      "References": {},
+      "RecordHash": "6AD3EBE266F2D429308C6D8EFA9008DBB17D1B1D34170DCA8AD741BFC6FEC4FE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2591-rom",
+      "Name": "\u91D1\u5E932",
+      "References": {},
+      "RecordHash": "AFFA04DDC2014B066A48D2126C16230AE9A110983637C8E05C8F2499C275B43C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2592-rom",
+      "Name": "\u91D1\u5E933",
+      "References": {},
+      "RecordHash": "35538A08A257F60B8AFB4B29DB66BDFAB67092CF4D40E417ABD35E3A0A7E948D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2593-rom",
+      "Name": "\u91D1\u5E934",
+      "References": {},
+      "RecordHash": "82C3466200153871D75AFEDC6BA3086DCD21809148ACE590D6BDA65C689B645B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2594-rom",
+      "Name": "\u91D1\u5E935",
+      "References": {},
+      "RecordHash": "41F631BA9D47D677A5F123D467F8EE74398B6A407DB79B742639FC3B325FBD43"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2595-rom",
+      "Name": "\u4FEE\u5FC3\u5EB51",
+      "References": {},
+      "RecordHash": "0DA13600BC6F630967C6562646EDCA820DAE75C1844060A48A21B3673E80A759"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2596-rom",
+      "Name": "\u4FEE\u5FC3\u5EB52",
+      "References": {},
+      "RecordHash": "3C9AE4E2675FA61FDC31846D29B8286CF4562D9C6B4DE5569BB2FA7B0D8146DD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2597-rom",
+      "Name": "\u4FEE\u5FC3\u5EB53",
+      "References": {},
+      "RecordHash": "3749DB070A022F754F4A1D9564DFFC70D0F2428925E0D6A544743043F3DB95C6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2598-rom",
+      "Name": "\u4FEE\u5FC3\u5EB54",
+      "References": {},
+      "RecordHash": "D5E0730B1D3FF39F14FA4DEF8762C8B42104D395FE3FE6F7613167BD74E02825"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2599-rom",
+      "Name": "\u4FEE\u5FC3\u5EB55",
+      "References": {},
+      "RecordHash": "B49E6C4B447570363A02CEA0138AECEC07103C73E37F8D7398D48E4BAA9106B7"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2600-rom",
+      "Name": "\u4ED3\u5E931",
+      "References": {},
+      "RecordHash": "D3BDF73AE065DA561D9F3F49C3130780C999E036BE796D4E8C6F02334F9D71D8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2601-rom",
+      "Name": "\u4ED3\u5E932",
+      "References": {},
+      "RecordHash": "E56493D00EAD929D6A4AB697927AB6FC819B36F3FD98DC6486B42B80569CA97B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2602-rom",
+      "Name": "\u4ED3\u5E933",
+      "References": {},
+      "RecordHash": "CF912C5CB21FB7A1C7D8F3574F7AD2DEECAA05BFDD780C6F98C007A1E294ED24"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2603-rom",
+      "Name": "\u4ED3\u5E934",
+      "References": {},
+      "RecordHash": "B012DC70FCCD0ABB4A4939E2997ECABAA73E4E194BDF38116B4C9A4C4CB683E3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2604-rom",
+      "Name": "\u4ED3\u5E935",
+      "References": {},
+      "RecordHash": "AB4AFAF4AFBD1EF4FD71A3BF5D2EAB4DB1ABC5832DFCE7C4367783591DFBC0A2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2605-rom",
+      "Name": "\u5546\u5E971",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "910477BAFBF92FAB370347D67F3999451E252767D1FAD49ECBBFA4BA68AE81BE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2606-rom",
+      "Name": "\u5546\u5E972",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "10BA461B147E798EB9D7DAD10889DAA7C4875ED26C95FF24ED7D042084EB5DF7"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2607-rom",
+      "Name": "\u5546\u5E973",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "55B2062A67D2B9E08DCC1A55B138AA2E7672E922E6D0AF2BFC69970F5C23A7F6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2608-rom",
+      "Name": "\u5546\u5E974",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "509AA7521F120487C123ABBD6AA358ADB263E008792BD3733E404FBA7E5A9145"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2609-rom",
+      "Name": "\u5546\u5E975",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "3899C63CB7EB4D9896A194EC8FCC75EB87053559D56710B660FCDFA5B31F3929"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2610-rom",
+      "Name": "\u8001\u5973C\u62DCA",
+      "References": {},
+      "RecordHash": "A9EA34B43BC3E59C7EAFCEAD75289501DF774A4C685616FDE8AD13C3D534A10A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2611-rom",
+      "Name": "\u8001\u5973C\u62DCB",
+      "References": {},
+      "RecordHash": "6E90B211E76F3F7932E6B0B64D9C6C2619E5213349083EB0AB4554A086E86EEB"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2612-rom",
+      "Name": "\u5C0F\u7537B\u660F",
+      "References": {},
+      "RecordHash": "964892064E7E23C78EAFDD21575A5B02195AFA7DD02DA76826969649A5445AEE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2613-rom",
+      "Name": "\u5C0F\u7537B\u6349(\u773C)",
+      "References": {},
+      "RecordHash": "44D70DF3EA97576029A3C7A7FC6C37AEBCF9B71FA4E2D7A14AC9023DF8534DF7"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2614-rom",
+      "Name": "\u5C0F\u7537B\u6349(\u6447)",
+      "References": {},
+      "RecordHash": "B7C23D9831D5BDD8106EE7A9A4AB08E017C7E453293F2BE5F3050D070986BC12"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2615-rom",
+      "Name": "\u5C0F\u7537B\u6349(\u8E72)",
+      "References": {},
+      "RecordHash": "A61AFB3BD0F219B51015D1DC3514510C8BD339FD6F50B98E1AA80DA5476BE89B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2616-rom",
+      "Name": "\u5C0F\u5973B\u6349(\u773C)",
+      "References": {},
+      "RecordHash": "36A22FA96E2C4A3BC03EBFEB6FF583ED376899C87E65C78097E414A4A11E0656"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2617-rom",
+      "Name": "\u5C0F\u5973B\u6349(\u6447)",
+      "References": {},
+      "RecordHash": "0FC821015CBBDD170FEE9BC3E23DF30EA9E0F42C71A277A542906D1576484796"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2618-rom",
+      "Name": "\u5C0F\u5973B\u6349(\u8E72)",
+      "References": {},
+      "RecordHash": "401C0007063590299EB6151EDE34057EC9970DB4A41C349C8CCCA6305683A433"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2619-rom",
+      "Name": "\u4ED5\u5973\u8EBA\u5E8A",
+      "References": {},
+      "RecordHash": "3788CEF8D9B63FE36CBE7C99355B89110F8102A61C4C5FDAE2374594BD98F831"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2620-rom",
+      "Name": "\u4ED5\u5973\u62DB\u5BA2",
+      "References": {},
+      "RecordHash": "A2C8293C3A905A8D98CE044634D5F10D7C40C4F86346DA3B4D842630BA89C9D1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2621-rom",
+      "Name": "\u4ED5\u5973\u906E\u8138",
+      "References": {},
+      "RecordHash": "F618D749DE911D854F2709431D7F42CFEAEAF4F6E716AAA478F8F1DC23885313"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2622-rom",
+      "Name": "\u592B\u5B50\u5750",
+      "References": {},
+      "RecordHash": "F362F972B625BEA8DED9655A402E5789E540BE15218FE0FB477DD227A7351772"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2623-rom",
+      "Name": "\u7B97\u547D\u4E2D",
+      "References": {},
+      "RecordHash": "0F8B2BA341DD6CEB08B28737D5C18D86E21A2EFE636334E2723089842FBD8667"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2624-rom",
+      "Name": "\u548C\u5C1A\u6258\u94B5",
+      "References": {},
+      "RecordHash": "570FC1BF20486ED356427E2464300279037283CA9D3A3A036B8F139E85107BF3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2625-rom",
+      "Name": "\u548C\u5C1A\u5750",
+      "References": {},
+      "RecordHash": "491CE7F169AB23158C12991E61D87ACAE55282956CFD7EFE9FDD016338AD088E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2626-rom",
+      "Name": "\u5C3C\u59D1\u5750",
+      "References": {},
+      "RecordHash": "ABBCF123D1392545DD017F707FEACBE4F9A3230A97874B4FE354619B41E2110E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2627-rom",
+      "Name": "\u5934\u9640\u5750",
+      "References": {},
+      "RecordHash": "6B4437C8407E41D5EA6836D23D2F2B199F0C53CD626E11B63EA679C59537F30F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2628-rom",
+      "Name": "\u58EB\u5175\u5750",
+      "References": {},
+      "RecordHash": "648AEAE899B4A603DA5DCE2A73A9EC8F280A7AF8D9C7CEE04022E855DDD120F2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2629-rom",
+      "Name": "\u4E0A\u53E4\u4ED9\u77F3",
+      "References": {},
+      "RecordHash": "C4ACAAC1203CF1C7EB87E3F722E153494703020FD1A22319387C329A426D2C6B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2630-rom",
+      "Name": "\u8001\u9E28\u62DB\u5BA2",
+      "References": {},
+      "RecordHash": "7872292FD7F74F5E681919DAF3043191D89D20D4ED5C4651E23692B223AC1E96"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2631-rom",
+      "Name": "",
+      "References": {
+        "crossReferences[0].targetId": "official-observed/npc-yuanshi-dialog",
+        "crossReferences[1].targetId": "official-observed/npc-fist-master-dialog",
+        "crossReferences[2].targetId": "official-observed/npc-crafting-masters-visible",
+        "spawnInformation.candidates[0].evidenceId": "official-observed/npc-yuanshi-dialog",
+        "spawnInformation.candidates[1].evidenceId": "official-observed/npc-fist-master-dialog",
+        "spawnInformation.candidates[2].evidenceId": "official-observed/npc-crafting-masters-visible"
+      },
+      "RecordHash": "34BC322D6D1DAB85885F68132C5325F881F601CBA58841821ACC22F3E8FD9C1E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2632-rom",
+      "Name": "",
+      "References": {
+        "crossReferences[0].targetId": "official-observed/npc-yuanshi-dialog",
+        "crossReferences[1].targetId": "official-observed/npc-fist-master-dialog",
+        "crossReferences[2].targetId": "official-observed/npc-crafting-masters-visible",
+        "spawnInformation.candidates[0].evidenceId": "official-observed/npc-yuanshi-dialog",
+        "spawnInformation.candidates[1].evidenceId": "official-observed/npc-fist-master-dialog",
+        "spawnInformation.candidates[2].evidenceId": "official-observed/npc-crafting-masters-visible"
+      },
+      "RecordHash": "4115C5B762C019C610434CB18F883BFCD6D7AB34EFF4AAAF49B4B3601B0DE79E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2633-rom",
+      "Name": "",
+      "References": {
+        "crossReferences[0].targetId": "official-observed/npc-yuanshi-dialog",
+        "crossReferences[1].targetId": "official-observed/npc-fist-master-dialog",
+        "crossReferences[2].targetId": "official-observed/npc-crafting-masters-visible",
+        "spawnInformation.candidates[0].evidenceId": "official-observed/npc-yuanshi-dialog",
+        "spawnInformation.candidates[1].evidenceId": "official-observed/npc-fist-master-dialog",
+        "spawnInformation.candidates[2].evidenceId": "official-observed/npc-crafting-masters-visible"
+      },
+      "RecordHash": "AEDA4D649E745364C394D481FC9E38CBC9817C477F9D6DD2521F79AD075C9A61"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2634-rom",
+      "Name": "\u5343\u91CC\u773C",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/99",
+        "headReference[0].id": "client:npc-head/99"
+      },
+      "RecordHash": "75D8ED4F2F6ACF7C3366E2177C4BDFEE7A8F3044831052794B5472A8A2422715"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2635-rom",
+      "Name": "\u987A\u98CE\u8033",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/100",
+        "headReference[0].id": "client:npc-head/100"
+      },
+      "RecordHash": "B31A73D0BD87ED404707187BBE91B7642909215A6CBE235147581B0BCCACB135"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2636-rom",
+      "Name": "\u91D1\u7AE5",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/97",
+        "headReference[0].id": "client:npc-head/97"
+      },
+      "RecordHash": "477ADFAE39521F55248A4E45E60D03D58F6BFA5C80BE8FDDF59F3D170F7C54DD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2637-rom",
+      "Name": "\u7389\u5973",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/98",
+        "headReference[0].id": "client:npc-head/98"
+      },
+      "RecordHash": "181FFEB02B590BC27778A0DACFC8650CFF6EC5BDE732238C4EEA0A20CAED9727"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2638-rom",
+      "Name": "\u90AA\u6076\u795E\u6728",
+      "References": {},
+      "RecordHash": "09F54C2ACDCA16B281BF7399AA46F9D273B67583D31BB2CF12C524B82F7D9425"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2639-rom",
+      "Name": "\u7384\u5929\u4E4C\u9E26",
+      "References": {},
+      "RecordHash": "0C250494FD101EEB777A2A6E9BFBB909591880188F0A2AB2310A9F55E8CB8E38"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2640-rom",
+      "Name": "\u53E4\u4E95",
+      "References": {},
+      "RecordHash": "DF31880F70D211EDFAD15DA6D7CA6A787BAE435CE07D96EF06D2191752ECDF0F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2641-rom",
+      "Name": "\u53E4\u4E95\u4E0A\u7684\u5973\u9B3C",
+      "References": {},
+      "RecordHash": "F31B341CD90E49675ACBE8B333215B9673E62D888C94A519D04F6E6898BF0BFA"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2642-rom",
+      "Name": "\u5C0F\u6728\u5934",
+      "References": {},
+      "RecordHash": "90EBFC5E2AF15803CF31BDD20C726D045E5F90A55B9765A8A466E2BB06924910"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2643-rom",
+      "Name": "\u6742\u8D27\u8001\u677F",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "F8DAF4C4EB67834BE796D1682A63650B094CA1FE8ADB67756C3904F450FBB963"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2644-rom",
+      "Name": "\u5546\u5E97\u8001\u677F",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u9053\u5177\u5C4B",
+        "dialogReferences[0].messageIds[0]": "19",
+        "dialogReferences[0].messageIds[10]": "37",
+        "dialogReferences[0].messageIds[11]": "38",
+        "dialogReferences[0].messageIds[12]": "39",
+        "dialogReferences[0].messageIds[13]": "40",
+        "dialogReferences[0].messageIds[14]": "41",
+        "dialogReferences[0].messageIds[15]": "42",
+        "dialogReferences[0].messageIds[16]": "43",
+        "dialogReferences[0].messageIds[17]": "44",
+        "dialogReferences[0].messageIds[1]": "20",
+        "dialogReferences[0].messageIds[2]": "21",
+        "dialogReferences[0].messageIds[3]": "22",
+        "dialogReferences[0].messageIds[4]": "23",
+        "dialogReferences[0].messageIds[5]": "24",
+        "dialogReferences[0].messageIds[6]": "25",
+        "dialogReferences[0].messageIds[7]": "26",
+        "dialogReferences[0].messageIds[8]": "27",
+        "dialogReferences[0].messageIds[9]": "36",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "CA17CFB0DB1823C8C7142EDD4408BCBE101DCAC4605A50F144C16EEB9A0CFEAC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2645-rom",
+      "Name": "\u6B66\u5668\u5E97\u8001\u677F",
+      "References": {
+        "crossReferences[0].targetId": "client:shop-dialog/\u88C5\u5907\u5C4B",
+        "dialogReferences[0].id": "client:shop-dialog/\u88C5\u5907\u5C4B",
+        "dialogReferences[0].messageIds[0]": "1",
+        "dialogReferences[0].messageIds[1]": "2",
+        "dialogReferences[0].messageIds[2]": "3",
+        "dialogReferences[0].messageIds[3]": "4",
+        "dialogReferences[0].messageIds[4]": "5",
+        "dialogReferences[0].messageIds[5]": "6",
+        "dialogReferences[0].messageIds[6]": "7",
+        "dialogReferences[0].messageIds[7]": "8",
+        "dialogReferences[0].messageIds[8]": "9",
+        "shopReference.id": "client:shop-dialog/\u88C5\u5907\u5C4B"
+      },
+      "RecordHash": "A86A31ADBAB101155A9F5297B918A1068FB3E0B9BB512977415A1DAD270D220E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2646-rom",
+      "Name": "\u4E5E\u4E10\u5750",
+      "References": {},
+      "RecordHash": "365ED5D6C78294F9D4AC36A1CA6AD5ED899B02613EBDF9D389EBB23D4C9A3941"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2647-rom",
+      "Name": "\u5893\u78911",
+      "References": {},
+      "RecordHash": "FC1706DE9359E82FFCC2F681C00F81FE1856C0EDFBDC4506BE677253807002D9"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2648-rom",
+      "Name": "\u5893\u78912",
+      "References": {},
+      "RecordHash": "EC86DD1C2A1A613A4B913BC41F09CB25182753A0B7C66AFB95B4217EB07E48DB"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2649-rom",
+      "Name": "\u5893\u78913",
+      "References": {},
+      "RecordHash": "45EC252CDA018E7C03F545BA8B5A702F730CE11693A1A7611B3F240AC834CDC0"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2650-rom",
+      "Name": "\u900F\u660Enpc",
+      "References": {},
+      "RecordHash": "373663F9DAAF4CEF525F09699A2B6CA0FE0D0172A2EC13AFB485DDC32093962C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2651-rom",
+      "Name": "\u4E5D\u9ECE\u6751\u6C11\u5C38A",
+      "References": {},
+      "RecordHash": "714AE7D2F92961ED9F5202351EC097D990BA674D0DBE05AC4D44A9A21AB933A0"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2652-rom",
+      "Name": "\u4E5D\u9ECE\u6751\u6C11\u5C38B",
+      "References": {},
+      "RecordHash": "35AA1CC5FE1D23BE08ED70DF7DC79168BBE828B4E4EE182D728CAB6162ACC7FD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2653-rom",
+      "Name": "\u4E5D\u9ECE\u6751\u6C11\u5C38C",
+      "References": {},
+      "RecordHash": "82C9722C6C3B9D3E4E07CBCE5BDEC9140F9015F15BCC2BB4DA54B6CDE2E5C1C1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2654-rom",
+      "Name": "\u4E5D\u9ECE\u6751\u6C11\u5C38D",
+      "References": {},
+      "RecordHash": "D4F15C335AA846ACB2DDFAEB1A442C906ECE180C1E1E9C41121B4DD64ACA34D1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2655-rom",
+      "Name": "\u4E5D\u9ECE\u6751\u6C11\u5C38E",
+      "References": {},
+      "RecordHash": "731A280DAD1CAC8D29FD01AF661E25DF6A83966F5FECD8A646A6800C47AEC32B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2656-rom",
+      "Name": "\u706B\u7130",
+      "References": {},
+      "RecordHash": "E8A1813F90E93D5112DF116995BCF3035E0F3F15CEDA20710B25DE7F9E76B12F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2657-rom",
+      "Name": "\u70E4\u8089\u67B6",
+      "References": {},
+      "RecordHash": "A50E9A0AEF84CECA3AC8F6FCF084AC1798EC37C803A913ED28EFA3CECFB79F11"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2658-rom",
+      "Name": "\u6781\u901F\u5357\u74DC",
+      "References": {},
+      "RecordHash": "656908AF06D47A40F74406F3645FE0A390982809F387A0FC4A92DAED3A7A3EC8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2659-rom",
+      "Name": "\u9E8B\u9E7F",
+      "References": {},
+      "RecordHash": "C76545E1F7E0BCCA12BF0433D7129552C3ACF70307AD72E2CEB3BE0EE3315252"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2660-rom",
+      "Name": "\u7965\u72EE\u732E\u745E",
+      "References": {},
+      "RecordHash": "DC07701A1895235E921A2C3AFFF5AC47C4DCD595439349EE6CC6ABF743C2F5FE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2661-rom",
+      "Name": "\u8DEF\u6807",
+      "References": {},
+      "RecordHash": "E9D35A56CB90503E24EE09D0BAF3A1B60AE83E99ED7CF109371850C51A61273F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2662-rom",
+      "Name": "\u77F3\u724C",
+      "References": {},
+      "RecordHash": "7FD8D09DF09B130F8D669ABBCB1245FDABA1EFC87DF292AD758EA985DAB2E63B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2713-rom",
+      "Name": "\u6A35\u592B",
+      "References": {},
+      "RecordHash": "19306493491C0EA1069B3639986E1BEF16BF8D40FC95CFC1C66DEE45884B3771"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2714-rom",
+      "Name": "\u7537\u730E\u4EBA",
+      "References": {},
+      "RecordHash": "CF81E1A23D1E0778BBAA89B29354490883F0D88F207207488662128391C50A07"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2715-rom",
+      "Name": "\u5973\u730E\u4EBA",
+      "References": {},
+      "RecordHash": "12CFA7A2836076644AEE62C50534E160F2C206C75F521E4CE93CAF1E3C5AA71A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2716-rom",
+      "Name": "\u739B\u8389",
+      "References": {},
+      "RecordHash": "E402E46E9BF5DF8448E3B9A3EDAD694504581D1ADB952C64107450803F70732C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2717-rom",
+      "Name": "\u4E69\u7AE5",
+      "References": {},
+      "RecordHash": "6680C58EE44C4497215D8671F7D34FF09A59791DD931F4C44D83AA03525D5850"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2720-rom",
+      "Name": "\u9AD8\u58EE\u7537",
+      "References": {},
+      "RecordHash": "744B02653A8B861A27CC9CCF4ED551033EBCA32B74706F34B8FA9D3E03A98D33"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2721-rom",
+      "Name": "\u77EE\u58EE\u7537",
+      "References": {},
+      "RecordHash": "28B74A1150A4380C89BA87C88BFC161C12B697069E04B5288493AF1A34D89422"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2722-rom",
+      "Name": "\u666E\u901A\u7537",
+      "References": {},
+      "RecordHash": "0661AB96D776E7F49069727C46AD26F8223AAD076CAB4B9F527D32C718CF27CA"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2723-rom",
+      "Name": "\u80D6\u7537\u4EBA",
+      "References": {},
+      "RecordHash": "814E2EC600E7433573141B9AF13BA05C60790A66AE1247E9C70F7A72665A5AA8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2724-rom",
+      "Name": "\u5987\u5973",
+      "References": {},
+      "RecordHash": "CE1DC30C2450E0EDCB791B8BE1CDC1BF65EBC16BC17A0DAD00D9E6C2D3DE5A39"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2725-rom",
+      "Name": "\u5B55\u5987",
+      "References": {},
+      "RecordHash": "45D0A0AD539AD5AC15F96F7DDE755D13667749DE1F62D8BD09CB0B459E90E64E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2726-rom",
+      "Name": "\u80D6\u5973\u4EBA",
+      "References": {},
+      "RecordHash": "2456CFE0267410BCF7028280BE742851BD185379FBF965E93BCC28BAA5A8998A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2727-rom",
+      "Name": "\u5C11\u5973",
+      "References": {},
+      "RecordHash": "7FB0B642580BF8A955E05574FF48B40C9BD13C93DC946FFB468A685C85FA88F3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2728-rom",
+      "Name": "\u5C0F\u5B69\u7537",
+      "References": {},
+      "RecordHash": "CADB0752BC4A8B18600D2758EA0ABFB717B44F197C8C62CE64F3702C33F80655"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2729-rom",
+      "Name": "\u5C0F\u5B69\u5973",
+      "References": {},
+      "RecordHash": "3B28CDF49C7DC3D4A71743260B12FB3A63FD22F5761452ACA73FA62109885A5D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2730-rom",
+      "Name": "\u9547\u957F",
+      "References": {},
+      "RecordHash": "FB250F585BF745A1F9852F8A05CDED64ACE6CAE12796F1864003FBBEE3A521BC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2731-rom",
+      "Name": "\u6A35\u592B",
+      "References": {},
+      "RecordHash": "06A7F584DF0AB7BCEB89B234720559A789A752F59CF8F4ADD644A8AEE49B8224"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2732-rom",
+      "Name": "\u4E66\u751F",
+      "References": {},
+      "RecordHash": "AC5FB87905C4FCB790FF10834652DF97AF5F3DB7C40AAEB880FCDC34C55D6887"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2733-rom",
+      "Name": "\u8001\u4EBA\u7537A",
+      "References": {},
+      "RecordHash": "EAC1E0CD276FCBC0E57F8D659BEAA2BA263FB11F7CAAD8F71BDD9590E33C0822"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2734-rom",
+      "Name": "\u8001\u4EBA\u7537B",
+      "References": {},
+      "RecordHash": "6BFF61F93A326BB56E9C6641F04337CB7E8D4BC7FAD8BFE7FC8ECCC8A953F5CC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2735-rom",
+      "Name": "\u8001\u4EBA\u7537C",
+      "References": {},
+      "RecordHash": "E001716DA4DF03216006663A50B2CC2E2EEDBF489910FD9F9FFCAF0BCD5C3B77"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2736-rom",
+      "Name": "\u8001\u4EBA\u5973A",
+      "References": {},
+      "RecordHash": "2751E962A3E97716B090B41E8D34E5C80F75C37B6CE4D829269F2441DBB46E6A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2737-rom",
+      "Name": "\u8001\u4EBA\u5973B",
+      "References": {},
+      "RecordHash": "D7A05007B71205C0534C7F8E012DDA612A851AE4DAE3C89A5CA8FEF35E0D1E3A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2739-rom",
+      "Name": "\u53D8\u5316\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/45",
+        "headReference[0].id": "client:npc-head/45"
+      },
+      "RecordHash": "8731F29F6081486208FE78626068E150A840864C87FA96D3869BB33FE814A9C3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2740-rom",
+      "Name": "\u836F\u8349\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/46",
+        "headReference[0].id": "client:npc-head/46"
+      },
+      "RecordHash": "C048A89407A4EED7403B02212839C730F09449E58645669413D5902EFDF1A425"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2741-rom",
+      "Name": "\u4F19\u623F\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/47",
+        "headReference[0].id": "client:npc-head/47"
+      },
+      "RecordHash": "382087E8C1A91DF83A9C307750C256099F3F0564CFD18172518496890837D566"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2742-rom",
+      "Name": "\u626B\u5730\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/48",
+        "headReference[0].id": "client:npc-head/48"
+      },
+      "RecordHash": "4A0A8B760E5B619C53F5C79769460F23A468309E4E3A65DA62D72BE18DBE16C5"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2743-rom",
+      "Name": "\u8336\u6C34\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/49",
+        "headReference[0].id": "client:npc-head/49"
+      },
+      "RecordHash": "C74E37C25D914B971176EB91C8C56F36798A80509CE1431E3CAFFB67AB704044"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2744-rom",
+      "Name": "\u5B88\u95E8\u5E08\u5085",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/50",
+        "headReference[0].id": "client:npc-head/50"
+      },
+      "RecordHash": "4D2E4EA63C32419A264145F814E0C4FBB3FA8E4A1F3C77AE8B2CF8F816347A46"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2745-rom",
+      "Name": "\u767D\u72D0",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/51",
+        "headReference[0].id": "client:npc-head/51"
+      },
+      "RecordHash": "3410D57A6DBF1794516B62FBBD9C8E7BD8CF735E623F7322D2809CE462947D0B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2746-rom",
+      "Name": "\u4ED9\u7AE5\u4E00",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/52",
+        "headReference[0].id": "client:npc-head/52"
+      },
+      "RecordHash": "7273E8FF90C10BFEAF3B2B6F8094FB4630A967B56128F1F548F8C07C3B0B7C85"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2747-rom",
+      "Name": "\u4ED9\u7AE5\u4E8C",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/53",
+        "headReference[0].id": "client:npc-head/53"
+      },
+      "RecordHash": "6D4FE2286DC7CC170DF00305D55327CDA59D6ADFA9A9F9FE188AAC527824F244"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2748-rom",
+      "Name": "\u8001\u4EBA\u5973C",
+      "References": {},
+      "RecordHash": "C211E6B92C5EA56EBFB5511BC7C406A3F820CF9236CCFC44B61D16E072749D30"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2749-rom",
+      "Name": "\u5C0F\u5B69\u7537B",
+      "References": {},
+      "RecordHash": "2F02CC70156AC136FDFA9C6CC9E58DDA3B2CA3FFA14B951D652E39524B184563"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2750-rom",
+      "Name": "\u5C0F\u5B69\u7537C",
+      "References": {},
+      "RecordHash": "38F282AE7D6D629B6432887929334D0929CCB12D5C58D7AD9C3513FB1D0E8777"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2751-rom",
+      "Name": "\u5C0F\u5B69\u5973B",
+      "References": {},
+      "RecordHash": "15FA99F8F36058639F448323C1DCB02A240270EA4E0EC446A9D1E85F238F95C9"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2752-rom",
+      "Name": "\u6709\u94B1\u5458\u5916",
+      "References": {},
+      "RecordHash": "6CB01F06F3A94518C3F8652573B6325A9DE8B55F86EE59E259683981A461AEEB"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2753-rom",
+      "Name": "\u4E5E\u4E10",
+      "References": {},
+      "RecordHash": "C2BB0DDD48BF8966004AC436038D85637B881AC3AFBB3D63589E6437C5C9C494"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2754-rom",
+      "Name": "\u516C\u5B50\u54E5",
+      "References": {},
+      "RecordHash": "15AC13B5714A04D3DA891F7D5193745D7BB6FC42DC7B4F874E887E6781A8118B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2755-rom",
+      "Name": "\u592B\u5B50",
+      "References": {},
+      "RecordHash": "B4667D21AA0F09F5F49B0EB16755946116CD766CF5B507E64A0AF35FC41439C1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2756-rom",
+      "Name": "\u5927\u592B",
+      "References": {},
+      "RecordHash": "612F60FEA6959A049C3D97EC953B42BBC911644F5552FD52700DEBF701382A2D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2757-rom",
+      "Name": "\u5973\u5927\u592B",
+      "References": {},
+      "RecordHash": "3BC35853A64CA3533B60D3A3382ED578A991E9FA683007F31E190E4DDE770953"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2758-rom",
+      "Name": "\u7B97\u547D\u5E08",
+      "References": {},
+      "RecordHash": "CB61C94573F8CB83B6199CAE2F0B1715409EA367D6272D3F246191A670CA5415"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2759-rom",
+      "Name": "\u548C\u5C1A",
+      "References": {},
+      "RecordHash": "256A3F6F3840902A9F730B39F5310828CAFBE59DCD3CC0AE2CD1885BD95B534B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2760-rom",
+      "Name": "\u5C3C\u59D1",
+      "References": {},
+      "RecordHash": "1009BF70B7F2084BE5260A0CC73B782730DAD1C82C21980C31ACC7F7377F97BD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2761-rom",
+      "Name": "\u5934\u9640",
+      "References": {},
+      "RecordHash": "FC471C84DEDF3E5D7CF4933F5EF0328AF40FCC8613C5C0429407A0DE8B478772"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2762-rom",
+      "Name": "\u6751\u59D1",
+      "References": {},
+      "RecordHash": "1155E76F63ECB5D4494E6EFAEAB73E49258CF241895DC6515EC2E9E2236B4A59"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2763-rom",
+      "Name": "\u5E74\u8F7B\u5973\u5B50",
+      "References": {},
+      "RecordHash": "727B4169C01861BC0D2F5EFFC59C4860F13BB39018EA86AE396731F682239A03"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2764-rom",
+      "Name": "\u5993\u5973",
+      "References": {},
+      "RecordHash": "48CEFBE0873BABA636F3EBC429EF51FB6DC69682CF2624493F854627A5820D13"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2765-rom",
+      "Name": "\u6C11\u5175\u961F\u957F",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/58",
+        "headReference[0].id": "client:npc-head/58"
+      },
+      "RecordHash": "908C0A83EE625B58CD6F35EC661A167A95C2CE46F4DFBEA0517230411700F817"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2767-rom",
+      "Name": "\u5E97\u5C0F\u4E8C",
+      "References": {},
+      "RecordHash": "FE7615F16F317FEB31B649DE924CD5CAEEBF6DFD47238F038BF76659388FE987"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2768-rom",
+      "Name": "\u8001\u9E28",
+      "References": {},
+      "RecordHash": "7A3256E71A0C3FDE427C8A4ECFF3296381051DF4DEAF2CF88AF5E6AAF989ED19"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2769-rom",
+      "Name": "\u666E\u901A\u6751\u5973",
+      "References": {},
+      "RecordHash": "1891D6D473CFD537267F08994A23FE3972E871F5725F336784F2CA626142C9E8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2770-rom",
+      "Name": "\u4ED5\u5973",
+      "References": {},
+      "RecordHash": "E086E0AC36E6CC96438233981533AA9E8C600CA3544E5E32CF7ABA93F02DEFE5"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2771-rom",
+      "Name": "\u5546\u4EBA1",
+      "References": {},
+      "RecordHash": "C07E3348497B170A876952C893BB6C4C9CA2D51222FF453C17443C87EBF3114D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2772-rom",
+      "Name": "\u5546\u4EBA2",
+      "References": {},
+      "RecordHash": "05920FF28E452851826C0FF5E7FE2E0BC4E5A4434B264F1253F26604A981421B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2773-rom",
+      "Name": "\u732B",
+      "References": {},
+      "RecordHash": "85E0129EF97DD6DB243667FB9CCBAF2B78AC5EF39E98DA3CF6B9F527AEF00C4D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2774-rom",
+      "Name": "\u72D7",
+      "References": {},
+      "RecordHash": "B00938B241CACD472C951D7888AF110B62241012C8C9C00F9FB8C0D2E41E0A57"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2775-rom",
+      "Name": "\u6454\u8DE4\u624B",
+      "References": {},
+      "RecordHash": "4D8287F3C281F6A9660D7DFB2A481E7E802B30DBE275A401CEB016D6FFBD17A7"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2776-rom",
+      "Name": "\u72D0\u72F8\u5C0F\u5B691",
+      "References": {},
+      "RecordHash": "AFA853FF0A1B39116AC449F3DF8EC727B1CB69558F5F22857F54C9BEC13A7E19"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2777-rom",
+      "Name": "\u72D0\u72F8\u5C0F\u5B692",
+      "References": {},
+      "RecordHash": "C523803085247BE4C6868B7A180BAADDBAA9DB1DE1D7B45CA6E058D919DD9B61"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2778-rom",
+      "Name": "\u72D0\u72F8\u5C0F\u5B693",
+      "References": {},
+      "RecordHash": "D7D896C854B11EC39FD395CBFD2B00BA70AC617911AEDB68C24D6DF60555F3CE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2779-rom",
+      "Name": "\u72D0\u72F8\u75371",
+      "References": {},
+      "RecordHash": "276D54334D2B3B630209AF8168ED3BDA037A6EB566976E64288E7B627B2C4AC9"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2780-rom",
+      "Name": "\u72D0\u72F8\u75372",
+      "References": {},
+      "RecordHash": "ABEDCD7329D3D3C89A19EFD4FE0FAC56ED921064EC7D7F826488297032AAA468"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2781-rom",
+      "Name": "\u72D0\u72F8\u75373",
+      "References": {},
+      "RecordHash": "DBBB3BFB9D333E7ECD0AF0A9E77F5BBFFBE24330E6805A331D2AA5FA9BE505EA"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2782-rom",
+      "Name": "\u72D0\u72F8\u59731",
+      "References": {},
+      "RecordHash": "1D120F8C0A1E70C56CB845075E6F66C6436DCABF1DA913CC9267218233A15DA4"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2783-rom",
+      "Name": "\u72D0\u72F8\u5546",
+      "References": {},
+      "RecordHash": "6BA21132E19630773CAAA4BB84046812D5E93B1BDCA8D474706F6634384C0234"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2784-rom",
+      "Name": "\u72D0\u72F8\u8001\u75371",
+      "References": {},
+      "RecordHash": "9120FF161B904C7DBA270335F35192285DEA3A6CB4A383E21FA61037DA8AC7B0"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2785-rom",
+      "Name": "\u72D0\u72F8\u8001\u75372",
+      "References": {},
+      "RecordHash": "541978CBC18436C94BFE6E131C775324E2C39BFE0F5D2CDBF6AB252214E9E1BB"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2786-rom",
+      "Name": "\u72D0\u72F8\u8001\u59731",
+      "References": {},
+      "RecordHash": "E8D0F098B1932B79F0D78D8CEA1609FFE225EDDF88AEB675FA1E69411A8D32A8"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2787-rom",
+      "Name": "\u72D0\u72F8\u8001\u59732",
+      "References": {},
+      "RecordHash": "BA1F45738E84783422F205025FEEA0E37FE3F8603A6F0D177A0C6D5AAA26FE75"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2788-rom",
+      "Name": "\u72D0\u72F8\u75374",
+      "References": {},
+      "RecordHash": "C9FEF5DFB48CEC74DBFA280596C19E0BF74623AD77D16FC4907CE1AADF145FFC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2789-rom",
+      "Name": "\u72D0\u72F8\u59732",
+      "References": {},
+      "RecordHash": "1D9A7596F77BE874C06D83408C6559A2EBEFCE94BAF7C9E3BFCB3FBEF8F46F62"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2801-rom",
+      "Name": "\u725B",
+      "References": {},
+      "RecordHash": "4035A93DAF3B4CF269110A4616B208D7E69C0400B65AA4EBD1D27FA385796B34"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2803-rom",
+      "Name": "\u9A6C",
+      "References": {},
+      "RecordHash": "151FBD8511A9C8C3E460DF9B240CF94139A6CD68E4CAD1D47AEA4E4C27B2B7C6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2805-rom",
+      "Name": "\u7266\u725B",
+      "References": {},
+      "RecordHash": "85094207AA5E9E1C832D1B32BBAD2B0B0D4406C8A3A4CA4280653DFDA69440C7"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2806-rom",
+      "Name": "\u9E7F",
+      "References": {},
+      "RecordHash": "2FA09CBC0C419F6A0BEC7D2AD2F979F42A77CD8931EAC794D7C50B95D31385D4"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2901-rom",
+      "Name": "\u59DC\u5B50\u7259",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/36",
+        "headReference[0].id": "client:npc-head/36"
+      },
+      "RecordHash": "19092F90DEAC1AB0235354AD94C14D833B975DCFFCA6A90FA787DA33D2A361C6"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2902-rom",
+      "Name": "\u9093\u8749\u7389",
+      "References": {},
+      "RecordHash": "45E8849BD0E070FA9F4AB708F7FC5F6E149E7246611EE3762E2856FFFD940894"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2903-rom",
+      "Name": "\u6768\u622C",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/29",
+        "headReference[0].id": "client:npc-head/29"
+      },
+      "RecordHash": "41DC15B767D9188665933CA9582DD2D1564F28EE1661562651AA6C2E4B5D34E2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2904-rom",
+      "Name": "\u738B\u8D35\u4EBA",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/41",
+        "headReference[0].id": "client:npc-head/41"
+      },
+      "RecordHash": "6F065F959FA3BA1313BF60CA4C5AFBE6418F762516BDEB6CF7739CD7D07854F4"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2905-rom",
+      "Name": "\u95FB\u4EF2",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/34",
+        "headReference[0].id": "client:npc-head/34"
+      },
+      "RecordHash": "887667468A37AC3B606D1A9E0DC3DF8FED5E447C40C49F1EEC1B9BE0860A5B0D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2906-rom",
+      "Name": "\u9F99\u5409\u516C\u4E3B",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/32",
+        "headReference[0].id": "client:npc-head/32"
+      },
+      "RecordHash": "95322B16733E34923891BC403E7959D14FC4996D65D9D9394EEDA6E0E1210D04"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2907-rom",
+      "Name": "\u54EA\u54A4",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/28",
+        "headReference[0].id": "client:npc-head/28"
+      },
+      "RecordHash": "A734523E8645AE9DDADD92E4326BFD464DA7C7361455297CAC8BCCBBDA15CC80"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2908-rom",
+      "Name": "\u59B2\u5DF1",
+      "References": {},
+      "RecordHash": "A1FE678AC867DABD0FD45141B3FAD9B7B7C17F015AB4795CD0441CF982098F2B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2909-rom",
+      "Name": "\u7533\u516C\u8C79",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/38",
+        "headReference[0].id": "client:npc-head/38"
+      },
+      "RecordHash": "90266FDF1911BCD113F330076436B351F0FE8876D6810663EDF68DE6B1D018C9"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2910-rom",
+      "Name": "\u80E1\u559C\u5A9A",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/40",
+        "headReference[0].id": "client:npc-head/40"
+      },
+      "RecordHash": "A092A9901E312640E808AFFBF66FBEB17AA68F858883345ACCA50C0AD9A4A00F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2911-rom",
+      "Name": "\u4E91\u9704\u4E09\u59CA\u59B9",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/33",
+        "headReference[0].id": "client:npc-head/33"
+      },
+      "RecordHash": "D82CAA9860E3F42A2169E88753E9712A9635D9AA92573A8281E85BBA6136E5BE"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2912-rom",
+      "Name": "\u8D75\u516C\u660E",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/31",
+        "headReference[0].id": "client:npc-head/31"
+      },
+      "RecordHash": "DCB9AF4E8F9F12C71A575EFBB282016DD82864D05126CB6045966AA7D7C43883"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2913-rom",
+      "Name": "\u9EC4\u98DE\u864E",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/35",
+        "headReference[0].id": "client:npc-head/35"
+      },
+      "RecordHash": "A1047044F496F89E6F1E5788F566BBA14B6CD29607F1D17F77DABACD8DD752EC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2914-rom",
+      "Name": "\u96F7\u9707\u5B50",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/37",
+        "headReference[0].id": "client:npc-head/37"
+      },
+      "RecordHash": "3C6AAE29F783AB2318C196D33B29BCFAEE05D1B4F9B8F1544BAD630B9DBC47D1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2915-rom",
+      "Name": "\u592A\u4E59\u771F\u4EBA",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/39",
+        "headReference[0].id": "client:npc-head/39"
+      },
+      "RecordHash": "829FFFE0B3C359F4010229159E1588E078FB4EB7E02E72D0DC48869AF35D2563"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2916-rom",
+      "Name": "\u9EC4\u5929\u5316",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/30",
+        "headReference[0].id": "client:npc-head/30"
+      },
+      "RecordHash": "8F85A7FA2E2DEC662DC1FD6842A34D2EA9150B290569D3D49CFBBA1BCF61428F"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2917-rom",
+      "Name": "\u6B66\u5409",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/13",
+        "headReference[0].id": "client:npc-head/13"
+      },
+      "RecordHash": "A4650D1ACFEEBFDCD02E83FA65F68C71F26882BDB4CBE4B571CECF5B0F8A7C17"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2918-rom",
+      "Name": "\u5F20\u594E",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/14",
+        "headReference[0].id": "client:npc-head/14"
+      },
+      "RecordHash": "686D7094B4108C5476B8C54D424B5A98A4685FABFDB65621A9CE3B909087C7CD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2919-rom",
+      "Name": "\u9AD8\u5170\u82F1",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/15",
+        "headReference[0].id": "client:npc-head/15"
+      },
+      "RecordHash": "79D961E131245CF700BEB20C2232035C23152936C30EC2E2D902122B5871DEE5"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2920-rom",
+      "Name": "\u6148\u822A\u9053\u4EBA",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/17",
+        "headReference[0].id": "client:npc-head/17"
+      },
+      "RecordHash": "E0F6913BE84B947AFD7B53283524BFFFB09F6A3109E4A360A7F86FDD51BAA74C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2921-rom",
+      "Name": "\u7389\u9F0E\u771F\u4EBA",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/18",
+        "headReference[0].id": "client:npc-head/18"
+      },
+      "RecordHash": "F931D16492D75C7A1A22C9194EE57786626B7B4644DF5E93EED0BAB3A3D826C2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2922-rom",
+      "Name": "\u77F3\u77F6\u5A18\u5A18",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/19",
+        "headReference[0].id": "client:npc-head/19"
+      },
+      "RecordHash": "09DFB2657E4DD57C1743675870D4FA1B58E53E8D5DA072977611239C29ACE12A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2923-rom",
+      "Name": "\u6768\u4EFB",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/20",
+        "headReference[0].id": "client:npc-head/20"
+      },
+      "RecordHash": "761004163540C36394DAA33F2C1012A83EA89B47EC41B6ADB6FEC45CD411E326"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2924-rom",
+      "Name": "\u5D07\u9ED1\u864E",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/22",
+        "headReference[0].id": "client:npc-head/22"
+      },
+      "RecordHash": "6A90B9551643FA1D3A277E70F120BB2370E96B837E7F156926DA49428950ACD3"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2925-rom",
+      "Name": "\u674E\u9756",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/21",
+        "headReference[0].id": "client:npc-head/21"
+      },
+      "RecordHash": "1449EF20E54D45F854A00D6F8D1C5295DB126A1E3E5D88D1AC8825229DD1AD1D"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2926-rom",
+      "Name": "\u91D1\u5149\u5723\u6BCD",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/23",
+        "headReference[0].id": "client:npc-head/23"
+      },
+      "RecordHash": "0778592B67576BB29C82A32A91BB7BDE16A5D6FB57DE496C8D7C5F14BCD7363B"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2927-rom",
+      "Name": "\u8D64\u7CBE\u5B50",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/24",
+        "headReference[0].id": "client:npc-head/24"
+      },
+      "RecordHash": "A6493A86F7E585E227D8EE1A7B56D8B130F99328AED1445920564EC04737665A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2928-rom",
+      "Name": "\u571F\u884C\u5B59",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/25",
+        "headReference[0].id": "client:npc-head/25"
+      },
+      "RecordHash": "63A7B5CE0777E7FDA0F54DD1E583B72CFE7FDB48B94ECC25CA3BEF5AA600C23C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2929-rom",
+      "Name": "\u4E91\u4E2D\u5B50",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/26",
+        "headReference[0].id": "client:npc-head/26"
+      },
+      "RecordHash": "64F2CE1607C35D169A3E408F88B8A8C9FFC25BBF83FF3579F0AAA46670CE102C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2930-rom",
+      "Name": "\u666E\u8D24\u771F\u4EBA",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/27",
+        "headReference[0].id": "client:npc-head/27"
+      },
+      "RecordHash": "F5E491B26F2BE55F2061BCEC494120648A3B9051E7D01DD787F2ACBB0DDEF21C"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2931-rom",
+      "Name": "\u9EC4\u5E1D",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/95",
+        "headReference[0].id": "client:npc-head/95"
+      },
+      "RecordHash": "D56AB4F5251FACBD8B21AC69FAC2E08B5170A5C05B01D1A623F27C259F78C177"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2932-rom",
+      "Name": "\u795E\u519C",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/55",
+        "headReference[0].id": "client:npc-head/55"
+      },
+      "RecordHash": "8F32B01581346671131DB7728EBDDE4FA63350ED610C91416BABD2A1C02C2CBD"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2933-rom",
+      "Name": "\u4F0F\u7FB2",
+      "References": {
+        "crossReferences[0].targetIds[0]": "client:npc-head/54",
+        "headReference[0].id": "client:npc-head/54"
+      },
+      "RecordHash": "775785EE256E07CF53F6B70DB652BEE9B2FE2B9D310F9E1A1FF40FC007713296"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc2934-rom",
+      "Name": "\u5973\u5A32",
+      "References": {},
+      "RecordHash": "3E16353D86AE700CA5B5F243FF36E808131A2B751C0F5256AAEB1038269C7CBC"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc3017-rom",
+      "Name": "\u6D1E\u5E9C\u661F\u541B(\u7537)",
+      "References": {},
+      "RecordHash": "5CA57309F6115D7DFAB74E832C7359C7ADF18FCD6C097374B700C68DBC2E5CA2"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc3018-rom",
+      "Name": "\u6D1E\u5E9C\u661F\u541B(\u5973)",
+      "References": {},
+      "RecordHash": "A24038011D7F1A72293E6366C6E011A8A2FB890FAA3429471F38223DF418C16A"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc3025-rom",
+      "Name": "\u57CE\u9547\u4F20\u9001\u70B9",
+      "References": {},
+      "RecordHash": "81A90A48741C86B4806178E6BA9A4D5EF9513660447674AAF3000A3A3AE6E76E"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc3026-rom",
+      "Name": "\u6D1E\u5E9C\u661F\u541B\u7537",
+      "References": {},
+      "RecordHash": "66284CE292E2E55B915AC2418AC296E8441D957B5401ABAC67B228243D1D5FB1"
+    },
+    {
+      "Id": "client:npc-template/data2/rom/npc/npc3027-rom",
+      "Name": "\u6D1E\u5E9C\u661F\u541B\u5973",
+      "References": {},
+      "RecordHash": "2326BC6409E80D2223E4C4ED85DDD72265B1A3E76A7D9D7E5F76502748FE1A09"
+    },
+    {
+      "Id": "client:npc-template/e-play\u725B\u4ED4",
+      "Name": "e-play\u725B\u4ED4",
+      "References": {},
+      "RecordHash": "E9C3720259253144446071A04EAE31F9348906E9E98F0A280A1ACB8C0811053F"
+    },
+    {
+      "Id": "client:npc-template/\u4E94\u70B9\u6843\u82B1\u9A79",
+      "Name": "\u4E94\u70B9\u6843\u82B1\u9A79",
+      "References": {},
+      "RecordHash": "1232B91DE71676BD4DEE4E43FC29EF9FC52ECDC2684C0E35670BC5D23BD12B59"
+    },
+    {
+      "Id": "client:npc-template/\u4E94\u8272\u795E\u725B",
+      "Name": "\u4E94\u8272\u795E\u725B",
+      "References": {},
+      "RecordHash": "C04A2B6EA09CE64F69358F0E481031576888E133B8F807320E194646BEAAF5FA"
+    },
+    {
+      "Id": "client:npc-template/\u5973\u4EBA-d1",
+      "Name": "\u5973\u4EBA d1",
+      "References": {},
+      "RecordHash": "D9ECA2491AC89F1425557EC65B6F20EE1CCA130B5E100FFB7334B45A611F3F13"
+    },
+    {
+      "Id": "client:npc-template/\u5973\u4EBA-d2",
+      "Name": "\u5973\u4EBA d2",
+      "References": {},
+      "RecordHash": "7CADA257CC3DFD942571B2BA620BF549B90C4D079771F0FB25CBC54C6328E3E1"
+    },
+    {
+      "Id": "client:npc-template/\u5973\u5B69-f1",
+      "Name": "\u5973\u5B69 f1",
+      "References": {},
+      "RecordHash": "CBDCEA1CEF3A865B37787F8ED142F15C6D669082855A24CC45F960F66155B5B9"
+    },
+    {
+      "Id": "client:npc-template/\u5973\u5B69-f2",
+      "Name": "\u5973\u5B69 f2",
+      "References": {},
+      "RecordHash": "A6429879FF3C274BA7C6E621E8933F4B3F2D811EF1DC0A3CEB36AF7D6F332F83"
+    },
+    {
+      "Id": "client:npc-template/\u5DE8\u864E",
+      "Name": "\u5DE8\u864E",
+      "References": {},
+      "RecordHash": "2CB5FD3FB31510EAAB3677E14535AC7A638E6773DA8342F7A39AB908E8CB62EB"
+    },
+    {
+      "Id": "client:npc-template/\u677F\u89D2\u9752\u725B",
+      "Name": "\u677F\u89D2\u9752\u725B",
+      "References": {},
+      "RecordHash": "213A70E581C44CD0E5CEE082A8E56E72D2DFC656DDCDB9FC85DF0EBF517FDF8D"
+    },
+    {
+      "Id": "client:npc-template/\u6C11\u5175\u58EB\u5175",
+      "Name": "\u6C11\u5175\u58EB\u5175",
+      "References": {},
+      "RecordHash": "02E9B36BEAC95B5CD75D07BD1E8FE48CA64BB7C9758BA6CCF9FF2E32FC3FD039"
+    },
+    {
+      "Id": "client:npc-template/\u7537\u4EBA-c1",
+      "Name": "\u7537\u4EBA c1",
+      "References": {},
+      "RecordHash": "92C5ECBD504D1EA9ED2895BC4DD6D6540483D538366D29FE5144387D919ADFE7"
+    },
+    {
+      "Id": "client:npc-template/\u7537\u4EBA-c2",
+      "Name": "\u7537\u4EBA c2",
+      "References": {},
+      "RecordHash": "15D83A45A0C360B11BFD4F5767BDB10E76B4A04C485308648A14154140772D2D"
+    },
+    {
+      "Id": "client:npc-template/\u7537\u5B69-e1",
+      "Name": "\u7537\u5B69 e1",
+      "References": {},
+      "RecordHash": "6E47B135B40D89E27697F0688A91A07F51EE469FC792D8E7A40EACF21A2E4308"
+    },
+    {
+      "Id": "client:npc-template/\u7537\u5B69-e2",
+      "Name": "\u7537\u5B69 e2",
+      "References": {},
+      "RecordHash": "BE973C7D9C5B43343E6AE57606327B433B0520BF3A6528E57E30B890BFB8DA7E"
+    },
+    {
+      "Id": "client:npc-template/\u8001\u5973-b1",
+      "Name": "\u8001\u5973 b1",
+      "References": {},
+      "RecordHash": "46CDFD104882A2265C7F5A9CFC39B4C3990642401F5C91095F7AFABB62BF5222"
+    },
+    {
+      "Id": "client:npc-template/\u8001\u5973-b2",
+      "Name": "\u8001\u5973 b2",
+      "References": {},
+      "RecordHash": "7C0A649F0104BCBB874B5CE6CB714BA6660858D67E82DD82A42FA6B97B2FE595"
+    },
+    {
+      "Id": "client:npc-template/\u8001\u7537-a1",
+      "Name": "\u8001\u7537 a1",
+      "References": {},
+      "RecordHash": "18B735841920A52A4A29C197B4DD7CFAEBF6356133674F5C773F6EC261C0A0FD"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "world-content-recovery-phase41-v1",
+  "phase": "Phase 4.1 - World Content Recovery",
+  "generatedAtUtc": "2026-07-30T02:35:00Z",
+  "scope": "Map Runtime, Entity Manager, Spawn Pipeline, Database content. NPC packet recovery is stopped until data/runtime evidence exists.",
+  "frozenBaseline": {
+    "firstContactGolden": "PASS",
+    "worldBootstrap": "COMPLETE",
+    "playerSpawnBuilder": "COMPLETE",
+    "heartbeat": "COMPLETE",
+    "walkingMountCoordinateScale": "Deferred"
+  },
+  "currentRuntimeMap": {
+    "status": "FROZEN_BOOTSTRAP_ONLY",
+    "mapId": "UNRESOLVED_FROM_DB",
+    "sceneId": "UNRESOLVED_FROM_DB",
+    "region": "UNRESOLVED_FROM_DB",
+    "loaded": true,
+    "evidence": "OfficialClientWorldProtocolFrames.BuildWorldBootstrapAfterHandshake sends the frozen 1778-byte world bootstrap and promotes the world connection to InWorld without DB-backed map binding."
+  },
+  "runtimeEntityManager": {
+    "status": "ABSENT_FOR_WORLD_CONTENT",
+    "players": 1,
+    "npcs": 0,
+    "monsters": 0,
+    "portals": 0,
+    "merchants": 0,
+    "objects": 0,
+    "evidence": "Runtime has CharacterRuntimeRegistry for selected/in-world characters; no DB-backed world EntityManager or static entity registry is wired into InWorld bootstrap/broadcast."
+  },
+  "spawnPipeline": {
+    "mapLoad": "FROZEN_BOOTSTRAP_ONLY",
+    "entityLoad": "NOT_IMPLEMENTED_FOR_WORLD_RUNTIME",
+    "spawnQueue": {
+      "exists": false,
+      "entityCount": 0
+    },
+    "broadcast": {
+      "sent": false,
+      "serverToClientAfterWorldReady": 0
+    },
+    "evidence": "World capture matrix after WorldReady contains 79 packets, all ClientToServer; ServerToClient post-bootstrap count is 0."
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "database": "god2",
+    "characters": 0,
+    "maps": 69,
+    "npcs": {
+      "total": 319,
+      "mappedToAnyMap": 0,
+      "unmapped": 319
+    },
+    "monsters": {
+      "templates": 208,
+      "spawns": 0
+    },
+    "portals": {
+      "total": 68,
+      "mapsWithSourcePortals": 4
+    },
+    "merchants": {
+      "total": 16,
+      "mappedToAnyMap": 0,
+      "unmapped": 16
+    },
+    "contentMapsWithNonzeroRows": [
+      {
+        "mapId": 582977555,
+        "mapCode": "r_95c6b2d1a61fe5ee65f4c0b98803c57b",
+        "mapName": "battle training rooms",
+        "npcCount": 0,
+        "monsterSpawnCount": 0,
+        "portalCount": 19,
+        "merchantCount": 0
+      },
+      {
+        "mapId": 1785918668,
+        "mapCode": "r_b720effd89db741cf7bb9830f6a01bee",
+        "mapName": "Fenghua town candidate",
+        "npcCount": 0,
+        "monsterSpawnCount": 0,
+        "portalCount": 18,
+        "merchantCount": 0
+      },
+      {
+        "mapId": 2098421215,
+        "mapCode": "r_5abc37d38d4b8fcd63d1b1550262bb09",
+        "mapName": "Kunlun fairyland 3",
+        "npcCount": 0,
+        "monsterSpawnCount": 0,
+        "portalCount": 15,
+        "merchantCount": 0
+      },
+      {
+        "mapId": 2126413522,
+        "mapCode": "r_9d735f718c643f55c08e57dbe524dfd7",
+        "mapName": "Tong map group",
+        "npcCount": 0,
+        "monsterSpawnCount": 0,
+        "portalCount": 13,
+        "merchantCount": 0
+      }
+    ]
+  },
+  "decision": {
+    "npcPacketRecovery": "STOPPED",
+    "reason": "The current world has no runtime NPC entities and no NPC rows mapped to any DB map. Recovering NpcSpawn packet would be guessing before data/runtime spawn evidence exists.",
+    "nextRequiredWork": "Recover DB-backed world content loading: bind selected character/world bootstrap map to a DB map, map NPC/Merchant rows to maps, add world EntityManager, spawn queue, then verify broadcast before resuming NPC S2C packet recovery."
+  },
+  "regression": {
+    "releaseBuild": "PASS full solution Release build; 0 warnings, 0 errors",
+    "phase4AndPhase41EvidenceGate": "PASS 2/2",
+    "goldenClientRegression": "UNCHANGED_FROM_FREEZE; no launcher/client rerun in this content diagnosis pass"
+  },
+  "firstBlocker": "World content runtime is frozen-bootstrap-only: no DB-backed map/session binding, NPC rows are all unmapped, monster spawns are empty, and no spawn queue/broadcast exists after InWorld."
+}

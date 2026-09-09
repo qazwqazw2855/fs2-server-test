@@ -1,0 +1,279 @@
+{
+    "schemaVersion":  1,
+    "generatedAt":  "2026-07-28T16:20:04.7574371+08:00",
+    "source":  "Existing evidence only; no new client/server E2E executed.",
+    "officialClientPath":  {
+                               "required":  [
+                                                "TRANSPORT_CONNECTED",
+                                                "LOGIN_SOCKET_ACCEPTED",
+                                                "SESSION_CREATED",
+                                                "SESSION_TOKEN_ISSUED",
+                                                "HEARTBEAT_ACCEPTED",
+                                                "TRANSPORT_STABLE",
+                                                "LOGIN_REQUEST_RECEIVED",
+                                                "ACCOUNT_AUTHENTICATED",
+                                                "LOGIN_RESPONSE_ACCEPTED",
+                                                "WORLD_TRANSFER_TOKEN_ISSUED",
+                                                "CHARACTER_LIST_SENT",
+                                                "CHARACTER_SELECTED",
+                                                "WORLD_TRANSFER_VALIDATED",
+                                                "PLAYER_ENTERED_WORLD"
+                                            ],
+                               "observed":  [
+                                                "CLIENT_PROCESS_STARTED",
+                                                "CLIENT_WINDOW_READY",
+                                                "LOGIN_UI_READY",
+                                                "CREDENTIALS_ENTERED"
+                                            ],
+                               "firstMissing":  "LOGIN_SOCKET_ACCEPTED",
+                               "blocker":  "Visible Official Client does not yet prove a socket accept/session path against staging LoginServer."
+                           },
+    "directServerE2EPath":  {
+                                "status":  "PASS_FROZEN",
+                                "note":  "Used only as server regression evidence; not counted as OfficialClientTransport PASS.",
+                                "observed":  [
+                                                 "LoginAccepted",
+                                                 "CharacterListReady",
+                                                 "CharacterSelected",
+                                                 "WorldTransferStarted",
+                                                 "WorldSessionEstablished",
+                                                 "PlayerEnteredWorld"
+                                             ],
+                                "evidence":  "Reports/BuiltInOfficialClientE2E/20260728-080552/summary.json"
+                            },
+    "packetFamilies":  [
+                           {
+                               "family":  "Launcher",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "OutOfRuntimeScope",
+                               "evidence":  [
+                                                "Official Launcher opened official client"
+                                            ]
+                           },
+                           {
+                               "family":  "Login",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "BaselineKnownBeforeToday",
+                               "evidence":  [
+                                                "Official login reached server selection and character flow"
+                                            ]
+                           },
+                           {
+                               "family":  "CharacterList",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Official server selection and character screen displayed"
+                                            ]
+                           },
+                           {
+                               "family":  "CharacterCreate",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/create-character-success.json"
+                                            ]
+                           },
+                           {
+                               "family":  "CharacterDelete",
+                               "officialVisualStatus":  "NotCapturedToday",
+                               "rawOpcodeStatus":  "NOT_YET_RECOVERED",
+                               "evidence":  [
+
+                                            ]
+                           },
+                           {
+                               "family":  "CharacterRename",
+                               "officialVisualStatus":  "NotCapturedToday",
+                               "rawOpcodeStatus":  "NOT_YET_RECOVERED",
+                               "evidence":  [
+
+                                            ]
+                           },
+                           {
+                               "family":  "CharacterSelect",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "BaselineKnownBeforeToday",
+                               "evidence":  [
+                                                "Official enter-world success notes"
+                                            ]
+                           },
+                           {
+                               "family":  "WorldTransfer",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "BaselineKnownBeforeToday",
+                               "evidence":  [
+                                                "Official enter-world success notes"
+                                            ]
+                           },
+                           {
+                               "family":  "Heartbeat",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "VerifiedLocalRaw",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/idle-baseline.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Movement",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "VerifiedLocalRawFamilyOnly",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+                                            ],
+                               "subfamilies":  [
+                                                   {
+                                                       "name":  "WalkingMovement",
+                                                       "officialVisualStatus":  "Observed",
+                                                       "rawOpcodeStatus":  "VerifiedLocalRawFamilyOnly",
+                                                       "evidence":  [
+                                                                        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-1.json",
+                                                                        "Artifacts/GameplayPacketRecovery/Latest/action-correlations/movement-step-2.json",
+                                                                        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/walking-movement-one-click-1.json"
+                                                                    ]
+                                                   },
+                                                   {
+                                                       "name":  "MountedMovement",
+                                                       "officialVisualStatus":  "Observed",
+                                                       "rawOpcodeStatus":  "NotRecoveredToday",
+                                                       "evidence":  [
+                                                                        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-1.json",
+                                                                        "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mounted-movement-one-click-2.json"
+                                                                    ],
+                                                       "mountAnalysis":  "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+                                                   }
+                                               ],
+                               "mountAnalysis":  "Cannot choose A/B/C/D yet. Official visual evidence proves mounted movement occurred, but raw movement frames were not recovered from official pcapng."
+                           },
+                           {
+                               "family":  "NPC",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "CandidateLocalRawOnly",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/npc-interact-1.json",
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/fist-master-dialog-opened.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Merchant",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/merchant-buy-interface-opened.txt",
+                                                "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-sell-success.txt",
+                                                "Artifacts/OfficialServerCapture/20260726-160753-UU-post-battle/action-notes/merchant-buy-success.txt"
+                                            ]
+                           },
+                           {
+                               "family":  "Inventory",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NoServerPacketIsolatedForOpen",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/inventory-open-2.json",
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/inventory-window-opened.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Item",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Official notes: item gain, mount item use, crafting materials, rewards"
+                                            ]
+                           },
+                           {
+                               "family":  "Quest",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-accepted-task-journal-visible.json",
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/quest-complete-weapon-master.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Portal",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/portal-map-transfer-success.json"
+                                            ]
+                           },
+                           {
+                               "family":  "MapTransfer",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/training-room-map-transfer-success.json",
+                                                "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/map-transfer-to-fenghua-town.txt"
+                                            ]
+                           },
+                           {
+                               "family":  "Mount",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/mount-success.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Unmount",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-132540/action-notes/dismount-success.json"
+                                            ]
+                           },
+                           {
+                               "family":  "Combat",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Artifacts/OfficialServerCapture/20260726-145358/action-notes/battle-started.json",
+                                                "Artifacts/OfficialServerCapture/20260726-154723-UU-merchant-retry/action-notes/battle-result-exp-48.txt"
+                                            ]
+                           },
+                           {
+                               "family":  "Skill",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NotRecoveredToday",
+                               "evidence":  [
+                                                "Official user note: character used skill during battle"
+                                            ]
+                           },
+                           {
+                               "family":  "Drop",
+                               "officialVisualStatus":  "NotCapturedToday",
+                               "rawOpcodeStatus":  "NOT_YET_RECOVERED",
+                               "evidence":  [
+
+                                            ]
+                           },
+                           {
+                               "family":  "Pickup",
+                               "officialVisualStatus":  "NotCapturedToday",
+                               "rawOpcodeStatus":  "NOT_YET_RECOVERED",
+                               "evidence":  [
+
+                                            ]
+                           },
+                           {
+                               "family":  "Logout",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "CandidateLocalRawOnly",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/logout-1.json",
+                                                "Artifacts/OfficialServerCapture/20260726-161529-UU-final-logout/action-notes/final-logout-success.txt"
+                                            ]
+                           },
+                           {
+                               "family":  "ClientClose",
+                               "officialVisualStatus":  "Observed",
+                               "rawOpcodeStatus":  "NoProtocolFrameExpected",
+                               "evidence":  [
+                                                "Artifacts/GameplayPacketRecovery/Latest/action-correlations/client-close-1.json"
+                                            ]
+                           }
+                       ]
+}

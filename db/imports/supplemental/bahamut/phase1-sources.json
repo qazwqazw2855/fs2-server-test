@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "god2-bahamut-source-seeds.v1",
+  "gameIdentity": {
+    "titleZhTw": "封神2：仙界傳",
+    "bahamutBoardId": 8395,
+    "clientIdentity": "God2"
+  },
+  "policy": {
+    "authority": "HistoricalGuideEvidence",
+    "promotion": "StageOnlyUntilCurrentPatchPacketOrClientEvidenceMatches",
+    "unknownProbability": "PreserveNull",
+    "rawHtmlPersistence": false,
+    "wrongGameBoardIdsRejected": [6784]
+  },
+  "sources": [
+    {
+      "id": "bahamut:8395:monster-level-drops:81",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&sn=81",
+      "expectedTitleContains": "怪物等級與掉落物列表",
+      "parser": "MonsterLevelAndDropLines",
+      "sourceCaveat": "Repost of a mainland official-site list; version identity is not equivalent to the Taiwan client and every identity must be cross-checked."
+    },
+    {
+      "id": "bahamut:8395:monster-profiles:hongmeng:69",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=68&sn=69",
+      "expectedTitleContains": "鴻濛境怪物資料",
+      "parser": "MonsterProfileBlocks",
+      "sourceCaveat": "Historical official-site repost; names, levels, HP and drop items are candidates until the current client build or packet evidence agrees."
+    },
+    {
+      "id": "bahamut:8395:monster-profiles:dungeons:155",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=68&sn=155",
+      "expectedTitleContains": "洞窟怪物資料",
+      "parser": "MonsterProfileBlocks",
+      "sourceCaveat": "Player-maintained historical dungeon list; incomplete values and patch-era differences must remain explicit."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:hongmeng-jiexian:1904",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=1904",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; parenthesized and unobserved claims are not promoted."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:jiexian-cantian:1905",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=1905",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:shengqiao:1906",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=1906",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:jiuli:1907",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=1907",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:jialong:1909",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=1909",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:hanyu-maze-1:2181",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=2181",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-skills:hanyu-maze-5:2182",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=1910&sn=2182",
+      "expectedTitleContains": "野怪技能",
+      "parser": "MonsterSkillTable",
+      "sourceCaveat": "Observed historical monster skill usage; current-patch binding remains required."
+    },
+    {
+      "id": "bahamut:8395:monster-speed:2195",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&parent=2177&sn=2195",
+      "expectedTitleContains": "怪物速度",
+      "parser": "MonsterSpeedLines",
+      "sourceCaveat": "Historical player measurements with stated variation; speed values are approximate candidates only."
+    },
+    {
+      "id": "bahamut:8395:npc-coordinates:fenghua:80",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&sn=80",
+      "expectedTitleContains": "楓華鎮NPC座標",
+      "parser": "NpcCoordinateLines",
+      "mapName": "楓華鎮",
+      "sourceCaveat": "The page states that some NPCs move and also includes older mainland-version material; coordinates are approximate evidence."
+    },
+    {
+      "id": "bahamut:8395:npc-coordinates:gecheng:214",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&lorder=6&parent=1041&sn=214",
+      "expectedTitleContains": "葛城城內NPC座標及位置",
+      "parser": "NpcCoordinateLines",
+      "mapName": "葛城",
+      "sourceCaveat": "Player-maintained coordinate inventory; moving NPCs and later patches can change placements."
+    },
+    {
+      "id": "bahamut:8395:skill-family-effects:338",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&lorder=12&parent=77&sn=338",
+      "expectedTitleContains": "各職業技能效果內容轉載",
+      "parser": "SkillFamilyEffectLines",
+      "sourceCaveat": "Magazine repost; useful for family, range and effect cross-reference, not numeric MP cost."
+    },
+    {
+      "id": "bahamut:8395:pet:new-spirit-fox:2385",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&sn=2385",
+      "expectedTitleContains": "新手靈狐祭司",
+      "parser": "PetStatLines",
+      "sourceCaveat": "Event-specific pet data; requires exact official client name match."
+    },
+    {
+      "id": "bahamut:8395:map-and-reward:barriers:1699",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&lorder=6&parent=68&sn=1699",
+      "expectedTitleContains": "關於打寶地圖介紹",
+      "parser": "MapRewardLines",
+      "sourceCaveat": "Guide-level map and reward-family evidence; no item probability is asserted."
+    },
+    {
+      "id": "bahamut:8395:npc-coordinate:rebirth:780",
+      "url": "https://forum.gamer.com.tw/G2.php?bsn=8395&lorder=2&parent=788&sn=780",
+      "expectedTitleContains": "轉生最新條件與任務",
+      "parser": "NpcCoordinateLines",
+      "mapName": "太極境",
+      "sourceCaveat": "Historical official-announcement repost; patch-era identity is retained."
+    }
+  ]
+}

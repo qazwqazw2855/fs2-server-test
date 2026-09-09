@@ -1,0 +1,76 @@
+{
+  "SchemaVersion": "official-current-player-derived-stats-v1",
+  "ClientBuildId": "god2-opt-6b127086e0c0",
+  "ClientSha256": "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B",
+  "Direction": "ServerToClient",
+  "Opcode": "0x2C",
+  "CanonicalApplicationRecordLength": 61,
+  "BoundaryEvidence": "The shared exact-current consumer reads payload offsets 0x00 through 0x3B. No current live 0x2C record is present, so 61 is the canonical minimal record accepted by the codec rather than an observed frame boundary.",
+  "RuntimeSnapshot": {
+    "Path": "Artifacts/OfflineClientReverseEngineering/version-error-live/pid-11004-rva-1100.bin",
+    "Sha256": "EBC80CB5C86B8A91EA0CA3B3E5112ABD879493C7DDFE22134B9CA1B5F3F791AB",
+    "CodeStartRva": "0x00001000"
+  },
+  "Dispatch": [
+    {
+      "State": "World",
+      "HandlerRva": "0x0008FA51",
+      "Behavior": "Passes applicationRecord+1 to the shared consumer at RVA 0x00117CD0.",
+      "Inspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-2c-world-handler-inspection.json",
+      "InspectionSha256": "41C2FBF1001C3A8349FDA60732D59004D6C0C480A365F3B728BF0E5C6F681AFC"
+    },
+    {
+      "State": "Battle",
+      "HandlerRva": "0x00146F5E",
+      "Behavior": "Passes applicationRecord+1 to the same shared consumer at RVA 0x00117CD0.",
+      "Inspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-2c-battle-handler-inspection.json",
+      "InspectionSha256": "A801546E1D8C30868F476820A8FFA59763C70F43A867CEE5A45974146A4E86C2"
+    }
+  ],
+  "Consumer": {
+    "Rva": "0x00117CD0",
+    "TargetObject": "The local player-panel object loaded from client state +0x430A8; the record has no actor or opponent identifier.",
+    "Inspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-2c-consumer-inspection.json",
+    "InspectionSha256": "428902317948C2103D3776C6B37D71C6116C3BDB726275875612824DF5279EF0",
+    "ProjectionRva": "0x001178C0",
+    "ProjectionInspection": "Artifacts/OfflineClientReverseEngineering/current-opcode-2c-projection-inspection.json",
+    "ProjectionInspectionSha256": "EEFA3F32E6B0C1BAADE476961A2E7282A0BCE1FB030EEC2B81B4BD55FC027246"
+  },
+  "Fields": [
+    { "ApplicationOffset": 1, "PayloadOffset": 0, "Width": 2, "Meaning": "Vitality modifier magnitude", "CurrentRead": "movzx eax,word [esi]" },
+    { "ApplicationOffset": 5, "PayloadOffset": 4, "Width": 2, "Meaning": "Strength modifier magnitude", "CurrentRead": "movzx eax,word [esi+4]" },
+    { "ApplicationOffset": 9, "PayloadOffset": 8, "Width": 2, "Meaning": "Intelligence modifier magnitude", "CurrentRead": "movzx eax,word [esi+8]" },
+    { "ApplicationOffset": 13, "PayloadOffset": 12, "Width": 2, "Meaning": "Speed modifier magnitude", "CurrentRead": "movzx eax,word [esi+0Ch]" },
+    { "ApplicationOffset": 17, "PayloadOffset": 16, "Width": 4, "Meaning": "Gold element", "CurrentRead": "mov eax,[esi+10h]" },
+    { "ApplicationOffset": 21, "PayloadOffset": 20, "Width": 4, "Meaning": "Wood element", "CurrentRead": "mov eax,[esi+14h]" },
+    { "ApplicationOffset": 25, "PayloadOffset": 24, "Width": 4, "Meaning": "Water element", "CurrentRead": "mov eax,[esi+18h]" },
+    { "ApplicationOffset": 29, "PayloadOffset": 28, "Width": 4, "Meaning": "Fire element", "CurrentRead": "mov eax,[esi+1Ch]" },
+    { "ApplicationOffset": 33, "PayloadOffset": 32, "Width": 4, "Meaning": "Earth element", "CurrentRead": "mov eax,[esi+20h]" },
+    { "ApplicationOffset": 37, "PayloadOffset": 36, "Width": 2, "Meaning": "Positive/color mask", "CurrentRead": "movzx eax,word [esi+24h]" },
+    { "ApplicationOffset": 41, "PayloadOffset": 40, "Width": 2, "Meaning": "Negative/color mask", "CurrentRead": "movzx eax,word [esi+28h]" },
+    { "ApplicationOffset": 45, "PayloadOffset": 44, "Width": 4, "Meaning": "Physical defense", "CurrentRead": "mov eax,[esi+2Ch]" },
+    { "ApplicationOffset": 49, "PayloadOffset": 48, "Width": 4, "Meaning": "Physical attack", "CurrentRead": "mov eax,[esi+30h]" },
+    { "ApplicationOffset": 53, "PayloadOffset": 52, "Width": 4, "Meaning": "Magical defense", "CurrentRead": "mov eax,[esi+34h]" },
+    { "ApplicationOffset": 57, "PayloadOffset": 56, "Width": 4, "Meaning": "Magical attack", "CurrentRead": "mov eax,[esi+38h]" }
+  ],
+  "MaskBits": [
+    { "Bit": 0, "Meaning": "Intelligence modifier" },
+    { "Bit": 1, "Meaning": "Vitality modifier" },
+    { "Bit": 2, "Meaning": "Strength modifier" },
+    { "Bit": 3, "Meaning": "Speed modifier" },
+    { "Bit": 4, "Meaning": "Gold element color" },
+    { "Bit": 5, "Meaning": "Wood element color" },
+    { "Bit": 6, "Meaning": "Water element color" },
+    { "Bit": 7, "Meaning": "Fire element color" },
+    { "Bit": 8, "Meaning": "Earth element color" }
+  ],
+  "CrossVersionSemanticSource": {
+    "ArchiveSha256": "75BA3B07058F83581B0E7DC40B8469ABF413ED5CF4271CBDC497D340D907598D",
+    "Source": "payload/src/network/legacy_combat_protocol.cpp FUN_004B4620",
+    "Use": "Names and ordering only; the public-beta 31-byte offsets and widths are rejected for the current build."
+  },
+  "ScopeConclusion": "0x2C synchronizes the signed modifiers, five elements, and physical/magical attack/defense shown on the local player's panel in both World and Battle. It does not disclose an opponent's values because it carries no actor identity and writes only the local panel object.",
+  "PromotionStatus": "ExactCurrentStaticLayout_RuntimeRegistrationPendingOfficialClientAcceptance",
+  "NetworkBytesEmitted": false,
+  "ClientMemoryWritten": false
+}

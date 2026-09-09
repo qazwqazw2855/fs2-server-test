@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "world-content-recovery-phase4-db-backed-runtime-v1",
+  "phase": "Phase 4 - DB-Backed World Content Runtime",
+  "generatedAtUtc": "2026-07-30T04:16:12Z",
+  "freeze": {
+    "launcher": "PASS_UNCHANGED",
+    "login": "PASS_UNCHANGED",
+    "serverSelection": "PASS_UNCHANGED",
+    "characterSelect": "PASS_UNCHANGED",
+    "worldHandshake": "PASS_UNCHANGED",
+    "frozenPlayerBootstrap": "PASS_UNCHANGED",
+    "inWorld": "PASS_UNCHANGED",
+    "heartbeat": "PASS_UNCHANGED",
+    "mountedMovementBaseline": "PASS_UNCHANGED",
+    "stopAll": "PASS_UNCHANGED"
+  },
+  "runtimeModels": {
+    "worldRuntime": "God2.ClassicServer.Runtime.WorldRuntime",
+    "mapCatalog": "God2.ClassicServer.Runtime.MapCatalog",
+    "mapRuntime": "God2.ClassicServer.Runtime.MapRuntime",
+    "mapDefinition": "God2.ClassicServer.Runtime.MapDefinition",
+    "mapSession": "God2.ClassicServer.Runtime.MapSession",
+    "entityManager": "God2.ClassicServer.Runtime.EntityManager",
+    "entityRegistry": "God2.ClassicServer.Runtime.EntityRegistry",
+    "spawnQueue": "God2.ClassicServer.Runtime.WorldRuntimeQueue<RuntimeEntity>",
+    "updateQueue": "God2.ClassicServer.Runtime.WorldRuntimeQueue<RuntimeEntity>",
+    "despawnQueue": "God2.ClassicServer.Runtime.WorldRuntimeQueue<RuntimeEntity>"
+  },
+  "contentModes": {
+    "FrozenCompatibility": "Original golden path remains isolated and may transition WorldEntering -> InWorld.",
+    "DbBackedExperimental": "Requires selected character MapId -> MapRuntime -> PlayerAttached -> ContentLoading boundary before WorldReady."
+  },
+  "currentWorldIdentity": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/CurrentWorldIdentity.json",
+  "dbBackedExperimental": {
+    "mapId": 1785918668,
+    "sceneId": 1,
+    "regionId": "r_b720effd89db741cf7bb9830f6a01bee",
+    "mapRuntimeCreated": true,
+    "worldSessionBound": true,
+    "validatedNpcPlacements": 1,
+    "monsterSpawns": 1,
+    "portalEntities": 1,
+    "merchantMappings": 1,
+    "spawnQueueCount": 3,
+    "semanticBroadcastEventCount": 4,
+    "serializerBlockedCount": 3,
+    "inspectorSnapshot": "Artifacts/WorldRuntimeInspector/20260730-041612/world-runtime-snapshot.json"
+  },
+  "serializerBoundary": {
+    "semanticBroadcast": "EntityEnteredVisibility is emitted for NPC, Monster, Portal, and Player attach.",
+    "officialNpcMonsterPortalSerializer": "EVIDENCE_GATED",
+    "fakePacketsGenerated": false,
+    "blockedStatus": "SerializerBlockedByEvidence"
+  },
+  "databaseReality": {
+    "rawRecoveredData": {
+      "npcs": 319,
+      "unmappedNpcs": 319,
+      "monsterTemplates": 208,
+      "monsterSpawns": 0,
+      "portals": 68,
+      "merchants": 16,
+      "unmappedMerchants": 16
+    },
+    "normalizedContent": "Minimal experimental content set is isolated from raw recovered data and keeps provenance.",
+    "rawDataMutated": false
+  },
+  "tests": {
+    "runtimeWorldContent": "PASS 12/12",
+    "persistenceWorldContentAdapter": "PASS 2/2",
+    "releaseBuild": "PASS full solution Release build; 0 warnings, 0 errors"
+  },
+  "nextBlocker": "Official Client serializers for NPC/Monster/Portal remain blocked by missing raw S2C evidence; semantic runtime events are preserved and no fake packet bytes are generated."
+}

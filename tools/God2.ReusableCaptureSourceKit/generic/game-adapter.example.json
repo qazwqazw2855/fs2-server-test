@@ -1,0 +1,26 @@
+﻿{
+  "adapterVersion": 1,
+  "target": {
+    "processName": "ReplaceWithGame.exe",
+    "architecture": "x86-or-x64",
+    "moduleName": "ReplaceWithGame.exe",
+    "sha256": "REPLACE_WITH_EXACT_BUILD_SHA256",
+    "imageSize": 0
+  },
+  "plaintextHooks": {
+    "postDecrypt": { "rva": "0x00000000", "expectedBytes": "00 00 00 00 00 00 00 00" },
+    "preEncrypt":  { "rva": "0x00000000", "expectedBytes": "00 00 00 00 00 00 00 00" }
+  },
+  "packetFrame": {
+    "headerBytes": 0,
+    "lengthOffset": 0,
+    "lengthWidth": 0,
+    "opcodeOffset": 0,
+    "opcodeWidth": 0,
+    "littleEndian": true
+  },
+  "memory": {
+    "maximumSnapshotBytes": 4096,
+    "persistRawPointers": false
+  }
+}

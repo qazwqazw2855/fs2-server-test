@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "client": {
+    "executable": "God2_opt.exe",
+    "build": "XianJieZhuan / Build - Feb 4 2026 Ver 0.30.33"
+  },
+  "records": [
+    {
+      "packetName": "LoginServerVersionFollowUp",
+      "direction": "ServerToClient",
+      "length": 6,
+      "encryptedHex": "0600ED7CEE11",
+      "decodedHex": "060001210054",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x0006" },
+        { "offset": 2, "length": 1, "name": "versionStatus", "value": "0x01" },
+        { "offset": 3, "length": 2, "name": "clientVersionWordLe", "value": "0x0021" },
+        { "offset": 5, "length": 1, "name": "checksum", "value": "0x54" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x0007CE90",
+        "successCondition": "parser result == 0; version word little-endian at decoded offsets 3..4 equals 0x0021"
+      },
+      "serverHandler": "TcpNetworkHost.CompleteOfficialLoginHandshakeAsync",
+      "regressionTest": "RuntimeFoundationTests.Official_login_version_follow_up_matches_verified_client_parser_contract",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-030205/attempt-1-trace/general.log"
+    },
+    {
+      "packetName": "LoginSuccessServerGroupBootstrap",
+      "direction": "ServerToClient",
+      "length": 417,
+      "decodedOpcode": "0x1D",
+      "encryptedHex": "redacted-large-frame-in-source-constant",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x01A1" },
+        { "offset": 2, "length": 1, "name": "opcode", "value": "0x1D" },
+        { "offset": 3, "length": 24, "name": "accountEcho", "value": "local-test-account-echo" },
+        { "offset": 27, "length": 24, "name": "authEcho", "value": "masked-runtime-secret-echo" },
+        { "offset": 215, "length": 6, "name": "serverEndpoint0", "value": "127.0.0.1:2592" },
+        { "offset": 274, "length": 6, "name": "serverEndpoint1", "value": "127.0.0.1:2592" },
+        { "offset": 333, "length": 6, "name": "serverEndpoint2", "value": "127.0.0.1:2592" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x00078D70",
+        "successCondition": "account and auth echo compares return 0; dispatcher reaches server group screen"
+      },
+      "serverHandler": "TcpNetworkHost.TryHandleOfficialLoginRequestAsync",
+      "regressionTest": "RuntimeFoundationTests.Official_login_success_bootstrap_patches_server_list_endpoints_to_local_login_port",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-030205/attempt-1-after-submit-15s.png"
+    },
+    {
+      "packetName": "ServerSelectionRequest",
+      "direction": "ClientToServer",
+      "length": 6,
+      "encryptedHex": "06009202CE97",
+      "decodedHex": "0600A60001D9",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x0006" },
+        { "offset": 2, "length": 1, "name": "opcode", "value": "0xA6" },
+        { "offset": 3, "length": 1, "name": "reserved", "value": "0x00" },
+        { "offset": 4, "length": 1, "name": "selectedServerOrGroup", "value": "0x01" },
+        { "offset": 5, "length": 1, "name": "checksum", "value": "0xD9" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "pending",
+        "successCondition": "server accepts decoded opcode 0xA6 while session stage is CharacterList"
+      },
+      "serverHandler": "TcpNetworkHost.TryHandleOfficialServerSelectionAsync",
+      "regressionTest": "RuntimeFoundationTests.Official_server_selection_request_decodes_to_character_list_opcode",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-030450/enter-world-before.png"
+    },
+    {
+      "packetName": "ServerSelectionCharacterListBootstrap",
+      "direction": "ServerToClient",
+      "length": 78,
+      "encryptedHex": "4E00F361CF28E629ABD3D04A8DDC1A8F9580DAA86A58B04269CDAD705451512C68067F89CA3AB032C05F01328E99537A271A68A915078FDEFBC1833A70D26EA3835B9C0E3A2B70CFEE0D9061123D",
+      "decodedHex": "4E000702006B65726F000000000000000000000000020204006000310C018001600160310002020F00323134313030323037320000000000000102030120001114016001200120812004000300CA",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x004E" },
+        { "offset": 2, "length": 1, "name": "opcode", "value": "0x07" },
+        { "offset": 5, "length": 4, "name": "visibleCharacterNameCandidate", "value": "kero" },
+        { "offset": 42, "length": 10, "name": "characterIdOrTemplateCandidate", "value": "2141002072" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "pending",
+        "successCondition": "pending live validation: should transition from server selection to character select"
+      },
+      "serverHandler": "TcpNetworkHost.TryHandleOfficialServerSelectionAsync",
+      "regressionTest": "pending live validation",
+      "successArtifact": "pending"
+    },
+    {
+      "packetName": "WorldServerHandshake",
+      "direction": "ServerToClient",
+      "length": 19,
+      "encodedHex": "1300FD9FCAC842A869FEA1BEC83A23DACF5249",
+      "decodedHex": "not-encrypted-handshake-frame",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x0013" },
+        { "offset": 2, "length": 17, "name": "worldHandshakeChallenge", "value": "FD9FCAC842A869FEA1BEC83A23DACF5249" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x000790D8/0x0007911A/0x000791A1",
+        "successCondition": "client returns 19-byte handshake response on the new world socket"
+      },
+      "serverHandler": "TcpNetworkHost.CompleteOfficialHandshakeAsync(role=WorldHandshake)",
+      "regressionTest": "RuntimeFoundationTests.Official_world_bootstrap_matches_verified_world_stream_contract; RuntimeFoundationTests.Network_host_routes_pending_character_list_followup_connection_to_world_handshake",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838/attempt-1-trace/general.log"
+    },
+    {
+      "packetName": "WorldFirstFollowUp",
+      "direction": "ServerToClient",
+      "length": 6,
+      "encryptedHex": "0600A96DB7E8",
+      "decodedHex": "060001",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x0006" },
+        { "offset": 2, "length": 1, "name": "worldHandshakeStatus", "value": "0x01" },
+        { "offset": 3, "length": 3, "name": "worldCipherFollowUpMaterial", "value": "encoded/recovered-from-successful-world-stream" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x00078D70",
+        "successCondition": "no version error; client continues to world bootstrap packets and C2S world traffic"
+      },
+      "serverHandler": "OfficialClientWorldProtocolFrames.BuildWorldBootstrapAfterHandshake",
+      "regressionTest": "RuntimeFoundationTests.Official_world_bootstrap_matches_verified_world_stream_contract",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838/attempt-1-trace/general.log"
+    },
+    {
+      "packetName": "WorldBootstrapStream",
+      "direction": "ServerToClient",
+      "length": 1778,
+      "encryptedHex": "source-constant:OfficialClientWorldProtocolFrames.WorldServerToClientStream[19..]",
+      "decodedHex": "large-world-bootstrap-redacted-to-prefixes; see parser records and world-unknown-first-batch.json",
+      "fieldMap": [
+        { "offset": 0, "length": 6, "name": "firstFollowUp", "value": "0600A96DB7E8" },
+        { "offset": 6, "length": 128, "name": "worldBootstrapFrame0", "value": "decodedPrefix=80001F02F0CFAA6B65726F..." },
+        { "offset": 134, "length": 320, "name": "worldBootstrapFrame1", "value": "decodedPrefix=400102000000000000000000..." },
+        { "offset": 1138, "length": 68, "name": "acceptedParserFrame", "value": "decodedPrefix=44009CF84944C4ACFF442A6A..." }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x00078D70",
+        "successCondition": "Client reaches world screen; role is promoted to InWorld; 5-byte heartbeat/world traffic continues"
+      },
+      "serverHandler": "TcpNetworkHost.CompleteOfficialHandshakeAsync(role=WorldHandshake)",
+      "regressionTest": "RuntimeFoundationTests.Network_host_routes_pending_character_list_followup_connection_to_world_handshake",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838/current-window-after-world-traffic.png"
+    },
+    {
+      "packetName": "WorldHeartbeat",
+      "direction": "ClientToServer",
+      "length": 5,
+      "encryptedHex": "captured-pattern:05003D09A5-or-05007ACCEC",
+      "decodedHex": "unknown",
+      "fieldMap": [
+        { "offset": 0, "length": 2, "name": "packetLength", "value": "0x0005" },
+        { "offset": 2, "length": 3, "name": "heartbeatPayload", "value": "unknown/recovered-idle-world-traffic" }
+      ],
+      "clientParser": {
+        "module": "god2_opt.exe",
+        "rva": "0x0007BB68 send caller",
+        "successCondition": "repeats continuously on the world socket after world screen is visible"
+      },
+      "serverHandler": "ProtocolConnectionRuntime captures as unknown world packet until formal opcode recovery",
+      "regressionTest": "OfficialClientFirstContactRegression.Heartbeat60Seconds",
+      "successArtifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-035838/attempt-1-trace/metadata.jsonl"
+    }
+  ]
+}

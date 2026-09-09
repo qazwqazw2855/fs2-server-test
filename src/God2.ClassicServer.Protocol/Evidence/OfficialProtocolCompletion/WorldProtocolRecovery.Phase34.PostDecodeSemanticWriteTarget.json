@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "world-protocol-recovery-phase34-v1",
+  "phase": "Phase 3.4 - Post-Decode Semantic Write-Target Recovery",
+  "generatedAtUtc": "2026-07-29T23:38:34.571968Z",
+  "worldSemanticDispatchMap": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/WorldSemanticDispatchMap.json",
+  "answers": {
+    "priorityFrameHandlerRvaCandidates": {
+      "5": "god2_opt.exe+0x0008E4F1",
+      "7": "god2_opt.exe+0x0008E4F1",
+      "8": "god2_opt.exe+0x0008E4F1",
+      "9": "god2_opt.exe+0x0008E4F1",
+      "10": "god2_opt.exe+0x0008E4F1"
+    },
+    "appearanceEquipmentComponentWriter": "NOT_IDENTIFIED",
+    "writeTargetObjectOffset": "NOT_IDENTIFIED",
+    "nmp0154ModelCreationCaller": "NOT_CAPTURED",
+    "networkFieldDisplayItemModelLinkage": "PARTIAL_IMPORT_ONLY_NOT_NETWORK_FIELD",
+    "mountSlotField": "NOT_FORMALLY_LOCATED",
+    "walking": "NO",
+    "walkingMovement": "NO",
+    "goldenRegression": "PASS",
+    "nextFirstBlocker": "Need local-player entity/component pointer before page-guard or hardware write breakpoints can be bounded to appearance/equipment/model components."
+  },
+  "evidenceRuns": {
+    "host": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-073322",
+    "server": "Artifacts/Runtime/ServerRuns/phase34-postdecode-regression-20260730-073319"
+  },
+  "instrumentation": {
+    "probeBuild": "PASS Release",
+    "captured": "sequence, decoded opcode, live return bytes, register snapshots, stack args, caller stack, direct/indirect call candidates",
+    "boundaryFinding": "No direct next call exists after +0x78A4D within 128 bytes; +0x78A4D is epilogue. Handler candidate must be derived from caller stack or hooked at caller callsites."
+  },
+  "mountVisualLinkage": {
+    "officialImport": "30754 -> 29318 -> NMP0154 remains valid",
+    "networkFieldToModel": "NOT_PROVEN",
+    "prefixIdHits": []
+  },
+  "forbiddenConclusionsStillBlocked": [
+    "MountedFlag=0x02",
+    "050011C79E=Unmount",
+    "CoordinateScale fixed from mounted-only evidence"
+  ]
+}

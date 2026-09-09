@@ -1,0 +1,190 @@
+{
+  "SchemaVersion": "result-family-schemas-v1",
+  "ResultFamilies": [
+    {
+      "FamilyId": "CharacterResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "InventoryResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "EquipmentResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "SkillResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "BattleResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "QuestResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "PartyResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "MountPetResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "ShopCraftingResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    },
+    {
+      "FamilyId": "WorldResult",
+      "CommonFields": [
+        "resultCode",
+        "failureCode",
+        "stateVersion",
+        "eventSequence",
+        "unknownFields"
+      ],
+      "Source": "authoritative runtime state",
+      "SerializerStatus": "SerializerBlockedByEvidence"
+    }
+  ],
+  "BattleSemanticResults": [
+    {
+      "Name": "DamageResult",
+      "Fields": [
+        "actorId",
+        "targetId",
+        "skillId",
+        "amount",
+        "absorbed",
+        "critical",
+        "targetHpAfter",
+        "eventSequence"
+      ]
+    },
+    {
+      "Name": "HealingResult",
+      "Fields": [
+        "actorId",
+        "targetId",
+        "skillId",
+        "amount",
+        "overheal",
+        "targetHpAfter",
+        "eventSequence"
+      ]
+    },
+    {
+      "Name": "StatusApply",
+      "Fields": [
+        "sourceId",
+        "targetId",
+        "statusId",
+        "stacks",
+        "duration",
+        "expiresAt",
+        "eventSequence"
+      ]
+    },
+    {
+      "Name": "StatusRemove",
+      "Fields": [
+        "sourceId",
+        "targetId",
+        "statusId",
+        "reason",
+        "eventSequence"
+      ]
+    },
+    {
+      "Name": "Settlement",
+      "Fields": [
+        "battleId",
+        "terminationType",
+        "participants",
+        "experience",
+        "items",
+        "currency",
+        "questEvents",
+        "outbox",
+        "stateVersion",
+        "idempotencyKey"
+      ]
+    }
+  ],
+  "ProductionBytesEmitted": false
+}

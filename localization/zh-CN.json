@@ -1,0 +1,6 @@
+{
+  "shutdown.complete": "關機完成",
+  "startup.ready": "服務端就緒",
+  "startup.configuration": "設定",
+  "startup.mariadb": "MariaDB 連線"
+}

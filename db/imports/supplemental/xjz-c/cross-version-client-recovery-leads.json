@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "god2-cross-version-client-recovery-leads-v3",
+  "evidenceClass": "CrossVersionRecovered",
+  "runtimeEligible": false,
+  "package": {
+    "providedPath": "D:/XJZ_Evidence_Package_20260813_FINAL_V4.zip",
+    "archiveSha256": "c6a002de544732919b34194d991a34e1cda7c684394233948601e85d8a156562",
+    "archiveFileCount": 927,
+    "archiveUncompressedBytes": 1237256767,
+    "evidenceManifestSha256": "a03bfba571fd18efe7193d73d566446ca31f03f139a80fbb888200f1dbb7d154",
+    "supersedes": {
+      "providedPath": "D:/XJZ_Evidence_Package_20260813_FINAL_V3.zip",
+      "archiveSha256": "ac6bedd964bc226b5681700ff0a4b73efe42cf9264011da748c2af9546e455bc",
+      "archiveFileCount": 884,
+      "archiveUncompressedBytes": 1234397189,
+      "originalPackage": {
+        "providedPath": "C:/Users/SeiHo/Desktop/XJZ-C.zip",
+        "outerSha256": "6586d69f51bef4395b66fe2bf6da3d1228bc67a952c09751b77d220da58cac9c",
+        "nestedSha256": "a6c150d1009c186138e70dfbb332b27a0edcc71fcfa44d3f25f4e1259d48dc28"
+      }
+    },
+    "crossVersionImageSha256": "9e6b1beab213966b4cc4897abc8505aa9975d0c9f543a6b0272dfddbb66f3596",
+    "exactFormalClientSha256": "6b127086e0c00014de26137b4ec482801e06e0724c5c05c64561d7f9ff32bd9b",
+    "identityConclusion": "not_byte_identical"
+  },
+  "promotionPolicy": {
+    "mayUseFor": [
+      "missing static catalog corroboration",
+      "opcode and consumer search seeds",
+      "cross-version state-machine fixtures",
+      "current-build byte-pattern and callsite discovery"
+    ],
+    "mustNotUseFor": [
+      "copying virtual addresses into the exact build",
+      "enabling server-authoritative AI, damage, reward, drop or growth formulas",
+      "overwriting stronger exact-build evidence",
+      "claiming external-client acceptance"
+    ],
+    "currentBuildPromotionRequirement": "Match exact-client bytes/callsite or exact-client static table, then correlate wire/state and run external formal acceptance when client-visible."
+  },
+  "staticCatalogFindings": {
+    "immortals": {
+      "crossVersionRows": 30,
+      "exactClientRows": 34,
+      "action": "Promoted the exact-client 34-row GOD identity/resource catalog; package rows 2801-2830 are corroboration only.",
+      "runtimeEligible": false
+    },
+    "battlePets": {
+      "crossVersionPetRows": 94,
+      "exactClientPetRows": 178,
+      "crossVersionFightPetSkillRows": 198,
+      "exactClientFightPetSkillRows": 283,
+      "action": "Promoted the exact-client 178-row PET identity/resource catalog. Skill rows remain research evidence and do not enable pet combat.",
+      "runtimeEligible": false
+    },
+    "monsterNames": {
+      "crossVersionRows": 1818,
+      "crossVersionUniqueNames": 1026,
+      "formalCatalogRows": 5246,
+      "exactNameIntersection": 952,
+      "packageOnlyExactSpellings": 74,
+      "action": "Retained as alias/research candidates only because mixed Traditional/Simplified spelling and cross-version IDs do not prove current template identity or gameplay semantics.",
+      "runtimeEligible": false
+    },
+    "monsterVisuals": {
+      "crossVersionRows": 164,
+      "exactClientRows": 208,
+      "action": "No import; exact-client visual catalog is larger and stronger."
+    },
+    "npcVisuals": {
+      "crossVersionRows": 299,
+      "exactClientUniqueAppearanceRows": 4447,
+      "action": "No import; exact-client appearance catalog is larger and stronger."
+    },
+    "formationCatalog": {
+      "crossVersionSkillRows": 59,
+      "exactClientSkillMetadataRows": 59,
+      "crossVersionWorldMaps": 13,
+      "exactClientWorldMaps": 13,
+      "action": "No duplicate import. The 59 skill-book metadata rows already exist in the formal skill_client_metadata catalog and the 13 Array01..Array13 entries are world maps already published by migration 114; they are not battle formation slot definitions.",
+      "runtimeEligible": false
+    },
+    "itemEffectVisualCatalog": {
+      "crossVersionIdentityRows": 102,
+      "exactClientRows": 102,
+      "exactClientItemEft3Sha256": "c83717a53d06d1736393212de975206110145553f80e71349ac11a4863f155da",
+      "exactClientGodItemEftSha256": "7a702d8c432d7afbbc4eea33e5e98869c2d51cd4489486ac2a2225365a84c010",
+      "exactCurrentAdditionalRomBindings": 30,
+      "exactCurrentAdditionalRtgBindings": 30,
+      "action": "Published the independently decoded exact-current-client visual/resource catalog through migration 139. Authored mechanical-looking text remains display text only and cannot authorize item-use behavior.",
+      "runtimeEligible": false
+    }
+  },
+  "itemRequestDataflow": {
+    "evidenceClass": "ExactBuildStaticAndObserved_CrossVersionSemanticCorroboration",
+    "runtimeEligible": false,
+    "crossVersionEvidence": {
+      "imageSha256": "9e6b1beab213966b4cc4897abc8505aa9975d0c9f543a6b0272dfddb66f3596",
+      "requestDataflowEntry": "analysis/05_reconstructed/data_evidence/item-request-dataflow-evidence.json",
+      "requestDataflowEntrySha256": "0e1aebc416d31f957344f920cd29260001dc067df7292f50d6f9e1bab44803de",
+      "itemFormationEntrySha256": "963202e0f12ce99d0a54601226db124035ecbe18a5ee3158c72438b23f3d00bb",
+      "outboundProducerEntrySha256": "6730732b8568bb343823b06df19e47b6c523b434c47a479e7d89cdf35c26b43e",
+      "catalogCounts": {
+        "itemRows": 8403,
+        "itemCategories": 38,
+        "formationSkillRows": 59,
+        "formationMaps": 13,
+        "itemEffectVisualMappings": 102,
+        "literalOutboundOpcodes": 117
+      },
+      "permissionDispatch": {
+        "itemRecordFlagOffset": "+0x11A",
+        "bit2": "0x28 equip-or-move request",
+        "bit0WithoutBit3": "0x25 self-use request candidate",
+        "bit0WithBit3": "0x26 targeted-use request candidate"
+      },
+      "wireLayoutSeeds": [
+        { "opcode": "0x24", "payloadBytes": 2, "layout": "raw[2]" },
+        { "opcode": "0x25", "payloadBytes": 4, "layout": "item_id:u16le,slot:u8,mode:u8" },
+        { "opcode": "0x26", "payloadBytes": 6, "layout": "target_id:u16le,item_id:u16le,slot:u8,raw:u8" },
+        { "opcode": "0x27", "payloadBytes": 4, "layout": "item_id:u16le,slot:u8,quantity_or_mode:u8" },
+        { "opcode": "0x28", "payloadBytes": 4, "layout": "item_id:u16le,slot:u8,mode:u8" },
+        { "opcode": "0x65", "payloadBytes": 6, "layout": "container_id:u16le,page:u8,source:u8,destination:u8,mode:u8" },
+        { "opcode": "0x7F", "payloadBytes": 8, "layout": "container_id:u16le,type:u8,page:u8,source:u8,destination:u8,mode:u8,raw:u8" }
+      ]
+    },
+    "exactFormalClientBoundary": {
+      "clientSha256": "6b127086e0c00014de26137b4ec482801e06e0724c5c05c64561d7f9ff32bd9b",
+      "staticEvidence": "Artifacts/OfflineClientReverseEngineering/equipment-outbound-static/exact-item-request-evidence.json",
+      "staticEvidenceSchema": "god2-exact-item-request-static-evidence-v1",
+      "opcode25StaticLayout": "item_id:u16le,slot:u8,raw_tail:u8",
+      "opcode25SenderRvas": ["0x000AEF80", "0x000AF640"],
+      "opcode25EnqueueCallRvas": ["0x000AEFA8", "0x000AF7C1"],
+      "opcode25TailStatus": "OpaqueNotConsistentlyWrittenByExactSender",
+      "opcode26StaticLayout": "actor_or_target_id:u16le,item_id:u16le,slot:u8,raw_tail:u8",
+      "opcode26TailStatus": "OpaqueNotWrittenByExactSender",
+      "packetObservationSource": "src/God2.ClassicServer.Protocol/Evidence/OfficialProtocolCompletion/God2Evidence.20260807.112752.json",
+      "opcode25ObservedCount": 3,
+      "opcode25UniqueFrameCount": 3,
+      "opcode25FrameLength": 8,
+      "correlatedResponse": {
+        "opcode": "0x3F",
+        "frameLength": 6,
+        "occurrences": 1,
+        "medianLatencyMs": 195.671,
+        "semanticStatus": "Unknown"
+      },
+      "rawOpcode25PayloadPreserved": false,
+      "status": "ExactBuildStaticAndObserved_CrossVersionSemanticCorroboration",
+      "runtimeMutationAllowed": false
+    },
+    "adoptedUse": "Build-pinned read-only 0x25 request decoding of exact item/slot fields with an opaque raw tail. Cross-version self-use semantics are not promoted. No item effect, response serializer, persistence, ownership mutation, target rule or gameplay formula is enabled."
+  },
+  "methodLeads": [
+    {
+      "domain": "network",
+      "finding": "3-byte frame overhead, 0xBFF maximum wire size, checksum/cipher/compression pipeline and fail-closed opcode size dispatch",
+      "crossVersionOpcodes": ["0x01", "0x04", "0x1D", "0x1E", "0xA9", "0x07", "0x00", "0x1F"],
+      "status": "ResearchSeedRequiresExactBuildReplay"
+    },
+    {
+      "domain": "combat",
+      "finding": "Roster/action/round/settlement state-machine boundaries and server-result projection",
+      "crossVersionOpcodes": ["0x1C", "0x83", "0x84", "0x85", "0x86", "0x88", "0x89", "0x35"],
+      "status": "ResearchSeedRequiresExactBuildReplay",
+      "serverAuthorityBlocked": ["opponent AI", "damage formula", "critical/random/element rules", "settlement rewards"]
+    },
+    {
+      "domain": "mission",
+      "finding": "0xDF fixed-length mission sync subtypes 4/5 and generic 0x26 world-interaction request boundary",
+      "status": "ResearchSeedRequiresExactBuildReplay",
+      "serverAuthorityBlocked": ["acceptance policy", "branch graph", "completion", "rewards"]
+    },
+    {
+      "domain": "social_and_gameplay_ui",
+      "finding": "Party 0x2C stride, team 0x16 stride, chat 0x2F boundary, pet-egg action range, mount records and synthesis flags",
+      "status": "ResearchSeedRequiresExactBuildReplay"
+    }
+  ],
+  "combatDamageDataflow": {
+    "evidenceClass": "CrossVersionRecovered",
+    "runtimeEligible": false,
+    "sourceEntry": "analysis/05_reconstructed/data_evidence/client-damage-packet-dataflow.json",
+    "sourceEntrySha256": "9b981e29cb117bee5bcb6e2cf610ce9610d3d61adc9656b2be350ba3ecf2cf49",
+    "instructionListingSha256": "64991f8644667375e6ee84d2fb55bd000456ab581cf971de765c434fa371bc0e",
+    "packet": {
+      "opcode": "0x83",
+      "signedResultOffset": 9,
+      "signedResultWidthBytes": 2,
+      "interpretation": "SignedInt16LittleEndian"
+    },
+    "crossVersionClientConsumer": {
+      "provenFormula": "next=min(max(current+signed_delta,0),maximum)",
+      "authorityConclusion": "The inbound server result is consumed and clamped by the client; this path does not calculate attack, defense, skill multiplier, critical, element, random, or buff terms.",
+      "hpOffsets": {
+        "current": "actor+0xDBC",
+        "maximum": "actor+0xDC4"
+      },
+      "mpOffsets": {
+        "current": "actor+0xDC0",
+        "maximum": "actor+0xDC8"
+      }
+    },
+    "exactFormalClientBoundary": {
+      "packetLayoutAlreadyVerified": "OfficialBattleEffectWireCodec decodes SignedInt16LittleEndian at record offset 9.",
+      "friendlyVitalOffsets": {
+        "currentHp": "actor+0xDE8",
+        "currentMp": "actor+0xDEC",
+        "maximumHp": "actor+0xDF0",
+        "maximumMp": "actor+0xDF4"
+      },
+      "packetToVitalMutationConsumerStatus": "ExactBuildClientResultProjectionVerified",
+      "exactBuildEvidence": {
+        "report": "Reports/BattleEffectResultConsumerEvidence.20260813.md",
+        "machineReadableChain": "Artifacts/AnalysisScratch/BattleStateFieldMap/exact-build-op83-result-dataflow.json",
+        "machineReadableChainSchema": "god2-exact-build-op83-result-dataflow-v1",
+        "status": "PASS_EXACT_BUILD_CLIENT_RESULT_PROJECTION_SERVER_FORMULA_AND_SERIALIZER_BLOCKED",
+        "runtimeSnapshotSha256": "054996eb6c036114306b10f25af3b8eb120f90dd2b383121d4640a26ff9c08db"
+      },
+      "enemyMaximumHpProjectionStatus": "UnavailableInExactBuild",
+      "runtimeMutationAllowed": false
+    },
+    "serverSkillDamageFormulaClaim": null,
+    "adoptedUse": "Cross-version corroboration and exact-build callsite/byte-pattern search seed only."
+  },
+  "officialServerFollowUpDeferred": true,
+  "notes": "The user will later operate the official server/client for controlled observations. No official-server login or capture is required for this static import pass."
+}

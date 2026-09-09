@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "god2-verified-encounter-monster-latest-v3",
+  "generatedAtUtc": "2026-08-13T02:00:00.0000000+00:00",
+  "replacementPolicy": "OneLatestFieldClassifiedRowPerServerMonsterId",
+  "recordCount": 1,
+  "records": [
+    {
+      "clientMonsterId": 27,
+      "serverMonsterId": 30,
+      "name": "仙狐",
+      "level": 6,
+      "levelEvidenceStatus": "VerifiedBattleActorDescriptor",
+      "maximumHp": null,
+      "maximumHpEvidenceStatus": "WithdrawnSourcePositionMisread",
+      "maximumHpEvidenceReference": "Artifacts/RecoveryFinal/monster-hp-claim-withdrawals-20260813.json#xianhu-126",
+      "experienceReward": 73,
+      "experienceRewardEvidenceStatus": "VerifiedHomogeneousEncounterAllocation",
+      "authority": "VERIFIED_LEVEL_AND_EXPERIENCE_ONLY",
+      "correlationStatus": "UniqueTemplateBattleEntryAndSettlementBinding;HpRequiresDirectStateSnapshot",
+      "runtimeEligible": false,
+      "sourceSessionId": "monsters-semantic-v2-20260811-112856-3ed58e2d",
+      "verifiedAtUtc": "2026-08-11T03:28:56.0000000+00:00"
+    }
+  ]
+}

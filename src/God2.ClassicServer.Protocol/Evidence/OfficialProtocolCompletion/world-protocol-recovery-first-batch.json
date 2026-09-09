@@ -1,0 +1,195 @@
+{
+  "schemaVersion": "world-protocol-recovery-first-batch-v1",
+  "generatedAtUtc": "2026-07-29T20:56:00Z",
+  "frozenBaseline": {
+    "name": "OfficialClientFirstContactGolden",
+    "artifact": "Artifacts/OfficialClientFirstContact/Golden/20260730-041612",
+    "stateMachine": "Unknown -> LoginHandshake -> LoginAuthenticated -> CharacterSelect -> PendingWorld -> WorldHandshake -> InWorld"
+  },
+  "captureMatrix": {
+    "artifact": "Artifacts/ClientInstrumentation/ElevatedAutomationHost/host-run-20260730-045206/world-capture-matrix/world-packet-matrix.json",
+    "scenarios": [
+      "Idle30s",
+      "MoveUp",
+      "MoveDown",
+      "MoveLeft",
+      "MoveRight",
+      "ContinuousMovement5s",
+      "StopMovement",
+      "TurnOnlyRightTap"
+    ]
+  },
+  "records": [
+    {
+      "packetName": "WorldMovementC2S10",
+      "direction": "ClientToServer",
+      "length": 10,
+      "encodedOpcodeCandidates": [
+        "80B6",
+        "80B7",
+        "80B8",
+        "80B9",
+        "80BA",
+        "80BB"
+      ],
+      "decodedOpcodeCandidates": [
+        "8036",
+        "8037",
+        "8038",
+        "8039",
+        "803A",
+        "803B"
+      ],
+      "samples": [
+        {
+          "scenario": "MoveUp",
+          "sequence": 171,
+          "encodedHex": "0A0080B8D9C14BA69488",
+          "decodedHex": "0A00803859F9125F86D7",
+          "returnRva": "god2_opt.exe+0x0047BB68",
+          "payloadSha256": "F3F9FE5A641394307601988B4716135F9B5B1686C7347AAFBC49799633C9F2A2"
+        },
+        {
+          "scenario": "MoveDown",
+          "sequence": 180,
+          "encodedHex": "0A0080B8D9C14BA89686",
+          "decodedHex": "0A00803859F9125184D7",
+          "returnRva": "god2_opt.exe+0x0047BB68"
+        },
+        {
+          "scenario": "MoveRight",
+          "sequence": 198,
+          "encodedHex": "0A0080B8D9C34DAA9882",
+          "decodedHex": "0A00803859FB14518CD3",
+          "returnRva": "god2_opt.exe+0x0047BB68"
+        },
+        {
+          "scenario": "ContinuousMovement5s",
+          "sequence": 215,
+          "encodedHex": "0A0080BBD6D54FA2A07D",
+          "decodedHex": "0A00803B56EE194CB931",
+          "returnRva": "god2_opt.exe+0x0047BB68"
+        }
+      ],
+      "fieldMap": [
+        {
+          "offset": "0x00..0x01",
+          "name": "encodedLength",
+          "type": "uint16le",
+          "value": "0x000A"
+        },
+        {
+          "offset": "0x02..0x03",
+          "name": "movementOpcodeOrStep",
+          "type": "rolling-xor decoded uint16 candidate",
+          "evidence": "varies as 0x8036..0x803B across movement samples"
+        },
+        {
+          "offset": "0x03",
+          "name": "directionOrStepCandidate",
+          "type": "decoded byte",
+          "evidence": "0x36..0x3B correlates with movement stream; exact facing enum pending"
+        },
+        {
+          "offset": "0x05..0x06",
+          "name": "xCandidateRaw",
+          "type": "decoded uint16le",
+          "evidence": "changes between MoveUp/MoveDown/MoveRight and continuous movement"
+        },
+        {
+          "offset": "0x07..0x08",
+          "name": "yCandidateRaw",
+          "type": "decoded uint16le",
+          "evidence": "changes between MoveUp/MoveDown/MoveRight and continuous movement"
+        },
+        {
+          "offset": "0x09",
+          "name": "trailerOrChecksumCandidate",
+          "type": "decoded byte",
+          "evidence": "varies with movement payload; checksum role not proven"
+        }
+      ],
+      "clientParserRva": "god2_opt.exe+0x0047BB68 send caller",
+      "serverHandler": "TcpNetworkHost.TryHandleOfficialWorldMovement",
+      "successCondition": "10-byte C2S packets appear only during movement/turn scenarios, not Idle30s or StopMovement; server logs 18 world_movement_candidate records; client remains InWorld."
+    },
+    {
+      "packetName": "WorldPlayerSpawnBootstrapCandidate",
+      "direction": "ServerToClient",
+      "length": 128,
+      "encodedHexPrefix": "80008FB939F4B46A74EE3D2AC53720",
+      "decodedHexPrefix": "80001F02F0CFAA6B65726F0000000000000000F47F5F0300000000000000000000000002020000040000000138E30232",
+      "fieldMap": [
+        {
+          "offset": "0x00..0x01",
+          "name": "encodedLength",
+          "type": "uint16le",
+          "value": "0x0080"
+        },
+        {
+          "offset": "0x02",
+          "name": "spawnOpcodeCandidate",
+          "type": "decoded byte",
+          "value": "0x1F"
+        },
+        {
+          "offset": "0x07..0x0A",
+          "name": "characterName",
+          "type": "ascii",
+          "value": "kero"
+        }
+      ],
+      "clientParserRva": "god2_opt.exe+0x00078D70 decoder / god2_opt.exe+0x00078A4D parse exit",
+      "serverBuilder": "OfficialClientWorldProtocolFrames.BuildWorldBootstrapAfterHandshake",
+      "successCondition": "decoder result=125 and character kero visible after world bootstrap",
+      "evidenceArtifact": "Artifacts/OfficialClientFirstContact/Golden/20260730-041612"
+    },
+    {
+      "packetName": "WorldEntryAck41",
+      "direction": "ClientToServer",
+      "length": 41,
+      "classification": "entry-bootstrap-correlated",
+      "encodedOpcodeCandidate": "94B6",
+      "occurrence": "once on world socket before movement capture windows",
+      "clientRva": "god2_opt.exe+0x0047BB68",
+      "evidence": "world-packet-matrix count=1; firstSeq=27; not observed during movement scenarios"
+    },
+    {
+      "packetName": "WorldBootstrapFollowUp71",
+      "direction": "ClientToServer",
+      "length": 71,
+      "classification": "entry-bootstrap-correlated",
+      "encodedOpcodeCandidate": "1472",
+      "occurrence": "once on world socket before movement capture windows",
+      "clientRva": "god2_opt.exe+0x0047BB68",
+      "evidence": "world-packet-matrix count=1; firstSeq=31; not observed during movement scenarios"
+    },
+    {
+      "packetName": "WorldUiStateAck12",
+      "direction": "ClientToServer",
+      "length": 12,
+      "classification": "entry-bootstrap-correlated",
+      "encodedOpcodeCandidate": "8FBB",
+      "occurrence": "once on world socket before movement capture windows",
+      "clientRva": "god2_opt.exe+0x0047BB68",
+      "evidence": "world-packet-matrix count=1; firstSeq=32; not observed during movement scenarios"
+    },
+    {
+      "packetName": "WorldHeartbeat5",
+      "direction": "ClientToServer",
+      "length": 5,
+      "classification": "keepalive",
+      "encodedSamples": [
+        "05003D09A5",
+        "05007ACCEC"
+      ],
+      "occurrence": "sustained during Idle30s, movement scenarios, and StopMovement",
+      "evidence": "Idle30s has only 5-byte packets; movement scenarios add 10-byte movement packets while 5-byte cadence continues"
+    }
+  ],
+  "gaps": [
+    "Map-space scaling for xCandidateRaw/yCandidateRaw is not fully proven.",
+    "Visibility leave/enter has no separate multi-entity evidence in the first capture batch.",
+    "WorldPlayerSpawnBootstrapCandidate is localized inside the 1778-byte bootstrap, but the full 128-byte field map is not complete."
+  ]
+}

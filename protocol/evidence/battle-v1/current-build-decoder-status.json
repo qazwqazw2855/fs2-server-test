@@ -1,0 +1,8 @@
+{
+    "schemaVersion":  1,
+    "basicAttack":  "BlockedByEvidence",
+    "goldenSampleCount":  0,
+    "negativeCaptureTestCount":  0,
+    "productionDecoderCount":  0,
+    "blocker":  "OfficialAuthenticationAuthorityUnavailable"
+}

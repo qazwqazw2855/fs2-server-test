@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "god2packetcapture-rtx5070-validation-result-v1",
+  "title": "God2PacketCapture RTX 5070 Physical Validation Summary",
+  "type": "object",
+  "required": [
+    "SchemaVersion",
+    "FinalStatus",
+    "PackageIntegrity",
+    "ObservedOsGate",
+    "ObservedGpuGate",
+    "PhysicalGpuExecution",
+    "Equivalence",
+    "CpuAuthority",
+    "ResultIntegrity",
+    "CleanupStatus"
+  ],
+  "properties": {
+    "SchemaVersion": {"const": 1},
+    "FinalStatus": {
+      "enum": [
+        "RTX5070_PHYSICAL_VALIDATION_PASS",
+        "RTX5070_PHYSICAL_VALIDATION_BLOCKED_WRONG_GPU",
+        "RTX5070_PHYSICAL_VALIDATION_BLOCKED_WRONG_OS",
+        "RTX5070_PHYSICAL_VALIDATION_BLOCKED_NOT_MAXIMUM",
+        "RTX5070_PHYSICAL_VALIDATION_FAIL_GPU_EXECUTION",
+        "RTX5070_PHYSICAL_VALIDATION_FAIL_EQUIVALENCE",
+        "RTX5070_PHYSICAL_VALIDATION_FAIL_BENCHMARK_OR_BENEFIT_GATE",
+        "RTX5070_VALIDATION_PACKAGE_INTEGRITY_FAIL"
+      ]
+    },
+    "CpuAuthority": {"const": "Preserved"},
+    "ResultIntegrity": {"const": "PASS"},
+    "CleanupStatus": {"const": "PASS"}
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,12 @@
+{
+    "_comment": "Console 與 Runtime 訊息語系設定。Localization gameplay data 由 Importer 與 MariaDB 管理，不在此設定。",
+    "_version": "1.0",
+    "_example": {
+        "defaultLanguage": "zh-TW",
+        "fallbackLanguage": "en-US"
+    },
+    "defaultLanguage": "zh-TW",
+    "_defaultLanguage": "用途：預設顯示語系。預設值：zh-TW。可接受範圍：zh-TW、zh-CN、en-US。是否需要重新啟動：是。影響：影響 Console 與 Runtime 訊息顯示語系，不改變官方資料內容。",
+    "fallbackLanguage": "en-US",
+    "_fallbackLanguage": "用途：缺少翻譯時使用的 fallback 語系。預設值：en-US。可接受範圍：zh-TW、zh-CN、en-US；建議 en-US。是否需要重新啟動：是。影響：避免缺少翻譯時顯示空白或錯誤 key。"
+}

@@ -1,0 +1,201 @@
+{
+  "Domain": "Shop",
+  "SourceCategory": "primary:merchants;related:items",
+  "SourceArtifact": "merchants/merchants.official.json;items/items.official.json",
+  "DeclaredRecordCount": 16,
+  "RelatedSourceRecordCount": 17418,
+  "IndexedRecordCount": 16,
+  "VerificationStatus": "Recovered; InventoryUnverified | VerifiedExactCurrentClientStaticCatalog; GameplaySemanticsUnverified",
+  "CanDirectImportToGameplay": false,
+  "RecoveredFields": [
+    "clientItemId",
+    "confidence",
+    "crossReferences",
+    "description",
+    "evidence",
+    "formalCanonicalBindingStatus",
+    "id",
+    "idSemantics",
+    "inventoryStatus",
+    "itemType",
+    "merchantRelationStatus",
+    "name",
+    "npcTemplateId",
+    "npcType",
+    "presentInFormalBaseline",
+    "priceCandidates",
+    "rawFields",
+    "resourcePath",
+    "resourceReferences",
+    "runtimeEligible",
+    "shopReference",
+    "sourcePath",
+    "sourceRecordIndex",
+    "sourceSha256",
+    "subtype",
+    "unknownFields"
+  ],
+  "MissingFields": [
+    "buyList",
+    "crossReferenceEvidence",
+    "currencyRules",
+    "dialogBranchRules",
+    "durability",
+    "equipmentSlot",
+    "gameplaySemanticValidation",
+    "itemInstanceId",
+    "packetRuntimeValidation",
+    "requirements",
+    "scriptId",
+    "sellRules",
+    "serverAuthoritativeId",
+    "serverMerchantId",
+    "shopInventoryId",
+    "spawnMapId",
+    "spawnPosition",
+    "stackLimit",
+    "weight"
+  ],
+  "Entities": [
+    {
+      "Id": "client:merchant-template/data-rom-npc-npc2501-rom",
+      "Name": "\u6B66\u5668\u9632\u5177",
+      "References": {
+        "npcTemplateId": "client:npc-template/data/rom/npc/npc2501-rom",
+        "shopReference.id": "client:shop-dialog/\u88C5\u5907\u5C4B"
+      },
+      "RecordHash": "E61376DA90B42F9EC15B7B4B0B7CC0C4C1DC4A651024A79BDBA6B85AE9FEA796"
+    },
+    {
+      "Id": "client:merchant-template/data-rom-npc-npc2502-rom",
+      "Name": "\u70BC\u4E39\u623F",
+      "References": {
+        "npcTemplateId": "client:npc-template/data/rom/npc/npc2502-rom",
+        "shopReference.id": "client:shop-dialog/\u70BC\u4E39\u623F"
+      },
+      "RecordHash": "495D6621BC4E1CF62B313E4E512981B1F28412A7C6CD8B03A37C5CFCCEE2BDB0"
+    },
+    {
+      "Id": "client:merchant-template/data-rom-npc-npc2503-rom",
+      "Name": "\u6742\u8D27\u5E97",
+      "References": {
+        "npcTemplateId": "client:npc-template/data/rom/npc/npc2503-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "3E67DAE01CC0364FEF48793A0DBB3370E5207652AE94F1A43B23E3AEC984C3E7"
+    },
+    {
+      "Id": "client:merchant-template/data-rom-npc-npc2504-rom",
+      "Name": "\u9152\u5E97\u5BA2\u6808",
+      "References": {
+        "npcTemplateId": "client:npc-template/data/rom/npc/npc2504-rom",
+        "shopReference.id": "client:shop-dialog/\u9152\u697C"
+      },
+      "RecordHash": "4C9ECA1923A20F1467A3DE368769A7605F1C9ACD4A00CD21C4356D61E8395C5B"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2605-rom",
+      "Name": "\u5546\u5E971",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2605-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "81423E6C078E6434D8405AD21D6906671C0DFBEA61402E4F04876605CA530C14"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2606-rom",
+      "Name": "\u5546\u5E972",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2606-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "E072F7A6D86C7EAA89E68358EE7E7E123E698834DD4A33472C7501B434822DE0"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2607-rom",
+      "Name": "\u5546\u5E973",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2607-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "5A71D825063CF849E1A64AC9A6B3271D485F38D969E14D25F5E342B4805875A1"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2608-rom",
+      "Name": "\u5546\u5E974",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2608-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "10AA34EF6DC4FAC58E6FE12EC62E592B02B72C0521702EBA58EDBA6F0BC7CB9E"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2609-rom",
+      "Name": "\u5546\u5E975",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2609-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "4A5F4D69093509819A15D7EB947AD93A01C2B25D0E59A4411CB28ABCB2510382"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2643-rom",
+      "Name": "\u6742\u8D27\u8001\u677F",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2643-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "4DC29EB605774935A4565B94F991ED61D39B719DC4605EC5325FEAFC33FC2B61"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2644-rom",
+      "Name": "\u5546\u5E97\u8001\u677F",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2644-rom",
+        "shopReference.id": "client:shop-dialog/\u9053\u5177\u5C4B"
+      },
+      "RecordHash": "A4FC0C9FB1C2FC09282CC56CA8612F99DA155B874B206BA1915DE6C3DB1AFF90"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2645-rom",
+      "Name": "\u6B66\u5668\u5E97\u8001\u677F",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2645-rom",
+        "shopReference.id": "client:shop-dialog/\u88C5\u5907\u5C4B"
+      },
+      "RecordHash": "AEB8A78E5277A43C91ECAED31806CB12F051794BA66D787E05CD75A40EE5148B"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2767-rom",
+      "Name": "\u5E97\u5C0F\u4E8C",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2767-rom"
+      },
+      "RecordHash": "D3E3D8C279E500376CC4ECFBE282BFE90E6C9EA16B7F3480F8288C7A10A4C15B"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2771-rom",
+      "Name": "\u5546\u4EBA1",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2771-rom"
+      },
+      "RecordHash": "CFED1CFAB1C74EFDF5FF2D947267ECEA6C91FB209E640978512BE4B0C52E69F9"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2772-rom",
+      "Name": "\u5546\u4EBA2",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2772-rom"
+      },
+      "RecordHash": "44217D96B6EC2996EE052CD78A6E58BCD147FA3D70F471BA34FE074577DD7E0A"
+    },
+    {
+      "Id": "client:merchant-template/data2-rom-npc-npc2783-rom",
+      "Name": "\u72D0\u72F8\u5546",
+      "References": {
+        "npcTemplateId": "client:npc-template/data2/rom/npc/npc2783-rom"
+      },
+      "RecordHash": "B6D6B96E69FF2EDB61DD328932788895D5DDE9556B99ED90445B2F811B28A823"
+    }
+  ]
+}

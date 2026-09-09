@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "god2-generic-probe-plan-v1",
+  "generation": 20260814,
+  "targets": [
+    {
+      "targetId": 1,
+      "candidateId": "battle_ui_bar_scalar",
+      "functionRva": "0x0004F080",
+      "expectedBytes": "55 8B EC 83 EC 24 A1 54",
+      "capture": ["ECX", "EDX", "BoundedStack"],
+      "follow": [],
+      "stackWords": 4,
+      "consumerSteps": 0,
+      "maximumObservations": 20000,
+      "domain": "Battle",
+      "priority": "P3",
+      "objectSource": "None"
+    },
+    {
+      "targetId": 2,
+      "candidateId": "battle_ui_text_pair",
+      "functionRva": "0x0004F4B0",
+      "expectedBytes": "55 8B EC 81 EC 04 02 00",
+      "capture": ["ECX", "EDX", "BoundedStack"],
+      "follow": [],
+      "stackWords": 6,
+      "consumerSteps": 0,
+      "maximumObservations": 20000,
+      "domain": "Battle",
+      "priority": "P3",
+      "objectSource": "None"
+    },
+    {
+      "targetId": 3,
+      "candidateId": "battle_ui_vital_apply",
+      "functionRva": "0x000D98F0",
+      "expectedBytes": "55 8B EC 51 56 8B 75 08",
+      "capture": ["ECX", "EDX", "BoundedStack"],
+      "follow": [],
+      "stackWords": 1,
+      "consumerSteps": 0,
+      "maximumObservations": 20000,
+      "domain": "Battle",
+      "priority": "P3",
+      "objectSource": "None"
+    }
+  ]
+}

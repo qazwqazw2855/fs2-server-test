@@ -1,0 +1,403 @@
+{
+  "SchemaVersion": "protocol-family-schemas-v1",
+  "ClientBuildId": "god2-opt-6b127086e0c0",
+  "PacketFamilies": [
+    {
+      "FamilyId": "LoginHandshake",
+      "States": [
+        "Login"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "LoginAuthentication",
+      "States": [
+        "Login"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "CharacterLifecycle",
+      "States": [
+        "CharacterList"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "WorldBootstrap",
+      "States": [
+        "World"
+      ],
+      "Direction": "ServerToClient",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "MapNavigation",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "mapId",
+        "position",
+        "destination",
+        "path",
+        "collisionVersion"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "PortalTransfer",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Inventory",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "characterId",
+        "operation",
+        "itemId",
+        "quantity",
+        "slot",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Equipment",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "characterId",
+        "operation",
+        "itemId",
+        "sourceSlot",
+        "targetSlot",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Shop",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Crafting",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Quest",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "characterId",
+        "questId",
+        "operation",
+        "objectiveId",
+        "progress",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Party",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Mount",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Pet",
+      "States": [
+        "World"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "Progression",
+      "States": [
+        "World"
+      ],
+      "Direction": "ServerToClient",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "entityId",
+        "operation",
+        "version",
+        "idempotencyKey"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "BattleCommand",
+      "States": [
+        "Battle"
+      ],
+      "Direction": "Bidirectional",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "actorId",
+        "actionType",
+        "skillId",
+        "itemId",
+        "targetIds",
+        "round",
+        "commandWindow",
+        "formation",
+        "flags"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    },
+    {
+      "FamilyId": "BattleResult",
+      "States": [
+        "Battle"
+      ],
+      "Direction": "ServerToClient",
+      "Framing": "UInt16LittleEndian length \u002B decoded opcode \u002B payload \u002B checksum; state-specific dispatch",
+      "SemanticFields": [
+        "participants",
+        "hp",
+        "mp",
+        "statuses",
+        "round",
+        "events",
+        "reward",
+        "finalization"
+      ],
+      "UnknownFieldPolicy": "Preserve opaque bytes with offset; do not infer or discard.",
+      "DecoderStatus": "EvidenceBlocked",
+      "SerializerStatus": "SerializerBlockedByEvidence",
+      "RuntimeMutationAllowed": false,
+      "Evidence": [
+        "protocol/evidence/current-build/client-dispatch-registry.json",
+        "protocol/evidence/current-build/chinese-labeled-captures/action-transactions.json"
+      ]
+    }
+  ],
+  "StateSpecificDispatchEntryCount": 533,
+  "MovementExcluded": true,
+  "HeartbeatExcluded": true,
+  "FakeNetworkBytes": 0
+}

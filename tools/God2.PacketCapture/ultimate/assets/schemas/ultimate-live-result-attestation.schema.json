@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/ultimate-live-result-attestation.schema.json",
+  "title":"God2 Ultimate live result outer attestation",
+  "type":"object",
+  "required":["SchemaVersion","PackageId","FinalStatus","ResultZipFileName","ResultZipSHA256","ResultManifestSHA256","ExecutableSHA256"],
+  "properties":{
+    "SchemaVersion":{"const":"god2-ultimate-live-result-attestation-v1"},
+    "PackageId":{"type":"string","pattern":"^[A-Za-z0-9._-]{1,200}$"},
+    "FinalStatus":{"enum":["ULTIMATE_LIVE_DEEP_RECOVERY_EVIDENCE_PASS","EVIDENCE_BLOCKED_EXTERNAL_DEEP_RUNTIME_GATE","EVIDENCE_BLOCKED_LIVE_VALIDATION_INCOMPLETE"]},
+    "ResultZipFileName":{"type":"string","pattern":"^[^/\\\\:]+\\.zip$"},
+    "ResultZipSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "ResultManifestSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"},
+    "ExecutableSHA256":{"type":"string","pattern":"^[A-F0-9]{64}$"}
+  },
+  "additionalProperties":false
+}

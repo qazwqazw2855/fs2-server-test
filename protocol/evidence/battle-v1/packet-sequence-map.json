@@ -1,0 +1,19 @@
+{
+    "schemaVersion":  1,
+    "intendedSequence":  [
+                             "EncounterTrigger",
+                             "BattleEnter",
+                             "Formation",
+                             "PlayerSpawn",
+                             "EnemySpawn",
+                             "RoundStart",
+                             "CommandWindow",
+                             "BasicAttackClientCommand",
+                             "ActionConfirmation",
+                             "ActionStart",
+                             "Damage",
+                             "RoundEnd"
+                         ],
+    "status":  "SequenceCandidateOnly",
+    "productionTraversalAllowed":  false
+}

@@ -1,0 +1,42 @@
+{
+    "schemaVersion":  1,
+    "currentBuildId":  "god2-opt-6b127086e0c0",
+    "registeredProductionBattleDecoders":  0,
+    "families":  [
+                     {
+                         "family":  "BasicAttackClientCommand",
+                         "status":  "BlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "decoderFixtureCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "SkillClientCommand",
+                         "status":  "BlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "decoderFixtureCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "ItemClientCommand",
+                         "status":  "BlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "decoderFixtureCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "DefendClientCommand",
+                         "status":  "BlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "decoderFixtureCount":  0,
+                         "productionRegistered":  false
+                     },
+                     {
+                         "family":  "FleeClientCommand",
+                         "status":  "BlockedByEvidence",
+                         "officialSampleCount":  0,
+                         "decoderFixtureCount":  0,
+                         "productionRegistered":  false
+                     }
+                 ]
+}

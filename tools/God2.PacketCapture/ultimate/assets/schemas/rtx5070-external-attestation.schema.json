@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://god2.local/schemas/rtx5070-external-attestation.schema.json",
+  "title":"RTX 5070 external result audit v2",
+  "type":"object",
+  "required":["SchemaVersion","AuditStatus","AuditedAtUtc","Source","ArchiveAudit","AcceptedEvidence","Scope"],
+  "properties":{
+    "SchemaVersion":{"enum":["god2-rtx5070-external-audit-v1","god2-rtx5070-external-audit-v2"]},
+    "AuditStatus":{"const":"RTX5070_RESULT_EXTERNAL_AUDIT_PASS"},
+    "AuditedAtUtc":{"type":"string","format":"date-time"},
+    "Source":{"type":"object","required":["FileName","SizeBytes","SHA256"],"properties":{"FileName":{"type":"string","pattern":"^[^/\\\\:]+\\.zip$"},"SizeBytes":{"type":"integer","minimum":1},"SHA256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},"LastWriteTimeUtc":{"type":"string","format":"date-time"},"SuppliedBy":{"const":"UserExternalPhysicalValidation"}},"additionalProperties":false},
+    "ArchiveAudit":{"type":"object","required":["ZipPathSafety","CaseInsensitiveDuplicatePathCheck","ManifestSchemaVersion","ManifestArtifactCount","ActualPayloadArtifactCount","ManifestSizeChecks","ManifestSHA256Checks","JsonParseChecks","UnmanifestedPayloadArtifacts"],"properties":{"ZipPathSafety":{"const":"PASS"},"CaseInsensitiveDuplicatePathCheck":{"const":"PASS"},"ManifestSchemaVersion":{"type":"integer","const":1},"ManifestArtifactCount":{"type":"integer","minimum":1},"ActualPayloadArtifactCount":{"type":"integer","minimum":1},"ManifestSizeChecks":{"type":"string","pattern":"^(\\d+)/\\1 PASS$"},"ManifestSHA256Checks":{"type":"string","pattern":"^(\\d+)/\\1 PASS$"},"JsonParseChecks":{"type":"string","pattern":"^(\\d+)/\\1 PASS$"},"UnmanifestedPayloadArtifacts":{"const":0},"JsonFiles":{"type":"integer","minimum":0}},"additionalProperties":false},
+    "AcceptedEvidence":{"type":"object","required":["ProductVersion","PeFileVersion","ObservedGpu","PhysicalGpuExecution","CpuGpuEquivalence","CpuAuthority","ResultFinalStatus"],"properties":{"ProductVersion":{"type":"string","minLength":1},"PeFileVersion":{"type":"string","minLength":1},"ObservedOs":{"type":"string","minLength":1},"ObservedGpu":{"const":"NVIDIA GeForce RTX 5070"},"ObservedComputeCapability":{"type":"string","pattern":"^[0-9]+\\.[0-9]+$"},"ObservedVramBytes":{"type":"integer","minimum":1},"PhysicalGpuExecution":{"const":"PASS"},"CpuGpuEquivalence":{"const":"PASS"},"CpuAuthority":{"const":"Preserved"},"GpuContract":{"type":"string","pattern":"^[0-9]+/[0-9]+ PASS$"},"MeasuredOperationClass":{"type":"string","minLength":1},"MeasuredPositiveCrossover":{"type":"boolean"},"ResultFinalStatus":{"const":"RTX5070_PHYSICAL_VALIDATION_PASS"},"ExecutableSHA256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},"WorkloadMatrixSHA256":{"type":"string","pattern":"^[A-Fa-f0-9]{64}$"},"UltimateOperationCount":{"type":"integer","enum":[0,17]}},"additionalProperties":false},
+    "Scope":{"type":"object","required":["UltimateRtx5070Gate"],"properties":{"AcceptedFor":{"type":"string","minLength":1},"NotAcceptedFor":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},"UltimateRtx5070Gate":{"enum":["PENDING_FRESH_ULTIMATE_RTX5070_RUN","RTX5070_PHYSICAL_VALIDATION_PASS"]},"Reason":{"type":"string","minLength":1}},"additionalProperties":false},
+    "Limitations":{"type":"array","items":{"type":"string","minLength":1}},
+    "ProvenanceLimitations":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  },
+  "allOf":[
+    {"if":{"properties":{"SchemaVersion":{"const":"god2-rtx5070-external-audit-v2"}}},"then":{"properties":{"AcceptedEvidence":{"required":["ExecutableSHA256","WorkloadMatrixSHA256","UltimateOperationCount"]}}}}
+  ],
+  "additionalProperties":false
+}
