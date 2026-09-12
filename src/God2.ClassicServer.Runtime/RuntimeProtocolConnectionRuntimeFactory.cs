@@ -273,9 +273,11 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
             var opcodeBase = checked((byte)(_opcode >> 8));
             if (opcodeBase == PublicBetaCompatibilityGameplayRequestWireAdapter.GameplayDisconnectOpcode)
             {
-                return Task.FromResult(OperationResult.Failure(
-                    "gameplay.disconnect_requested",
-                    "The official client requested termination of the active world connection."));
+                // Disconnect is a connection-lifecycle command, not a failed gameplay operation.
+                // Propagate transport termination so TcpNetworkHost.RunConnectionAsync reaches its
+                // existing finally block and performs session close + authoritative world unbind.
+                return Task.FromException<OperationResult>(new IOException(
+                    "gameplay.disconnect_requested: official client requested world connection termination."));
             }
 
             return Task.FromResult(OperationResult.Success);
