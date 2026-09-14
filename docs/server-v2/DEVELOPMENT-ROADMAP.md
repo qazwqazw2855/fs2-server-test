@@ -165,6 +165,14 @@ Every recovered/implemented feature progresses through:
 - Created `src/God2.ServerV2.Host` bootstrap project.
 - M1 target fixed as Login -> Character -> World -> Movement -> Logout -> Relogin.
 
+### 2026-09-14 19:12 - Progress Sync
+- Checked `refactor/server-v2`; head remains `c95ed096996362fbb749f3eedb98a5e239aabdb5` (`Add Server V2 development roadmap`).
+- No new substantive commits were present since the previous sync.
+- No GitHub commit status / CI test results were available for the current head, so no test pass was claimed.
+- M1 remains at 10%; no milestone percentage was increased.
+- Current blockers remain Network/Protocol/Session implementation for the first V2 closed loop and evidence for the official Player Despawn wire/entity-handle mapping.
+- Next target remains Network/Protocol/Session foundations, migration of verified LoginHandshake/Login behavior, then a repeatable Login -> World -> Logout closed loop.
+
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
 - Existing MariaDB game data and schema/migrations where valid.
