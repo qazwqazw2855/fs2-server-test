@@ -14,6 +14,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly LoginService _loginService;
     private readonly CharacterListService _characterListService;
     private readonly SessionRegistry _sessionRegistry;
+    private readonly PendingWorldEntryRegistry _pendingWorldEntries = new();
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
     private bool _started;
@@ -73,6 +74,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _sessionRegistry,
                     _loginService,
                     _characterListService,
+                    _pendingWorldEntries,
                     Options.BindAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
                     cancellationToken);
@@ -116,17 +118,20 @@ public sealed class TcpGameServer : IAsyncDisposable
         SessionRegistry sessionRegistry,
         LoginService loginService,
         CharacterListService characterListService,
+        PendingWorldEntryRegistry pendingWorldEntries,
         byte[] advertisedAddress,
         ushort advertisedPort,
         CancellationToken serverCancellationToken)
     {
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
+        var remoteAddress =
+            (client.Client.RemoteEndPoint as IPEndPoint)?.Address.ToString() ??
+            "unknown";
         var state = new ConnectionStateMachine();
         using var sessionContext = new ConnectionSessionContext(
             connectionId,
             sessionRegistry);
         Log(connectionId, $"Connected remote={remoteEndPoint} stage={state.Stage}");
-        state.Transition(ConnectionStage.LoginHandshake);
 
         try
         {
@@ -134,6 +139,46 @@ public sealed class TcpGameServer : IAsyncDisposable
             {
                 client.NoDelay = true;
                 await using var stream = client.GetStream();
+
+                if (pendingWorldEntries.TryClaim(
+                        remoteAddress,
+                        DateTimeOffset.UtcNow,
+                        out var pendingWorld) &&
+                    pendingWorld is not null)
+                {
+                    state.Transition(ConnectionStage.WorldHandshake);
+
+                    await stream.WriteAsync(
+                        OfficialWorldHandshakeProtocol.ServerHandshakeFrame,
+                        serverCancellationToken);
+
+                    var worldClientHandshake = new byte[
+                        OfficialWorldHandshakeProtocol.HandshakeLength];
+
+                    await stream.ReadExactlyAsync(
+                        worldClientHandshake,
+                        serverCancellationToken);
+
+                    if (!OfficialWorldHandshakeProtocol
+                            .IsExpectedClientHandshake(worldClientHandshake))
+                    {
+                        Log(connectionId, "World handshake rejected.");
+                        return;
+                    }
+
+                    await stream.WriteAsync(
+                        OfficialWorldHandshakeProtocol.FirstFollowUpFrame,
+                        serverCancellationToken);
+
+                    Log(
+                        connectionId,
+                        $"World handshake completed character={pendingWorld.Character.CharacterId} " +
+                        $"stage={state.Stage}");
+
+                    return;
+                }
+
+                state.Transition(ConnectionStage.LoginHandshake);
 
                 Log(
                     connectionId,
@@ -197,6 +242,18 @@ public sealed class TcpGameServer : IAsyncDisposable
                         await stream.WriteAsync(
                             response,
                             serverCancellationToken);
+
+                        if (character is not null &&
+                            !pendingWorldEntries.TryReserve(
+                                remoteAddress,
+                                character.AccountId,
+                                selection.SelectedServerId,
+                                character,
+                                DateTimeOffset.UtcNow))
+                        {
+                            Log(connectionId, "Pending world entry reservation rejected.");
+                            return;
+                        }
 
                         Log(
                             connectionId,
