@@ -1,0 +1,263 @@
+{
+  "schema_version": 2,
+  "project": "God2 Server V2",
+  "version": "0.1.0-dev",
+  "phase": "M1 官方客戶端登入與世界閉環",
+  "status": "in_progress",
+  "overall_percent": 60,
+  "updated_at": "2026-09-16T00:51:18+08:00",
+  "summary": "God2 Server V2 已完成 AWS Runtime、帳號驗證、角色資料、Login→World Session ownership handoff、World Bootstrap、移動、登出、斷線清理與重登入閉環。已固定原版 God2.exe 為唯一 V2 reference client，不重製遊戲 Client，改為開發 God2 V2 Launcher。目前重點為解析 LoginServer.csvZ、控制登入端點，並以 reference client 重新完成官方客戶端 Login acceptance。",
+  "milestones": [
+    {
+      "key": "foundation",
+      "name": "專案基礎",
+      "percent": 100,
+      "status": "completed",
+      "items": [
+        {
+          "name": "重新開立 God2 Server V2 專案",
+          "status": "completed"
+        },
+        {
+          "name": "建立 fs2db 自動進度同步",
+          "status": "completed"
+        },
+        {
+          "name": "建立乾淨的 V2 專案骨架",
+          "status": "completed"
+        },
+        {
+          "name": "TCP Listener、Hex Log 與斷線清理",
+          "status": "completed"
+        },
+        {
+          "name": "確認正式執行環境與設定",
+          "status": "completed"
+        },
+        {
+          "name": "連線狀態機與 Session 自動清理",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "key": "login",
+      "name": "登入與選角",
+      "percent": 85,
+      "status": "in_progress",
+      "items": [
+        {
+          "name": "TCP Listener 與連線生命週期",
+          "status": "completed"
+        },
+        {
+          "name": "官方 19-byte Server / 19-byte Client LoginHandshake",
+          "status": "completed"
+        },
+        {
+          "name": "LoginRequest 解碼與帳號驗證",
+          "status": "completed"
+        },
+        {
+          "name": "MariaDB PBKDF2-SHA256 帳號驗證",
+          "status": "completed"
+        },
+        {
+          "name": "登入失敗與重複登入控制",
+          "status": "completed"
+        },
+        {
+          "name": "角色列表 Application / Persistence",
+          "status": "completed"
+        },
+        {
+          "name": "Server Selection 與 Pending World Entry",
+          "status": "completed"
+        },
+        {
+          "name": "Login → World Session ownership handoff",
+          "status": "completed"
+        },
+        {
+          "name": "固定原版 God2.exe reference client",
+          "status": "completed"
+        },
+        {
+          "name": "解析 LoginServer.csvZ 與登入端點",
+          "status": "in_progress"
+        },
+        {
+          "name": "官方 reference client 實機 Login acceptance",
+          "status": "pending"
+        },
+        {
+          "name": "官方 Client 選角 → World acceptance",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "key": "session",
+      "name": "連線與登出",
+      "percent": 100,
+      "status": "completed",
+      "items": [
+        {
+          "name": "Session ownership 與重複登入保護",
+          "status": "completed"
+        },
+        {
+          "name": "Login → World ownership 原子轉移",
+          "status": "completed"
+        },
+        {
+          "name": "World Logout 關閉 TCP",
+          "status": "completed"
+        },
+        {
+          "name": "斷線自動釋放 Session",
+          "status": "completed"
+        },
+        {
+          "name": "立即同帳號重新登入",
+          "status": "completed"
+        },
+        {
+          "name": "50 次 Login → World → Logout 循環",
+          "status": "completed"
+        },
+        {
+          "name": "50 次異常斷線 → 立即重登循環",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "key": "world",
+      "name": "世界與遊戲系統",
+      "percent": 30,
+      "status": "in_progress",
+      "items": [
+        {
+          "name": "WorldHandshake 與 1772-byte World Bootstrap",
+          "status": "completed"
+        },
+        {
+          "name": "角色移動 ACK 與座標持久化",
+          "status": "completed"
+        },
+        {
+          "name": "重複 Movement Sequence 拒絕",
+          "status": "completed"
+        },
+        {
+          "name": "World idle timeout",
+          "status": "completed"
+        },
+        {
+          "name": "多人 Player Spawn / AOI / Despawn",
+          "status": "pending"
+        },
+        {
+          "name": "NPC 與傳送",
+          "status": "pending"
+        },
+        {
+          "name": "物品與背包",
+          "status": "pending"
+        },
+        {
+          "name": "戰鬥與技能",
+          "status": "pending"
+        }
+      ]
+    }
+  ],
+  "current_focus": {
+    "title": "暫停點：角色列表 account_id 串接",
+    "description": "分支 refactor/server-v2 最新進度已將 MariaDB 驗證取得的 account_id 傳入 CharacterListService；回來後先 pull、補 DB 最小 SELECT 權限、build/test，再做真實角色查詢探針。",
+    "status": "paused"
+  },
+  "verification": {
+    "build": "last_verified_passing_latest_changes_pending",
+    "total_tests": 67,
+    "passed_tests": 67,
+    "failed_tests": 0,
+    "suites": [
+      {
+        "name": "Core",
+        "passed": 7,
+        "failed": 0
+      },
+      {
+        "name": "Protocol",
+        "passed": 25,
+        "failed": 0
+      },
+      {
+        "name": "Session",
+        "passed": 14,
+        "failed": 0
+      },
+      {
+        "name": "Application",
+        "passed": 21,
+        "failed": 0
+      }
+    ],
+    "note": "67 項為目前各套件最後一次已回報通過的測試總數；account_id 與角色列表 TCP 串接 commit 1843f11 尚待主機重新 build/test。"
+  },
+  "blockers": [
+    {
+      "title": "官方客戶端實機驗證",
+      "status": "deferred",
+      "detail": "目前無法開啟遊戲登入端，登入與角色流程先以固定向量、自動測試及資料庫探針驗證。"
+    },
+    {
+      "title": "完整舊客戶端素材",
+      "status": "partial",
+      "detail": "參照資料已保存於主機 /srv/god2-reference/client-legacy/God2；共 376 個檔案、約 38 MB，但多個 Data2 資源目錄原始即為空目錄。"
+    }
+  ],
+  "next_steps": [
+    "在主機補 god2_v2 對 accounts.account_id 與 characters 必要欄位的最小 SELECT 權限",
+    "git pull refactor/server-v2 並驗證 Host build 與 Application 21/21",
+    "建立 MariaDB 真實角色列表查詢探針，確認現有 1 筆角色可被 V2 正確讀取",
+    "將 CharacterListEntry 投影成官方角色列表封包",
+    "遊戲登入端可用後完成實機登入與選角驗收"
+  ],
+  "recent_activity": [
+    {
+      "date": "2026-09-15",
+      "title": "角色列表資料層",
+      "detail": "新增 CharacterListEntry、CharacterListService、MariaDbCharacterListRepository；Application 測試 21/21。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "帳號 ID 串接",
+      "detail": "MariaDB 驗證成功後回傳 account_id，TCP 登入成功後載入該帳號角色；commit 1843f11 待主機驗證。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "登入成功與失敗回應",
+      "detail": "完成官方 0x1E 失敗回應與 417-byte 成功 bootstrap；Protocol 測試 25/25。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "舊客戶端參照盤點",
+      "detail": "保存 32 MB ZIP／38 MB 解壓目錄；376 個檔案，包含 2017 God2.exe、CSVZ、GODZ、ROMZ 與舊玩家快捷鍵。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "MariaDB 帳號驗證",
+      "detail": "完成 PBKDF2-SHA256 驗證與 god2_v2 最小權限連線。"
+    }
+  ],
+  "launcher": {
+    "status": "planned",
+    "reference_client": "God2.exe",
+    "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
+    "strategy": "保留原版遊戲 Client，開發獨立 God2 V2 Launcher",
+    "next": "解析 LoginServer.csvZ 並控制 Server V2 登入端點"
+  }
+}
