@@ -79,7 +79,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _characterListService,
                     _characterPositionWriter,
                     _pendingWorldEntries,
-                    Options.BindAddress.GetAddressBytes(),
+                    Options.AdvertisedAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
                     cancellationToken);
                 _connections[connectionId] = task;
