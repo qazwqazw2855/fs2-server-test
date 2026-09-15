@@ -192,6 +192,37 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 connectionId,
                                 $"Login result={loginResult.Code} stage={state.Stage} " +
                                 "account=[REDACTED]");
+
+                            if (!loginResult.Succeeded)
+                            {
+                                var failureCode = loginResult.Code switch
+                                {
+                                    LoginResultCode.CredentialsRejected =>
+                                        OfficialLoginFailureCode.CredentialsRejected,
+                                    LoginResultCode.DuplicateLogin =>
+                                        OfficialLoginFailureCode.DuplicateLogin,
+                                    _ => throw new InvalidOperationException(
+                                        $"Unsupported failed login result: {loginResult.Code}.")
+                                };
+
+                                var response =
+                                    OfficialLoginResponseCodec.EncodeFailure(failureCode);
+
+                                await stream.WriteAsync(
+                                    response,
+                                    serverCancellationToken);
+
+                                Log(
+                                    connectionId,
+                                    $"TX LoginFailure code={failureCode} bytes={response.Length} " +
+                                    $"hex={Convert.ToHexString(response)}");
+                            }
+                            else
+                            {
+                                Log(
+                                    connectionId,
+                                    "Login authenticated; success bootstrap is pending.");
+                            }
                         }
 
                         return;
