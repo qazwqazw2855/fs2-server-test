@@ -68,6 +68,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     client,
                     _sessionRegistry,
                     _loginService,
+                    Options.BindAddress.GetAddressBytes(),
+                    checked((ushort)Options.Port),
                     cancellationToken);
                 _connections[connectionId] = task;
                 _ = ObserveConnectionAsync(connectionId, task);
@@ -108,6 +110,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         TcpClient client,
         SessionRegistry sessionRegistry,
         LoginService loginService,
+        byte[] advertisedAddress,
+        ushort advertisedPort,
         CancellationToken serverCancellationToken)
     {
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
@@ -219,9 +223,21 @@ public sealed class TcpGameServer : IAsyncDisposable
                             }
                             else
                             {
+                                var response =
+                                    OfficialLoginSuccessCodec.EncodeServerGroupBootstrap(
+                                        frame,
+                                        advertisedAddress,
+                                        advertisedPort);
+
+                                await stream.WriteAsync(
+                                    response,
+                                    serverCancellationToken);
+
                                 Log(
                                     connectionId,
-                                    "Login authenticated; success bootstrap is pending.");
+                                    $"TX LoginSuccessBootstrap bytes={response.Length} " +
+                                    $"endpoint={new IPAddress(advertisedAddress)}:{advertisedPort} " +
+                                    "hex=[REDACTED_SENSITIVE_LOGIN_ECHO]");
                             }
                         }
 
