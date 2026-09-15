@@ -26,6 +26,20 @@ public sealed class OfficialWorldMovementCodecTests
             movement.State);
     }
 
+    [Fact]
+    public void Movement_acknowledgement_matches_verified_plaintext_layout()
+    {
+        var encoded =
+            OfficialWorldMovementCodec.EncodeAcknowledgement(0x13);
+
+        Assert.Equal("05004DE6BF", Convert.ToHexString(encoded));
+        Assert.True(
+            OfficialWorldMovementCodec.TryDecodeAcknowledgement(
+                encoded,
+                out var sequence));
+        Assert.Equal(0x13, sequence);
+    }
+
     [Theory]
     [InlineData("0A0080BAD7C34DA69489")]
     [InlineData("0A002E10000E0001FF72")]
