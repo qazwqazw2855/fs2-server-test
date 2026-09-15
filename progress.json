@@ -4,14 +4,14 @@
   "version": "0.1.0-dev",
   "phase": "基礎建設",
   "status": "in_progress",
-  "overall_percent": 5,
-  "updated_at": "2026-09-15T02:10:00+08:00",
-  "summary": "God2 Server V2 已重新開案，目前優先建立 GitHub 與 fs2db 的開發進度同步。",
+  "overall_percent": 8,
+  "updated_at": "2026-09-15T10:20:00+08:00",
+  "summary": "God2 Server V2 的獨立工作區與 TCP 網路基礎已完成，下一步實作官方 19/19/6 LoginHandshake。",
   "milestones": [
     {
       "key": "foundation",
       "name": "專案基礎",
-      "percent": 25,
+      "percent": 50,
       "status": "in_progress",
       "items": [
         {
@@ -20,15 +20,19 @@
         },
         {
           "name": "建立 fs2db 自動進度同步",
-          "status": "in_progress"
+          "status": "completed"
         },
         {
           "name": "建立乾淨的 V2 專案骨架",
-          "status": "pending"
+          "status": "completed"
+        },
+        {
+          "name": "TCP Listener、Hex Log 與斷線清理",
+          "status": "completed"
         },
         {
           "name": "確認正式執行環境與設定",
-          "status": "pending"
+          "status": "in_progress"
         }
       ]
     },
