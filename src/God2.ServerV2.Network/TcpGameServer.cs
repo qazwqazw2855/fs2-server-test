@@ -237,6 +237,15 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                         worldActivity.RecordActivity(DateTimeOffset.UtcNow);
 
+                        if (OfficialWorldLogoutCodec.IsVerifiedRequest(worldFrame))
+                        {
+                            Log(
+                                connectionId,
+                                $"RX WorldLogout bytes={worldFrame.Length} " +
+                                "evidence=VerifiedRawCandidate; closing connection.");
+                            break;
+                        }
+
                         var classification =
                             OfficialWorldHeartbeatCodec.Classify(worldFrame);
 
