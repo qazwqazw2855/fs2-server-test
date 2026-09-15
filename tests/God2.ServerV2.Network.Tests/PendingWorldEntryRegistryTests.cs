@@ -16,6 +16,7 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.True(registry.TryReserve(
             "127.0.0.1",
             "god2test",
+            101,
             1,
             1,
             Character(),
@@ -28,6 +29,7 @@ public sealed class PendingWorldEntryRegistryTests
 
         Assert.NotNull(claimed);
         Assert.Equal("god2test", claimed.AccountName);
+        Assert.Equal(101, claimed.LoginConnectionId);
         Assert.Equal(1, claimed.AccountId);
         Assert.Equal("test001", claimed.Character.Name);
 
@@ -46,6 +48,7 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.True(registry.TryReserve(
             "127.0.0.1",
             "god2test",
+            101,
             1,
             1,
             Character(),
@@ -65,6 +68,7 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.True(registry.TryReserve(
             "127.0.0.1",
             "god2test",
+            101,
             1,
             1,
             Character(),
@@ -73,6 +77,7 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.False(registry.TryReserve(
             "127.0.0.1",
             "god2test",
+            101,
             1,
             1,
             Character(),
@@ -88,6 +93,7 @@ public sealed class PendingWorldEntryRegistryTests
             registry.TryReserve(
                 "127.0.0.1",
                 "   ",
+                101,
                 1,
                 1,
                 Character(),
@@ -103,6 +109,7 @@ public sealed class PendingWorldEntryRegistryTests
             registry.TryReserve(
                 "127.0.0.1",
                 "god2test",
+                101,
                 2,
                 1,
                 Character(),

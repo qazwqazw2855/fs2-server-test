@@ -55,6 +55,19 @@ public sealed class SessionRegistry
         }
     }
 
+    public bool TryTransfer(
+        string accountName,
+        long expectedOwnerConnectionId,
+        long newOwnerConnectionId)
+    {
+        var normalizedAccount = NormalizeAccount(accountName);
+
+        return _owners.TryUpdate(
+            normalizedAccount,
+            newOwnerConnectionId,
+            expectedOwnerConnectionId);
+    }
+
     public bool Release(
         string accountName,
         long connectionId)

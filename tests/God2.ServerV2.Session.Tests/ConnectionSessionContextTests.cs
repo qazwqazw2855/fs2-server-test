@@ -93,4 +93,90 @@ public sealed class ConnectionSessionContextTests
 
         Assert.Equal(0, registry.Count);
     }
+
+    [Fact]
+    public void World_connection_can_take_ownership_from_login_connection()
+    {
+        var registry = new SessionRegistry();
+        var login = new ConnectionSessionContext(101, registry);
+        var world = new ConnectionSessionContext(202, registry);
+
+        login.BindAccount("kero");
+
+        Assert.True(world.TransferOrAcquireFrom("kero", 101));
+
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(202, owner);
+        Assert.True(world.HasSession);
+
+        // Login context is no longer the registry owner.
+        // Disposing it must not release the world session.
+        login.Dispose();
+
+        Assert.True(registry.TryGetOwner("kero", out owner));
+        Assert.Equal(202, owner);
+
+        world.Dispose();
+
+        Assert.Equal(0, registry.Count);
+    }
+
+    [Fact]
+    public void Transfer_rejects_wrong_login_connection_without_claiming_session()
+    {
+        var registry = new SessionRegistry();
+        using var login = new ConnectionSessionContext(101, registry);
+        using var world = new ConnectionSessionContext(202, registry);
+
+        login.BindAccount("kero");
+
+        Assert.False(world.TransferOrAcquireFrom("kero", 999));
+
+        Assert.False(world.HasSession);
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(101, owner);
+    }
+
+
+    [Fact]
+    public void World_connection_can_acquire_after_login_connection_already_closed()
+    {
+        var registry = new SessionRegistry();
+        var login = new ConnectionSessionContext(101, registry);
+
+        login.BindAccount("kero");
+        login.Dispose();
+
+        using var world = new ConnectionSessionContext(202, registry);
+
+        Assert.True(world.TransferOrAcquireFrom("kero", 101));
+
+        Assert.True(world.HasSession);
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(202, owner);
+    }
+
+    [Fact]
+    public void World_connection_cannot_steal_session_from_third_connection()
+    {
+        var registry = new SessionRegistry();
+
+        var login = new ConnectionSessionContext(101, registry);
+        login.BindAccount("kero");
+        login.Dispose();
+
+        using var replacement = new ConnectionSessionContext(303, registry);
+        var replacementResult = replacement.BindAccount("kero");
+
+        Assert.True(replacementResult.Succeeded);
+
+        using var world = new ConnectionSessionContext(202, registry);
+
+        Assert.False(world.TransferOrAcquireFrom("kero", 101));
+
+        Assert.False(world.HasSession);
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(303, owner);
+    }
+
 }

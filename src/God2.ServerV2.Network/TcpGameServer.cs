@@ -151,16 +151,18 @@ public sealed class TcpGameServer : IAsyncDisposable
                         out var pendingWorld) &&
                     pendingWorld is not null)
                 {
-                    var worldSession = sessionContext.BindAccount(
-                        pendingWorld.AccountName);
+                    var worldSessionTransferred =
+                        sessionContext.TransferOrAcquireFrom(
+                            pendingWorld.AccountName,
+                            pendingWorld.LoginConnectionId);
 
-                    if (!worldSession.Succeeded)
+                    if (!worldSessionTransferred)
                     {
                         Log(
                             connectionId,
-                            "World session ownership rejected: status=" +
-                            worldSession.Status +
-                            "; closing connection.");
+                            "World session ownership transfer rejected: " +
+                            $"loginConnection={pendingWorld.LoginConnectionId}; " +
+                            "closing connection.");
                         return;
                     }
 
@@ -437,6 +439,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 sessionContext.AccountName ??
                                     throw new InvalidOperationException(
                                         "Authenticated account name is unavailable."),
+                                connectionId,
                                 character.AccountId,
                                 selection.SelectedServerId,
                                 character,

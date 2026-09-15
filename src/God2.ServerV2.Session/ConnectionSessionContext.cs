@@ -64,6 +64,46 @@ public sealed class ConnectionSessionContext : IDisposable
         }
     }
 
+    public bool TransferOrAcquireFrom(
+        string accountName,
+        long expectedOwnerConnectionId)
+    {
+        lock (_gate)
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+
+            var normalizedAccount = accountName.Trim();
+            ArgumentException.ThrowIfNullOrWhiteSpace(normalizedAccount);
+
+            if (_accountName is not null)
+            {
+                throw new InvalidOperationException(
+                    "A connection already owns a session.");
+            }
+
+            if (_registry.TryTransfer(
+                    normalizedAccount,
+                    expectedOwnerConnectionId,
+                    ConnectionId))
+            {
+                _accountName = normalizedAccount;
+                return true;
+            }
+
+            var acquire = _registry.TryAcquire(
+                normalizedAccount,
+                ConnectionId);
+
+            if (!acquire.Succeeded)
+            {
+                return false;
+            }
+
+            _accountName = normalizedAccount;
+            return true;
+        }
+    }
+
     public void Dispose()
     {
         lock (_gate)

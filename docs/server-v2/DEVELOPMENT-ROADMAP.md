@@ -211,3 +211,18 @@ Every recovered/implemented feature progresses through:
 
 ## Definition of Done
 Server V2 is not complete until the official client can reliably perform the major original gameplay systems, persistence survives restart, multiplayer state remains consistent, disconnects leave no ghosts, and classic regression tests remain green when custom content is enabled.
+
+### 2026-09-16 - Official Client Baseline and V2 Launcher Decision
+- Completed the current Server V2 session-ownership and Login-to-World ownership-transfer work, including duplicate-account ownership protection and pending-world claim coverage.
+- Current focused Server V2 test projects pass 59/59: Session 20/20, Application 21/21 and Network 18/18.
+- Verified the official Login 19-byte server handshake and 19-byte client handshake against the legacy protocol evidence.
+- Re-tested the 6-byte Login version follow-up and the recovered 900 ms handshake timing. The current client still rejected the tested version follow-up before sending LoginRequest, so official-client login acceptance remains unresolved.
+- Identified conflicting historical Login version evidence (`0x0022` versus current legacy source `0x0025`); stale tests must not be treated as protocol authority without matching the exact client build.
+- Established a single immutable Server V2 reference client: original `God2.exe`, SHA256 `fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1`.
+- Verified that the newly recovered FS2DB client copy and the AWS reference client contain the exact same `God2.exe`.
+- Removed `God2_opt.exe` and its separately supplied launcher configuration from the Server V2 protocol baseline; it represents a different client/launcher target and must not be mixed with the reference client.
+- Architecture decision: do not rebuild or replace the original God2 game client. Preserve the verified original client as the compatibility target.
+- Added the God2 V2 Launcher as a planned component. It will own Server V2 endpoint selection/injection, reference-client integrity/version identification, launch orchestration and later update/server-selection functionality.
+- Confirmed that the existing reverse-engineering toolchain already contains a verified `.csvZ` reader using the God2 `05 16` LZSS wrapper and CP936 text decoding (`God2PackedFile.ReadCsvZAsync`).
+- Next protocol/client task: decode and characterize the reference client's `LoginServer.csvZ`, determine the exact login-endpoint selection path used by `God2.exe`, and make the future V2 Launcher direct the unmodified reference client to Server V2.
+- After endpoint control is established, rebuild the official-client Login baseline from this exact reference client before continuing Character Select and World acceptance testing.

@@ -83,6 +83,30 @@ public sealed class SessionRegistryTests
     }
 
     [Fact]
+    public void Owner_can_be_transferred_atomically()
+    {
+        var registry = new SessionRegistry();
+        registry.TryAcquire("kero", 101);
+
+        Assert.True(registry.TryTransfer("kero", 101, 202));
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(202, owner);
+        Assert.False(registry.Release("kero", 101));
+        Assert.True(registry.Release("kero", 202));
+    }
+
+    [Fact]
+    public void Transfer_rejects_wrong_expected_owner()
+    {
+        var registry = new SessionRegistry();
+        registry.TryAcquire("kero", 101);
+
+        Assert.False(registry.TryTransfer("kero", 999, 202));
+        Assert.True(registry.TryGetOwner("kero", out var owner));
+        Assert.Equal(101, owner);
+    }
+
+    [Fact]
     public void Empty_account_is_rejected()
     {
         var registry = new SessionRegistry();

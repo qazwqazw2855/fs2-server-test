@@ -16,7 +16,7 @@ public static class OfficialLoginHandshakeProtocol
         Convert.FromHexString("1300E10638FA2835845B9FE9528DB9BCDF70BC");
 
     private static readonly byte[] VersionFollowUp =
-        Convert.FromHexString("0600ED7CEE11");
+        Convert.FromHexString("0600ED7BEF12");
 
     public static ReadOnlyMemory<byte> ServerHandshakeFrame => ServerHandshake;
     public static ReadOnlyMemory<byte> ExpectedClientHandshakeFrame => ExpectedClientHandshake;
@@ -50,6 +50,10 @@ public static class OfficialLoginHandshakeProtocol
                 "Client handshake does not match the verified official-client frame.",
                 clientHandshake);
         }
+
+        await Task.Delay(
+            TimeSpan.FromMilliseconds(900),
+            cancellationToken);
 
         await stream.WriteAsync(VersionFollowUp, cancellationToken);
         await stream.FlushAsync(cancellationToken);
