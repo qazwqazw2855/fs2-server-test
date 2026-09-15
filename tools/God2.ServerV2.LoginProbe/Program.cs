@@ -185,9 +185,18 @@ Require(
     OfficialWorldBootstrapCodec.PayloadLength,
     "World Bootstrap 總長度錯誤");
 
+var verifiedHeartbeat = Convert.FromHexString("05003D09A5");
+
+Require(
+    OfficialWorldHeartbeatCodec.Classify(verifiedHeartbeat) ==
+    OfficialWorldFrameClassification.KeepAlive,
+    "測試 Heartbeat 樣本未通過協定分類");
+
 await worldStream.WriteAsync(
-    new byte[] { 0x05, 0x00, 0x00, 0x00, 0x00 },
+    verifiedHeartbeat,
     timeout.Token);
+
+Array.Clear(verifiedHeartbeat);
 
 await Task.Delay(100, timeout.Token);
 
