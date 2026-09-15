@@ -190,6 +190,25 @@ public sealed class TcpGameServer : IAsyncDisposable
                         $"character={pendingWorld.Character.CharacterId} " +
                         $"stage={state.Stage}");
 
+                    while (!serverCancellationToken.IsCancellationRequested)
+                    {
+                        var worldFrame =
+                            await LengthPrefixedFrameReader.ReadAsync(
+                                stream,
+                                serverCancellationToken);
+
+                        if (worldFrame is null)
+                        {
+                            Log(connectionId, "World remote closed connection.");
+                            break;
+                        }
+
+                        Log(
+                            connectionId,
+                            $"RX WorldFrame bytes={worldFrame.Length} " +
+                            "payload=[REDACTED_UNVERIFIED]");
+                    }
+
                     return;
                 }
 
