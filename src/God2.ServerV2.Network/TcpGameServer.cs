@@ -1,4 +1,3 @@
-using System.Buffers;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
@@ -95,8 +94,6 @@ public sealed class TcpGameServer : IAsyncDisposable
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
         Log(connectionId, $"Connected remote={remoteEndPoint}");
 
-        var buffer = ArrayPool<byte>.Shared.Rent(16 * 1024);
-
         try
         {
             using (client)
@@ -132,18 +129,27 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                 while (!serverCancellationToken.IsCancellationRequested)
                 {
-                    var bytesRead = await stream.ReadAsync(
-                        buffer.AsMemory(0, buffer.Length),
+                    var frame = await LengthPrefixedFrameReader.ReadAsync(
+                        stream,
                         serverCancellationToken);
 
-                    if (bytesRead == 0)
+                    if (frame is null)
                     {
                         Log(connectionId, "Remote closed connection");
                         break;
                     }
 
-                    var hex = Convert.ToHexString(buffer.AsSpan(0, bytesRead));
-                    Log(connectionId, $"RX bytes={bytesRead} hex={hex}");
+                    if (frame.Length == 208)
+                    {
+                        Log(
+                            connectionId,
+                            "RX LoginRequestCandidate bytes=208 hex=[REDACTED_SENSITIVE_LOGIN_FRAME]");
+                        continue;
+                    }
+
+                    Log(
+                        connectionId,
+                        $"RX frame bytes={frame.Length} hex={Convert.ToHexString(frame)}");
                 }
             }
         }
@@ -165,7 +171,6 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
-            ArrayPool<byte>.Shared.Return(buffer);
             Log(connectionId, "Closed");
         }
     }
