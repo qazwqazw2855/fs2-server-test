@@ -71,6 +71,39 @@ public static class OfficialWorldMovementCodec
     public static bool IsVerifiedRequest(ReadOnlySpan<byte> frame) =>
         TryDecode(frame, out _);
 
+    public static bool TryDecodeAcknowledgement(
+        ReadOnlySpan<byte> frame,
+        out byte sequence)
+    {
+        sequence = 0;
+
+        if (frame.Length != AcknowledgementFrameLength ||
+            BinaryPrimitives.ReadUInt16LittleEndian(frame) !=
+                AcknowledgementFrameLength)
+        {
+            return false;
+        }
+
+        var decoded = Decode(frame);
+
+        try
+        {
+            if (decoded[2] != AcknowledgementOpcode ||
+                decoded[^1] !=
+                    OfficialLoginWireTransform.ComputeChecksum(decoded))
+            {
+                return false;
+            }
+
+            sequence = decoded[3];
+            return true;
+        }
+        finally
+        {
+            Array.Clear(decoded);
+        }
+    }
+
     public static byte[] EncodeAcknowledgement(byte sequence)
     {
         Span<byte> decoded =
