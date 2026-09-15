@@ -82,7 +82,11 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
             return false;
         }
 
-        var status = reader.GetString("status");
+        var passwordHashOrdinal = reader.GetOrdinal("password_hash");
+        var statusOrdinal = reader.GetOrdinal("status");
+        var lockedUntilUtcOrdinal = reader.GetOrdinal("locked_until_utc");
+
+        var status = reader.GetString(statusOrdinal);
         var enabled =
             string.Equals(status, "啟用", StringComparison.Ordinal) ||
             string.Equals(status, "Active", StringComparison.OrdinalIgnoreCase);
@@ -92,9 +96,9 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
             return false;
         }
 
-        if (!reader.IsDBNull("locked_until_utc"))
+        if (!reader.IsDBNull(lockedUntilUtcOrdinal))
         {
-            var lockedUntilUtc = reader.GetDateTime("locked_until_utc");
+            var lockedUntilUtc = reader.GetDateTime(lockedUntilUtcOrdinal);
 
             if (lockedUntilUtc > DateTime.UtcNow)
             {
@@ -102,7 +106,7 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
             }
         }
 
-        var passwordHash = reader.GetString("password_hash");
+        var passwordHash = reader.GetString(passwordHashOrdinal);
         return _passwordVerifier.Verify(password, passwordHash);
     }
 }
