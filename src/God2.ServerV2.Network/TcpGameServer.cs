@@ -201,6 +201,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                         pendingWorld.Character.RuntimeVersion;
                     var concurrencyToken =
                         pendingWorld.Character.ConcurrencyToken;
+                    var movementSequences =
+                        new WorldMovementSequenceTracker();
 
                     while (!serverCancellationToken.IsCancellationRequested)
                     {
@@ -259,6 +261,19 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 worldFrame,
                                 out var movement))
                         {
+                            if (!movementSequences.TryAccept(
+                                    movement.Sequence))
+                            {
+                                Log(
+                                    connectionId,
+                                    $"World movement sequence rejected " +
+                                    $"received={movement.Sequence} " +
+                                    $"expected={unchecked((byte)(
+                                        movementSequences.LastAcceptedSequence + 1))}; " +
+                                    "closing without persistence or acknowledgement.");
+                                break;
+                            }
+
                             var persistenceState = "Deferred";
 
                             if (characterPositionWriter is not null)
