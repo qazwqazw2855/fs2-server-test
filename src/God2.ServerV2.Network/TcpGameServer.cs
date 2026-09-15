@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using God2.ServerV2.Core;
 using God2.ServerV2.Protocol;
 
 namespace God2.ServerV2.Network;
@@ -92,7 +93,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         CancellationToken serverCancellationToken)
     {
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
-        Log(connectionId, $"Connected remote={remoteEndPoint}");
+        var state = new ConnectionStateMachine();
+        Log(connectionId, $"Connected remote={remoteEndPoint} stage={state.Stage}");
+        state.Transition(ConnectionStage.LoginHandshake);
 
         try
         {
@@ -125,7 +128,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     connectionId,
                     $"TX LoginVersionFollowUp bytes={OfficialLoginHandshakeProtocol.VersionFollowUpFrame.Length} " +
                     $"hex={Convert.ToHexString(OfficialLoginHandshakeProtocol.VersionFollowUpFrame.Span)}");
-                Log(connectionId, handshake.Detail);
+                state.Transition(ConnectionStage.Login);
+                Log(connectionId, $"{handshake.Detail} stage={state.Stage}");
 
                 while (!serverCancellationToken.IsCancellationRequested)
                 {
@@ -143,7 +147,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     {
                         Log(
                             connectionId,
-                            "RX LoginRequestCandidate bytes=208 hex=[REDACTED_SENSITIVE_LOGIN_FRAME]");
+                            $"RX LoginRequestCandidate bytes=208 stage={state.Stage} " +
+                            "hex=[REDACTED_SENSITIVE_LOGIN_FRAME]");
                         continue;
                     }
 
@@ -171,7 +176,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
-            Log(connectionId, "Closed");
+            state.TryTransition(ConnectionStage.Closing);
+            state.TryTransition(ConnectionStage.Closed);
+            Log(connectionId, $"Closed stage={state.Stage}");
         }
     }
 
