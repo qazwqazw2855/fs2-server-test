@@ -102,6 +102,32 @@ finally
     Array.Clear(loginSuccess);
 }
 
+using var worldClient = new TcpClient();
+await worldClient.ConnectAsync("127.0.0.1", 2592, timeout.Token);
+await using var worldStream = worldClient.GetStream();
+
+var worldServerHandshake =
+    await ReadFrameAsync(worldStream, timeout.Token);
+
+Require(
+    worldServerHandshake.AsSpan().SequenceEqual(
+        OfficialWorldHandshakeProtocol.ServerHandshakeFrame.Span),
+    "World Server Handshake 不符");
+
+await worldStream.WriteAsync(
+    OfficialWorldHandshakeProtocol.ExpectedClientHandshakeFrame,
+    timeout.Token);
+
+var worldFirstFollowUp =
+    await ReadFrameAsync(worldStream, timeout.Token);
+
+Require(
+    worldFirstFollowUp.AsSpan().SequenceEqual(
+        OfficialWorldHandshakeProtocol.FirstFollowUpFrame.Span),
+    "World First Follow-up 不符");
+
+Console.WriteLine("World Handshake 測試成功");
+
 return 0;
 
 static byte[] BuildLoginRequest(string account, string password)
