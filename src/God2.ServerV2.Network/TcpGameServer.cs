@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using God2.ServerV2.Application;
 using God2.ServerV2.Core;
 using God2.ServerV2.Protocol;
 using God2.ServerV2.Session;
@@ -10,6 +11,7 @@ namespace God2.ServerV2.Network;
 public sealed class TcpGameServer : IAsyncDisposable
 {
     private readonly TcpListener _listener;
+    private readonly LoginService _loginService;
     private readonly SessionRegistry _sessionRegistry;
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
@@ -17,9 +19,12 @@ public sealed class TcpGameServer : IAsyncDisposable
 
     public TcpGameServer(
         TcpServerOptions options,
-        SessionRegistry sessionRegistry)
+        SessionRegistry sessionRegistry,
+        LoginService loginService)
     {
         Options = options;
+        _loginService = loginService ??
+            throw new ArgumentNullException(nameof(loginService));
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
         _listener = new TcpListener(options.BindAddress, options.Port);
@@ -62,6 +67,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     connectionId,
                     client,
                     _sessionRegistry,
+                    _loginService,
                     cancellationToken);
                 _connections[connectionId] = task;
                 _ = ObserveConnectionAsync(connectionId, task);
@@ -101,6 +107,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         long connectionId,
         TcpClient client,
         SessionRegistry sessionRegistry,
+        LoginService loginService,
         CancellationToken serverCancellationToken)
     {
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
@@ -157,13 +164,37 @@ public sealed class TcpGameServer : IAsyncDisposable
                         break;
                     }
 
-                    if (frame.Length == 208)
+                    if (frame.Length == OfficialLoginRequestCodec.FrameLength)
                     {
                         Log(
                             connectionId,
-                            $"RX LoginRequestCandidate bytes=208 stage={state.Stage} " +
+                            $"RX LoginRequestCandidate bytes={frame.Length} stage={state.Stage} " +
                             "hex=[REDACTED_SENSITIVE_LOGIN_FRAME]");
-                        continue;
+
+                        if (!OfficialLoginRequestCodec.TryDecode(
+                                frame,
+                                out var loginRequest) ||
+                            loginRequest is null)
+                        {
+                            Log(connectionId, "Login request rejected: invalid wire frame.");
+                            return;
+                        }
+
+                        using (loginRequest)
+                        {
+                            var loginResult = await loginService.AuthenticateAsync(
+                                loginRequest.AccountName,
+                                loginRequest.Password,
+                                sessionContext,
+                                serverCancellationToken);
+
+                            Log(
+                                connectionId,
+                                $"Login result={loginResult.Code} stage={state.Stage} " +
+                                "account=[REDACTED]");
+                        }
+
+                        return;
                     }
 
                     Log(
