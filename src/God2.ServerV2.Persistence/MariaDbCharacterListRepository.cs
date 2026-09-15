@@ -43,7 +43,9 @@ public sealed class MariaDbCharacterListRepository :
                 position_x,
                 position_y,
                 created_at_utc,
-                last_played_at_utc
+                last_played_at_utc,
+                runtime_version,
+                concurrency_token
             FROM god2_player.characters
             WHERE account_id = @accountId
               AND enabled = 1
@@ -69,6 +71,8 @@ public sealed class MariaDbCharacterListRepository :
         var positionYOrdinal = reader.GetOrdinal("position_y");
         var createdAtUtcOrdinal = reader.GetOrdinal("created_at_utc");
         var lastPlayedAtUtcOrdinal = reader.GetOrdinal("last_played_at_utc");
+        var runtimeVersionOrdinal = reader.GetOrdinal("runtime_version");
+        var concurrencyTokenOrdinal = reader.GetOrdinal("concurrency_token");
 
         var characters = new List<CharacterListEntry>();
 
@@ -87,7 +91,9 @@ public sealed class MariaDbCharacterListRepository :
                 GetNullableInt32(reader, positionXOrdinal),
                 GetNullableInt32(reader, positionYOrdinal),
                 GetUtcDateTimeOffset(reader, createdAtUtcOrdinal),
-                GetNullableUtcDateTimeOffset(reader, lastPlayedAtUtcOrdinal)));
+                GetNullableUtcDateTimeOffset(reader, lastPlayedAtUtcOrdinal),
+                reader.GetInt64(runtimeVersionOrdinal),
+                reader.GetString(concurrencyTokenOrdinal)));
         }
 
         return characters;
