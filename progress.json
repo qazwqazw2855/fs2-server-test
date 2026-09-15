@@ -2,11 +2,11 @@
   "schema_version": 2,
   "project": "God2 Server V2",
   "version": "0.1.0-dev",
-  "phase": "基礎建設",
-  "status": "in_progress",
-  "overall_percent": 15,
-  "updated_at": "2026-09-15T11:15:00+08:00",
-  "summary": "God2 Server V2 已完成可測試的網路、協定、連線生命週期與登入應用層基礎；官方客戶端實機測試暫緩，持續進行離線可驗證開發。",
+  "phase": "M1 登入與角色列表",
+  "status": "paused",
+  "overall_percent": 25,
+  "updated_at": "2026-09-15T14:15:00+08:00",
+  "summary": "God2 Server V2 已完成 TCP 登入握手、帳密解碼、MariaDB PBKDF2 驗證、登入成功／失敗回應、Session 重複登入控制，以及角色列表 Application 與 MariaDB Repository。專案依使用者要求暫停，下一次從最新帳號 ID 串接驗證開始。",
   "milestones": [
     {
       "key": "foundation",
@@ -43,43 +43,53 @@
     {
       "key": "login",
       "name": "登入與選角",
-      "percent": 45,
+      "percent": 80,
       "status": "in_progress",
       "items": [
         {
           "name": "TCP Listener 與連線生命週期",
           "status": "completed",
-          "detail": "127.0.0.1:2592；連線建立、分幀、關閉與例外清理已驗證。"
+          "detail": "127.0.0.1:2592；連線、分幀、關閉與例外清理已驗證。"
         },
         {
           "name": "官方 19/19/6 LoginHandshake",
           "status": "completed",
-          "detail": "固定封包向量與模擬連線測試通過。"
+          "detail": "固定官方封包向量與模擬測試通過。"
         },
         {
           "name": "208-byte LoginRequest 解碼",
           "status": "completed",
-          "detail": "帳密欄位、安全記憶體清除及 checksum 驗證完成。"
+          "detail": "帳密解析、checksum 與敏感記憶體清除完成。"
         },
         {
-          "name": "登入驗證與 Session 協調",
+          "name": "MariaDB PBKDF2-SHA256 帳號驗證",
           "status": "completed",
-          "detail": "成功、帳密錯誤、重複登入三種結果完成單元測試。"
+          "detail": "連接 god2_player.accounts；停用、鎖定與密碼錯誤均拒絕。"
         },
         {
-          "name": "接入實際 TCP 登入流程",
+          "name": "登入失敗與重複登入回應",
+          "status": "completed",
+          "detail": "官方 0x1E 回應格式、加密與 checksum 完成。"
+        },
+        {
+          "name": "417-byte 登入成功 bootstrap",
+          "status": "completed",
+          "detail": "移植已驗證模板，支援登入欄位 echo 與伺服器端點修補。"
+        },
+        {
+          "name": "角色列表資料層",
           "status": "in_progress",
-          "detail": "下一個開發工作。"
+          "detail": "CharacterListService 與 MariaDB Repository 已完成；account_id 串接已推送，等待主機 build/test 驗證。"
+        },
+        {
+          "name": "官方角色列表與選角封包",
+          "status": "pending",
+          "detail": "資料層驗證完成後開始。"
         },
         {
           "name": "官方客戶端實機登入",
           "status": "deferred",
           "detail": "等待遊戲登入端可用後驗證。"
-        },
-        {
-          "name": "角色列表與選角",
-          "status": "pending",
-          "detail": "登入閉環完成後開始。"
         },
         {
           "name": "進入世界",
@@ -134,14 +144,14 @@
     }
   ],
   "current_focus": {
-    "title": "登入閉環基礎",
-    "description": "將 208-byte LoginRequest 解碼器、LoginService 與 Session Registry 接入實際 TCP 連線。",
-    "status": "in_progress"
+    "title": "暫停點：角色列表 account_id 串接",
+    "description": "分支 refactor/server-v2 最新進度已將 MariaDB 驗證取得的 account_id 傳入 CharacterListService；回來後先 pull、補 DB 最小 SELECT 權限、build/test，再做真實角色查詢探針。",
+    "status": "paused"
   },
   "verification": {
-    "build": "passing",
-    "total_tests": 38,
-    "passed_tests": 38,
+    "build": "last_verified_passing_latest_changes_pending",
+    "total_tests": 67,
+    "passed_tests": 67,
     "failed_tests": 0,
     "suites": [
       {
@@ -151,7 +161,7 @@
       },
       {
         "name": "Protocol",
-        "passed": 11,
+        "passed": 25,
         "failed": 0
       },
       {
@@ -161,45 +171,56 @@
       },
       {
         "name": "Application",
-        "passed": 6,
+        "passed": 21,
         "failed": 0
       }
-    ]
+    ],
+    "note": "67 項為目前各套件最後一次已回報通過的測試總數；account_id 與角色列表 TCP 串接 commit 1843f11 尚待主機重新 build/test。"
   },
   "blockers": [
     {
       "title": "官方客戶端實機驗證",
       "status": "deferred",
-      "detail": "目前無法開啟遊戲登入端，19/19/6 與後續登入流程先以固定向量和自動化測試驗證。"
+      "detail": "目前無法開啟遊戲登入端，登入與角色流程先以固定向量、自動測試及資料庫探針驗證。"
+    },
+    {
+      "title": "完整舊客戶端素材",
+      "status": "partial",
+      "detail": "參照資料已保存於主機 /srv/god2-reference/client-legacy/God2；共 376 個檔案、約 38 MB，但多個 Data2 資源目錄原始即為空目錄。"
     }
   ],
   "next_steps": [
-    "把 OfficialLoginRequestCodec 接入 TCP Network",
-    "將解碼後帳密交給 LoginService，使用後清除密碼記憶體",
-    "加入明確隔離的開發驗證模式",
-    "實作登入成功、帳密錯誤與重複登入回應",
-    "可開啟官方客戶端後補做實機驗收"
+    "在主機補 god2_v2 對 accounts.account_id 與 characters 必要欄位的最小 SELECT 權限",
+    "git pull refactor/server-v2 並驗證 Host build 與 Application 21/21",
+    "建立 MariaDB 真實角色列表查詢探針，確認現有 1 筆角色可被 V2 正確讀取",
+    "將 CharacterListEntry 投影成官方角色列表封包",
+    "遊戲登入端可用後完成實機登入與選角驗收"
   ],
   "recent_activity": [
     {
       "date": "2026-09-15",
-      "title": "登入 Wire Transform",
-      "detail": "官方固定向量雙向編解碼通過，Protocol 測試 11/11。"
+      "title": "角色列表資料層",
+      "detail": "新增 CharacterListEntry、CharacterListService、MariaDbCharacterListRepository；Application 測試 21/21。"
     },
     {
       "date": "2026-09-15",
-      "title": "登入應用層",
-      "detail": "完成驗證介面、登入結果與 Session 協調，Application 測試 6/6。"
+      "title": "帳號 ID 串接",
+      "detail": "MariaDB 驗證成功後回傳 account_id，TCP 登入成功後載入該帳號角色；commit 1843f11 待主機驗證。"
     },
     {
       "date": "2026-09-15",
-      "title": "Session 生命週期",
-      "detail": "完成重複登入控制與斷線自動釋放，Session 測試 14/14。"
+      "title": "登入成功與失敗回應",
+      "detail": "完成官方 0x1E 失敗回應與 417-byte 成功 bootstrap；Protocol 測試 25/25。"
     },
     {
       "date": "2026-09-15",
-      "title": "TCP 與分幀",
-      "detail": "完成 Listener、Connection ID、長度分幀、Hex Log 與 208-byte 敏感資料遮罩。"
+      "title": "舊客戶端參照盤點",
+      "detail": "保存 32 MB ZIP／38 MB 解壓目錄；376 個檔案，包含 2017 God2.exe、CSVZ、GODZ、ROMZ 與舊玩家快捷鍵。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "MariaDB 帳號驗證",
+      "detail": "完成 PBKDF2-SHA256 驗證與 god2_v2 最小權限連線。"
     }
   ]
 }
