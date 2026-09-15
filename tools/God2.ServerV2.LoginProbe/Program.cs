@@ -240,7 +240,19 @@ else if (verifyMovement)
     await worldStream.WriteAsync(movementRequest, timeout.Token);
     Array.Clear(movementRequest);
 
-    await Task.Delay(100, timeout.Token);
+    var movementAcknowledgement =
+        await ReadFrameAsync(worldStream, timeout.Token);
+
+    Require(
+        OfficialWorldMovementCodec.TryDecodeAcknowledgement(
+            movementAcknowledgement,
+            out var acknowledgedSequence),
+        "World 移動 ACK 格式錯誤");
+    Require(
+        acknowledgedSequence == 1,
+        $"World 移動 ACK Sequence 錯誤：{acknowledgedSequence}");
+
+    Array.Clear(movementAcknowledgement);
 
     var logoutRequest = Convert.FromHexString("0500AC9D30");
     await worldStream.WriteAsync(logoutRequest, timeout.Token);
@@ -250,7 +262,8 @@ else if (verifyMovement)
     var bytesRead = await worldStream.ReadAsync(eofProbe, timeout.Token);
 
     Require(bytesRead == 0, "移動封包後 World 連線狀態異常");
-    Console.WriteLine("World 移動封包辨識與連線維持測試成功");
+    Console.WriteLine(
+        "World 移動封包、ACK 與連線維持測試成功");
 }
 else if (verifyLogout)
 {
