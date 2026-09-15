@@ -2,9 +2,26 @@ using God2.ServerV2.Session;
 
 namespace God2.ServerV2.Application;
 
+public readonly record struct AccountAuthenticationResult(
+    bool Succeeded,
+    long? AccountId)
+{
+    public static AccountAuthenticationResult Rejected => new(false, null);
+
+    public static AccountAuthenticationResult Accepted(long accountId)
+    {
+        if (accountId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(accountId));
+        }
+
+        return new AccountAuthenticationResult(true, accountId);
+    }
+}
+
 public interface IAccountAuthenticator
 {
-    ValueTask<bool> ValidateCredentialsAsync(
+    ValueTask<AccountAuthenticationResult> ValidateCredentialsAsync(
         string accountName,
         ReadOnlyMemory<char> password,
         CancellationToken cancellationToken);
@@ -19,6 +36,7 @@ public enum LoginResultCode
 
 public readonly record struct LoginResult(
     LoginResultCode Code,
+    long? AccountId = null,
     long? ExistingConnectionId = null)
 {
     public bool Succeeded => Code == LoginResultCode.Success;
@@ -49,12 +67,13 @@ public sealed class LoginService
                 LoginResultCode.CredentialsRejected);
         }
 
-        var accepted = await _authenticator.ValidateCredentialsAsync(
+        var authentication = await _authenticator.ValidateCredentialsAsync(
             accountName.Trim(),
             password,
             cancellationToken);
 
-        if (!accepted)
+        if (!authentication.Succeeded ||
+            authentication.AccountId is not long accountId)
         {
             return new LoginResult(
                 LoginResultCode.CredentialsRejected);
@@ -65,15 +84,20 @@ public sealed class LoginService
         return session.Status switch
         {
             SessionAcquireStatus.Acquired =>
-                new LoginResult(LoginResultCode.Success),
+                new LoginResult(
+                    LoginResultCode.Success,
+                    AccountId: accountId),
 
             SessionAcquireStatus.AlreadyOwnedByConnection =>
-                new LoginResult(LoginResultCode.Success),
+                new LoginResult(
+                    LoginResultCode.Success,
+                    AccountId: accountId),
 
             SessionAcquireStatus.DuplicateAccount =>
                 new LoginResult(
                     LoginResultCode.DuplicateLogin,
-                    session.OwnerConnectionId),
+                    AccountId: accountId,
+                    ExistingConnectionId: session.OwnerConnectionId),
 
             _ => throw new InvalidOperationException(
                 $"Unknown session acquisition status: {session.Status}.")
