@@ -12,6 +12,7 @@ public sealed class TcpGameServer : IAsyncDisposable
 {
     private readonly TcpListener _listener;
     private readonly LoginService _loginService;
+    private readonly CharacterListService _characterListService;
     private readonly SessionRegistry _sessionRegistry;
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
@@ -20,11 +21,14 @@ public sealed class TcpGameServer : IAsyncDisposable
     public TcpGameServer(
         TcpServerOptions options,
         SessionRegistry sessionRegistry,
-        LoginService loginService)
+        LoginService loginService,
+        CharacterListService characterListService)
     {
         Options = options;
         _loginService = loginService ??
             throw new ArgumentNullException(nameof(loginService));
+        _characterListService = characterListService ??
+            throw new ArgumentNullException(nameof(characterListService));
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
         _listener = new TcpListener(options.BindAddress, options.Port);
@@ -68,6 +72,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     client,
                     _sessionRegistry,
                     _loginService,
+                    _characterListService,
                     Options.BindAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
                     cancellationToken);
@@ -110,6 +115,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         TcpClient client,
         SessionRegistry sessionRegistry,
         LoginService loginService,
+        CharacterListService characterListService,
         byte[] advertisedAddress,
         ushort advertisedPort,
         CancellationToken serverCancellationToken)
@@ -223,6 +229,16 @@ public sealed class TcpGameServer : IAsyncDisposable
                             }
                             else
                             {
+                                var characters =
+                                    await characterListService.GetAsync(
+                                        loginResult.AccountId!.Value,
+                                        serverCancellationToken);
+
+                                Log(
+                                    connectionId,
+                                    $"Character list loaded count={characters.Count} " +
+                                    "account=[REDACTED]");
+
                                 var response =
                                     OfficialLoginSuccessCodec.EncodeServerGroupBootstrap(
                                         frame,
