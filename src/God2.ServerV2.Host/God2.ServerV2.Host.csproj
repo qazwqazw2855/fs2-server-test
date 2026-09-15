@@ -7,5 +7,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\God2.ServerV2.Core\God2.ServerV2.Core.csproj" />
+    <ProjectReference Include="..\God2.ServerV2.Network\God2.ServerV2.Network.csproj" />
   </ItemGroup>
 </Project>
