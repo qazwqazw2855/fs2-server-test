@@ -256,6 +256,19 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 $"x={movement.X} y={movement.Y} " +
                                 $"sequence={movement.Sequence} " +
                                 $"state=0x{movement.State:X2}; persistence=Deferred");
+
+                            var acknowledgement =
+                                OfficialWorldMovementCodec.EncodeAcknowledgement(
+                                    movement.Sequence);
+
+                            await stream.WriteAsync(
+                                acknowledgement,
+                                serverCancellationToken);
+
+                            Log(
+                                connectionId,
+                                $"TX WorldMovementAck bytes={acknowledgement.Length} " +
+                                $"sequence={movement.Sequence}");
                             continue;
                         }
 
