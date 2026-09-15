@@ -19,13 +19,20 @@ var verifyMovement =
         Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_MOVEMENT"),
         "1",
         StringComparison.Ordinal);
+var verifyDuplicateMovement =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_DUPLICATE_MOVEMENT"),
+        "1",
+        StringComparison.Ordinal);
 
 if ((verifyIdleTimeout ? 1 : 0) +
     (verifyLogout ? 1 : 0) +
-    (verifyMovement ? 1 : 0) > 1)
+    (verifyMovement ? 1 : 0) +
+    (verifyDuplicateMovement ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "閒置逾時、登出與移動模式只能啟用一種。");
+        "閒置逾時、登出、移動與重複移動模式只能啟用一種。");
     return 1;
 }
 
@@ -227,6 +234,48 @@ if (verifyIdleTimeout)
 
     Console.WriteLine(
         $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else if (verifyDuplicateMovement)
+{
+    const string movementHex = "0A0080BAD7C34DA69488";
+    var movementRequest = Convert.FromHexString(movementHex);
+
+    Require(
+        OfficialWorldMovementCodec.TryDecode(
+            movementRequest,
+            out var movement),
+        "重複移動測試樣本未通過協定辨識");
+    Require(
+        movement.Sequence == 1,
+        $"重複移動測試 Sequence 錯誤：{movement.Sequence}");
+
+    await worldStream.WriteAsync(movementRequest, timeout.Token);
+
+    var acknowledgement =
+        await ReadFrameAsync(worldStream, timeout.Token);
+
+    Require(
+        OfficialWorldMovementCodec.TryDecodeAcknowledgement(
+            acknowledgement,
+            out var acknowledgedSequence),
+        "首次移動 ACK 格式錯誤");
+    Require(
+        acknowledgedSequence == movement.Sequence,
+        $"首次移動 ACK Sequence 錯誤：{acknowledgedSequence}");
+
+    Array.Clear(acknowledgement);
+
+    await worldStream.WriteAsync(movementRequest, timeout.Token);
+    Array.Clear(movementRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead = await worldStream.ReadAsync(eofProbe, timeout.Token);
+
+    Require(
+        bytesRead == 0,
+        "重複移動序號未被拒絕，連線仍然開啟");
+    Console.WriteLine(
+        "World 重複移動序號拒絕、無第二次 ACK 測試成功");
 }
 else if (verifyMovement)
 {
