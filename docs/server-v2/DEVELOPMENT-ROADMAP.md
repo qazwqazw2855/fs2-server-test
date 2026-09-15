@@ -178,10 +178,22 @@ Every recovered/implemented feature progresses through:
 - Added V2 Application, Network, Protocol, Session and Persistence layers plus their test projects.
 - Implemented TCP framing/lifecycle, Session registry, LoginHandshake/Login request-response codecs, MariaDB PBKDF2 account authentication, character-list persistence, Server Selection, WorldHandshake/Bootstrap, Heartbeat, Movement and Logout protocol foundations.
 - Added pending world-entry, world-activity and movement-sequence tracking; latest work separates/validates bind versus advertised IPv4 address configuration.
-- Historical development records reported 67/67 tests passing at an earlier checkpoint, but current head has no GitHub commit status/CI result; current-head test pass is therefore not claimed.
-- M1 is conservatively tracked at 60%: most protocol/network foundations exist, but the official-client Login -> Character -> World -> Movement -> Logout -> Relogin acceptance loop, 50-cycle reconnect test and two-client despawn acceptance remain incomplete.
-- Blockers: no current-head CI/status, official-client end-to-end acceptance incomplete, and official Player Despawn wire/entity-handle evidence remains unresolved.
-- Next: run full build/test on `a87b7266`, complete the official-client M1 loop, then execute 50-cycle reconnect and two-client spawn/movement/AOI-leave/logout-despawn acceptance.
+- Historical development records reported 67/67 tests passing at an earlier checkpoint, but current head had no GitHub commit status/CI result at this sync point.
+- M1 was conservatively tracked at 60% pending current-head validation and official-client acceptance.
+- Blockers at this sync point: official-client end-to-end acceptance incomplete and official Player Despawn wire/entity-handle evidence unresolved.
+
+### 2026-09-15 21:25 - AWS Runtime Validation and M1 Headless Closure
+- Deployed Server V2 as the enabled `god2-server-v2.service` systemd unit on AWS and verified graceful restart.
+- Configured the public game endpoint on TCP `2592` with MariaDB runtime access through `127.0.0.1:3308`.
+- Validated least-privilege `god2_v2@172.17.0.1` access and confirmed canonical migration `055` through current schema version `468`.
+- Verified real MariaDB authentication for `god2test`, character list recovery for `test001`, World Handshake and the complete 1772-byte World Bootstrap.
+- Ran all Server V2 automated projects: 113 tests passed, 0 failed and 0 skipped.
+- Verified headless World Logout closes the TCP connection, releases session ownership and permits immediate same-account relogin.
+- Verified ordered movement acknowledgement and persistence; test character coordinates changed from `(202,128)` to `(16,14)` and runtime version advanced from `29` to `32`.
+- Verified duplicate movement sequence rejection without a second acknowledgement or duplicate persistence.
+- Verified World idle timeout closes the connection after 30.0 seconds.
+- Official-client acceptance, repeated 50-cycle validation and multiplayer spawn/AOI/despawn evidence remain pending.
+
 
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
