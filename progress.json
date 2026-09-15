@@ -1,18 +1,18 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project": "God2 Server V2",
   "version": "0.1.0-dev",
   "phase": "基礎建設",
   "status": "in_progress",
-  "overall_percent": 12,
-  "updated_at": "2026-09-15T10:50:00+08:00",
-  "summary": "官方握手、封包分幀、敏感資料遮罩、連線狀態機與 Session 自動清理已通過 26 項測試。",
+  "overall_percent": 15,
+  "updated_at": "2026-09-15T11:15:00+08:00",
+  "summary": "God2 Server V2 已完成可測試的網路、協定、連線生命週期與登入應用層基礎；官方客戶端實機測試暫緩，持續進行離線可驗證開發。",
   "milestones": [
     {
       "key": "foundation",
       "name": "專案基礎",
-      "percent": 75,
-      "status": "in_progress",
+      "percent": 100,
+      "status": "completed",
       "items": [
         {
           "name": "重新開立 God2 Server V2 專案",
@@ -43,24 +43,48 @@
     {
       "key": "login",
       "name": "登入與選角",
-      "percent": 20,
+      "percent": 45,
       "status": "in_progress",
       "items": [
         {
-          "name": "登入握手",
-          "status": "completed"
+          "name": "TCP Listener 與連線生命週期",
+          "status": "completed",
+          "detail": "127.0.0.1:2592；連線建立、分幀、關閉與例外清理已驗證。"
         },
         {
-          "name": "帳號驗證",
-          "status": "in_progress"
+          "name": "官方 19/19/6 LoginHandshake",
+          "status": "completed",
+          "detail": "固定封包向量與模擬連線測試通過。"
+        },
+        {
+          "name": "208-byte LoginRequest 解碼",
+          "status": "completed",
+          "detail": "帳密欄位、安全記憶體清除及 checksum 驗證完成。"
+        },
+        {
+          "name": "登入驗證與 Session 協調",
+          "status": "completed",
+          "detail": "成功、帳密錯誤、重複登入三種結果完成單元測試。"
+        },
+        {
+          "name": "接入實際 TCP 登入流程",
+          "status": "in_progress",
+          "detail": "下一個開發工作。"
+        },
+        {
+          "name": "官方客戶端實機登入",
+          "status": "deferred",
+          "detail": "等待遊戲登入端可用後驗證。"
         },
         {
           "name": "角色列表與選角",
-          "status": "pending"
+          "status": "pending",
+          "detail": "登入閉環完成後開始。"
         },
         {
           "name": "進入世界",
-          "status": "pending"
+          "status": "pending",
+          "detail": "選角與 WorldHandshake 完成後開始。"
         }
       ]
     },
@@ -107,6 +131,75 @@
           "status": "pending"
         }
       ]
+    }
+  ],
+  "current_focus": {
+    "title": "登入閉環基礎",
+    "description": "將 208-byte LoginRequest 解碼器、LoginService 與 Session Registry 接入實際 TCP 連線。",
+    "status": "in_progress"
+  },
+  "verification": {
+    "build": "passing",
+    "total_tests": 38,
+    "passed_tests": 38,
+    "failed_tests": 0,
+    "suites": [
+      {
+        "name": "Core",
+        "passed": 7,
+        "failed": 0
+      },
+      {
+        "name": "Protocol",
+        "passed": 11,
+        "failed": 0
+      },
+      {
+        "name": "Session",
+        "passed": 14,
+        "failed": 0
+      },
+      {
+        "name": "Application",
+        "passed": 6,
+        "failed": 0
+      }
+    ]
+  },
+  "blockers": [
+    {
+      "title": "官方客戶端實機驗證",
+      "status": "deferred",
+      "detail": "目前無法開啟遊戲登入端，19/19/6 與後續登入流程先以固定向量和自動化測試驗證。"
+    }
+  ],
+  "next_steps": [
+    "把 OfficialLoginRequestCodec 接入 TCP Network",
+    "將解碼後帳密交給 LoginService，使用後清除密碼記憶體",
+    "加入明確隔離的開發驗證模式",
+    "實作登入成功、帳密錯誤與重複登入回應",
+    "可開啟官方客戶端後補做實機驗收"
+  ],
+  "recent_activity": [
+    {
+      "date": "2026-09-15",
+      "title": "登入 Wire Transform",
+      "detail": "官方固定向量雙向編解碼通過，Protocol 測試 11/11。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "登入應用層",
+      "detail": "完成驗證介面、登入結果與 Session 協調，Application 測試 6/6。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "Session 生命週期",
+      "detail": "完成重複登入控制與斷線自動釋放，Session 測試 14/14。"
+    },
+    {
+      "date": "2026-09-15",
+      "title": "TCP 與分幀",
+      "detail": "完成 Listener、Connection ID、長度分幀、Hex Log 與 208-byte 敏感資料遮罩。"
     }
   ]
 }
