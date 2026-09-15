@@ -264,12 +264,16 @@ public sealed class TcpGameServer : IAsyncDisposable
                             if (!movementSequences.TryAccept(
                                     movement.Sequence))
                             {
+                                var expectedSequence = unchecked(
+                                    (byte)(
+                                        movementSequences.LastAcceptedSequence +
+                                        1));
+
                                 Log(
                                     connectionId,
                                     $"World movement sequence rejected " +
                                     $"received={movement.Sequence} " +
-                                    $"expected={unchecked((byte)(
-                                        movementSequences.LastAcceptedSequence + 1))}; " +
+                                    $"expected={expectedSequence}; " +
                                     "closing without persistence or acknowledgement.");
                                 break;
                             }
