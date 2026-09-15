@@ -14,11 +14,18 @@ var verifyLogout =
         Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_LOGOUT"),
         "1",
         StringComparison.Ordinal);
+var verifyMovement =
+    string.Equals(
+        Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_MOVEMENT"),
+        "1",
+        StringComparison.Ordinal);
 
-if (verifyIdleTimeout && verifyLogout)
+if ((verifyIdleTimeout ? 1 : 0) +
+    (verifyLogout ? 1 : 0) +
+    (verifyMovement ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "閒置逾時與登出模式不能同時啟用。");
+        "閒置逾時、登出與移動模式只能啟用一種。");
     return 1;
 }
 
@@ -220,6 +227,30 @@ if (verifyIdleTimeout)
 
     Console.WriteLine(
         $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else if (verifyMovement)
+{
+    var movementRequest =
+        Convert.FromHexString("0A0080BAD7C34DA69488");
+
+    Require(
+        OfficialWorldMovementCodec.IsVerifiedRequest(movementRequest),
+        "測試移動樣本未通過協定辨識");
+
+    await worldStream.WriteAsync(movementRequest, timeout.Token);
+    Array.Clear(movementRequest);
+
+    await Task.Delay(100, timeout.Token);
+
+    var logoutRequest = Convert.FromHexString("0500AC9D30");
+    await worldStream.WriteAsync(logoutRequest, timeout.Token);
+    Array.Clear(logoutRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead = await worldStream.ReadAsync(eofProbe, timeout.Token);
+
+    Require(bytesRead == 0, "移動封包後 World 連線狀態異常");
+    Console.WriteLine("World 移動封包辨識與連線維持測試成功");
 }
 else if (verifyLogout)
 {
