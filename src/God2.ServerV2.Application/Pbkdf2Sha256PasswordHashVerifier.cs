@@ -58,7 +58,11 @@ public sealed class Pbkdf2Sha256PasswordHashVerifier : IPasswordHashVerifier
             return false;
         }
 
-        var passwordBytes = Encoding.UTF8.GetBytes(password.Span);
+        var passwordBytes = new byte[
+            Encoding.UTF8.GetByteCount(password.Span)];
+        Encoding.UTF8.GetBytes(
+            password.Span,
+            passwordBytes);
         var actualHash = new byte[ExpectedHashLength];
 
         try
