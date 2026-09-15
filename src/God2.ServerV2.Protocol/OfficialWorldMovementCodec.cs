@@ -11,7 +11,9 @@ public readonly record struct OfficialWorldMovement(
 public static class OfficialWorldMovementCodec
 {
     public const int FrameLength = 10;
+    public const int AcknowledgementFrameLength = 5;
     public const byte Opcode = 0x2E;
+    public const byte AcknowledgementOpcode = 0x5D;
     public const byte MountedState = 0xFF;
     public const int MaximumPackedCoordinate = 0x7FFF;
 
@@ -69,6 +71,22 @@ public static class OfficialWorldMovementCodec
     public static bool IsVerifiedRequest(ReadOnlySpan<byte> frame) =>
         TryDecode(frame, out _);
 
+    public static byte[] EncodeAcknowledgement(byte sequence)
+    {
+        Span<byte> decoded =
+            stackalloc byte[AcknowledgementFrameLength];
+
+        BinaryPrimitives.WriteUInt16LittleEndian(
+            decoded,
+            AcknowledgementFrameLength);
+        decoded[2] = AcknowledgementOpcode;
+        decoded[3] = sequence;
+        decoded[^1] =
+            OfficialLoginWireTransform.ComputeChecksum(decoded);
+
+        return Encode(decoded);
+    }
+
     private static byte[] Decode(ReadOnlySpan<byte> frame)
     {
         var decoded = frame.ToArray();
@@ -86,5 +104,22 @@ public static class OfficialWorldMovementCodec
         }
 
         return decoded;
+    }
+
+    private static byte[] Encode(ReadOnlySpan<byte> decoded)
+    {
+        var encoded = decoded.ToArray();
+        var previousPlain = 0xB0;
+
+        for (var index = 2; index < encoded.Length; index++)
+        {
+            var plain = decoded[index];
+            encoded[index] = (byte)(
+                ((CipherKeyPrefix[index - 2] ^ plain) +
+                 previousPlain - 3) & 0xFF);
+            previousPlain = plain;
+        }
+
+        return encoded;
     }
 }
