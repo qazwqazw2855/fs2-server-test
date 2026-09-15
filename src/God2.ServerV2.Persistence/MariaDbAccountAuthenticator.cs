@@ -52,7 +52,7 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
             throw new ArgumentNullException(nameof(passwordVerifier));
     }
 
-    public async ValueTask<bool> ValidateCredentialsAsync(
+    public async ValueTask<AccountAuthenticationResult> ValidateCredentialsAsync(
         string accountName,
         ReadOnlyMemory<char> password,
         CancellationToken cancellationToken)
@@ -65,6 +65,7 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
         await using var command = connection.CreateCommand();
         command.CommandText = """
             SELECT
+                account_id,
                 password_hash,
                 status,
                 locked_until_utc
@@ -79,9 +80,10 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
 
         if (!await reader.ReadAsync(cancellationToken))
         {
-            return false;
+            return AccountAuthenticationResult.Rejected;
         }
 
+        var accountIdOrdinal = reader.GetOrdinal("account_id");
         var passwordHashOrdinal = reader.GetOrdinal("password_hash");
         var statusOrdinal = reader.GetOrdinal("status");
         var lockedUntilUtcOrdinal = reader.GetOrdinal("locked_until_utc");
@@ -93,7 +95,7 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
 
         if (!enabled)
         {
-            return false;
+            return AccountAuthenticationResult.Rejected;
         }
 
         if (!reader.IsDBNull(lockedUntilUtcOrdinal))
@@ -102,11 +104,15 @@ public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
 
             if (lockedUntilUtc > DateTime.UtcNow)
             {
-                return false;
+                return AccountAuthenticationResult.Rejected;
             }
         }
 
         var passwordHash = reader.GetString(passwordHashOrdinal);
-        return _passwordVerifier.Verify(password, passwordHash);
+
+        return _passwordVerifier.Verify(password, passwordHash)
+            ? AccountAuthenticationResult.Accepted(
+                reader.GetInt64(accountIdOrdinal))
+            : AccountAuthenticationResult.Rejected;
     }
 }
