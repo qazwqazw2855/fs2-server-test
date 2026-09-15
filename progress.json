@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "project": "God2 Server V2",
+  "version": "0.1.0-dev",
+  "phase": "基礎建設",
+  "status": "in_progress",
+  "overall_percent": 5,
+  "updated_at": "2026-09-15T02:10:00+08:00",
+  "summary": "God2 Server V2 已重新開案，目前優先建立 GitHub 與 fs2db 的開發進度同步。",
+  "milestones": [
+    {
+      "key": "foundation",
+      "name": "專案基礎",
+      "percent": 25,
+      "status": "in_progress",
+      "items": [
+        {
+          "name": "重新開立 God2 Server V2 專案",
+          "status": "completed"
+        },
+        {
+          "name": "建立 fs2db 自動進度同步",
+          "status": "in_progress"
+        },
+        {
+          "name": "建立乾淨的 V2 專案骨架",
+          "status": "pending"
+        },
+        {
+          "name": "確認正式執行環境與設定",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "key": "login",
+      "name": "登入與選角",
+      "percent": 0,
+      "status": "pending",
+      "items": [
+        {
+          "name": "登入握手",
+          "status": "pending"
+        },
+        {
+          "name": "帳號驗證",
+          "status": "pending"
+        },
+        {
+          "name": "角色列表與選角",
+          "status": "pending"
+        },
+        {
+          "name": "進入世界",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "key": "session",
+      "name": "連線與登出",
+      "percent": 0,
+      "status": "pending",
+      "items": [
+        {
+          "name": "登出封包處理",
+          "status": "pending"
+        },
+        {
+          "name": "關閉連線",
+          "status": "pending"
+        },
+        {
+          "name": "清除線上角色狀態",
+          "status": "pending"
+        }
+      ]
+    },
+    {
+      "key": "world",
+      "name": "世界與遊戲系統",
+      "percent": 0,
+      "status": "pending",
+      "items": [
+        {
+          "name": "地圖與角色移動",
+          "status": "pending"
+        },
+        {
+          "name": "NPC 與傳送",
+          "status": "pending"
+        },
+        {
+          "name": "物品與背包",
+          "status": "pending"
+        },
+        {
+          "name": "戰鬥與技能",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}
