@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "基礎建設",
   "status": "in_progress",
-  "overall_percent": 8,
-  "updated_at": "2026-09-15T10:20:00+08:00",
-  "summary": "God2 Server V2 的獨立工作區與 TCP 網路基礎已完成，下一步實作官方 19/19/6 LoginHandshake。",
+  "overall_percent": 10,
+  "updated_at": "2026-09-15T10:35:00+08:00",
+  "summary": "TCP 基礎與官方 19/19/6 LoginHandshake 已通過模擬測試，準備進行官方客戶端實機驗證。",
   "milestones": [
     {
       "key": "foundation",
@@ -39,16 +39,16 @@
     {
       "key": "login",
       "name": "登入與選角",
-      "percent": 0,
-      "status": "pending",
+      "percent": 20,
+      "status": "in_progress",
       "items": [
         {
           "name": "登入握手",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "name": "帳號驗證",
-          "status": "pending"
+          "status": "in_progress"
         },
         {
           "name": "角色列表與選角",
