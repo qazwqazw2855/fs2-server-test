@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\God2.ServerV2.Core\God2.ServerV2.Core.csproj" />
+    <ProjectReference Include="..\God2.ServerV2.Application\God2.ServerV2.Application.csproj" />
     <ProjectReference Include="..\God2.ServerV2.Protocol\God2.ServerV2.Protocol.csproj" />
     <ProjectReference Include="..\God2.ServerV2.Session\God2.ServerV2.Session.csproj" />
   </ItemGroup>
