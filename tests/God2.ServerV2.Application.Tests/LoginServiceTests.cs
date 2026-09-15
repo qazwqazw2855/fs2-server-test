@@ -19,6 +19,7 @@ public sealed class LoginServiceTests
             CancellationToken.None);
 
         Assert.Equal(LoginResultCode.Success, result.Code);
+        Assert.Equal(42, result.AccountId);
         Assert.True(connection.HasSession);
         Assert.Equal(1, registry.Count);
     }
@@ -123,23 +124,27 @@ public sealed class LoginServiceTests
     {
         public int CallCount { get; private set; }
 
-        public ValueTask<bool> ValidateCredentialsAsync(
+        public ValueTask<AccountAuthenticationResult> ValidateCredentialsAsync(
             string accountName,
             ReadOnlyMemory<char> password,
             CancellationToken cancellationToken)
         {
             CallCount++;
-            return ValueTask.FromResult(accepted);
+            return ValueTask.FromResult(
+                accepted
+                    ? AccountAuthenticationResult.Accepted(42)
+                    : AccountAuthenticationResult.Rejected);
         }
     }
 
     private sealed class CancellingAuthenticator
         : IAccountAuthenticator
     {
-        public ValueTask<bool> ValidateCredentialsAsync(
+        public ValueTask<AccountAuthenticationResult> ValidateCredentialsAsync(
             string accountName,
             ReadOnlyMemory<char> password,
             CancellationToken cancellationToken) =>
-            ValueTask.FromCanceled<bool>(cancellationToken);
+            ValueTask.FromCanceled<AccountAuthenticationResult>(
+                cancellationToken);
     }
 }
