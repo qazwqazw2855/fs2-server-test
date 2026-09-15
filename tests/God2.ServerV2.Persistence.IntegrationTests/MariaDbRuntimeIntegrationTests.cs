@@ -1,5 +1,6 @@
 using God2.ServerV2.Application;
 using God2.ServerV2.Persistence;
+using MySqlConnector;
 
 namespace God2.ServerV2.Persistence.IntegrationTests;
 
@@ -88,6 +89,93 @@ public sealed class MariaDbRuntimeIntegrationTests
             CancellationToken.None);
 
         Assert.False(result.Updated);
+
+        var after = Assert.Single(
+            await repository.ListByAccountAsync(
+                1,
+                CancellationToken.None));
+
+        Assert.Equal(before.PositionX, after.PositionX);
+        Assert.Equal(before.PositionY, after.PositionY);
+        Assert.Equal(before.RuntimeVersion, after.RuntimeVersion);
+        Assert.Equal(before.ConcurrencyToken, after.ConcurrencyToken);
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task CurrentCharacterPositionWrite_SucceedsAndRollsBack()
+    {
+        if (!ShouldRun())
+        {
+            return;
+        }
+
+        var options = CreateOptions();
+        var repository = new MariaDbCharacterListRepository(options);
+        var before = Assert.Single(
+            await repository.ListByAccountAsync(
+                1,
+                CancellationToken.None));
+
+        const int testPositionX = 16;
+        const int testPositionY = 15;
+
+        await using var connection =
+            new MySqlConnection(options.BuildConnectionString());
+        await connection.OpenAsync(CancellationToken.None);
+        await using var transaction =
+            await connection.BeginTransactionAsync(CancellationToken.None);
+
+        try
+        {
+            var writer = new MariaDbCharacterPositionWriter(options);
+            var result = await writer.TryUpdateAsync(
+                new CharacterPositionWriteRequest(
+                    before.CharacterId,
+                    testPositionX,
+                    testPositionY,
+                    before.RuntimeVersion,
+                    before.ConcurrencyToken),
+                connection,
+                transaction,
+                CancellationToken.None);
+
+            Assert.True(result.Updated);
+            Assert.Equal(before.RuntimeVersion + 1, result.RuntimeVersion);
+            Assert.Equal(32, result.ConcurrencyToken.Length);
+            Assert.NotEqual(
+                before.ConcurrencyToken,
+                result.ConcurrencyToken);
+
+            await using var command = connection.CreateCommand();
+            command.Transaction = transaction;
+            command.CommandText = """
+                SELECT position_x,
+                       position_y,
+                       runtime_version,
+                       concurrency_token
+                FROM god2_player.characters
+                WHERE character_id = @characterId;
+                """;
+            command.Parameters.AddWithValue(
+                "@characterId",
+                before.CharacterId);
+
+            await using var reader =
+                await command.ExecuteReaderAsync(CancellationToken.None);
+            Assert.True(
+                await reader.ReadAsync(CancellationToken.None));
+            Assert.Equal(testPositionX, reader.GetInt32(0));
+            Assert.Equal(testPositionY, reader.GetInt32(1));
+            Assert.Equal(result.RuntimeVersion, reader.GetInt64(2));
+            Assert.Equal(result.ConcurrencyToken, reader.GetString(3));
+            Assert.False(
+                await reader.ReadAsync(CancellationToken.None));
+        }
+        finally
+        {
+            await transaction.RollbackAsync(CancellationToken.None);
+        }
 
         var after = Assert.Single(
             await repository.ListByAccountAsync(
