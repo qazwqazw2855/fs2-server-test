@@ -1,0 +1,108 @@
+using God2.ServerV2.Application;
+using MySqlConnector;
+
+namespace God2.ServerV2.Persistence;
+
+public sealed record MariaDbAuthenticationOptions(
+    string Host,
+    int Port,
+    string Username,
+    string Password)
+{
+    public string BuildConnectionString()
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(Host);
+        ArgumentException.ThrowIfNullOrWhiteSpace(Username);
+        ArgumentException.ThrowIfNullOrWhiteSpace(Password);
+
+        if (Port is < 1 or > 65535)
+        {
+            throw new ArgumentOutOfRangeException(nameof(Port));
+        }
+
+        return new MySqlConnectionStringBuilder
+        {
+            Server = Host,
+            Port = checked((uint)Port),
+            UserID = Username,
+            Password = Password,
+            Database = "god2_player",
+            ConnectionTimeout = 5,
+            DefaultCommandTimeout = 5,
+            SslMode = MySqlSslMode.None,
+            Pooling = true,
+            MinimumPoolSize = 0,
+            MaximumPoolSize = 20
+        }.ConnectionString;
+    }
+}
+
+public sealed class MariaDbAccountAuthenticator : IAccountAuthenticator
+{
+    private readonly string _connectionString;
+    private readonly IPasswordHashVerifier _passwordVerifier;
+
+    public MariaDbAccountAuthenticator(
+        MariaDbAuthenticationOptions options,
+        IPasswordHashVerifier passwordVerifier)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        _connectionString = options.BuildConnectionString();
+        _passwordVerifier = passwordVerifier ??
+            throw new ArgumentNullException(nameof(passwordVerifier));
+    }
+
+    public async ValueTask<bool> ValidateCredentialsAsync(
+        string accountName,
+        ReadOnlyMemory<char> password,
+        CancellationToken cancellationToken)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(accountName);
+
+        await using var connection = new MySqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+
+        await using var command = connection.CreateCommand();
+        command.CommandText = """
+            SELECT
+                password_hash,
+                status,
+                locked_until_utc
+            FROM god2_player.accounts
+            WHERE username = @username
+            LIMIT 1;
+            """;
+        command.Parameters.AddWithValue("@username", accountName.Trim());
+
+        await using var reader =
+            await command.ExecuteReaderAsync(cancellationToken);
+
+        if (!await reader.ReadAsync(cancellationToken))
+        {
+            return false;
+        }
+
+        var status = reader.GetString("status");
+        var enabled =
+            string.Equals(status, "啟用", StringComparison.Ordinal) ||
+            string.Equals(status, "Active", StringComparison.OrdinalIgnoreCase);
+
+        if (!enabled)
+        {
+            return false;
+        }
+
+        if (!reader.IsDBNull("locked_until_utc"))
+        {
+            var lockedUntilUtc = reader.GetDateTime("locked_until_utc");
+
+            if (lockedUntilUtc > DateTime.UtcNow)
+            {
+                return false;
+            }
+        }
+
+        var passwordHash = reader.GetString("password_hash");
+        return _passwordVerifier.Verify(password, passwordHash);
+    }
+}
