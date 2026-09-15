@@ -4,6 +4,11 @@ using System.Text;
 using God2.ServerV2.Protocol;
 
 var password = Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD");
+var verifyIdleTimeout =
+    string.Equals(
+        Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_IDLE_TIMEOUT"),
+        "1",
+        StringComparison.Ordinal);
 
 if (string.IsNullOrEmpty(password))
 {
@@ -11,7 +16,8 @@ if (string.IsNullOrEmpty(password))
     return 1;
 }
 
-using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+using var timeout = new CancellationTokenSource(
+    TimeSpan.FromSeconds(verifyIdleTimeout ? 45 : 10));
 using var client = new TcpClient();
 
 await client.ConnectAsync("127.0.0.1", 2592, timeout.Token);
@@ -185,24 +191,42 @@ Require(
     OfficialWorldBootstrapCodec.PayloadLength,
     "World Bootstrap 總長度錯誤");
 
-var verifiedHeartbeat = Convert.FromHexString("05003D09A5");
-
-Require(
-    OfficialWorldHeartbeatCodec.Classify(verifiedHeartbeat) ==
-    OfficialWorldFrameClassification.KeepAlive,
-    "測試 Heartbeat 樣本未通過協定分類");
-
-await worldStream.WriteAsync(
-    verifiedHeartbeat,
-    timeout.Token);
-
-Array.Clear(verifiedHeartbeat);
-
-await Task.Delay(100, timeout.Token);
-
 Console.WriteLine(
     $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
-Console.WriteLine("World 連線持續接收測試成功");
+
+if (verifyIdleTimeout)
+{
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+    var eofProbe = new byte[1];
+    var bytesRead = await worldStream.ReadAsync(eofProbe, timeout.Token);
+    stopwatch.Stop();
+
+    Require(bytesRead == 0, "World 閒置逾時後連線仍未關閉");
+    Require(
+        stopwatch.Elapsed >= TimeSpan.FromSeconds(28),
+        $"World 閒置連線過早關閉：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+
+    Console.WriteLine(
+        $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else
+{
+    var verifiedHeartbeat = Convert.FromHexString("05003D09A5");
+
+    Require(
+        OfficialWorldHeartbeatCodec.Classify(verifiedHeartbeat) ==
+        OfficialWorldFrameClassification.KeepAlive,
+        "測試 Heartbeat 樣本未通過協定分類");
+
+    await worldStream.WriteAsync(
+        verifiedHeartbeat,
+        timeout.Token);
+
+    Array.Clear(verifiedHeartbeat);
+
+    await Task.Delay(100, timeout.Token);
+    Console.WriteLine("World 連線持續接收測試成功");
+}
 
 return 0;
 
