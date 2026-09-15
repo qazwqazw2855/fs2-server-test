@@ -166,10 +166,10 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
     }
 
     private static void RegisterOfficialGameplayCompatibilityHandlers(PacketRegistry packetRegistry)
+    {
+        byte[] variablePayloadOpcodes =
         {
-            byte[] variablePayloadOpcodes =
-            {
-                PublicBetaCompatibilityGameplayRequestWireAdapter.AttributeIncrementOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.AttributeIncrementOpcode,
             PublicBetaCompatibilityGameplayRequestWireAdapter.Interaction24Opcode,
             PublicBetaCompatibilityGameplayRequestWireAdapter.Interaction26Opcode,
             PublicBetaCompatibilityGameplayRequestWireAdapter.Interaction27Opcode,
@@ -193,14 +193,14 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
             PublicBetaCompatibilityGameplayRequestWireAdapter.FPetRequestOpcode,
             PublicBetaCompatibilityGameplayRequestWireAdapter.PkCursorTargetOpcode,
             PublicBetaCompatibilityGameplayRequestWireAdapter.PetPkTargetOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartActionB2Opcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartPublishOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartAddRecordOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterDeleteRequestOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterSelectRequestOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterCreate1bRequestOpcode,
-                PublicBetaCompatibilityGameplayRequestWireAdapter.SocialTextEnvelopeOpcode
-            };
+            PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartActionB2Opcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartPublishOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.VendorCartAddRecordOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterDeleteRequestOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterSelectRequestOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.CharacterCreate1bRequestOpcode,
+            PublicBetaCompatibilityGameplayRequestWireAdapter.SocialTextEnvelopeOpcode
+        };
 
         foreach (var opcodeBase in variablePayloadOpcodes)
         {
@@ -215,9 +215,6 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
     private static PacketKnowledge BuildFallbackCompatibilityPacketKnowledge(string family, byte opcode, int decodedLength)
     {
         var opcodeHex = opcode.ToString("X2");
-        // Runtime protocol frame parsing requires at least 4 bytes to decode the 16-bit opcode candidate.
-        // Some legacy/public-beta entries remain short in source evidence, so we keep declared shape
-        // but materialize a router-safe fallback for operational tests.
         var fallbackLength = Math.Max(decodedLength, 4);
         var decoded = new byte[fallbackLength];
         BinaryPrimitives.WriteUInt16LittleEndian(decoded, checked((ushort)fallbackLength));
@@ -251,7 +248,7 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
                     fallbackLength - 2,
                     "unknown",
                     PacketRecoveryStatus.NeedsRecovery,
-                    "Compatibility payload; handler is currently no-op in protocol runtime bootstrap.")
+                    "Compatibility payload; handler is currently no-op except for the verified gameplay disconnect request.")
             },
             Array.Empty<ProtocolField>(),
             Array.Empty<string>(),
@@ -271,7 +268,19 @@ internal static class RuntimeProtocolConnectionRuntimeFactory
 
         public ProtocolConfidence Confidence => ProtocolConfidence.Verified;
 
-        public Task<OperationResult> HandleAsync(PacketEnvelope packet, CancellationToken cancellationToken) =>
-            Task.FromResult(OperationResult.Success);
+        public Task<OperationResult> HandleAsync(PacketEnvelope packet, CancellationToken cancellationToken)
+        {
+            var opcodeBase = checked((byte)(_opcode >> 8));
+            if (opcodeBase == PublicBetaCompatibilityGameplayRequestWireAdapter.GameplayDisconnectOpcode)
+            {
+                // Disconnect is a connection-lifecycle command, not a failed gameplay operation.
+                // Propagate transport termination so TcpNetworkHost.RunConnectionAsync reaches its
+                // existing finally block and performs session close + authoritative world unbind.
+                return Task.FromException<OperationResult>(new IOException(
+                    "gameplay.disconnect_requested: official client requested world connection termination."));
+            }
+
+            return Task.FromResult(OperationResult.Success);
+        }
     }
 }
