@@ -3,19 +3,25 @@ using System.Net;
 using System.Net.Sockets;
 using God2.ServerV2.Core;
 using God2.ServerV2.Protocol;
+using God2.ServerV2.Session;
 
 namespace God2.ServerV2.Network;
 
 public sealed class TcpGameServer : IAsyncDisposable
 {
     private readonly TcpListener _listener;
+    private readonly SessionRegistry _sessionRegistry;
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
     private bool _started;
 
-    public TcpGameServer(TcpServerOptions options)
+    public TcpGameServer(
+        TcpServerOptions options,
+        SessionRegistry sessionRegistry)
     {
         Options = options;
+        _sessionRegistry = sessionRegistry ??
+            throw new ArgumentNullException(nameof(sessionRegistry));
         _listener = new TcpListener(options.BindAddress, options.Port);
     }
 
@@ -52,7 +58,11 @@ public sealed class TcpGameServer : IAsyncDisposable
                 }
 
                 var connectionId = Interlocked.Increment(ref _nextConnectionId);
-                var task = HandleConnectionAsync(connectionId, client, cancellationToken);
+                var task = HandleConnectionAsync(
+                    connectionId,
+                    client,
+                    _sessionRegistry,
+                    cancellationToken);
                 _connections[connectionId] = task;
                 _ = ObserveConnectionAsync(connectionId, task);
             }
@@ -90,10 +100,14 @@ public sealed class TcpGameServer : IAsyncDisposable
     private static async Task HandleConnectionAsync(
         long connectionId,
         TcpClient client,
+        SessionRegistry sessionRegistry,
         CancellationToken serverCancellationToken)
     {
         var remoteEndPoint = client.Client.RemoteEndPoint?.ToString() ?? "unknown";
         var state = new ConnectionStateMachine();
+        using var sessionContext = new ConnectionSessionContext(
+            connectionId,
+            sessionRegistry);
         Log(connectionId, $"Connected remote={remoteEndPoint} stage={state.Stage}");
         state.Transition(ConnectionStage.LoginHandshake);
 
@@ -176,6 +190,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
+            sessionContext.Dispose();
             state.TryTransition(ConnectionStage.Closing);
             state.TryTransition(ConnectionStage.Closed);
             Log(connectionId, $"Closed stage={state.Stage}");
