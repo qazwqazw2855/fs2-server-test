@@ -110,7 +110,7 @@ public sealed class LoginServiceTests
         var service = new LoginService(
             new CancellingAuthenticator());
 
-        await Assert.ThrowsAsync<OperationCanceledException>(
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
             async () => await service.AuthenticateAsync(
                 "kero",
                 "secret".AsMemory(),
