@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Sockets;
+using God2.ServerV2.Application;
 using God2.ServerV2.Core;
 using God2.ServerV2.Network;
 using God2.ServerV2.Session;
@@ -37,10 +38,13 @@ Console.CancelKeyPress += (_, eventArgs) =>
 };
 
 var sessionRegistry = new SessionRegistry();
+var loginService = new LoginService(
+    new RejectAllAccountAuthenticator());
 
 await using var server = new TcpGameServer(
     new TcpServerOptions(bindAddress, port),
-    sessionRegistry);
+    sessionRegistry,
+    loginService);
 
 try
 {
