@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Sockets;
 using God2.ServerV2.Core;
 using God2.ServerV2.Network;
+using God2.ServerV2.Session;
 
 Console.WriteLine("God2 Server V2");
 Console.WriteLine($"Version: {ServerV2Architecture.Version}");
@@ -35,8 +36,11 @@ Console.CancelKeyPress += (_, eventArgs) =>
     }
 };
 
+var sessionRegistry = new SessionRegistry();
+
 await using var server = new TcpGameServer(
-    new TcpServerOptions(bindAddress, port));
+    new TcpServerOptions(bindAddress, port),
+    sessionRegistry);
 
 try
 {
