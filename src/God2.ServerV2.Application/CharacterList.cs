@@ -13,7 +13,9 @@ public sealed record CharacterListEntry(
     int? PositionX,
     int? PositionY,
     DateTimeOffset CreatedAtUtc,
-    DateTimeOffset? LastPlayedAtUtc);
+    DateTimeOffset? LastPlayedAtUtc,
+    long RuntimeVersion = 0,
+    string ConcurrencyToken = "");
 
 public interface ICharacterListRepository
 {
