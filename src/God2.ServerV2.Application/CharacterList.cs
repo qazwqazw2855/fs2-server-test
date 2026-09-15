@@ -22,6 +22,18 @@ public interface ICharacterListRepository
         CancellationToken cancellationToken);
 }
 
+public sealed class EmptyCharacterListRepository :
+    ICharacterListRepository
+{
+    public ValueTask<IReadOnlyList<CharacterListEntry>> ListByAccountAsync(
+        long accountId,
+        CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        return ValueTask.FromResult<IReadOnlyList<CharacterListEntry>>([]);
+    }
+}
+
 public sealed class CharacterListService
 {
     private readonly ICharacterListRepository _repository;
