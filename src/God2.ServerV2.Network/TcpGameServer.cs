@@ -13,6 +13,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly TcpListener _listener;
     private readonly LoginService _loginService;
     private readonly CharacterListService _characterListService;
+    private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly SessionRegistry _sessionRegistry;
     private readonly PendingWorldEntryRegistry _pendingWorldEntries = new();
     private readonly ConcurrentDictionary<long, Task> _connections = new();
@@ -23,13 +24,15 @@ public sealed class TcpGameServer : IAsyncDisposable
         TcpServerOptions options,
         SessionRegistry sessionRegistry,
         LoginService loginService,
-        CharacterListService characterListService)
+        CharacterListService characterListService,
+        ICharacterPositionWriter? characterPositionWriter = null)
     {
         Options = options;
         _loginService = loginService ??
             throw new ArgumentNullException(nameof(loginService));
         _characterListService = characterListService ??
             throw new ArgumentNullException(nameof(characterListService));
+        _characterPositionWriter = characterPositionWriter;
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
         _listener = new TcpListener(options.BindAddress, options.Port);
@@ -74,6 +77,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _sessionRegistry,
                     _loginService,
                     _characterListService,
+                    _characterPositionWriter,
                     _pendingWorldEntries,
                     Options.BindAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
@@ -118,6 +122,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         SessionRegistry sessionRegistry,
         LoginService loginService,
         CharacterListService characterListService,
+        ICharacterPositionWriter? characterPositionWriter,
         PendingWorldEntryRegistry pendingWorldEntries,
         byte[] advertisedAddress,
         ushort advertisedPort,
@@ -192,6 +197,10 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                     var worldActivity =
                         new WorldActivityTracker(DateTimeOffset.UtcNow);
+                    var runtimeVersion =
+                        pendingWorld.Character.RuntimeVersion;
+                    var concurrencyToken =
+                        pendingWorld.Character.ConcurrencyToken;
 
                     while (!serverCancellationToken.IsCancellationRequested)
                     {
@@ -250,12 +259,42 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 worldFrame,
                                 out var movement))
                         {
+                            var persistenceState = "Deferred";
+
+                            if (characterPositionWriter is not null)
+                            {
+                                var writeResult =
+                                    await characterPositionWriter.TryUpdateAsync(
+                                        new CharacterPositionWriteRequest(
+                                            pendingWorld.Character.CharacterId,
+                                            movement.X,
+                                            movement.Y,
+                                            runtimeVersion,
+                                            concurrencyToken),
+                                        serverCancellationToken);
+
+                                if (!writeResult.Updated)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "World movement persistence conflict; " +
+                                        "closing without acknowledgement.");
+                                    break;
+                                }
+
+                                runtimeVersion = writeResult.RuntimeVersion;
+                                concurrencyToken = writeResult.ConcurrencyToken;
+                                persistenceState = "Updated";
+                            }
+
                             Log(
                                 connectionId,
                                 $"RX WorldMovement bytes={worldFrame.Length} " +
                                 $"x={movement.X} y={movement.Y} " +
                                 $"sequence={movement.Sequence} " +
-                                $"state=0x{movement.State:X2}; persistence=Deferred");
+                                $"state=0x{movement.State:X2}; " +
+                                $"persistence={persistenceState} " +
+                                $"version={runtimeVersion}");
 
                             var acknowledgement =
                                 OfficialWorldMovementCodec.EncodeAcknowledgement(
