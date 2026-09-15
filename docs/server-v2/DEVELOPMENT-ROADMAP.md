@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-14
+Updated: 2026-09-15
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -172,6 +172,16 @@ Every recovered/implemented feature progresses through:
 - M1 remains at 10%; no milestone percentage was increased.
 - Current blockers remain Network/Protocol/Session implementation for the first V2 closed loop and evidence for the official Player Despawn wire/entity-handle mapping.
 - Next target remains Network/Protocol/Session foundations, migration of verified LoginHandshake/Login behavior, then a repeatable Login -> World -> Logout closed loop.
+
+### 2026-09-15 19:19 - Progress Sync
+- `refactor/server-v2` is now at `a87b7266ae9d663ce725bc89a1cd4218283fc0cb` (`Test Server V2 advertised address options`), 131 commits ahead of the 2026-09-14 sync head `c95ed096`.
+- Added V2 Application, Network, Protocol, Session and Persistence layers plus their test projects.
+- Implemented TCP framing/lifecycle, Session registry, LoginHandshake/Login request-response codecs, MariaDB PBKDF2 account authentication, character-list persistence, Server Selection, WorldHandshake/Bootstrap, Heartbeat, Movement and Logout protocol foundations.
+- Added pending world-entry, world-activity and movement-sequence tracking; latest work separates/validates bind versus advertised IPv4 address configuration.
+- Historical development records reported 67/67 tests passing at an earlier checkpoint, but current head has no GitHub commit status/CI result; current-head test pass is therefore not claimed.
+- M1 is conservatively tracked at 60%: most protocol/network foundations exist, but the official-client Login -> Character -> World -> Movement -> Logout -> Relogin acceptance loop, 50-cycle reconnect test and two-client despawn acceptance remain incomplete.
+- Blockers: no current-head CI/status, official-client end-to-end acceptance incomplete, and official Player Despawn wire/entity-handle evidence remains unresolved.
+- Next: run full build/test on `a87b7266`, complete the official-client M1 loop, then execute 50-cycle reconnect and two-client spawn/movement/AOI-leave/logout-despawn acceptance.
 
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
