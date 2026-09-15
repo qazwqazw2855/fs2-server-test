@@ -126,7 +126,41 @@ Require(
         OfficialWorldHandshakeProtocol.FirstFollowUpFrame.Span),
     "World First Follow-up 不符");
 
-Console.WriteLine("World Handshake 測試成功");
+var playerSpawn = await ReadFrameAsync(worldStream, timeout.Token);
+var decodedSpawn =
+    OfficialWorldBootstrapCodec.DecodeFirstPlayerSpawn(playerSpawn);
+
+try
+{
+    var worldNameField = decodedSpawn.AsSpan(
+        OfficialWorldBootstrapCodec.PlayerNameOffset,
+        OfficialWorldBootstrapCodec.PlayerNameLength);
+
+    var worldNameTerminator = worldNameField.IndexOf((byte)0);
+    var worldNameLength = worldNameTerminator >= 0
+        ? worldNameTerminator
+        : worldNameField.Length;
+
+    var worldName =
+        Encoding.ASCII.GetString(worldNameField[..worldNameLength]);
+
+    var worldCharacterId =
+        BinaryPrimitives.ReadUInt32LittleEndian(
+            decodedSpawn.AsSpan(
+                OfficialWorldBootstrapCodec.PlayerIdOffset,
+                sizeof(uint)));
+
+    Require(worldName == "test001", $"World 角色名稱錯誤：{worldName}");
+    Require(worldCharacterId == 1, $"World 角色 ID 錯誤：{worldCharacterId}");
+
+    Console.WriteLine("World Handshake 測試成功");
+    Console.WriteLine($"World 角色：{worldName} / ID={worldCharacterId}");
+}
+finally
+{
+    Array.Clear(decodedSpawn);
+    Array.Clear(playerSpawn);
+}
 
 return 0;
 
