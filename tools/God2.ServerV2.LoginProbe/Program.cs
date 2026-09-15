@@ -4,6 +4,12 @@ using System.Text;
 using God2.ServerV2.Protocol;
 
 var password = Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD");
+var expectDuplicateLogin =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_EXPECT_DUPLICATE_LOGIN"),
+        "1",
+        StringComparison.Ordinal);
 var verifyIdleTimeout =
     string.Equals(
         Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_IDLE_TIMEOUT"),
@@ -26,13 +32,14 @@ var verifyDuplicateMovement =
         "1",
         StringComparison.Ordinal);
 
-if ((verifyIdleTimeout ? 1 : 0) +
+if ((expectDuplicateLogin ? 1 : 0) +
+    (verifyIdleTimeout ? 1 : 0) +
     (verifyLogout ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
     (verifyDuplicateMovement ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "閒置逾時、登出、移動與重複移動模式只能啟用一種。");
+        "重複登入、閒置逾時、登出、移動與重複移動模式只能啟用一種。");
     return 1;
 }
 
@@ -78,6 +85,28 @@ finally
 }
 
 var loginSuccess = await ReadFrameAsync(stream, timeout.Token);
+
+if (expectDuplicateLogin)
+{
+    var expectedFailure =
+        OfficialLoginResponseCodec.EncodeFailure(
+            OfficialLoginFailureCode.DuplicateLogin);
+
+    try
+    {
+        Require(
+            loginSuccess.AsSpan().SequenceEqual(expectedFailure),
+            "未收到預期的 DuplicateLogin 回應");
+
+        Console.WriteLine("重複登入拒絕測試成功");
+        return 0;
+    }
+    finally
+    {
+        Array.Clear(expectedFailure);
+        Array.Clear(loginSuccess);
+    }
+}
 
 Require(
     loginSuccess.Length == OfficialLoginSuccessCodec.FrameLength,

@@ -5,6 +5,7 @@ namespace God2.ServerV2.Network;
 
 public sealed record PendingWorldEntry(
     string RemoteAddress,
+    string AccountName,
     long AccountId,
     byte SelectedServerId,
     CharacterListEntry Character,
@@ -29,12 +30,14 @@ public sealed class PendingWorldEntryRegistry
 
     public bool TryReserve(
         string remoteAddress,
+        string accountName,
         long accountId,
         byte selectedServerId,
         CharacterListEntry character,
         DateTimeOffset nowUtc)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(remoteAddress);
+        ArgumentException.ThrowIfNullOrWhiteSpace(accountName);
         ArgumentNullException.ThrowIfNull(character);
 
         if (accountId <= 0)
@@ -55,6 +58,7 @@ public sealed class PendingWorldEntryRegistry
             remoteAddress,
             new PendingWorldEntry(
                 remoteAddress,
+                accountName.Trim(),
                 accountId,
                 selectedServerId,
                 character,

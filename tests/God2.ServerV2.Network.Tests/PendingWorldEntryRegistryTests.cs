@@ -15,6 +15,7 @@ public sealed class PendingWorldEntryRegistryTests
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
+            "god2test",
             1,
             1,
             Character(),
@@ -26,6 +27,7 @@ public sealed class PendingWorldEntryRegistryTests
             out var claimed));
 
         Assert.NotNull(claimed);
+        Assert.Equal("god2test", claimed.AccountName);
         Assert.Equal(1, claimed.AccountId);
         Assert.Equal("test001", claimed.Character.Name);
 
@@ -43,6 +45,7 @@ public sealed class PendingWorldEntryRegistryTests
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
+            "god2test",
             1,
             1,
             Character(),
@@ -61,6 +64,7 @@ public sealed class PendingWorldEntryRegistryTests
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
+            "god2test",
             1,
             1,
             Character(),
@@ -68,10 +72,26 @@ public sealed class PendingWorldEntryRegistryTests
 
         Assert.False(registry.TryReserve(
             "127.0.0.1",
+            "god2test",
             1,
             1,
             Character(),
             Now.AddSeconds(1)));
+    }
+
+    [Fact]
+    public void Blank_account_name_is_rejected()
+    {
+        var registry = new PendingWorldEntryRegistry();
+
+        Assert.Throws<ArgumentException>(() =>
+            registry.TryReserve(
+                "127.0.0.1",
+                "   ",
+                1,
+                1,
+                Character(),
+                Now));
     }
 
     [Fact]
@@ -82,6 +102,7 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.Throws<ArgumentException>(() =>
             registry.TryReserve(
                 "127.0.0.1",
+                "god2test",
                 2,
                 1,
                 Character(),

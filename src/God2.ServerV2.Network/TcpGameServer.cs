@@ -151,6 +151,19 @@ public sealed class TcpGameServer : IAsyncDisposable
                         out var pendingWorld) &&
                     pendingWorld is not null)
                 {
+                    var worldSession = sessionContext.BindAccount(
+                        pendingWorld.AccountName);
+
+                    if (!worldSession.Succeeded)
+                    {
+                        Log(
+                            connectionId,
+                            "World session ownership rejected: status=" +
+                            worldSession.Status +
+                            "; closing connection.");
+                        return;
+                    }
+
                     state.Transition(ConnectionStage.WorldHandshake);
 
                     await stream.WriteAsync(
@@ -421,6 +434,9 @@ public sealed class TcpGameServer : IAsyncDisposable
                         if (character is not null &&
                             !pendingWorldEntries.TryReserve(
                                 remoteAddress,
+                                sessionContext.AccountName ??
+                                    throw new InvalidOperationException(
+                                        "Authenticated account name is unavailable."),
                                 character.AccountId,
                                 selection.SelectedServerId,
                                 character,

@@ -187,12 +187,16 @@ Every recovered/implemented feature progresses through:
 - Configured the public game endpoint on TCP `2592` with MariaDB runtime access through `127.0.0.1:3308`.
 - Validated least-privilege `god2_v2@172.17.0.1` access and confirmed canonical migration `055` through current schema version `468`.
 - Verified real MariaDB authentication for `god2test`, character list recovery for `test001`, World Handshake and the complete 1772-byte World Bootstrap.
-- Ran all Server V2 automated projects: 113 tests passed, 0 failed and 0 skipped.
+- Ran all Server V2 automated projects: 114 tests passed, 0 failed and 0 skipped.
 - Verified headless World Logout closes the TCP connection, releases session ownership and permits immediate same-account relogin.
 - Verified ordered movement acknowledgement and persistence; test character coordinates changed from `(202,128)` to `(16,14)` and runtime version advanced from `29` to `32`.
 - Verified duplicate movement sequence rejection without a second acknowledgement or duplicate persistence.
 - Verified World idle timeout closes the connection after 30.0 seconds.
-- Official-client acceptance, repeated 50-cycle validation and multiplayer spawn/AOI/despawn evidence remain pending.
+- Completed 50 consecutive Login -> World -> Logout cycles with no failures or stale sessions.
+- Completed 50 abrupt World disconnect -> immediate relogin cycles with no failures or stale sessions.
+- Fixed World session ownership so an account remains exclusively owned while its character is in World.
+- Added explicit LoginProbe validation for the official DuplicateLogin failure frame `05000A79C2`.
+- Official-client acceptance and multiplayer spawn/AOI/despawn evidence remain pending.
 
 
 ## Current Known Assets to Reuse
