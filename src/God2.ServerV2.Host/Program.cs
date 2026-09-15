@@ -11,6 +11,9 @@ Console.WriteLine($"Version: {ServerV2Architecture.Version}");
 Console.WriteLine($"Default content mode: {ServerContentMode.ClassicCompatibility}");
 
 var bindText = Environment.GetEnvironmentVariable("GOD2_BIND") ?? "127.0.0.1";
+var advertisedText =
+    Environment.GetEnvironmentVariable("GOD2_ADVERTISED_ADDRESS") ??
+    bindText;
 var portText = Environment.GetEnvironmentVariable("GOD2_PORT") ?? "2592";
 
 if (!IPAddress.TryParse(bindText, out var bindAddress))
@@ -24,6 +27,20 @@ if (!int.TryParse(portText, out var port) || port is < 1 or > 65535)
     Console.Error.WriteLine($"Invalid GOD2_PORT value: {portText}");
     return 2;
 }
+
+if (!IPAddress.TryParse(advertisedText, out var advertisedAddress) ||
+    advertisedAddress.AddressFamily != AddressFamily.InterNetwork ||
+    advertisedAddress.Equals(IPAddress.Any))
+{
+    Console.Error.WriteLine(
+        $"Invalid GOD2_ADVERTISED_ADDRESS value: {advertisedText}. " +
+        "A concrete IPv4 address is required.");
+    return 2;
+}
+
+Console.WriteLine(
+    $"Network: bind={bindAddress}:{port}; " +
+    $"advertised={advertisedAddress}:{port}");
 
 using var shutdown = new CancellationTokenSource();
 
@@ -104,7 +121,7 @@ var characterListService =
     new CharacterListService(characterListRepository);
 
 await using var server = new TcpGameServer(
-    new TcpServerOptions(bindAddress, port),
+    new TcpServerOptions(bindAddress, port, advertisedAddress),
     sessionRegistry,
     loginService,
     characterListService,
