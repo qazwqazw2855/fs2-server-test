@@ -4,12 +4,14 @@ namespace God2.ServerV2.Protocol.Tests;
 
 public sealed class OfficialWorldMovementCodecTests
 {
-    [Fact]
-    public void Recognizes_recovered_movement_sample()
+    [Theory]
+    [InlineData("0A0080BAD7C34DA69488")]
+    [InlineData("0A0080BAD7C44EA79586")]
+    public void Recognizes_recovered_movement_samples(string frameHex)
     {
         Assert.True(
             OfficialWorldMovementCodec.IsVerifiedRequest(
-                Convert.FromHexString("0A0080BAD7C34DA69488")));
+                Convert.FromHexString(frameHex)));
     }
 
     [Theory]
