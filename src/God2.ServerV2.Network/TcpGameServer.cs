@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using God2.ServerV2.Protocol;
 
 namespace God2.ServerV2.Network;
 
@@ -102,6 +103,32 @@ public sealed class TcpGameServer : IAsyncDisposable
             {
                 client.NoDelay = true;
                 await using var stream = client.GetStream();
+
+                Log(
+                    connectionId,
+                    $"TX LoginServerHandshake bytes={OfficialLoginHandshakeProtocol.ServerHandshakeFrame.Length} " +
+                    $"hex={Convert.ToHexString(OfficialLoginHandshakeProtocol.ServerHandshakeFrame.Span)}");
+
+                var handshake = await OfficialLoginHandshakeProtocol.PerformAsync(
+                    stream,
+                    serverCancellationToken);
+
+                Log(
+                    connectionId,
+                    $"RX LoginClientHandshake bytes={handshake.ClientHandshake.Length} " +
+                    $"hex={Convert.ToHexString(handshake.ClientHandshake)}");
+
+                if (!handshake.Succeeded)
+                {
+                    Log(connectionId, $"Handshake rejected: {handshake.Detail}");
+                    return;
+                }
+
+                Log(
+                    connectionId,
+                    $"TX LoginVersionFollowUp bytes={OfficialLoginHandshakeProtocol.VersionFollowUpFrame.Length} " +
+                    $"hex={Convert.ToHexString(OfficialLoginHandshakeProtocol.VersionFollowUpFrame.Span)}");
+                Log(connectionId, handshake.Detail);
 
                 while (!serverCancellationToken.IsCancellationRequested)
                 {
