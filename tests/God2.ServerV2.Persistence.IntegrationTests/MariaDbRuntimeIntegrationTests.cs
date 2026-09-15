@@ -61,6 +61,45 @@ public sealed class MariaDbRuntimeIntegrationTests
         Assert.Equal(32, character.ConcurrencyToken.Length);
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task StaleCharacterPositionWrite_IsRejectedWithoutMutation()
+    {
+        if (!ShouldRun())
+        {
+            return;
+        }
+
+        var options = CreateOptions();
+        var repository = new MariaDbCharacterListRepository(options);
+        var before = Assert.Single(
+            await repository.ListByAccountAsync(
+                1,
+                CancellationToken.None));
+
+        var writer = new MariaDbCharacterPositionWriter(options);
+        var result = await writer.TryUpdateAsync(
+            new CharacterPositionWriteRequest(
+                before.CharacterId,
+                16,
+                14,
+                before.RuntimeVersion + 100,
+                before.ConcurrencyToken),
+            CancellationToken.None);
+
+        Assert.False(result.Updated);
+
+        var after = Assert.Single(
+            await repository.ListByAccountAsync(
+                1,
+                CancellationToken.None));
+
+        Assert.Equal(before.PositionX, after.PositionX);
+        Assert.Equal(before.PositionY, after.PositionY);
+        Assert.Equal(before.RuntimeVersion, after.RuntimeVersion);
+        Assert.Equal(before.ConcurrencyToken, after.ConcurrencyToken);
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
