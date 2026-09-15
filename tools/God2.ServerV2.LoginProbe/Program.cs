@@ -162,6 +162,39 @@ finally
     Array.Clear(playerSpawn);
 }
 
+var remainingWorldFrameLengths =
+    new[] { 320, 752, 68, 182, 36, 63, 42, 67, 88, 26 };
+
+var remainingBytes = 0;
+
+foreach (var expectedLength in remainingWorldFrameLengths)
+{
+    var worldFrame = await ReadFrameAsync(worldStream, timeout.Token);
+
+    Require(
+        worldFrame.Length == expectedLength,
+        $"World Bootstrap Frame 長度錯誤：{worldFrame.Length}");
+
+    remainingBytes += worldFrame.Length;
+    Array.Clear(worldFrame);
+}
+
+Require(
+    remainingBytes +
+    OfficialWorldBootstrapCodec.PlayerSpawnFrameLength ==
+    OfficialWorldBootstrapCodec.PayloadLength,
+    "World Bootstrap 總長度錯誤");
+
+await worldStream.WriteAsync(
+    new byte[] { 0x05, 0x00, 0x00, 0x00, 0x00 },
+    timeout.Token);
+
+await Task.Delay(100, timeout.Token);
+
+Console.WriteLine(
+    $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
+Console.WriteLine("World 連線持續接收測試成功");
+
 return 0;
 
 static byte[] BuildLoginRequest(string account, string password)
