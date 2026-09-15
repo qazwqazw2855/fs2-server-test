@@ -9,12 +9,12 @@ public sealed class MariaDbRuntimeIntegrationTests
     [Trait("Category", "Integration")]
     public async Task God2TestAccount_AcceptsCorrectPassword_AndRejectsWrongPassword()
     {
-        if (!ShouldRun())
+        if (!ShouldRun() ||
+            Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD")
+                is not { Length: > 0 } password)
         {
             return;
         }
-
-        var password = Required("GOD2_TEST_PASSWORD");
         var authenticator = new MariaDbAccountAuthenticator(
             CreateOptions(),
             new Pbkdf2Sha256PasswordHashVerifier());
