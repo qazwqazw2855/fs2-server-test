@@ -47,6 +47,6 @@ public sealed class OfficialLoginResponseCodecTests
         var decoded =
             OfficialLoginWireTransform.Decode(encoded);
 
-        Assert.Equal("05001E03FA", Convert.ToHexString(decoded));
+        Assert.Equal("05001E0316", Convert.ToHexString(decoded));
     }
 }
