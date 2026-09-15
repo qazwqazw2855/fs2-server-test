@@ -203,10 +203,24 @@ public sealed class TcpGameServer : IAsyncDisposable
                             break;
                         }
 
-                        Log(
-                            connectionId,
-                            $"RX WorldFrame bytes={worldFrame.Length} " +
-                            "payload=[REDACTED_UNVERIFIED]");
+                        var classification =
+                            OfficialWorldHeartbeatCodec.Classify(worldFrame);
+
+                        if (classification ==
+                            OfficialWorldFrameClassification.KeepAlive)
+                        {
+                            Log(
+                                connectionId,
+                                $"RX WorldHeartbeat bytes={worldFrame.Length} " +
+                                "classification=KeepAlive");
+                        }
+                        else
+                        {
+                            Log(
+                                connectionId,
+                                $"RX UnknownWorldFrame bytes={worldFrame.Length} " +
+                                "payload=[REDACTED_UNVERIFIED]");
+                        }
                     }
 
                     return;
