@@ -5,7 +5,7 @@
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
   "overall_percent": 60,
-  "updated_at": "2026-09-16T00:51:18+08:00",
+  "updated_at": "2026-09-16T00:56:13+08:00",
   "summary": "God2 Server V2 已完成 AWS Runtime、帳號驗證、角色資料、Login→World Session ownership handoff、World Bootstrap、移動、登出、斷線清理與重登入閉環。官方遊戲 Client 將維持原版 God2.exe 不重製；已正式啟動 God2 V2 Launcher 重製計畫，由新登入器負責 Server V2 導向、Client 完整性與版本識別，後續再加入伺服器選擇與自動更新。目前正在解析 LoginServer.csvZ，之後將以固定 reference client 重新完成官方客戶端 Login acceptance。",
   "milestones": [
     {
@@ -222,90 +222,90 @@
     }
   ],
   "current_focus": {
-    "title": "暫停點：角色列表 account_id 串接",
-    "description": "分支 refactor/server-v2 最新進度已將 MariaDB 驗證取得的 account_id 傳入 CharacterListService；回來後先 pull、補 DB 最小 SELECT 權限、build/test，再做真實角色查詢探針。",
-    "status": "paused"
+    "title": "原版 God2.exe 登入端點與 V2 Launcher",
+    "description": "Server V2 的 Login→World Session ownership handoff、登出、斷線清理與重登入閉環已完成。目前固定原版 God2.exe 為唯一 reference client。下一個阻塞點是解析 LoginServer.csvZ，確認原版 Client 如何取得 Login Server IP / Port，之後建立新的 God2 V2 Launcher 控制 Server V2 導向，再重新進行官方 Client Login acceptance。",
+    "status": "in_progress"
   },
   "verification": {
-    "build": "last_verified_passing_latest_changes_pending",
-    "total_tests": 67,
-    "passed_tests": 67,
+    "build": "passing",
+    "total_tests": 59,
+    "passed_tests": 59,
     "failed_tests": 0,
     "suites": [
       {
-        "name": "Core",
-        "passed": 7,
-        "failed": 0
-      },
-      {
-        "name": "Protocol",
-        "passed": 25,
-        "failed": 0
-      },
-      {
         "name": "Session",
-        "passed": 14,
+        "passed": 20,
         "failed": 0
       },
       {
         "name": "Application",
         "passed": 21,
         "failed": 0
+      },
+      {
+        "name": "Network",
+        "passed": 18,
+        "failed": 0
       }
     ],
-    "note": "67 項為目前各套件最後一次已回報通過的測試總數；account_id 與角色列表 TCP 串接 commit 1843f11 尚待主機重新 build/test。"
+    "note": "目前最近一次 focused Server V2 驗證為 Session 20/20、Application 21/21、Network 18/18，共 59/59 通過；Host Release build 通過。完整 solution 的 GameplayContentRecovery 歷史測試因缺少 Artifacts 資料會出現與目前 V2 無關的失敗，因此不納入本頁 V2 驗證統計。"
   },
   "blockers": [
     {
-      "title": "官方客戶端實機驗證",
-      "status": "deferred",
-      "detail": "目前無法開啟遊戲登入端，登入與角色流程先以固定向量、自動測試及資料庫探針驗證。"
+      "title": "原版 God2.exe Login acceptance",
+      "status": "in_progress",
+      "detail": "Server/Client 19-byte handshake 已確認，但 Login version follow-up 仍需以唯一 reference client God2.exe 重新建立基準；先前 God2_opt.exe 測試結果不再作為 V2 Client 相容性基準。"
     },
     {
-      "title": "完整舊客戶端素材",
-      "status": "partial",
-      "detail": "參照資料已保存於主機 /srv/god2-reference/client-legacy/God2；共 376 個檔案、約 38 MB，但多個 Data2 資源目錄原始即為空目錄。"
+      "title": "LoginServer.csvZ 登入端點機制",
+      "status": "in_progress",
+      "detail": "已確認專案內存在可讀取 God2 05 16 LZSS wrapper 與 CP936 文字的 ReadCsvZAsync 解碼器；下一步直接解析 reference client 的 LoginServer.csvZ，確認 IP / Port 與 Server 選擇流程。"
     }
   ],
   "next_steps": [
-    "在主機補 god2_v2 對 accounts.account_id 與 characters 必要欄位的最小 SELECT 權限",
-    "git pull refactor/server-v2 並驗證 Host build 與 Application 21/21",
-    "建立 MariaDB 真實角色列表查詢探針，確認現有 1 筆角色可被 V2 正確讀取",
-    "將 CharacterListEntry 投影成官方角色列表封包",
-    "遊戲登入端可用後完成實機登入與選角驗收"
+    "使用既有 ReadCsvZAsync 解碼 reference client 的 LoginServer.csvZ",
+    "確認原版 God2.exe 的 Login Server IP / Port 與 Server 選擇來源",
+    "建立 God2 V2 Launcher 專案骨架",
+    "讓 V2 Launcher 將原版 God2.exe 導向 Server V2",
+    "加入 reference God2.exe SHA256 完整性與版本驗證",
+    "使用唯一 reference client 重新驗證 LoginHandshake 與 version follow-up",
+    "完成官方 God2.exe Login acceptance",
+    "完成官方 Client 選角 → World acceptance",
+    "Login/World 實機閉環完成後再進入多人 AOI / NPC / 物品 / 戰鬥"
   ],
   "recent_activity": [
     {
-      "date": "2026-09-15",
-      "title": "角色列表資料層",
-      "detail": "新增 CharacterListEntry、CharacterListService、MariaDbCharacterListRepository；Application 測試 21/21。"
+      "date": "2026-09-16",
+      "title": "V2 Launcher 開發方向確立",
+      "detail": "決定不重製遊戲 Client；保留原版 God2.exe，另外開發 God2 V2 Launcher，負責 Server V2 導向、Client 完整性與版本識別。"
     },
     {
-      "date": "2026-09-15",
-      "title": "帳號 ID 串接",
-      "detail": "MariaDB 驗證成功後回傳 account_id，TCP 登入成功後載入該帳號角色；commit 1843f11 待主機驗證。"
+      "date": "2026-09-16",
+      "title": "Reference Client 基準固定",
+      "detail": "原版 God2.exe 已固定為唯一 V2 reference client；AWS 保存副本 SHA256 與 Windows 原始檔一致。God2_opt.exe 與其舊 Launcher 正式排除於 V2 基準之外。"
     },
     {
-      "date": "2026-09-15",
-      "title": "登入成功與失敗回應",
-      "detail": "完成官方 0x1E 失敗回應與 417-byte 成功 bootstrap；Protocol 測試 25/25。"
+      "date": "2026-09-16",
+      "title": "LoginServer.csvZ 調查",
+      "detail": "確認 reference client 包含 LoginServer.csvZ，並找到專案既有 ReadCsvZAsync；格式已有 05 16 LZSS wrapper + CP936 解碼依據。"
     },
     {
-      "date": "2026-09-15",
-      "title": "舊客戶端參照盤點",
-      "detail": "保存 32 MB ZIP／38 MB 解壓目錄；376 個檔案，包含 2017 God2.exe、CSVZ、GODZ、ROMZ 與舊玩家快捷鍵。"
+      "date": "2026-09-16",
+      "title": "Session ownership 閉環",
+      "detail": "完成 Login→World ownership transfer、重複帳號保護、Logout、異常斷線釋放與立即重新登入。"
     },
     {
-      "date": "2026-09-15",
-      "title": "MariaDB 帳號驗證",
-      "detail": "完成 PBKDF2-SHA256 驗證與 god2_v2 最小權限連線。"
+      "date": "2026-09-16",
+      "title": "Focused V2 測試通過",
+      "detail": "Session 20/20、Application 21/21、Network 18/18，共 59/59；Host Release build 通過。"
     }
   ],
   "launcher": {
-    "status": "planned",
+    "status": "in_progress",
     "reference_client": "God2.exe",
     "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
-    "strategy": "保留原版遊戲 Client，開發獨立 God2 V2 Launcher",
-    "next": "解析 LoginServer.csvZ 並控制 Server V2 登入端點"
+    "strategy": "保留原版遊戲 Client，重新開發獨立 God2 V2 Launcher",
+    "current_task": "解析 LoginServer.csvZ 與確認原版 Client 登入端點機制",
+    "next": "建立 V2 Launcher 並將 reference God2.exe 導向 Server V2"
   }
 }
