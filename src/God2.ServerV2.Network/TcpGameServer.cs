@@ -246,12 +246,16 @@ public sealed class TcpGameServer : IAsyncDisposable
                             break;
                         }
 
-                        if (OfficialWorldMovementCodec.IsVerifiedRequest(worldFrame))
+                        if (OfficialWorldMovementCodec.TryDecode(
+                                worldFrame,
+                                out var movement))
                         {
                             Log(
                                 connectionId,
                                 $"RX WorldMovement bytes={worldFrame.Length} " +
-                                "evidence=RecoveredRaw; state=ObservedOnly");
+                                $"x={movement.X} y={movement.Y} " +
+                                $"sequence={movement.Sequence} " +
+                                $"state=0x{movement.State:X2}; persistence=Deferred");
                             continue;
                         }
 
