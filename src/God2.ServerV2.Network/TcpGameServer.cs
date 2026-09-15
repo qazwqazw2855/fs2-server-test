@@ -246,6 +246,15 @@ public sealed class TcpGameServer : IAsyncDisposable
                             break;
                         }
 
+                        if (OfficialWorldMovementCodec.IsVerifiedRequest(worldFrame))
+                        {
+                            Log(
+                                connectionId,
+                                $"RX WorldMovement bytes={worldFrame.Length} " +
+                                "evidence=RecoveredRaw; state=ObservedOnly");
+                            continue;
+                        }
+
                         var classification =
                             OfficialWorldHeartbeatCodec.Classify(worldFrame);
 
