@@ -57,6 +57,8 @@ public sealed class MariaDbRuntimeIntegrationTests
         Assert.Equal("Female", character.GenderCode);
         Assert.Equal(1, character.Level);
         Assert.Equal(1675308248, character.MapId);
+        Assert.True(character.RuntimeVersion > 0);
+        Assert.Equal(32, character.ConcurrencyToken.Length);
     }
 
     private static bool ShouldRun() =>
