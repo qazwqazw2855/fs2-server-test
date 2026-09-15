@@ -19,33 +19,54 @@ public sealed class MariaDbCharacterPositionWriter :
         CharacterPositionWriteRequest request,
         CancellationToken cancellationToken)
     {
-        if (request.CharacterId <= 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(request));
-        }
-
-        if (request.PositionX is < 0 or > 0x7FFF ||
-            request.PositionY is < 0 or > 0x7FFF)
-        {
-            throw new ArgumentOutOfRangeException(nameof(request));
-        }
-
-        if (request.ExpectedRuntimeVersion < 0 ||
-            request.ExpectedConcurrencyToken.Length != 32)
-        {
-            throw new ArgumentException(
-                "Expected concurrency state is invalid.",
-                nameof(request));
-        }
-
-        var nextVersion = checked(request.ExpectedRuntimeVersion + 1);
-        var nextToken = Guid.NewGuid().ToString("N");
+        Validate(request);
 
         await using var connection =
             new MySqlConnection(_connectionString);
         await connection.OpenAsync(cancellationToken);
 
+        return await ExecuteAsync(
+            request,
+            connection,
+            transaction: null,
+            cancellationToken);
+    }
+
+    public async ValueTask<CharacterPositionWriteResult> TryUpdateAsync(
+        CharacterPositionWriteRequest request,
+        MySqlConnection connection,
+        MySqlTransaction transaction,
+        CancellationToken cancellationToken)
+    {
+        Validate(request);
+        ArgumentNullException.ThrowIfNull(connection);
+        ArgumentNullException.ThrowIfNull(transaction);
+
+        if (!ReferenceEquals(transaction.Connection, connection))
+        {
+            throw new ArgumentException(
+                "Transaction does not belong to the supplied connection.",
+                nameof(transaction));
+        }
+
+        return await ExecuteAsync(
+            request,
+            connection,
+            transaction,
+            cancellationToken);
+    }
+
+    private static async ValueTask<CharacterPositionWriteResult> ExecuteAsync(
+        CharacterPositionWriteRequest request,
+        MySqlConnection connection,
+        MySqlTransaction? transaction,
+        CancellationToken cancellationToken)
+    {
+        var nextVersion = checked(request.ExpectedRuntimeVersion + 1);
+        var nextToken = Guid.NewGuid().ToString("N");
+
         await using var command = connection.CreateCommand();
+        command.Transaction = transaction;
         command.CommandText = """
             UPDATE god2_player.characters
             SET position_x = @positionX,
@@ -77,5 +98,27 @@ public sealed class MariaDbCharacterPositionWriter :
         return affected == 1
             ? CharacterPositionWriteResult.Success(nextVersion, nextToken)
             : CharacterPositionWriteResult.Conflict;
+    }
+
+    private static void Validate(CharacterPositionWriteRequest request)
+    {
+        if (request.CharacterId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(request));
+        }
+
+        if (request.PositionX is < 0 or > 0x7FFF ||
+            request.PositionY is < 0 or > 0x7FFF)
+        {
+            throw new ArgumentOutOfRangeException(nameof(request));
+        }
+
+        if (request.ExpectedRuntimeVersion < 0 ||
+            request.ExpectedConcurrencyToken.Length != 32)
+        {
+            throw new ArgumentException(
+                "Expected concurrency state is invalid.",
+                nameof(request));
+        }
     }
 }
