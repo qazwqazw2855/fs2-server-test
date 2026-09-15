@@ -49,6 +49,7 @@ public sealed class ConnectionStateMachine
         (current, next) switch
         {
             (ConnectionStage.Connected, ConnectionStage.LoginHandshake) => true,
+            (ConnectionStage.Connected, ConnectionStage.WorldHandshake) => true,
             (ConnectionStage.LoginHandshake, ConnectionStage.Login) => true,
             (ConnectionStage.Login, ConnectionStage.CharacterSelect) => true,
             (ConnectionStage.CharacterSelect, ConnectionStage.WorldHandshake) => true,
