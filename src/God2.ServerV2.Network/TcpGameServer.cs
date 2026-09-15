@@ -186,22 +186,56 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                     Log(
                         connectionId,
-                        $"World bootstrap completed bytes={worldBootstrap.Length} " +
-                        $"character={pendingWorld.Character.CharacterId} " +
+                        $"World bootstrap completed bytes={worldBootstrap.Length}; " +
+                        $"character={pendingWorld.Character.CharacterId}; " +
                         $"stage={state.Stage}");
+
+                    var worldActivity =
+                        new WorldActivityTracker(DateTimeOffset.UtcNow);
 
                     while (!serverCancellationToken.IsCancellationRequested)
                     {
-                        var worldFrame =
-                            await LengthPrefixedFrameReader.ReadAsync(
-                                stream,
+                        var remainingIdleTime =
+                            worldActivity.GetRemaining(DateTimeOffset.UtcNow);
+
+                        if (remainingIdleTime == TimeSpan.Zero)
+                        {
+                            Log(
+                                connectionId,
+                                "World idle timeout after 30 seconds.");
+                            break;
+                        }
+
+                        using var readCancellation =
+                            CancellationTokenSource.CreateLinkedTokenSource(
                                 serverCancellationToken);
+                        readCancellation.CancelAfter(remainingIdleTime);
+
+                        byte[]? worldFrame;
+
+                        try
+                        {
+                            worldFrame =
+                                await LengthPrefixedFrameReader.ReadAsync(
+                                    stream,
+                                    readCancellation.Token);
+                        }
+                        catch (OperationCanceledException)
+                            when (!serverCancellationToken.IsCancellationRequested)
+                        {
+                            Log(
+                                connectionId,
+                                "World idle timeout after 30 seconds.");
+                            break;
+                        }
 
                         if (worldFrame is null)
                         {
                             Log(connectionId, "World remote closed connection.");
                             break;
                         }
+
+                        worldActivity.RecordActivity(DateTimeOffset.UtcNow);
 
                         var classification =
                             OfficialWorldHeartbeatCodec.Classify(worldFrame);
