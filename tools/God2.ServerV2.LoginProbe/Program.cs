@@ -9,6 +9,18 @@ var verifyIdleTimeout =
         Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_IDLE_TIMEOUT"),
         "1",
         StringComparison.Ordinal);
+var verifyLogout =
+    string.Equals(
+        Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_LOGOUT"),
+        "1",
+        StringComparison.Ordinal);
+
+if (verifyIdleTimeout && verifyLogout)
+{
+    Console.Error.WriteLine(
+        "閒置逾時與登出模式不能同時啟用。");
+    return 1;
+}
 
 if (string.IsNullOrEmpty(password))
 {
@@ -208,6 +220,23 @@ if (verifyIdleTimeout)
 
     Console.WriteLine(
         $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else if (verifyLogout)
+{
+    var logoutRequest = Convert.FromHexString("0500AC9D30");
+
+    Require(
+        OfficialWorldLogoutCodec.IsVerifiedRequest(logoutRequest),
+        "測試登出樣本未通過協定辨識");
+
+    await worldStream.WriteAsync(logoutRequest, timeout.Token);
+    Array.Clear(logoutRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead = await worldStream.ReadAsync(eofProbe, timeout.Token);
+
+    Require(bytesRead == 0, "登出後 World 連線仍未關閉");
+    Console.WriteLine("World 正式登出測試成功");
 }
 else
 {
