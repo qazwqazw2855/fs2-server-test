@@ -170,9 +170,24 @@ public sealed class TcpGameServer : IAsyncDisposable
                         OfficialWorldHandshakeProtocol.FirstFollowUpFrame,
                         serverCancellationToken);
 
+                    var worldBootstrap =
+                        OfficialWorldBootstrapCodec.EncodeAfterFirstFollowUp(
+                            pendingWorld.Character.CharacterId,
+                            pendingWorld.Character.Name,
+                            pendingWorld.Character.ClassCode,
+                            pendingWorld.Character.GenderCode,
+                            pendingWorld.Character.AppearanceCode);
+
+                    await stream.WriteAsync(
+                        worldBootstrap,
+                        serverCancellationToken);
+
+                    state.Transition(ConnectionStage.InWorld);
+
                     Log(
                         connectionId,
-                        $"World handshake completed character={pendingWorld.Character.CharacterId} " +
+                        $"World bootstrap completed bytes={worldBootstrap.Length} " +
+                        $"character={pendingWorld.Character.CharacterId} " +
                         $"stage={state.Stage}");
 
                     return;
