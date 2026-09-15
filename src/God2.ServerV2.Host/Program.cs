@@ -47,6 +47,7 @@ var dbPassword = Environment.GetEnvironmentVariable("GOD2_DB_PASSWORD");
 
 IAccountAuthenticator authenticator;
 ICharacterListRepository characterListRepository;
+ICharacterPositionWriter? characterPositionWriter;
 
 if (!string.IsNullOrWhiteSpace(dbHost) &&
     !string.IsNullOrWhiteSpace(dbPortText) &&
@@ -72,13 +73,28 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
     characterListRepository =
         new MariaDbCharacterListRepository(databaseOptions);
 
+    var enableMovementPersistence =
+        string.Equals(
+            Environment.GetEnvironmentVariable(
+                "GOD2_ENABLE_MOVEMENT_PERSISTENCE"),
+            "1",
+            StringComparison.Ordinal);
+
+    characterPositionWriter = enableMovementPersistence
+        ? new MariaDbCharacterPositionWriter(databaseOptions)
+        : null;
+
     Console.WriteLine(
         $"Authentication: MariaDB {dbHost}:{dbPort} user={dbUser}");
+    Console.WriteLine(
+        $"Movement persistence: " +
+        $"{(enableMovementPersistence ? "Enabled" : "Disabled")}");
 }
 else
 {
     authenticator = new RejectAllAccountAuthenticator();
     characterListRepository = new EmptyCharacterListRepository();
+    characterPositionWriter = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
 }
@@ -91,7 +107,8 @@ await using var server = new TcpGameServer(
     new TcpServerOptions(bindAddress, port),
     sessionRegistry,
     loginService,
-    characterListService);
+    characterListService,
+    characterPositionWriter);
 
 try
 {
