@@ -162,6 +162,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                 state.Transition(ConnectionStage.Login);
                 Log(connectionId, $"{handshake.Detail} stage={state.Stage}");
 
+                IReadOnlyList<CharacterListEntry>? pendingCharacters = null;
+
                 while (!serverCancellationToken.IsCancellationRequested)
                 {
                     var frame = await LengthPrefixedFrameReader.ReadAsync(
@@ -172,6 +174,37 @@ public sealed class TcpGameServer : IAsyncDisposable
                     {
                         Log(connectionId, "Remote closed connection");
                         break;
+                    }
+
+                    if (state.Stage == ConnectionStage.CharacterSelect)
+                    {
+                        if (!OfficialServerSelectionCodec.TryDecodeRequest(
+                                frame,
+                                out var selection) ||
+                            pendingCharacters is null ||
+                            pendingCharacters.Count > 1)
+                        {
+                            Log(connectionId, "Server selection rejected.");
+                            return;
+                        }
+
+                        var character = pendingCharacters.SingleOrDefault();
+                        var response =
+                            OfficialServerSelectionCodec.EncodeCharacterList(
+                                character?.Name,
+                                character?.ClassCode);
+
+                        await stream.WriteAsync(
+                            response,
+                            serverCancellationToken);
+
+                        Log(
+                            connectionId,
+                            $"TX CharacterListBootstrap bytes={response.Length} " +
+                            $"server={selection.SelectedServerId} " +
+                            $"characters={pendingCharacters.Count} hex=[REDACTED]");
+
+                        return;
                     }
 
                     if (frame.Length == OfficialLoginRequestCodec.FrameLength)
@@ -254,7 +287,19 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     $"TX LoginSuccessBootstrap bytes={response.Length} " +
                                     $"endpoint={new IPAddress(advertisedAddress)}:{advertisedPort} " +
                                     "hex=[REDACTED_SENSITIVE_LOGIN_ECHO]");
+
+                                pendingCharacters = characters;
+                                state.Transition(ConnectionStage.CharacterSelect);
+
+                                Log(
+                                    connectionId,
+                                    $"Ready for server selection stage={state.Stage}");
                             }
+                        }
+
+                        if (state.Stage == ConnectionStage.CharacterSelect)
+                        {
+                            continue;
                         }
 
                         return;
