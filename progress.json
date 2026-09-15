@@ -6,7 +6,7 @@
   "status": "in_progress",
   "overall_percent": 60,
   "updated_at": "2026-09-16T00:51:18+08:00",
-  "summary": "God2 Server V2 已完成 AWS Runtime、帳號驗證、角色資料、Login→World Session ownership handoff、World Bootstrap、移動、登出、斷線清理與重登入閉環。已固定原版 God2.exe 為唯一 V2 reference client，不重製遊戲 Client，改為開發 God2 V2 Launcher。目前重點為解析 LoginServer.csvZ、控制登入端點，並以 reference client 重新完成官方客戶端 Login acceptance。",
+  "summary": "God2 Server V2 已完成 AWS Runtime、帳號驗證、角色資料、Login→World Session ownership handoff、World Bootstrap、移動、登出、斷線清理與重登入閉環。官方遊戲 Client 將維持原版 God2.exe 不重製；已正式啟動 God2 V2 Launcher 重製計畫，由新登入器負責 Server V2 導向、Client 完整性與版本識別，後續再加入伺服器選擇與自動更新。目前正在解析 LoginServer.csvZ，之後將以固定 reference client 重新完成官方客戶端 Login acceptance。",
   "milestones": [
     {
       "key": "foundation",
@@ -169,6 +169,54 @@
         {
           "name": "戰鬥與技能",
           "status": "pending"
+        }
+      ]
+    },
+    {
+      "key": "launcher",
+      "name": "God2 V2 登入器",
+      "percent": 10,
+      "status": "in_progress",
+      "items": [
+        {
+          "name": "確立原版 God2.exe 為唯一 reference client",
+          "status": "completed"
+        },
+        {
+          "name": "確認 reference client SHA256 與 AWS 備份一致",
+          "status": "completed"
+        },
+        {
+          "name": "停止使用 God2_opt.exe 專用舊 Launcher",
+          "status": "completed"
+        },
+        {
+          "name": "解析 LoginServer.csvZ",
+          "status": "in_progress"
+        },
+        {
+          "name": "確認 God2.exe 登入 Server IP / Port 取得流程",
+          "status": "pending"
+        },
+        {
+          "name": "建立 God2 V2 Launcher 專案",
+          "status": "pending"
+        },
+        {
+          "name": "Launcher 自動導向 Server V2",
+          "status": "pending"
+        },
+        {
+          "name": "God2.exe 完整性與版本驗證",
+          "status": "pending"
+        },
+        {
+          "name": "伺服器選擇與狀態顯示",
+          "status": "pending"
+        },
+        {
+          "name": "Client 自動更新機制",
+          "status": "deferred"
         }
       ]
     }
