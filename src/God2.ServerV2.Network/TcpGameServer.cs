@@ -242,6 +242,45 @@ public sealed class TcpGameServer : IAsyncDisposable
                         return;
                     }
 
+                    var npcSpawnFrames = new List<byte[]>();
+                    var blockedNpcSpawns = 0;
+
+                    foreach (var npc in npcSnapshot)
+                    {
+                        var encoding =
+                            OfficialNpcSpawnCodec.Encode(
+                                new OfficialNpcSpawnEvidence(
+                                    npc.ClientBuildId,
+                                    npc.ClientEntityHandle,
+                                    npc.ResourceType,
+                                    npc.ResourceOrdinal,
+                                    npc.SelectorHighBits,
+                                    npc.DirectionCode,
+                                    npc.StateCode,
+                                    npc.PositionX,
+                                    npc.PositionY,
+                                    npc.SpawnMessageSha256,
+                                    npc.OpaqueTemplateSha256,
+                                    npc.WireEvidenceStatus,
+                                    npc.WireEvidenceReference));
+
+                        if (encoding.Succeeded)
+                        {
+                            npcSpawnFrames.Add(encoding.Frame);
+                        }
+                        else
+                        {
+                            blockedNpcSpawns++;
+
+                            Log(
+                                connectionId,
+                                "NPC spawn blocked by evidence: " +
+                                $"spawn={npc.SpawnId}; " +
+                                $"handle={npc.ClientEntityHandle}; " +
+                                $"reason={encoding.Reason}.");
+                        }
+                    }
+
                     var presenceResult =
                         worldPresences.TryEnter(
                             new WorldPresence(
@@ -324,15 +363,29 @@ public sealed class TcpGameServer : IAsyncDisposable
                         worldBootstrap,
                         serverCancellationToken);
 
+                    foreach (var npcSpawnFrame in npcSpawnFrames)
+                    {
+                        try
+                        {
+                            await stream.WriteAsync(
+                                npcSpawnFrame,
+                                serverCancellationToken);
+                        }
+                        finally
+                        {
+                            Array.Clear(npcSpawnFrame);
+                        }
+                    }
+
                     Log(
                         connectionId,
                         "NPC snapshot loaded: " +
                         $"map={mapId}; " +
                         $"count={npcSnapshot.Count}; " +
-                        "wireEligible=0; " +
-                        $"wireBlocked={npcSnapshot.Count}; " +
+                        $"wireEligible={npcSpawnFrames.Count}; " +
+                        $"wireBlocked={blockedNpcSpawns}; " +
                         "wireDispatch=" +
-                        "BlockedMissingSpawnEvidenceHash.");
+                        "EvidenceGatedOfficialNpcSpawnCodec.");
 
                     state.Transition(ConnectionStage.InWorld);
 

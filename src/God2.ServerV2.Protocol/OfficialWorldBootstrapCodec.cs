@@ -137,7 +137,7 @@ public static class OfficialWorldBootstrapCodec
         return DecodeFrame(payload[..PlayerSpawnFrameLength]);
     }
 
-    private static byte[] DecodeFrame(ReadOnlySpan<byte> frame)
+    internal static byte[] DecodeFrame(ReadOnlySpan<byte> frame)
     {
         var decoded = frame.ToArray();
         var previousPlain = 0xB0;
@@ -156,7 +156,7 @@ public static class OfficialWorldBootstrapCodec
         return decoded;
     }
 
-    private static byte[] EncodeFrame(ReadOnlySpan<byte> decoded)
+    internal static byte[] EncodeFrame(ReadOnlySpan<byte> decoded)
     {
         var encoded = decoded.ToArray();
         var previousPlain = 0xB0;

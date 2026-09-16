@@ -13,7 +13,11 @@ public sealed record NpcSnapshotEntry(
     byte? ResourceOrdinal,
     byte? SelectorHighBits,
     byte? DirectionCode,
-    byte? StateCode);
+    byte? StateCode,
+    string? SpawnMessageSha256,
+    string? OpaqueTemplateSha256,
+    string WireEvidenceStatus,
+    string? WireEvidenceReference);
 
 public interface INpcSnapshotRepository
 {

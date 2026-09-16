@@ -41,6 +41,10 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
                 Assert.Equal(124, first.PositionY);
                 Assert.Equal((byte)0, first.ResourceType);
                 Assert.Equal((byte)45, first.ResourceOrdinal);
+                Assert.Equal("Derived", first.WireEvidenceStatus);
+                Assert.Equal(
+                    "3F25673AE985BF8F4818F2EE1254AB019B0406B8BD1C38C44F701DD5BAE27834",
+                    first.SpawnMessageSha256);
             },
             second =>
             {
@@ -51,6 +55,10 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
                 Assert.Equal(121, second.PositionY);
                 Assert.Equal((byte)0, second.ResourceType);
                 Assert.Equal((byte)45, second.ResourceOrdinal);
+                Assert.Equal("Derived", second.WireEvidenceStatus);
+                Assert.Equal(
+                    "78230A74DC17C388FE1A6FFDF6EBBD284A05C3E77E20719BE1921941903CC9B7",
+                    second.SpawnMessageSha256);
             });
     }
 

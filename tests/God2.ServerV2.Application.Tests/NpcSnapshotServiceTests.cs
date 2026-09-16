@@ -65,7 +65,11 @@ public sealed class NpcSnapshotServiceTests
             45,
             3,
             4,
-            1);
+            1,
+            new string('A', 64),
+            new string('B', 64),
+            "Derived",
+            "test");
 
     private sealed class StubRepository(
         IReadOnlyList<NpcSnapshotEntry> entries) :

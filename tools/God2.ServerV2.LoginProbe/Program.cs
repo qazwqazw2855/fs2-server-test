@@ -384,6 +384,34 @@ Require(
 Console.WriteLine(
     $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
 
+var expectedNpcHandles = new uint[] { 5042, 5096 };
+
+foreach (var expectedNpcHandle in expectedNpcHandles)
+{
+    var npcSpawn =
+        await ReadFrameAsync(worldStream, timeout.Token);
+
+    try
+    {
+        Require(
+            OfficialNpcSpawnCodec.TryDecodeHandle(
+                npcSpawn,
+                out var npcHandle),
+            "NPC Spawn Frame 格式錯誤");
+
+        Require(
+            npcHandle == expectedNpcHandle,
+            $"NPC Handle 錯誤：{npcHandle}，預期：{expectedNpcHandle}");
+    }
+    finally
+    {
+        Array.Clear(npcSpawn);
+    }
+}
+
+Console.WriteLine(
+    $"NPC Spawn 完整接收：{string.Join(", ", expectedNpcHandles)}");
+
 if (verifyIdleTimeout)
 {
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();

@@ -43,7 +43,11 @@ public sealed class MariaDbNpcSnapshotRepository :
                 spawn.official_resource_ordinal,
                 spawn.official_selector_high_bits,
                 spawn.official_direction_code,
-                spawn.official_state_code
+                spawn.official_state_code,
+                spawn.spawn_message_sha256,
+                spawn.opaque_template_sha256,
+                spawn.wire_evidence_status,
+                spawn.wire_evidence_reference
             FROM god2_game.npc_spawns AS spawn
             INNER JOIN god2_game.npcs AS npc
                 ON npc.npc_id = spawn.npc_id
@@ -83,7 +87,17 @@ public sealed class MariaDbNpcSnapshotRepository :
                 GetNullableByte(
                     reader,
                     "official_direction_code"),
-                GetNullableByte(reader, "official_state_code")));
+                GetNullableByte(reader, "official_state_code"),
+                GetNullableString(
+                    reader,
+                    "spawn_message_sha256"),
+                GetNullableString(
+                    reader,
+                    "opaque_template_sha256"),
+                reader.GetString("wire_evidence_status"),
+                GetNullableString(
+                    reader,
+                    "wire_evidence_reference")));
         }
 
         return entries;
