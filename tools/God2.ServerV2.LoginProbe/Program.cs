@@ -53,16 +53,30 @@ var verifyDuplicateMovement =
             "GOD2_PROBE_VERIFY_DUPLICATE_MOVEMENT"),
         "1",
         StringComparison.Ordinal);
+var verifyNpcInteraction =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_NPC_INTERACTION"),
+        "1",
+        StringComparison.Ordinal);
+var verifyNpcInteractionOwnership =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_NPC_INTERACTION_OWNERSHIP"),
+        "1",
+        StringComparison.Ordinal);
 
 if ((expectDuplicateLogin ? 1 : 0) +
     (verifyPendingOwnership ? 1 : 0) +
     (verifyIdleTimeout ? 1 : 0) +
     (verifyLogout ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
-    (verifyDuplicateMovement ? 1 : 0) > 1)
+    (verifyDuplicateMovement ? 1 : 0) +
+    (verifyNpcInteraction ? 1 : 0) +
+    (verifyNpcInteractionOwnership ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "重複登入、Pending 所有權、閒置逾時、登出、移動與重複移動模式只能啟用一種。");
+        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、NPC 互動與 NPC 所有權模式只能啟用一種。");
     return 1;
 }
 
@@ -426,6 +440,134 @@ if (verifyIdleTimeout)
 
     Console.WriteLine(
         $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else if (verifyNpcInteractionOwnership)
+{
+    var firstOpenRequest =
+        Convert.FromHexString("0800776188D83FFD");
+
+    Require(
+        OfficialNpcInteractionCodec.TryDecode(
+            firstOpenRequest,
+            out var firstOpen,
+            out var firstFailure),
+        $"NPC 5042 開啟樣本辨識失敗：{firstFailure}");
+    Require(
+        firstOpen is not null &&
+        firstOpen.Kind ==
+            OfficialNpcInteractionKind.Open &&
+        firstOpen.ClientEntityHandle == 5042,
+        "NPC 5042 開啟樣本內容錯誤");
+
+    await worldStream.WriteAsync(
+        firstOpenRequest,
+        timeout.Token);
+    Array.Clear(firstOpenRequest);
+
+    await Task.Delay(100, timeout.Token);
+
+    var secondOpenRequest =
+        Convert.FromHexString("080077ABBED83F73");
+
+    Require(
+        OfficialNpcInteractionCodec.TryDecode(
+            secondOpenRequest,
+            out var secondOpen,
+            out var secondFailure),
+        $"NPC 5096 開啟樣本辨識失敗：{secondFailure}");
+    Require(
+        secondOpen is not null &&
+        secondOpen.Kind ==
+            OfficialNpcInteractionKind.Open &&
+        secondOpen.ClientEntityHandle == 5096,
+        "NPC 5096 開啟樣本內容錯誤");
+
+    await worldStream.WriteAsync(
+        secondOpenRequest,
+        timeout.Token);
+    Array.Clear(secondOpenRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead =
+        await worldStream.ReadAsync(
+            eofProbe,
+            timeout.Token);
+
+    Require(
+        bytesRead == 0,
+        "第二個 NPC 互動未被拒絕，World 連線仍開啟");
+
+    Console.WriteLine(
+        "NPC Session 單一所有權拒絕與中斷清理測試成功");
+}
+else if (verifyNpcInteraction)
+{
+    var openRequest =
+        Convert.FromHexString("0800776188D83FFD");
+
+    Require(
+        OfficialNpcInteractionCodec.TryDecode(
+            openRequest,
+            out var openInteraction,
+            out var openFailure),
+        $"NPC 開啟測試樣本辨識失敗：{openFailure}");
+    Require(
+        openInteraction is not null &&
+        openInteraction.Kind ==
+            OfficialNpcInteractionKind.Open &&
+        openInteraction.ClientEntityHandle == 5042,
+        "NPC 開啟測試樣本內容錯誤");
+
+    await worldStream.WriteAsync(
+        openRequest,
+        timeout.Token);
+    Array.Clear(openRequest);
+
+    await Task.Delay(100, timeout.Token);
+
+    var closeRequest =
+        Convert.FromHexString("0800716388D83FFF");
+
+    Require(
+        OfficialNpcInteractionCodec.TryDecode(
+            closeRequest,
+            out var closeInteraction,
+            out var closeFailure),
+        $"NPC 關閉測試樣本辨識失敗：{closeFailure}");
+    Require(
+        closeInteraction is not null &&
+        closeInteraction.Kind ==
+            OfficialNpcInteractionKind.MerchantClose &&
+        closeInteraction.ClientEntityHandle == 5042,
+        "NPC 關閉測試樣本內容錯誤");
+
+    await worldStream.WriteAsync(
+        closeRequest,
+        timeout.Token);
+    Array.Clear(closeRequest);
+
+    await Task.Delay(100, timeout.Token);
+
+    var logoutRequest =
+        Convert.FromHexString("0500AC9D30");
+
+    await worldStream.WriteAsync(
+        logoutRequest,
+        timeout.Token);
+    Array.Clear(logoutRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead =
+        await worldStream.ReadAsync(
+            eofProbe,
+            timeout.Token);
+
+    Require(
+        bytesRead == 0,
+        "NPC 互動後正式登出未關閉 World 連線");
+
+    Console.WriteLine(
+        "NPC 5042 開啟、Session 所有權釋放與正式登出測試成功");
 }
 else if (verifyDuplicateMovement)
 {

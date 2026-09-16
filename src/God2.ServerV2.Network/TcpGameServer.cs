@@ -19,6 +19,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly PendingWorldEntryRegistry _pendingWorldEntries;
     private readonly WorldPresenceRegistry _worldPresences = new();
     private readonly WorldReplicationOutboxRegistry _worldReplicationOutboxes = new();
+    private readonly NpcInteractionSessionRegistry _npcInteractions = new();
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
     private bool _started;
@@ -92,6 +93,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _pendingWorldEntries,
                     _worldPresences,
                     _worldReplicationOutboxes,
+                    _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
                     cancellationToken);
@@ -140,6 +142,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         PendingWorldEntryRegistry pendingWorldEntries,
         WorldPresenceRegistry worldPresences,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
+        NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
         ushort advertisedPort,
         CancellationToken serverCancellationToken)
@@ -447,6 +450,92 @@ public sealed class TcpGameServer : IAsyncDisposable
                         }
 
                         worldActivity.RecordActivity(DateTimeOffset.UtcNow);
+
+                        if (OfficialNpcInteractionCodec.TryDecode(
+                                worldFrame,
+                                out var npcInteraction,
+                                out var npcInteractionFailure) &&
+                            npcInteraction is not null)
+                        {
+                            if (npcInteraction.Kind ==
+                                OfficialNpcInteractionKind.Open)
+                            {
+                                var openResult =
+                                    npcInteractions.TryOpen(
+                                        connectionId,
+                                        pendingWorld.Character.CharacterId,
+                                        mapId,
+                                        npcInteraction.ClientEntityHandle,
+                                        npcSnapshot,
+                                        DateTimeOffset.UtcNow);
+
+                                if (!openResult.Succeeded)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "NPC interaction open rejected: " +
+                                        $"handle={npcInteraction.ClientEntityHandle}; " +
+                                        $"status={openResult.Status}; " +
+                                        "closing connection.");
+                                    break;
+                                }
+
+                                Log(
+                                    connectionId,
+                                    "RX NpcInteractionOpen " +
+                                    $"bytes={worldFrame.Length}; " +
+                                    $"character={pendingWorld.Character.CharacterId}; " +
+                                    $"map={mapId}; " +
+                                    $"handle={npcInteraction.ClientEntityHandle}; " +
+                                    $"spawn={openResult.Session!.SpawnId}; " +
+                                    "sessionOwnership=Accepted; " +
+                                    "wireResponse=" +
+                                    "BlockedNoVerifiedNpcInteractionResponseCodec");
+                                continue;
+                            }
+
+                            var closeStatus =
+                                npcInteractions.TryClose(
+                                    connectionId,
+                                    npcInteraction.ClientEntityHandle,
+                                    out var closedInteraction);
+
+                            if (closeStatus !=
+                                NpcInteractionCloseStatus.Closed)
+                            {
+                                Log(
+                                    connectionId,
+                                    "NPC interaction close rejected: " +
+                                    $"handle={npcInteraction.ClientEntityHandle}; " +
+                                    $"status={closeStatus}; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            Log(
+                                connectionId,
+                                "RX NpcInteractionMerchantClose " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"character={closedInteraction!.CharacterId}; " +
+                                $"map={closedInteraction.MapId}; " +
+                                $"handle={closedInteraction.ClientEntityHandle}; " +
+                                $"spawn={closedInteraction.SpawnId}; " +
+                                "sessionOwnership=Released; " +
+                                "wireResponse=None");
+                            continue;
+                        }
+
+                        if (OfficialNpcInteractionCodec.IsCandidate(
+                                worldFrame))
+                        {
+                            Log(
+                                connectionId,
+                                "NPC interaction candidate rejected: " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"reason={npcInteractionFailure}; " +
+                                "closing connection.");
+                            break;
+                        }
 
                         if (OfficialWorldLogoutCodec.IsVerifiedRequest(worldFrame))
                         {
@@ -802,6 +891,19 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
+            if (npcInteractions.Remove(
+                    connectionId,
+                    out var releasedInteraction))
+            {
+                Log(
+                    connectionId,
+                    "NPC interaction session released: " +
+                    $"character={releasedInteraction!.CharacterId}; " +
+                    $"map={releasedInteraction.MapId}; " +
+                    $"handle={releasedInteraction.ClientEntityHandle}; " +
+                    $"spawn={releasedInteraction.SpawnId}.");
+            }
+
             if (worldPresences.TryLeave(
                     connectionId,
                     out var departedPresence,
