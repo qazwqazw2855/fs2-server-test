@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-15
+Updated: 2026-09-16
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -198,20 +198,6 @@ Every recovered/implemented feature progresses through:
 - Added explicit LoginProbe validation for the official DuplicateLogin failure frame `05000A79C2`.
 - Official-client acceptance and multiplayer spawn/AOI/despawn evidence remain pending.
 
-
-## Current Known Assets to Reuse
-- Official client and original client assets/UI/maps/animations.
-- Existing MariaDB game data and schema/migrations where valid.
-- Verified login/character/world handshake behavior.
-- Verified movement and portal closed loops from the existing server.
-- Existing NPC and replication evidence.
-- Static/runtime reverse-engineering tooling.
-- Current runtime-memory snapshot for the active official client build.
-- Existing tests and packet fixtures as compatibility references.
-
-## Definition of Done
-Server V2 is not complete until the official client can reliably perform the major original gameplay systems, persistence survives restart, multiplayer state remains consistent, disconnects leave no ghosts, and classic regression tests remain green when custom content is enabled.
-
 ### 2026-09-16 - Official Client Baseline and V2 Launcher Decision
 - Completed the current Server V2 session-ownership and Login-to-World ownership-transfer work, including duplicate-account ownership protection and pending-world claim coverage.
 - Current focused Server V2 test projects pass 59/59: Session 20/20, Application 21/21 and Network 18/18.
@@ -226,3 +212,29 @@ Server V2 is not complete until the official client can reliably perform the maj
 - Confirmed that the existing reverse-engineering toolchain already contains a verified `.csvZ` reader using the God2 `05 16` LZSS wrapper and CP936 text decoding (`God2PackedFile.ReadCsvZAsync`).
 - Next protocol/client task: decode and characterize the reference client's `LoginServer.csvZ`, determine the exact login-endpoint selection path used by `God2.exe`, and make the future V2 Launcher direct the unmodified reference client to Server V2.
 - After endpoint control is established, rebuild the official-client Login baseline from this exact reference client before continuing Character Select and World acceptance testing.
+
+### 2026-09-16 19:48 - Progress Sync
+- Compared against the prior sync head `a87b7266`; `refactor/server-v2` advanced 7 commits to `dbd3429453d7d054a184d1ed37aed866602f3cac` (`Align Server V2 progress with current development`).
+- Server V2 headless M1 infrastructure now includes AWS Runtime validation, Login-to-World ownership transfer, duplicate-account protection, World Bootstrap, movement sequencing/persistence, Logout, abrupt-disconnect cleanup and immediate relogin.
+- Recorded acceptance evidence includes 50 consecutive Login -> World -> Logout cycles and 50 abrupt World disconnect -> immediate relogin cycles without stale sessions.
+- Development log records 114/114 Server V2 automated tests passing at the AWS runtime checkpoint; the most recent focused suites report Session 20/20, Application 21/21 and Network 18/18 (59/59), with Host Release build passing.
+- Current head has no GitHub commit status/CI result, so these executed test records are retained without claiming CI verification for `dbd3429`.
+- Official compatibility baseline is now the immutable original `God2.exe`; `God2_opt.exe` is excluded from the V2 compatibility target.
+- V2 Launcher direction is established: preserve the original game client and build a separate launcher for Server V2 endpoint routing, integrity/version identification and later server-selection/update functions.
+- Current protocol blocker is `LoginServer.csvZ` endpoint selection plus the reference-client Login version follow-up; official Client Login -> Character -> World acceptance is still incomplete.
+- Multiplayer Player Despawn remains evidence-blocked pending official wire/entity-handle mapping and two-client AOI/despawn acceptance.
+- M1 is conservatively tracked at 70%: headless lifecycle/reconnect criteria are substantially proven, but official-client and multiplayer exit criteria remain open.
+- Next: decode `LoginServer.csvZ`, establish V2 Launcher endpoint control, rebuild Login acceptance against the single reference client, then complete official Client Character -> World -> Movement -> Logout -> Relogin and two-client despawn acceptance.
+
+## Current Known Assets to Reuse
+- Official client and original client assets/UI/maps/animations.
+- Existing MariaDB game data and schema/migrations where valid.
+- Verified login/character/world handshake behavior.
+- Verified movement and portal closed loops from the existing server.
+- Existing NPC and replication evidence.
+- Static/runtime reverse-engineering tooling.
+- Current runtime-memory snapshot for the active official client build.
+- Existing tests and packet fixtures as compatibility references.
+
+## Definition of Done
+Server V2 is not complete until the official client can reliably perform the major original gameplay systems, persistence survives restart, multiplayer state remains consistent, disconnects leave no ghosts, and classic regression tests remain green when custom content is enabled.
