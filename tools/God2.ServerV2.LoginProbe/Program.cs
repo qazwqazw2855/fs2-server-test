@@ -4,6 +4,22 @@ using System.Text;
 using God2.ServerV2.Protocol;
 
 var password = Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD");
+var accountName =
+    Environment.GetEnvironmentVariable("GOD2_TEST_ACCOUNT") ??
+    "god2test";
+var expectedCharacterName =
+    Environment.GetEnvironmentVariable("GOD2_EXPECTED_CHARACTER") ??
+    "test001";
+var expectedCharacterIdText =
+    Environment.GetEnvironmentVariable(
+        "GOD2_EXPECTED_CHARACTER_ID");
+var localAddress =
+    Environment.GetEnvironmentVariable(
+        "GOD2_PROBE_LOCAL_ADDRESS");
+var holdSecondsText =
+    Environment.GetEnvironmentVariable(
+        "GOD2_PROBE_HOLD_SECONDS");
+
 var expectDuplicateLogin =
     string.Equals(
         Environment.GetEnvironmentVariable(
@@ -56,6 +72,48 @@ if (string.IsNullOrEmpty(password))
     return 1;
 }
 
+if (string.IsNullOrWhiteSpace(accountName) ||
+    string.IsNullOrWhiteSpace(expectedCharacterName))
+{
+    Console.Error.WriteLine(
+        "測試帳號與預期角色名稱不可為空白。");
+    return 1;
+}
+
+var expectedCharacterId =
+    string.IsNullOrWhiteSpace(expectedCharacterIdText)
+        ? 1U
+        : uint.TryParse(
+            expectedCharacterIdText,
+            out var parsedCharacterId) &&
+            parsedCharacterId > 0
+            ? parsedCharacterId
+            : 0U;
+
+if (expectedCharacterId == 0)
+{
+    Console.Error.WriteLine(
+        "GOD2_EXPECTED_CHARACTER_ID 無效。");
+    return 1;
+}
+
+var holdSeconds =
+    string.IsNullOrWhiteSpace(holdSecondsText)
+        ? 0
+        : int.TryParse(
+            holdSecondsText,
+            out var parsedHoldSeconds) &&
+            parsedHoldSeconds is >= 0 and <= 120
+            ? parsedHoldSeconds
+            : -1;
+
+if (holdSeconds < 0)
+{
+    Console.Error.WriteLine(
+        "GOD2_PROBE_HOLD_SECONDS 必須介於 0 到 120。");
+    return 1;
+}
+
 var portText =
     Environment.GetEnvironmentVariable("GOD2_PROBE_PORT");
 
@@ -73,8 +131,13 @@ if (port == 0)
 }
 
 using var timeout = new CancellationTokenSource(
-    TimeSpan.FromSeconds(verifyIdleTimeout ? 45 : 10));
+    TimeSpan.FromSeconds(
+        verifyIdleTimeout
+            ? 45
+            : Math.Max(10, holdSeconds + 10)));
 using var client = new TcpClient();
+
+BindLocalAddress(client, localAddress);
 
 await client.ConnectAsync("127.0.0.1", port, timeout.Token);
 await using var stream = client.GetStream();
@@ -95,10 +158,10 @@ Require(
         OfficialLoginHandshakeProtocol.VersionFollowUpFrame.Span),
     "Version Follow-up 不符");
 
-var loginRequest = BuildLoginRequest("god2test", password);
+var loginRequest = BuildLoginRequest(accountName, password);
 var pendingDuplicateLoginRequest =
     verifyPendingOwnership
-        ? BuildLoginRequest("god2test", password)
+        ? BuildLoginRequest(accountName, password)
         : null;
 
 try
@@ -181,7 +244,9 @@ try
     var name = Encoding.ASCII.GetString(nameField[..nameLength]);
 
     Require(count == 1, $"角色數量錯誤：{count}");
-    Require(name == "test001", $"角色名稱錯誤：{name}");
+    Require(
+        name == expectedCharacterName,
+        $"角色名稱錯誤：{name}，預期：{expectedCharacterName}");
 
     Console.WriteLine("無畫面登入測試成功");
     Console.WriteLine($"角色數量：{count}");
@@ -227,6 +292,9 @@ if (verifyPendingOwnership)
 }
 
 using var worldClient = new TcpClient();
+
+BindLocalAddress(worldClient, localAddress);
+
 await worldClient.ConnectAsync("127.0.0.1", port, timeout.Token);
 await using var worldStream = worldClient.GetStream();
 
@@ -274,8 +342,12 @@ try
                 OfficialWorldBootstrapCodec.PlayerIdOffset,
                 sizeof(uint)));
 
-    Require(worldName == "test001", $"World 角色名稱錯誤：{worldName}");
-    Require(worldCharacterId == 1, $"World 角色 ID 錯誤：{worldCharacterId}");
+    Require(
+        worldName == expectedCharacterName,
+        $"World 角色名稱錯誤：{worldName}，預期：{expectedCharacterName}");
+    Require(
+        worldCharacterId == expectedCharacterId,
+        $"World 角色 ID 錯誤：{worldCharacterId}，預期：{expectedCharacterId}");
 
     Console.WriteLine("World Handshake 測試成功");
     Console.WriteLine($"World 角色：{worldName} / ID={worldCharacterId}");
@@ -438,24 +510,63 @@ else if (verifyLogout)
 }
 else
 {
-    var verifiedHeartbeat = Convert.FromHexString("05003D09A5");
+    var heartbeatCount =
+        holdSeconds > 0
+            ? holdSeconds
+            : 1;
 
-    Require(
-        OfficialWorldHeartbeatCodec.Classify(verifiedHeartbeat) ==
-        OfficialWorldFrameClassification.KeepAlive,
-        "測試 Heartbeat 樣本未通過協定分類");
+    for (var index = 0; index < heartbeatCount; index++)
+    {
+        var verifiedHeartbeat =
+            Convert.FromHexString("05003D09A5");
 
-    await worldStream.WriteAsync(
-        verifiedHeartbeat,
-        timeout.Token);
+        Require(
+            OfficialWorldHeartbeatCodec.Classify(
+                verifiedHeartbeat) ==
+            OfficialWorldFrameClassification.KeepAlive,
+            "測試 Heartbeat 樣本未通過協定分類");
 
-    Array.Clear(verifiedHeartbeat);
+        await worldStream.WriteAsync(
+            verifiedHeartbeat,
+            timeout.Token);
 
-    await Task.Delay(100, timeout.Token);
-    Console.WriteLine("World 連線持續接收測試成功");
+        Array.Clear(verifiedHeartbeat);
+
+        await Task.Delay(
+            holdSeconds > 0 ? 1000 : 100,
+            timeout.Token);
+    }
+
+    Console.WriteLine(
+        holdSeconds > 0
+            ? $"World 保持在線測試成功：{holdSeconds} 秒"
+            : "World 連線持續接收測試成功");
 }
 
 return 0;
+
+static void BindLocalAddress(
+    TcpClient client,
+    string? addressText)
+{
+    if (string.IsNullOrWhiteSpace(addressText))
+    {
+        return;
+    }
+
+    if (!System.Net.IPAddress.TryParse(
+            addressText,
+            out var address) ||
+        address.AddressFamily !=
+            System.Net.Sockets.AddressFamily.InterNetwork)
+    {
+        throw new InvalidOperationException(
+            $"無效的 Probe 來源 IPv4：{addressText}");
+    }
+
+    client.Client.Bind(
+        new System.Net.IPEndPoint(address, 0));
+}
 
 static async Task VerifyDuplicateLoginAsync(
     int port,
