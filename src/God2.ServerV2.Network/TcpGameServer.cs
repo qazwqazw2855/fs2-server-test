@@ -15,7 +15,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly CharacterListService _characterListService;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly SessionRegistry _sessionRegistry;
-    private readonly PendingWorldEntryRegistry _pendingWorldEntries = new();
+    private readonly PendingWorldEntryRegistry _pendingWorldEntries;
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
     private bool _started;
@@ -35,6 +35,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         _characterPositionWriter = characterPositionWriter;
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
+        _pendingWorldEntries =
+            new PendingWorldEntryRegistry(_sessionRegistry);
         _listener = new TcpListener(options.BindAddress, options.Port);
     }
 
@@ -154,14 +156,19 @@ public sealed class TcpGameServer : IAsyncDisposable
                     var worldSessionTransferred =
                         sessionContext.TransferOrAcquireFrom(
                             pendingWorld.AccountName,
-                            pendingWorld.LoginConnectionId);
+                            pendingWorld.ReservationConnectionId);
 
                     if (!worldSessionTransferred)
                     {
+                        sessionRegistry.Release(
+                            pendingWorld.AccountName,
+                            pendingWorld.ReservationConnectionId);
+
                         Log(
                             connectionId,
                             "World session ownership transfer rejected: " +
                             $"loginConnection={pendingWorld.LoginConnectionId}; " +
+                            $"reservationConnection={pendingWorld.ReservationConnectionId}; " +
                             "closing connection.");
                         return;
                     }

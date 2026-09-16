@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using God2.ServerV2.Application;
+using God2.ServerV2.Session;
 
 namespace God2.ServerV2.Network;
 
@@ -7,6 +8,7 @@ public sealed record PendingWorldEntry(
     string RemoteAddress,
     string AccountName,
     long LoginConnectionId,
+    long ReservationConnectionId,
     long AccountId,
     byte SelectedServerId,
     CharacterListEntry Character,
@@ -17,10 +19,16 @@ public sealed class PendingWorldEntryRegistry
     private readonly ConcurrentDictionary<string, PendingWorldEntry> _entries =
         new(StringComparer.Ordinal);
 
+    private readonly SessionRegistry _sessionRegistry;
     private readonly TimeSpan _timeToLive;
+    private long _nextReservationConnectionId = long.MaxValue;
 
-    public PendingWorldEntryRegistry(TimeSpan? timeToLive = null)
+    public PendingWorldEntryRegistry(
+        SessionRegistry sessionRegistry,
+        TimeSpan? timeToLive = null)
     {
+        _sessionRegistry = sessionRegistry ??
+            throw new ArgumentNullException(nameof(sessionRegistry));
         _timeToLive = timeToLive ?? TimeSpan.FromMinutes(2);
 
         if (_timeToLive <= TimeSpan.Zero)
@@ -61,16 +69,43 @@ public sealed class PendingWorldEntryRegistry
 
         RemoveExpired(nowUtc);
 
-        return _entries.TryAdd(
-            remoteAddress,
-            new PendingWorldEntry(
-                remoteAddress,
-                accountName.Trim(),
+        var normalizedAccount = accountName.Trim();
+        var reservationConnectionId =
+            Interlocked.Decrement(ref _nextReservationConnectionId);
+
+        if (!_sessionRegistry.TryTransfer(
+                normalizedAccount,
                 loginConnectionId,
-                accountId,
-                selectedServerId,
-                character,
-                nowUtc.Add(_timeToLive)));
+                reservationConnectionId))
+        {
+            return false;
+        }
+
+        var entry = new PendingWorldEntry(
+            remoteAddress,
+            normalizedAccount,
+            loginConnectionId,
+            reservationConnectionId,
+            accountId,
+            selectedServerId,
+            character,
+            nowUtc.Add(_timeToLive));
+
+        if (_entries.TryAdd(remoteAddress, entry))
+        {
+            return true;
+        }
+
+        if (!_sessionRegistry.TryTransfer(
+                normalizedAccount,
+                reservationConnectionId,
+                loginConnectionId))
+        {
+            throw new InvalidOperationException(
+                "Pending world entry ownership rollback failed.");
+        }
+
+        return false;
     }
 
     public bool TryClaim(
@@ -89,6 +124,10 @@ public sealed class PendingWorldEntryRegistry
 
         if (candidate.ExpiresAtUtc <= nowUtc)
         {
+            _sessionRegistry.Release(
+                candidate.AccountName,
+                candidate.ReservationConnectionId);
+
             return false;
         }
 
@@ -103,8 +142,12 @@ public sealed class PendingWorldEntryRegistry
         foreach (var pair in _entries)
         {
             if (pair.Value.ExpiresAtUtc <= nowUtc &&
-                _entries.TryRemove(pair.Key, out _))
+                _entries.TryRemove(pair.Key, out var expired))
             {
+                _sessionRegistry.Release(
+                    expired.AccountName,
+                    expired.ReservationConnectionId);
+
                 removed++;
             }
         }

@@ -1,5 +1,6 @@
 using God2.ServerV2.Application;
 using God2.ServerV2.Network;
+using God2.ServerV2.Session;
 
 namespace God2.ServerV2.Network.Tests;
 
@@ -11,7 +12,8 @@ public sealed class PendingWorldEntryRegistryTests
     [Fact]
     public void Reserved_entry_can_be_claimed_exactly_once()
     {
-        var registry = new PendingWorldEntryRegistry();
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(sessions);
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
@@ -32,6 +34,9 @@ public sealed class PendingWorldEntryRegistryTests
         Assert.Equal(101, claimed.LoginConnectionId);
         Assert.Equal(1, claimed.AccountId);
         Assert.Equal("test001", claimed.Character.Name);
+        Assert.True(sessions.TryGetOwner("god2test", out var owner));
+        Assert.Equal(claimed.ReservationConnectionId, owner);
+        Assert.NotEqual(101, owner);
 
         Assert.False(registry.TryClaim(
             "127.0.0.1",
@@ -42,8 +47,10 @@ public sealed class PendingWorldEntryRegistryTests
     [Fact]
     public void Expired_entry_cannot_be_claimed()
     {
-        var registry =
-            new PendingWorldEntryRegistry(TimeSpan.FromMinutes(2));
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(
+            sessions,
+            TimeSpan.FromMinutes(2));
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
@@ -58,12 +65,15 @@ public sealed class PendingWorldEntryRegistryTests
             "127.0.0.1",
             Now.AddMinutes(2),
             out _));
+
+        Assert.False(sessions.TryGetOwner("god2test", out _));
     }
 
     [Fact]
     public void Duplicate_remote_address_is_rejected()
     {
-        var registry = new PendingWorldEntryRegistry();
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(sessions);
 
         Assert.True(registry.TryReserve(
             "127.0.0.1",
@@ -87,7 +97,8 @@ public sealed class PendingWorldEntryRegistryTests
     [Fact]
     public void Blank_account_name_is_rejected()
     {
-        var registry = new PendingWorldEntryRegistry();
+        var registry =
+            new PendingWorldEntryRegistry(new SessionRegistry());
 
         Assert.Throws<ArgumentException>(() =>
             registry.TryReserve(
@@ -103,7 +114,8 @@ public sealed class PendingWorldEntryRegistryTests
     [Fact]
     public void Character_must_belong_to_authenticated_account()
     {
-        var registry = new PendingWorldEntryRegistry();
+        var registry =
+            new PendingWorldEntryRegistry(new SessionRegistry());
 
         Assert.Throws<ArgumentException>(() =>
             registry.TryReserve(
@@ -114,6 +126,72 @@ public sealed class PendingWorldEntryRegistryTests
                 1,
                 Character(),
                 Now));
+    }
+
+    [Fact]
+    public void Reservation_blocks_second_login_after_login_closes()
+    {
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(sessions);
+
+        Assert.True(registry.TryReserve(
+            "127.0.0.1",
+            "god2test",
+            101,
+            1,
+            1,
+            Character(),
+            Now));
+
+        Assert.False(sessions.Release("god2test", 101));
+
+        var duplicate = sessions.TryAcquire("god2test", 202);
+
+        Assert.Equal(
+            SessionAcquireStatus.DuplicateAccount,
+            duplicate.Status);
+    }
+
+    [Fact]
+    public void World_connection_takes_ownership_from_reservation()
+    {
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(sessions);
+
+        Assert.True(registry.TryReserve(
+            "127.0.0.1",
+            "god2test",
+            101,
+            1,
+            1,
+            Character(),
+            Now));
+
+        Assert.True(registry.TryClaim(
+            "127.0.0.1",
+            Now.AddSeconds(1),
+            out var claimed));
+
+        using var world =
+            new ConnectionSessionContext(202, sessions);
+
+        Assert.True(world.TransferOrAcquireFrom(
+            claimed!.AccountName,
+            claimed.ReservationConnectionId));
+
+        Assert.True(
+            sessions.TryGetOwner("god2test", out var owner));
+        Assert.Equal(202, owner);
+    }
+
+    private static SessionRegistry OwnedSession()
+    {
+        var sessions = new SessionRegistry();
+
+        Assert.True(
+            sessions.TryAcquire("god2test", 101).Succeeded);
+
+        return sessions;
     }
 
     private static CharacterListEntry Character() =>
