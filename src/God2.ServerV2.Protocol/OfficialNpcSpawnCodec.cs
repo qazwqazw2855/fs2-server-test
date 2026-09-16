@@ -45,6 +45,12 @@ public static class OfficialNpcSpawnCodec
     public const string TypeZeroOpaqueTemplateSha256 =
         "C1D92D6C8E358E6E894389F60CB522CBB67429566A58C2B66DEBC872FB9E7838";
 
+    public const uint LiveDialog3793Handle = 3793;
+    public const byte LiveDialog3793ResourceOrdinal = 87;
+    public const byte LiveDialog3793DirectionCode = 5;
+    public const string LiveDialog3793SpawnMessageSha256 =
+        "FAEB2E6FEC5D9B23F9A06143085535443473A8D63A8C0165BA43CF9586F8FFFF";
+
     private static readonly byte[] TypeZeroOpaqueTemplate =
         Convert.FromHexString("000000CF010000");
 
@@ -201,8 +207,29 @@ public static class OfficialNpcSpawnCodec
         if (evidence.ResourceType != 0 ||
             evidence.ResourceOrdinal is null or byte.MaxValue ||
             evidence.SelectorHighBits != 3 ||
-            evidence.DirectionCode != 4 ||
             evidence.StateCode != 1)
+        {
+            return "DerivedTypeZeroProfileMismatch";
+        }
+
+        var isDerivedMapThreeProfile =
+            evidence.ResourceOrdinal == 45 &&
+            evidence.DirectionCode == 4;
+
+        var isVerifiedLiveDialog3793Profile =
+            evidence.EntityHandle == LiveDialog3793Handle &&
+            evidence.ResourceOrdinal ==
+                LiveDialog3793ResourceOrdinal &&
+            evidence.DirectionCode ==
+                LiveDialog3793DirectionCode &&
+            evidence.EvidenceStatus == "Verified" &&
+            string.Equals(
+                evidence.SpawnMessageSha256,
+                LiveDialog3793SpawnMessageSha256,
+                StringComparison.OrdinalIgnoreCase);
+
+        if (!isDerivedMapThreeProfile &&
+            !isVerifiedLiveDialog3793Profile)
         {
             return "DerivedTypeZeroProfileMismatch";
         }

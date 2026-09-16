@@ -44,6 +44,73 @@ public sealed class OfficialNpcSpawnCodecTests
     }
 
     [Fact]
+    public void Encodes_verified_live_dialog_3793_spawn()
+    {
+        var result = OfficialNpcSpawnCodec.Encode(
+            new OfficialNpcSpawnEvidence(
+                OfficialNpcSpawnCodec.ClientBuildId,
+                OfficialNpcSpawnCodec.LiveDialog3793Handle,
+                0,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793ResourceOrdinal,
+                3,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793DirectionCode,
+                1,
+                65,
+                61,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793SpawnMessageSha256,
+                OfficialNpcSpawnCodec
+                    .TypeZeroOpaqueTemplateSha256,
+                "Verified",
+                "LiveRecovery/attempt-759-decode-2579"));
+
+        Assert.True(result.Succeeded, result.Reason);
+        Assert.Equal(
+            OfficialNpcSpawnCodec.FrameLength,
+            result.Frame.Length);
+
+        Assert.True(
+            OfficialNpcSpawnCodec.TryDecodeHandle(
+                result.Frame,
+                out var decodedHandle));
+        Assert.Equal(
+            OfficialNpcSpawnCodec.LiveDialog3793Handle,
+            decodedHandle);
+    }
+
+    [Fact]
+    public void Live_dialog_profile_does_not_generalize_handle()
+    {
+        var result = OfficialNpcSpawnCodec.Encode(
+            new OfficialNpcSpawnEvidence(
+                OfficialNpcSpawnCodec.ClientBuildId,
+                3794,
+                0,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793ResourceOrdinal,
+                3,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793DirectionCode,
+                1,
+                65,
+                61,
+                OfficialNpcSpawnCodec
+                    .LiveDialog3793SpawnMessageSha256,
+                OfficialNpcSpawnCodec
+                    .TypeZeroOpaqueTemplateSha256,
+                "Verified",
+                "test-evidence"));
+
+        Assert.False(result.Succeeded);
+        Assert.Equal(
+            "DerivedTypeZeroProfileMismatch",
+            result.Reason);
+        Assert.Empty(result.Frame);
+    }
+
+    [Fact]
     public void Altered_application_hash_is_blocked()
     {
         var result = OfficialNpcSpawnCodec.Encode(
