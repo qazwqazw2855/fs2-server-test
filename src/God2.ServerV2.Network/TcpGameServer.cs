@@ -16,6 +16,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly SessionRegistry _sessionRegistry;
     private readonly PendingWorldEntryRegistry _pendingWorldEntries;
+    private readonly WorldPresenceRegistry _worldPresences = new();
     private readonly ConcurrentDictionary<long, Task> _connections = new();
     private long _nextConnectionId;
     private bool _started;
@@ -81,6 +82,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _characterListService,
                     _characterPositionWriter,
                     _pendingWorldEntries,
+                    _worldPresences,
                     Options.AdvertisedAddress.GetAddressBytes(),
                     checked((ushort)Options.Port),
                     cancellationToken);
@@ -126,6 +128,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         CharacterListService characterListService,
         ICharacterPositionWriter? characterPositionWriter,
         PendingWorldEntryRegistry pendingWorldEntries,
+        WorldPresenceRegistry worldPresences,
         byte[] advertisedAddress,
         ushort advertisedPort,
         CancellationToken serverCancellationToken)
@@ -190,6 +193,27 @@ public sealed class TcpGameServer : IAsyncDisposable
                             .IsExpectedClientHandshake(worldClientHandshake))
                     {
                         Log(connectionId, "World handshake rejected.");
+                        return;
+                    }
+
+                    var presenceResult =
+                        worldPresences.TryEnter(
+                            new WorldPresence(
+                                connectionId,
+                                pendingWorld.AccountName,
+                                pendingWorld.AccountId,
+                                pendingWorld.Character,
+                                DateTimeOffset.UtcNow));
+
+                    if (!presenceResult.Succeeded)
+                    {
+                        Log(
+                            connectionId,
+                            "World presence rejected: " +
+                            $"status={presenceResult.Status}; " +
+                            $"existingConnection={presenceResult.ExistingConnectionId}; " +
+                            $"character={pendingWorld.Character.CharacterId}; " +
+                            "closing connection.");
                         return;
                     }
 
@@ -587,6 +611,16 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
+            if (worldPresences.TryLeave(
+                    connectionId,
+                    out var departedPresence))
+            {
+                Log(
+                    connectionId,
+                    "World presence released: " +
+                    $"character={departedPresence!.Character.CharacterId}.");
+            }
+
             sessionContext.Dispose();
             state.TryTransition(ConnectionStage.Closing);
             state.TryTransition(ConnectionStage.Closed);
