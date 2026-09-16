@@ -13,6 +13,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly TcpListener _listener;
     private readonly LoginService _loginService;
     private readonly CharacterListService _characterListService;
+    private readonly NpcSnapshotService _npcSnapshotService;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly SessionRegistry _sessionRegistry;
     private readonly PendingWorldEntryRegistry _pendingWorldEntries;
@@ -27,13 +28,18 @@ public sealed class TcpGameServer : IAsyncDisposable
         SessionRegistry sessionRegistry,
         LoginService loginService,
         CharacterListService characterListService,
-        ICharacterPositionWriter? characterPositionWriter = null)
+        ICharacterPositionWriter? characterPositionWriter = null,
+        NpcSnapshotService? npcSnapshotService = null)
     {
         Options = options;
         _loginService = loginService ??
             throw new ArgumentNullException(nameof(loginService));
         _characterListService = characterListService ??
             throw new ArgumentNullException(nameof(characterListService));
+        _npcSnapshotService =
+            npcSnapshotService ??
+            new NpcSnapshotService(
+                new EmptyNpcSnapshotRepository());
         _characterPositionWriter = characterPositionWriter;
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
@@ -81,6 +87,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _sessionRegistry,
                     _loginService,
                     _characterListService,
+                    _npcSnapshotService,
                     _characterPositionWriter,
                     _pendingWorldEntries,
                     _worldPresences,
@@ -128,6 +135,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         SessionRegistry sessionRegistry,
         LoginService loginService,
         CharacterListService characterListService,
+        NpcSnapshotService npcSnapshotService,
         ICharacterPositionWriter? characterPositionWriter,
         PendingWorldEntryRegistry pendingWorldEntries,
         WorldPresenceRegistry worldPresences,
@@ -196,6 +204,41 @@ public sealed class TcpGameServer : IAsyncDisposable
                             .IsExpectedClientHandshake(worldClientHandshake))
                     {
                         Log(connectionId, "World handshake rejected.");
+                        return;
+                    }
+
+                    if (pendingWorld.Character.MapId is not long mapId)
+                    {
+                        Log(
+                            connectionId,
+                            "NPC snapshot load rejected: " +
+                            "character has no authoritative map; " +
+                            "closing connection.");
+                        return;
+                    }
+
+                    IReadOnlyList<NpcSnapshotEntry> npcSnapshot;
+
+                    try
+                    {
+                        npcSnapshot =
+                            await npcSnapshotService.GetAsync(
+                                mapId,
+                                serverCancellationToken);
+                    }
+                    catch (OperationCanceledException)
+                        when (serverCancellationToken.IsCancellationRequested)
+                    {
+                        throw;
+                    }
+                    catch (Exception exception)
+                    {
+                        Log(
+                            connectionId,
+                            "NPC snapshot load rejected: " +
+                            $"map={mapId}; " +
+                            $"error={exception.GetType().Name}; " +
+                            "closing connection.");
                         return;
                     }
 
@@ -280,6 +323,16 @@ public sealed class TcpGameServer : IAsyncDisposable
                     await stream.WriteAsync(
                         worldBootstrap,
                         serverCancellationToken);
+
+                    Log(
+                        connectionId,
+                        "NPC snapshot loaded: " +
+                        $"map={mapId}; " +
+                        $"count={npcSnapshot.Count}; " +
+                        "wireEligible=0; " +
+                        $"wireBlocked={npcSnapshot.Count}; " +
+                        "wireDispatch=" +
+                        "BlockedMissingSpawnEvidenceHash.");
 
                     state.Transition(ConnectionStage.InWorld);
 

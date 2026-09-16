@@ -64,6 +64,7 @@ var dbPassword = Environment.GetEnvironmentVariable("GOD2_DB_PASSWORD");
 
 IAccountAuthenticator authenticator;
 ICharacterListRepository characterListRepository;
+INpcSnapshotRepository npcSnapshotRepository;
 ICharacterPositionWriter? characterPositionWriter;
 
 if (!string.IsNullOrWhiteSpace(dbHost) &&
@@ -89,6 +90,8 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
         new Pbkdf2Sha256PasswordHashVerifier());
     characterListRepository =
         new MariaDbCharacterListRepository(databaseOptions);
+    npcSnapshotRepository =
+        new MariaDbNpcSnapshotRepository(databaseOptions);
 
     var enableMovementPersistence =
         string.Equals(
@@ -111,6 +114,7 @@ else
 {
     authenticator = new RejectAllAccountAuthenticator();
     characterListRepository = new EmptyCharacterListRepository();
+    npcSnapshotRepository = new EmptyNpcSnapshotRepository();
     characterPositionWriter = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
@@ -119,13 +123,16 @@ else
 var loginService = new LoginService(authenticator);
 var characterListService =
     new CharacterListService(characterListRepository);
+var npcSnapshotService =
+    new NpcSnapshotService(npcSnapshotRepository);
 
 await using var server = new TcpGameServer(
     new TcpServerOptions(bindAddress, port, advertisedAddress),
     sessionRegistry,
     loginService,
     characterListService,
-    characterPositionWriter);
+    characterPositionWriter,
+    npcSnapshotService);
 
 try
 {

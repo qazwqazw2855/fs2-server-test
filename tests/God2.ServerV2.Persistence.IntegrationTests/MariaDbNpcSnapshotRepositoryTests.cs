@@ -1,0 +1,63 @@
+using God2.ServerV2.Persistence;
+
+namespace God2.ServerV2.Persistence.IntegrationTests;
+
+public sealed class MariaDbNpcSnapshotRepositoryTests
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task KunlunMap_HasExpectedNpcSnapshot()
+    {
+        if (!string.Equals(
+                Environment.GetEnvironmentVariable(
+                    "GOD2_RUN_DB_INTEGRATION"),
+                "1",
+                StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        var repository = new MariaDbNpcSnapshotRepository(
+            new MariaDbAuthenticationOptions(
+                Required("GOD2_DB_HOST"),
+                int.Parse(Required("GOD2_DB_PORT")),
+                Required("GOD2_DB_USER"),
+                Required("GOD2_DB_PASSWORD")));
+
+        var entries = await repository.ListByMapAsync(
+            1675308248,
+            CancellationToken.None);
+
+        Assert.Equal(2, entries.Count);
+
+        Assert.Collection(
+            entries,
+            first =>
+            {
+                Assert.Equal(1310005042, first.SpawnId);
+                Assert.Equal("大仙童", first.Name);
+                Assert.Equal((uint)5042, first.ClientEntityHandle);
+                Assert.Equal(74, first.PositionX);
+                Assert.Equal(124, first.PositionY);
+                Assert.Equal((byte)0, first.ResourceType);
+                Assert.Equal((byte)45, first.ResourceOrdinal);
+            },
+            second =>
+            {
+                Assert.Equal(1310005096, second.SpawnId);
+                Assert.Equal("法寶仙童", second.Name);
+                Assert.Equal((uint)5096, second.ClientEntityHandle);
+                Assert.Equal(73, second.PositionX);
+                Assert.Equal(121, second.PositionY);
+                Assert.Equal((byte)0, second.ResourceType);
+                Assert.Equal((byte)45, second.ResourceOrdinal);
+            });
+    }
+
+    private static string Required(string name) =>
+        Environment.GetEnvironmentVariable(name)
+            is { Length: > 0 } value
+            ? value
+            : throw new InvalidOperationException(
+                $"Required environment variable is missing: {name}");
+}
