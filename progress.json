@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
-  "overall_percent": 60,
-  "updated_at": "2026-09-16T00:56:13+08:00",
-  "summary": "God2 Server V2 已完成 AWS Runtime、帳號驗證、角色資料、Login→World Session ownership handoff、World Bootstrap、移動、登出、斷線清理與重登入閉環。官方遊戲 Client 將維持原版 God2.exe 不重製；已正式啟動 God2 V2 Launcher 重製計畫，由新登入器負責 Server V2 導向、Client 完整性與版本識別，後續再加入伺服器選擇與自動更新。目前正在解析 LoginServer.csvZ，之後將以固定 reference client 重新完成官方客戶端 Login acceptance。",
+  "overall_percent": 65,
+  "updated_at": "2026-09-17T01:15:00+08:00",
+  "summary": "God2 Server V2 的伺服器端 Login→World、Session ownership、登出、斷線清理與重登入閉環已完成。官方 Client 維持原版 God2.exe 不重製，獨立 God2 Rework Launcher 已完成 WPF 專案、Client SHA256 完整性驗證、Rework LoginServer.csvZ 佈署、Server V2 端點顯示與啟動流程。Windows 實機已確認 Launcher 能呼叫 God2.exe，但原版 God2.exe 直接啟動會在約 0.131 秒以 Exit Code 0 主動退出；原版 God2Patch.exe 可進入 Now Loading，之後回報伺服器維護或網路異常。目前調查重點已轉向 God2Con.csvZ / God2Con2.csvZ 與原版 Patch 前置啟動流程。",
   "milestones": [
     {
       "key": "foundation",
@@ -14,86 +14,33 @@
       "percent": 100,
       "status": "completed",
       "items": [
-        {
-          "name": "重新開立 God2 Server V2 專案",
-          "status": "completed"
-        },
-        {
-          "name": "建立 fs2db 自動進度同步",
-          "status": "completed"
-        },
-        {
-          "name": "建立乾淨的 V2 專案骨架",
-          "status": "completed"
-        },
-        {
-          "name": "TCP Listener、Hex Log 與斷線清理",
-          "status": "completed"
-        },
-        {
-          "name": "確認正式執行環境與設定",
-          "status": "completed"
-        },
-        {
-          "name": "連線狀態機與 Session 自動清理",
-          "status": "completed"
-        }
+        {"name": "重新開立 God2 Server V2 專案", "status": "completed"},
+        {"name": "建立 fs2db 自動進度同步", "status": "completed"},
+        {"name": "建立乾淨的 V2 專案骨架", "status": "completed"},
+        {"name": "TCP Listener、Hex Log 與斷線清理", "status": "completed"},
+        {"name": "確認正式執行環境與設定", "status": "completed"},
+        {"name": "連線狀態機與 Session 自動清理", "status": "completed"}
       ]
     },
     {
       "key": "login",
       "name": "登入與選角",
-      "percent": 85,
+      "percent": 90,
       "status": "in_progress",
       "items": [
-        {
-          "name": "TCP Listener 與連線生命週期",
-          "status": "completed"
-        },
-        {
-          "name": "官方 19-byte Server / 19-byte Client LoginHandshake",
-          "status": "completed"
-        },
-        {
-          "name": "LoginRequest 解碼與帳號驗證",
-          "status": "completed"
-        },
-        {
-          "name": "MariaDB PBKDF2-SHA256 帳號驗證",
-          "status": "completed"
-        },
-        {
-          "name": "登入失敗與重複登入控制",
-          "status": "completed"
-        },
-        {
-          "name": "角色列表 Application / Persistence",
-          "status": "completed"
-        },
-        {
-          "name": "Server Selection 與 Pending World Entry",
-          "status": "completed"
-        },
-        {
-          "name": "Login → World Session ownership handoff",
-          "status": "completed"
-        },
-        {
-          "name": "固定原版 God2.exe reference client",
-          "status": "completed"
-        },
-        {
-          "name": "解析 LoginServer.csvZ 與登入端點",
-          "status": "in_progress"
-        },
-        {
-          "name": "官方 reference client 實機 Login acceptance",
-          "status": "pending"
-        },
-        {
-          "name": "官方 Client 選角 → World acceptance",
-          "status": "pending"
-        }
+        {"name": "TCP Listener 與連線生命週期", "status": "completed"},
+        {"name": "官方 19-byte Server / 19-byte Client LoginHandshake", "status": "completed"},
+        {"name": "LoginRequest 解碼與帳號驗證", "status": "completed"},
+        {"name": "MariaDB PBKDF2-SHA256 帳號驗證", "status": "completed"},
+        {"name": "登入失敗與重複登入控制", "status": "completed"},
+        {"name": "角色列表 Application / Persistence", "status": "completed"},
+        {"name": "Server Selection 與 Pending World Entry", "status": "completed"},
+        {"name": "Login → World Session ownership handoff", "status": "completed"},
+        {"name": "固定原版 God2.exe reference client", "status": "completed"},
+        {"name": "解析 LoginServer.csvZ 與 Rework 登入端點", "status": "completed"},
+        {"name": "確認原版 Patch 前置啟動流程", "status": "in_progress"},
+        {"name": "官方 reference client 實機 Login acceptance", "status": "pending"},
+        {"name": "官方 Client 選角 → World acceptance", "status": "pending"}
       ]
     },
     {
@@ -102,34 +49,13 @@
       "percent": 100,
       "status": "completed",
       "items": [
-        {
-          "name": "Session ownership 與重複登入保護",
-          "status": "completed"
-        },
-        {
-          "name": "Login → World ownership 原子轉移",
-          "status": "completed"
-        },
-        {
-          "name": "World Logout 關閉 TCP",
-          "status": "completed"
-        },
-        {
-          "name": "斷線自動釋放 Session",
-          "status": "completed"
-        },
-        {
-          "name": "立即同帳號重新登入",
-          "status": "completed"
-        },
-        {
-          "name": "50 次 Login → World → Logout 循環",
-          "status": "completed"
-        },
-        {
-          "name": "50 次異常斷線 → 立即重登循環",
-          "status": "completed"
-        }
+        {"name": "Session ownership 與重複登入保護", "status": "completed"},
+        {"name": "Login → World ownership 原子轉移", "status": "completed"},
+        {"name": "World Logout 關閉 TCP", "status": "completed"},
+        {"name": "斷線自動釋放 Session", "status": "completed"},
+        {"name": "立即同帳號重新登入", "status": "completed"},
+        {"name": "50 次 Login → World → Logout 循環", "status": "completed"},
+        {"name": "50 次異常斷線 → 立即重登循環", "status": "completed"}
       ]
     },
     {
@@ -138,92 +64,43 @@
       "percent": 30,
       "status": "in_progress",
       "items": [
-        {
-          "name": "WorldHandshake 與 1772-byte World Bootstrap",
-          "status": "completed"
-        },
-        {
-          "name": "角色移動 ACK 與座標持久化",
-          "status": "completed"
-        },
-        {
-          "name": "重複 Movement Sequence 拒絕",
-          "status": "completed"
-        },
-        {
-          "name": "World idle timeout",
-          "status": "completed"
-        },
-        {
-          "name": "多人 Player Spawn / AOI / Despawn",
-          "status": "pending"
-        },
-        {
-          "name": "NPC 與傳送",
-          "status": "pending"
-        },
-        {
-          "name": "物品與背包",
-          "status": "pending"
-        },
-        {
-          "name": "戰鬥與技能",
-          "status": "pending"
-        }
+        {"name": "WorldHandshake 與 1772-byte World Bootstrap", "status": "completed"},
+        {"name": "角色移動 ACK 與座標持久化", "status": "completed"},
+        {"name": "重複 Movement Sequence 拒絕", "status": "completed"},
+        {"name": "World idle timeout", "status": "completed"},
+        {"name": "多人 Player Spawn / AOI / Despawn", "status": "pending"},
+        {"name": "NPC 與傳送", "status": "pending"},
+        {"name": "物品與背包", "status": "pending"},
+        {"name": "戰鬥與技能", "status": "pending"}
       ]
     },
     {
       "key": "launcher",
-      "name": "God2 V2 登入器",
-      "percent": 10,
+      "name": "God2 Rework Launcher",
+      "percent": 65,
       "status": "in_progress",
       "items": [
-        {
-          "name": "確立原版 God2.exe 為唯一 reference client",
-          "status": "completed"
-        },
-        {
-          "name": "確認 reference client SHA256 與 AWS 備份一致",
-          "status": "completed"
-        },
-        {
-          "name": "停止使用 God2_opt.exe 專用舊 Launcher",
-          "status": "completed"
-        },
-        {
-          "name": "解析 LoginServer.csvZ",
-          "status": "in_progress"
-        },
-        {
-          "name": "確認 God2.exe 登入 Server IP / Port 取得流程",
-          "status": "pending"
-        },
-        {
-          "name": "建立 God2 V2 Launcher 專案",
-          "status": "pending"
-        },
-        {
-          "name": "Launcher 自動導向 Server V2",
-          "status": "pending"
-        },
-        {
-          "name": "God2.exe 完整性與版本驗證",
-          "status": "pending"
-        },
-        {
-          "name": "伺服器選擇與狀態顯示",
-          "status": "pending"
-        },
-        {
-          "name": "Client 自動更新機制",
-          "status": "deferred"
-        }
+        {"name": "確立原版 God2.exe 為唯一 reference client", "status": "completed"},
+        {"name": "確認 reference client SHA256 與 AWS 備份一致", "status": "completed"},
+        {"name": "停止使用 God2_opt.exe 專用舊 Launcher", "status": "completed"},
+        {"name": "解析 LoginServer.csvZ", "status": "completed"},
+        {"name": "建立 God2 Rework Launcher WPF 專案", "status": "completed"},
+        {"name": "God2.exe SHA256 完整性與版本驗證", "status": "completed"},
+        {"name": "內建 Rework LoginServer.csvZ 與 Server V2 端點", "status": "completed"},
+        {"name": "Launcher UI 與 Windows self-contained publish", "status": "completed"},
+        {"name": "Launcher 呼叫原版 God2.exe", "status": "completed"},
+        {"name": "追查 God2.exe Exit Code 0 秒退原因", "status": "in_progress"},
+        {"name": "解析 God2Con.csvZ / God2Con2.csvZ Patch 設定", "status": "in_progress"},
+        {"name": "完成 Launcher → God2.exe → Server V2 Login", "status": "pending"},
+        {"name": "伺服器選擇與實際狀態檢查", "status": "pending"},
+        {"name": "Windows EXE 圖示調整", "status": "deferred"},
+        {"name": "Client 自動更新機制", "status": "deferred"}
       ]
     }
   ],
   "current_focus": {
-    "title": "原版 God2.exe 登入端點與 V2 Launcher",
-    "description": "Server V2 的 Login→World Session ownership handoff、登出、斷線清理與重登入閉環已完成。目前固定原版 God2.exe 為唯一 reference client。下一個阻塞點是解析 LoginServer.csvZ，確認原版 Client 如何取得 Login Server IP / Port，之後建立新的 God2 V2 Launcher 控制 Server V2 導向，再重新進行官方 Client Login acceptance。",
+    "title": "原版 God2Patch 前置流程與 God2.exe 啟動條件",
+    "description": "Rework Launcher 已能驗證原版 God2.exe、佈署 Rework LoginServer.csvZ 並呼叫 Client。實機確認 God2.exe 直接啟動約 0.131 秒後以 Exit Code 0 主動結束，無 Windows crash 紀錄；God2Patch.exe 則會進入 Now Loading 後回報伺服器維護或網路異常。patch_log.txt 顯示 Patch 會載入 God2Con.csv，目前正利用既有 God2PackedFile decoder 解析 God2Con.csvZ / God2Con2.csvZ，確認 Patch Server、版本檢查與 God2.exe 前置啟動條件。",
     "status": "in_progress"
   },
   "verification": {
@@ -232,67 +109,60 @@
     "passed_tests": 59,
     "failed_tests": 0,
     "suites": [
-      {
-        "name": "Session",
-        "passed": 20,
-        "failed": 0
-      },
-      {
-        "name": "Application",
-        "passed": 21,
-        "failed": 0
-      },
-      {
-        "name": "Network",
-        "passed": 18,
-        "failed": 0
-      }
+      {"name": "Session", "passed": 20, "failed": 0},
+      {"name": "Application", "passed": 21, "failed": 0},
+      {"name": "Network", "passed": 18, "failed": 0}
     ],
-    "note": "目前最近一次 focused Server V2 驗證為 Session 20/20、Application 21/21、Network 18/18，共 59/59 通過；Host Release build 通過。完整 solution 的 GameplayContentRecovery 歷史測試因缺少 Artifacts 資料會出現與目前 V2 無關的失敗，因此不納入本頁 V2 驗證統計。"
+    "note": "最近一次 focused Server V2 驗證為 Session 20/20、Application 21/21、Network 18/18，共 59/59 通過；Host Release build 通過。Rework Launcher Release build 與 win-x64 self-contained publish 亦已完成。完整 solution 的 GameplayContentRecovery 歷史測試因缺少 Artifacts 資料會出現與目前 V2 無關的失敗，因此不納入本頁 V2 驗證統計。"
   },
   "blockers": [
     {
-      "title": "原版 God2.exe Login acceptance",
+      "title": "原版 God2.exe 啟動條件",
       "status": "in_progress",
-      "detail": "Server/Client 19-byte handshake 已確認，但 Login version follow-up 仍需以唯一 reference client God2.exe 重新建立基準；先前 God2_opt.exe 測試結果不再作為 V2 Client 相容性基準。"
+      "detail": "Windows 實機確認 God2.exe 可建立 Process，但約 0.131 秒後以 Exit Code 0 正常退出，Application Event Log 無 crash；需確認原版 God2Patch 是否提供必要的前置狀態、參數或版本檢查。"
     },
     {
-      "title": "LoginServer.csvZ 登入端點機制",
+      "title": "God2Patch 舊更新流程",
       "status": "in_progress",
-      "detail": "已確認專案內存在可讀取 God2 05 16 LZSS wrapper 與 CP936 文字的 ReadCsvZAsync 解碼器；下一步直接解析 reference client 的 LoginServer.csvZ，確認 IP / Port 與 Server 選擇流程。"
+      "detail": "God2Patch.exe 可進入 Now Loading，但之後顯示伺服器維護中或網路異常。patch_log.txt 顯示載入 God2Con.csv；下一步解析 God2Con.csvZ / God2Con2.csvZ，確認 Patch/Update Server 與版本流程。"
+    },
+    {
+      "title": "官方 Client Login acceptance",
+      "status": "pending",
+      "detail": "Server V2 端 Login→World headless/protocol 閉環已完成，但必須先解決原版 God2.exe 啟動條件，才能進行官方 Client 的 Login、選角與 World 實機 acceptance。"
     }
   ],
   "next_steps": [
-    "使用既有 ReadCsvZAsync 解碼 reference client 的 LoginServer.csvZ",
-    "確認原版 God2.exe 的 Login Server IP / Port 與 Server 選擇來源",
-    "建立 God2 V2 Launcher 專案骨架",
-    "讓 V2 Launcher 將原版 God2.exe 導向 Server V2",
-    "加入 reference God2.exe SHA256 完整性與版本驗證",
-    "使用唯一 reference client 重新驗證 LoginHandshake 與 version follow-up",
+    "確認 God2.GameplayContentRecovery 現有 CLI 參數與 God2PackedFile 使用方式",
+    "解碼 reference client 的 God2Con.csvZ 與 God2Con2.csvZ",
+    "確認 God2Patch 的 Patch Server、版本檢查與前置啟動流程",
+    "判定 God2.exe 是否需要 Patch 產生的參數、檔案或狀態才能啟動",
+    "完成 Rework Launcher 對原版 Patch 前置流程的必要取代",
+    "在可實機測試環境重新驗證 Launcher → God2.exe",
     "完成官方 God2.exe Login acceptance",
     "完成官方 Client 選角 → World acceptance",
-    "Login/World 實機閉環完成後再進入多人 AOI / NPC / 物品 / 戰鬥"
+    "功能閉環完成後再處理 Windows EXE 圖示與其他 UI 細節"
   ],
   "recent_activity": [
     {
-      "date": "2026-09-16",
-      "title": "V2 Launcher 開發方向確立",
-      "detail": "決定不重製遊戲 Client；保留原版 God2.exe，另外開發 God2 V2 Launcher，負責 Server V2 導向、Client 完整性與版本識別。"
+      "date": "2026-09-17",
+      "title": "Rework Launcher 實機啟動追查",
+      "detail": "Launcher 已成功呼叫 E:\\God2\\God2.exe；移除已驗證原版 Client 的 Zone.Identifier 後確認 God2.exe 約 0.131 秒以 Exit Code 0 主動退出，Windows Application Event Log 無 crash。"
+    },
+    {
+      "date": "2026-09-17",
+      "title": "原版 God2Patch 前置流程調查",
+      "detail": "God2Patch.exe 可進入 Now Loading，之後顯示伺服器維護中或網路異常。patch_log.txt 顯示無啟動參數，並載入 God2Con.csv；調查焦點轉向 God2Con.csvZ / God2Con2.csvZ。"
     },
     {
       "date": "2026-09-16",
-      "title": "Reference Client 基準固定",
-      "detail": "原版 God2.exe 已固定為唯一 V2 reference client；AWS 保存副本 SHA256 與 Windows 原始檔一致。God2_opt.exe 與其舊 Launcher 正式排除於 V2 基準之外。"
+      "title": "God2 Rework Launcher 建置",
+      "detail": "完成 WPF Launcher、原版 God2.exe SHA256 驗證、Rework LoginServer.csvZ 資源、52.63.34.162:6001 端點導向、最終背景 UI 與 win-x64 self-contained publish。"
     },
     {
       "date": "2026-09-16",
-      "title": "LoginServer.csvZ 調查",
-      "detail": "確認 reference client 包含 LoginServer.csvZ，並找到專案既有 ReadCsvZAsync；格式已有 05 16 LZSS wrapper + CP936 解碼依據。"
-    },
-    {
-      "date": "2026-09-16",
-      "title": "Session ownership 閉環",
-      "detail": "完成 Login→World ownership transfer、重複帳號保護、Logout、異常斷線釋放與立即重新登入。"
+      "title": "Reference Client 與 LoginServer 基準固定",
+      "detail": "原版 God2.exe 固定為唯一 reference client；LoginServer.v2.csvZ 已解碼確認指向目前 Server V2 端點，並納入 Rework Launcher 資源。"
     },
     {
       "date": "2026-09-16",
@@ -302,10 +172,12 @@
   ],
   "launcher": {
     "status": "in_progress",
+    "name": "God2 Rework Launcher",
     "reference_client": "God2.exe",
     "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
-    "strategy": "保留原版遊戲 Client，重新開發獨立 God2 V2 Launcher",
-    "current_task": "解析 LoginServer.csvZ 與確認原版 Client 登入端點機制",
-    "next": "建立 V2 Launcher 並將 reference God2.exe 導向 Server V2"
+    "server_endpoint": "52.63.34.162:6001",
+    "strategy": "保留原版遊戲 Client，由獨立 Rework Launcher 負責完整性驗證、Server V2 導向與啟動流程",
+    "current_task": "解析 God2Con.csvZ / God2Con2.csvZ 並確認原版 God2Patch 前置啟動條件",
+    "next": "完成必要 Patch 前置流程取代後，重新進行 Launcher → God2.exe → Server V2 實機 Login acceptance"
   }
 }
