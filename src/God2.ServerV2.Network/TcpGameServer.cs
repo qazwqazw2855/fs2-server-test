@@ -203,7 +203,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 pendingWorld.AccountName,
                                 pendingWorld.AccountId,
                                 pendingWorld.Character,
-                                DateTimeOffset.UtcNow));
+                                DateTimeOffset.UtcNow),
+                            out var visibleWorldPeers);
 
                     if (!presenceResult.Succeeded)
                     {
@@ -216,6 +217,13 @@ public sealed class TcpGameServer : IAsyncDisposable
                             "closing connection.");
                         return;
                     }
+
+                    Log(
+                        connectionId,
+                        "World presence entered: " +
+                        $"character={pendingWorld.Character.CharacterId}; " +
+                        $"map={pendingWorld.Character.MapId}; " +
+                        $"visiblePeers={visibleWorldPeers.Count}.");
 
                     await stream.WriteAsync(
                         OfficialWorldHandshakeProtocol.FirstFollowUpFrame,
@@ -613,12 +621,15 @@ public sealed class TcpGameServer : IAsyncDisposable
         {
             if (worldPresences.TryLeave(
                     connectionId,
-                    out var departedPresence))
+                    out var departedPresence,
+                    out var departedVisiblePeers))
             {
                 Log(
                     connectionId,
                     "World presence released: " +
-                    $"character={departedPresence!.Character.CharacterId}.");
+                    $"character={departedPresence!.Character.CharacterId}; " +
+                    $"map={departedPresence.Character.MapId}; " +
+                    $"visiblePeers={departedVisiblePeers.Count}.");
             }
 
             sessionContext.Dispose();

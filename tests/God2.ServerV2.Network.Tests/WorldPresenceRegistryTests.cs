@@ -126,6 +126,79 @@ public sealed class WorldPresenceRegistryTests
     }
 
     [Fact]
+    public void Enter_returns_existing_peers_on_same_map()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(101, "account-a", 1, 11, mapId: 100));
+
+        var result = registry.TryEnter(
+            Presence(202, "account-b", 2, 22, mapId: 100),
+            out var visiblePeers);
+
+        Assert.True(result.Succeeded);
+        var peer = Assert.Single(visiblePeers);
+        Assert.Equal(101, peer.ConnectionId);
+        Assert.Equal(11, peer.Character.CharacterId);
+    }
+
+    [Fact]
+    public void Enter_excludes_players_on_other_maps()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(101, "account-a", 1, 11, mapId: 100));
+
+        var result = registry.TryEnter(
+            Presence(202, "account-b", 2, 22, mapId: 200),
+            out var visiblePeers);
+
+        Assert.True(result.Succeeded);
+        Assert.Empty(visiblePeers);
+    }
+
+    [Fact]
+    public void Leave_returns_remaining_peers_on_same_map()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(101, "account-a", 1, 11, mapId: 100));
+        registry.TryEnter(
+            Presence(202, "account-b", 2, 22, mapId: 100));
+        registry.TryEnter(
+            Presence(303, "account-c", 3, 33, mapId: 200));
+
+        Assert.True(registry.TryLeave(
+            101,
+            out var departed,
+            out var visiblePeers));
+
+        Assert.Equal(11, departed!.Character.CharacterId);
+        var peer = Assert.Single(visiblePeers);
+        Assert.Equal(202, peer.ConnectionId);
+        Assert.Equal(22, peer.Character.CharacterId);
+    }
+
+    [Fact]
+    public void Character_without_map_has_no_visible_peers()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(101, "account-a", 1, 11, mapId: null));
+
+        var result = registry.TryEnter(
+            Presence(202, "account-b", 2, 22, mapId: null),
+            out var visiblePeers);
+
+        Assert.True(result.Succeeded);
+        Assert.Empty(visiblePeers);
+    }
+
+    [Fact]
     public void Snapshot_is_stable_and_connection_ordered()
     {
         var registry = new WorldPresenceRegistry();
@@ -147,7 +220,8 @@ public sealed class WorldPresenceRegistryTests
         string accountName,
         long accountId,
         long characterId,
-        long? characterAccountId = null)
+        long? characterAccountId = null,
+        long? mapId = 1)
     {
         var ownerAccountId =
             characterAccountId ?? accountId;
@@ -165,7 +239,7 @@ public sealed class WorldPresenceRegistryTests
                 LifeSkillCode: "WeaponForging",
                 Level: 1,
                 AppearanceCode: "Default",
-                MapId: 1,
+                MapId: mapId,
                 PositionX: 10,
                 PositionY: 20,
                 CreatedAtUtc: Now,

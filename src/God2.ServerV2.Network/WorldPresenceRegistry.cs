@@ -45,9 +45,16 @@ public sealed class WorldPresenceRegistry
         }
     }
 
-    public WorldPresenceEnterResult TryEnter(WorldPresence presence)
+    public WorldPresenceEnterResult TryEnter(
+        WorldPresence presence) =>
+        TryEnter(presence, out _);
+
+    public WorldPresenceEnterResult TryEnter(
+        WorldPresence presence,
+        out IReadOnlyList<WorldPresence> visiblePeers)
     {
         ArgumentNullException.ThrowIfNull(presence);
+        visiblePeers = [];
 
         if (presence.ConnectionId <= 0)
         {
@@ -127,6 +134,9 @@ public sealed class WorldPresenceRegistry
                 normalizedPresence.Character.CharacterId,
                 normalizedPresence);
 
+            visiblePeers = VisiblePeersFor(
+                normalizedPresence);
+
             return new WorldPresenceEnterResult(
                 WorldPresenceEnterStatus.Entered,
                 normalizedPresence.ConnectionId);
@@ -135,7 +145,16 @@ public sealed class WorldPresenceRegistry
 
     public bool TryLeave(
         long connectionId,
-        out WorldPresence? presence)
+        out WorldPresence? presence) =>
+        TryLeave(
+            connectionId,
+            out presence,
+            out _);
+
+    public bool TryLeave(
+        long connectionId,
+        out WorldPresence? presence,
+        out IReadOnlyList<WorldPresence> visiblePeers)
     {
         lock (_gate)
         {
@@ -143,11 +162,14 @@ public sealed class WorldPresenceRegistry
                     connectionId,
                     out presence))
             {
+                visiblePeers = [];
                 return false;
             }
 
             _byAccount.Remove(presence.AccountName);
             _byCharacter.Remove(presence.Character.CharacterId);
+
+            visiblePeers = VisiblePeersFor(presence);
             return true;
         }
     }
@@ -174,6 +196,22 @@ public sealed class WorldPresenceRegistry
                 characterId,
                 out presence);
         }
+    }
+
+    private IReadOnlyList<WorldPresence> VisiblePeersFor(
+        WorldPresence presence)
+    {
+        if (presence.Character.MapId is not long mapId)
+        {
+            return [];
+        }
+
+        return _byConnection.Values
+            .Where(other =>
+                other.ConnectionId != presence.ConnectionId &&
+                other.Character.MapId == mapId)
+            .OrderBy(other => other.ConnectionId)
+            .ToArray();
     }
 
     public IReadOnlyList<WorldPresence> Snapshot()
