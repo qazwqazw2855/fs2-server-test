@@ -10,6 +10,12 @@ var expectDuplicateLogin =
             "GOD2_PROBE_EXPECT_DUPLICATE_LOGIN"),
         "1",
         StringComparison.Ordinal);
+var verifyPendingOwnership =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_PENDING_OWNERSHIP"),
+        "1",
+        StringComparison.Ordinal);
 var verifyIdleTimeout =
     string.Equals(
         Environment.GetEnvironmentVariable("GOD2_PROBE_VERIFY_IDLE_TIMEOUT"),
@@ -33,13 +39,14 @@ var verifyDuplicateMovement =
         StringComparison.Ordinal);
 
 if ((expectDuplicateLogin ? 1 : 0) +
+    (verifyPendingOwnership ? 1 : 0) +
     (verifyIdleTimeout ? 1 : 0) +
     (verifyLogout ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
     (verifyDuplicateMovement ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "重複登入、閒置逾時、登出、移動與重複移動模式只能啟用一種。");
+        "重複登入、Pending 所有權、閒置逾時、登出、移動與重複移動模式只能啟用一種。");
     return 1;
 }
 
@@ -49,11 +56,27 @@ if (string.IsNullOrEmpty(password))
     return 1;
 }
 
+var portText =
+    Environment.GetEnvironmentVariable("GOD2_PROBE_PORT");
+
+var port = string.IsNullOrWhiteSpace(portText)
+    ? 2592
+    : int.TryParse(portText, out var parsedPort) &&
+        parsedPort is >= 1 and <= 65535
+        ? parsedPort
+        : 0;
+
+if (port == 0)
+{
+    Console.Error.WriteLine("GOD2_PROBE_PORT 無效。");
+    return 1;
+}
+
 using var timeout = new CancellationTokenSource(
     TimeSpan.FromSeconds(verifyIdleTimeout ? 45 : 10));
 using var client = new TcpClient();
 
-await client.ConnectAsync("127.0.0.1", 2592, timeout.Token);
+await client.ConnectAsync("127.0.0.1", port, timeout.Token);
 await using var stream = client.GetStream();
 
 var serverHandshake = await ReadFrameAsync(stream, timeout.Token);
@@ -73,6 +96,10 @@ Require(
     "Version Follow-up 不符");
 
 var loginRequest = BuildLoginRequest("god2test", password);
+var pendingDuplicateLoginRequest =
+    verifyPendingOwnership
+        ? BuildLoginRequest("god2test", password)
+        : null;
 
 try
 {
@@ -81,7 +108,11 @@ try
 finally
 {
     Array.Clear(loginRequest);
-    password = null;
+
+    if (!verifyPendingOwnership)
+    {
+        password = null;
+    }
 }
 
 var loginSuccess = await ReadFrameAsync(stream, timeout.Token);
@@ -163,8 +194,40 @@ finally
     Array.Clear(loginSuccess);
 }
 
+if (verifyPendingOwnership)
+{
+    var loginEofProbe = new byte[1];
+    var loginBytesRead =
+        await stream.ReadAsync(loginEofProbe, timeout.Token);
+
+    Require(
+        loginBytesRead == 0,
+        "角色選擇完成後 Login 連線仍未關閉");
+
+    var duplicateLoginRequest =
+        pendingDuplicateLoginRequest ??
+        throw new InvalidOperationException(
+            "Pending ownership 測試登入封包不存在");
+
+    try
+    {
+        await VerifyDuplicateLoginAsync(
+            port,
+            duplicateLoginRequest,
+            timeout.Token);
+    }
+    finally
+    {
+        Array.Clear(duplicateLoginRequest);
+        password = null;
+    }
+
+    Console.WriteLine(
+        "Pending ownership 阻擋第二次登入測試成功");
+}
+
 using var worldClient = new TcpClient();
-await worldClient.ConnectAsync("127.0.0.1", 2592, timeout.Token);
+await worldClient.ConnectAsync("127.0.0.1", port, timeout.Token);
 await using var worldStream = worldClient.GetStream();
 
 var worldServerHandshake =
@@ -393,6 +456,96 @@ else
 }
 
 return 0;
+
+static async Task VerifyDuplicateLoginAsync(
+    int port,
+    byte[] loginRequest,
+    CancellationToken cancellationToken)
+{
+    using var duplicateClient = new TcpClient();
+
+    duplicateClient.Client.Bind(
+        new System.Net.IPEndPoint(
+            System.Net.IPAddress.Parse("127.0.0.2"),
+            0));
+
+    await duplicateClient.ConnectAsync(
+        "127.0.0.1",
+        port,
+        cancellationToken);
+
+    await using var duplicateStream =
+        duplicateClient.GetStream();
+
+    var serverHandshake =
+        await ReadFrameAsync(
+            duplicateStream,
+            cancellationToken);
+
+    try
+    {
+        Require(
+            serverHandshake.AsSpan().SequenceEqual(
+                OfficialLoginHandshakeProtocol
+                    .ServerHandshakeFrame
+                    .Span),
+            "第二次登入 Server Handshake 不符");
+    }
+    finally
+    {
+        Array.Clear(serverHandshake);
+    }
+
+    await duplicateStream.WriteAsync(
+        OfficialLoginHandshakeProtocol
+            .ExpectedClientHandshakeFrame,
+        cancellationToken);
+
+    var versionFollowUp =
+        await ReadFrameAsync(
+            duplicateStream,
+            cancellationToken);
+
+    try
+    {
+        Require(
+            versionFollowUp.AsSpan().SequenceEqual(
+                OfficialLoginHandshakeProtocol
+                    .VersionFollowUpFrame
+                    .Span),
+            "第二次登入 Version Follow-up 不符");
+    }
+    finally
+    {
+        Array.Clear(versionFollowUp);
+    }
+
+    await duplicateStream.WriteAsync(
+        loginRequest,
+        cancellationToken);
+
+    var duplicateResponse =
+        await ReadFrameAsync(
+            duplicateStream,
+            cancellationToken);
+
+    var expectedFailure =
+        OfficialLoginResponseCodec.EncodeFailure(
+            OfficialLoginFailureCode.DuplicateLogin);
+
+    try
+    {
+        Require(
+            duplicateResponse.AsSpan().SequenceEqual(
+                expectedFailure),
+            "Pending 期間第二次登入未收到 DuplicateLogin");
+    }
+    finally
+    {
+        Array.Clear(duplicateResponse);
+        Array.Clear(expectedFailure);
+    }
+}
 
 static byte[] BuildLoginRequest(string account, string password)
 {
