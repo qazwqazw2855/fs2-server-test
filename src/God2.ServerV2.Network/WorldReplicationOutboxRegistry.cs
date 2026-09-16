@@ -3,13 +3,21 @@ namespace God2.ServerV2.Network;
 public enum WorldReplicationEventKind
 {
     PlayerEntered,
-    PlayerLeft
+    PlayerLeft,
+    PlayerMoved
 }
+
+public readonly record struct WorldReplicationMovement(
+    ushort X,
+    ushort Y,
+    byte Sequence,
+    byte State);
 
 public sealed record WorldReplicationEvent(
     long Sequence,
     WorldReplicationEventKind Kind,
     WorldPresence Subject,
+    WorldReplicationMovement? Movement,
     DateTimeOffset CreatedAtUtc);
 
 public sealed class WorldReplicationOutboxRegistry
@@ -66,6 +74,44 @@ public sealed class WorldReplicationOutboxRegistry
         DateTimeOffset nowUtc,
         out WorldReplicationEvent? queuedEvent)
     {
+        if (kind == WorldReplicationEventKind.PlayerMoved)
+        {
+            throw new ArgumentException(
+                "PlayerMoved requires a movement payload.",
+                nameof(kind));
+        }
+
+        return TryEnqueueCore(
+            recipientConnectionId,
+            kind,
+            subject,
+            movement: null,
+            nowUtc,
+            out queuedEvent);
+    }
+
+    public bool TryEnqueueMovement(
+        long recipientConnectionId,
+        WorldPresence subject,
+        WorldReplicationMovement movement,
+        DateTimeOffset nowUtc,
+        out WorldReplicationEvent? queuedEvent) =>
+        TryEnqueueCore(
+            recipientConnectionId,
+            WorldReplicationEventKind.PlayerMoved,
+            subject,
+            movement,
+            nowUtc,
+            out queuedEvent);
+
+    private bool TryEnqueueCore(
+        long recipientConnectionId,
+        WorldReplicationEventKind kind,
+        WorldPresence subject,
+        WorldReplicationMovement? movement,
+        DateTimeOffset nowUtc,
+        out WorldReplicationEvent? queuedEvent)
+    {
         ArgumentNullException.ThrowIfNull(subject);
 
         lock (_gate)
@@ -88,6 +134,7 @@ public sealed class WorldReplicationOutboxRegistry
                 checked(++_nextSequence),
                 kind,
                 subject,
+                movement,
                 nowUtc);
 
             outbox.Enqueue(queuedEvent);

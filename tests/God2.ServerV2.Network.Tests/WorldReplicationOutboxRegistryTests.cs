@@ -135,6 +135,70 @@ public sealed class WorldReplicationOutboxRegistryTests
         Assert.Equal(1, registry.ConnectionCount);
     }
 
+    [Fact]
+    public void Movement_event_preserves_verified_fields()
+    {
+        var registry =
+            new WorldReplicationOutboxRegistry();
+
+        registry.TryRegister(101);
+
+        var movement =
+            new WorldReplicationMovement(
+                X: 16,
+                Y: 15,
+                Sequence: 2,
+                State: 0xFF);
+
+        Assert.True(registry.TryEnqueueMovement(
+            101,
+            Presence(202, 2),
+            movement,
+            Now,
+            out var queued));
+
+        Assert.Equal(
+            WorldReplicationEventKind.PlayerMoved,
+            queued!.Kind);
+        Assert.Equal(movement, queued.Movement);
+        Assert.Equal(2, queued.Subject.Character.CharacterId);
+    }
+
+    [Fact]
+    public void Generic_enqueue_rejects_movement_without_payload()
+    {
+        var registry =
+            new WorldReplicationOutboxRegistry();
+
+        registry.TryRegister(101);
+
+        Assert.Throws<ArgumentException>(() =>
+            registry.TryEnqueue(
+                101,
+                WorldReplicationEventKind.PlayerMoved,
+                Presence(202, 2),
+                Now,
+                out _));
+
+        Assert.Empty(registry.Snapshot(101));
+    }
+
+    [Fact]
+    public void Unknown_recipient_rejects_movement_event()
+    {
+        var registry =
+            new WorldReplicationOutboxRegistry();
+
+        Assert.False(registry.TryEnqueueMovement(
+            999,
+            Presence(202, 2),
+            new WorldReplicationMovement(16, 15, 2, 0xFF),
+            Now,
+            out var queued));
+
+        Assert.Null(queued);
+    }
+
     private static WorldPresence Presence(
         long connectionId,
         long characterId) =>

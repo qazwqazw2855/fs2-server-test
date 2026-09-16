@@ -186,6 +186,19 @@ public sealed class WorldPresenceRegistry
         }
     }
 
+    public IReadOnlyList<WorldPresence> VisiblePeers(
+        long connectionId)
+    {
+        lock (_gate)
+        {
+            return _byConnection.TryGetValue(
+                    connectionId,
+                    out var presence)
+                ? VisiblePeersFor(presence)
+                : [];
+        }
+    }
+
     public bool TryGetByCharacter(
         long characterId,
         out WorldPresence? presence)

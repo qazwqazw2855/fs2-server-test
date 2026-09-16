@@ -373,6 +373,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                             }
 
                             var persistenceState = "Deferred";
+                            var movementPersisted = false;
 
                             if (characterPositionWriter is not null)
                             {
@@ -398,6 +399,39 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 runtimeVersion = writeResult.RuntimeVersion;
                                 concurrencyToken = writeResult.ConcurrencyToken;
                                 persistenceState = "Updated";
+                                movementPersisted = true;
+                            }
+
+                            var replicationRecipients = 0;
+
+                            if (movementPersisted &&
+                                worldPresences.TryGetByConnection(
+                                    connectionId,
+                                    out var movementSubject) &&
+                                movementSubject is not null)
+                            {
+                                var movementReplication =
+                                    new WorldReplicationMovement(
+                                        movement.X,
+                                        movement.Y,
+                                        movement.Sequence,
+                                        movement.State);
+
+                                foreach (var peer in
+                                         worldPresences.VisiblePeers(
+                                             connectionId))
+                                {
+                                    if (worldReplicationOutboxes
+                                        .TryEnqueueMovement(
+                                            peer.ConnectionId,
+                                            movementSubject,
+                                            movementReplication,
+                                            DateTimeOffset.UtcNow,
+                                            out _))
+                                    {
+                                        replicationRecipients++;
+                                    }
+                                }
                             }
 
                             Log(
@@ -407,7 +441,10 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 $"sequence={movement.Sequence} " +
                                 $"state=0x{movement.State:X2}; " +
                                 $"persistence={persistenceState} " +
-                                $"version={runtimeVersion}");
+                                $"version={runtimeVersion}; " +
+                                $"replicationRecipients={replicationRecipients}; " +
+                                "wireDispatch=" +
+                                "BlockedNoVerifiedPlayerReplicationCodec");
 
                             var acknowledgement =
                                 OfficialWorldMovementCodec.EncodeAcknowledgement(
