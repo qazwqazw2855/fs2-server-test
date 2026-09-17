@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
-  "overall_percent": 68,
-  "updated_at": "2026-09-17T22:27:15+08:00",
-  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出、斷線清理、移動持久化，以及 evidence-gated NPC Spawn 與 NPC 互動 Session。已驗證 NPC 3793 的 Spawn、Open、精確 32-byte 對話回應、Selector 7、Session 釋放、重新 Open 與 Logout 完整閉環。正式 AWS 服務持續監聽 6001。官方 Client 維持原版 God2.exe 不修改；下一步回到具備可用客戶端的環境，繼續解析 God2Con.csvZ / God2Con2.csvZ 與原版 Patch 前置流程。",
+  "overall_percent": 69,
+  "updated_at": "2026-09-18T00:48:21+08:00",
+  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化，以及 evidence-gated NPC Spawn / NPC 互動閉環。原版 God2Patch 的 Patch FTP 流程已進一步完成實機驗證：God2Con 已成功導向本機 Patch Server，God2Patch 可完成 god_crc_p.txtZ 與 god_del.txt 下載；0-file manifest 仍會觸發 Large-Over 1054。已確認 Large-Over 並非 FTP STOR 失敗造成，而是 Patch 端預先判定的狀態；診斷回傳包含 .txtZ 163434 bytes、.cgodZ 108859 bytes、.cdirZ 20781 bytes。下一個 Client 實機步驟為保存並解析三份 Large-Over 診斷檔；無 Client 環境時繼續推進 Server V2 世界協定、NPC、持久化與測試。",
   "milestones": [
     {
       "key": "foundation",
