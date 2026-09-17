@@ -59,6 +59,12 @@ var verifyNpcInteraction =
             "GOD2_PROBE_VERIFY_NPC_INTERACTION"),
         "1",
         StringComparison.Ordinal);
+var verifyNpcDialog =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_NPC_DIALOG"),
+        "1",
+        StringComparison.Ordinal);
 var verifyNpcInteractionOwnership =
     string.Equals(
         Environment.GetEnvironmentVariable(
@@ -73,10 +79,11 @@ if ((expectDuplicateLogin ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
     (verifyDuplicateMovement ? 1 : 0) +
     (verifyNpcInteraction ? 1 : 0) +
+    (verifyNpcDialog ? 1 : 0) +
     (verifyNpcInteractionOwnership ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、NPC 互動與 NPC 所有權模式只能啟用一種。");
+        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、NPC 互動、NPC 對話與 NPC 所有權模式只能啟用一種。");
     return 1;
 }
 
@@ -398,7 +405,10 @@ Require(
 Console.WriteLine(
     $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
 
-var expectedNpcHandles = new uint[] { 5042, 5096 };
+var expectedNpcHandles =
+    verifyNpcDialog
+        ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
+        : new uint[] { 5042, 5096 };
 
 foreach (var expectedNpcHandle in expectedNpcHandles)
 {
@@ -440,6 +450,79 @@ if (verifyIdleTimeout)
 
     Console.WriteLine(
         $"World 30 秒閒置逾時測試成功：{stopwatch.Elapsed.TotalSeconds:F1} 秒");
+}
+else if (verifyNpcDialog)
+{
+    var openRequest =
+        OfficialNpcInteractionCodec.EncodeOpen(
+            OfficialNpcDialogCodec.LiveDialogHandle);
+
+    try
+    {
+        Require(
+            OfficialNpcInteractionCodec.TryDecode(
+                openRequest,
+                out var openInteraction,
+                out var openFailure),
+            $"NPC 3793 開啟樣本辨識失敗：{openFailure}");
+        Require(
+            openInteraction is not null &&
+            openInteraction.Kind ==
+                OfficialNpcInteractionKind.Open &&
+            openInteraction.ClientEntityHandle ==
+                OfficialNpcDialogCodec.LiveDialogHandle,
+            "NPC 3793 開啟樣本內容錯誤");
+
+        await worldStream.WriteAsync(
+            openRequest,
+            timeout.Token);
+    }
+    finally
+    {
+        Array.Clear(openRequest);
+    }
+
+    var dialogResponse =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    try
+    {
+        Require(
+            OfficialNpcDialogCodec.TryDecodeExactOpenResponse(
+                dialogResponse,
+                out var responseHandle),
+            "NPC 3793 對話回應格式或證據內容錯誤");
+        Require(
+            responseHandle ==
+                OfficialNpcDialogCodec.LiveDialogHandle,
+            $"NPC 對話回應 Handle 錯誤：{responseHandle}");
+    }
+    finally
+    {
+        Array.Clear(dialogResponse);
+    }
+
+    var logoutRequest =
+        Convert.FromHexString("0500AC9D30");
+    await worldStream.WriteAsync(
+        logoutRequest,
+        timeout.Token);
+    Array.Clear(logoutRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead =
+        await worldStream.ReadAsync(
+            eofProbe,
+            timeout.Token);
+
+    Require(
+        bytesRead == 0,
+        "NPC 3793 對話後正式登出未關閉 World 連線");
+
+    Console.WriteLine(
+        "NPC 3793 Spawn、Open、32-byte 對話回應與登出測試成功");
 }
 else if (verifyNpcInteractionOwnership)
 {

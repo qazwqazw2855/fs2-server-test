@@ -480,6 +480,38 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     break;
                                 }
 
+                                var dialogEncoding =
+                                    OfficialNpcDialogCodec.EncodeOpenResponse(
+                                        OfficialNpcSpawnCodec.ClientBuildId,
+                                        npcInteraction.ClientEntityHandle);
+
+                                if (!dialogEncoding.Succeeded)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "RX NpcInteractionOpen " +
+                                        $"bytes={worldFrame.Length}; " +
+                                        $"character={pendingWorld.Character.CharacterId}; " +
+                                        $"map={mapId}; " +
+                                        $"handle={npcInteraction.ClientEntityHandle}; " +
+                                        $"spawn={openResult.Session!.SpawnId}; " +
+                                        "sessionOwnership=Accepted; " +
+                                        "wireResponse=BlockedByEvidence; " +
+                                        $"reason={dialogEncoding.Reason}");
+                                    continue;
+                                }
+
+                                try
+                                {
+                                    await stream.WriteAsync(
+                                        dialogEncoding.Frame,
+                                        serverCancellationToken);
+                                }
+                                finally
+                                {
+                                    Array.Clear(dialogEncoding.Frame);
+                                }
+
                                 Log(
                                     connectionId,
                                     "RX NpcInteractionOpen " +
@@ -489,8 +521,9 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     $"handle={npcInteraction.ClientEntityHandle}; " +
                                     $"spawn={openResult.Session!.SpawnId}; " +
                                     "sessionOwnership=Accepted; " +
-                                    "wireResponse=" +
-                                    "BlockedNoVerifiedNpcInteractionResponseCodec");
+                                    "wireResponse=OfficialNpcDialogCodec; " +
+                                    $"txBytes={OfficialNpcDialogCodec.ExactOpenResponseLength}; " +
+                                    $"evidence={OfficialNpcDialogCodec.EvidenceId}");
                                 continue;
                             }
 

@@ -45,6 +45,39 @@ public static class OfficialNpcInteractionCodec
         }
     }
 
+    public static byte[] EncodeOpen(
+        ushort clientEntityHandle)
+    {
+        if (clientEntityHandle == 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(clientEntityHandle));
+        }
+
+        var decoded = new byte[FrameLength];
+
+        try
+        {
+            BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded,
+                checked((ushort)decoded.Length));
+            decoded[2] = OpenOpcode;
+            BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded.AsSpan(3, sizeof(ushort)),
+                clientEntityHandle);
+            decoded[^1] =
+                OfficialLoginWireTransform.ComputeChecksum(
+                    decoded);
+
+            return OfficialWorldBootstrapCodec.EncodeFrame(
+                decoded);
+        }
+        finally
+        {
+            Array.Clear(decoded);
+        }
+    }
+
     public static bool TryDecode(
         ReadOnlySpan<byte> encodedFrame,
         out OfficialNpcInteractionRequest? request,
