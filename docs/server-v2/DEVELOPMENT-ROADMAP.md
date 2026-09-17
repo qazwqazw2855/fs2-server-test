@@ -237,6 +237,19 @@ Every recovered/implemented feature progresses through:
 - Remaining blockers: original `God2.exe` launch prerequisite, legacy Patch/update flow, official reference-client Login/Character/World acceptance, and multiplayer Player Spawn/AOI/Despawn evidence/acceptance.
 - Next: decode `God2Con.csvZ` and `God2Con2.csvZ`, reproduce only the necessary Patch prerequisite in Rework Launcher, retest Launcher -> God2.exe -> Server V2 Login, then complete Character -> World -> Movement -> Logout -> Relogin and two-client despawn acceptance.
 
+### 2026-09-17 22:30 - NPC 3793 Dialog Closed Loop
+- Added evidence-gated Server V2 dialog response support for the verified live NPC handle `3793`.
+- Replayed the exact 32-byte S2C `0x7A` dialog response pinned to the current reference-client build.
+- Added verified standalone 10-byte `0x85` and compound 15-byte `0x86 + 0x85` dialog-selection decoding.
+- Restricted selection acceptance to handle `3793`, selector `7`, state `0`, and the observed opaque client values `0x11` / `0x12`.
+- Integrated NPC interaction ownership so a valid selection releases the active NPC session and emits no unsupported response.
+- Extended LoginProbe to verify Spawn -> Open -> Dialog Response -> Selection -> Session Release -> Reopen -> Logout.
+- Completed the isolated AWS TCP probe with Exit Code `0`; the test character was restored to map `1675308248`, position `(16,15)`.
+- Preserved existing NPC `5042` open/close behavior and verified `5042 -> 5096` single-session ownership rejection.
+- Current focused validation totals 177/177 passing tests: Core 7, Session 20, Protocol 73, Application 24, Network 45 and Persistence Integration 8.
+- Deployed commits `1d4b11f` and `f1ed78b` to the enabled AWS `god2-server-v2.service`; TCP `6001` is healthy.
+- Official-client acceptance remains pending until testing resumes on a Windows machine where the original client is not blocked by endpoint protection.
+
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
 - Existing MariaDB game data and schema/migrations where valid.
