@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-16
+Updated: 2026-09-17
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -225,6 +225,17 @@ Every recovered/implemented feature progresses through:
 - Multiplayer Player Despawn remains evidence-blocked pending official wire/entity-handle mapping and two-client AOI/despawn acceptance.
 - M1 is conservatively tracked at 70%: headless lifecycle/reconnect criteria are substantially proven, but official-client and multiplayer exit criteria remain open.
 - Next: decode `LoginServer.csvZ`, establish V2 Launcher endpoint control, rebuild Login acceptance against the single reference client, then complete official Client Character -> World -> Movement -> Logout -> Relogin and two-client despawn acceptance.
+
+### 2026-09-17 19:19 - Progress Sync
+- Since the 2026-09-16 19:48 sync, `refactor/server-v2` advanced to `e52d74dcd5283098f8d51b174e9da4634ede839b` (`Sync God2 Rework progress for 2026-09-17`); relative to the previous roadmap sync base, 12 commits are present.
+- Added evidence-gated NPC spawn support, MariaDB NPC snapshot/evidence migrations, NPC interaction session ownership, World presence/replication outbox foundations, and pinned live-dialog NPC spawn evidence.
+- God2 Rework Launcher now has a WPF project, immutable `God2.exe` SHA256 verification, embedded Rework `LoginServer.csvZ`, Server V2 endpoint display/deployment, launch orchestration, Release build and win-x64 self-contained publish.
+- Windows acceptance established that Launcher can create the original `God2.exe` process, but the client exits normally after about 0.131 seconds with Exit Code 0 and no Application crash event. Original `God2Patch.exe` reaches Now Loading, then reports maintenance/network failure.
+- Investigation has therefore moved to `God2Con.csvZ` / `God2Con2.csvZ`, Patch Server/version checks and any prerequisite state/arguments/files the original Patch supplies before launching `God2.exe`.
+- Latest recorded focused Server V2 verification remains Session 20/20, Application 21/21 and Network 18/18 (59/59), Host Release build passing; Launcher Release build and win-x64 self-contained publish also completed. Current head has no GitHub CI/status, so no CI pass is claimed.
+- Project `progress.json` currently tracks overall/M1 work at 65%; this sync preserves that project-authored percentage rather than inventing a higher completion value.
+- Remaining blockers: original `God2.exe` launch prerequisite, legacy Patch/update flow, official reference-client Login/Character/World acceptance, and multiplayer Player Spawn/AOI/Despawn evidence/acceptance.
+- Next: decode `God2Con.csvZ` and `God2Con2.csvZ`, reproduce only the necessary Patch prerequisite in Rework Launcher, retest Launcher -> God2.exe -> Server V2 Login, then complete Character -> World -> Movement -> Logout -> Relogin and two-client despawn acceptance.
 
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
