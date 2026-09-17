@@ -5,7 +5,7 @@
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
   "overall_percent": 69,
-  "updated_at": "2026-09-18T00:49:13+08:00",
+  "updated_at": "2026-09-18T00:52:17+08:00",
   "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化，以及 evidence-gated NPC Spawn / NPC 互動閉環。原版 God2Patch 的 Patch FTP 流程已進一步完成驗證：God2Con 可導向自建 Patch Server，God2Patch 可完成 god_crc_p.txtZ 與 god_del.txt 下載；0-file manifest 仍會觸發 Large-Over 1054。已確認 Large-Over 並非 FTP STOR 失敗造成，而是 Patch 端預先判定的狀態；診斷回傳包含 .txtZ、.cgodZ、.cdirZ。下一步將保存並解析 Large-Over 診斷資料，同時持續推進 Server V2 世界協定、NPC、持久化與測試。",
   "milestones": [
     {
@@ -258,8 +258,8 @@
     }
   ],
   "current_focus": {
-    "title": "原版 God2Patch 前置流程與 God2.exe 啟動條件",
-    "description": "Rework Launcher 已能驗證原版 God2.exe、佈署 Rework LoginServer.csvZ 並呼叫 Client。實機確認 God2.exe 直接啟動約 0.131 秒後以 Exit Code 0 主動結束，無 Windows crash 紀錄；God2Patch.exe 則會進入 Now Loading 後回報伺服器維護或網路異常。patch_log.txt 顯示 Patch 會載入 God2Con.csv，目前正利用既有 God2PackedFile decoder 解析 God2Con.csvZ / God2Con2.csvZ，確認 Patch Server、版本檢查與 God2.exe 前置啟動條件。",
+    "title": "God2Patch Large-Over 1054 判定條件與原版 Client 啟動流程",
+    "description": "God2Con.csvZ / God2Con2.csvZ 已完成解碼，並確認原版 God2Patch 使用 Patch FTP Server 執行版本與檔案檢查。自建 Patch Server 已可完成 USER/PASS、PASV、SIZE、RETR 與 STOR 流程；God2Patch 能成功取得 0-file god_crc_p.txtZ 與空白 god_del.txt，但仍會主動判定 Large-Over 1054。已確認 Large-Over 並非 STOR 上傳失敗造成，Patch 會回傳 .txtZ、.cgodZ、.cdirZ 三類診斷資料。下一步將保存並解析診斷內容，確認 Large-Over 的檔案、CRC、大小或目錄判定條件，並據此完成 Rework Launcher 所需的 Patch 前置流程取代。",
     "status": "in_progress"
   },
   "verification": {
@@ -303,33 +303,48 @@
   },
   "blockers": [
     {
-      "title": "原版 God2.exe 啟動條件",
+      "title": "God2Patch Large-Over 1054",
       "status": "in_progress",
-      "detail": "Windows 實機確認 God2.exe 可建立 Process，但約 0.131 秒後以 Exit Code 0 正常退出，Application Event Log 無 crash；需確認原版 God2Patch 是否提供必要的前置狀態、參數或版本檢查。"
+      "detail": "0-file Patch manifest 與空白刪除清單均可由 God2Patch 正常下載，但 Patch 隨後仍主動進入 Large-Over 1054。已取得 .txtZ、.cgodZ、.cdirZ 診斷回傳流程；下一步保存並解析診斷資料，確認實際判定條件。"
     },
     {
-      "title": "God2Patch 舊更新流程",
+      "title": "原版 God2.exe 前置啟動條件",
       "status": "in_progress",
-      "detail": "God2Patch.exe 可進入 Now Loading，但之後顯示伺服器維護中或網路異常。patch_log.txt 顯示載入 God2Con.csv；下一步解析 God2Con.csvZ / God2Con2.csvZ，確認 Patch/Update Server 與版本流程。"
+      "detail": "已確認單純直接啟動 God2.exe 或僅提供 God2Con 中的 ProgramArgument 仍會正常 Exit Code 0 結束；目前證據顯示仍需釐清 God2Patch 完成檔案檢查後建立的前置狀態或啟動流程。"
     },
     {
       "title": "官方 Client Login acceptance",
       "status": "pending",
-      "detail": "Server V2 端 Login→World headless/protocol 閉環已完成，但必須先解決原版 God2.exe 啟動條件，才能進行官方 Client 的 Login、選角與 World 實機 acceptance。"
+      "detail": "Server V2 的 Login→World protocol 閉環已完成；待 Patch 前置流程與 God2.exe 啟動條件確認後，進行官方 Client Login、選角、World 與 NPC 互動 acceptance。"
     }
   ],
   "next_steps": [
-    "回家後使用未受公司防毒阻擋的 reference client 繼續實機驗證",
-    "解碼 reference client 的 God2Con.csvZ 與 God2Con2.csvZ",
-    "確認 God2Patch 的 Patch Server、版本檢查與前置啟動流程",
-    "判定 God2.exe 是否需要 Patch 產生的參數、檔案或狀態才能啟動",
-    "完成 Rework Launcher 對原版 Patch 前置流程的必要取代",
+    "保存 God2Patch Large-Over 1054 回傳的 .txtZ、.cgodZ、.cdirZ 診斷資料",
+    "解析 Large-Over 診斷內容並確認觸發條件",
+    "確認 0-file manifest 與本機檔案掃描結果的比對規則",
+    "完成 Rework Launcher 對原版 Patch 必要前置流程的取代",
     "完成 Launcher → God2.exe → Server V2 Login acceptance",
     "完成官方 Client 選角 → World → NPC 3793 對話 acceptance",
     "完成多人 Player Spawn / AOI / Despawn acceptance",
-    "功能閉環完成後再處理 Windows EXE 圖示與其他 UI 細節"
+    "持續補強 World、NPC、持久化與 evidence-gated 協定實作",
+    "功能閉環完成後處理 Windows EXE 圖示與其他 UI 細節"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-18",
+      "title": "God2Patch Patch FTP 流程驗證",
+      "detail": "God2Con.csvZ / God2Con2.csvZ 已完成解碼並確認 Patch FTP Server 設定。自建 Patch Server 可處理 USER/PASS、TYPE、PASV、SIZE、RETR 與 STOR；God2Patch 已能成功取得 god_crc_p.txtZ 與 god_del.txt。"
+    },
+    {
+      "date": "2026-09-18",
+      "title": "Large-Over 1054 診斷流程確認",
+      "detail": "使用 0-file manifest 完成 Patch 檔案檢查實驗後，God2Patch 仍主動判定 Large-Over 1054。進一步確認 STOR 成功與否並非觸發原因，Patch 會透過 .txtZ、.cgodZ、.cdirZ 回傳診斷資料，下一步將保存並解析其內容。"
+    },
+    {
+      "date": "2026-09-18",
+      "title": "原版 Patch 啟動條件範圍縮小",
+      "detail": "已確認僅依 God2Con 的 ProgramArgument 直接啟動 God2.exe 仍不足以完成啟動；目前調查範圍縮小至 God2Patch 檔案檢查完成後建立的必要狀態與啟動流程。"
+    },
     {
       "date": "2026-09-17",
       "title": "NPC 3793 對話閉環完成",
@@ -343,7 +358,7 @@
     {
       "date": "2026-09-17",
       "title": "Rework Launcher 實機啟動追查",
-      "detail": "Launcher 已成功呼叫 E:\\God2\\God2.exe；移除已驗證原版 Client 的 Zone.Identifier 後確認 God2.exe 約 0.131 秒以 Exit Code 0 主動退出，Windows Application Event Log 無 crash。"
+      "detail": "Launcher 已成功呼叫原版 God2.exe；移除已驗證原版 Client 的 Zone.Identifier 後確認 God2.exe 約 0.131 秒以 Exit Code 0 主動退出，Windows Application Event Log 無 crash。"
     },
     {
       "date": "2026-09-17",
@@ -353,7 +368,7 @@
     {
       "date": "2026-09-16",
       "title": "God2 Rework Launcher 建置",
-      "detail": "完成 WPF Launcher、原版 God2.exe SHA256 驗證、Rework LoginServer.csvZ 資源、52.63.34.162:6001 端點導向、最終背景 UI 與 win-x64 self-contained publish。"
+      "detail": "完成 WPF Launcher、原版 God2.exe SHA256 驗證、Rework LoginServer.csvZ 資源、Server V2 端點導向、最終背景 UI 與 win-x64 self-contained publish。"
     },
     {
       "date": "2026-09-16",
@@ -371,9 +386,8 @@
     "name": "God2 Rework Launcher",
     "reference_client": "God2.exe",
     "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
-    "server_endpoint": "52.63.34.162:6001",
     "strategy": "保留原版遊戲 Client，由獨立 Rework Launcher 負責完整性驗證、Server V2 導向與啟動流程",
-    "current_task": "解析 God2Con.csvZ / God2Con2.csvZ 並確認原版 God2Patch 前置啟動條件",
-    "next": "完成必要 Patch 前置流程取代後，重新進行 Launcher → God2.exe → Server V2 實機 Login acceptance"
+    "current_task": "解析 God2Patch Large-Over 1054 診斷資料，確認 Patch 檔案檢查與 God2.exe 前置啟動條件",
+    "next": "完成必要 Patch 前置流程取代後，進行 Launcher → God2.exe → Server V2 Login acceptance"
   }
 }
