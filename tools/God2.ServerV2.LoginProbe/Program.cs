@@ -504,6 +504,75 @@ else if (verifyNpcDialog)
         Array.Clear(dialogResponse);
     }
 
+    var selectionRequest =
+        OfficialNpcDialogSelectionCodec
+            .EncodeStandaloneForProbe(0x11);
+
+    try
+    {
+        Require(
+            OfficialNpcDialogSelectionCodec.TryDecode(
+                selectionRequest,
+                out var selection,
+                out var selectionFailure),
+            $"NPC 3793 對話選項樣本辨識失敗：{selectionFailure}");
+        Require(
+            selection is not null &&
+            selection.ClientEntityHandle ==
+                OfficialNpcDialogSelectionCodec.LiveDialogHandle &&
+            selection.Selector ==
+                OfficialNpcDialogSelectionCodec.LiveDialogSelector &&
+            selection.OpaqueClientValue == 0x11,
+            "NPC 3793 對話選項樣本內容錯誤");
+
+        await worldStream.WriteAsync(
+            selectionRequest,
+            timeout.Token);
+    }
+    finally
+    {
+        Array.Clear(selectionRequest);
+    }
+
+    await Task.Delay(100, timeout.Token);
+
+    var reopenRequest =
+        OfficialNpcInteractionCodec.EncodeOpen(
+            OfficialNpcDialogCodec.LiveDialogHandle);
+
+    try
+    {
+        await worldStream.WriteAsync(
+            reopenRequest,
+            timeout.Token);
+    }
+    finally
+    {
+        Array.Clear(reopenRequest);
+    }
+
+    var reopenedDialogResponse =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    try
+    {
+        Require(
+            OfficialNpcDialogCodec.TryDecodeExactOpenResponse(
+                reopenedDialogResponse,
+                out var reopenedHandle),
+            "NPC 3793 選項後重新開啟未收到正確回應");
+        Require(
+            reopenedHandle ==
+                OfficialNpcDialogCodec.LiveDialogHandle,
+            $"NPC 重新開啟 Handle 錯誤：{reopenedHandle}");
+    }
+    finally
+    {
+        Array.Clear(reopenedDialogResponse);
+    }
+
     var logoutRequest =
         Convert.FromHexString("0500AC9D30");
     await worldStream.WriteAsync(
@@ -522,7 +591,7 @@ else if (verifyNpcDialog)
         "NPC 3793 對話後正式登出未關閉 World 連線");
 
     Console.WriteLine(
-        "NPC 3793 Spawn、Open、32-byte 對話回應與登出測試成功");
+        "NPC 3793 Open、Selection、Session 釋放、重新 Open 與登出測試成功");
 }
 else if (verifyNpcInteractionOwnership)
 {

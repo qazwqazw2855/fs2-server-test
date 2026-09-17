@@ -451,6 +451,60 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                         worldActivity.RecordActivity(DateTimeOffset.UtcNow);
 
+                        if (OfficialNpcDialogSelectionCodec.TryDecode(
+                                worldFrame,
+                                out var dialogSelection,
+                                out var dialogSelectionFailure) &&
+                            dialogSelection is not null)
+                        {
+                            var selectionCloseStatus =
+                                npcInteractions.TryClose(
+                                    connectionId,
+                                    dialogSelection.ClientEntityHandle,
+                                    out var selectedInteraction);
+
+                            if (selectionCloseStatus !=
+                                NpcInteractionCloseStatus.Closed)
+                            {
+                                Log(
+                                    connectionId,
+                                    "NPC dialog selection rejected: " +
+                                    $"handle={dialogSelection.ClientEntityHandle}; " +
+                                    $"selector={dialogSelection.Selector}; " +
+                                    $"status={selectionCloseStatus}; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            Log(
+                                connectionId,
+                                "RX NpcDialogSelection " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"character={selectedInteraction!.CharacterId}; " +
+                                $"map={selectedInteraction.MapId}; " +
+                                $"handle={selectedInteraction.ClientEntityHandle}; " +
+                                $"spawn={selectedInteraction.SpawnId}; " +
+                                $"selector={dialogSelection.Selector}; " +
+                                $"opaque=0x{dialogSelection.OpaqueClientValue:X2}; " +
+                                $"compound={dialogSelection.IsCompoundTransport}; " +
+                                "sessionOwnership=Released; " +
+                                "wireResponse=None; " +
+                                $"evidence={OfficialNpcDialogSelectionCodec.EvidenceId}");
+                            continue;
+                        }
+
+                        if (OfficialNpcDialogSelectionCodec.IsCandidate(
+                                worldFrame))
+                        {
+                            Log(
+                                connectionId,
+                                "NPC dialog selection candidate rejected: " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"reason={dialogSelectionFailure}; " +
+                                "closing connection.");
+                            break;
+                        }
+
                         if (OfficialNpcInteractionCodec.TryDecode(
                                 worldFrame,
                                 out var npcInteraction,
