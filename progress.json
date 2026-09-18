@@ -5,8 +5,8 @@
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
   "overall_percent": 72,
-  "updated_at": "2026-09-19T00:40:00+08:00",
-  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化，以及 evidence-gated NPC Spawn / NPC 互動閉環。今日進一步完成角色座標 RuntimeVersion / ConcurrencyToken 的 CAS 持久化同步、Portal 地圖轉移的 DB CAS 與 WorldPresence 更新，並實測 170015000 → 170015007、目的地 7:15/(48,81)、NPC 3793 Spawn 與 Logout 完整閉環。Network 測試目前 75/75 通過，正式 AWS 服務持續監聽 6001。下一步先修正 LoginProbe 的測試初始狀態，避免角色已在目的地地圖時仍送固定 Portal 前置移動封包，再繼續官方 Client acceptance。",
+  "updated_at": "2026-09-19T00:50:00+08:00",
+  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化、Portal 地圖轉移，以及 evidence-gated NPC Spawn / NPC 互動閉環。今日確認 Network 75/75、Host Release build 通過，Portal 170015000 → 170015007 的 DB CAS、RuntimeVersion / ConcurrencyToken 同步、NPC 3793 Spawn 與 Logout 均可完成。另確認後續將使用作者提供的 God2PacketCapture v1.2.0-RC 作為獨立封包擷取／Evidence 輔助工具；明日先在可用的 Windows 實機環境確認工具功能與 capture 流程，再決定是否以官方 Client 的測試流程補充未知 Protocol evidence。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,9 +262,9 @@
     }
   ],
   "current_focus": {
-    "title": "Portal 地圖轉移與 LoginProbe acceptance 狀態",
-    "description": "Server V2 已完成 Portal 170015000 → 170015007 的 DB CAS 更新、RuntimeVersion / ConcurrencyToken 同步、WorldPresence 地圖切換、目的地 NPC Snapshot 與 3793 Spawn，並完成 Logout 閉環。最新 Probe 失敗原因不是 Server Portal transition：角色已因前一次成功測試留在 170015007，而 Probe 仍固定以 249,246 作為前置移動，因此 ACK 驗證流程在測試端中斷。下一步將先處理 Probe 的初始角色狀態 / reset，確認測試可重複執行，再進行官方 Client acceptance。",
-    "status": "in_progress"
+    "title": "明日：God2PacketCapture 實機封包擷取驗證",
+    "description": "Server V2 基礎世界閉環已驗證。Portal Probe 後續重跑的問題已定位為測試角色狀態未 reset，而非 Server Portal transition 本身。明日優先在可用 Windows 實機環境檢查作者提供的 God2PacketCapture v1.2.0-RC，先確認 capture backend、輸出 evidence、Client→Server / Server→Client 與 PostCapture 流程；首次測試只抓 Login → 選角 → 進 World → 單次 Movement，避免一次產生大量無法對照的資料。",
+    "status": "paused"
   },
   "verification": {
     "build": "passing",
@@ -328,19 +328,21 @@
     }
   ],
   "next_steps": [
+    "明日確認 God2PacketCapture v1.2.0-RC 的啟動、Capture、停止與輸出格式",
+    "先以小範圍 Client 流程建立可對照的封包 capture：Login → 選角 → World → Movement",
+    "分析 capture 是否能提供 transport / protocol frame / decoded message / handler mapping 等 Evidence",
     "處理 LoginProbe 的角色初始狀態 / reset，讓 Portal acceptance 可重複執行",
     "重新驗證 Login → World → Movement → Portal → NPC 3793 → Logout 完整閉環",
-    "保存 God2Patch Large-Over 1054 回傳的 .txtZ、.cgodZ、.cdirZ 診斷資料",
-    "解析 Large-Over 診斷內容並確認觸發條件",
-    "確認 0-file manifest 與本機檔案掃描結果的比對規則",
+    "保存並解析 God2Patch Large-Over 1054 回傳的 .txtZ、.cgodZ、.cdirZ 診斷資料",
     "完成 Rework Launcher 對原版 Patch 必要前置流程的取代",
-    "完成 Launcher → God2.exe → Server V2 Login acceptance",
-    "完成官方 Client 選角 → World → NPC 3793 對話 acceptance",
-    "完成多人 Player Spawn / AOI / Despawn acceptance",
-    "持續補強 World、NPC、持久化與 evidence-gated 協定實作",
-    "功能閉環完成後處理 Windows EXE 圖示與其他 UI 細節"
+    "完成 Launcher → God2.exe → Server V2 Login acceptance"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-19",
+      "title": "God2PacketCapture 工具納入逆向驗證計畫",
+      "detail": "取得作者提供的 God2PacketCapture v1.2.0-RC 與 v1.1.0。初步檢查工具包含 PktMonCaptureBackend、ClientToServer、ServerToClient、pcapng、TransportChunk、ProtocolFrame、DecodedMessage、HandlerObservation 與 PostCapture 等相關字串；尚待明日於 Windows 實機確認實際輸出與可解碼程度。"
+    },
     {
       "date": "2026-09-18",
       "title": "Portal 地圖轉移 CAS 閉環完成",
