@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-17
+Updated: 2026-09-18
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -249,6 +249,17 @@ Every recovered/implemented feature progresses through:
 - Current focused validation totals 177/177 passing tests: Core 7, Session 20, Protocol 73, Application 24, Network 45 and Persistence Integration 8.
 - Deployed commits `1d4b11f` and `f1ed78b` to the enabled AWS `god2-server-v2.service`; TCP `6001` is healthy.
 - Official-client acceptance remains pending until testing resumes on a Windows machine where the original client is not blocked by endpoint protection.
+
+### 2026-09-18 19:41 - Progress Sync
+- Since the 2026-09-17 sync commit `2dadf010`, `refactor/server-v2` advanced 6 commits to `ffcf6b4d412f8c387660978c5bcd2e2580d32a66` (`Refresh public God2 V2 development progress`).
+- Completed the evidence-gated NPC 3793 dialog closed loop: exact 32-byte S2C `0x7A`, verified `0x85` and compound `0x86 + 0x85` selection decoding, interaction ownership release/reopen and LoginProbe coverage.
+- Latest recorded verification is 177/177 passing: Core 7, Session 20, Protocol 73, Application 24, Network 45 and Persistence Integration 8; Host Release build and isolated NPC 3793 AWS TCP Probe also passed.
+- Current head has no GitHub commit status/CI result, so the recorded local/AWS verification is retained without claiming CI validation for `ffcf6b4d`.
+- God2Con.csvZ / God2Con2.csvZ are decoded and the self-hosted Patch FTP can serve `god_crc_p.txtZ` and `god_del.txt`; a 0-file manifest still triggers Large-Over 1054.
+- Large-Over has been narrowed: FTP STOR failure is not the cause, and the Patch diagnostic return path includes `.txtZ`, `.cgodZ` and `.cdirZ` data that must be preserved and decoded next.
+- Project-authored `progress.json` now tracks overall progress at 69%; this sync uses that value rather than inventing a higher percentage.
+- Blockers: Large-Over 1054 decision rule, the original God2.exe Patch-created prerequisite state, official reference-client Login/Character/World/NPC acceptance, and multiplayer Player Spawn/AOI/Despawn evidence/acceptance.
+- Next: decode the Large-Over diagnostic artifacts and local file-scan comparison rules, reproduce only the required Patch prerequisite in Rework Launcher, then complete Launcher -> God2.exe -> Server V2 Login/World/NPC acceptance and two-client despawn acceptance.
 
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
