@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
-  "overall_percent": 69,
-  "updated_at": "2026-09-18T00:52:17+08:00",
-  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化，以及 evidence-gated NPC Spawn / NPC 互動閉環。原版 God2Patch 的 Patch FTP 流程已進一步完成驗證：God2Con 可導向自建 Patch Server，God2Patch 可完成 god_crc_p.txtZ 與 god_del.txt 下載；0-file manifest 仍會觸發 Large-Over 1054。已確認 Large-Over 並非 FTP STOR 失敗造成，而是 Patch 端預先判定的狀態；診斷回傳包含 .txtZ、.cgodZ、.cdirZ。下一步將保存並解析 Large-Over 診斷資料，同時持續推進 Server V2 世界協定、NPC、持久化與測試。",
+  "overall_percent": 72,
+  "updated_at": "2026-09-19T00:40:00+08:00",
+  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化，以及 evidence-gated NPC Spawn / NPC 互動閉環。今日進一步完成角色座標 RuntimeVersion / ConcurrencyToken 的 CAS 持久化同步、Portal 地圖轉移的 DB CAS 與 WorldPresence 更新，並實測 170015000 → 170015007、目的地 7:15/(48,81)、NPC 3793 Spawn 與 Logout 完整閉環。Network 測試目前 75/75 通過，正式 AWS 服務持續監聽 6001。下一步先修正 LoginProbe 的測試初始狀態，避免角色已在目的地地圖時仍送固定 Portal 前置移動封包，再繼續官方 Client acceptance。",
   "milestones": [
     {
       "key": "foundation",
@@ -139,7 +139,7 @@
     {
       "key": "world",
       "name": "世界與遊戲系統",
-      "percent": 45,
+      "percent": 55,
       "status": "in_progress",
       "items": [
         {
@@ -171,12 +171,16 @@
           "status": "completed"
         },
         {
+          "name": "Portal 地圖轉移 DB CAS 與 WorldPresence 同步",
+          "status": "completed"
+        },
+        {
           "name": "多人 Player Spawn / AOI / Despawn",
           "status": "pending"
         },
         {
           "name": "NPC 與傳送",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "name": "物品與背包",
@@ -258,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "God2Patch Large-Over 1054 判定條件與原版 Client 啟動流程",
-    "description": "God2Con.csvZ / God2Con2.csvZ 已完成解碼，並確認原版 God2Patch 使用 Patch FTP Server 執行版本與檔案檢查。自建 Patch Server 已可完成 USER/PASS、PASV、SIZE、RETR 與 STOR 流程；God2Patch 能成功取得 0-file god_crc_p.txtZ 與空白 god_del.txt，但仍會主動判定 Large-Over 1054。已確認 Large-Over 並非 STOR 上傳失敗造成，Patch 會回傳 .txtZ、.cgodZ、.cdirZ 三類診斷資料。下一步將保存並解析診斷內容，確認 Large-Over 的檔案、CRC、大小或目錄判定條件，並據此完成 Rework Launcher 所需的 Patch 前置流程取代。",
+    "title": "Portal 地圖轉移與 LoginProbe acceptance 狀態",
+    "description": "Server V2 已完成 Portal 170015000 → 170015007 的 DB CAS 更新、RuntimeVersion / ConcurrencyToken 同步、WorldPresence 地圖切換、目的地 NPC Snapshot 與 3793 Spawn，並完成 Logout 閉環。最新 Probe 失敗原因不是 Server Portal transition：角色已因前一次成功測試留在 170015007，而 Probe 仍固定以 249,246 作為前置移動，因此 ACK 驗證流程在測試端中斷。下一步將先處理 Probe 的初始角色狀態 / reset，確認測試可重複執行，再進行官方 Client acceptance。",
     "status": "in_progress"
   },
   "verification": {
@@ -280,17 +284,17 @@
       },
       {
         "name": "Protocol",
-        "passed": 73,
+        "passed": 106,
         "failed": 0
       },
       {
         "name": "Application",
-        "passed": 24,
+        "passed": 28,
         "failed": 0
       },
       {
         "name": "Network",
-        "passed": 45,
+        "passed": 75,
         "failed": 0
       },
       {
@@ -299,9 +303,14 @@
         "failed": 0
       }
     ],
-    "note": "本次 AWS 驗證共 177/177 通過：Core 7、Session 20、Protocol 73、Application 24、Network 45、Persistence Integration 8；Host Release build 通過。另完成隔離 TCP 端到端 Probe，驗證 NPC 3793 Spawn、Open、32-byte 對話回應、Selector 7、Session 釋放、重新 Open 與 Logout。正式 god2-server-v2.service 已部署並正常監聽 6001。"
+    "note": "今日驗證：Network Tests 75/75 通過；Host Release build 通過。正式 AWS god2-server-v2.service 已正常監聽 6001。Portal LoginProbe 曾完整成功完成 170015000 → 170015007、NPC 3793 Spawn 與 Logout；後續重跑時因角色已位於目的地地圖，Probe 固定前置移動造成測試端 ACK 驗證中斷。"
   },
   "blockers": [
+    {
+      "title": "LoginProbe 可重複執行的初始角色狀態",
+      "status": "in_progress",
+      "detail": "Portal 閉環第一次測試已成功；再次執行時角色已位於 170015007，但 Probe 仍固定送 170015000 的前置移動 (249,246)，因此在 ACK 驗證處中止。下一步先建立可重複的角色 reset / 初始狀態。"
+    },
     {
       "title": "God2Patch Large-Over 1054",
       "status": "in_progress",
@@ -319,6 +328,8 @@
     }
   ],
   "next_steps": [
+    "處理 LoginProbe 的角色初始狀態 / reset，讓 Portal acceptance 可重複執行",
+    "重新驗證 Login → World → Movement → Portal → NPC 3793 → Logout 完整閉環",
     "保存 God2Patch Large-Over 1054 回傳的 .txtZ、.cgodZ、.cdirZ 診斷資料",
     "解析 Large-Over 診斷內容並確認觸發條件",
     "確認 0-file manifest 與本機檔案掃描結果的比對規則",
@@ -330,6 +341,21 @@
     "功能閉環完成後處理 Windows EXE 圖示與其他 UI 細節"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-18",
+      "title": "Portal 地圖轉移 CAS 閉環完成",
+      "detail": "完成角色 RuntimeVersion / ConcurrencyToken 的 CAS 持久化同步；Portal 170015000 → 170015007 成功更新 DB、WorldPresence 與目的座標 (48,81)，並完成目的地 NPC Snapshot、NPC 3793 Spawn 與 Logout。"
+    },
+    {
+      "date": "2026-09-18",
+      "title": "Network 75/75 測試通過",
+      "detail": "WorldPresence / WorldMapTransition / NPC spatial query 等相關 Network 測試修正完成，Network Tests 75/75 通過；Host Release build 亦成功。"
+    },
+    {
+      "date": "2026-09-18",
+      "title": "Portal acceptance 重跑狀態確認",
+      "detail": "首次 Portal Probe 已完整成功；後續重跑時角色已留在目的地地圖，Probe 仍送固定前置移動封包，導致測試端在 ACK 格式驗證處中止。Server Log 顯示前置 Movement persistence 正常。"
+    },
     {
       "date": "2026-09-18",
       "title": "God2Patch Patch FTP 流程驗證",
