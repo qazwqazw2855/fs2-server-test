@@ -10,3 +10,5 @@ runtime/protocol-evidence/
 *.obj
 *.pdb
 *.nativecodeanalysis.xml
+progress.json.bak-*
+src/God2.V2Launcher/*.before-*

@@ -4,6 +4,13 @@ using System.Net.Sockets;
 using System.Text;
 using God2.ServerV2.Protocol;
 
+if (args.Length != 0)
+{
+    Console.Error.WriteLine(
+        "LoginProbe 不接受命令列參數；請使用 GOD2_PROBE_PORT 設定連線埠。");
+    return 1;
+}
+
 var password = Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD");
 var accountName =
     Environment.GetEnvironmentVariable("GOD2_TEST_ACCOUNT") ??
