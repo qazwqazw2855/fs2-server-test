@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
-  "overall_percent": 72,
-  "updated_at": "2026-09-19T12:46:28+08:00",
-  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署並驗收。Movement 關閉持久化模式通過雙 ACK 測試，MariaDB 整合測試已實際連線驗證。原版 Windows 客戶端與封包擷取待可用電腦再進行。",
+  "overall_percent": 75,
+  "updated_at": "2026-09-20T01:10:00+08:00",
+  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署。2026-09-19/20 已於 Windows 實機確認正服 God2_opt.exe 可連至 52.63.34.162:2592，並透過 AWS socat 轉入 V2 6001；已實際擷取並比對 19/19/6 Login Handshake，V2 已切換至實機抓到的官方 OPT Handshake。下一階段改為研究正服 Launcher → God2_opt.exe 的前置作業，再將必要流程整合進自製 God2V2Launcher，讓正服 OPT 透過 AWS 進行 V2 Login acceptance。",
   "milestones": [
     {
       "key": "foundation",
@@ -92,7 +92,7 @@
         },
         {
           "name": "官方 reference client 實機 Login acceptance",
-          "status": "pending"
+          "status": "in_progress"
         },
         {
           "name": "官方 Client 選角 → World acceptance",
@@ -195,7 +195,7 @@
     {
       "key": "launcher",
       "name": "God2 Rework Launcher",
-      "percent": 65,
+      "percent": 75,
       "status": "in_progress",
       "items": [
         {
@@ -236,15 +236,15 @@
         },
         {
           "name": "追查 God2.exe Exit Code 0 秒退原因",
-          "status": "in_progress"
+          "status": "completed"
         },
         {
           "name": "解析 God2Con.csvZ / God2Con2.csvZ Patch 設定",
           "status": "in_progress"
         },
         {
-          "name": "完成 Launcher → God2.exe → Server V2 Login",
-          "status": "pending"
+          "name": "完成自製 Launcher → 正服 God2_opt.exe → Server V2 Login",
+          "status": "in_progress"
         },
         {
           "name": "伺服器選擇與實際狀態檢查",
@@ -262,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "Server V2 伺服器端驗證",
-    "description": "V2 已在 World 登入時唯讀載入背包；逐物品堆疊規則、容量預覽與保守合併判斷已建立。尚未修改背包或發送背包封包；原版客戶端驗證待可用電腦。",
+    "title": "正服 Launcher → God2_opt.exe 前置流程",
+    "description": "已實機確認正服 God2_opt.exe 可連至 52.63.34.162:2592，AWS 2592→6001 socat 路徑正常；Wireshark 已取得實機 19/19/6 Login Handshake，V2 已改用實機 Handshake。下一步研究正服 Launcher 啟動 OPT 前的 IP 綁定、設定檔、啟動參數與其他前置狀態，再整合至自製 God2V2Launcher。",
     "status": "in_progress"
   },
   "verification": {
@@ -317,23 +317,29 @@
       "detail": "0-file Patch manifest 與空白刪除清單均可由 God2Patch 正常下載，但 Patch 隨後仍主動進入 Large-Over 1054。已取得 .txtZ、.cgodZ、.cdirZ 診斷回傳流程；下一步保存並解析診斷資料，確認實際判定條件。"
     },
     {
-      "title": "原版 God2.exe 前置啟動條件",
+      "title": "正服 Launcher → God2_opt.exe 前置作業",
       "status": "in_progress",
-      "detail": "已確認單純直接啟動 God2.exe 或僅提供 God2Con 中的 ProgramArgument 仍會正常 Exit Code 0 結束；目前證據顯示仍需釐清 God2Patch 完成檔案檢查後建立的前置狀態或啟動流程。"
+      "detail": "已確認直接操作原版 God2.exe 不是目前主線；正服 God2_opt.exe 已能實機連至 52.63.34.162:2592 並完成 19/19/6 Login Handshake。現階段需研究正服 Launcher 啟動 OPT 前實際建立的設定、IP 綁定、檔案狀態與啟動參數。"
     },
     {
-      "title": "官方 Client Login acceptance",
-      "status": "pending",
-      "detail": "Server V2 的 Login→World protocol 閉環已完成；待 Patch 前置流程與 God2.exe 啟動條件確認後，進行官方 Client Login、選角、World 與 NPC 互動 acceptance。"
+      "title": "官方 OPT 完整 Login acceptance",
+      "status": "in_progress",
+      "detail": "OPT 已實機抵達 V2 Server 的 Login Handshake，但尚未完成 LoginRequest 之後的完整 acceptance。待正服 Launcher 前置流程整合至自製 Launcher 後，再驗證 Login、選角與 World。"
     }
   ],
   "next_steps": [
-    "檢查並補強 Portal 與 Movement 的失敗路徑",
-    "維持 MariaDB 整合測試實際執行，區分提前返回的案例",
-    "於可用 Windows 電腦驗證 God2PacketCapture 與原版客戶端",
-    "延續 God2Patch Large-Over 1054 的封包證據分析"
+    "保存正服 Launcher.exe、God2_opt.exe 與必要檔案作為研究基準，不直接修改原始正服環境",
+    "研究正服 Launcher → God2_opt.exe 的前置作業：IP 綁定、設定檔、啟動參數、檔案與程序狀態",
+    "將必要前置流程整合至自製 God2V2Launcher，讓其直接啟動正服 God2_opt.exe",
+    "完成 OPT → Server V2 LoginRequest、選角與 World acceptance",
+    "延續 God2Patch Large-Over 1054 的封包/診斷證據分析"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-20",
+      "title": "正服 God2_opt.exe → AWS V2 實機連線確認",
+      "detail": "Windows 實機以正服 God2_opt.exe 連至 52.63.34.162:2592；AWS 以 socat 轉送至 6001。Wireshark 擷取到 19-byte Server Handshake、19-byte Client Handshake、6-byte Version Follow-up 與 208-byte LoginRequest，並以實機抓到的 19/19/6 Handshake 更新 V2。下一步研究正服 Launcher 的 OPT 前置作業。"
+    },
     {
       "date": "2026-09-19",
       "title": "V2 背包唯讀與堆疊規則基礎",
@@ -420,8 +426,8 @@
     "name": "God2 Rework Launcher",
     "reference_client": "God2.exe",
     "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
-    "strategy": "保留原版遊戲 Client，由獨立 Rework Launcher 負責完整性驗證、Server V2 導向與啟動流程",
-    "current_task": "解析 God2Patch Large-Over 1054 診斷資料，確認 Patch 檔案檢查與 God2.exe 前置啟動條件",
-    "next": "完成必要 Patch 前置流程取代後，進行 Launcher → God2.exe → Server V2 Login acceptance"
+    "strategy": "保留正服 God2_opt.exe 作為遊戲執行核心；由自製 God2V2Launcher 重現正服 Launcher 必要前置作業、完成 IP/設定準備後啟動 OPT，並導向 AWS Server V2",
+    "current_task": "研究正服 Launcher → God2_opt.exe 前置作業，確認 IP 綁定、設定檔、啟動參數與必要檔案/程序狀態",
+    "next": "將必要正服 Launcher 前置流程整合至 God2V2Launcher，完成 OPT → Server V2 Login acceptance"
   }
 }
