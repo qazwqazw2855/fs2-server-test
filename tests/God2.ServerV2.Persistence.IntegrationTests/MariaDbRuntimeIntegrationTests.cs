@@ -476,6 +476,8 @@ public sealed class MariaDbRuntimeIntegrationTests
         Assert.Equal(0, slot.SlotIndex);
         Assert.Equal(253231541, slot.ItemId);
         Assert.Equal(1, slot.Quantity);
+        Assert.Equal("Unknown", slot.BindState);
+        Assert.Equal("{}", slot.ItemInstanceMetadata);
 
         Assert.Null(await repository.GetByCharacterAsync(
             long.MaxValue, CancellationToken.None));

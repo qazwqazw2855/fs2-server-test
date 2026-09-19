@@ -25,7 +25,8 @@ public sealed class MariaDbCharacterInventorySnapshotRepository(
         command.CommandText = """
             SELECT s.InventoryId, s.Capacity, s.InventoryVersion,
                    s.MutationSequence, s.DirtyState,
-                   i.slot_index, i.item_id, i.quantity
+                   i.slot_index, i.item_id, i.quantity,
+                   i.bind_state, i.item_instance_metadata
             FROM god2_player.player_inventory_state AS s
             LEFT JOIN god2_player.character_inventory AS i
                 ON i.character_id = s.CharacterId
@@ -56,7 +57,9 @@ public sealed class MariaDbCharacterInventorySnapshotRepository(
                 slots.Add(new CharacterInventorySlot(
                     reader.GetInt32(5),
                     reader.GetInt64(6),
-                    reader.GetInt32(7)));
+                    reader.GetInt32(7),
+                    reader.GetString(8),
+                    reader.GetString(9)));
             }
         }
         while (await reader.ReadAsync(cancellationToken));

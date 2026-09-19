@@ -3,7 +3,9 @@ namespace God2.ServerV2.Application;
 public sealed record CharacterInventorySlot(
     int SlotIndex,
     long ItemId,
-    int Quantity);
+    int Quantity,
+    string BindState = "Unknown",
+    string ItemInstanceMetadata = "{}");
 
 public sealed record CharacterInventorySnapshot(
     Guid InventoryId,
