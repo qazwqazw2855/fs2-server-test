@@ -946,7 +946,6 @@ public sealed class TcpGameServer : IAsyncDisposable
                             }
 
                             var persistenceState = "Deferred";
-                            var movementPersisted = false;
 
                             if (characterPositionWriter is not null)
                             {
@@ -972,13 +971,11 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 runtimeVersion = writeResult.RuntimeVersion;
                                 concurrencyToken = writeResult.ConcurrencyToken;
                                 persistenceState = "Updated";
-                                movementPersisted = true;
                             }
 
                             var replicationRecipients = 0;
 
-                            if (movementPersisted &&
-                                worldPresences.TryMove(
+                            if (worldPresences.TryMove(
                                     connectionId,
                                     pendingWorld.Character.CharacterId,
                                     movement.X,
@@ -1010,6 +1007,15 @@ public sealed class TcpGameServer : IAsyncDisposable
                                         replicationRecipients++;
                                     }
                                 }
+                            }
+                            else
+                            {
+                                Log(
+                                    connectionId,
+                                    "World movement state commit failed after " +
+                                    $"{persistenceState} persistence; " +
+                                    "closing without acknowledgement.");
+                                break;
                             }
 
                             Log(
