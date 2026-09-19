@@ -15,6 +15,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly CharacterListService _characterListService;
     private readonly NpcSnapshotService _npcSnapshotService;
     private readonly PortalRouteService _portalRouteService;
+    private readonly ICharacterInventorySnapshotRepository? _inventoryRepository;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -37,7 +38,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterPositionWriter? characterPositionWriter = null,
         NpcSnapshotService? npcSnapshotService = null,
         ICharacterMapTransitionWriter? characterMapTransitionWriter = null,
-        PortalRouteService? portalRouteService = null)
+        PortalRouteService? portalRouteService = null,
+        ICharacterInventorySnapshotRepository? inventoryRepository = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -57,6 +59,7 @@ public sealed class TcpGameServer : IAsyncDisposable
             new PortalRouteService(
                 new EmptyPortalRouteRepository());
 
+        _inventoryRepository = inventoryRepository;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -121,6 +124,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _worldNpcStateService,
                     _worldMapTransitionService,
                     _portalRouteService,
+                    _inventoryRepository,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -173,6 +177,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         WorldNpcStateService worldNpcStateService,
         WorldMapTransitionService worldMapTransitionService,
         PortalRouteService portalRouteService,
+        ICharacterInventorySnapshotRepository? inventoryRepository,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -325,6 +330,26 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 $"handle={npc.ClientEntityHandle}; " +
                                 $"reason={encoding.Reason}.");
                         }
+                    }
+
+                    if (inventoryRepository is not null)
+                    {
+                        var inventory =
+                            await inventoryRepository.GetByCharacterAsync(
+                                pendingWorld.Character.CharacterId,
+                                serverCancellationToken);
+
+                        Log(
+                            connectionId,
+                            inventory is null
+                                ? "Inventory snapshot missing: " +
+                                  $"character={pendingWorld.Character.CharacterId}"
+                                : "Inventory snapshot ready: " +
+                                  $"character={inventory.CharacterId}; " +
+                                  $"capacity={inventory.Capacity}; " +
+                                  $"version={inventory.Version}; " +
+                                  $"slots={inventory.Slots.Count}; " +
+                                  "wireDispatch=BlockedNoVerifiedInventoryCodec.");
                     }
 
                     var presenceResult =

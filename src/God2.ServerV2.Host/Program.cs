@@ -68,6 +68,7 @@ INpcSnapshotRepository npcSnapshotRepository;
 IPortalRouteRepository portalRouteRepository;
 ICharacterPositionWriter? characterPositionWriter;
 ICharacterMapTransitionWriter? characterMapTransitionWriter;
+ICharacterInventorySnapshotRepository? inventoryRepository;
 
 if (!string.IsNullOrWhiteSpace(dbHost) &&
     !string.IsNullOrWhiteSpace(dbPortText) &&
@@ -96,6 +97,8 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
         new MariaDbNpcSnapshotRepository(databaseOptions);
     portalRouteRepository =
         new MariaDbPortalRouteRepository(databaseOptions);
+    inventoryRepository =
+        new MariaDbCharacterInventorySnapshotRepository(databaseOptions);
 
     var enableMovementPersistence =
         string.Equals(
@@ -125,6 +128,7 @@ else
     portalRouteRepository = new EmptyPortalRouteRepository();
     characterPositionWriter = null;
     characterMapTransitionWriter = null;
+    inventoryRepository = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
 }
@@ -145,7 +149,8 @@ await using var server = new TcpGameServer(
     characterPositionWriter,
     npcSnapshotService,
     characterMapTransitionWriter,
-    portalRouteService);
+    portalRouteService,
+    inventoryRepository);
 
 try
 {
