@@ -452,6 +452,35 @@ public sealed class MariaDbRuntimeIntegrationTests
         Assert.Equal((byte)15, route.DestinationClientAreaId);
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task CharacterOne_InventorySnapshot_IsReadOnlyAndComplete()
+    {
+        if (!ShouldRun())
+            return;
+
+        var repository =
+            new MariaDbCharacterInventorySnapshotRepository(CreateOptions());
+
+        var snapshot = await repository.GetByCharacterAsync(
+            1, CancellationToken.None);
+
+        Assert.NotNull(snapshot);
+        Assert.Equal(1, snapshot.CharacterId);
+        Assert.Equal(32, snapshot.Capacity);
+        Assert.Equal(1, snapshot.Version);
+        Assert.Equal(1, snapshot.MutationSequence);
+        Assert.Equal("Clean", snapshot.DirtyState);
+
+        var slot = Assert.Single(snapshot.Slots);
+        Assert.Equal(0, slot.SlotIndex);
+        Assert.Equal(253231541, slot.ItemId);
+        Assert.Equal(1, slot.Quantity);
+
+        Assert.Null(await repository.GetByCharacterAsync(
+            long.MaxValue, CancellationToken.None));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
