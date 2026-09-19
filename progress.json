@@ -5,8 +5,8 @@
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
   "overall_percent": 72,
-  "updated_at": "2026-09-19T00:50:00+08:00",
-  "summary": "God2 Server V2 已完成 Login→World、Session ownership、登出/斷線清理、移動持久化、Portal 地圖轉移，以及 evidence-gated NPC Spawn / NPC 互動閉環。今日確認 Network 75/75、Host Release build 通過，Portal 170015000 → 170015007 的 DB CAS、RuntimeVersion / ConcurrencyToken 同步、NPC 3793 Spawn 與 Logout 均可完成。另確認後續將使用作者提供的 God2PacketCapture v1.2.0-RC 作為獨立封包擷取／Evidence 輔助工具；明日先在可用的 Windows 實機環境確認工具功能與 capture 流程，再決定是否以官方 Client 的測試流程補充未知 Protocol evidence。",
+  "updated_at": "2026-09-19T11:50:02+08:00",
+  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署並驗收。Movement 關閉持久化模式通過雙 ACK 測試，MariaDB 整合測試已實際連線驗證。原版 Windows 客戶端與封包擷取待可用電腦再進行。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,14 +262,14 @@
     }
   ],
   "current_focus": {
-    "title": "明日：God2PacketCapture 實機封包擷取驗證",
-    "description": "Server V2 基礎世界閉環已驗證。Portal Probe 後續重跑的問題已定位為測試角色狀態未 reset，而非 Server Portal transition 本身。明日優先在可用 Windows 實機環境檢查作者提供的 God2PacketCapture v1.2.0-RC，先確認 capture backend、輸出 evidence、Client→Server / Server→Client 與 PostCapture 流程；首次測試只抓 Login → 選角 → 進 World → 單次 Movement，避免一次產生大量無法對照的資料。",
-    "status": "paused"
+    "title": "Server V2 伺服器端驗證",
+    "description": "Portal 與 Movement 無畫面測試已完成；持續檢查 DB 與線上狀態的一致性。Windows 原版客戶端與封包擷取待可用電腦再驗證。",
+    "status": "in_progress"
   },
   "verification": {
     "build": "passing",
-    "total_tests": 177,
-    "passed_tests": 177,
+    "total_tests": 248,
+    "passed_tests": 248,
     "failed_tests": 0,
     "suites": [
       {
@@ -284,7 +284,7 @@
       },
       {
         "name": "Protocol",
-        "passed": 106,
+        "passed": 107,
         "failed": 0
       },
       {
@@ -299,17 +299,17 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 8,
+        "passed": 11,
         "failed": 0
       }
     ],
-    "note": "今日驗證：Network Tests 75/75 通過；Host Release build 通過。正式 AWS god2-server-v2.service 已正常監聽 6001。Portal LoginProbe 曾完整成功完成 170015000 → 170015007、NPC 3793 Spawn 與 Logout；後續重跑時因角色已位於目的地地圖，Probe 固定前置移動造成測試端 ACK 驗證中斷。"
+    "note": "Server V2 六個測試專案共 248/248 通過；MariaDB 整合測試已設定 GOD2_RUN_DB_INTEGRATION=1 實際連線驗證。需要 GOD2_TEST_PASSWORD 的登入案例未執行。Portal Probe 可重複執行，正式 6001 已完成 Login→World→Portal→NPC 3793→Logout 閉環。"
   },
   "blockers": [
     {
       "title": "LoginProbe 可重複執行的初始角色狀態",
-      "status": "in_progress",
-      "detail": "Portal 閉環第一次測試已成功；再次執行時角色已位於 170015007，但 Probe 仍固定送 170015000 的前置移動 (249,246)，因此在 ACK 驗證處中止。下一步先建立可重複的角色 reset / 初始狀態。"
+      "status": "completed",
+      "detail": "已建立 Portal fixture reset 腳本並重複驗證完整閉環。"
     },
     {
       "title": "God2Patch Large-Over 1054",
@@ -328,16 +328,17 @@
     }
   ],
   "next_steps": [
-    "明日確認 God2PacketCapture v1.2.0-RC 的啟動、Capture、停止與輸出格式",
-    "先以小範圍 Client 流程建立可對照的封包 capture：Login → 選角 → World → Movement",
-    "分析 capture 是否能提供 transport / protocol frame / decoded message / handler mapping 等 Evidence",
-    "處理 LoginProbe 的角色初始狀態 / reset，讓 Portal acceptance 可重複執行",
-    "重新驗證 Login → World → Movement → Portal → NPC 3793 → Logout 完整閉環",
-    "保存並解析 God2Patch Large-Over 1054 回傳的 .txtZ、.cgodZ、.cdirZ 診斷資料",
-    "完成 Rework Launcher 對原版 Patch 必要前置流程的取代",
-    "完成 Launcher → God2.exe → Server V2 Login acceptance"
+    "檢查並補強 Portal 與 Movement 的失敗路徑",
+    "維持 MariaDB 整合測試實際執行，區分提前返回的案例",
+    "於可用 Windows 電腦驗證 God2PacketCapture 與原版客戶端",
+    "延續 God2Patch Large-Over 1054 的封包證據分析"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-19",
+      "title": "Server V2 無畫面閉環與實際 DB 測試",
+      "detail": "正式 6001 完成 Portal Probe；臨時 6002 驗證關閉 Movement persistence 的雙 ACK，DB 版本與座標維持不變；MariaDB 整合測試實際執行。"
+    },
     {
       "date": "2026-09-19",
       "title": "God2PacketCapture 工具納入逆向驗證計畫",
