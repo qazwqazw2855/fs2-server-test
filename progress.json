@@ -5,7 +5,7 @@
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
   "overall_percent": 72,
-  "updated_at": "2026-09-19T11:50:02+08:00",
+  "updated_at": "2026-09-19T12:46:28+08:00",
   "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署並驗收。Movement 關閉持久化模式通過雙 ACK 測試，MariaDB 整合測試已實際連線驗證。原版 Windows 客戶端與封包擷取待可用電腦再進行。",
   "milestones": [
     {
@@ -263,13 +263,13 @@
   ],
   "current_focus": {
     "title": "Server V2 伺服器端驗證",
-    "description": "Portal 與 Movement 無畫面測試已完成；持續檢查 DB 與線上狀態的一致性。Windows 原版客戶端與封包擷取待可用電腦再驗證。",
+    "description": "V2 已在 World 登入時唯讀載入背包；逐物品堆疊規則、容量預覽與保守合併判斷已建立。尚未修改背包或發送背包封包；原版客戶端驗證待可用電腦。",
     "status": "in_progress"
   },
   "verification": {
     "build": "passing",
-    "total_tests": 248,
-    "passed_tests": 248,
+    "total_tests": 262,
+    "passed_tests": 262,
     "failed_tests": 0,
     "suites": [
       {
@@ -289,7 +289,7 @@
       },
       {
         "name": "Application",
-        "passed": 28,
+        "passed": 40,
         "failed": 0
       },
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 11,
+        "passed": 13,
         "failed": 0
       }
     ],
-    "note": "Server V2 六個測試專案共 248/248 通過；MariaDB 整合測試已設定 GOD2_RUN_DB_INTEGRATION=1 實際連線驗證。需要 GOD2_TEST_PASSWORD 的登入案例未執行。Portal Probe 可重複執行，正式 6001 已完成 Login→World→Portal→NPC 3793→Logout 閉環。"
+    "note": "Server V2 六個測試專案最近一次結果合計 262/262 通過；MariaDB 整合測試已實際連線執行，需 GOD2_TEST_PASSWORD 的登入案例本次未執行。正式 6001 已驗證 Portal 閉環與 World 背包唯讀載入。"
   },
   "blockers": [
     {
@@ -334,6 +334,11 @@
     "延續 God2Patch Large-Over 1054 的封包證據分析"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-19",
+      "title": "V2 背包唯讀與堆疊規則基礎",
+      "detail": "World 登入讀取背包快照；建立逐物品堆疊規則、容量預覽與保守合併判斷。尚無物品異動或客戶端背包封包。"
+    },
     {
       "date": "2026-09-19",
       "title": "Server V2 無畫面閉環與實際 DB 測試",
