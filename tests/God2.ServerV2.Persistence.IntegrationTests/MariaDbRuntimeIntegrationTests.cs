@@ -481,6 +481,29 @@ public sealed class MariaDbRuntimeIntegrationTests
             long.MaxValue, CancellationToken.None));
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task MeatItem_NullMaximumStack_IsSingle()
+    {
+        if (!ShouldRun())
+            return;
+
+        var repository =
+            new MariaDbItemStackRuleRepository(CreateOptions());
+
+        var rule = await repository.GetByItemIdAsync(
+            253231541, CancellationToken.None);
+
+        Assert.NotNull(rule);
+        Assert.Equal("肉塊", rule.Name);
+        Assert.Null(rule.ConfiguredMaximumStack);
+        Assert.Equal(1, rule.EffectiveMaximumStack);
+        Assert.False(rule.IsStackable);
+
+        Assert.Null(await repository.GetByItemIdAsync(
+            long.MaxValue, CancellationToken.None));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
