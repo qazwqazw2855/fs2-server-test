@@ -425,8 +425,6 @@ var expectedNpcHandles =
         ? Array.Empty<uint>()
         : verifyMovement
             ? new uint[] { 3793 }
-            : verifyMovement
-            ? new uint[] { 3793 }
             : verifyNpcDialog
             ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
             : new uint[] { 5042, 5096 };
