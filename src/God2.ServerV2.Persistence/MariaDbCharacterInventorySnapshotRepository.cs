@@ -61,6 +61,25 @@ public sealed class MariaDbCharacterInventorySnapshotRepository(
         }
         while (await reader.ReadAsync(cancellationToken));
 
+        if (capacity <= 0)
+            throw new InvalidDataException(
+                $"Invalid inventory capacity: character={characterId}");
+
+        var seenSlots = new HashSet<int>();
+        foreach (var slot in slots)
+        {
+            if (slot.SlotIndex < 0 ||
+                slot.SlotIndex >= capacity ||
+                slot.ItemId <= 0 ||
+                slot.Quantity <= 0 ||
+                !seenSlots.Add(slot.SlotIndex))
+            {
+                throw new InvalidDataException(
+                    $"Invalid inventory slot: character={characterId}; " +
+                    $"slot={slot.SlotIndex}");
+            }
+        }
+
         return new CharacterInventorySnapshot(
             inventoryId,
             characterId,
