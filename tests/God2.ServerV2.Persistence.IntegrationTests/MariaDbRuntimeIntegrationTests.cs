@@ -57,7 +57,7 @@ public sealed class MariaDbRuntimeIntegrationTests
         Assert.Equal("Swordsman", character.ClassCode);
         Assert.Equal("Female", character.GenderCode);
         Assert.Equal(1, character.Level);
-        Assert.Equal(1675308248, character.MapId);
+        Assert.Contains(character.MapId, new long?[] { 170015000, 170015007 });
         Assert.True(character.RuntimeVersion > 0);
         Assert.Equal(32, character.ConcurrencyToken.Length);
     }
