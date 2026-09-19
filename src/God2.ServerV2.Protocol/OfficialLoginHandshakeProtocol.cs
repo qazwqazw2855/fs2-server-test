@@ -10,13 +10,13 @@ public static class OfficialLoginHandshakeProtocol
     public const int HandshakeLength = 19;
 
     private static readonly byte[] ServerHandshake =
-        Convert.FromHexString("1300405FD0401BB55367D34D90DF1D929883DD");
+        Convert.FromHexString("1300B20DBBA18DA4B99A0C2480B2B88574D2CF");
 
     private static readonly byte[] ExpectedClientHandshake =
-        Convert.FromHexString("1300E10638FA2835845B9FE9528DB9BCDF70BC");
+        Convert.FromHexString("1300A89B3A8985045785210F89725C4D973FD4");
 
     private static readonly byte[] VersionFollowUp =
-        Convert.FromHexString("0600ED7BEF12");
+        Convert.FromHexString("0600A329DEF5");
 
     public static ReadOnlyMemory<byte> ServerHandshakeFrame => ServerHandshake;
     public static ReadOnlyMemory<byte> ExpectedClientHandshakeFrame => ExpectedClientHandshake;

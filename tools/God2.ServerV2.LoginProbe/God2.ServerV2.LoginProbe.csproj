@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\God2.ServerV2.Application\God2.ServerV2.Application.csproj" />
+    <ProjectReference Include="..\..\src\God2.ServerV2.Persistence\God2.ServerV2.Persistence.csproj" />
     <ProjectReference Include="..\..\src\God2.ServerV2.Protocol\God2.ServerV2.Protocol.csproj" />
   </ItemGroup>
 </Project>

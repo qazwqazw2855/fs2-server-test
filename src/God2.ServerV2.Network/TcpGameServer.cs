@@ -16,6 +16,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly NpcSnapshotService _npcSnapshotService;
     private readonly PortalRouteService _portalRouteService;
     private readonly ICharacterInventorySnapshotRepository? _inventoryRepository;
+    private readonly IMapMovementBoundsRepository? _movementBoundsRepository;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -39,7 +40,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         NpcSnapshotService? npcSnapshotService = null,
         ICharacterMapTransitionWriter? characterMapTransitionWriter = null,
         PortalRouteService? portalRouteService = null,
-        ICharacterInventorySnapshotRepository? inventoryRepository = null)
+        ICharacterInventorySnapshotRepository? inventoryRepository = null,
+        IMapMovementBoundsRepository? movementBoundsRepository = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -60,6 +62,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                 new EmptyPortalRouteRepository());
 
         _inventoryRepository = inventoryRepository;
+        _movementBoundsRepository = movementBoundsRepository;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -125,6 +128,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _worldMapTransitionService,
                     _portalRouteService,
                     _inventoryRepository,
+                    _movementBoundsRepository,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -178,6 +182,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         WorldMapTransitionService worldMapTransitionService,
         PortalRouteService portalRouteService,
         ICharacterInventorySnapshotRepository? inventoryRepository,
+        IMapMovementBoundsRepository? movementBoundsRepository,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -476,6 +481,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                         pendingWorld.Character.ConcurrencyToken;
                     var movementSequences =
                         new WorldMovementSequenceTracker();
+                    MapMovementBounds? cachedMovementBounds = null;
 
                     while (!serverCancellationToken.IsCancellationRequested)
                     {
@@ -968,6 +974,42 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     $"expected={expectedSequence}; " +
                                     "closing without persistence or acknowledgement.");
                                 break;
+                            }
+
+                            if (movementBoundsRepository is not null)
+                            {
+                                if (!worldPresences.TryGetByConnection(
+                                        connectionId,
+                                        out var boundsPresence) ||
+                                    boundsPresence?.Character.MapId
+                                        is not long currentMapId)
+                                {
+                                    Log(connectionId,
+                                        "Movement map unavailable; closing.");
+                                    break;
+                                }
+
+                                if (cachedMovementBounds?.MapId != currentMapId)
+                                {
+                                    cachedMovementBounds =
+                                        await movementBoundsRepository
+                                            .GetByMapAsync(
+                                                currentMapId,
+                                                serverCancellationToken);
+                                }
+
+                                if (cachedMovementBounds is null ||
+                                    !cachedMovementBounds.Contains(
+                                        movement.X, movement.Y))
+                                {
+                                    Log(
+                                        connectionId,
+                                        "Movement outside map bounds: " +
+                                        $"map={currentMapId}; " +
+                                        $"x={movement.X}; y={movement.Y}; " +
+                                        "closing without persistence or acknowledgement.");
+                                    break;
+                                }
                             }
 
                             var persistenceState = "Deferred";

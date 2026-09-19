@@ -1,8 +1,10 @@
+using God2.ServerV2.Application;
 using God2.ServerV2.Core;
+using God2.ServerV2.Persistence;
+using God2.ServerV2.Protocol;
 using System.Buffers.Binary;
 using System.Net.Sockets;
 using System.Text;
-using God2.ServerV2.Protocol;
 
 if (args.Length != 0)
 {
@@ -171,6 +173,20 @@ using var timeout = new CancellationTokenSource(
         verifyIdleTimeout
             ? 45
             : Math.Max(10, holdSeconds + 10)));
+if (verifyPortal)
+{
+    Require(
+        expectedCharacterId > 0,
+        "Portal Probe 必須設定有效的 GOD2_EXPECTED_CHARACTER_ID。");
+
+    await PreparePortalTestStateAsync(
+        accountName,
+        password,
+        expectedCharacterId,
+        expectedCharacterName,
+        timeout.Token);
+}
+
 using var client = new TcpClient();
 
 BindLocalAddress(client, localAddress);
@@ -1041,6 +1057,157 @@ else
 }
 
 return 0;
+
+static async Task PreparePortalTestStateAsync(
+    string accountName,
+    string password,
+    long characterId,
+    string expectedCharacterName,
+    CancellationToken cancellationToken)
+{
+    const long sourceMapId = 170015000;
+    const int sourceX = 248;
+    const int sourceY = 246;
+
+    var dbHost =
+        Environment.GetEnvironmentVariable("GOD2_DB_HOST");
+    var dbPortText =
+        Environment.GetEnvironmentVariable("GOD2_DB_PORT");
+    var dbUser =
+        Environment.GetEnvironmentVariable("GOD2_DB_USER");
+    var dbPassword =
+        Environment.GetEnvironmentVariable("GOD2_DB_PASSWORD");
+
+    Require(
+        !string.IsNullOrWhiteSpace(dbHost) &&
+        !string.IsNullOrWhiteSpace(dbPortText) &&
+        !string.IsNullOrWhiteSpace(dbUser) &&
+        !string.IsNullOrWhiteSpace(dbPassword),
+        "Portal Probe Seeder 需要完整 GOD2_DB_HOST/PORT/USER/PASSWORD。");
+
+    Require(
+        int.TryParse(dbPortText, out var dbPort) &&
+        dbPort is >= 1 and <= 65535,
+        $"Portal Probe Seeder 的 GOD2_DB_PORT 無效：{dbPortText}");
+
+    var options = new MariaDbAuthenticationOptions(
+        dbHost!,
+        dbPort,
+        dbUser!,
+        dbPassword!);
+
+    var authenticator =
+        new MariaDbAccountAuthenticator(
+            options,
+            new Pbkdf2Sha256PasswordHashVerifier());
+
+    var authentication =
+        await authenticator.ValidateCredentialsAsync(
+            accountName,
+            password.AsMemory(),
+            cancellationToken);
+
+    Require(
+        authentication.Succeeded,
+        $"Portal Probe Seeder 無法驗證測試帳號：{accountName}");
+
+    if (authentication.AccountId is not long accountId)
+    {
+        throw new InvalidOperationException(
+            $"Portal Probe Seeder 驗證成功但沒有 AccountId：{accountName}");
+    }
+
+    var repository =
+        new MariaDbCharacterListRepository(options);
+
+    var characters =
+        await repository.ListByAccountAsync(
+            accountId,
+            cancellationToken);
+
+    var matches = characters
+        .Where(character =>
+            character.CharacterId == characterId)
+        .ToArray();
+
+    Require(
+        matches.Length == 1,
+        $"Portal Probe Seeder 找不到唯一角色：" +
+        $"accountId={accountId}; characterId={characterId}; " +
+        $"matches={matches.Length}");
+
+    var character = matches[0];
+
+    Require(
+        string.Equals(
+            character.Name,
+            expectedCharacterName,
+            StringComparison.Ordinal),
+        $"Portal Probe Seeder 角色名稱不符：" +
+        $"expected={expectedCharacterName}; actual={character.Name}");
+
+    if (character.MapId is not long currentMapId ||
+        character.PositionX is not int currentX ||
+        character.PositionY is not int currentY)
+    {
+        throw new InvalidOperationException(
+            "Portal Probe Seeder 角色目前 Map/X/Y 不完整。");
+    }
+
+    Require(
+        character.RuntimeVersion >= 0,
+        $"Portal Probe Seeder runtime_version 無效：" +
+        $"{character.RuntimeVersion}");
+
+    Require(
+        character.ConcurrencyToken.Length == 32,
+        $"Portal Probe Seeder concurrency_token 長度無效：" +
+        $"{character.ConcurrencyToken.Length}");
+
+    Console.WriteLine(
+        $"Portal Seeder 現況：帳號={accountName} / " +
+        $"AccountId={accountId} / 角色={character.Name} / " +
+        $"ID={character.CharacterId} / map={currentMapId} / " +
+        $"pos=({currentX},{currentY}) / " +
+        $"version={character.RuntimeVersion}");
+
+    if (currentMapId == sourceMapId &&
+        currentX == sourceX &&
+        currentY == sourceY)
+    {
+        Console.WriteLine(
+            $"Portal Seeder：角色已位於來源測試狀態 " +
+            $"{sourceMapId} / ({sourceX},{sourceY})，略過寫入.");
+
+        return;
+    }
+
+    var writer =
+        new MariaDbCharacterMapTransitionWriter(options);
+
+    var result =
+        await writer.TryUpdateAsync(
+            new CharacterMapTransitionWriteRequest(
+                character.CharacterId,
+                sourceMapId,
+                sourceX,
+                sourceY,
+                character.RuntimeVersion,
+                character.ConcurrencyToken),
+            cancellationToken);
+
+    Require(
+        result.Updated,
+        $"Portal Probe Seeder CAS 衝突：" +
+        $"character={character.CharacterId}; " +
+        $"expectedVersion={character.RuntimeVersion}");
+
+    Console.WriteLine(
+        $"Portal Seeder 完成：" +
+        $"{currentMapId}/({currentX},{currentY}) -> " +
+        $"{sourceMapId}/({sourceX},{sourceY}); " +
+        $"version={character.RuntimeVersion}->{result.RuntimeVersion}");
+}
 
 static void BindLocalAddress(
     TcpClient client,

@@ -530,6 +530,32 @@ public sealed class MariaDbRuntimeIntegrationTests
             long.MaxValue, 1, CancellationToken.None));
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task PortalMaps_HaveMovementBoundsContainingVerifiedPositions()
+    {
+        if (!ShouldRun())
+            return;
+
+        var repository =
+            new MariaDbMapMovementBoundsRepository(CreateOptions());
+
+        var source = await repository.GetByMapAsync(
+            170015000, CancellationToken.None);
+        Assert.NotNull(source);
+        Assert.True(source.Contains(249, 246));
+        Assert.False(source.Contains(504, 246));
+
+        var destination = await repository.GetByMapAsync(
+            170015007, CancellationToken.None);
+        Assert.NotNull(destination);
+        Assert.True(destination.Contains(48, 81));
+        Assert.False(destination.Contains(294, 81));
+
+        Assert.Null(await repository.GetByMapAsync(
+            long.MaxValue, CancellationToken.None));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
