@@ -14,10 +14,15 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly LoginService _loginService;
     private readonly CharacterListService _characterListService;
     private readonly NpcSnapshotService _npcSnapshotService;
+    private readonly PortalRouteService _portalRouteService;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
+    private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
     private readonly PendingWorldEntryRegistry _pendingWorldEntries;
     private readonly WorldPresenceRegistry _worldPresences = new();
+    private readonly WorldNpcRegistry _worldNpcs = new();
+    private readonly WorldNpcStateService _worldNpcStateService;
+    private readonly WorldMapTransitionService _worldMapTransitionService;
     private readonly WorldReplicationOutboxRegistry _worldReplicationOutboxes = new();
     private readonly NpcInteractionSessionRegistry _npcInteractions = new();
     private readonly ConcurrentDictionary<long, Task> _connections = new();
@@ -30,7 +35,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         LoginService loginService,
         CharacterListService characterListService,
         ICharacterPositionWriter? characterPositionWriter = null,
-        NpcSnapshotService? npcSnapshotService = null)
+        NpcSnapshotService? npcSnapshotService = null,
+        ICharacterMapTransitionWriter? characterMapTransitionWriter = null,
+        PortalRouteService? portalRouteService = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -41,7 +48,26 @@ public sealed class TcpGameServer : IAsyncDisposable
             npcSnapshotService ??
             new NpcSnapshotService(
                 new EmptyNpcSnapshotRepository());
+        _worldNpcStateService =
+            new WorldNpcStateService(
+                _npcSnapshotService,
+                _worldNpcs);
+        _portalRouteService =
+            portalRouteService ??
+            new PortalRouteService(
+                new EmptyPortalRouteRepository());
+
         _characterPositionWriter = characterPositionWriter;
+        _characterMapTransitionWriter = characterMapTransitionWriter;
+
+        _worldMapTransitionService =
+            new WorldMapTransitionService(
+                _worldPresences,
+                _npcInteractions,
+                _worldReplicationOutboxes,
+                _worldNpcStateService,
+                _characterMapTransitionWriter);
+
         _sessionRegistry = sessionRegistry ??
             throw new ArgumentNullException(nameof(sessionRegistry));
         _pendingWorldEntries =
@@ -88,10 +114,13 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _sessionRegistry,
                     _loginService,
                     _characterListService,
-                    _npcSnapshotService,
                     _characterPositionWriter,
                     _pendingWorldEntries,
                     _worldPresences,
+                    _worldNpcs,
+                    _worldNpcStateService,
+                    _worldMapTransitionService,
+                    _portalRouteService,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -137,10 +166,13 @@ public sealed class TcpGameServer : IAsyncDisposable
         SessionRegistry sessionRegistry,
         LoginService loginService,
         CharacterListService characterListService,
-        NpcSnapshotService npcSnapshotService,
         ICharacterPositionWriter? characterPositionWriter,
         PendingWorldEntryRegistry pendingWorldEntries,
         WorldPresenceRegistry worldPresences,
+        WorldNpcRegistry worldNpcs,
+        WorldNpcStateService worldNpcStateService,
+        WorldMapTransitionService worldMapTransitionService,
+        PortalRouteService portalRouteService,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -220,12 +252,12 @@ public sealed class TcpGameServer : IAsyncDisposable
                         return;
                     }
 
-                    IReadOnlyList<NpcSnapshotEntry> npcSnapshot;
+                    WorldNpcLoadResult npcLoadResult;
 
                     try
                     {
-                        npcSnapshot =
-                            await npcSnapshotService.GetAsync(
+                        npcLoadResult =
+                            await worldNpcStateService.EnsureLoadedAsync(
                                 mapId,
                                 serverCancellationToken);
                     }
@@ -238,17 +270,28 @@ public sealed class TcpGameServer : IAsyncDisposable
                     {
                         Log(
                             connectionId,
-                            "NPC snapshot load rejected: " +
+                            "NPC world state load rejected: " +
                             $"map={mapId}; " +
                             $"error={exception.GetType().Name}; " +
                             "closing connection.");
                         return;
                     }
 
+                    var worldNpcSnapshot =
+                        npcLoadResult.Snapshot;
+
+                    Log(
+                        connectionId,
+                        "NPC world state ready: " +
+                        $"map={mapId}; " +
+                        $"status={npcLoadResult.Status}; " +
+                        $"npcs={worldNpcSnapshot.Count}; " +
+                        $"loadedMaps={worldNpcs.LoadedMapCount}.");
+
                     var npcSpawnFrames = new List<byte[]>();
                     var blockedNpcSpawns = 0;
 
-                    foreach (var npc in npcSnapshot)
+                    foreach (var npc in worldNpcSnapshot)
                     {
                         var encoding =
                             OfficialNpcSpawnCodec.Encode(
@@ -384,7 +427,9 @@ public sealed class TcpGameServer : IAsyncDisposable
                         connectionId,
                         "NPC snapshot loaded: " +
                         $"map={mapId}; " +
-                        $"count={npcSnapshot.Count}; " +
+                        $"count={worldNpcSnapshot.Count}; " +
+                        $"worldNpcCount={worldNpcs.NpcCount}; " +
+                        $"loadedMaps={worldNpcs.LoadedMapCount}; " +
                         $"wireEligible={npcSpawnFrames.Count}; " +
                         $"wireBlocked={blockedNpcSpawns}; " +
                         "wireDispatch=" +
@@ -514,13 +559,72 @@ public sealed class TcpGameServer : IAsyncDisposable
                             if (npcInteraction.Kind ==
                                 OfficialNpcInteractionKind.Open)
                             {
+                                if (!worldPresences.TryGetByConnection(
+                                        connectionId,
+                                        out var npcPresence) ||
+                                    npcPresence is null ||
+                                    !npcPresence.Character.MapId.HasValue)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "NPC interaction rejected: " +
+                                        "authoritative world presence unavailable; " +
+                                        "closing connection.");
+                                    break;
+                                }
+
+                                var currentMapId =
+                                    npcPresence.Character.MapId.Value;
+
+                                var currentWorldNpcs =
+                                    worldNpcs.SnapshotMap(currentMapId);
+
+                                var spatialQuery =
+                                    new WorldNpcSpatialQuery(
+                                        worldPresences,
+                                        worldNpcs);
+
+                                var spatialResolved =
+                                    spatialQuery.TryResolve(
+                                        connectionId,
+                                        npcInteraction.ClientEntityHandle,
+                                        out var spatialResult);
+
+                                if (spatialResolved)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "NPC spatial observation: " +
+                                        $"character={spatialResult.Presence.Character.CharacterId}; " +
+                                        $"map={spatialResult.Npc.MapId}; " +
+                                        $"handle={spatialResult.Npc.ClientEntityHandle}; " +
+                                        $"spawn={spatialResult.Npc.SpawnId}; " +
+                                        $"playerX={spatialResult.Presence.Character.PositionX}; " +
+                                        $"playerY={spatialResult.Presence.Character.PositionY}; " +
+                                        $"npcX={spatialResult.Npc.PositionX}; " +
+                                        $"npcY={spatialResult.Npc.PositionY}; " +
+                                        $"deltaX={spatialResult.DeltaX}; " +
+                                        $"deltaY={spatialResult.DeltaY}; " +
+                                        $"chebyshev={spatialResult.ChebyshevDistance}; " +
+                                        "enforcement=ObservationOnly.");
+                                }
+                                else
+                                {
+                                    Log(
+                                        connectionId,
+                                        "NPC spatial observation unavailable: " +
+                                        $"map={currentMapId}; " +
+                                        $"handle={npcInteraction.ClientEntityHandle}; " +
+                                        "enforcement=ObservationOnly.");
+                                }
+
                                 var openResult =
                                     npcInteractions.TryOpen(
                                         connectionId,
                                         pendingWorld.Character.CharacterId,
-                                        mapId,
+                                        currentMapId,
                                         npcInteraction.ClientEntityHandle,
-                                        npcSnapshot,
+                                        currentWorldNpcs,
                                         DateTimeOffset.UtcNow);
 
                                 if (!openResult.Succeeded)
@@ -546,7 +650,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                                         "RX NpcInteractionOpen " +
                                         $"bytes={worldFrame.Length}; " +
                                         $"character={pendingWorld.Character.CharacterId}; " +
-                                        $"map={mapId}; " +
+                                        $"map={currentMapId}; " +
                                         $"handle={npcInteraction.ClientEntityHandle}; " +
                                         $"spawn={openResult.Session!.SpawnId}; " +
                                         "sessionOwnership=Accepted; " +
@@ -571,7 +675,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     "RX NpcInteractionOpen " +
                                     $"bytes={worldFrame.Length}; " +
                                     $"character={pendingWorld.Character.CharacterId}; " +
-                                    $"map={mapId}; " +
+                                    $"map={currentMapId}; " +
                                     $"handle={npcInteraction.ClientEntityHandle}; " +
                                     $"spawn={openResult.Session!.SpawnId}; " +
                                     "sessionOwnership=Accepted; " +
@@ -633,6 +737,193 @@ public sealed class TcpGameServer : IAsyncDisposable
                             break;
                         }
 
+                        var portalActivate =
+                            OfficialPortalWireCodec.DecodeActivate(
+                                OfficialPortalWireCodec.ClientBuildId,
+                                state.Stage,
+                                worldFrame);
+
+                        if (portalActivate.Succeeded)
+                        {
+                            if (!worldPresences.TryGetByConnection(
+                                    connectionId,
+                                    out var portalPresence) ||
+                                portalPresence is null ||
+                                !portalPresence.Character.MapId.HasValue ||
+                                !portalPresence.Character.PositionX.HasValue ||
+                                !portalPresence.Character.PositionY.HasValue)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Portal activation rejected: " +
+                                    "authoritative world presence unavailable; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            var route =
+                                await portalRouteService.ResolveAsync(
+                                    portalPresence.Character.MapId.Value,
+                                    portalPresence.Character.PositionX.Value,
+                                    portalPresence.Character.PositionY.Value,
+                                    serverCancellationToken);
+
+                            if (route is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Portal activation rejected: " +
+                                    $"map={portalPresence.Character.MapId.Value}; " +
+                                    $"x={portalPresence.Character.PositionX.Value}; " +
+                                    $"y={portalPresence.Character.PositionY.Value}; " +
+                                    "reason=NoAuthoritativeRoute; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            var portalFrames =
+                                OfficialPortalWireCodec
+                                    .SerializeVerifiedClientDestination(
+                                        route.DestinationClientMapId,
+                                        route.DestinationClientAreaId,
+                                        route.DestinationX,
+                                        route.DestinationY);
+
+                            if (!portalFrames.Succeeded ||
+                                portalFrames.Value is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Portal transition wire response blocked: " +
+                                    $"portal={route.PortalId}; " +
+                                    $"clientMap={route.DestinationClientMapId}; " +
+                                    $"clientArea={route.DestinationClientAreaId}; " +
+                                    $"reason={portalFrames.FailureCode}; " +
+                                    "worldTransition=NotCommitted; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            var transition =
+                                await worldMapTransitionService.TryTransitionAsync(
+                                    connectionId,
+                                    pendingWorld.Character.CharacterId,
+                                    route.DestinationMapId,
+                                    route.DestinationX,
+                                    route.DestinationY,
+                                    DateTimeOffset.UtcNow,
+                                    serverCancellationToken);
+
+                            if (transition is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Portal activation rejected: " +
+                                    $"portal={route.PortalId}; " +
+                                    "reason=WorldTransitionRejected; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            runtimeVersion =
+                                transition.UpdatedPresence.Character.RuntimeVersion;
+                            concurrencyToken =
+                                transition.UpdatedPresence.Character.ConcurrencyToken;
+
+                            foreach (var frame in
+                                     portalFrames.Value.OrderedDecodedFrames)
+                            {
+                                await stream.WriteAsync(
+                                    frame,
+                                    serverCancellationToken);
+                            }
+
+                            var destinationWorldNpcs =
+                                worldNpcs.SnapshotMap(
+                                    route.DestinationMapId);
+
+                            var destinationNpcSpawnFrames =
+                                new List<byte[]>();
+                            var destinationBlockedNpcSpawns = 0;
+
+                            foreach (var npc in destinationWorldNpcs)
+                            {
+                                var encoding =
+                                    OfficialNpcSpawnCodec.Encode(
+                                        new OfficialNpcSpawnEvidence(
+                                            npc.ClientBuildId,
+                                            npc.ClientEntityHandle,
+                                            npc.ResourceType,
+                                            npc.ResourceOrdinal,
+                                            npc.SelectorHighBits,
+                                            npc.DirectionCode,
+                                            npc.StateCode,
+                                            npc.PositionX,
+                                            npc.PositionY,
+                                            npc.SpawnMessageSha256,
+                                            npc.OpaqueTemplateSha256,
+                                            npc.WireEvidenceStatus,
+                                            npc.WireEvidenceReference));
+
+                                if (encoding.Succeeded)
+                                {
+                                    destinationNpcSpawnFrames.Add(
+                                        encoding.Frame);
+                                }
+                                else
+                                {
+                                    destinationBlockedNpcSpawns++;
+
+                                    Log(
+                                        connectionId,
+                                        "Portal destination NPC spawn blocked by evidence: " +
+                                        $"spawn={npc.SpawnId}; " +
+                                        $"handle={npc.ClientEntityHandle}; " +
+                                        $"reason={encoding.Reason}.");
+                                }
+                            }
+
+                            foreach (var npcSpawnFrame in
+                                     destinationNpcSpawnFrames)
+                            {
+                                try
+                                {
+                                    await stream.WriteAsync(
+                                        npcSpawnFrame,
+                                        serverCancellationToken);
+                                }
+                                finally
+                                {
+                                    Array.Clear(npcSpawnFrame);
+                                }
+                            }
+
+                            Log(
+                                connectionId,
+                                "Portal destination NPC snapshot dispatched: " +
+                                $"map={route.DestinationMapId}; " +
+                                $"count={destinationWorldNpcs.Count}; " +
+                                $"wireEligible={destinationNpcSpawnFrames.Count}; " +
+                                $"wireBlocked={destinationBlockedNpcSpawns}.");
+
+                            Log(
+                                connectionId,
+                                "RX PortalActivate " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"portal={route.PortalId}; " +
+                                $"sourceMap={route.SourceMapId}; " +
+                                $"destinationMap={route.DestinationMapId}; " +
+                                $"clientDestination=" +
+                                $"{route.DestinationClientMapId}:" +
+                                $"{route.DestinationClientAreaId}; " +
+                                $"x={route.DestinationX}; " +
+                                $"y={route.DestinationY}; " +
+                                $"version={runtimeVersion}; " +
+                                "wireResponse=OfficialPortalWireCodec");
+
+                            continue;
+                        }
+
                         if (OfficialWorldMovementCodec.TryDecode(
                                 worldFrame,
                                 out var movement))
@@ -687,9 +978,14 @@ public sealed class TcpGameServer : IAsyncDisposable
                             var replicationRecipients = 0;
 
                             if (movementPersisted &&
-                                worldPresences.TryGetByConnection(
+                                worldPresences.TryMove(
                                     connectionId,
-                                    out var movementSubject) &&
+                                    pendingWorld.Character.CharacterId,
+                                    movement.X,
+                                    movement.Y,
+                                    runtimeVersion,
+                                      concurrencyToken,
+                                      out var movementSubject) &&
                                 movementSubject is not null)
                             {
                                 var movementReplication =

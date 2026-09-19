@@ -104,6 +104,40 @@ public static class OfficialWorldMovementCodec
         }
     }
 
+    public static byte[] EncodeRequest(
+        ushort x,
+        ushort y,
+        byte sequence)
+    {
+        if (x > MaximumPackedCoordinate)
+            throw new ArgumentOutOfRangeException(nameof(x));
+
+        if (y > MaximumPackedCoordinate)
+            throw new ArgumentOutOfRangeException(nameof(y));
+
+        Span<byte> decoded =
+            stackalloc byte[FrameLength];
+
+        BinaryPrimitives.WriteUInt16LittleEndian(
+            decoded,
+            FrameLength);
+        decoded[2] = Opcode;
+
+        BinaryPrimitives.WriteUInt16LittleEndian(
+            decoded[3..],
+            x);
+        BinaryPrimitives.WriteUInt16LittleEndian(
+            decoded[5..],
+            y);
+
+        decoded[7] = sequence;
+        decoded[8] = MountedState;
+        decoded[^1] =
+            OfficialLoginWireTransform.ComputeChecksum(decoded);
+
+        return Encode(decoded);
+    }
+
     public static byte[] EncodeAcknowledgement(byte sequence)
     {
         Span<byte> decoded =

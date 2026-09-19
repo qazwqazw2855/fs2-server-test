@@ -65,7 +65,9 @@ var dbPassword = Environment.GetEnvironmentVariable("GOD2_DB_PASSWORD");
 IAccountAuthenticator authenticator;
 ICharacterListRepository characterListRepository;
 INpcSnapshotRepository npcSnapshotRepository;
+IPortalRouteRepository portalRouteRepository;
 ICharacterPositionWriter? characterPositionWriter;
+ICharacterMapTransitionWriter? characterMapTransitionWriter;
 
 if (!string.IsNullOrWhiteSpace(dbHost) &&
     !string.IsNullOrWhiteSpace(dbPortText) &&
@@ -92,6 +94,8 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
         new MariaDbCharacterListRepository(databaseOptions);
     npcSnapshotRepository =
         new MariaDbNpcSnapshotRepository(databaseOptions);
+    portalRouteRepository =
+        new MariaDbPortalRouteRepository(databaseOptions);
 
     var enableMovementPersistence =
         string.Equals(
@@ -104,6 +108,9 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
         ? new MariaDbCharacterPositionWriter(databaseOptions)
         : null;
 
+    characterMapTransitionWriter =
+        new MariaDbCharacterMapTransitionWriter(databaseOptions);
+
     Console.WriteLine(
         $"Authentication: MariaDB {dbHost}:{dbPort} user={dbUser}");
     Console.WriteLine(
@@ -115,7 +122,9 @@ else
     authenticator = new RejectAllAccountAuthenticator();
     characterListRepository = new EmptyCharacterListRepository();
     npcSnapshotRepository = new EmptyNpcSnapshotRepository();
+    portalRouteRepository = new EmptyPortalRouteRepository();
     characterPositionWriter = null;
+    characterMapTransitionWriter = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
 }
@@ -125,6 +134,8 @@ var characterListService =
     new CharacterListService(characterListRepository);
 var npcSnapshotService =
     new NpcSnapshotService(npcSnapshotRepository);
+var portalRouteService =
+    new PortalRouteService(portalRouteRepository);
 
 await using var server = new TcpGameServer(
     new TcpServerOptions(bindAddress, port, advertisedAddress),
@@ -132,7 +143,9 @@ await using var server = new TcpGameServer(
     loginService,
     characterListService,
     characterPositionWriter,
-    npcSnapshotService);
+    npcSnapshotService,
+    characterMapTransitionWriter,
+    portalRouteService);
 
 try
 {

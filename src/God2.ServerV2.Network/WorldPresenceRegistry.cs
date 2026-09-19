@@ -211,6 +211,212 @@ public sealed class WorldPresenceRegistry
         }
     }
 
+    public bool TryChangeMap(
+        long connectionId,
+        long characterId,
+        long destinationMapId,
+        int destinationX,
+        int destinationY,
+        out WorldPresence? previousPresence,
+        out WorldPresence? updatedPresence,
+        out IReadOnlyList<WorldPresence> previousVisiblePeers,
+        out IReadOnlyList<WorldPresence> newVisiblePeers) =>
+        TryChangeMap(
+            connectionId,
+            characterId,
+            destinationMapId,
+            destinationX,
+            destinationY,
+            null,
+            null,
+            null,
+            out previousPresence,
+            out updatedPresence,
+            out previousVisiblePeers,
+            out newVisiblePeers);
+
+    public bool TryChangeMap(
+        long connectionId,
+        long characterId,
+        long destinationMapId,
+        int destinationX,
+        int destinationY,
+        long? expectedRuntimeVersion,
+        long? runtimeVersion,
+        string? concurrencyToken,
+        out WorldPresence? previousPresence,
+        out WorldPresence? updatedPresence,
+        out IReadOnlyList<WorldPresence> previousVisiblePeers,
+        out IReadOnlyList<WorldPresence> newVisiblePeers)
+    {
+        if (connectionId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(connectionId));
+        }
+
+        if (characterId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(characterId));
+        }
+
+        if (destinationMapId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(destinationMapId));
+        }
+
+        lock (_gate)
+        {
+            if (!_byConnection.TryGetValue(
+                    connectionId,
+                    out var existing) ||
+                existing.Character.CharacterId != characterId ||
+                (expectedRuntimeVersion.HasValue &&
+                 existing.Character.RuntimeVersion !=
+                     expectedRuntimeVersion.Value))
+            {
+                previousPresence = null;
+                updatedPresence = null;
+                previousVisiblePeers = [];
+                newVisiblePeers = [];
+                return false;
+            }
+
+            previousPresence = existing;
+            previousVisiblePeers =
+                VisiblePeersFor(existing);
+
+            var updatedCharacter = existing.Character with
+            {
+                MapId = destinationMapId,
+                PositionX = destinationX,
+                PositionY = destinationY,
+                RuntimeVersion =
+                    runtimeVersion ?? existing.Character.RuntimeVersion,
+                ConcurrencyToken =
+                    concurrencyToken ?? existing.Character.ConcurrencyToken
+            };
+
+            updatedPresence = existing with
+            {
+                Character = updatedCharacter
+            };
+
+            _byConnection[connectionId] = updatedPresence;
+            _byAccount[updatedPresence.AccountName] =
+                updatedPresence;
+            _byCharacter[characterId] =
+                updatedPresence;
+
+            newVisiblePeers =
+                VisiblePeersFor(updatedPresence);
+
+            return true;
+        }
+    }
+
+    public bool TryMove(
+        long connectionId,
+        long characterId,
+        ushort x,
+        ushort y,
+        long runtimeVersion,
+        string concurrencyToken,
+        out WorldPresence? updatedPresence)
+    {
+        if (connectionId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(connectionId));
+        }
+
+        if (characterId <= 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(characterId));
+        }
+
+        lock (_gate)
+        {
+            if (!_byConnection.TryGetValue(
+                    connectionId,
+                    out var existing) ||
+                existing.Character.CharacterId != characterId)
+            {
+                updatedPresence = null;
+                return false;
+            }
+
+            var updatedCharacter = existing.Character with
+            {
+                PositionX = x,
+                PositionY = y,
+                RuntimeVersion = runtimeVersion,
+                ConcurrencyToken = concurrencyToken
+            };
+
+            updatedPresence = existing with
+            {
+                Character = updatedCharacter
+            };
+
+            _byConnection[connectionId] = updatedPresence;
+            _byAccount[updatedPresence.AccountName] =
+                updatedPresence;
+            _byCharacter[characterId] =
+                updatedPresence;
+
+            return true;
+        }
+    }
+
+    public bool TryMove(
+        long connectionId,
+        long characterId,
+        ushort x,
+        ushort y,
+        out WorldPresence? updatedPresence)
+    {
+        lock (_gate)
+        {
+            if (!_byConnection.TryGetValue(
+                    connectionId,
+                    out var existing) ||
+                existing.Character.CharacterId != characterId)
+            {
+                updatedPresence = null;
+                return false;
+            }
+
+            var runtimeVersion =
+                existing.Character.RuntimeVersion;
+
+            var concurrencyToken =
+                existing.Character.ConcurrencyToken;
+
+            var updatedCharacter = existing.Character with
+            {
+                PositionX = x,
+                PositionY = y
+            };
+
+            updatedPresence = existing with
+            {
+                Character = updatedCharacter
+            };
+
+            _byConnection[connectionId] = updatedPresence;
+            _byAccount[updatedPresence.AccountName] =
+                updatedPresence;
+            _byCharacter[characterId] =
+                updatedPresence;
+
+            return true;
+        }
+    }
+
     private IReadOnlyList<WorldPresence> VisiblePeersFor(
         WorldPresence presence)
     {

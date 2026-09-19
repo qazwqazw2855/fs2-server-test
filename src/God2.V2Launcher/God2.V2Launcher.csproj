@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>God2V2Launcher</AssemblyName>
+    <RootNamespace>God2.V2Launcher</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources/LoginServer.v2.csvZ">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+    <Resource Include="Assets/launcher-final.png" />
+  </ItemGroup>
+</Project>

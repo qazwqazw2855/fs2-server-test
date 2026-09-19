@@ -109,7 +109,7 @@ public sealed class ArchitectureAndHostTests
     }
 
     [Fact]
-    public void All_projects_target_dotnet_10_and_only_console_host_is_executable()
+    public void All_projects_target_dotnet_10_and_only_known_hosts_are_executable()
     {
         var root = RepositoryRoot();
         var projects = Directory.EnumerateFiles(Path.Combine(root, "src"), "*.csproj", SearchOption.AllDirectories)
@@ -121,15 +121,30 @@ public sealed class ArchitectureAndHostTests
         var executableProjects = new List<string>();
         foreach (var project in projects)
         {
+            var projectName =
+                Path.GetFileNameWithoutExtension(project);
             var document = XDocument.Load(project);
-            Assert.All(document.Descendants("TargetFramework"), element => Assert.Equal("net10.0", element.Value));
-            if (document.Descendants("OutputType").Any(element => string.Equals(element.Value, "Exe", StringComparison.OrdinalIgnoreCase)))
+            var expectedTargetFramework =
+                projectName == "God2.V2Launcher"
+                    ? "net10.0-windows"
+                    : "net10.0";
+
+            Assert.All(
+                document.Descendants("TargetFramework"),
+                element => Assert.Equal(
+                    expectedTargetFramework,
+                    element.Value));
+            if (document.Descendants("OutputType").Any(
+                    element =>
+                        element.Value is "Exe" or "WinExe"))
             {
-                executableProjects.Add(Path.GetFileNameWithoutExtension(project));
+                executableProjects.Add(projectName);
             }
         }
 
-        Assert.Equal(["God2.ClassicServer.ConsoleHost"], executableProjects.Order(StringComparer.Ordinal).ToArray());
+        Assert.Equal(
+            ["God2.ClassicServer.ConsoleHost", "God2.ServerV2.Host", "God2.V2Launcher"],
+            executableProjects.Order(StringComparer.Ordinal).ToArray());
     }
 
     [Fact]

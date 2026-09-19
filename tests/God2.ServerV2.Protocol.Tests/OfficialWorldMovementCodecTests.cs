@@ -27,6 +27,32 @@ public sealed class OfficialWorldMovementCodecTests
     }
 
     [Fact]
+    public void Encodes_portal_entry_movement_round_trip()
+    {
+        var encoded =
+            OfficialWorldMovementCodec.EncodeRequest(
+                249,
+                246,
+                1);
+
+        Assert.Equal(
+            OfficialWorldMovementCodec.FrameLength,
+            encoded.Length);
+
+        Assert.True(
+            OfficialWorldMovementCodec.TryDecode(
+                encoded,
+                out var movement));
+
+        Assert.Equal((ushort)249, movement.X);
+        Assert.Equal((ushort)246, movement.Y);
+        Assert.Equal((byte)1, movement.Sequence);
+        Assert.Equal(
+            OfficialWorldMovementCodec.MountedState,
+            movement.State);
+    }
+
+    [Fact]
     public void Movement_acknowledgement_matches_verified_plaintext_layout()
     {
         var encoded =

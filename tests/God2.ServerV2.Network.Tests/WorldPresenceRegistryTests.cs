@@ -199,6 +199,315 @@ public sealed class WorldPresenceRegistryTests
     }
 
     [Fact]
+    public void Change_map_updates_authoritative_world_state()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.True(
+            registry.TryChangeMap(
+                101,
+                11,
+                200,
+                65,
+                64,
+                out var previous,
+                out var updated,
+                out _,
+                out _));
+
+        Assert.Equal(100, previous!.Character.MapId);
+        Assert.Equal(200, updated!.Character.MapId);
+        Assert.Equal(65, updated.Character.PositionX);
+        Assert.Equal(64, updated.Character.PositionY);
+
+        Assert.True(
+            registry.TryGetByConnection(
+                101,
+                out var authoritative));
+
+        Assert.Equal(
+            200,
+            authoritative!.Character.MapId);
+        Assert.Equal(
+            65,
+            authoritative.Character.PositionX);
+        Assert.Equal(
+            64,
+            authoritative.Character.PositionY);
+    }
+
+    [Fact]
+    public void Change_map_returns_old_and_new_visible_peers()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        registry.TryEnter(
+            Presence(
+                202,
+                "account-b",
+                2,
+                22,
+                mapId: 100));
+
+        registry.TryEnter(
+            Presence(
+                303,
+                "account-c",
+                3,
+                33,
+                mapId: 200));
+
+        Assert.True(
+            registry.TryChangeMap(
+                101,
+                11,
+                200,
+                65,
+                64,
+                out _,
+                out _,
+                out var previousPeers,
+                out var newPeers));
+
+        Assert.Single(previousPeers);
+        Assert.Equal(
+            202,
+            previousPeers[0].ConnectionId);
+
+        Assert.Single(newPeers);
+        Assert.Equal(
+            303,
+            newPeers[0].ConnectionId);
+
+        Assert.Single(
+            registry.VisiblePeers(101));
+
+        Assert.Equal(
+            303,
+            registry.VisiblePeers(101)[0].ConnectionId);
+    }
+
+    [Fact]
+    public void Wrong_connection_cannot_change_character_map()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.False(
+            registry.TryChangeMap(
+                202,
+                11,
+                200,
+                65,
+                64,
+                out var previous,
+                out var updated,
+                out var previousPeers,
+                out var newPeers));
+
+        Assert.Null(previous);
+        Assert.Null(updated);
+        Assert.Empty(previousPeers);
+        Assert.Empty(newPeers);
+
+        Assert.True(
+            registry.TryGetByCharacter(
+                11,
+                out var unchanged));
+
+        Assert.Equal(
+            100,
+            unchanged!.Character.MapId);
+    }
+
+    [Fact]
+    public void Change_map_updates_all_presence_indexes()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.True(
+            registry.TryChangeMap(
+                101,
+                11,
+                200,
+                65,
+                64,
+                out _,
+                out _,
+                out _,
+                out _));
+
+        Assert.True(
+            registry.TryGetByConnection(
+                101,
+                out var byConnection));
+
+        Assert.True(
+            registry.TryGetByCharacter(
+                11,
+                out var byCharacter));
+
+        Assert.Equal(
+            200,
+            byConnection!.Character.MapId);
+        Assert.Equal(
+            200,
+            byCharacter!.Character.MapId);
+    }
+
+    [Fact]
+    public void Move_updates_authoritative_position()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.True(
+            registry.TryMove(
+                101,
+                11,
+                65,
+                64,
+                out var moved));
+
+        Assert.Equal(65, moved!.Character.PositionX);
+        Assert.Equal(64, moved.Character.PositionY);
+
+        Assert.True(
+            registry.TryGetByConnection(
+                101,
+                out var byConnection));
+
+        Assert.Equal(
+            65,
+            byConnection!.Character.PositionX);
+        Assert.Equal(
+            64,
+            byConnection.Character.PositionY);
+
+        Assert.True(
+            registry.TryGetByCharacter(
+                11,
+                out var byCharacter));
+
+        Assert.Equal(
+            65,
+            byCharacter!.Character.PositionX);
+        Assert.Equal(
+            64,
+            byCharacter.Character.PositionY);
+    }
+
+    [Fact]
+    public void Wrong_connection_cannot_move_character()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.False(
+            registry.TryMove(
+                202,
+                11,
+                65,
+                64,
+                out var moved));
+
+        Assert.Null(moved);
+
+        Assert.True(
+            registry.TryGetByCharacter(
+                11,
+                out var unchanged));
+
+        Assert.Equal(
+            10,
+            unchanged!.Character.PositionX);
+        Assert.Equal(
+            20,
+            unchanged.Character.PositionY);
+    }
+
+    [Fact]
+    public void Connection_cannot_move_another_character()
+    {
+        var registry = new WorldPresenceRegistry();
+
+        registry.TryEnter(
+            Presence(
+                101,
+                "account-a",
+                1,
+                11,
+                mapId: 100));
+
+        Assert.False(
+            registry.TryMove(
+                101,
+                22,
+                65,
+                64,
+                out var moved));
+
+        Assert.Null(moved);
+
+        Assert.True(
+            registry.TryGetByCharacter(
+                11,
+                out var unchanged));
+
+        Assert.Equal(
+            10,
+            unchanged!.Character.PositionX);
+        Assert.Equal(
+            20,
+            unchanged.Character.PositionY);
+    }
+
+    [Fact]
     public void Snapshot_is_stable_and_connection_ordered()
     {
         var registry = new WorldPresenceRegistry();

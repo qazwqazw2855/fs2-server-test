@@ -1,3 +1,4 @@
+using God2.ServerV2.Core;
 using System.Buffers.Binary;
 using System.Net.Sockets;
 using System.Text;
@@ -53,6 +54,12 @@ var verifyDuplicateMovement =
             "GOD2_PROBE_VERIFY_DUPLICATE_MOVEMENT"),
         "1",
         StringComparison.Ordinal);
+var verifyPortal =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_PORTAL"),
+        "1",
+        StringComparison.Ordinal);
 var verifyNpcInteraction =
     string.Equals(
         Environment.GetEnvironmentVariable(
@@ -78,12 +85,13 @@ if ((expectDuplicateLogin ? 1 : 0) +
     (verifyLogout ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
     (verifyDuplicateMovement ? 1 : 0) +
+    (verifyPortal ? 1 : 0) +
     (verifyNpcInteraction ? 1 : 0) +
     (verifyNpcDialog ? 1 : 0) +
     (verifyNpcInteractionOwnership ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、NPC 互動、NPC 對話與 NPC 所有權模式只能啟用一種。");
+        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、Portal、NPC 互動、NPC 對話與 NPC 所有權模式只能啟用一種。");
     return 1;
 }
 
@@ -406,9 +414,11 @@ Console.WriteLine(
     $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
 
 var expectedNpcHandles =
-    verifyNpcDialog
-        ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
-        : new uint[] { 5042, 5096 };
+    verifyPortal
+        ? Array.Empty<uint>()
+        : verifyNpcDialog
+            ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
+            : new uint[] { 5042, 5096 };
 
 foreach (var expectedNpcHandle in expectedNpcHandles)
 {
@@ -720,6 +730,162 @@ else if (verifyNpcInteraction)
 
     Console.WriteLine(
         "NPC 5042 開啟、Session 所有權釋放與正式登出測試成功");
+}
+else if (verifyPortal)
+{
+    const byte portalMovementSequence = 1;
+
+    var movementRequest =
+        OfficialWorldMovementCodec.EncodeRequest(
+            249,
+            246,
+            portalMovementSequence);
+
+    Require(
+        OfficialWorldMovementCodec.TryDecode(
+            movementRequest,
+            out var movement),
+        "Portal 前置移動封包未通過協定辨識");
+
+    Require(
+        movement.X == 249 &&
+        movement.Y == 246 &&
+        movement.Sequence == portalMovementSequence,
+        $"Portal 前置移動內容錯誤：({movement.X},{movement.Y}) seq={movement.Sequence}");
+
+    await worldStream.WriteAsync(
+        movementRequest,
+        timeout.Token);
+    Array.Clear(movementRequest);
+
+    var movementAcknowledgement =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    Require(
+        OfficialWorldMovementCodec.TryDecodeAcknowledgement(
+            movementAcknowledgement,
+            out var acknowledgedSequence),
+        "Portal 前置移動 ACK 格式錯誤");
+
+    Require(
+        acknowledgedSequence == portalMovementSequence,
+        $"Portal 前置移動 ACK Sequence 錯誤：{acknowledgedSequence}");
+
+    Array.Clear(movementAcknowledgement);
+
+    var activateDecoded =
+        Convert.FromHexString(
+            "08000CA82734FC9C");
+
+    var activate =
+        OfficialPortalWireCodec.DecodeActivate(
+            OfficialPortalWireCodec.ClientBuildId,
+            ConnectionStage.InWorld,
+            activateDecoded);
+
+    Require(
+        activate.Succeeded &&
+        activate.Value is not null,
+        $"Portal Activate fixture 無法辨識：{activate.Code}");
+
+    var serializedActivate =
+        OfficialPortalWireCodec.SerializeActivate(
+            activate.Value!);
+
+    Require(
+        serializedActivate.Succeeded,
+        $"Portal Activate 無法序列化：{serializedActivate.Code}");
+
+    var portalRequest =
+        serializedActivate.Value.ToArray();
+
+    await worldStream.WriteAsync(
+        portalRequest,
+        timeout.Token);
+
+    Array.Clear(portalRequest);
+    Array.Clear(activateDecoded);
+
+    // Verified Stage 3 transition order: 0x61 -> 0xBB.
+    var mapTransitionFrame =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    var portalPreludeFrame =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    var portalResult =
+        OfficialPortalWireCodec.DecodeResult(
+            portalPreludeFrame,
+            mapTransitionFrame);
+
+    Require(
+        portalResult.Succeeded &&
+        portalResult.Value is not null,
+        $"Portal 回應無法辨識：{portalResult.Code}");
+
+    Require(
+        portalResult.Value!.ClientMapId == 7 &&
+        portalResult.Value.AreaId == 15 &&
+        portalResult.Value.X == 48 &&
+        portalResult.Value.Y == 81,
+        $"Portal 目的地錯誤：{portalResult.Value.ClientMapId}:{portalResult.Value.AreaId} / ({portalResult.Value.X},{portalResult.Value.Y})");
+
+    Array.Clear(mapTransitionFrame);
+    Array.Clear(portalPreludeFrame);
+
+    Console.WriteLine(
+        "Portal (249,246) -> 7:15 / (48,81) 驗證成功");
+
+    var destinationNpcSpawn =
+        await ReadFrameAsync(
+            worldStream,
+            timeout.Token);
+
+    try
+    {
+        Require(
+            OfficialNpcSpawnCodec.TryDecodeHandle(
+                destinationNpcSpawn,
+                out var destinationNpcHandle),
+            "Portal 目的地 NPC Spawn Frame 格式錯誤");
+
+        Require(
+            destinationNpcHandle ==
+                OfficialNpcDialogCodec.LiveDialogHandle,
+            $"Portal 目的地 NPC Handle 錯誤：{destinationNpcHandle}，預期：{OfficialNpcDialogCodec.LiveDialogHandle}");
+    }
+    finally
+    {
+        Array.Clear(destinationNpcSpawn);
+    }
+
+    var logoutRequest =
+        Convert.FromHexString("0500AC9D30");
+
+    await worldStream.WriteAsync(
+        logoutRequest,
+        timeout.Token);
+
+    Array.Clear(logoutRequest);
+
+    var eofProbe = new byte[1];
+    var bytesRead =
+        await worldStream.ReadAsync(
+            eofProbe,
+            timeout.Token);
+
+    Require(
+        bytesRead == 0,
+        "Portal 測試正式登出後 World 連線未關閉");
+
+    Console.WriteLine(
+        "Portal 閉環成功：170015000 -> 170015007，NPC 3793 Spawn，Logout 成功");
 }
 else if (verifyDuplicateMovement)
 {
