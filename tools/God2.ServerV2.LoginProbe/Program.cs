@@ -423,7 +423,11 @@ Console.WriteLine(
 var expectedNpcHandles =
     verifyPortal
         ? Array.Empty<uint>()
-        : verifyNpcDialog
+        : verifyMovement
+            ? new uint[] { 3793 }
+            : verifyMovement
+            ? new uint[] { 3793 }
+            : verifyNpcDialog
             ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
             : new uint[] { 5042, 5096 };
 
