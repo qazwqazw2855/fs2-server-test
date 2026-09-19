@@ -67,7 +67,7 @@ public sealed class WorldMapTransitionServiceTests
     }
 
     [Fact]
-    public async Task Runtime_version_change_during_persistence_rejects_commit()
+    public async Task Runtime_version_change_after_database_commit_reports_inconsistent_state()
     {
         var presences = new WorldPresenceRegistry();
         var interactions = new NpcInteractionSessionRegistry();
@@ -101,12 +101,19 @@ public sealed class WorldMapTransitionServiceTests
                 npcStateService,
                 writer);
 
-        var result = await service.TryTransitionAsync(
-            101, 1, 200, 65, 64,
-            Now,
-            CancellationToken.None);
+        var error =
+            await Assert.ThrowsAsync<InvalidOperationException>(
+                async () =>
+                {
+                    await service.TryTransitionAsync(
+                        101, 1, 200, 65, 64,
+                        Now,
+                        CancellationToken.None);
+                });
 
-        Assert.Null(result);
+        Assert.Contains(
+            "database commit succeeded",
+            error.Message);
 
         Assert.True(
             presences.TryGetByCharacter(1, out var unchanged));

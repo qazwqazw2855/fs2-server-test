@@ -165,9 +165,15 @@ public sealed class WorldMapTransitionService
             $"success={coreSucceeded}; " +
             $"resultPresent={result is not null}");
 
-        return coreSucceeded
-            ? result
-            : null;
+        if (!coreSucceeded && _characterMapTransitionWriter is not null)
+        {
+            throw new InvalidOperationException(
+                "Portal database commit succeeded but world presence commit failed. " +
+                $"character={characterId}; connection={connectionId}; " +
+                $"databaseVersion={runtimeVersion}.");
+        }
+
+        return coreSucceeded ? result : null;
     }
 
     public bool TryTransition(
