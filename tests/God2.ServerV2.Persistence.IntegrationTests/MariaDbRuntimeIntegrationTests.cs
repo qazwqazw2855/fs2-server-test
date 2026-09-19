@@ -506,6 +506,30 @@ public sealed class MariaDbRuntimeIntegrationTests
             long.MaxValue, CancellationToken.None));
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task MeatItem_StackChangePreview_CoversExistingCharacter()
+    {
+        if (!ShouldRun())
+            return;
+
+        var repository =
+            new MariaDbItemStackChangeImpactRepository(CreateOptions());
+
+        var impacts = await repository.ListByItemAsync(
+            253231541, 1, CancellationToken.None);
+
+        var impact = Assert.Single(
+            impacts, entry => entry.CharacterId == 1);
+        Assert.Equal(1, impact.CharacterId);
+        Assert.Equal(0, impact.Preview.AdditionalSlotsNeeded);
+        Assert.Equal(31, impact.Preview.FreeSlots);
+        Assert.True(impact.Preview.Fits);
+
+        Assert.Empty(await repository.ListByItemAsync(
+            long.MaxValue, 1, CancellationToken.None));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
