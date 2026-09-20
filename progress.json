@@ -4,9 +4,9 @@
   "version": "0.1.0-dev",
   "phase": "M1 官方客戶端登入與世界閉環",
   "status": "in_progress",
-  "overall_percent": 75,
-  "updated_at": "2026-09-20T01:10:00+08:00",
-  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署。2026-09-19/20 已於 Windows 實機確認正服 God2_opt.exe 可連至 52.63.34.162:2592，並透過 AWS socat 轉入 V2 6001；已實際擷取並比對 19/19/6 Login Handshake，V2 已切換至實機抓到的官方 OPT Handshake。下一階段改為研究正服 Launcher → God2_opt.exe 的前置作業，再將必要流程整合進自製 God2V2Launcher，讓正服 OPT 透過 AWS 進行 V2 Login acceptance。",
+  "overall_percent": 78,
+  "updated_at": "2026-09-20T22:00:00+08:00",
+  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署。2026-09-19/20 已於 Windows 實機確認正服 God2_opt.exe 可連至 AWS 入口，並完成官方 19/19/6 Login Handshake、LoginRequest、角色列表、Server Selection 與 World 進場 acceptance。今日進一步以正服 God2_opt.exe 實機登入 V2，成功進入楓華雜貨店世界場景並完成角色移動持久化；目前 NPC 互動封包已抵達 Server，但該地圖目前沒有可供 Spawn 的 NPC snapshot，後續將先補齊正服地圖/NPC/怪物等完整資料對應，再延伸官方 wire acceptance。",
   "milestones": [
     {
       "key": "foundation",
@@ -43,8 +43,8 @@
     {
       "key": "login",
       "name": "登入與選角",
-      "percent": 90,
-      "status": "in_progress",
+      "percent": 100,
+      "status": "completed",
       "items": [
         {
           "name": "TCP Listener 與連線生命週期",
@@ -88,15 +88,15 @@
         },
         {
           "name": "確認原版 Patch 前置啟動流程",
-          "status": "in_progress"
+          "status": "completed"
         },
         {
           "name": "官方 reference client 實機 Login acceptance",
-          "status": "in_progress"
+          "status": "completed"
         },
         {
           "name": "官方 Client 選角 → World acceptance",
-          "status": "pending"
+          "status": "completed"
         }
       ]
     },
@@ -139,7 +139,7 @@
     {
       "key": "world",
       "name": "世界與遊戲系統",
-      "percent": 55,
+      "percent": 60,
       "status": "in_progress",
       "items": [
         {
@@ -262,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "正服 Launcher → God2_opt.exe 前置流程",
-    "description": "已實機確認正服 God2_opt.exe 可連至 52.63.34.162:2592，AWS 2592→6001 socat 路徑正常；Wireshark 已取得實機 19/19/6 Login Handshake，V2 已改用實機 Handshake。下一步研究正服 Launcher 啟動 OPT 前的 IP 綁定、設定檔、啟動參數與其他前置狀態，再整合至自製 God2V2Launcher。",
+    "title": "正服資料完整對應 → God2 Server V2 世界系統",
+    "description": "今日已用正服 God2_opt.exe 實機完成 Login → Character List → Server Selection → World 進場，並在楓華雜貨店完成角色移動與 DB persistence。測試時 NPC 互動封包有抵達 Server，但 map=170015000 的 NPC snapshot 為 0，因此目前主線轉為把舊台服伺服器端資料完整整理並對應至 V2：地圖、NPC、怪物、傳送、物品、任務、戰鬥/技能及其他世界系統；目標先達到正服資料與行為基線，再在其上增加 V2 功能。",
     "status": "in_progress"
   },
   "verification": {
@@ -319,26 +319,31 @@
     {
       "title": "正服 Launcher → God2_opt.exe 前置作業",
       "status": "in_progress",
-      "detail": "已確認直接操作原版 God2.exe 不是目前主線；正服 God2_opt.exe 已能實機連至 52.63.34.162:2592 並完成 19/19/6 Login Handshake。現階段需研究正服 Launcher 啟動 OPT 前實際建立的設定、IP 綁定、檔案狀態與啟動參數。"
+      "detail": "正服 God2_opt.exe 已可由實機連至 AWS V2 並完成 World acceptance；Launcher 前置流程仍保留研究項目，但目前主線先轉向完整台服資料 → V2 對應。"
     },
     {
       "title": "官方 OPT 完整 Login acceptance",
-      "status": "in_progress",
-      "detail": "OPT 已實機抵達 V2 Server 的 Login Handshake，但尚未完成 LoginRequest 之後的完整 acceptance。待正服 Launcher 前置流程整合至自製 Launcher 後，再驗證 Login、選角與 World。"
+      "status": "completed",
+      "detail": "2026-09-20 已由正服 God2_opt.exe 實機完成 Login Handshake、LoginRequest、角色列表、Server Selection 與 World acceptance；正式 Server V2 已收到實機 WorldMovement 並完成座標 persistence。"
     }
   ],
   "next_steps": [
-    "保存正服 Launcher.exe、God2_opt.exe 與必要檔案作為研究基準，不直接修改原始正服環境",
-    "研究正服 Launcher → God2_opt.exe 的前置作業：IP 綁定、設定檔、啟動參數、檔案與程序狀態",
-    "將必要前置流程整合至自製 God2V2Launcher，讓其直接啟動正服 God2_opt.exe",
-    "完成 OPT → Server V2 LoginRequest、選角與 World acceptance",
-    "延續 God2Patch Large-Over 1054 的封包/診斷證據分析"
+    "整理舊台服伺服器端資料，建立「舊台服 → God2 Server V2」完整對應表",
+    "優先補齊正式地圖資料、NPC/NPC Spawn、怪物/Spawn、傳送點與地圖關聯，讓正服地圖能以完整資料進入 V2",
+    "再依序接上物品/背包、任務、角色狀態、戰鬥、技能、經濟與其他世界系統",
+    "以正服 God2_opt.exe 實機逐系統驗證 S2C/C2S wire acceptance；所有未有證據的封包維持 fail-closed",
+    "持續處理 God2Patch Large-Over 1054 與自製 Launcher → 正服 OPT 前置流程"
   ],
   "recent_activity": [
     {
       "date": "2026-09-20",
-      "title": "正服 God2_opt.exe → AWS V2 實機連線確認",
-      "detail": "Windows 實機以正服 God2_opt.exe 連至 52.63.34.162:2592；AWS 以 socat 轉送至 6001。Wireshark 擷取到 19-byte Server Handshake、19-byte Client Handshake、6-byte Version Follow-up 與 208-byte LoginRequest，並以實機抓到的 19/19/6 Handshake 更新 V2。下一步研究正服 Launcher 的 OPT 前置作業。"
+      "title": "正服 God2_opt.exe → V2 World 實機 acceptance",
+      "detail": "Windows 實機以正服 God2_opt.exe 連至 AWS 入口，完成 19/19/6 Login Handshake、208-byte LoginRequest、角色列表、Server Selection 與 World acceptance；正式 V2 Server 收到 WorldMovement，角色座標 persistence 成功。"
+    },
+    {
+      "date": "2026-09-20",
+      "title": "楓華雜貨店 NPC 現場驗證",
+      "detail": "實機已進入楓華雜貨店世界場景。Server log 顯示 map=170015000 的 NPC snapshot loaded count=0；後續客戶端送出 NPC handle=1504 的互動請求，Server 以 TargetNotVisible 關閉連線。確認目前問題是該地圖尚未有可供 V2 Spawn 的 NPC 資料，而非登入/World 進場失敗。"
     },
     {
       "date": "2026-09-19",
@@ -427,7 +432,7 @@
     "reference_client": "God2.exe",
     "reference_client_sha256": "fb72296cab5950b74d8f7c98155145f7c5f58749c3011adb0540325b60749dd1",
     "strategy": "保留正服 God2_opt.exe 作為遊戲執行核心；由自製 God2V2Launcher 重現正服 Launcher 必要前置作業、完成 IP/設定準備後啟動 OPT，並導向 AWS Server V2",
-    "current_task": "研究正服 Launcher → God2_opt.exe 前置作業，確認 IP 綁定、設定檔、啟動參數與必要檔案/程序狀態",
-    "next": "將必要正服 Launcher 前置流程整合至 God2V2Launcher，完成 OPT → Server V2 Login acceptance"
+    "current_task": "研究並逐步重現正服 Launcher → God2_opt.exe 前置作業；同時主線轉向舊台服完整資料 → V2 對應與世界系統補齊",
+    "next": "先完成地圖/NPC/怪物/傳送等正服資料基線，再整合 Launcher 前置流程與後續完整官方 Client acceptance"
   }
 }
