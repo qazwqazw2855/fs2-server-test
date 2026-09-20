@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-18
+Updated: 2026-09-20
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -260,6 +260,17 @@ Every recovered/implemented feature progresses through:
 - Project-authored `progress.json` now tracks overall progress at 69%; this sync uses that value rather than inventing a higher percentage.
 - Blockers: Large-Over 1054 decision rule, the original God2.exe Patch-created prerequisite state, official reference-client Login/Character/World/NPC acceptance, and multiplayer Player Spawn/AOI/Despawn evidence/acceptance.
 - Next: decode the Large-Over diagnostic artifacts and local file-scan comparison rules, reproduce only the required Patch prerequisite in Rework Launcher, then complete Launcher -> God2.exe -> Server V2 Login/World/NPC acceptance and two-client despawn acceptance.
+
+### 2026-09-20 19:52 - Progress Sync
+- Since the 2026-09-18 sync head `ffcf6b4d`, `refactor/server-v2` advanced 21 commits to `1880a67947218653c47adbd94b4dea078604f4ec` (`feat: update client login handshake and movement bounds`).
+- Added Portal/map-transition protocol and persistence foundations, DB CAS/RuntimeVersion handling, WorldPresence/NPC-state synchronization, repeatable Portal probe support, and map movement bounds validation.
+- Added read-only character inventory snapshots plus item stack rules, merge policy and stack-change impact preview foundations.
+- Added the God2 V2 Launcher WPF project, reference-client integrity verification and V2 endpoint service to the branch.
+- Windows live-client work confirmed the official `God2_opt.exe` can reach `52.63.34.162:2592`, with AWS forwarding to V2 `6001`; captured the live 19-byte server handshake, 19-byte client handshake, 6-byte version follow-up and 208-byte LoginRequest, and aligned V2 to the observed OPT handshake.
+- Project-authored `progress.json` now reports overall 75%, Login 90%, Session 100%, World 55% and Launcher 75%; this sync preserves those authored values.
+- Latest recorded Server V2 verification is 262/262 passing: Core 7, Session 20, Protocol 107, Application 40, Network 75 and Persistence Integration 13; build is recorded passing. The current head has no GitHub status checks (`total_count=0`), so no CI validation is claimed for `1880a679`.
+- Current blockers: official Launcher -> `God2_opt.exe` prerequisite state, completing OPT Login/Character/World acceptance, God2Patch Large-Over 1054 diagnostics, and multiplayer Player Spawn/AOI/Despawn evidence/acceptance.
+- Next: preserve the official Launcher/OPT baseline, recover the launcher's IP/config/argument/file/process prerequisites, integrate only the necessary behavior into God2V2Launcher, complete OPT -> V2 Login/Character/World acceptance, then finish official-client World/Movement/Portal/NPC/Logout/Relogin and two-client despawn acceptance.
 
 ## Current Known Assets to Reuse
 - Official client and original client assets/UI/maps/animations.
