@@ -2,7 +2,11 @@
 
 > 目標：God2 Server V2 的第一個完成基線為「台服正服可提供的資料與遊戲系統完整度」，完成基線後才進入 V2 Custom Expansion。
 >
-> 原則：舊台服 Server/Data 是資料模型與遊戲規則的重要參考；原版 God2 Client 的實機封包與行為是 Client/Wire 驗證基準。兩者不一致時，保留來源與驗證狀態，不以猜測覆蓋證據。
+> 證據原則：台服正服證據優先；台服缺失時可使用陸服正服作 supplemental evidence，但必須保留 provenance，不得靜默升格為台服事實。
+>
+> Client static、runtime capture、legacy server、third-party、derived evidence 必須分開記錄。Formal DB 中存在資料不等於已證明為台服正服資料。
+>
+> 沒有正服證據，不猜協定；沒有建立 baseline，不直接修改 V2。
 
 ## 1. 完成定義
 

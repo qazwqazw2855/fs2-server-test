@@ -291,3 +291,12 @@ Every recovered/implemented feature progresses through:
 
 ## Definition of Done
 Server V2 is not complete until the official client can reliably perform the major original gameplay systems, persistence survives restart, multiplayer state remains consistent, disconnects leave no ghosts, and classic regression tests remain green when custom content is enabled.
+### 2026-09-22 - Data / Wire Baseline Checkpoint
+- Completed the first-pass Data Inventory Baseline across Item, Map/Portal, NPC/Shop/Dialog, Monster/Drop, Skill/Combat, Quest, Pet/Mount and Character systems.
+- Reclassified evidence authority so Client Static, Runtime Capture, Legacy Server, Third-Party, Derived, Formal DB and Live Client acceptance are not treated as interchangeable official-server facts.
+- Closed the first-pass Wire Baseline. The original client has a proven live path through Login -> Character List/Select -> World -> Movement -> promoted Portal -> pinned NPC Spawn/Dialog -> Logout.
+- Current-build protocol research remains separately gated: 17 protocol families have no promoted decoder/serializer, and all 91 runtime mappings remain RuntimeMutationBlocked.
+- Battle current-build remains EvidenceBlocked: qualifying captures 0, raw battle samples 0, production decoders 0, production serializers 0 and verified sequences 0.
+- Began restructuring `docs/OfficialParityMatrix.md` into an evidence-aware Baseline/Gap Registry. The first patch updates provenance policy: Taiwan official evidence is primary; mainland official evidence is supplemental; Client Static/Runtime/Legacy/Third-Party/Derived evidence must retain provenance.
+- Overall project progress remains conservatively at 78%. Today's work increases baseline reliability and development direction rather than claiming additional gameplay completion.
+- Next: finish the Parity Matrix restructure and provenance sanity check, then select V2 implementation work from explicit Formal Data / Logic / Wire / Real Client gaps instead of single-NPC or single-packet development.

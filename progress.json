@@ -2,11 +2,11 @@
   "schema_version": 2,
   "project": "God2 Server V2",
   "version": "0.1.0-dev",
-  "phase": "M1 官方客戶端登入與世界閉環",
+  "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-20T22:00:00+08:00",
-  "summary": "God2 Server V2 已完成 Login→World→Movement→Portal→NPC 3793→Logout 無畫面閉環；正式 6001 已部署。2026-09-19/20 已於 Windows 實機確認正服 God2_opt.exe 可連至 AWS 入口，並完成官方 19/19/6 Login Handshake、LoginRequest、角色列表、Server Selection 與 World 進場 acceptance。今日進一步以正服 God2_opt.exe 實機登入 V2，成功進入楓華雜貨店世界場景並完成角色移動持久化；目前 NPC 互動封包已抵達 Server，但該地圖目前沒有可供 Spawn 的 NPC snapshot，後續將先補齊正服地圖/NPC/怪物等完整資料對應，再延伸官方 wire acceptance。",
+  "updated_at": "2026-09-22T00:11:54+08:00",
+  "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成。已重新區分 Client Static、Runtime Capture、Legacy Server、Third-Party、Derived、Formal DB 與 Live Client evidence，避免將資料存在誤認為台服正服 authority。原版 Client 已驗證 Login→Character List/Select→World→Movement→promoted Portal→pinned NPC Spawn/Dialog→Logout 核心閉環；Battle current-build 仍為 0 qualifying captures / 0 production decoder / 0 production serializer，維持 EvidenceBlocked。OfficialParityMatrix 已開始升級為 Evidence/Gap Registry，下一階段由 Gap Matrix 決定 V2 implementation。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "正服資料完整對應 → God2 Server V2 世界系統",
-    "description": "今日已用正服 God2_opt.exe 實機完成 Login → Character List → Server Selection → World 進場，並在楓華雜貨店完成角色移動與 DB persistence。測試時 NPC 互動封包有抵達 Server，但 map=170015000 的 NPC snapshot 為 0，因此目前主線轉為把舊台服伺服器端資料完整整理並對應至 V2：地圖、NPC、怪物、傳送、物品、任務、戰鬥/技能及其他世界系統；目標先達到正服資料與行為基線，再在其上增加 V2 功能。",
+    "title": "Official Parity Matrix → V2 Gap Implementation",
+    "description": "第一輪資料與 Wire baseline 已封板。Map、Portal、NPC、Shop/Dialog、Monster/Drop、Skill/Combat、Quest、Pet/Mount、Character 與 Wire 已重新建立 evidence boundary。現在正在把結果正式寫入 OfficialParityMatrix；完成 sanity check 後，將依 Formal Data、Logic、Wire、Real Client 四層 Gap 決定 V2 下一個 implementation，不再以單一 NPC 或單一封包作為主要開發單位。",
     "status": "in_progress"
   },
   "verification": {
@@ -328,13 +328,33 @@
     }
   ],
   "next_steps": [
-    "整理舊台服伺服器端資料，建立「舊台服 → God2 Server V2」完整對應表",
-    "優先補齊正式地圖資料、NPC/NPC Spawn、怪物/Spawn、傳送點與地圖關聯，讓正服地圖能以完整資料進入 V2",
-    "再依序接上物品/背包、任務、角色狀態、戰鬥、技能、經濟與其他世界系統",
-    "以正服 God2_opt.exe 實機逐系統驗證 S2C/C2S wire acceptance；所有未有證據的封包維持 fail-closed",
-    "持續處理 God2Patch Large-Over 1054 與自製 Launcher → 正服 OPT 前置流程"
+    "完成 OfficialParityMatrix 的 Evidence Status、Baseline Registry、Wire Baseline、Parity Gate 與開發順序重構",
+    "對新版 Parity Matrix 做 provenance sanity check，避免 CLIENT_STATIC、XJZ、THIRD_PARTY、Legacy 或 Formal DB 被誤升格為台服正服事實",
+    "由 Gap Matrix 選定第一個 V2 Gap implementation；未通過 evidence/promotion gate 的資料與 Wire 不以猜測補實作",
+    "逐系統補 Formal Data → Logic → Wire → Real Client acceptance，保留 evidence、negative test 與 persistence boundary",
+    "God2Patch Large-Over 1054 與 Launcher/Patch 前置流程保留為獨立研究線"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-22",
+      "title": "Data / Wire Baseline 第一輪封板",
+      "detail": "完成 Item、Map/Portal、NPC/Shop/Dialog、Monster/Drop、Skill/Combat、Quest、Pet/Mount、Character 與 Wire 第一輪 baseline。重新區分 Client Static、Runtime、Legacy、Third-Party、Derived、Formal DB 與 Live Client evidence；舊版 maps=69、portals=68、NPC=319、skills=1108、dialogs=18、drop tables=208 等單一數字不再作為完整 gameplay parity 數量。"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Server V2 Wire acceptance 邊界完成",
+      "detail": "確認原版 Client 的 Login、Character List/Select、World、Movement、promoted Portal、NPC 3793 Spawn/Dialog 與 Logout 已有 live-accepted path；current-build research framework 的 17 protocol families 與 91 runtime mappings仍保持 mutation blocked，不與 V2 live acceptance 混為同一證據層。"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Battle current-build evidence blocker 確認",
+      "detail": "battle-v1 current-build 對 god2-opt-6b127086e0c0 的 qualifying capture、raw battle sample、production decoder、production serializer與verified sequence皆為0；OfficialAuthenticationAuthorityUnavailable 仍為 blocker，因此 Battle Wire 維持 EvidenceBlocked。"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Official Parity Matrix evidence policy 重構開始",
+      "detail": "開始更新 OfficialParityMatrix.md，明確規定台服正服證據優先、陸服僅 supplemental，並要求 Client Static、Runtime Capture、Legacy Server、Third-Party、Derived 與 Formal DB 分開記錄；沒有正服證據不猜協定，未建立 baseline 不直接修改 V2。"
+    },
     {
       "date": "2026-09-20",
       "title": "正服 God2_opt.exe → V2 World 實機 acceptance",
