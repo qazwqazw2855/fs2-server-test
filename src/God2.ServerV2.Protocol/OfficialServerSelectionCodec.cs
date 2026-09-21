@@ -40,25 +40,52 @@ public static class OfficialServerSelectionCodec
             return false;
         }
 
-        var decoded = OfficialLoginWireTransform.Decode(encodedFrame);
+        // Current God2_opt.exe (2026-09-20 runtime evidence):
+        // wire 06 00 04 B0 B8 76
+        // decoded 06 00 A6 00 00 D8
+        var currentDecoded =
+            CurrentClientServerWireTransform.Decode(encodedFrame);
 
         try
         {
-            if (decoded[2] != RequestOpcode ||
-                decoded[3] != 0 ||
-                decoded[4] != SupportedServerId ||
-                decoded[^1] !=
-                OfficialLoginWireTransform.ComputeChecksum(decoded))
+            if (currentDecoded[2] == RequestOpcode &&
+                currentDecoded[3] == 0 &&
+                currentDecoded[4] == 0x00 &&
+                currentDecoded[^1] ==
+                    CurrentClientServerWireTransform.ComputeChecksum(
+                        currentDecoded))
+            {
+                request =
+                    new OfficialServerSelectionRequest(currentDecoded[4]);
+                return true;
+            }
+        }
+        finally
+        {
+            Array.Clear(currentDecoded);
+        }
+
+        // Preserve the previously verified legacy protocol.
+        var legacyDecoded = OfficialLoginWireTransform.Decode(encodedFrame);
+
+        try
+        {
+            if (legacyDecoded[2] != RequestOpcode ||
+                legacyDecoded[3] != 0 ||
+                legacyDecoded[4] != SupportedServerId ||
+                legacyDecoded[^1] !=
+                    OfficialLoginWireTransform.ComputeChecksum(legacyDecoded))
             {
                 return false;
             }
 
-            request = new OfficialServerSelectionRequest(decoded[4]);
+            request =
+                new OfficialServerSelectionRequest(legacyDecoded[4]);
             return true;
         }
         finally
         {
-            Array.Clear(decoded);
+            Array.Clear(legacyDecoded);
         }
     }
 
@@ -131,6 +158,27 @@ public static class OfficialServerSelectionCodec
             Array.Clear(nameBytes);
             Array.Clear(prefix);
             Array.Clear(suffix);
+        }
+    }
+
+    public static byte[] EncodeCurrentClientCharacterList(
+        string? characterName,
+        string? classCode)
+    {
+        var legacyEncoded = EncodeCharacterList(characterName, classCode);
+        var decoded = OfficialLoginWireTransform.Decode(legacyEncoded);
+
+        try
+        {
+            decoded[^1] =
+                CurrentClientServerWireTransform.ComputeChecksum(decoded);
+
+            return CurrentClientServerWireTransform.Encode(decoded);
+        }
+        finally
+        {
+            Array.Clear(legacyEncoded);
+            Array.Clear(decoded);
         }
     }
 }

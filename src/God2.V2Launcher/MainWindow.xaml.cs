@@ -30,13 +30,15 @@ public partial class MainWindow : Window
             StartGameButton.IsEnabled = false;
 
             var launcherDirectory = AppContext.BaseDirectory;
+            var clientDirectory = Path.GetFullPath(
+                Path.Combine(launcherDirectory, "..", "God2-Official"));
 
             _clientIntegrity = await ClientIntegrityService.VerifyAsync(
-                launcherDirectory);
+                clientDirectory);
 
             if (!_clientIntegrity.Exists)
             {
-                ClientStatusText.Text = "找不到 God2.exe";
+                ClientStatusText.Text = "找不到 God2_opt.exe";
                 return;
             }
 
@@ -72,29 +74,20 @@ public partial class MainWindow : Window
             }
 
             var launcherDirectory = AppContext.BaseDirectory;
-
-            ClientStatusText.Text = "正在設定 V2 Server...";
-
-            var endpointResult =
-                await V2EndpointService.ConfigureAsync(
-                    launcherDirectory);
-
-            if (!endpointResult.Success)
-            {
-                ClientStatusText.Text = endpointResult.Status;
-                return;
-            }
+            var clientDirectory = Path.GetFullPath(
+                Path.Combine(launcherDirectory, "..", "God2-Official"));
 
             ClientStatusText.Text = "正在啟動仙界傳...";
 
             var gamePath = Path.Combine(
-                launcherDirectory,
-                "God2.exe");
+                clientDirectory,
+                "God2_opt.exe");
 
             Process.Start(new ProcessStartInfo
             {
                 FileName = gamePath,
-                WorkingDirectory = launcherDirectory,
+                Arguments = "52.63.34.162",
+                WorkingDirectory = clientDirectory,
                 UseShellExecute = true
             });
 

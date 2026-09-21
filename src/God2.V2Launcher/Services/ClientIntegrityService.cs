@@ -13,13 +13,13 @@ public sealed record ClientIntegrityResult(
 public static class ClientIntegrityService
 {
     public const string ReferenceSha256 =
-        "FB72296CAB5950B74D8F7C98155145F7C5F58749C3011ADB0540325B60749DD1";
+        "6F2639A0A7AD25053D0364108147173EB68BD04F57E6942491F42633F40052BC";
 
     public static async Task<ClientIntegrityResult> VerifyAsync(
         string launcherDirectory,
         CancellationToken cancellationToken = default)
     {
-        var clientPath = Path.Combine(launcherDirectory, "God2.exe");
+        var clientPath = Path.Combine(launcherDirectory, "God2_opt.exe");
 
         if (!File.Exists(clientPath))
         {
@@ -28,7 +28,7 @@ public static class ClientIntegrityService
                 false,
                 clientPath,
                 null,
-                "找不到 God2.exe");
+                "找不到 God2_opt.exe");
         }
 
         await using var stream = new FileStream(

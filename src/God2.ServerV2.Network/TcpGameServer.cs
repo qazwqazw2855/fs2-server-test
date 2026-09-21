@@ -1180,6 +1180,10 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                     if (state.Stage == ConnectionStage.CharacterSelect)
                     {
+                        Log(
+                            connectionId,
+                            $"RX ServerSelectionCandidate bytes={frame.Length} hex={Convert.ToHexString(frame)}");
+
                         if (!OfficialServerSelectionCodec.TryDecodeRequest(
                                 frame,
                                 out var selection) ||
@@ -1192,7 +1196,7 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                         var character = pendingCharacters.SingleOrDefault();
                         var response =
-                            OfficialServerSelectionCodec.EncodeCharacterList(
+                            OfficialServerSelectionCodec.EncodeCurrentClientCharacterList(
                                 character?.Name,
                                 character?.ClassCode);
 
@@ -1237,7 +1241,10 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 out var loginRequest) ||
                             loginRequest is null)
                         {
-                            Log(connectionId, "Login request rejected: invalid wire frame.");
+                            Log(
+                                connectionId,
+                                $"Login request rejected: invalid wire frame; " +
+                                $"diagnostic={OfficialLoginRequestCodec.Diagnose(frame)}");
                             return;
                         }
 

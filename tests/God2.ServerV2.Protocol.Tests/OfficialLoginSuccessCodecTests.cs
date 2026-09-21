@@ -19,13 +19,13 @@ public sealed class OfficialLoginSuccessCodecTests
 
         Assert.Equal(OfficialLoginSuccessCodec.FrameLength, encoded.Length);
 
-        var decoded = OfficialLoginWireTransform.Decode(encoded);
+        var decoded = CurrentClientServerWireTransform.Decode(encoded);
 
         Assert.Equal((byte)0xA1, decoded[0]);
         Assert.Equal((byte)0x01, decoded[1]);
         Assert.Equal(OfficialLoginSuccessCodec.Opcode, decoded[2]);
         Assert.Equal(
-            OfficialLoginWireTransform.ComputeChecksum(decoded),
+            CurrentClientServerWireTransform.ComputeChecksum(decoded),
             decoded[^1]);
     }
 
@@ -40,7 +40,7 @@ public sealed class OfficialLoginSuccessCodecTests
                 [10, 20, 30, 40],
                 2592);
 
-        var decoded = OfficialLoginWireTransform.Decode(encoded);
+        var decoded = CurrentClientServerWireTransform.Decode(encoded);
 
         Assert.Equal(
             "test-account",

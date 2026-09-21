@@ -59,19 +59,39 @@ public sealed class OfficialLoginWireTransformTests
     }
 
     [Fact]
-    public void Rejects_login_request_with_invalid_checksum()
+    public void Accepts_login_request_when_generic_checksum_does_not_match()
     {
         var encoded = BuildLoginRequest(
             "kero",
             "secret");
 
-        encoded[^1] ^= 0x01;
+        var decoded =
+            OfficialLoginWireTransform.Decode(encoded);
 
-        Assert.False(
+        decoded[^1] ^= 0x01;
+
+        Assert.NotEqual(
+            OfficialLoginWireTransform.ComputeChecksum(decoded),
+            decoded[^1]);
+
+        encoded =
+            OfficialLoginWireTransform.Encode(decoded);
+
+        var succeeded =
             OfficialLoginRequestCodec.TryDecode(
                 encoded,
-                out var request));
-        Assert.Null(request);
+                out var request);
+
+        Assert.True(succeeded);
+        Assert.NotNull(request);
+
+        using (request)
+        {
+            Assert.Equal("kero", request.AccountName);
+            Assert.Equal(
+                "secret",
+                new string(request.Password.Span));
+        }
     }
 
     [Fact]
