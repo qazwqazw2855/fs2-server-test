@@ -6,6 +6,7 @@ cd "$repo_root"
 
 migration="database/schema/114_publish_official_map_catalog.sql"
 legacy="db/imports/official/maps/maps.official.json"
+exact_client_manifest="db/imports/official/maps/God2_exact_current_map_sha256.csv"
 output_json="docs/parity/map.json"
 output_md="docs/parity/map.md"
 container="${GOD2_DB_CONTAINER:-god2-runtime-db-test}"
@@ -75,12 +76,33 @@ SELECT
 ")
 EOF
 
+read -r exact_client_absent_evidence_count <<EOF
+$(db_query "
+SELECT COUNT(*)
+FROM god2_research.client_map_resource_evidence e
+WHERE e.resource_key='client:map/tong/reborn/reborn'
+  AND e.map_identity_evidence_status='Verified'
+  AND e.navigation_evidence_status='EvidenceBlocked'
+  AND e.resource_file_relative_path IS NULL
+  AND e.resource_file_sha256 IS NULL
+  AND e.admin_note LIKE 'Exact-current manifest b2362491b9045a7c4b2f489706ad66eb36c71bcb999c22c103aab47035e56a51 confirms declared Data2/map/tong/reborn/reborn.mdtZ is absent%'
+  AND EXISTS (
+    SELECT 1
+    FROM god2.__schemaversion v
+    WHERE v.Version=477
+      AND v.Name='477_pin_exact_current_map_file_provenance.sql'
+      AND v.Checksum='d481a257b63f327e35e1d733558f07537bbe00f79387b4bb6ba63db8075887a2'
+  );
+")
+EOF
+
 migration_count="$(wc -l < "$migration_ids")"
 missing_count="$(wc -l < "$work_dir/missing.ids")"
 extra_count="$(wc -l < "$work_dir/extra.ids")"
 legacy_count="$(jq -r '.recordCount // (.records | length)' "$legacy")"
 migration_hash="$(sha256sum "$migration" | awk '{print $1}')"
 legacy_hash="$(sha256sum "$legacy" | awk '{print $1}')"
+exact_client_manifest_hash="$(sha256sum "$exact_client_manifest" | awk '{print $1}')"
 source_hash="$(sed -n 's/^-- Source SHA-256: //p' "$migration")"
 generated_at="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 
@@ -89,12 +111,76 @@ jq -Rn '[inputs | select(length > 0) | tonumber]' \
 jq -Rn '[inputs | select(length > 0) | tonumber]' \
   < "$work_dir/extra.ids" > "$work_dir/extra.json"
 
+db_query "
+SELECT
+  i.map_identity_id,
+  i.map_id,
+  r.resource_key,
+  r.resource_name
+FROM god2_game.client_map_resource_identities i
+JOIN god2_game.client_map_resources r
+  ON r.resource_key=i.resource_key
+WHERE i.client_build_id='$client_build'
+ORDER BY i.map_id;
+" > "$work_dir/formal-identities.tsv"
+
+python3 - "$exact_client_manifest" "$work_dir/formal-identities.tsv" "$work_dir/exact-client-provenance.json" <<'PYTHON'
+import csv
+import json
+import sys
+
+manifest_path, identity_path, output_path = sys.argv[1:]
+
+manifest = {}
+with open(manifest_path, encoding="utf-8-sig", newline="") as handle:
+    for row in csv.DictReader(handle):
+        path = row["RelativePath"].replace("\\", "/").lower()
+        manifest[path] = row["SHA256"].lower()
+
+present = []
+absent = []
+
+with open(identity_path, encoding="utf-8") as handle:
+    for line in handle:
+        identity_id, map_id, resource_key, resource_name = line.rstrip("\n").split("\t")
+        stem = resource_key.removeprefix("client:map/")
+        area = stem.split("/", 1)[0]
+        expected_path = f"data2/map/{area}/{resource_name}z".lower()
+
+        item = {
+            "mapIdentityId": int(identity_id),
+            "mapId": int(map_id),
+            "resourceKey": resource_key,
+            "expectedPath": expected_path,
+        }
+
+        sha256 = manifest.get(expected_path)
+        if sha256 is None:
+            absent.append(item)
+        else:
+            item["sha256"] = sha256
+            present.append(item)
+
+result = {
+    "formalIdentityCount": len(present) + len(absent),
+    "presentCount": len(present),
+    "absentCount": len(absent),
+    "absent": absent,
+}
+
+with open(output_path, "w", encoding="utf-8") as handle:
+    json.dump(result, handle, indent=2)
+    handle.write("\n")
+PYTHON
+
 jq -n \
   --arg generatedAtUtc "$generated_at" \
   --arg clientBuildId "$client_build" \
   --arg sourceSha256 "$source_hash" \
   --arg migrationSha256 "$migration_hash" \
   --arg legacySha256 "$legacy_hash" \
+  --arg exactClientManifestSha256 "$exact_client_manifest_hash" \
+  --slurpfile exactClientProvenance "$work_dir/exact-client-provenance.json" \
   --argjson expectedMapCount "$migration_count" \
   --argjson formalMapCount "$formal_count" \
   --argjson enabledMapCount "$enabled_count" \
@@ -107,6 +193,7 @@ jq -n \
   --argjson resourceCount "$resource_count" \
   --argjson identityCount "$identity_count" \
   --argjson portalLinkCount "$portal_link_count" \
+  --argjson exactClientAbsentEvidenceCount "$exact_client_absent_evidence_count" \
   --slurpfile missing "$work_dir/missing.json" \
   --slurpfile extra "$work_dir/extra.json" \
   '{
@@ -131,8 +218,13 @@ jq -n \
         path: "db/imports/official/maps/maps.official.json",
         sha256: $legacySha256,
         recordCount: $legacyCount
+      },
+      exactCurrentMapManifest: {
+        path: "db/imports/official/maps/God2_exact_current_map_sha256.csv",
+        sha256: $exactClientManifestSha256
       }
     },
+    exactClientFileProvenance: $exactClientProvenance[0],
     inventory: {
       expectedOfficialMaps: $expectedMapCount,
       formalCurrentBuildMaps: $formalMapCount,
@@ -175,10 +267,18 @@ jq -n \
         $identityCount == 144 and
         $portalLinkCount == 65
       ),
-      exactClientFileProvenanceComplete: false,
+      exactClientFileProvenanceComplete: (
+        $identityCount == 144 and
+        $exactClientProvenance[0].formalIdentityCount == 144 and
+        $exactClientProvenance[0].presentCount == 143 and
+        $exactClientProvenance[0].absentCount == 1 and
+        $exactClientProvenance[0].absent[0].mapId == 1200070008 and
+        $exactClientProvenance[0].absent[0].resourceKey == "client:map/tong/reborn/reborn" and
+        $exactClientAbsentEvidenceCount == 1
+      ),
       readyForFullWorldRuntimePromotion: false
     },
-    nextGate: "Validate the 158 resources, 144 identities and 65 disabled portal links against exact-current client files, then diff hierarchy, collision and portal references."
+    nextGate: "Diff exact-current hierarchy, collision and portal references before any full-world runtime promotion."
   }' > "$output_json"
 
 jq -r '

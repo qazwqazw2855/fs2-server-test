@@ -1,6 +1,6 @@
 {
   "schema": "God2MapParityBaseline/1",
-  "generatedAtUtc": "2026-09-22T14:08:49Z",
+  "generatedAtUtc": "2026-09-22T16:06:47Z",
   "productionDatabaseTouched": false,
   "clientBuildId": "god2-opt-6b127086e0c0",
   "authorityBoundary": {
@@ -20,7 +20,24 @@
       "path": "db/imports/official/maps/maps.official.json",
       "sha256": "25445c189111099168e392ca723b9700461d55ad4921e813e471e66070aec0f1",
       "recordCount": 69
+    },
+    "exactCurrentMapManifest": {
+      "path": "db/imports/official/maps/God2_exact_current_map_sha256.csv",
+      "sha256": "b2362491b9045a7c4b2f489706ad66eb36c71bcb999c22c103aab47035e56a51"
     }
+  },
+  "exactClientFileProvenance": {
+    "formalIdentityCount": 144,
+    "presentCount": 143,
+    "absentCount": 1,
+    "absent": [
+      {
+        "mapIdentityId": 1200070008,
+        "mapId": 1200070008,
+        "resourceKey": "client:map/tong/reborn/reborn",
+        "expectedPath": "data2/map/tong/reborn/reborn.mdtz"
+      }
+    ]
   },
   "inventory": {
     "expectedOfficialMaps": 144,
@@ -56,8 +73,8 @@
     "extraRowsClassified": true,
     "provenanceRestored": true,
     "stagingProvenanceRestored": true,
-    "exactClientFileProvenanceComplete": false,
+    "exactClientFileProvenanceComplete": true,
     "readyForFullWorldRuntimePromotion": false
   },
-  "nextGate": "Validate the 158 resources, 144 identities and 65 disabled portal links against exact-current client files, then diff hierarchy, collision and portal references."
+  "nextGate": "Diff exact-current hierarchy, collision and portal references before any full-world runtime promotion."
 }
