@@ -16,9 +16,9 @@ The legacy 69-record resource inventory is supplemental and uses a different ID 
 
 ## Current blocking gap
 
-- client_map_resources: 0
-- client_map_resource_identities: 0
-- portal_resource_links: 0
-- Provenance status: **BLOCKED**
+- client_map_resources: 158
+- client_map_resource_identities: 144
+- portal_resource_links: 65
+- Provenance status: **PARTIAL**
 
 No production database writes were performed.

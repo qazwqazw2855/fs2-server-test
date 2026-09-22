@@ -87,6 +87,22 @@ enabled_count="$(
   jq '[.[] | select(.enabled == 1)] | length' \
     "$work_dir/formal.json"
 )"
+
+read -r portal_link_count derived_link_count candidate_link_count enabled_link_count bound_link_count <<EOF
+$(db_query '
+SELECT
+  (SELECT COUNT(*) FROM god2_game.portal_resource_links),
+  (SELECT COUNT(*) FROM god2_research.portal_resource_link_evidence
+   WHERE identity_evidence_status="Derived"),
+  (SELECT COUNT(*) FROM god2_research.portal_resource_link_evidence
+   WHERE identity_evidence_status="Candidate"),
+  (SELECT COUNT(*) FROM god2_game.portal_resource_links
+   WHERE enabled=1),
+  (SELECT COUNT(*) FROM god2_game.portal_resource_links
+   WHERE portal_id IS NOT NULL);
+')
+EOF
+
 missing_count="$(jq 'length' "$work_dir/missing.json")"
 unexpected_count="$(jq 'length' "$work_dir/unexpected.json")"
 legacy_count="$(jq -r '.recordCount' "$artifact")"
@@ -108,6 +124,11 @@ jq -n \
   --argjson missingCount "$missing_count" \
   --argjson unexpectedCount "$unexpected_count" \
   --argjson legacyCount "$legacy_count" \
+  --argjson portalLinkCount "$portal_link_count" \
+  --argjson derivedLinkCount "$derived_link_count" \
+  --argjson candidateLinkCount "$candidate_link_count" \
+  --argjson enabledLinkCount "$enabled_link_count" \
+  --argjson boundLinkCount "$bound_link_count" \
   --slurpfile formal "$work_dir/formal.json" \
   --slurpfile missing "$work_dir/missing.json" \
   --slurpfile unexpected "$work_dir/unexpected.json" \
@@ -137,6 +158,11 @@ jq -n \
         recordCount: $legacyCount,
         verificationStatus: "Recovered; TransferTriggerUnverified",
         canDirectImportToGameplay: false
+      },
+      stagingResourceLinks: {
+        migration: "database/schema/476_repair_forge_client_map_resource_provenance_drift.sql",
+        authority: "PINNED_STAGING_PROVENANCE",
+        exactClientFileProvenanceComplete: false
       }
     },
     expectedRoutes: [
@@ -175,7 +201,12 @@ jq -n \
       expectedEvidenceBackedRoutes: $expectedCount,
       formalRoutes: $formalCount,
       enabledFormalRoutes: $enabledCount,
-      supplementalCandidates: $legacyCount
+      supplementalCandidates: $legacyCount,
+      stagingPortalResourceLinks: $portalLinkCount,
+      derivedStagingLinks: $derivedLinkCount,
+      candidateStagingLinks: $candidateLinkCount,
+      enabledStagingLinks: $enabledLinkCount,
+      runtimeBoundStagingLinks: $boundLinkCount
     },
     formalRows: $formal[0],
     diff: {
@@ -204,10 +235,17 @@ jq -n \
       taiwanLiveRoutePresent:
         ([$formal[0][].portalId] | index(170015007) != null),
       supplementalImportAllowed: false,
-      resourceLinksRestored: false,
+      stagingResourceLinksRestored: (
+        $portalLinkCount == 65 and
+        $derivedLinkCount == 44 and
+        $candidateLinkCount == 21 and
+        $enabledLinkCount == 0 and
+        $boundLinkCount == 0
+      ),
+      exactClientFileProvenanceComplete: false,
       readyForFullPortalPromotion: false
     },
-    nextGate: "Resolve the Portal 1/2 catalog regression, then rebuild exact-client portal resource links and validate remaining routes with controlled real-client transitions."
+    nextGate: "Validate the 65 disabled staging portal links against exact-current client files, resolve route references, then run controlled real-client transitions for Portal 1, 2, 3 and 4."
   }' > "$output_json"
 
 jq -r '
@@ -219,6 +257,13 @@ jq -r '
     "- Formal routes: **" + (.inventory.formalRoutes|tostring) + "**",
     "- Missing evidence-backed routes: **" + (.diff.missingCount|tostring) + "**",
     "- Supplemental CAN-link candidates: **" + (.inventory.supplementalCandidates|tostring) + "**",
+    "- Staging portal resource links: **" + (.inventory.stagingPortalResourceLinks|tostring) + "**",
+    "- Derived / Candidate staging links: **" +
+      (.inventory.derivedStagingLinks|tostring) + " / " +
+      (.inventory.candidateStagingLinks|tostring) + "**",
+    "- Enabled / runtime-bound staging links: **" +
+      (.inventory.enabledStagingLinks|tostring) + " / " +
+      (.inventory.runtimeBoundStagingLinks|tostring) + "**",
     "",
     "## Formal routes",
     "",

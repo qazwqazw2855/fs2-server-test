@@ -95,9 +95,9 @@
         "RUNTIME_CAPTURE",
         "LEGACY_SERVER"
       ],
-      "scope": "Migration 475 repaired the forged-seed drift. Formal DB now contains all 5 evidence-backed routes: Portal 1, 2, 3, 4 and 170015007; the portal evidence registry also contains 5 provenance rows.",
-      "gap": "Exact-client portal_resource_links remain empty. The 68 legacy CAN-link candidates remain TransferTriggerUnverified, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.",
-      "nextGate": "Rebuild exact-client portal resource links, resolve route references, and run controlled real-client transition acceptance for the remaining evidence-backed routes."
+      "scope": "Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links: 44 Derived and 21 Candidate, with no runtime portal bindings.",
+      "gap": "The 65 staging links lack complete exact-client file provenance and verified triggers; all remain disabled and unbound. The 68 legacy CAN-link candidates remain supplemental, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.",
+      "nextGate": "Validate the 65 staging links against exact-current client files, resolve references, and run controlled real-client transition acceptance for Portal 1, 2, 3 and 4."
     },
     {
       "id": "map-content",
@@ -112,9 +112,9 @@
         "FORMAL_DB",
         "LEGACY_SERVER"
       ],
-      "scope": "Migration 114 exact-current static catalog is complete at 144/144 with zero missing formal rows; 144 formal maps have dimensions and bounds. Map 557790525 is separately classified as a pre-existing verified runtime slice.",
-      "gap": "Client resource identities, portal resource links, hierarchy semantics and collision provenance are not restored. Static catalog completeness is not Taiwan live gameplay proof.",
-      "nextGate": "Rebuild immutable exact-client resource identity provenance, then diff hierarchy, collision and portal references."
+      "scope": "Migration 114 exact-current static catalog is complete at 144/144 with zero missing formal rows. Migration 476 restored 158 client map resources, 144 resource identities and 65 portal resource links as disabled pinned staging provenance. Map 557790525 remains a separately classified verified runtime slice.",
+      "gap": "Exact-current client file hashes and navigation provenance remain incomplete. The restored staging rows are disabled and are not Taiwan live gameplay proof; hierarchy semantics and collision provenance remain unresolved.",
+      "nextGate": "Validate the restored staging rows against exact-current client files, then diff hierarchy, collision and portal references."
     },
     {
       "id": "npc-spawn-dialog",

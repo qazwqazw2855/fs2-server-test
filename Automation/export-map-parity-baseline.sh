@@ -157,6 +157,7 @@ jq -n \
       clientMapResources: $resourceCount,
       clientMapResourceIdentities: $identityCount,
       portalResourceLinks: $portalLinkCount,
+      authority: "PINNED_STAGING_PROVENANCE",
       status: (if ($resourceCount > 0 and $identityCount > 0)
                then "PARTIAL"
                else "BLOCKED"
@@ -169,9 +170,15 @@ jq -n \
         ($extra[0] == [557790525])
       ),
       provenanceRestored: ($resourceCount > 0 and $identityCount > 0),
+      stagingProvenanceRestored: (
+        $resourceCount == 158 and
+        $identityCount == 144 and
+        $portalLinkCount == 65
+      ),
+      exactClientFileProvenanceComplete: false,
       readyForFullWorldRuntimePromotion: false
     },
-    nextGate: "Rebuild immutable client resource and identity provenance from the exact current client, then diff collision and portal references."
+    nextGate: "Validate the 158 resources, 144 identities and 65 disabled portal links against exact-current client files, then diff hierarchy, collision and portal references."
   }' > "$output_json"
 
 jq -r '

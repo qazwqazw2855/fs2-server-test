@@ -4,6 +4,9 @@
 - Formal routes: **5**
 - Missing evidence-backed routes: **0**
 - Supplemental CAN-link candidates: **68**
+- Staging portal resource links: **65**
+- Derived / Candidate staging links: **44 / 21**
+- Enabled / runtime-bound staging links: **0 / 0**
 
 ## Formal routes
 

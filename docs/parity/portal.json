@@ -1,6 +1,6 @@
 {
   "schema": "God2PortalParityBaseline/1",
-  "generatedAtUtc": "2026-09-22T13:11:26Z",
+  "generatedAtUtc": "2026-09-22T14:08:49Z",
   "clientBuildId": "god2-opt-6b127086e0c0",
   "productionDatabaseTouched": false,
   "authorityBoundary": {
@@ -22,6 +22,11 @@
       "recordCount": 68,
       "verificationStatus": "Recovered; TransferTriggerUnverified",
       "canDirectImportToGameplay": false
+    },
+    "stagingResourceLinks": {
+      "migration": "database/schema/476_repair_forge_client_map_resource_provenance_drift.sql",
+      "authority": "PINNED_STAGING_PROVENANCE",
+      "exactClientFileProvenanceComplete": false
     }
   },
   "expectedRoutes": [
@@ -60,7 +65,12 @@
     "expectedEvidenceBackedRoutes": 5,
     "formalRoutes": 5,
     "enabledFormalRoutes": 5,
-    "supplementalCandidates": 68
+    "supplementalCandidates": 68,
+    "stagingPortalResourceLinks": 65,
+    "derivedStagingLinks": 44,
+    "candidateStagingLinks": 21,
+    "enabledStagingLinks": 0,
+    "runtimeBoundStagingLinks": 0
   },
   "formalRows": [
     {
@@ -139,8 +149,9 @@
     "evidenceBackedCatalogComplete": true,
     "taiwanLiveRoutePresent": true,
     "supplementalImportAllowed": false,
-    "resourceLinksRestored": false,
+    "stagingResourceLinksRestored": true,
+    "exactClientFileProvenanceComplete": false,
     "readyForFullPortalPromotion": false
   },
-  "nextGate": "Resolve the Portal 1/2 catalog regression, then rebuild exact-client portal resource links and validate remaining routes with controlled real-client transitions."
+  "nextGate": "Validate the 65 disabled staging portal links against exact-current client files, resolve route references, then run controlled real-client transitions for Portal 1, 2, 3 and 4."
 }

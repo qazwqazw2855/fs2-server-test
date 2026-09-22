@@ -5,7 +5,7 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-22T21:13:20+08:00",
+  "updated_at": "2026-09-22T22:08:48+08:00",
   "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成。已重新區分 Client Static、Runtime Capture、Legacy Server、Third-Party、Derived、Formal DB 與 Live Client evidence，避免將資料存在誤認為台服正服 authority。原版 Client 已驗證 Login→Character List/Select→World→Movement→promoted Portal→pinned NPC Spawn/Dialog→Logout 核心閉環；Battle current-build 仍為 0 qualifying captures / 0 production decoder / 0 production serializer，維持 EvidenceBlocked。OfficialParityMatrix 已開始升級為 Evidence/Gap Registry，下一階段由 Gap Matrix 決定 V2 implementation。",
   "milestones": [
     {
@@ -262,9 +262,9 @@
     }
   ],
   "current_focus": {
-    "title": "Portal Resource Provenance Recovery",
-    "description": "Migration 475 已正式修復 FORGE_SEED_LEDGER_DRIFT：Formal Portal 由 3 補齊為 5，Portal 1、2、3、4、170015007 全數 enabled，god2_research.portal_evidence 亦為 5 筆。Portal evidence-backed catalog gate 已完成；下一步仍須由完整 exact-current client 重建 portal_resource_links，並對其餘 route 執行 controlled real-client transition acceptance。",
-    "status": "in_progress"
+    "title": "Exact-current Client Upload / File Provenance Validation",
+    "description": "Migration 476 已正式恢復 Map/Portal staging provenance：client_map_resources=158、client_map_resource_identities=144、portal_resource_links=65；65 條 Portal links 為 44 Derived + 21 Candidate，全部 disabled、未綁定 runtime portal，未升格為 gameplay authority。AWS 端現階段工作已封板；下一工作節點為從家中上傳已確認可連 AWS 並可進入遊戲的完整 exact-current Client，再驗證檔案 hash、navigation、hierarchy、collision 與 portal references。",
+    "status": "waiting_for_exact_current_client_upload"
   },
   "verification": {
     "build": "passing",
@@ -328,13 +328,23 @@
     }
   ],
   "next_steps": [
-    "從完整 exact-current Windows 客戶端封存 Data2/Patch/Comm/gamedata.csvZ 與 Data2/map，驗證官方來源 hash",
-    "重建 client_map_resources、client_map_resource_identities 與 portal_resource_links，先產生 staging migration 與 semantic diff",
-    "完成 Portal resource unresolved-reference diff，對 Portal 1、2、3、4 執行 controlled real-client transition acceptance",
-    "Portal 170015007 保留既有台服實機 acceptance；68 條 legacy CAN-link candidates 在 trigger 未驗證前禁止匯入 gameplay",
-    "God2Patch Large-Over 1054 與 Launcher/Patch 前置流程保留為獨立研究線"
+    "從完整 exact-current Windows 客戶端封存 Data2/Patch/Comm/gamedata.csvZ 與 Data2/map，驗證官方來源與檔案 SHA-256",
+    "將 158 client map resources、144 identities 與 65 disabled portal links 對照 exact-current client，產生 semantic diff",
+    "完成 Map hierarchy、collision、navigation 與 Portal unresolved-reference diff；未驗證資料維持 disabled",
+    "對 Portal 1、2、3、4 執行 controlled real-client transition acceptance；Portal 170015007 保留既有台服實機 acceptance",
+    "68 條 legacy CAN-link candidates 維持 supplemental；trigger 未驗證前禁止匯入 gameplay"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-22",
+      "title": "等待完整 Exact-current Client 上傳",
+      "detail": "AWS 端 Migration 476、staging provenance 與 parity exporter 已完成。下一工作階段將從家中上傳已確認可連 AWS 並進入遊戲的完整 Client；上傳前不猜測缺失的檔案 provenance、navigation、collision 或 Portal trigger，也不啟用 65 條 staging portal links。"
+    },
+    {
+      "date": "2026-09-22",
+      "title": "Map / Portal Staging Provenance 正式恢復",
+      "detail": "完成正式 Runtime DB 備份並由 SqlFileMigrationRunner 套用 Migration 476。恢復 client_map_resources=158、client_map_resource_identities=144、portal_resource_links=65，以及對應 research evidence；65 條 Portal links 為 44 Derived + 21 Candidate，全部 disabled、portal_id=NULL、trigger Unknown，未進行 gameplay promotion。"
+    },
     {
       "date": "2026-09-22",
       "title": "Portal Forge Drift 正式修復",

@@ -1,6 +1,6 @@
 # God2 Official Parity Baseline
 
-Progress source: `2026-09-22T21:13:20+08:00`
+Progress source: `2026-09-22T22:08:48+08:00`
 
 Overall: **78%**
 
@@ -21,10 +21,10 @@ Overall: **78%**
 | 0 | Login | NOT_APPLICABLE | VERIFIED | VERIFIED | VERIFIED | Preserve regression coverage. |
 | 0 | Movement | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Bind validation to promoted collision evidence. |
 | 0 | World Entry | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Drive bootstrap from promoted World Content data. |
-| 1 | Map Content / Hierarchy / Collision | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Rebuild immutable exact-client resource identity provenance, then diff hierarchy, collision and portal references. |
+| 1 | Map Content / Hierarchy / Collision | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Validate the restored staging rows against exact-current client files, then diff hierarchy, collision and portal references. |
 | 1 | Monster / Spawn / AI / Drop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Complete template, spawn and drop provenance diff. |
 | 1 | NPC Spawn / Dialog | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Diff NPC templates, spawns, map bindings and dialogs. |
-| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Rebuild exact-client portal resource links, resolve route references, and run controlled real-client transition acceptance for the remaining evidence-backed routes. |
+| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Validate the 65 staging links against exact-current client files, resolve references, and run controlled real-client transition acceptance for Portal 1, 2, 3 and 4. |
 | 2 | Item / Inventory / Equipment | CANDIDATE | PARTIAL | BLOCKED | BLOCKED | Complete identity and bootstrap baseline before mutation. |
 | 2 | Merchant / Shop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Promote catalog, then verify isolated purchase and sale. |
 | 2 | Player Replication / AOI / Despawn | PARTIAL | PARTIAL | BLOCKED | BLOCKED | Run two-client AOI after World Content is stable. |
@@ -61,8 +61,8 @@ Overall: **78%**
 
 ### Map Content / Hierarchy / Collision
 
-- Proven scope: Migration 114 exact-current static catalog is complete at 144/144 with zero missing formal rows; 144 formal maps have dimensions and bounds. Map 557790525 is separately classified as a pre-existing verified runtime slice.
-- Gap: Client resource identities, portal resource links, hierarchy semantics and collision provenance are not restored. Static catalog completeness is not Taiwan live gameplay proof.
+- Proven scope: Migration 114 exact-current static catalog is complete at 144/144 with zero missing formal rows. Migration 476 restored 158 client map resources, 144 resource identities and 65 portal resource links as disabled pinned staging provenance. Map 557790525 remains a separately classified verified runtime slice.
+- Gap: Exact-current client file hashes and navigation provenance remain incomplete. The restored staging rows are disabled and are not Taiwan live gameplay proof; hierarchy semantics and collision provenance remain unresolved.
 - Authorities: `EXACT_CURRENT_STATIC`, `FORMAL_DB`, `LEGACY_SERVER`
 
 ### Monster / Spawn / AI / Drop
@@ -79,8 +79,8 @@ Overall: **78%**
 
 ### Portal / Map Transition
 
-- Proven scope: Migration 475 repaired the forged-seed drift. Formal DB now contains all 5 evidence-backed routes: Portal 1, 2, 3, 4 and 170015007; the portal evidence registry also contains 5 provenance rows.
-- Gap: Exact-client portal_resource_links remain empty. The 68 legacy CAN-link candidates remain TransferTriggerUnverified, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.
+- Proven scope: Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links: 44 Derived and 21 Candidate, with no runtime portal bindings.
+- Gap: The 65 staging links lack complete exact-client file provenance and verified triggers; all remain disabled and unbound. The 68 legacy CAN-link candidates remain supplemental, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.
 - Authorities: `TW_LIVE_CLIENT`, `AUTOMATED_ACCEPTANCE`, `FORMAL_DB`, `RUNTIME_CAPTURE`, `LEGACY_SERVER`
 
 ### Item / Inventory / Equipment
