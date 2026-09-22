@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-21
+Updated: 2026-09-22
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -291,6 +291,7 @@ Every recovered/implemented feature progresses through:
 
 ## Definition of Done
 Server V2 is not complete until the official client can reliably perform the major original gameplay systems, persistence survives restart, multiplayer state remains consistent, disconnects leave no ghosts, and classic regression tests remain green when custom content is enabled.
+
 ### 2026-09-22 - Data / Wire Baseline Checkpoint
 - Completed the first-pass Data Inventory Baseline across Item, Map/Portal, NPC/Shop/Dialog, Monster/Drop, Skill/Combat, Quest, Pet/Mount and Character systems.
 - Reclassified evidence authority so Client Static, Runtime Capture, Legacy Server, Third-Party, Derived, Formal DB and Live Client acceptance are not treated as interchangeable official-server facts.
@@ -300,3 +301,13 @@ Server V2 is not complete until the official client can reliably perform the maj
 - Began restructuring `docs/OfficialParityMatrix.md` into an evidence-aware Baseline/Gap Registry. The first patch updates provenance policy: Taiwan official evidence is primary; mainland official evidence is supplemental; Client Static/Runtime/Legacy/Third-Party/Derived evidence must retain provenance.
 - Overall project progress remains conservatively at 78%. Today's work increases baseline reliability and development direction rather than claiming additional gameplay completion.
 - Next: finish the Parity Matrix restructure and provenance sanity check, then select V2 implementation work from explicit Formal Data / Logic / Wire / Real Client gaps instead of single-NPC or single-packet development.
+
+### 2026-09-22 19:23 - Progress Sync
+- Compared with the previous sync commit `8cf775ff`; `refactor/server-v2` advanced 4 commits to `6fdf1424611b3f99421ac8178f3cfc4cca80eba1` (`fix: remove parity markdown trailing whitespace`).
+- New substantive work includes `feat: establish current client login compatibility`, the Data/Wire parity baseline checkpoint, and a machine-checkable Map parity baseline/exporter.
+- Map parity now records exact-current static official catalog 144/144 with Formal DB missing=0; the additional map `557790525` is explicitly classified as a pre-existing verified runtime slice rather than silently treated as static official data.
+- Evidence provenance is now a first-class gate. Client Static, Runtime Capture, Legacy Server, Third-Party, Derived, Formal DB and Live Client evidence are kept distinct; Battle current-build remains EvidenceBlocked rather than inferred.
+- No new current-head CI result exists: GitHub commit status for `6fdf1424` has `total_count=0`. The latest recorded local/AWS verification remains 262/262 passing (Core 7, Session 20, Protocol 107, Application 40, Network 75, Persistence Integration 13), so no new test pass is claimed for this head.
+- Overall progress remains 78%; no milestone percentage was increased solely because baseline/provenance quality improved.
+- Current blockers: exact-current client Map resource provenance, reconstruction of `client_map_resources` / `client_map_resource_identities` / `portal_resource_links`, Battle wire evidence, multiplayer replication/AOI/despawn evidence, and the independent God2Patch Large-Over 1054 / Launcher research line.
+- Next: archive exact-current `Data2/Patch/Comm/gamedata.csvZ` and `Data2/map`, rebuild Map resource identities into staging with semantic diff, rebuild portal resource links and unresolved-reference diff, then proceed to full Portal parity and real-client map-transition acceptance.
