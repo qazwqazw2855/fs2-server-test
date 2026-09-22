@@ -1,6 +1,6 @@
 {
   "schema": "God2PortalParityBaseline/1",
-  "generatedAtUtc": "2026-09-22T11:40:30Z",
+  "generatedAtUtc": "2026-09-22T13:11:26Z",
   "clientBuildId": "god2-opt-6b127086e0c0",
   "productionDatabaseTouched": false,
   "authorityBoundary": {
@@ -58,11 +58,35 @@
   ],
   "inventory": {
     "expectedEvidenceBackedRoutes": 5,
-    "formalRoutes": 3,
-    "enabledFormalRoutes": 3,
+    "formalRoutes": 5,
+    "enabledFormalRoutes": 5,
     "supplementalCandidates": 68
   },
   "formalRows": [
+    {
+      "portalId": 1,
+      "nameZhTw": "崑崙仙界三至雜貨店",
+      "sourceMapId": 1675308248,
+      "sourceX": 252,
+      "sourceY": 397,
+      "sourceRadius": 0,
+      "destinationMapId": 557790525,
+      "destinationX": 28,
+      "destinationY": 34,
+      "enabled": 1
+    },
+    {
+      "portalId": 2,
+      "nameZhTw": "雜貨店至崑崙仙界三",
+      "sourceMapId": 557790525,
+      "sourceX": 16,
+      "sourceY": 20,
+      "sourceRadius": 1,
+      "destinationMapId": 1675308248,
+      "destinationX": 196,
+      "destinationY": 139,
+      "enabled": 1
+    },
     {
       "portalId": 3,
       "nameZhTw": "鴻濛境至碧遊宮 1F",
@@ -101,21 +125,18 @@
     }
   ],
   "diff": {
-    "missingEvidenceBackedRoutes": [
-      1,
-      2
-    ],
-    "missingCount": 2,
+    "missingEvidenceBackedRoutes": [],
+    "missingCount": 0,
     "unexpectedFormalRoutes": [],
     "unexpectedCount": 0
   },
   "regression": {
-    "status": "BLOCKED",
-    "detail": "Portal 1 and 2 were published and evidence-gated by applied migrations but are absent from the current Formal DB.",
+    "status": "REPAIRED",
+    "detail": "The evidence-backed Portal catalog is complete; the forged-seed omission of Portal 1 and 2 has been repaired.",
     "cause": "FORGE_SEED_LEDGER_DRIFT"
   },
   "promotionGate": {
-    "evidenceBackedCatalogComplete": false,
+    "evidenceBackedCatalogComplete": true,
     "taiwanLiveRoutePresent": true,
     "supplementalImportAllowed": false,
     "resourceLinksRestored": false,

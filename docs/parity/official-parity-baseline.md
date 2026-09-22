@@ -1,6 +1,6 @@
 # God2 Official Parity Baseline
 
-Progress source: `2026-09-22T17:21:55+08:00`
+Progress source: `2026-09-22T21:13:20+08:00`
 
 Overall: **78%**
 
@@ -24,7 +24,7 @@ Overall: **78%**
 | 1 | Map Content / Hierarchy / Collision | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Rebuild immutable exact-client resource identity provenance, then diff hierarchy, collision and portal references. |
 | 1 | Monster / Spawn / AI / Drop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Complete template, spawn and drop provenance diff. |
 | 1 | NPC Spawn / Dialog | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Diff NPC templates, spawns, map bindings and dialogs. |
-| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Apply and verify Migration 475 for FORGE_SEED_LEDGER_DRIFT, then rebuild exact-client portal resource links and continue controlled real-client transition acceptance. |
+| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Rebuild exact-client portal resource links, resolve route references, and run controlled real-client transition acceptance for the remaining evidence-backed routes. |
 | 2 | Item / Inventory / Equipment | CANDIDATE | PARTIAL | BLOCKED | BLOCKED | Complete identity and bootstrap baseline before mutation. |
 | 2 | Merchant / Shop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Promote catalog, then verify isolated purchase and sale. |
 | 2 | Player Replication / AOI / Despawn | PARTIAL | PARTIAL | BLOCKED | BLOCKED | Run two-client AOI after World Content is stable. |
@@ -79,8 +79,8 @@ Overall: **78%**
 
 ### Portal / Map Transition
 
-- Proven scope: Five evidence-backed routes are registered. Portals 3, 4 and 170015007 are present and enabled in Formal DB; 170015007 has Taiwan original-client to V2 acceptance with CAS persistence.
-- Gap: Portal 1 and 2 were omitted by the forged canonical seed even though the migration ledger retained their applied migrations. Exact-client portal resource links and full trigger coverage remain incomplete.
+- Proven scope: Migration 475 repaired the forged-seed drift. Formal DB now contains all 5 evidence-backed routes: Portal 1, 2, 3, 4 and 170015007; the portal evidence registry also contains 5 provenance rows.
+- Gap: Exact-client portal_resource_links remain empty. The 68 legacy CAN-link candidates remain TransferTriggerUnverified, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.
 - Authorities: `TW_LIVE_CLIENT`, `AUTOMATED_ACCEPTANCE`, `FORMAL_DB`, `RUNTIME_CAPTURE`, `LEGACY_SERVER`
 
 ### Item / Inventory / Equipment

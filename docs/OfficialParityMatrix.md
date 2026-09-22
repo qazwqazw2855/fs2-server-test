@@ -71,7 +71,7 @@
 | formal current-build maps | 145 | 144 official catalog + Map 557790525 pre-existing verified runtime slice；144 enabled 且具 dimensions/bounds |
 | legacy map resource inventory | 69 | Supplemental only；ID namespace 不得直接與 Formal map_id join |
 | evidence-backed portal routes | 5 | Portal 1–4 來自 bounded runtime evidence；170015007 已通過台服原版 Client → V2 acceptance |
-| formal portal routes | 3 | Portal 3、4、170015007 現存且 enabled；Portal 1、2 缺失，列為 schema reconciliation regression |
+| formal portal routes | 5 | Portal 1、2、3、4、170015007 全數 enabled；Migration 475 已修復 FORGE_SEED_LEDGER_DRIFT |
 | legacy portal CAN-link candidates | 68 | Supplemental only；TransferTriggerUnverified，不得直接匯入 gameplay |
 | npcs | 319 | Recovered; spawn/dialog/merchant binding仍需驗證 |
 | monsters | 208 | Recovered; combat semantics仍需驗證 |
@@ -206,6 +206,6 @@ V2+ extension layer
 
 Map Data baseline 已完成第一個 machine-checkable gate：Migration 114 exact-current static catalog 為 144 筆，Formal DB 零缺漏；唯一額外列 557790525 已獨立分類為 Map 19 verified runtime slice。由於 AWS 尚無完整 exact-current client 的 `gamedata.csvZ` 與 navigation resources，`client_map_resources`、`client_map_resource_identities`、`portal_resource_links` 仍為 0，Full World Runtime promotion 維持 blocked。
 
-Portal Data baseline 已建立 machine-checkable gate：目前共有 5 條 evidence-backed route，Formal DB 現存 3 條；Portal 1、2 曾由已套用 migration 發布及 evidence-gate，但目前缺失，已固定分類為 `FORGE_SEED_LEDGER_DRIFT`。68 條 legacy CAN-link candidates 維持 supplemental，未驗證 trigger 前不得匯入。
+Portal Data baseline 已通過 machine-checkable catalog gate：5 條 evidence-backed route 已全部存在於 Formal DB，missing=0、unexpected=0；Migration 475 已修復 Portal 1、2 與 `god2_research.portal_evidence` 的 `FORGE_SEED_LEDGER_DRIFT`。`portal_resource_links` 仍待 exact-current client provenance 重建；68 條 legacy CAN-link candidates 維持 supplemental，未驗證 trigger 前不得匯入。
 
 `EvidenceBlocked` 代表「尚未取得足夠官方 wire 證據」，不是「資料不存在」。資料可先進 staging/runtime model，但未驗證的官方 Client wire 不得用猜測實作。

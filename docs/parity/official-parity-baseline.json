@@ -1,6 +1,6 @@
 {
   "schema": "God2OfficialParityBaseline/1",
-  "generatedFromProgressAt": "2026-09-22T17:21:55+08:00",
+  "generatedFromProgressAt": "2026-09-22T21:13:20+08:00",
   "policy": {
     "primaryAuthority": "TW_OFFICIAL",
     "supplementalAuthority": "CN_OFFICIAL_OR_PUBLIC_BETA",
@@ -69,11 +69,35 @@
     "clientBuildId": "god2-opt-6b127086e0c0",
     "inventory": {
       "expectedEvidenceBackedRoutes": 5,
-      "formalRoutes": 3,
-      "enabledFormalRoutes": 3,
+      "formalRoutes": 5,
+      "enabledFormalRoutes": 5,
       "supplementalCandidates": 68
     },
     "formalRows": [
+      {
+        "portalId": 1,
+        "nameZhTw": "崑崙仙界三至雜貨店",
+        "sourceMapId": 1675308248,
+        "sourceX": 252,
+        "sourceY": 397,
+        "sourceRadius": 0,
+        "destinationMapId": 557790525,
+        "destinationX": 28,
+        "destinationY": 34,
+        "enabled": 1
+      },
+      {
+        "portalId": 2,
+        "nameZhTw": "雜貨店至崑崙仙界三",
+        "sourceMapId": 557790525,
+        "sourceX": 16,
+        "sourceY": 20,
+        "sourceRadius": 1,
+        "destinationMapId": 1675308248,
+        "destinationX": 196,
+        "destinationY": 139,
+        "enabled": 1
+      },
       {
         "portalId": 3,
         "nameZhTw": "鴻濛境至碧遊宮 1F",
@@ -112,21 +136,18 @@
       }
     ],
     "diff": {
-      "missingEvidenceBackedRoutes": [
-        1,
-        2
-      ],
-      "missingCount": 2,
+      "missingEvidenceBackedRoutes": [],
+      "missingCount": 0,
       "unexpectedFormalRoutes": [],
       "unexpectedCount": 0
     },
     "regression": {
-      "status": "BLOCKED",
-      "detail": "Portal 1 and 2 were published and evidence-gated by applied migrations but are absent from the current Formal DB.",
+      "status": "REPAIRED",
+      "detail": "The evidence-backed Portal catalog is complete; the forged-seed omission of Portal 1 and 2 has been repaired.",
       "cause": "FORGE_SEED_LEDGER_DRIFT"
     },
     "promotionGate": {
-      "evidenceBackedCatalogComplete": false,
+      "evidenceBackedCatalogComplete": true,
       "taiwanLiveRoutePresent": true,
       "supplementalImportAllowed": false,
       "resourceLinksRestored": false,
@@ -167,8 +188,8 @@
     "overallPercent": 78,
     "phase": "M2 正服 Baseline / Gap Parity",
     "currentFocus": {
-      "title": "Portal Forge Drift Repair + Map Provenance Recovery",
-      "description": "Portal parity baseline 已完成並確認根因：forge seed 只保留 Portal 3、4、170015007，卻保留 migration ledger，造成 Portal 1、2 與 god2_research.portal_evidence 遺失。Migration 475 已完成 fail-closed、idempotence、negative 與 positive integration test；正式 runtime 尚未套用。68 條 legacy CAN-link candidates 維持 supplemental，不直接匯入。",
+      "title": "Portal Resource Provenance Recovery",
+      "description": "Migration 475 已正式修復 FORGE_SEED_LEDGER_DRIFT：Formal Portal 由 3 補齊為 5，Portal 1、2、3、4、170015007 全數 enabled，god2_research.portal_evidence 亦為 5 筆。Portal evidence-backed catalog gate 已完成；下一步仍須由完整 exact-current client 重建 portal_resource_links，並對其餘 route 執行 controlled real-client transition acceptance。",
       "status": "in_progress"
     }
   },
@@ -307,9 +328,9 @@
         "RUNTIME_CAPTURE",
         "LEGACY_SERVER"
       ],
-      "scope": "Five evidence-backed routes are registered. Portals 3, 4 and 170015007 are present and enabled in Formal DB; 170015007 has Taiwan original-client to V2 acceptance with CAS persistence.",
-      "gap": "Portal 1 and 2 were omitted by the forged canonical seed even though the migration ledger retained their applied migrations. Exact-client portal resource links and full trigger coverage remain incomplete.",
-      "nextGate": "Apply and verify Migration 475 for FORGE_SEED_LEDGER_DRIFT, then rebuild exact-client portal resource links and continue controlled real-client transition acceptance."
+      "scope": "Migration 475 repaired the forged-seed drift. Formal DB now contains all 5 evidence-backed routes: Portal 1, 2, 3, 4 and 170015007; the portal evidence registry also contains 5 provenance rows.",
+      "gap": "Exact-client portal_resource_links remain empty. The 68 legacy CAN-link candidates remain TransferTriggerUnverified, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.",
+      "nextGate": "Rebuild exact-client portal resource links, resolve route references, and run controlled real-client transition acceptance for the remaining evidence-backed routes."
     },
     {
       "id": "item-inventory-equipment",
