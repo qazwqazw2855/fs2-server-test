@@ -1,6 +1,7 @@
 # God2 Official Parity Baseline
 
-Progress source: `2026-09-22T16:49:05+08:00`  
+Progress source: `2026-09-22T16:49:05+08:00`
+
 Overall: **78%**
 
 ## Evidence-set boundary
