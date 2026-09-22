@@ -1,0 +1,60 @@
+{
+  "schema": "God2MapParityBaseline/1",
+  "generatedAtUtc": "2026-09-22T08:50:42Z",
+  "productionDatabaseTouched": false,
+  "clientBuildId": "god2-opt-6b127086e0c0",
+  "authorityBoundary": {
+    "officialCatalog": "EXACT_CURRENT_STATIC_CATALOG",
+    "runtimeSlice": "PREEXISTING_VERIFIED_RUNTIME_SLICE",
+    "legacyInventory": "SUPPLEMENTAL_RESOURCE_INVENTORY",
+    "rule": "Legacy resource IDs and formal map IDs use different namespaces and must not be directly joined."
+  },
+  "sources": {
+    "officialCatalog": {
+      "path": "database/schema/114_publish_official_map_catalog.sql",
+      "decodedSource": "Data2/Patch/Comm/gamedata.csvZ:Map_City_Coordniate",
+      "sourceSha256": "c3bc7ebe8b2e7ea346c376dee25b3b07f90e82208d14f8e26f5feded18bc1e1f",
+      "migrationSha256": "bf6f02191dd2313f95c366eb96cd81135fe5b783d7167502131fefd01826881e"
+    },
+    "legacyInventory": {
+      "path": "db/imports/official/maps/maps.official.json",
+      "sha256": "25445c189111099168e392ca723b9700461d55ad4921e813e471e66070aec0f1",
+      "recordCount": 69
+    }
+  },
+  "inventory": {
+    "expectedOfficialMaps": 144,
+    "formalCurrentBuildMaps": 145,
+    "enabledMaps": 144,
+    "disabledMaps": 1,
+    "mapsWithDimensions": 144,
+    "mapsWithBounds": 144
+  },
+  "diff": {
+    "missingFromFormal": [],
+    "missingCount": 0,
+    "extraInFormal": [
+      557790525
+    ],
+    "extraCount": 1,
+    "knownExtraClassification": {
+      "mapId": 557790525,
+      "name": "Island01/indoor/groceryL",
+      "authority": "PREEXISTING_VERIFIED_RUNTIME_SLICE",
+      "note": "Map 19 grocery interior; not part of Migration 114 official world-map catalog."
+    }
+  },
+  "provenanceLinks": {
+    "clientMapResources": 0,
+    "clientMapResourceIdentities": 0,
+    "portalResourceLinks": 0,
+    "status": "BLOCKED"
+  },
+  "promotionGate": {
+    "catalogComplete": true,
+    "extraRowsClassified": true,
+    "provenanceRestored": false,
+    "readyForFullWorldRuntimePromotion": false
+  },
+  "nextGate": "Rebuild immutable client resource and identity provenance from the exact current client, then diff collision and portal references."
+}

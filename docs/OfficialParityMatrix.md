@@ -23,7 +23,7 @@
 
 | 正服系統 | 舊服/來源資料 | V2 目標 | 現況 |
 | --- | --- | --- | --- |
-| Map | Maps / map runtime | maps + world runtime | 🟡 盤點中 |
+| Map | exact-current gamedata + navigation resources；legacy runtime supplemental | maps + world runtime | 🟡 Data PARTIAL：官方 catalog 144/144、Formal 無缺漏；resource provenance 待重建 |
 | Map hierarchy | region/area/town/city/dungeon/map | Map metadata / hierarchy | 🟡 |
 | Collision | map movement/collision data | movement bounds + collision | 🟡 |
 | Portal | map portal data | portals + WorldMapTransition | 🟡 |
@@ -67,7 +67,9 @@
 
 | 類別 | 目前可核對筆數 | 狀態 |
 | --- | ---: | --- |
-| maps | 69 | Recovered; numeric map identity仍需交叉驗證 |
+| official map catalog | 144 | Exact-current static；Migration 114 與 Formal DB 零缺漏 |
+| formal current-build maps | 145 | 144 official catalog + Map 557790525 pre-existing verified runtime slice；144 enabled 且具 dimensions/bounds |
+| legacy map resource inventory | 69 | Supplemental only；ID namespace 不得直接與 Formal map_id join |
 | portals | 68 | Recovered; transfer trigger仍需驗證 |
 | npcs | 319 | Recovered; spawn/dialog/merchant binding仍需驗證 |
 | monsters | 208 | Recovered; combat semantics仍需驗證 |
@@ -199,5 +201,7 @@ V2+ extension layer
 ## 7. 現階段結論
 
 目前 Server V2 已經證明 Login → World → Movement → Portal → NPC interaction → Logout 的核心閉環可運作；下一階段不再以單一 NPC 或單一封包作為主要開發單位，而是以 **Map / NPC / Monster / Item / Skill / Quest / Battle / Player / Online World** 等完整系統為單位建立正服 parity。
+
+Map Data baseline 已完成第一個 machine-checkable gate：Migration 114 exact-current static catalog 為 144 筆，Formal DB 零缺漏；唯一額外列 557790525 已獨立分類為 Map 19 verified runtime slice。由於 AWS 尚無完整 exact-current client 的 `gamedata.csvZ` 與 navigation resources，`client_map_resources`、`client_map_resource_identities`、`portal_resource_links` 仍為 0，Full World Runtime promotion 維持 blocked。
 
 `EvidenceBlocked` 代表「尚未取得足夠官方 wire 證據」，不是「資料不存在」。資料可先進 staging/runtime model，但未驗證的官方 Client wire 不得用猜測實作。

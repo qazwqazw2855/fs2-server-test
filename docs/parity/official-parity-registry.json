@@ -1,0 +1,278 @@
+{
+  "schema": "God2OfficialParityRegistry/1",
+  "policy": {
+    "primaryAuthority": "TW_OFFICIAL",
+    "supplementalAuthority": "CN_OFFICIAL_OR_PUBLIC_BETA",
+    "rules": [
+      "Taiwan official evidence has priority.",
+      "Supplemental evidence must retain provenance.",
+      "Client static, runtime capture, legacy server, third-party, derived and Formal DB evidence are not interchangeable.",
+      "Formal DB presence does not prove Taiwan official authority.",
+      "No protocol guessing without official evidence.",
+      "No V2 promotion before its baseline and promotion gate exist."
+    ]
+  },
+  "systems": [
+    {
+      "id": "login",
+      "name": "Login",
+      "priority": 0,
+      "data": "NOT_APPLICABLE",
+      "logic": "VERIFIED",
+      "wire": "VERIFIED",
+      "realClient": "VERIFIED",
+      "authorities": [
+        "TW_LIVE_CLIENT",
+        "AUTOMATED_ACCEPTANCE"
+      ],
+      "scope": "19/19/6 handshake, 208-byte LoginRequest and authenticated session path.",
+      "gap": "Failure variants and broader account-policy parity remain outside scope.",
+      "nextGate": "Preserve regression coverage."
+    },
+    {
+      "id": "character-list-select",
+      "name": "Character List / Select",
+      "priority": 0,
+      "data": "PARTIAL",
+      "logic": "VERIFIED",
+      "wire": "VERIFIED",
+      "realClient": "VERIFIED",
+      "authorities": [
+        "TW_LIVE_CLIENT",
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB"
+      ],
+      "scope": "List, server selection, ownership reservation and World transfer.",
+      "gap": "Create, delete and rename live-client acceptance are not promoted.",
+      "nextGate": "Capture lifecycle variants only when selected as the active gap."
+    },
+    {
+      "id": "world-entry",
+      "name": "World Entry",
+      "priority": 0,
+      "data": "PARTIAL",
+      "logic": "VERIFIED",
+      "wire": "VERIFIED",
+      "realClient": "VERIFIED",
+      "authorities": [
+        "TW_LIVE_CLIENT",
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB"
+      ],
+      "scope": "10/10 World handshake, 1772-byte bootstrap and live entry into map 170015000.",
+      "gap": "Bootstrap content is not a complete official-world snapshot.",
+      "nextGate": "Drive bootstrap from promoted World Content data."
+    },
+    {
+      "id": "movement",
+      "name": "Movement",
+      "priority": 0,
+      "data": "PARTIAL",
+      "logic": "VERIFIED",
+      "wire": "VERIFIED",
+      "realClient": "VERIFIED",
+      "authorities": [
+        "TW_LIVE_CLIENT",
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB"
+      ],
+      "scope": "Sequence rejection, optional bounds and persistence.",
+      "gap": "Collision rules are incomplete for the full map catalog.",
+      "nextGate": "Bind validation to promoted collision evidence."
+    },
+    {
+      "id": "portal",
+      "name": "Portal / Map Transition",
+      "priority": 1,
+      "data": "PARTIAL",
+      "logic": "VERIFIED",
+      "wire": "VERIFIED",
+      "realClient": "PARTIAL",
+      "authorities": [
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB",
+        "RUNTIME_CAPTURE"
+      ],
+      "scope": "Promoted 170015000 to 170015007 transition and CAS persistence.",
+      "gap": "Full portal catalog and trigger rules are not promoted.",
+      "nextGate": "Generate complete portal inventory and promote evidence-backed rows."
+    },
+    {
+      "id": "map-content",
+      "name": "Map Content / Hierarchy / Collision",
+      "priority": 1,
+      "data": "PARTIAL",
+      "logic": "PARTIAL",
+      "wire": "PARTIAL",
+      "realClient": "PARTIAL",
+      "authorities": [
+        "EXACT_CURRENT_STATIC",
+        "FORMAL_DB",
+        "LEGACY_SERVER"
+      ],
+      "scope": "Migration 114 exact-current static catalog is complete at 144/144 with zero missing formal rows; 144 formal maps have dimensions and bounds. Map 557790525 is separately classified as a pre-existing verified runtime slice.",
+      "gap": "Client resource identities, portal resource links, hierarchy semantics and collision provenance are not restored. Static catalog completeness is not Taiwan live gameplay proof.",
+      "nextGate": "Rebuild immutable exact-client resource identity provenance, then diff hierarchy, collision and portal references."
+    },
+    {
+      "id": "npc-spawn-dialog",
+      "name": "NPC Spawn / Dialog",
+      "priority": 1,
+      "data": "PARTIAL",
+      "logic": "PARTIAL",
+      "wire": "PARTIAL",
+      "realClient": "PARTIAL",
+      "authorities": [
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB",
+        "RUNTIME_CAPTURE"
+      ],
+      "scope": "Pinned NPC 3793 spawn, dialog, selector, release and reopen.",
+      "gap": "Map 170015000 returned zero NPC snapshot rows; full NPC coverage is absent.",
+      "nextGate": "Diff NPC templates, spawns, map bindings and dialogs."
+    },
+    {
+      "id": "monster-world",
+      "name": "Monster / Spawn / AI / Drop",
+      "priority": 1,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "EXACT_CURRENT_STATIC",
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL"
+      ],
+      "scope": "Template and evidence catalogs exist.",
+      "gap": "Spawn, AI, combat, drop and replication are unverified.",
+      "nextGate": "Complete template, spawn and drop provenance diff."
+    },
+    {
+      "id": "merchant",
+      "name": "Merchant / Shop",
+      "priority": 2,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "RUNTIME_CAPTURE",
+        "FORMAL_DB",
+        "CN_SUPPLEMENTAL"
+      ],
+      "scope": "Capture-specific open, purchase, sale and close candidates exist.",
+      "gap": "Catalog, identity, price, wallet and inventory mutation gates are incomplete.",
+      "nextGate": "Promote catalog, then verify isolated purchase and sale."
+    },
+    {
+      "id": "item-inventory-equipment",
+      "name": "Item / Inventory / Equipment",
+      "priority": 2,
+      "data": "CANDIDATE",
+      "logic": "PARTIAL",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "EXACT_CURRENT_STATIC",
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL"
+      ],
+      "scope": "Read-only inventory, stack rules and selected static permissions exist.",
+      "gap": "Mutation, equipment effects, economy and client update wire are blocked.",
+      "nextGate": "Complete identity and bootstrap baseline before mutation."
+    },
+    {
+      "id": "online-world",
+      "name": "Player Replication / AOI / Despawn",
+      "priority": 2,
+      "data": "PARTIAL",
+      "logic": "PARTIAL",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "AUTOMATED_ACCEPTANCE",
+        "FORMAL_DB"
+      ],
+      "scope": "Cleanup, presence foundations and ownership behavior exist.",
+      "gap": "Official entity mapping and two-client acceptance are missing.",
+      "nextGate": "Run two-client AOI after World Content is stable."
+    },
+    {
+      "id": "quest",
+      "name": "Quest",
+      "priority": 3,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL",
+        "RUNTIME_CAPTURE"
+      ],
+      "scope": "Catalog and interaction candidates exist.",
+      "gap": "Bindings, objectives, transitions, rewards and mutation are not promoted.",
+      "nextGate": "Promote catalog and NPC bindings first."
+    },
+    {
+      "id": "skill-combat",
+      "name": "Skill / Combat / Status",
+      "priority": 3,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "EXACT_CURRENT_STATIC",
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL",
+        "RUNTIME_CAPTURE"
+      ],
+      "scope": "Static identities and architecture foundations exist.",
+      "gap": "No promoted battle sequence, typed HP/MP mutation, formula or production serializer.",
+      "nextGate": "Capture a controlled battle closed loop."
+    },
+    {
+      "id": "pet-mount-immortal",
+      "name": "Pet / Mount / Immortal",
+      "priority": 4,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "EXACT_CURRENT_STATIC",
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL",
+        "THIRD_PARTY"
+      ],
+      "scope": "Identity, presentation and selected growth evidence exist.",
+      "gap": "Runtime state, progression, battle, equipment and wire are unverified.",
+      "nextGate": "Separate official identity from supplemental growth evidence."
+    },
+    {
+      "id": "social-economy",
+      "name": "Party / Guild / Chat / Trade / Mail / Social",
+      "priority": 4,
+      "data": "CANDIDATE",
+      "logic": "BLOCKED",
+      "wire": "BLOCKED",
+      "realClient": "BLOCKED",
+      "authorities": [
+        "FORMAL_DB",
+        "LEGACY_SERVER",
+        "CN_SUPPLEMENTAL",
+        "RUNTIME_CAPTURE"
+      ],
+      "scope": "Historical and candidate evidence exists.",
+      "gap": "Current wire and persistent multiplayer behavior are not promoted.",
+      "nextGate": "Defer until core world and character mutation are stable."
+    }
+  ]
+}
