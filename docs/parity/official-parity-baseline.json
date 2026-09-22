@@ -168,7 +168,7 @@
     "phase": "M2 正服 Baseline / Gap Parity",
     "currentFocus": {
       "title": "Portal Forge Drift Repair + Map Provenance Recovery",
-      "description": "Portal parity baseline 已完成並確認根因：forge seed 只保留 Portal 3、4、170015007，卻保留 migration ledger，造成 Portal 1、2 與 god2_research.portal_evidence 遺失。Migration 473 已完成 fail-closed、idempotence、negative 與 positive integration test；正式 runtime 尚未套用。68 條 legacy CAN-link candidates 維持 supplemental，不直接匯入。",
+      "description": "Portal parity baseline 已完成並確認根因：forge seed 只保留 Portal 3、4、170015007，卻保留 migration ledger，造成 Portal 1、2 與 god2_research.portal_evidence 遺失。Migration 475 已完成 fail-closed、idempotence、negative 與 positive integration test；正式 runtime 尚未套用。68 條 legacy CAN-link candidates 維持 supplemental，不直接匯入。",
       "status": "in_progress"
     }
   },
@@ -309,7 +309,7 @@
       ],
       "scope": "Five evidence-backed routes are registered. Portals 3, 4 and 170015007 are present and enabled in Formal DB; 170015007 has Taiwan original-client to V2 acceptance with CAS persistence.",
       "gap": "Portal 1 and 2 were omitted by the forged canonical seed even though the migration ledger retained their applied migrations. Exact-client portal resource links and full trigger coverage remain incomplete.",
-      "nextGate": "Apply and verify Migration 473 for FORGE_SEED_LEDGER_DRIFT, then rebuild exact-client portal resource links and continue controlled real-client transition acceptance."
+      "nextGate": "Apply and verify Migration 475 for FORGE_SEED_LEDGER_DRIFT, then rebuild exact-client portal resource links and continue controlled real-client transition acceptance."
     },
     {
       "id": "item-inventory-equipment",

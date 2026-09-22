@@ -75,7 +75,7 @@ public sealed class PortalEvidenceGateMigrationTests
             root,
             "database",
             "schema",
-            "473_repair_forge_portal_catalog_and_evidence_drift.sql");
+            "475_repair_forge_portal_catalog_and_evidence_drift.sql");
         var sql = File.ReadAllText(path);
 
         Assert.Contains("CREATE DATABASE IF NOT EXISTS `god2_research`", sql, StringComparison.Ordinal);
