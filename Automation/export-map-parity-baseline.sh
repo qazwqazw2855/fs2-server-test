@@ -7,6 +7,7 @@ cd "$repo_root"
 migration="database/schema/114_publish_official_map_catalog.sql"
 legacy="db/imports/official/maps/maps.official.json"
 exact_client_manifest="db/imports/official/maps/God2_exact_current_map_sha256.csv"
+hierarchy_evidence="docs/parity/map-hierarchy-exact-current.json"
 output_json="docs/parity/map.json"
 output_md="docs/parity/map.md"
 container="${GOD2_DB_CONTAINER:-god2-runtime-db-test}"
@@ -18,6 +19,7 @@ for command_name in git jq awk comm sha256sum sudo docker; do
 done
 
 mkdir -p docs/parity
+test -f "$hierarchy_evidence" || { echo "Missing hierarchy evidence: $hierarchy_evidence" >&2; exit 1; }
 work_dir="$(mktemp -d)"
 trap 'rm -rf "$work_dir"' EXIT
 
@@ -181,6 +183,7 @@ jq -n \
   --arg legacySha256 "$legacy_hash" \
   --arg exactClientManifestSha256 "$exact_client_manifest_hash" \
   --slurpfile exactClientProvenance "$work_dir/exact-client-provenance.json" \
+  --slurpfile hierarchyEvidence "$hierarchy_evidence" \
   --argjson expectedMapCount "$migration_count" \
   --argjson formalMapCount "$formal_count" \
   --argjson enabledMapCount "$enabled_count" \
@@ -224,6 +227,8 @@ jq -n \
         sha256: $exactClientManifestSha256
       }
     },
+    hierarchyEvidence: $hierarchyEvidence[0],
+
     exactClientFileProvenance: $exactClientProvenance[0],
     inventory: {
       expectedOfficialMaps: $expectedMapCount,

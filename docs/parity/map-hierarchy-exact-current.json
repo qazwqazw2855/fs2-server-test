@@ -1,0 +1,3535 @@
+{
+  "schemaVersion": 1,
+  "evidenceType": "EXACT_CURRENT_OFFICIAL_MAP_HIERARCHY_EVIDENCE",
+  "authority": {
+    "sourcePath": "Data2/Patch/Comm/gamedata.csvZ",
+    "section": "Map_City_Coordniate",
+    "sourceSha256": "f8b0762f111c532f1cbb38d66f06b6a4c6c685c278a5dcc98fbaead780e2376f",
+    "declaredCount": 144,
+    "exportedCount": 144,
+    "hierarchyPolicy": "Grouping and category are official evidence; parent-child relationships are not inferred."
+  },
+  "categorySemantics": {
+    "0": "Official map category 0; semantic parent relationship not inferred.",
+    "1": "Official map category 1; ClientMapId=0 is recorded as a root candidate only.",
+    "2": "Official map category 2; semantic parent relationship not inferred.",
+    "3": "Official map category 3; semantic parent relationship not inferred."
+  },
+  "areas": [
+    {
+      "clientAreaId": 1,
+      "regionName": "南方",
+      "rowCount": 9,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 4
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 4
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "圣樵原野",
+          "resourcePath": "South001\\South001.mdt",
+          "worldMapX": 777,
+          "worldMapY": 945,
+          "floorCount": 1,
+          "sourceRow": 22755,
+          "sourceSectionRowIndex": 0
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22755,
+          "sectionRowIndex": 0,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 777,
+          "worldMapY": 945,
+          "displayName": "圣樵原野",
+          "fieldMusic": "data2\\Music\\Field\\Field_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\South001.mdt",
+          "worldWidth": 777,
+          "worldHeight": 945,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22756,
+          "sectionRowIndex": 1,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 0,
+          "clientMapId": 12,
+          "worldMapX": 230,
+          "worldMapY": 211,
+          "displayName": "葛城",
+          "fieldMusic": "data2\\Music\\city\\City_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\cityS01\\cityS01.mdt",
+          "worldWidth": 294,
+          "worldHeight": 294,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22757,
+          "sectionRowIndex": 2,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 0,
+          "clientMapId": 81,
+          "worldMapX": 277,
+          "worldMapY": 685,
+          "displayName": "南原部落",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\cityS03\\cityS03.mdt",
+          "worldWidth": 189,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22758,
+          "sectionRowIndex": 3,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 0,
+          "clientMapId": 71,
+          "worldMapX": 570,
+          "worldMapY": 477,
+          "displayName": "暮月聚落",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\cityS05\\cityS05.mdt",
+          "worldWidth": 189,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22759,
+          "sectionRowIndex": 4,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 0,
+          "clientMapId": 93,
+          "worldMapX": 230,
+          "worldMapY": 231,
+          "displayName": "春满楼",
+          "fieldMusic": "data2\\Music\\city\\City_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\cityS10\\cityS10.mdt",
+          "worldWidth": 126,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22760,
+          "sectionRowIndex": 5,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 3,
+          "clientMapId": 80,
+          "worldMapX": 723,
+          "worldMapY": 619,
+          "displayName": "五魔岗",
+          "fieldMusic": "data2\\Music\\maze\\maze_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\mazeS03\\mazeS03.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "五魔岗"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22761,
+          "sectionRowIndex": 6,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 3,
+          "clientMapId": 56,
+          "worldMapX": 604,
+          "worldMapY": 215,
+          "displayName": "攀龙山道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\roadS01\\roadS01.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "攀龙山道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22762,
+          "sectionRowIndex": 7,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 3,
+          "clientMapId": 64,
+          "worldMapX": 628,
+          "worldMapY": 401,
+          "displayName": "登岚山道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\roadS02\\roadS02.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "登岚山道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22763,
+          "sectionRowIndex": 8,
+          "regionName": "南方",
+          "clientAreaId": 1,
+          "mapCategory": 3,
+          "clientMapId": 79,
+          "worldMapX": 728,
+          "worldMapY": 610,
+          "displayName": "五魔岗山道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South001\\roadS03\\roadS03.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "五魔岗山道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 2,
+      "regionName": "鸿蒙境",
+      "rowCount": 6,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 1
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 4
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "鸿蒙境",
+          "resourcePath": "Island01\\Island01.mdt",
+          "worldMapX": 735,
+          "worldMapY": 777,
+          "floorCount": 1,
+          "sourceRow": 22813,
+          "sourceSectionRowIndex": 58
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22813,
+          "sectionRowIndex": 58,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 735,
+          "worldMapY": 777,
+          "displayName": "鸿蒙境",
+          "fieldMusic": "data2\\Music\\Field\\Field_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\Island01.mdt",
+          "worldWidth": 735,
+          "worldHeight": 777,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22814,
+          "sectionRowIndex": 59,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 394,
+          "worldMapY": 96,
+          "displayName": "地烈黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\Cave02\\cave02.mdt",
+          "worldWidth": 126,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "地烈黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22815,
+          "sectionRowIndex": 60,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 3,
+          "clientMapId": 108,
+          "worldMapX": 641,
+          "worldMapY": 456,
+          "displayName": "金光黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\Cave03\\cave03.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "金光黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22816,
+          "sectionRowIndex": 61,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 3,
+          "clientMapId": 32,
+          "worldMapX": 119,
+          "worldMapY": 287,
+          "displayName": "化血黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\Cave04\\cave04.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "化血黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22817,
+          "sectionRowIndex": 62,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 0,
+          "clientMapId": 4,
+          "worldMapX": 477,
+          "worldMapY": 209,
+          "displayName": "枫华镇",
+          "fieldMusic": "data2\\Music\\city\\city_I1.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\CityI1\\cityi1.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22818,
+          "sectionRowIndex": 63,
+          "regionName": "鸿蒙境",
+          "clientAreaId": 2,
+          "mapCategory": 3,
+          "clientMapId": 43,
+          "worldMapX": 303,
+          "worldMapY": 429,
+          "displayName": "碧游宫",
+          "fieldMusic": "data2\\Music\\maze\\maze_I05.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island01\\Maze05\\maze05.mdt",
+          "worldWidth": 367,
+          "worldHeight": 364,
+          "floorCount": 2,
+          "floorNames": [
+            "碧游宫 1F",
+            "碧游宫 2F",
+            "碧游宫 3F",
+            "碧游宫 4F",
+            "碧游宫 5F",
+            "碧游宫 6F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 3,
+      "regionName": "截仙遗址",
+      "rowCount": 7,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 1
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 5
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "截仙遗址",
+          "resourcePath": "Island02\\Island02.mdt",
+          "worldMapX": 735,
+          "worldMapY": 483,
+          "floorCount": 1,
+          "sourceRow": 22819,
+          "sourceSectionRowIndex": 64
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22819,
+          "sectionRowIndex": 64,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 735,
+          "worldMapY": 483,
+          "displayName": "截仙遗址",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Island02.mdt",
+          "worldWidth": 735,
+          "worldHeight": 483,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22820,
+          "sectionRowIndex": 65,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 409,
+          "worldMapY": 197,
+          "displayName": "地牢",
+          "fieldMusic": "data2\\Music\\Bout\\Bout01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Jail00\\jail00.mdt",
+          "worldWidth": 84,
+          "worldHeight": 84,
+          "floorCount": 1,
+          "floorNames": [
+            "地牢"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22821,
+          "sectionRowIndex": 66,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 3,
+          "clientMapId": 5,
+          "worldMapX": 674,
+          "worldMapY": 286,
+          "displayName": "红沙黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Cave05\\cave05.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "红沙黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22822,
+          "sectionRowIndex": 67,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 3,
+          "clientMapId": 7,
+          "worldMapX": 397,
+          "worldMapY": 422,
+          "displayName": "落魂黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Cave06\\cave06.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "落魂黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22823,
+          "sectionRowIndex": 68,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 174,
+          "worldMapY": 153,
+          "displayName": "风吼黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Cave07\\cave07.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [
+            "风吼黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22824,
+          "sectionRowIndex": 69,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 221,
+          "worldMapY": 60,
+          "displayName": "废墟洞穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\Cave11\\cave11.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "罗浮洞",
+            "天云洞",
+            "圣灵洞",
+            "潮音洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22825,
+          "sectionRowIndex": 70,
+          "regionName": "截仙遗址",
+          "clientAreaId": 3,
+          "mapCategory": 0,
+          "clientMapId": 10,
+          "worldMapX": 551,
+          "worldMapY": 317,
+          "displayName": "圣灵聚落",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island02\\CityI3\\cityi3.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 4,
+      "regionName": "参天林",
+      "rowCount": 8,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 2
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 5
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "参天林",
+          "resourcePath": "Island03\\Island03.mdt",
+          "worldMapX": 420,
+          "worldMapY": 1092,
+          "floorCount": 1,
+          "sourceRow": 22826,
+          "sourceSectionRowIndex": 71
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22826,
+          "sectionRowIndex": 71,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 420,
+          "worldMapY": 1092,
+          "displayName": "参天林",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Island03.mdt",
+          "worldWidth": 420,
+          "worldHeight": 1092,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22827,
+          "sectionRowIndex": 72,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 3,
+          "clientMapId": 12,
+          "worldMapX": 267,
+          "worldMapY": 637,
+          "displayName": "天绝黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Cave01\\cave01.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [
+            "天绝黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22828,
+          "sectionRowIndex": 73,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 3,
+          "clientMapId": 11,
+          "worldMapX": 203,
+          "worldMapY": 406,
+          "displayName": "寒冰黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Cave08\\cave08.mdt",
+          "worldWidth": 168,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [
+            "寒冰黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22829,
+          "sectionRowIndex": 74,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 91,
+          "worldMapY": 187,
+          "displayName": "烈焰黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Cave09\\cave09.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [
+            "烈焰黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22830,
+          "sectionRowIndex": 75,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 3,
+          "clientMapId": 13,
+          "worldMapX": 252,
+          "worldMapY": 744,
+          "displayName": "红水黑洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Cave10\\cave10.mdt",
+          "worldWidth": 168,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [
+            "红水黑洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22831,
+          "sectionRowIndex": 76,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 193,
+          "worldMapY": 751,
+          "displayName": "参天林",
+          "fieldMusic": "data2\\Music\\Bout\\Bout05.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\Cave12\\cave12.mdt",
+          "worldWidth": 273,
+          "worldHeight": 273,
+          "floorCount": 1,
+          "floorNames": [
+            "参天林"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22832,
+          "sectionRowIndex": 77,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 0,
+          "clientMapId": 3,
+          "worldMapX": 318,
+          "worldMapY": 363,
+          "displayName": "昆仑仙界",
+          "fieldMusic": "data2\\Music\\city\\city_I2.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\CityI2\\cityi2.mdt",
+          "worldWidth": 252,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22833,
+          "sectionRowIndex": 78,
+          "regionName": "参天林",
+          "clientAreaId": 4,
+          "mapCategory": 0,
+          "clientMapId": 15,
+          "worldMapX": 373,
+          "worldMapY": 704,
+          "displayName": "巨木树洞",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Island03\\CityI4\\cityi4.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 5,
+      "regionName": "南方",
+      "rowCount": 9,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 2
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 6
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "雨龙森林",
+          "resourcePath": "South002\\South002.mdt",
+          "worldMapX": 903,
+          "worldMapY": 609,
+          "floorCount": 1,
+          "sourceRow": 22764,
+          "sourceSectionRowIndex": 9
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22764,
+          "sectionRowIndex": 9,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 903,
+          "worldMapY": 609,
+          "displayName": "雨龙森林",
+          "fieldMusic": "data2\\Music\\Field\\Field_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\South002.mdt",
+          "worldWidth": 903,
+          "worldHeight": 609,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22765,
+          "sectionRowIndex": 10,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 0,
+          "clientMapId": 27,
+          "worldMapX": 695,
+          "worldMapY": 185,
+          "displayName": "昆吾镇",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\cityS02\\cityS02.mdt",
+          "worldWidth": 252,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22766,
+          "sectionRowIndex": 11,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 40,
+          "worldMapX": 605,
+          "worldMapY": 387,
+          "displayName": "雨龙森林",
+          "fieldMusic": "data2\\Music\\Field\\Field_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\cityS04\\cityS04.mdt",
+          "worldWidth": 252,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [
+            "雨龙森林"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22767,
+          "sectionRowIndex": 12,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 0,
+          "clientMapId": 51,
+          "worldMapX": 284,
+          "worldMapY": 331,
+          "displayName": "神木集",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\cityS09\\cityS09.mdt",
+          "worldWidth": 168,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22768,
+          "sectionRowIndex": 13,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 690,
+          "worldMapY": 125,
+          "displayName": "巨木树洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\4Tree\\4Tree.mdt",
+          "worldWidth": 357,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [
+            "巨木树洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22769,
+          "sectionRowIndex": 14,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 669,
+          "worldMapY": 65,
+          "displayName": "雨龙通道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\roadS04\\roadS04.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "雨龙通道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22770,
+          "sectionRowIndex": 15,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 472,
+          "worldMapY": 76,
+          "displayName": "雨龙通道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\roadS05\\roadS05.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "雨龙通道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22771,
+          "sectionRowIndex": 16,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 28,
+          "worldMapX": 288,
+          "worldMapY": 202,
+          "displayName": "雨龙通道",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\roadS06\\roadS06.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "雨龙通道"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22772,
+          "sectionRowIndex": 17,
+          "regionName": "南方",
+          "clientAreaId": 5,
+          "mapCategory": 3,
+          "clientMapId": 44,
+          "worldMapX": 769,
+          "worldMapY": 116,
+          "displayName": "山洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South002\\mazeS04\\mazeS04.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 2,
+          "floorNames": [
+            "山洞1",
+            "山洞2",
+            "山洞3",
+            "山洞4"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 6,
+      "regionName": "南方",
+      "rowCount": 6,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 2
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 3
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "夹龙纵谷",
+          "resourcePath": "South003\\South003.mdt",
+          "worldMapX": 630,
+          "worldMapY": 882,
+          "floorCount": 1,
+          "sourceRow": 22773,
+          "sourceSectionRowIndex": 18
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22773,
+          "sectionRowIndex": 18,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 630,
+          "worldMapY": 882,
+          "displayName": "夹龙纵谷",
+          "fieldMusic": "data2\\Music\\Field\\Field_s03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\South003.mdt",
+          "worldWidth": 630,
+          "worldHeight": 882,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22774,
+          "sectionRowIndex": 19,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 0,
+          "clientMapId": 3,
+          "worldMapX": 337,
+          "worldMapY": 118,
+          "displayName": "云峰部落",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\cityS07\\cityS07.mdt",
+          "worldWidth": 210,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22775,
+          "sectionRowIndex": 20,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 0,
+          "clientMapId": 19,
+          "worldMapX": 437,
+          "worldMapY": 758,
+          "displayName": "暮汐村",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\cityS08\\cityS08.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22776,
+          "sectionRowIndex": 21,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 515,
+          "worldMapY": 104,
+          "displayName": "八卦迷宫",
+          "fieldMusic": "data2\\Music\\maze\\maze_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\mazeS01\\mazeS01.mdt",
+          "worldWidth": 210,
+          "worldHeight": 234,
+          "floorCount": 1,
+          "floorNames": [
+            "干之境",
+            "兑之境",
+            "离之境",
+            "震之境",
+            "巽之境",
+            "坎之境",
+            "艮之境",
+            "坤之境"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22777,
+          "sectionRowIndex": 22,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 3,
+          "clientMapId": 12,
+          "worldMapX": 383,
+          "worldMapY": 207,
+          "displayName": "瀑布山洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\mazeS02\\mazeS02.mdt",
+          "worldWidth": 294,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "瀑布山洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22778,
+          "sectionRowIndex": 23,
+          "regionName": "南方",
+          "clientAreaId": 6,
+          "mapCategory": 3,
+          "clientMapId": 26,
+          "worldMapX": 394,
+          "worldMapY": 819,
+          "displayName": "一线天壁",
+          "fieldMusic": "data2\\Music\\maze\\maze_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "South003\\roadS07\\roadS07.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "一线天壁"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 7,
+      "regionName": "洞府",
+      "rowCount": 14,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 6
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 2,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 6
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "洞府",
+          "resourcePath": "tong\\tong.mdt",
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "floorCount": 1,
+          "sourceRow": 22799,
+          "sourceSectionRowIndex": 44
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22799,
+          "sectionRowIndex": 44,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "displayName": "洞府",
+          "fieldMusic": "data2\\Music\\Tong\\FS_01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tong.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22800,
+          "sectionRowIndex": 45,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 6,
+          "worldMapX": 70,
+          "worldMapY": 57,
+          "displayName": "洞府根据地",
+          "fieldMusic": "data2\\Music\\Tong\\FS_01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tong1\\tong1.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22801,
+          "sectionRowIndex": 46,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 5,
+          "worldMapX": 73,
+          "worldMapY": 57,
+          "displayName": "洞府根据地",
+          "fieldMusic": "data2\\Music\\Tong\\FS_01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tong2\\tong2.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22802,
+          "sectionRowIndex": 47,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 4,
+          "worldMapX": 76,
+          "worldMapY": 57,
+          "displayName": "洞府根据地",
+          "fieldMusic": "data2\\Music\\Tong\\FS_01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tong3\\tong3.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22803,
+          "sectionRowIndex": 48,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 2,
+          "worldMapX": 79,
+          "worldMapY": 57,
+          "displayName": "洞府根据地",
+          "fieldMusic": "data2\\Music\\Tong\\FS_01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tong4\\tong4.mdt",
+          "worldWidth": 273,
+          "worldHeight": 273,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22804,
+          "sectionRowIndex": 49,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 75,
+          "worldMapY": 45,
+          "displayName": "封神台",
+          "fieldMusic": "data2\\Music\\Tong\\FS_02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\tower3\\tower3.mdt",
+          "worldWidth": 756,
+          "worldHeight": 378,
+          "floorCount": 1,
+          "floorNames": [
+            "封神台"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22805,
+          "sectionRowIndex": 50,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 2,
+          "clientMapId": 3,
+          "worldMapX": 20,
+          "worldMapY": 9,
+          "displayName": "转生地",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\indoor\\TowerTop.hmd",
+          "worldWidth": null,
+          "worldHeight": null,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22806,
+          "sectionRowIndex": 51,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 7,
+          "worldMapX": 73,
+          "worldMapY": 61,
+          "displayName": "洞府荣耀赛场",
+          "fieldMusic": "data2\\Music\\Tong\\FS_02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\TongWar1\\TongWar1.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22807,
+          "sectionRowIndex": 52,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 0,
+          "clientMapId": 8,
+          "worldMapX": 70,
+          "worldMapY": 61,
+          "displayName": "转生地",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\Reborn\\Reborn.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22808,
+          "sectionRowIndex": 53,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 12,
+          "worldMapX": 70,
+          "worldMapY": 66,
+          "displayName": "洞府迷宫",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\mazeto01\\mazeto01.mdt",
+          "worldWidth": 168,
+          "worldHeight": 140,
+          "floorCount": 1,
+          "floorNames": [
+            "雷震塔1F",
+            "雷震塔2F",
+            "雷震塔3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22809,
+          "sectionRowIndex": 54,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 11,
+          "worldMapX": 75,
+          "worldMapY": 65,
+          "displayName": "洞府迷宫",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\mazeto02\\mazeto02.mdt",
+          "worldWidth": 168,
+          "worldHeight": 140,
+          "floorCount": 1,
+          "floorNames": [
+            "泽兑塔1F",
+            "泽兑塔2F",
+            "泽兑塔3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22810,
+          "sectionRowIndex": 55,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 10,
+          "worldMapX": 73,
+          "worldMapY": 66,
+          "displayName": "洞府迷宫",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\mazeto03\\mazeto03.mdt",
+          "worldWidth": 168,
+          "worldHeight": 140,
+          "floorCount": 1,
+          "floorNames": [
+            "火离塔1F",
+            "火离塔2F",
+            "火离塔3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22811,
+          "sectionRowIndex": 56,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 9,
+          "worldMapX": 70,
+          "worldMapY": 66,
+          "displayName": "洞府迷宫",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "tong\\mazeto04\\mazeto04.mdt",
+          "worldWidth": 168,
+          "worldHeight": 140,
+          "floorCount": 1,
+          "floorNames": [
+            "水坎塔1F",
+            "水坎塔2F",
+            "水坎塔3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22812,
+          "sectionRowIndex": 57,
+          "regionName": "洞府",
+          "clientAreaId": 7,
+          "mapCategory": 3,
+          "clientMapId": 13,
+          "worldMapX": 70,
+          "worldMapY": 64,
+          "displayName": "洞府副本",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "tong\\tonggem\\tonggem.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "洞府结界1F",
+            "洞府结界2F",
+            "洞府结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 8,
+      "regionName": "阵法",
+      "rowCount": 20,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 6
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 13
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "阵法",
+          "resourcePath": "array\\array.mdt",
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "floorCount": 1,
+          "sourceRow": 22779,
+          "sourceSectionRowIndex": 24
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22779,
+          "sectionRowIndex": 24,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "displayName": "阵法",
+          "fieldMusic": "data2\\Music\\Bout\\Bout01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22780,
+          "sectionRowIndex": 25,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 1,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "诸神洞",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom\\sroom.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22781,
+          "sectionRowIndex": 26,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 9,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "白虎洞窟",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom02\\sroom02.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22782,
+          "sectionRowIndex": 27,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 16,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "玄武洞窟",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom03\\sroom03.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22783,
+          "sectionRowIndex": 28,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 17,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "麒麟洞窟",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom04\\sroom04.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22784,
+          "sectionRowIndex": 29,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 18,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "朱雀洞窟",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom05\\sroom05.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22785,
+          "sectionRowIndex": 30,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 0,
+          "clientMapId": 19,
+          "worldMapX": 0,
+          "worldMapY": 0,
+          "displayName": "青龙洞窟",
+          "fieldMusic": "data2\\Music\\Tong\\Tl.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\sroom06\\sroom06.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22786,
+          "sectionRowIndex": 31,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 5,
+          "worldMapX": 128,
+          "worldMapY": 136,
+          "displayName": "天绝阵",
+          "fieldMusic": "data2\\Music\\Bout\\Bout01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array01\\array01.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "天绝阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22787,
+          "sectionRowIndex": 32,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 8,
+          "worldMapX": 31,
+          "worldMapY": 25,
+          "displayName": "地烈阵",
+          "fieldMusic": "data2\\Music\\Bout\\Bout02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array02\\array02.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "地烈阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22788,
+          "sectionRowIndex": 33,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 7,
+          "worldMapX": 106,
+          "worldMapY": 110,
+          "displayName": "金光阵",
+          "fieldMusic": "data2\\Music\\Bout\\Bout03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array03\\array03.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "金光阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22789,
+          "sectionRowIndex": 34,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 4,
+          "worldMapX": 62,
+          "worldMapY": 140,
+          "displayName": "化血阵",
+          "fieldMusic": "data2\\Music\\Bout\\Bout04.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array04\\array04.mdt",
+          "worldWidth": 126,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "化血阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22790,
+          "sectionRowIndex": 35,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 6,
+          "worldMapX": 91,
+          "worldMapY": 252,
+          "displayName": "红沙阵",
+          "fieldMusic": "data2\\Music\\Bout\\Bout05.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array05\\array05.mdt",
+          "worldWidth": 126,
+          "worldHeight": 294,
+          "floorCount": 1,
+          "floorNames": [
+            "红沙阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22791,
+          "sectionRowIndex": 36,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 204,
+          "worldMapY": 183,
+          "displayName": "九曲黄河阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout06.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\9tyr2\\9tyr.mdt",
+          "worldWidth": 252,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "九曲黄河阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22792,
+          "sectionRowIndex": 37,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 149,
+          "worldMapY": 112,
+          "displayName": "诛仙阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout07.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array07\\array07.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "诛仙阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22793,
+          "sectionRowIndex": 38,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 10,
+          "worldMapX": 109,
+          "worldMapY": 149,
+          "displayName": "落魂阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout08.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array08\\array08.mdt",
+          "worldWidth": 210,
+          "worldHeight": 315,
+          "floorCount": 1,
+          "floorNames": [
+            "落魂阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22794,
+          "sectionRowIndex": 39,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 11,
+          "worldMapX": 92,
+          "worldMapY": 112,
+          "displayName": "风吼阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout09.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array09\\array09.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "风吼阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22795,
+          "sectionRowIndex": 40,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 12,
+          "worldMapX": 102,
+          "worldMapY": 132,
+          "displayName": "寒冰阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout10.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array10\\array10.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "寒冰阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22796,
+          "sectionRowIndex": 41,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 13,
+          "worldMapX": 87,
+          "worldMapY": 414,
+          "displayName": "烈焰阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout11.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array011\\array011.mdt",
+          "worldWidth": 126,
+          "worldHeight": 441,
+          "floorCount": 1,
+          "floorNames": [
+            "烈焰阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22797,
+          "sectionRowIndex": 42,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 14,
+          "worldMapX": 122,
+          "worldMapY": 32,
+          "displayName": "红水阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout12.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array012\\array012.mdt",
+          "worldWidth": 168,
+          "worldHeight": 315,
+          "floorCount": 1,
+          "floorNames": [
+            "红水阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22798,
+          "sectionRowIndex": 43,
+          "regionName": "阵法",
+          "clientAreaId": 8,
+          "mapCategory": 3,
+          "clientMapId": 15,
+          "worldMapX": 123,
+          "worldMapY": 82,
+          "displayName": "万刃车阵",
+          "fieldMusic": "data\\Music\\Bout\\Bout13.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "array\\array013\\array013.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "万刃车阵"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 11,
+      "regionName": "北方",
+      "rowCount": 11,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 4
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 6
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "太极境",
+          "resourcePath": "North001\\North001.mdt",
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "floorCount": 1,
+          "sourceRow": 22860,
+          "sourceSectionRowIndex": 105
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22860,
+          "sectionRowIndex": 105,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "displayName": "太极境",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\North001.mdt",
+          "worldWidth": 504,
+          "worldHeight": 504,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22861,
+          "sectionRowIndex": 106,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 0,
+          "clientMapId": 22,
+          "worldMapX": 367,
+          "worldMapY": 401,
+          "displayName": "焰霜镇",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\CityIF01\\CityIF01.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22862,
+          "sectionRowIndex": 107,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 0,
+          "clientMapId": 10,
+          "worldMapX": 453,
+          "worldMapY": 284,
+          "displayName": "幽冥结界",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\CityIF02\\CityIF02.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22863,
+          "sectionRowIndex": 108,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 0,
+          "clientMapId": 9,
+          "worldMapX": 458,
+          "worldMapY": 286,
+          "displayName": "大乱斗",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\CityIF03\\CityIF03.mdt",
+          "worldWidth": 210,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22864,
+          "sectionRowIndex": 109,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 7,
+          "worldMapX": 458,
+          "worldMapY": 281,
+          "displayName": "地牢1",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\jail01\\jail01.mdt",
+          "worldWidth": 84,
+          "worldHeight": 84,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22865,
+          "sectionRowIndex": 110,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 6,
+          "worldMapX": 373,
+          "worldMapY": 232,
+          "displayName": "烈焱穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\MazeIF01\\MazeIF01.mdt",
+          "worldWidth": 235,
+          "worldHeight": 235,
+          "floorCount": 2,
+          "floorNames": [
+            "烈焱穴1F",
+            "烈焱穴2F",
+            "烈焱穴3F",
+            "烈焱穴4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22866,
+          "sectionRowIndex": 111,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 216,
+          "worldMapY": 121,
+          "displayName": "雪晶洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\MazeIF02\\MazeIF02.mdt",
+          "worldWidth": 231,
+          "worldHeight": 231,
+          "floorCount": 2,
+          "floorNames": [
+            "雪晶洞1F",
+            "雪晶洞2F",
+            "雪晶洞3F",
+            "雪晶洞4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22867,
+          "sectionRowIndex": 112,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 4,
+          "worldMapX": 410,
+          "worldMapY": 120,
+          "displayName": "山洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\MazeIF03\\MazeIF03.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 2,
+          "floorNames": [
+            "山洞1F",
+            "山洞2F",
+            "山洞3F",
+            "山洞4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22868,
+          "sectionRowIndex": 113,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 250,
+          "worldMapY": 74,
+          "displayName": "东雪穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\MazeIF04\\MazeIF04.mdt",
+          "worldWidth": 126,
+          "worldHeight": 126,
+          "floorCount": 2,
+          "floorNames": [
+            "北霜穴",
+            "南寒穴",
+            "西冻穴",
+            "东雪穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22869,
+          "sectionRowIndex": 114,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 3,
+          "clientMapId": 8,
+          "worldMapX": 453,
+          "worldMapY": 279,
+          "displayName": "幽冥结界",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\MazeIF05\\MazeIF05.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "幽冥结界"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22870,
+          "sectionRowIndex": 115,
+          "regionName": "北方",
+          "clientAreaId": 11,
+          "mapCategory": 0,
+          "clientMapId": 35,
+          "worldMapX": 458,
+          "worldMapY": 300,
+          "displayName": "牧野",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North001\\CityMY01\\CityMY01.mdt",
+          "worldWidth": 231,
+          "worldHeight": 231,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 12,
+      "regionName": "打宝区",
+      "rowCount": 26,
+      "categoryCounts": [
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 25
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "打宝区Island",
+          "resourcePath": "Gem\\gem.mdt",
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "floorCount": 1,
+          "sourceRow": 22834,
+          "sourceSectionRowIndex": 79
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22834,
+          "sectionRowIndex": 79,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 105,
+          "worldMapY": 105,
+          "displayName": "打宝区Island",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem.mdt",
+          "worldWidth": 105,
+          "worldHeight": 105,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22835,
+          "sectionRowIndex": 80,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 70,
+          "worldMapY": 64,
+          "displayName": "天枢结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem01\\gem01.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天枢结界1F",
+            "天枢结界2F",
+            "天枢结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22836,
+          "sectionRowIndex": 81,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 5,
+          "worldMapX": 73,
+          "worldMapY": 64,
+          "displayName": "天璇结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem02\\gem02.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "天璇结界1F",
+            "天璇结界2F",
+            "天璇结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22837,
+          "sectionRowIndex": 82,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 4,
+          "worldMapX": 76,
+          "worldMapY": 64,
+          "displayName": "天机结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem03\\gem03.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "天机结界1F",
+            "天机结界2F",
+            "天机结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22838,
+          "sectionRowIndex": 83,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "天权结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04\\gem04.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天权结界1F",
+            "天权结界2F",
+            "天权结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22839,
+          "sectionRowIndex": 84,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 16,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "天权结界-武器",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04a\\gem04a.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天权结界-武器1F",
+            "天权结界-武器2F",
+            "天权结界-武器3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22840,
+          "sectionRowIndex": 85,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 14,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "天权结界-防具",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04b\\gem04b.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天权结界-防具1F",
+            "天权结界-防具2F",
+            "天权结界-防具3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22841,
+          "sectionRowIndex": 86,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 12,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "天权结界-丹药",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04c\\gem04c.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天权结界-丹药1F",
+            "天权结界-丹药2F",
+            "天权结界-丹药3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22842,
+          "sectionRowIndex": 87,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 11,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "天权结界-法宝",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04d\\gem04d.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "天权结界-法宝1F",
+            "天权结界-法宝2F",
+            "天权结界-法宝3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22843,
+          "sectionRowIndex": 88,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "玉衡结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05\\gem05.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "玉衡结界1F",
+            "玉衡结界2F",
+            "玉衡结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22844,
+          "sectionRowIndex": 89,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 18,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "玉衡结界-武器",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05a\\gem05a.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "玉衡结界-武器1F",
+            "玉衡结界-武器2F",
+            "玉衡结界-武器3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22845,
+          "sectionRowIndex": 90,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 17,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "玉衡结界-防具",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05b\\gem05b.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "玉衡结界-防具1F",
+            "玉衡结界-防具2F",
+            "玉衡结界-防具3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22846,
+          "sectionRowIndex": 91,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 15,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "玉衡结界-丹药",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05c\\gem05c.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "玉衡结界-丹药1F",
+            "玉衡结界-丹药2F",
+            "玉衡结界-丹药3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22847,
+          "sectionRowIndex": 92,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 13,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "玉衡结界-法宝",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05d\\gem05d.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "玉衡结界-法宝1F",
+            "玉衡结界-法宝2F",
+            "玉衡结界-法宝3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22848,
+          "sectionRowIndex": 93,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 7,
+          "worldMapX": 73,
+          "worldMapY": 67,
+          "displayName": "开阳结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem06\\gem06.mdt",
+          "worldWidth": 200,
+          "worldHeight": 200,
+          "floorCount": 2,
+          "floorNames": [
+            "开阳结界1F",
+            "开阳结界2F",
+            "开阳结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22849,
+          "sectionRowIndex": 94,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 6,
+          "worldMapX": 76,
+          "worldMapY": 67,
+          "displayName": "瑶光结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem07\\gem07.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "瑶光结界1F",
+            "瑶光结界2F",
+            "瑶光结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22850,
+          "sectionRowIndex": 95,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 8,
+          "worldMapX": 79,
+          "worldMapY": 67,
+          "displayName": "里天枢结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem08\\gem08.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "里天枢结界1F",
+            "里天枢结界2F",
+            "里天枢结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22851,
+          "sectionRowIndex": 96,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 10,
+          "worldMapX": 70,
+          "worldMapY": 70,
+          "displayName": "里天璇结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem09\\gem09.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "里天璇结界1F",
+            "里天璇结界2F",
+            "里天璇结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22852,
+          "sectionRowIndex": 97,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 9,
+          "worldMapX": 73,
+          "worldMapY": 70,
+          "displayName": "里天机结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem10\\gem10.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "里天机结界1F",
+            "里天机结界2F",
+            "里天机结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22853,
+          "sectionRowIndex": 98,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 23,
+          "worldMapX": 70,
+          "worldMapY": 64,
+          "displayName": "贪狼结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem01\\gem01.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "贪狼结界1F",
+            "贪狼结界2F",
+            "贪狼结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22854,
+          "sectionRowIndex": 99,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 21,
+          "worldMapX": 73,
+          "worldMapY": 64,
+          "displayName": "巨门结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem02\\gem02.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "巨门结界1F",
+            "巨门结界2F",
+            "巨门结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22855,
+          "sectionRowIndex": 100,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 20,
+          "worldMapX": 76,
+          "worldMapY": 64,
+          "displayName": "禄存结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem03\\gem03.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "禄存结界1F",
+            "禄存结界2F",
+            "禄存结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22856,
+          "sectionRowIndex": 101,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 19,
+          "worldMapX": 79,
+          "worldMapY": 64,
+          "displayName": "文曲结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem04\\gem04.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "文曲结界1F",
+            "文曲结界2F",
+            "文曲结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22857,
+          "sectionRowIndex": 102,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 25,
+          "worldMapX": 70,
+          "worldMapY": 67,
+          "displayName": "廉真结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem05d\\gem05d.mdt",
+          "worldWidth": 273,
+          "worldHeight": 126,
+          "floorCount": 1,
+          "floorNames": [
+            "廉真结界1F",
+            "廉真结界2F",
+            "廉真结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22858,
+          "sectionRowIndex": 103,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 24,
+          "worldMapX": 73,
+          "worldMapY": 67,
+          "displayName": "武曲结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem06\\gem06.mdt",
+          "worldWidth": 200,
+          "worldHeight": 200,
+          "floorCount": 2,
+          "floorNames": [
+            "武曲结界1F",
+            "武曲结界2F",
+            "武曲结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22859,
+          "sectionRowIndex": 104,
+          "regionName": "打宝区",
+          "clientAreaId": 12,
+          "mapCategory": 3,
+          "clientMapId": 22,
+          "worldMapX": 76,
+          "worldMapY": 67,
+          "displayName": "破军结界",
+          "fieldMusic": "data2\\Music\\Field\\Field_i03.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "Gem\\gem07\\gem07.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 2,
+          "floorNames": [
+            "破军结界1F",
+            "破军结界2F",
+            "破军结界3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 13,
+      "regionName": "九黎南岛",
+      "rowCount": 7,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 3
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 3
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "九黎半岛",
+          "resourcePath": "North002\\North002.mdt",
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "floorCount": 1,
+          "sourceRow": 22871,
+          "sourceSectionRowIndex": 116
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22871,
+          "sectionRowIndex": 116,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "displayName": "九黎半岛",
+          "fieldMusic": "data2\\Music\\Field\\Field_b01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\North002.mdt",
+          "worldWidth": 504,
+          "worldHeight": 504,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22872,
+          "sectionRowIndex": 117,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 0,
+          "clientMapId": 3,
+          "worldMapX": 111,
+          "worldMapY": 274,
+          "displayName": "茄城",
+          "fieldMusic": "data2\\Music\\city\\city_b01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Cityjiu01\\Cityjiu01.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22873,
+          "sectionRowIndex": 118,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 0,
+          "clientMapId": 12,
+          "worldMapX": 418,
+          "worldMapY": 403,
+          "displayName": "果力村",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Cityjiu02\\Cityjiu02.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22874,
+          "sectionRowIndex": 119,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 0,
+          "clientMapId": 2,
+          "worldMapX": 317,
+          "worldMapY": 199,
+          "displayName": "莫莫聚落",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Cityjiu03\\Cityjiu03.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22875,
+          "sectionRowIndex": 120,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 443,
+          "worldMapY": 52,
+          "displayName": "蚩尤神殿",
+          "fieldMusic": "data2\\Music\\maze\\maze_b01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Mazejiu01\\Mazejiu01.mdt",
+          "worldWidth": 200,
+          "worldHeight": 200,
+          "floorCount": 2,
+          "floorNames": [
+            "蚩尤神殿1F",
+            "蚩尤神殿2F",
+            "蚩尤神殿3F",
+            "蚩尤神殿4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22876,
+          "sectionRowIndex": 121,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 3,
+          "clientMapId": 4,
+          "worldMapX": 314,
+          "worldMapY": 326,
+          "displayName": "天晴楼",
+          "fieldMusic": "data2\\Music\\maze\\maze_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Mazejiu02\\Mazejiu02.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 2,
+          "floorNames": [
+            "天晴楼B1",
+            "天晴楼1F",
+            "天晴楼2F",
+            "天晴楼3F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22877,
+          "sectionRowIndex": 122,
+          "regionName": "九黎南岛",
+          "clientAreaId": 13,
+          "mapCategory": 3,
+          "clientMapId": 5,
+          "worldMapX": 399,
+          "worldMapY": 321,
+          "displayName": "洞穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_c01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North002\\Mazejiu03\\Mazejiu03.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "洞穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 14,
+      "regionName": "九黎北岛",
+      "rowCount": 6,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 2
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 3
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "九黎平原",
+          "resourcePath": "North003\\North003.mdt",
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "floorCount": 1,
+          "sourceRow": 22878,
+          "sourceSectionRowIndex": 123
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22878,
+          "sectionRowIndex": 123,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "displayName": "九黎平原",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\North003.mdt",
+          "worldWidth": 504,
+          "worldHeight": 504,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22879,
+          "sectionRowIndex": 124,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 0,
+          "clientMapId": 21,
+          "worldMapX": 187,
+          "worldMapY": 355,
+          "displayName": "果城",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\Cityjiu04\\Cityjiu04.mdt",
+          "worldWidth": 252,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22880,
+          "sectionRowIndex": 125,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 0,
+          "clientMapId": 5,
+          "worldMapX": 237,
+          "worldMapY": 182,
+          "displayName": "青采聚落",
+          "fieldMusic": "data2\\Music\\city\\City_s02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\Cityjiu05\\Cityjiu05.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22881,
+          "sectionRowIndex": 126,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 160,
+          "worldMapY": 58,
+          "displayName": "岚壁迷穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\Mazejiu04\\Mazejiu04.mdt",
+          "worldWidth": 567,
+          "worldHeight": 399,
+          "floorCount": 1,
+          "floorNames": [
+            "岚壁迷穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22882,
+          "sectionRowIndex": 127,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 3,
+          "clientMapId": 6,
+          "worldMapX": 368,
+          "worldMapY": 253,
+          "displayName": "九黎工坊",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\Mazejiu05\\Mazejiu05.mdt",
+          "worldWidth": 378,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "九黎工坊"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22883,
+          "sectionRowIndex": 128,
+          "regionName": "九黎北岛",
+          "clientAreaId": 14,
+          "mapCategory": 3,
+          "clientMapId": 22,
+          "worldMapX": 394,
+          "worldMapY": 417,
+          "displayName": "玉弥洞",
+          "fieldMusic": "data2\\Music\\maze\\maze_i01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North003\\Mazejiu06\\Mazejiu06.mdt",
+          "worldWidth": 168,
+          "worldHeight": 168,
+          "floorCount": 1,
+          "floorNames": [
+            "玉弥洞"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 15,
+      "regionName": "九尾国",
+      "rowCount": 11,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 3
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 7
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "九尾国",
+          "resourcePath": "North004\\North004.mdt",
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "floorCount": 1,
+          "sourceRow": 22884,
+          "sourceSectionRowIndex": 129
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22884,
+          "sectionRowIndex": 129,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 504,
+          "worldMapY": 504,
+          "displayName": "九尾国",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\North004.mdt",
+          "worldWidth": 504,
+          "worldHeight": 504,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22885,
+          "sectionRowIndex": 130,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 0,
+          "clientMapId": 7,
+          "worldMapX": 249,
+          "worldMapY": 246,
+          "displayName": "九天冰屋",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Citywei01\\Citywie01.mdt",
+          "worldWidth": 147,
+          "worldHeight": 147,
+          "floorCount": 2,
+          "floorNames": [
+            "九天冰屋1F",
+            "九天冰屋2F",
+            "九天冰屋3F",
+            "九天冰屋4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22886,
+          "sectionRowIndex": 131,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 0,
+          "clientMapId": 8,
+          "worldMapX": 432,
+          "worldMapY": 370,
+          "displayName": "谯云关",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Citywei02\\Citywie02.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22887,
+          "sectionRowIndex": 132,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 0,
+          "clientMapId": 9,
+          "worldMapX": 353,
+          "worldMapY": 412,
+          "displayName": "南原冰穴",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Citywei03\\Citywie03.mdt",
+          "worldWidth": 189,
+          "worldHeight": 189,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22888,
+          "sectionRowIndex": 133,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 6,
+          "worldMapX": 379,
+          "worldMapY": 134,
+          "displayName": "冰魂谷",
+          "fieldMusic": "data2\\Music\\maze\\MAZE_S01.WAV",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei01\\Mazewei01.mdt",
+          "worldWidth": 504,
+          "worldHeight": 504,
+          "floorCount": 1,
+          "floorNames": [
+            "冰魂谷"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22889,
+          "sectionRowIndex": 134,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 5,
+          "worldMapX": 43,
+          "worldMapY": 44,
+          "displayName": "妲己神殿",
+          "fieldMusic": "data2\\Music\\maze\\maze_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei02\\Mazewei02.mdt",
+          "worldWidth": 336,
+          "worldHeight": 336,
+          "floorCount": 1,
+          "floorNames": [
+            "妲己神殿"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22890,
+          "sectionRowIndex": 135,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 4,
+          "worldMapX": 46,
+          "worldMapY": 44,
+          "displayName": "钟乳石迷宫",
+          "fieldMusic": "data2\\Music\\maze\\MAZE_I05.WAV",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei03\\Mazewei03.mdt",
+          "worldWidth": 137,
+          "worldHeight": 137,
+          "floorCount": 2,
+          "floorNames": [
+            "钟乳石迷宫1F",
+            "钟乳石迷宫2F",
+            "钟乳石迷宫3F",
+            "钟乳石迷宫4F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22891,
+          "sectionRowIndex": 136,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 3,
+          "worldMapX": 49,
+          "worldMapY": 44,
+          "displayName": "擎天峰冰穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_b01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei04\\Mazewei04.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [
+            "擎天峰冰穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22892,
+          "sectionRowIndex": 137,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 2,
+          "worldMapX": 52,
+          "worldMapY": 44,
+          "displayName": "飘渺峰冰穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_b01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei05\\Mazewei05.mdt",
+          "worldWidth": 294,
+          "worldHeight": 294,
+          "floorCount": 1,
+          "floorNames": [
+            "飘渺峰冰穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22893,
+          "sectionRowIndex": 138,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 1,
+          "worldMapX": 55,
+          "worldMapY": 44,
+          "displayName": "紫金峰冰穴",
+          "fieldMusic": "data2\\Music\\maze\\MAZE_S02.WAV",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei06\\Mazewei06.mdt",
+          "worldWidth": 252,
+          "worldHeight": 252,
+          "floorCount": 1,
+          "floorNames": [
+            "紫金峰冰穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22894,
+          "sectionRowIndex": 139,
+          "regionName": "九尾国",
+          "clientAreaId": 15,
+          "mapCategory": 3,
+          "clientMapId": 30,
+          "worldMapX": 58,
+          "worldMapY": 44,
+          "displayName": "狼族洞穴",
+          "fieldMusic": "data2\\Music\\maze\\maze_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North004\\Mazewei06\\Mazewei07.mdt",
+          "worldWidth": 158,
+          "worldHeight": 158,
+          "floorCount": 2,
+          "floorNames": [
+            "傲狼穴",
+            "圣狼穴",
+            "皇狼穴",
+            "噬狼穴"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    },
+    {
+      "clientAreaId": 16,
+      "regionName": "寒羽荒原",
+      "rowCount": 4,
+      "categoryCounts": [
+        {
+          "category": 0,
+          "count": 1
+        },
+        {
+          "category": 1,
+          "count": 1
+        },
+        {
+          "category": 3,
+          "count": 2
+        }
+      ],
+      "rootCandidates": [
+        {
+          "clientMapId": 0,
+          "displayName": "寒羽荒原",
+          "resourcePath": "North005\\North005.mdt",
+          "worldMapX": 483,
+          "worldMapY": 483,
+          "floorCount": 1,
+          "sourceRow": 22895,
+          "sourceSectionRowIndex": 140
+        }
+      ],
+      "maps": [
+        {
+          "sourceRow": 22895,
+          "sectionRowIndex": 140,
+          "regionName": "寒羽荒原",
+          "clientAreaId": 16,
+          "mapCategory": 1,
+          "clientMapId": 0,
+          "worldMapX": 483,
+          "worldMapY": 483,
+          "displayName": "寒羽荒原",
+          "fieldMusic": "data2\\Music\\Field\\Field_i02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North005\\North005.mdt",
+          "worldWidth": 483,
+          "worldHeight": 483,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "RootCandidate"
+        },
+        {
+          "sourceRow": 22896,
+          "sectionRowIndex": 141,
+          "regionName": "寒羽荒原",
+          "clientAreaId": 16,
+          "mapCategory": 0,
+          "clientMapId": 2,
+          "worldMapX": 295,
+          "worldMapY": 145,
+          "displayName": "甘城",
+          "fieldMusic": "data2\\Music\\city\\city_b02.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North005\\Cityhu01\\Cityhu01.mdt",
+          "worldWidth": 210,
+          "worldHeight": 210,
+          "floorCount": 1,
+          "floorNames": [],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22897,
+          "sectionRowIndex": 142,
+          "regionName": "寒羽荒原",
+          "clientAreaId": 16,
+          "mapCategory": 3,
+          "clientMapId": 7,
+          "worldMapX": 62,
+          "worldMapY": 432,
+          "displayName": "地底迷宫",
+          "fieldMusic": "data2\\Music\\maze\\maze_s01.wav",
+          "battleMusic": "data\\Music\\Fight\\att_e.wav",
+          "resourcePath": "North005\\Mazehu01\\Mazehu01.mdt",
+          "worldWidth": 220,
+          "worldHeight": 210,
+          "floorCount": 2,
+          "floorNames": [
+            "地底迷宫1F",
+            "地底迷宫2F",
+            "地底迷宫3F",
+            "地底迷宫4F",
+            "地底迷宫5F"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        },
+        {
+          "sourceRow": 22898,
+          "sectionRowIndex": 143,
+          "regionName": "寒羽荒原",
+          "clientAreaId": 16,
+          "mapCategory": 3,
+          "clientMapId": 9,
+          "worldMapX": 154,
+          "worldMapY": 134,
+          "displayName": "陵寝花园",
+          "fieldMusic": "data\\Music\\Bout\\Bout07.wav",
+          "battleMusic": "data\\Music\\Fight\\att_s.wav",
+          "resourcePath": "\\North005\\umg\\UMG.mdt",
+          "worldWidth": 242,
+          "worldHeight": 253,
+          "floorCount": 1,
+          "floorNames": [
+            "陵寝花园"
+          ],
+          "hierarchyEvidence": "AreaGroupedOnly"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "areaCount": 14,
+    "mapCount": 144,
+    "categoryCounts": [
+      {
+        "category": 0,
+        "count": 37
+      },
+      {
+        "category": 1,
+        "count": 14
+      },
+      {
+        "category": 2,
+        "count": 1
+      },
+      {
+        "category": 3,
+        "count": 92
+      }
+    ],
+    "rootCandidateCount": 14,
+    "explicitParentPointerCount": 0
+  }
+}
