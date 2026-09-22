@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-22T22:08:48+08:00",
-  "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成。已重新區分 Client Static、Runtime Capture、Legacy Server、Third-Party、Derived、Formal DB 與 Live Client evidence，避免將資料存在誤認為台服正服 authority。原版 Client 已驗證 Login→Character List/Select→World→Movement→promoted Portal→pinned NPC Spawn/Dialog→Logout 核心閉環；Battle current-build 仍為 0 qualifying captures / 0 production decoder / 0 production serializer，維持 EvidenceBlocked。OfficialParityMatrix 已開始升級為 Evidence/Gap Registry，下一階段由 Gap Matrix 決定 V2 implementation。",
+  "updated_at": "2026-09-23T00:55:38+08:00",
+  "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成，正式進入正服完整資料 Parity 階段。目前 exact-current 官方 Map_City_Coordniate evidence 已固定：144 maps、14 areas、category 0/1/2/3 = 37/14/1/92，root candidates=14、explicit parent pointers=0。Migration 114 與 exact-current 已確認 144 組 Area/Map 完全對齊。目前發現 9 組 resource path 命名差異，包含大小寫、資料夾名稱與檔名差異；在沒有更高層正服證據前維持 evidence-gated，不自行修正。Map hierarchy evidence 已納入 parity exporter，Map parser 相關測試 5/5 通過。Full-world runtime promotion 仍維持 blocked，下一階段為完整 exact-current Client resource、navigation、collision 與 Portal reference parity.",
   "milestones": [
     {
       "key": "foundation",
@@ -262,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "Exact-current Client Upload / File Provenance Validation",
-    "description": "Migration 476 已正式恢復 Map/Portal staging provenance：client_map_resources=158、client_map_resource_identities=144、portal_resource_links=65；65 條 Portal links 為 44 Derived + 21 Candidate，全部 disabled、未綁定 runtime portal，未升格為 gameplay authority。AWS 端現階段工作已封板；下一工作節點為從家中上傳已確認可連 AWS 並可進入遊戲的完整 exact-current Client，再驗證檔案 hash、navigation、hierarchy、collision 與 portal references。",
+    "title": "Exact-current Client Resource / Map Parity",
+    "description": "Exact-current 官方 gamedata.csvZ 已固定為 hierarchy evidence：144 maps、14 areas、category 0/1/2/3 = 37/14/1/92，root candidates=14、explicit parent pointers=0。Migration 114 與 exact-current 已確認 144 組 Area/Map 完全對齊。目前保留 9 組 resource path 命名差異，不在沒有額外正服證據時自行修改。下一工作節點為取得完整 exact-current Client，進一步驗證 resource、navigation、collision 與 portal references。",
     "status": "waiting_for_exact_current_client_upload"
   },
   "verification": {
@@ -335,6 +335,11 @@
     "68 條 legacy CAN-link candidates 維持 supplemental；trigger 未驗證前禁止匯入 gameplay"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-23",
+      "title": "Exact-current Map Hierarchy Evidence 完成",
+      "detail": "建立 docs/parity/map-hierarchy-exact-current.json，並將 exact-current 官方 Data2/Patch/Comm/gamedata.csvZ 的 Map_City_Coordniate section 納入 Map parity exporter。Evidence 共 144 maps、14 areas；category 0/1/2/3 = 37/14/1/92，root candidates=14，explicit parent pointers=0。Migration 114 與 exact-current 的 144 組 Area/Map 完全對齊。目前發現 9 組 resource path 命名差異，維持 evidence-gated，不自行修正。Map parser 相關測試 5/5 通過；commit 067632b 已推送 refactor/server-v2。"
+    },
     {
       "date": "2026-09-22",
       "title": "等待完整 Exact-current Client 上傳",
