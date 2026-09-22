@@ -5,7 +5,7 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-22T16:49:05+08:00",
+  "updated_at": "2026-09-22T17:21:55+08:00",
   "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成。已重新區分 Client Static、Runtime Capture、Legacy Server、Third-Party、Derived、Formal DB 與 Live Client evidence，避免將資料存在誤認為台服正服 authority。原版 Client 已驗證 Login→Character List/Select→World→Movement→promoted Portal→pinned NPC Spawn/Dialog→Logout 核心閉環；Battle current-build 仍為 0 qualifying captures / 0 production decoder / 0 production serializer，維持 EvidenceBlocked。OfficialParityMatrix 已開始升級為 Evidence/Gap Registry，下一階段由 Gap Matrix 決定 V2 implementation。",
   "milestones": [
     {
@@ -262,8 +262,8 @@
     }
   ],
   "current_focus": {
-    "title": "Map Resource Provenance Recovery",
-    "description": "Map Data baseline 已完成 machine-checkable gate：Migration 114 exact-current static catalog 144/144，Formal DB 零缺漏；唯一額外列 557790525 已分類為 Map 19 verified runtime slice。現階段優先重建 exact-current client 的 client_map_resources、client_map_resource_identities 與 portal_resource_links；AWS 尚無完整 gamedata.csvZ 與 Data2/map，因此不得由 Formal DB 反推或偽造 provenance。",
+    "title": "Portal Forge Drift Repair + Map Provenance Recovery",
+    "description": "Portal parity baseline 已完成並確認根因：forge seed 只保留 Portal 3、4、170015007，卻保留 migration ledger，造成 Portal 1、2 與 god2_research.portal_evidence 遺失。Migration 473 已完成 fail-closed、idempotence、negative 與 positive integration test；正式 runtime 尚未套用。68 條 legacy CAN-link candidates 維持 supplemental，不直接匯入。",
     "status": "in_progress"
   },
   "verification": {
@@ -328,13 +328,18 @@
     }
   ],
   "next_steps": [
-    "從完整 exact-current Windows 客戶端封存 Data2/Patch/Comm/gamedata.csvZ 與 Data2/map，驗證 decoded source SHA-256 c3bc7ebe8b2e7ea346c376dee25b3b07f90e82208d14f8e26f5feded18bc1e1f",
-    "以 God2.GameplayContentRecovery 重建 client_map_resources 與 client_map_resource_identities，先產生 staging migration 與 semantic diff，不直接寫正式 DB",
-    "重建 portal_resource_links，完成 Map hierarchy、collision 與 portal unresolved-reference diff",
-    "通過 Map provenance gate 後，進入 Portal 全量 parity 與 real-client map-transition acceptance",
-    "God2Patch Large-Over 1054 與 Launcher/Patch 前置流程保留為獨立研究線"
+    "建立 Portal baseline 與 migration 473 checkpoint，完整驗證後 commit/push",
+    "備份 runtime DB，確認 migration 469–473 套用方式與 checksum，再修復 FORGE_SEED_LEDGER_DRIFT",
+    "套用後重新產生 Portal parity baseline，要求 Formal routes=5、missing=0、evidence rows=5",
+    "從完整 exact-current Windows 客戶端重建 client_map_resources、client_map_resource_identities 與 portal_resource_links",
+    "完成 Map hierarchy、collision、Portal unresolved-reference diff 與 controlled real-client transition acceptance"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-22",
+      "title": "Portal Data Parity Gate 完成",
+      "detail": "建立可重複執行的 Portal parity exporter。確認 evidence-backed routes=5、Formal routes=3、missing IDs=1/2、unexpected=0；Portal 170015007 保有台服實機 acceptance。68 條 legacy CAN-link candidates 維持 TransferTriggerUnverified，禁止直接匯入 gameplay。"
+    },
     {
       "date": "2026-09-22",
       "title": "Map Data Parity Gate 完成",

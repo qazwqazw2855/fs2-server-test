@@ -89,13 +89,15 @@
       "wire": "VERIFIED",
       "realClient": "PARTIAL",
       "authorities": [
+        "TW_LIVE_CLIENT",
         "AUTOMATED_ACCEPTANCE",
         "FORMAL_DB",
-        "RUNTIME_CAPTURE"
+        "RUNTIME_CAPTURE",
+        "LEGACY_SERVER"
       ],
-      "scope": "Promoted 170015000 to 170015007 transition and CAS persistence.",
-      "gap": "Full portal catalog and trigger rules are not promoted.",
-      "nextGate": "Generate complete portal inventory and promote evidence-backed rows."
+      "scope": "Five evidence-backed routes are registered. Portals 3, 4 and 170015007 are present and enabled in Formal DB; 170015007 has Taiwan original-client to V2 acceptance with CAS persistence.",
+      "gap": "Portal 1 and 2 were omitted by the forged canonical seed even though the migration ledger retained their applied migrations. Exact-client portal resource links and full trigger coverage remain incomplete.",
+      "nextGate": "Apply and verify Migration 473 for FORGE_SEED_LEDGER_DRIFT, then rebuild exact-client portal resource links and continue controlled real-client transition acceptance."
     },
     {
       "id": "map-content",

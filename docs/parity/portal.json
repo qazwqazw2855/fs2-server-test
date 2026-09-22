@@ -1,0 +1,125 @@
+{
+  "schema": "God2PortalParityBaseline/1",
+  "generatedAtUtc": "2026-09-22T11:40:30Z",
+  "clientBuildId": "god2-opt-6b127086e0c0",
+  "productionDatabaseTouched": false,
+  "authorityBoundary": {
+    "formalPresence": "Formal DB presence alone is not proof of Taiwan official gameplay.",
+    "currentBuildRuntime": "Migrations 083 and 084 preserve current-build runtime observations with bounded scope.",
+    "taiwanLiveClient": "Portal 170015007 completed original Taiwan client to Server V2 acceptance.",
+    "legacyInventory": "The 68 recovered CAN links are supplemental candidates and cannot be imported directly."
+  },
+  "sources": {
+    "historicalMap3Map19": [
+      "database/schema/083_publish_latest_verified_map3_map19_portals.sql",
+      "database/schema/107_correct_map19_visual_exit_trigger.sql"
+    ],
+    "historicalHongmengBiyou": "database/schema/084_publish_hongmeng_biyou_portal_pair.sql",
+    "taiwanLiveStageRoute": "database/schema/103_publish_live_stage3_stage7_runtime_slice.sql",
+    "supplementalInventory": {
+      "path": "db/imports/official/portals/portals.official.json",
+      "sha256": "27ce439286bc921699d0067b5362714f083ce0b754939fa6891b2401a0e101d2",
+      "recordCount": 68,
+      "verificationStatus": "Recovered; TransferTriggerUnverified",
+      "canDirectImportToGameplay": false
+    }
+  },
+  "expectedRoutes": [
+    {
+      "portalId": 1,
+      "route": "Area 4 Map 3 -> Map 19",
+      "authority": "CURRENT_BUILD_RUNTIME_CAPTURE",
+      "formalExpected": true
+    },
+    {
+      "portalId": 2,
+      "route": "Area 4 Map 19 -> Map 3",
+      "authority": "CURRENT_BUILD_RUNTIME_CAPTURE",
+      "formalExpected": true
+    },
+    {
+      "portalId": 3,
+      "route": "Area 2 Map 0 -> Map 43",
+      "authority": "CURRENT_BUILD_RUNTIME_CAPTURE",
+      "formalExpected": true
+    },
+    {
+      "portalId": 4,
+      "route": "Area 2 Map 43 -> Map 0",
+      "authority": "CURRENT_BUILD_RUNTIME_CAPTURE",
+      "formalExpected": true
+    },
+    {
+      "portalId": 170015007,
+      "route": "Area 15 Map 0 -> Map 7",
+      "authority": "TW_LIVE_CLIENT_V2_ACCEPTANCE",
+      "formalExpected": true
+    }
+  ],
+  "inventory": {
+    "expectedEvidenceBackedRoutes": 5,
+    "formalRoutes": 3,
+    "enabledFormalRoutes": 3,
+    "supplementalCandidates": 68
+  },
+  "formalRows": [
+    {
+      "portalId": 3,
+      "nameZhTw": "鴻濛境至碧遊宮 1F",
+      "sourceMapId": 130139698,
+      "sourceX": 284,
+      "sourceY": 452,
+      "sourceRadius": 8,
+      "destinationMapId": 192354557,
+      "destinationX": 52,
+      "destinationY": 184,
+      "enabled": 1
+    },
+    {
+      "portalId": 4,
+      "nameZhTw": "碧遊宮 1F 至鴻濛境",
+      "sourceMapId": 192354557,
+      "sourceX": 51,
+      "sourceY": 185,
+      "sourceRadius": 8,
+      "destinationMapId": 130139698,
+      "destinationX": 283,
+      "destinationY": 453,
+      "enabled": 1
+    },
+    {
+      "portalId": 170015007,
+      "nameZhTw": "實測第 3 階段路線",
+      "sourceMapId": 170015000,
+      "sourceX": 249,
+      "sourceY": 246,
+      "sourceRadius": 0,
+      "destinationMapId": 170015007,
+      "destinationX": 48,
+      "destinationY": 81,
+      "enabled": 1
+    }
+  ],
+  "diff": {
+    "missingEvidenceBackedRoutes": [
+      1,
+      2
+    ],
+    "missingCount": 2,
+    "unexpectedFormalRoutes": [],
+    "unexpectedCount": 0
+  },
+  "regression": {
+    "status": "BLOCKED",
+    "detail": "Portal 1 and 2 were published and evidence-gated by applied migrations but are absent from the current Formal DB.",
+    "cause": "FORGE_SEED_LEDGER_DRIFT"
+  },
+  "promotionGate": {
+    "evidenceBackedCatalogComplete": false,
+    "taiwanLiveRoutePresent": true,
+    "supplementalImportAllowed": false,
+    "resourceLinksRestored": false,
+    "readyForFullPortalPromotion": false
+  },
+  "nextGate": "Resolve the Portal 1/2 catalog regression, then rebuild exact-client portal resource links and validate remaining routes with controlled real-client transitions."
+}

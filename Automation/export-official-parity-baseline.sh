@@ -9,10 +9,11 @@ gates="protocol/evidence/current-build/classification-gates.json"
 classification="protocol/evidence/current-build/live-classification.json"
 filter="Automation/official-parity-baseline.jq"
 map_baseline="docs/parity/map.json"
+portal_baseline="docs/parity/portal.json"
 json_out="docs/parity/official-parity-baseline.json"
 md_out="docs/parity/official-parity-baseline.md"
 
-for file in "$registry" "$mappings" "$gates" "$classification" "$map_baseline" progress.json; do
+for file in "$registry" "$mappings" "$gates" "$classification" "$map_baseline" "$portal_baseline" progress.json; do
   test -f "$file" || { echo "Missing input: $file" >&2; exit 1; }
   jq empty "$file"
 done
@@ -40,6 +41,7 @@ jq -n \
   --slurpfile gates "$gates" \
   --slurpfile classification "$classification" \
   --slurpfile mapBaseline "$map_baseline" \
+  --slurpfile portalBaseline "$portal_baseline" \
   --slurpfile progress progress.json \
   -f "$filter" >"$json_tmp"
 

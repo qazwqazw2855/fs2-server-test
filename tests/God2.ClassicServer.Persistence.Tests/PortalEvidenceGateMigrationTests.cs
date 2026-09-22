@@ -67,6 +67,47 @@ public sealed class PortalEvidenceGateMigrationTests
         Assert.DoesNotContain("DELETE FROM", sql, StringComparison.OrdinalIgnoreCase);
     }
 
+    [Fact]
+    public void Forge_drift_repair_restores_runtime_routes_and_split_evidence()
+    {
+        var root = FindRepositoryRoot();
+        var path = Path.Combine(
+            root,
+            "database",
+            "schema",
+            "473_repair_forge_portal_catalog_and_evidence_drift.sql");
+        var sql = File.ReadAllText(path);
+
+        Assert.Contains("CREATE DATABASE IF NOT EXISTS `god2_research`", sql, StringComparison.Ordinal);
+        Assert.Contains("CREATE TABLE IF NOT EXISTS `god2_research`.`portal_evidence`", sql, StringComparison.Ordinal);
+        Assert.Contains("INSERT INTO `god2_game`.`portals`", sql, StringComparison.Ordinal);
+        Assert.Contains("INSERT INTO `god2_research`.`portal_evidence`", sql, StringComparison.Ordinal);
+        Assert.Contains("FORGE_SEED_LEDGER_DRIFT", sql, StringComparison.Ordinal);
+        Assert.Contains("CREATE TEMPORARY TABLE `god2_portal_repair_guard`", sql, StringComparison.Ordinal);
+        Assert.Contains("CHECK (`ready` = 1)", sql, StringComparison.Ordinal);
+        Assert.Contains("`portal_id` IN (3,4,170015007)", sql, StringComparison.Ordinal);
+        Assert.Contains("DROP TEMPORARY TABLE `god2_portal_repair_guard`", sql, StringComparison.Ordinal);
+
+        Assert.Contains("1, '崑崙仙界三至雜貨店'", sql, StringComparison.Ordinal);
+        Assert.Contains("2, '雜貨店至崑崙仙界三'", sql, StringComparison.Ordinal);
+        Assert.Contains("source_map.`client_area_id` = 4", sql, StringComparison.Ordinal);
+        Assert.Contains("source_map.`client_map_id` = 3", sql, StringComparison.Ordinal);
+        Assert.Contains("source_map.`client_map_id` = 19", sql, StringComparison.Ordinal);
+        Assert.Contains("source_map.`enabled` = 1", sql, StringComparison.Ordinal);
+        Assert.Contains("16, 20, 1", sql, StringComparison.Ordinal);
+
+        foreach (var portalId in new[] { "1", "2", "3", "4", "170015007" })
+        {
+            Assert.Contains($"({portalId}, 'god2-opt-6b127086e0c0'", sql, StringComparison.Ordinal);
+        }
+
+        Assert.Contains("DD787EED030AD5576D5D3571DC5E0D7BB745BC7FB5EEAF83DECF010EE93D56E5", sql, StringComparison.Ordinal);
+        Assert.Contains("4BD5FCE2C10C3096081CD61928C4606A7E3CC2BE507C775BFB93AC4E2EA5D41B", sql, StringComparison.Ordinal);
+        Assert.Contains("ON DUPLICATE KEY UPDATE", sql, StringComparison.Ordinal);
+        Assert.DoesNotContain("DELETE FROM", sql, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("ALTER TABLE `god2_game`.`portals`", sql, StringComparison.Ordinal);
+    }
+
     private static string FindRepositoryRoot()
     {
         var directory = new DirectoryInfo(AppContext.BaseDirectory);

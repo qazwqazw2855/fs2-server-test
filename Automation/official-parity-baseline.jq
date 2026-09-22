@@ -8,6 +8,7 @@
     classificationGates: "protocol/evidence/current-build/classification-gates.json",
     liveClassification: "protocol/evidence/current-build/live-classification.json",
     mapBaseline: "docs/parity/map.json",
+    portalBaseline: "docs/parity/portal.json",
     progress: "progress.json"
   },
   mapBaseline: {
@@ -17,6 +18,15 @@
     provenanceLinks: $mapBaseline[0].provenanceLinks,
     promotionGate: $mapBaseline[0].promotionGate,
     authorityBoundary: $mapBaseline[0].authorityBoundary
+  },
+  portalBaseline: {
+    clientBuildId: $portalBaseline[0].clientBuildId,
+    inventory: $portalBaseline[0].inventory,
+    formalRows: $portalBaseline[0].formalRows,
+    diff: $portalBaseline[0].diff,
+    regression: $portalBaseline[0].regression,
+    promotionGate: $portalBaseline[0].promotionGate,
+    authorityBoundary: $portalBaseline[0].authorityBoundary
   },
   protocolEvidenceSets: {
     runtimeMappings: {
