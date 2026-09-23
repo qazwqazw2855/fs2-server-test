@@ -501,16 +501,18 @@ public sealed class WorldMapTransitionServiceTests
         Assert.DoesNotContain(
             remainingPeers, peer => peer.ConnectionId == 101);
         Assert.Empty(presences.VisiblePeers(101));
-        Assert.Empty(presences.Snapshot()
-            .Where(peer => peer.Character.MapId == 100));
+        Assert.DoesNotContain(
+            presences.Snapshot(), peer => peer.Character.MapId == 100);
 
         // Queued events retain the state at the time of each transition.
-        Assert.Equal(100, Assert.Single(outboxes.Snapshot(202)
-            .Where(e => e.Kind == WorldReplicationEventKind.PlayerLeft))
+        Assert.Equal(100, Assert.Single(
+            outboxes.Snapshot(202),
+            e => e.Kind == WorldReplicationEventKind.PlayerLeft)
             .Subject.Character.MapId);
-        Assert.Equal(200, Assert.Single(outboxes.Snapshot(303)
-            .Where(e => e.Kind == WorldReplicationEventKind.PlayerEntered &&
-                        e.Subject.ConnectionId == 101))
+        Assert.Equal(200, Assert.Single(
+            outboxes.Snapshot(303),
+            e => e.Kind == WorldReplicationEventKind.PlayerEntered &&
+                 e.Subject.ConnectionId == 101)
             .Subject.Character.MapId);
     }
 
