@@ -75,6 +75,11 @@ cleanup()
 
 trap cleanup EXIT
 
+echo "=== Portal Probe Build ==="
+dotnet build \
+  "$repository_root/tools/God2.ServerV2.LoginProbe/God2.ServerV2.LoginProbe.csproj" \
+  --configuration Release --verbosity minimal
+
 echo "=== Portal Fixture Reset ==="
 
 reset_output="$(
@@ -146,8 +151,22 @@ echo "=== Portal LoginProbe ==="
 
 cd "$repository_root"
 
-dotnet run \
-  --project tools/God2.ServerV2.LoginProbe/God2.ServerV2.LoginProbe.csproj \
-  --configuration Release
+printf '%s\n' "$GOD2_TEST_PASSWORD" | sudo env -i PATH=/usr/bin:/bin bash -c '
+    set -euo pipefail
+    IFS= read -r GOD2_TEST_PASSWORD
+    export GOD2_TEST_PASSWORD
+
+    set -a
+    . "$1"
+    set +a
+
+    export GOD2_TEST_ACCOUNT="$3"
+    export GOD2_EXPECTED_CHARACTER="$4"
+    export GOD2_EXPECTED_CHARACTER_ID="$5"
+    export GOD2_PROBE_PORT="$6"
+    export GOD2_PROBE_VERIFY_PORTAL=1
+
+    exec dotnet "$2/tools/God2.ServerV2.LoginProbe/bin/Release/net10.0/God2.ServerV2.LoginProbe.dll"
+' _ "$environment_file" "$repository_root" "$account_name" "$character_name" "$character_id" "$probe_port"
 
 echo "=== Portal Probe 完整閉環成功 ==="
