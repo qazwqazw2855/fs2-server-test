@@ -25,5 +25,6 @@
 - Cause: `FORGE_SEED_LEDGER_DRIFT`
 
 The 68 legacy CAN-link candidates remain TransferTriggerUnverified and cannot be imported into gameplay.
+Pinned staging identity cross-check: `docs/parity/portal-static-links.md` (regenerate with `python3 Automation/check-portal-static-links.py`). It does not verify transfer triggers.
 
 No production database writes were performed.
