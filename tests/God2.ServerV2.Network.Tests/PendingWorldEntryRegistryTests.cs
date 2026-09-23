@@ -70,6 +70,26 @@ public sealed class PendingWorldEntryRegistryTests
     }
 
     [Fact]
+    public void Expired_reservation_cleanup_allows_account_to_log_in_again()
+    {
+        var sessions = OwnedSession();
+        var registry = new PendingWorldEntryRegistry(
+            sessions, TimeSpan.FromMinutes(2));
+
+        Assert.True(registry.TryReserve(
+            "127.0.0.1", "god2test", 101, 1, 1, Character(), Now));
+        Assert.Equal(SessionAcquireStatus.DuplicateAccount,
+            sessions.TryAcquire("god2test", 202).Status);
+
+        Assert.Equal(1, registry.RemoveExpired(Now.AddMinutes(2)));
+        Assert.False(sessions.TryGetOwner("god2test", out _));
+        Assert.True(sessions.TryAcquire("god2test", 202).Succeeded);
+        Assert.Equal(0, registry.RemoveExpired(Now.AddMinutes(3)));
+        Assert.True(sessions.TryGetOwner("god2test", out var owner));
+        Assert.Equal(202, owner);
+    }
+
+    [Fact]
     public void Duplicate_remote_address_is_rejected()
     {
         var sessions = OwnedSession();
