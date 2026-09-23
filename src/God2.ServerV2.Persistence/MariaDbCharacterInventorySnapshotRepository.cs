@@ -54,10 +54,17 @@ public sealed class MariaDbCharacterInventorySnapshotRepository(
         {
             if (!reader.IsDBNull(5))
             {
+                var slotIndex = reader.GetInt32(5);
+                var quantity = reader.IsDBNull(7) ? 0 : reader.GetInt64(7);
+                if (quantity <= 0 || quantity > int.MaxValue)
+                    throw new InvalidDataException(
+                        $"Invalid inventory quantity: character={characterId}; " +
+                        $"slot={slotIndex}");
+
                 slots.Add(new CharacterInventorySlot(
-                    reader.GetInt32(5),
+                    slotIndex,
                     reader.GetInt64(6),
-                    reader.GetInt32(7),
+                    (int)quantity,
                     reader.GetString(8),
                     reader.GetString(9)));
             }
