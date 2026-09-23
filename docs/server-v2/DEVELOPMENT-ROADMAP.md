@@ -3,6 +3,10 @@
 Updated: 2026-09-23
 Branch: `refactor/server-v2`
 
+## 收工固定步驟
+
+每次更新 Server V2 進度與交接時，同步網站 repo 的進度 JSON、只部署網站進度頁白名單檔案，最後核對線上 URL。完整安全流程與未驗證時的回報標準見 [網站進度頁收工 SOP](PROGRESS-PAGE-CLOSEOUT-SOP.md)。
+
 ## Goal
 Rebuild a clean, evidence-driven server compatible with the official God2 client, then add custom content without corrupting the classic baseline.
 
