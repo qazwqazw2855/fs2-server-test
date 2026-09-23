@@ -58,7 +58,19 @@ SELECT '__migration__', COALESCE(MAX(Version),0), 0, 0
 FROM god2.__schemaversion;
 SQL
 
-python3 - "$work_dir/counts.tsv" "$output_json" "$output_md" "$container" <<'PYTHON'
+cat <<'SQL' | sudo docker exec -i "$container" sh -lc '
+password="$(cat "$MARIADB_ROOT_PASSWORD_FILE")"
+exec mariadb -uroot -p"$password" --batch --raw --skip-column-names
+' > "$work_dir/quest-details.tsv"
+SELECT COUNT(*), COALESCE(SUM(enabled=1),0),
+       COALESCE(SUM(start_npc_id IS NOT NULL),0),
+       COALESCE(SUM(end_npc_id IS NOT NULL),0),
+       COALESCE(SUM(description_zh_tw IS NOT NULL),0),
+       COALESCE(SUM(completion_text_zh_tw IS NOT NULL),0)
+FROM god2_game.quests;
+SQL
+
+python3 - "$work_dir/counts.tsv" "$work_dir/quest-details.tsv" "$output_json" "$output_md" "$container" <<'PYTHON'
 from datetime import datetime, timezone
 from pathlib import Path
 import hashlib
@@ -66,8 +78,8 @@ import json
 import subprocess
 import sys
 
-counts_path, json_path, markdown_path = map(Path, sys.argv[1:4])
-container = sys.argv[4]
+counts_path, quest_details_path, json_path, markdown_path = map(Path, sys.argv[1:5])
+container = sys.argv[5]
 names = (
     "monsters", "monster_spawns", "monster_drops", "npcs", "npc_spawns",
     "npc_dialogs", "quests", "quest_objectives", "quest_rewards",
@@ -86,6 +98,14 @@ if set(counts) != set(names) | {"__migration__"}:
 if any(enabled > total or measured > total for name, (total, enabled, measured)
        in counts.items() if name != "__migration__"):
     raise ValueError("A table count exceeds its total")
+quest_detail_rows = quest_details_path.read_text(encoding="utf-8").splitlines()
+if len(quest_detail_rows) != 1:
+    raise ValueError("Expected exactly one quest detail row")
+quest_values = tuple(map(int, quest_detail_rows[0].split("\t")))
+if len(quest_values) != 6 or quest_values[:2] != counts["quests"][:2]:
+    raise ValueError("Quest details do not match quest counts")
+quest_detail = dict(zip(("rows", "enabledRows", "withStartNpc", "withEndNpc",
+                         "withDescription", "withCompletionText"), quest_values))
 
 source_paths = {
     "monsters": "db/imports/official/monsters/monsters.official.json",
@@ -108,6 +128,11 @@ snapshot = {
     "productionDatabaseTouched": False,
     "authorityBoundary": "Formal DB counts and supplemental client recovery counts are separate namespaces; no direct ID join or gameplay promotion is inferred.",
     "tables": {name: dict(zip(("rows", "enabledRows", "measuredRows"), counts[name])) for name in names},
+    "questCatalogFields": quest_detail,
+    "questCatalogHasNpcObjectivesAndRewards": (
+        quest_detail["withStartNpc"] > 0 and quest_detail["withEndNpc"] > 0
+        and counts["quest_objectives"][0] > 0 and counts["quest_rewards"][0] > 0
+    ),
     "supplementalSources": sources,
 }
 json_path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,6 +150,10 @@ for name in names:
     lines.append(f"| `{name}` | {total} | {enabled} | {measured} |")
 lines += [
     "", "Measured rows mean level+HP for monsters, X+Y for spawns, known drop rate for monster drops, and start+end NPC for quests; other rows show zero in this column by design.",
+    "", "Quest catalog fields: " + ", ".join(
+        f"{name}={quest_detail[name]}" for name in
+        ("withStartNpc", "withEndNpc", "withDescription", "withCompletionText")) + ".",
+    "Migration 381 can copy legacy `ProductionProfileEnabled` into Formal `quests.enabled` and `RewardTextZhTw` into `completion_text_zh_tw`. Neither field alone proves playable quest flow or a verified reward.",
     "", "Formal DB row presence and `enabled` do not establish live gameplay parity. Supplemental sources are pinned by SHA-256 in the JSON output and must not be joined to Formal IDs by row count.",
     "", "No database writes were performed.", "",
 ]
