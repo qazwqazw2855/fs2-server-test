@@ -100,6 +100,12 @@ public sealed class WorldReplicationOutboxRegistryTests
         Assert.Equal(2, events.Count);
         Assert.Equal(2, events[0].Subject.Character.CharacterId);
         Assert.Equal(3, events[1].Subject.Character.CharacterId);
+        Assert.Equal(1, registry.DroppedEventCount(101));
+
+        Assert.True(registry.TryRemove(101, out _));
+        Assert.Equal(0, registry.DroppedEventCount(101));
+        Assert.True(registry.TryRegister(101));
+        Assert.Equal(0, registry.DroppedEventCount(101));
     }
 
     [Fact]
