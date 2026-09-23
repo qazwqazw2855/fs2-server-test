@@ -71,6 +71,16 @@ public sealed class WorldNpcRegistry
                 nameof(entries));
         }
 
+        if (entries
+            .Where(entry => entry.ClientEntityHandle.HasValue)
+            .GroupBy(entry => entry.ClientEntityHandle!.Value)
+            .Any(group => group.Count() > 1))
+        {
+            throw new ArgumentException(
+                "Duplicate NPC client entity handles are not allowed within a map.",
+                nameof(entries));
+        }
+
         var snapshot = entries
             .OrderBy(entry => entry.SpawnId)
             .ToArray();
