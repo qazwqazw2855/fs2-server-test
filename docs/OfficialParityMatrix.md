@@ -94,6 +94,7 @@
 
 Supplemental monster/spawn/drop identity checks: `docs/parity/monster-spawn-drop-static.md` (regenerate with `python3 Automation/check-monster-static-evidence.py`). These counts do not establish gameplay semantics.
 Supplemental NPC/merchant/dialog identity checks: `docs/parity/npc-merchant-dialog-static.md` (regenerate with `python3 Automation/check-npc-static-evidence.py`). Visual map candidates do not provide exact spawn positions.
+Supplemental quest presentation checks: `docs/parity/quest-static-evidence.md` (regenerate with `python3 Automation/check-quest-static-evidence.py`). These entries do not establish server quest transitions or rewards.
 
 ## 4. Parity 驗收方式
 
