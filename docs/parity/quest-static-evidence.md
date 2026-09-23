@@ -24,6 +24,6 @@ Read-only export from `god2-runtime-db-test`, schema version `477`, repository c
 | `god2_game.quest_objectives` | 0 |
 | `god2_game.quest_rewards` | 0 |
 
-Migration 381 can copy legacy `ProductionProfileEnabled` into `quests.enabled` and `RewardTextZhTw` into `completion_text_zh_tw`. These counts do not show a runnable quest or a verified reward. The separate supplemental reward inventory also has zero records.
+Migration 381 groups `god2.quest_content_profiles` by `QuestId`, takes `MAX(ProductionProfileEnabled)` and `MAX(NULLIF(RewardTextZhTw, ''))`, then copies those values into Formal `quests.enabled` and `completion_text_zh_tw`. Its upsert keeps any existing `enabled=1` via `existing OR incoming`; therefore even a matching count would not prove every enabled row came from a currently enabled profile. The profile source hash was moved to research archival by Migration 217, and the profile evidence statuses were split by Migration 185. These counts do not show a runnable quest or a verified reward. The separate supplemental reward inventory also has zero records.
 
 Next evidence work without the client: trace the provenance of the 167 enabled flags and 170 completion texts against the existing migration and source records, while keeping their IDs and authority separate. Item target identity and Bahamut item information remain deferred. Quest runtime activation remains blocked pending NPC/dialog binding, verified objective/state transitions, and reward evidence. No production DB write is implied.
