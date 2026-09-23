@@ -17,17 +17,24 @@ public static class ItemStackChangePlanner
             throw new ArgumentOutOfRangeException(nameof(itemId));
         if (newMaximumStack <= 0)
             throw new ArgumentOutOfRangeException(nameof(newMaximumStack));
-        if (inventory.Capacity < inventory.Slots.Count)
-            throw new InvalidDataException("Inventory exceeds capacity.");
+        if (inventory.Capacity <= 0 ||
+            inventory.Capacity < inventory.Slots.Count)
+            throw new InvalidDataException("Invalid inventory capacity.");
 
+        var seenSlots = new HashSet<int>();
         var additional = 0;
-        foreach (var slot in inventory.Slots.Where(s => s.ItemId == itemId))
+        foreach (var slot in inventory.Slots)
         {
-            if (slot.Quantity <= 0)
-                throw new InvalidDataException("Inventory quantity must be positive.");
+            if (slot.SlotIndex < 0 ||
+                slot.SlotIndex >= inventory.Capacity ||
+                slot.ItemId <= 0 ||
+                slot.Quantity <= 0 ||
+                !seenSlots.Add(slot.SlotIndex))
+                throw new InvalidDataException("Invalid inventory slot.");
 
-            additional = checked(
-                additional + (slot.Quantity - 1) / newMaximumStack);
+            if (slot.ItemId == itemId)
+                additional = checked(
+                    additional + (slot.Quantity - 1) / newMaximumStack);
         }
 
         var free = inventory.Capacity - inventory.Slots.Count;
