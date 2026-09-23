@@ -63,6 +63,12 @@ var verifyDuplicateMovement =
             "GOD2_PROBE_VERIFY_DUPLICATE_MOVEMENT"),
         "1",
         StringComparison.Ordinal);
+var verifyWorldLoginMap =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_WORLD_LOGIN_MAP"),
+        "1",
+        StringComparison.Ordinal);
 var verifyPortal =
     string.Equals(
         Environment.GetEnvironmentVariable(
@@ -95,12 +101,13 @@ if ((expectDuplicateLogin ? 1 : 0) +
     (verifyMovement ? 1 : 0) +
     (verifyDuplicateMovement ? 1 : 0) +
     (verifyPortal ? 1 : 0) +
+    (verifyWorldLoginMap ? 1 : 0) +
     (verifyNpcInteraction ? 1 : 0) +
     (verifyNpcDialog ? 1 : 0) +
     (verifyNpcInteractionOwnership ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
-        "重複登入、Pending 所有權、閒置逾時、登出、移動、重複移動、Portal、NPC 互動、NPC 對話與 NPC 所有權模式只能啟用一種。");
+        "測試模式只能啟用一種（包含登入地圖檢查）。");
     return 1;
 }
 
@@ -471,7 +478,48 @@ Require(
 Console.WriteLine(
     $"World Bootstrap 完整接收：{OfficialWorldBootstrapCodec.PayloadLength} bytes");
 
+if (verifyWorldLoginMap)
+{
+    var transition = await ReadFrameAsync(worldStream, timeout.Token);
+    var prelude = await ReadFrameAsync(worldStream, timeout.Token);
+    try
+    {
+        Require(transition.Length == 12 && prelude.Length == 6,
+            "登入地圖定位封包長度或順序錯誤");
+        var decodedTransition = OfficialWorldBootstrapCodec.DecodeFrame(transition);
+        var decodedPrelude = OfficialWorldBootstrapCodec.DecodeFrame(prelude);
+        try
+        {
+            Require(decodedTransition[2] == OfficialPortalWireCodec.MapTransitionOpcode &&
+                    decodedPrelude[2] == OfficialPortalWireCodec.PreludeOpcode,
+                "登入地圖定位 Opcode 或順序錯誤");
+            var packedMap = BinaryPrimitives.ReadUInt16LittleEndian(
+                decodedTransition.AsSpan(3));
+            var packedPosition = BinaryPrimitives.ReadUInt32LittleEndian(
+                decodedTransition.AsSpan(7));
+            var map = packedMap >> 6;
+            var area = packedMap & 0x3F;
+            var x = (packedPosition >> 2) & 0x7FFF;
+            var y = packedPosition >> 17;
+            Require(map == 7 && area == 15,
+                $"登入地圖錯誤：{map}:{area}，預期 7:15");
+            Console.WriteLine($"登入地圖定位封包：{map}:{area} / ({x},{y})");
+        }
+        finally
+        {
+            Array.Clear(decodedTransition);
+            Array.Clear(decodedPrelude);
+        }
+    }
+    finally
+    {
+        Array.Clear(transition);
+        Array.Clear(prelude);
+    }
+}
+
 var expectedNpcHandles =
+    verifyWorldLoginMap ? Array.Empty<uint>() :
     verifyPortal
         ? Array.Empty<uint>()
         : verifyMovement
