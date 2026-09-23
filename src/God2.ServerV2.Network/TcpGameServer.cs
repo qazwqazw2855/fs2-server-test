@@ -132,6 +132,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _portalRouteService,
                     _inventoryRepository,
                     _movementBoundsRepository,
+                    _worldLoginMapIdentityRepository,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -186,6 +187,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         PortalRouteService portalRouteService,
         ICharacterInventorySnapshotRepository? inventoryRepository,
         IMapMovementBoundsRepository? movementBoundsRepository,
+        IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -438,9 +440,9 @@ public sealed class TcpGameServer : IAsyncDisposable
                             pendingWorld.Character.GenderCode,
                             pendingWorld.Character.AppearanceCode);
 
-                    if (_worldLoginMapIdentityRepository is not null)
+                    if (worldLoginMapIdentityRepository is not null)
                     {
-                        var identity = await _worldLoginMapIdentityRepository.GetByMapAsync(
+                        var identity = await worldLoginMapIdentityRepository.GetByMapAsync(
                             mapId, serverCancellationToken);
                         var x = pendingWorld.Character.PositionX;
                         var y = pendingWorld.Character.PositionY;
