@@ -1250,6 +1250,11 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                         using (loginRequest)
                         {
+                            // Expired Login-to-World reservations must release
+                            // account ownership before duplicate-login checks.
+                            pendingWorldEntries.RemoveExpired(
+                                DateTimeOffset.UtcNow);
+
                             var loginResult = await loginService.AuthenticateAsync(
                                 loginRequest.AccountName,
                                 loginRequest.Password,
