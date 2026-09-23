@@ -137,7 +137,62 @@ public static class OfficialWorldBootstrapCodec
         return DecodeFrame(payload[..PlayerSpawnFrameLength]);
     }
 
-    internal static byte[] DecodeFrame(ReadOnlySpan<byte> frame)
+    /// <summary>
+    /// Appends only destinations admitted by the pinned client map transition evidence.
+    /// The caller must resolve the formal map identity and validate its bounds first.
+    /// </summary>
+    public static byte[] EncodeWithVerifiedLocation(
+        long characterId,
+        string characterName,
+        string? classCode,
+        string? genderCode,
+        string? appearanceCode,
+        string clientBuildId,
+        ushort clientMapId,
+        byte clientAreaId,
+        int x,
+        int y)
+    {
+        var location = OfficialPortalWireCodec.SerializeWorldProjectionDestination(
+            clientBuildId, clientMapId, clientAreaId, x, y);
+        if (!location.Succeeded || location.Value is null)
+        {
+            throw new NotSupportedException(
+                $"World login location has no verified wire projection: {location.FailureCode}");
+        }
+
+        var bootstrap = EncodeAfterFirstFollowUp(
+            characterId, characterName, classCode, genderCode, appearanceCode);
+        try
+        {
+            var frames = location.Value.OrderedDecodedFrames
+                .Select(frame => EncodeFrame(frame.Span))
+                .ToArray();
+            try
+            {
+                var result = new byte[bootstrap.Length + frames.Sum(frame => frame.Length)];
+                bootstrap.CopyTo(result, 0);
+                var offset = bootstrap.Length;
+                foreach (var frame in frames)
+                {
+                    frame.CopyTo(result, offset);
+                    offset += frame.Length;
+                }
+                return result;
+            }
+            finally
+            {
+                foreach (var frame in frames)
+                    Array.Clear(frame);
+            }
+        }
+        finally
+        {
+            Array.Clear(bootstrap);
+        }
+    }
+
+    public static byte[] DecodeFrame(ReadOnlySpan<byte> frame)
     {
         var decoded = frame.ToArray();
         var previousPlain = 0xB0;
