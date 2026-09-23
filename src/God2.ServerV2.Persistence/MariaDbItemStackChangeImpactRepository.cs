@@ -64,11 +64,12 @@ public sealed class MariaDbItemStackChangeImpactRepository(
         while (await reader.ReadAsync(cancellationToken))
         {
             var characterId = reader.GetInt64(0);
-            var quantity = reader.GetInt32(1);
+            var quantity = reader.IsDBNull(1) ? 0 : reader.GetInt64(1);
 
-            if (reader.IsDBNull(2) || quantity <= 0)
+            if (reader.IsDBNull(2) || quantity <= 0 ||
+                quantity > int.MaxValue)
                 throw new InvalidDataException(
-                    $"Invalid inventory state: character={characterId}");
+                    $"Invalid inventory state or quantity: character={characterId}");
 
             var capacity = reader.GetInt32(2);
             var occupied = checked((int)reader.GetInt64(3));
@@ -85,7 +86,7 @@ public sealed class MariaDbItemStackChangeImpactRepository(
             }
 
             additionalSlots = checked(
-                additionalSlots + (quantity - 1) / newMaximumStack);
+                additionalSlots + ((int)quantity - 1) / newMaximumStack);
         }
 
         FinishCharacter();
