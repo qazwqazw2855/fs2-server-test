@@ -22,4 +22,4 @@
 - Server V2 `refactor/server-v2` 進度 commit：`fa843fbe8b1ede1a9dbd7e292a07f07e33c17541`，overall 78%。
 - fs2db `main` 網頁資料 commit：`619d6eb4b7fe4d1874380dca2efd37d9ba0e3a72`。
 - 使用者在 AWS 的 `feature/item-v2` 工作樹複製四個進度頁檔案，`jq` 驗證本機 `updated_at=2026-09-24T00:44:36+08:00`、overall 78%、`source_head=fa843fbe...`。其中新增的 `public/server-progress/index.html` 遮住原本 Laravel 進度頁及右側分頁，靜態頁還因 `milestones.items` 不存在而報 `.join()` 錯誤並顯示舊 75%；恢復時須核對原路由及檔案內容，僅移開這次加入的靜態頁與其空目錄，切勿清理其他未提交檔案。
-- 線上 JSON 已由 AWS `curl` 核對為 78% 及 `fa843fbe...`；**進度頁畫面尚未恢復及驗收**，不得標記網站同步完成。
+- 線上 JSON 已由 AWS `curl` 核對為 78% 及 `fa843fbe...`。AWS 已核對 `php artisan route:list --path=server-progress` 存在 Laravel `ServerProgressController@index` 路由；比對 `619d6eb4:public/server-progress/index.html` 完全相同後，僅將遮住路由的靜態檔移往 `/tmp/fs2db-progress-static.QAHby5.html` 並移除空目錄。使用者重新開頁後回報正常，畫面顯示 78%、右側自動化測試與近期開發紀錄已恢復。這是網站畫面驗收，不代表新的 Server V2 實機遊戲驗收。
