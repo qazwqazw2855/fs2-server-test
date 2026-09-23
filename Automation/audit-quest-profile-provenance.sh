@@ -38,12 +38,4 @@ LEFT JOIN (
   GROUP BY QuestId
 ) AS p ON p.QuestId = q.quest_id;
 
--- Evidence labels are archived separately. Their counts do not certify
--- objective execution, NPC binding, or reward delivery.
-SELECT e.evidence_status, COUNT(*) AS formal_quest_rows
-FROM god2_game.quests AS q
-LEFT JOIN god2_research.quest_catalog_evidence AS e
-  ON e.quest_id = q.quest_id
-GROUP BY e.evidence_status
-ORDER BY formal_quest_rows DESC, e.evidence_status;
 SQL
