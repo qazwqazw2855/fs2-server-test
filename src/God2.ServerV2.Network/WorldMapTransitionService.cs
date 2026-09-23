@@ -90,6 +90,15 @@ public sealed class WorldMapTransitionService
             destinationMapId,
             cancellationToken);
 
+        // Loading the destination can await I/O. A disconnect or movement
+        // during that wait must not persist a transition for stale presence.
+        if (!_worldPresences.TryGetByConnection(
+                connectionId, out var loadedPresence) ||
+            !ReferenceEquals(currentPresence, loadedPresence))
+        {
+            return null;
+        }
+
         long? runtimeVersion = null;
         string? concurrencyToken = null;
 
