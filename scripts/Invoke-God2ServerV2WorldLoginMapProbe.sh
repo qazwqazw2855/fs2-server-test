@@ -61,7 +61,7 @@ printf '%s\n' "$test_password" | sudo bash -c '
             wait "$server_pid" 2>/dev/null || true
         fi
         if [ -f "$log" ]; then
-            cat "$log"
+            rg "Listening on|World presence entered|World bootstrap completed|World login location rejected|Unexpected error|Stopped" "$log" || true
             rm -f "$log"
         fi
     }
