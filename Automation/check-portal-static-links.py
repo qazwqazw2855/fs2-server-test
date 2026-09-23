@@ -2,6 +2,7 @@
 """Check pinned portal staging links against pinned map identities without DB access."""
 
 from collections import Counter, defaultdict
+import json
 from pathlib import Path
 import re
 
@@ -9,6 +10,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 SQL = ROOT / "database/schema/476_repair_forge_client_map_resource_provenance_drift.sql"
 OUTPUT = ROOT / "docs/parity/portal-static-links.md"
+INVENTORY = ROOT / "db/imports/official/portals/portals.official.json"
 
 
 def fields(line: str) -> list[str]:
@@ -54,6 +56,19 @@ def main() -> None:
 
     assert sum(c["Derived"] for c in summary.values()) == 44
     assert sum(c["Candidate"] for c in summary.values()) == 21
+    inventory = json.loads(INVENTORY.read_text(encoding="utf-8"))
+    records = {record["id"]: record for record in inventory["records"]}
+    link_ids = {row[0] for row in links}
+    observed_ids = sorted(records.keys() - link_ids)
+    assert inventory["recordCount"] == len(records) == 68
+    assert len(link_ids) == 65 and link_ids <= records.keys()
+    assert observed_ids == [
+        "official-observed/kunlun-portal-to-secret-room",
+        "official-observed/training-room-entry",
+        "official-observed/yuanshi-transfer-to-fenghua",
+    ]
+    assert all(records[record_id]["kind"] == "officialVisualTransfer"
+               for record_id in observed_ids)
     lines = [
         "# Pinned portal staging link cross-check", "",
         "Source: `database/schema/476_repair_forge_client_map_resource_provenance_drift.sql`.",
@@ -67,7 +82,12 @@ def main() -> None:
         "| **Total** | **44** | **21** |", "",
         "All 65 links have matching source map IDs and are disabled. All 44 Derived links have matching destination map IDs. The 21 Candidate links have no destination map identity or destination map ID.",
         "This establishes static identity consistency only. Trigger coordinates and transfer semantics remain unverified; no staging link is promoted to gameplay.", "",
+        "## Supplemental inventory difference", "",
+        "The 68-record supplemental inventory contains these 65 CAN links plus three `officialVisualTransfer` observations. Those three observations are separate evidence records, not missing CAN-link staging rows:", "",
     ]
+    for record_id in observed_ids:
+        lines.append(f"- `{record_id}`")
+    lines += ["", "Their exact destination/map identity, coordinates or packet fields are incomplete. Keep them outside CAN-link staging and gameplay promotion.", ""]
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"Checked {len(links)} staging links; wrote {OUTPUT.relative_to(ROOT)}")
 
