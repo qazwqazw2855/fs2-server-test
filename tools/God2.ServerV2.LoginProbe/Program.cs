@@ -187,18 +187,53 @@ if (verifyPortal)
         timeout.Token);
 }
 
-using var client = new TcpClient();
+TcpClient? loginClient = null;
+var maxHandshakeAttempts = verifyPortal ? 2 : 1;
 
-BindLocalAddress(client, localAddress);
+for (var attempt = 0; attempt < maxHandshakeAttempts; attempt++)
+{
+    var candidate = new TcpClient();
 
-await client.ConnectAsync("127.0.0.1", port, timeout.Token);
+    try
+    {
+        BindLocalAddress(candidate, localAddress);
+        await candidate.ConnectAsync("127.0.0.1", port, timeout.Token);
+
+        var handshake = await ReadFrameAsync(
+            candidate.GetStream(), timeout.Token);
+
+        if (handshake.AsSpan().SequenceEqual(
+                OfficialLoginHandshakeProtocol.ServerHandshakeFrame.Span))
+        {
+            loginClient = candidate;
+            break;
+        }
+
+        if (verifyPortal &&
+            attempt == 0 &&
+            handshake.AsSpan().SequenceEqual(
+                OfficialWorldHandshakeProtocol.ServerHandshakeFrame.Span))
+        {
+            Console.WriteLine(
+                "偵測到前次測試留下的 World 票據，關閉連線後重試 Login。");
+            candidate.Dispose();
+            await Task.Delay(100, timeout.Token);
+            continue;
+        }
+
+        throw new InvalidOperationException(
+            "Server Handshake 不符；只允許 Portal Probe 清理一次已知 World 票據。");
+    }
+    catch
+    {
+        candidate.Dispose();
+        throw;
+    }
+}
+
+using var client = loginClient ??
+    throw new InvalidOperationException("Portal Probe 無法取得 Login Handshake。");
 await using var stream = client.GetStream();
-
-var serverHandshake = await ReadFrameAsync(stream, timeout.Token);
-Require(
-    serverHandshake.AsSpan().SequenceEqual(
-        OfficialLoginHandshakeProtocol.ServerHandshakeFrame.Span),
-    "Server Handshake 不符");
 
 await stream.WriteAsync(
     OfficialLoginHandshakeProtocol.ExpectedClientHandshakeFrame,
