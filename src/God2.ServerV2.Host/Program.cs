@@ -70,6 +70,7 @@ ICharacterPositionWriter? characterPositionWriter;
 ICharacterMapTransitionWriter? characterMapTransitionWriter;
 ICharacterInventorySnapshotRepository? inventoryRepository;
 IMapMovementBoundsRepository? movementBoundsRepository;
+IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository;
 var enableMovementBounds = string.Equals(
     Environment.GetEnvironmentVariable("GOD2_ENFORCE_MOVEMENT_BOUNDS"),
     "1", StringComparison.Ordinal);
@@ -106,6 +107,8 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
     movementBoundsRepository = enableMovementBounds
         ? new MariaDbMapMovementBoundsRepository(databaseOptions)
         : null;
+    worldLoginMapIdentityRepository =
+        new MariaDbWorldLoginMapIdentityRepository(databaseOptions);
 
     var enableMovementPersistence =
         string.Equals(
@@ -137,6 +140,7 @@ else
     characterMapTransitionWriter = null;
     inventoryRepository = null;
     movementBoundsRepository = null;
+    worldLoginMapIdentityRepository = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
 }
@@ -159,7 +163,8 @@ await using var server = new TcpGameServer(
     characterMapTransitionWriter,
     portalRouteService,
     inventoryRepository,
-    movementBoundsRepository);
+    movementBoundsRepository,
+    worldLoginMapIdentityRepository);
 
 try
 {
