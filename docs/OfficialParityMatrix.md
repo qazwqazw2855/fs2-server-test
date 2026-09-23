@@ -78,19 +78,21 @@
 | legacy portal CAN-link candidates | 68 | Supplemental only；TransferTriggerUnverified，不得直接匯入 gameplay |
 | npcs | 319 | Recovered; spawn/dialog/merchant binding仍需驗證 |
 | monsters | 208 | Recovered; combat semantics仍需驗證 |
-| spawns | 69 | Needs recovery / cross-reference |
+| spawns | 69 | Supplemental map-entry/respawn candidates; no monster template or coordinates; all runtime blocked |
 | items | 17,407 | Recovered; gameplay fields仍需驗證 |
 | equipment rules | 1 | Equipment rules only |
 | skills | 1,108 | Recovered; runtime semantics仍需驗證 |
 | quests | 418 | Recovered; reward/NPC state仍需驗證 |
 | merchants | 16 | Recovered; inventory仍需驗證 |
 | dialogs | 18 | Recovered; rows仍需展開 |
-| drop tables | 208 | Evidence-only / needs cross-reference |
+| drop tables | 208 | One candidate identity per monster; no verified items/rates/quantities; all runtime blocked |
 | localization | 34 | Table-manifest level |
 | immortals | 34 | Exact-client static identity；runtime semantics evidence-gated |
 | battle pets | 178 | Exact-client static identity；runtime semantics evidence-gated |
 
 > 舊台服 Server 的完整資料數量與上述 Official Client Recovery inventory 必須分開管理。後續以舊台服正式資料庫/Server source 做一次完整 inventory，再建立 machine-checkable parity diff；不得把不同來源的筆數直接視為同一集合。
+
+Supplemental monster/spawn/drop identity checks: `docs/parity/monster-spawn-drop-static.md` (regenerate with `python3 Automation/check-monster-static-evidence.py`). These counts do not establish gameplay semantics.
 
 ## 4. Parity 驗收方式
 
