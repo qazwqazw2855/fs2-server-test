@@ -85,7 +85,7 @@ Overall: **78%**
 
 ### Item / Inventory / Equipment
 
-- Proven scope: Read-only inventory, stack rules and selected static permissions exist. AWS test DB read-only audit on 2026-09-23 at commit `356741a` found 1 inventory state and 1 active slot; zero invalid capacity, negative versions, orphan slots, out-of-range positions/quantities, null metadata, missing Formal item links, declared-stack excesses, or over-capacity states. Application tests passed 49/49 after slot validation at commit `b820330`.
+- Proven scope: Read-only inventory, stack rules and selected static permissions exist. AWS test DB read-only audit on 2026-09-23 at commit `356741a` found 1 inventory state and 1 active slot; zero invalid capacity, negative versions, orphan slots, out-of-range positions/quantities, null metadata, missing Formal item links, declared-stack excesses, or over-capacity states. Application tests passed 49/49 after slot validation at commit `b820330`. After the BIGINT range guard at commit `25f6d61`, AWS Release build of Persistence succeeded and two selected read-only MariaDB integration tests passed (inventory snapshot and item stack impact; 2/2, 0 skipped).
 - Limit: One test character and one active slot are a narrow snapshot; this does not verify mutation concurrency, item transfer, equipment effects, or official-client wire behavior.
 - Gap: Mutation, equipment effects, economy and client update wire are blocked.
 - Authorities: `EXACT_CURRENT_STATIC`, `FORMAL_DB`, `LEGACY_SERVER`, `CN_SUPPLEMENTAL`
