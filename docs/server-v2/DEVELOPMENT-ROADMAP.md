@@ -1,6 +1,6 @@
 # God2 Server V2 - Development Roadmap & Dev Log
 
-Updated: 2026-09-22
+Updated: 2026-09-23
 Branch: `refactor/server-v2`
 
 ## Goal
@@ -311,3 +311,13 @@ Server V2 is not complete until the official client can reliably perform the maj
 - Overall progress remains 78%; no milestone percentage was increased solely because baseline/provenance quality improved.
 - Current blockers: exact-current client Map resource provenance, reconstruction of `client_map_resources` / `client_map_resource_identities` / `portal_resource_links`, Battle wire evidence, multiplayer replication/AOI/despawn evidence, and the independent God2Patch Large-Over 1054 / Launcher research line.
 - Next: archive exact-current `Data2/Patch/Comm/gamedata.csvZ` and `Data2/map`, rebuild Map resource identities into staging with semantic diff, rebuild portal resource links and unresolved-reference diff, then proceed to full Portal parity and real-client map-transition acceptance.
+
+### 2026-09-23 19:47 - Progress Sync
+- Compared with the previous roadmap sync commit `d4c9e748`; `refactor/server-v2` advanced 30 commits to `bd7b0a5483d8afec3acdc436d9b1645deff2108f` (`docs: link quest static evidence audit`).
+- Exact-current Map provenance work advanced substantially: added pinned map SHA-256 inventory, resource-drift repair tooling, Migration 476 to restore client map resource/identity/portal-link staging provenance, and Migration 477 to pin exact-current map file provenance.
+- Portal parity now reports 5 evidence-backed routes and 5 Formal routes with missing=0. Migration 475 repaired the FORGE_SEED_LEDGER_DRIFT regression; 65 staging portal resource links remain disabled and runtime-unbound, and 68 legacy CAN-link candidates remain supplemental/TransferTriggerUnverified.
+- Added machine-checkable supplemental static evidence audits for NPC/merchant/dialog, Monster/spawn/drop and Quest presentation. These checks intentionally do not promote visual/static identity evidence into spawn coordinates, combat/drop semantics, quest transitions or rewards.
+- New migration/static-audit test code is present, but current head has no GitHub commit status. The latest recorded complete Server V2 verification therefore remains 262/262 passing; no new current-head CI pass is claimed.
+- Overall project progress remains 78%. M2-A remains 15%, M2-B 5%, M2-C 0%, M2-D 0% and M2-E 10%; baseline/provenance improvements are not counted as unverified gameplay completion.
+- Current blockers: exact-current navigation/collision and Portal transfer-trigger semantics; NPC/Monster/Quest gameplay semantics beyond supplemental static evidence; Battle wire evidence; multiplayer Player AOI/Spawn/Despawn; and the independent God2Patch Large-Over 1054 / Launcher research line.
+- Next: finish exact-current Map navigation/collision semantic diff, run controlled real-client Portal 1–4 transition acceptance, continue qualifying runtime/server evidence recovery for NPC/Monster/Quest, then address multiplayer replication and Battle/Combat wire gates.
