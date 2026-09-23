@@ -465,6 +465,56 @@ public sealed class WorldMapTransitionServiceTests
     }
 
     [Fact]
+    public void Two_players_change_maps_and_leave_without_stale_peer_events()
+    {
+        var presences = new WorldPresenceRegistry();
+        var interactions = new NpcInteractionSessionRegistry();
+        var outboxes = new WorldReplicationOutboxRegistry();
+
+        presences.TryEnter(Presence(101, 1, 100));
+        presences.TryEnter(Presence(202, 2, 100));
+        presences.TryEnter(Presence(303, 3, 200));
+        outboxes.TryRegister(101);
+        outboxes.TryRegister(202);
+        outboxes.TryRegister(303);
+
+        var service = new WorldMapTransitionService(
+            presences, interactions, outboxes);
+
+        Assert.True(service.TryTransition(
+            101, 1, 200, 65, 64, Now, out var first));
+        Assert.Equal(1, first!.PlayerLeftEventsQueued);
+        Assert.Equal(2, first.PlayerEnteredEventsQueued);
+        Assert.Equal(100, Assert.Single(outboxes.Snapshot(202))
+            .Subject.Character.MapId);
+
+        Assert.True(service.TryTransition(
+            202, 2, 200, 70, 75, Now, out var second));
+        Assert.Empty(second!.PreviousVisiblePeers);
+        Assert.Equal(2, second.NewVisiblePeers.Count);
+        Assert.Equal(4, second.PlayerEnteredEventsQueued);
+
+        Assert.True(presences.TryLeave(
+            101, out var departed, out var remainingPeers));
+        Assert.Equal(200, departed!.Character.MapId);
+        Assert.Equal(2, remainingPeers.Count);
+        Assert.DoesNotContain(
+            remainingPeers, peer => peer.ConnectionId == 101);
+        Assert.Empty(presences.VisiblePeers(101));
+        Assert.Empty(presences.Snapshot()
+            .Where(peer => peer.Character.MapId == 100));
+
+        // Queued events retain the state at the time of each transition.
+        Assert.Equal(100, Assert.Single(outboxes.Snapshot(202)
+            .Where(e => e.Kind == WorldReplicationEventKind.PlayerLeft))
+            .Subject.Character.MapId);
+        Assert.Equal(200, Assert.Single(outboxes.Snapshot(303)
+            .Where(e => e.Kind == WorldReplicationEventKind.PlayerEntered &&
+                        e.Subject.ConnectionId == 101))
+            .Subject.Character.MapId);
+    }
+
+    [Fact]
     public void Failed_transition_does_not_release_interaction()
     {
         var presences = new WorldPresenceRegistry();
