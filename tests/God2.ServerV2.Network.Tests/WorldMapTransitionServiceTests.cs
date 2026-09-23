@@ -124,6 +124,33 @@ public sealed class WorldMapTransitionServiceTests
     }
 
     [Fact]
+    public async Task Disconnect_during_destination_load_does_not_write_database()
+    {
+        var presences = new WorldPresenceRegistry();
+        var interactions = new NpcInteractionSessionRegistry();
+        var outboxes = new WorldReplicationOutboxRegistry();
+        var worldNpcs = new WorldNpcRegistry();
+
+        presences.TryEnter(Presence(101, 1, 100));
+        outboxes.TryRegister(101);
+
+        var writer = new CountingMapTransitionWriter();
+        var npcStateService = new WorldNpcStateService(
+            new NpcSnapshotService(new LeavingNpcRepository(presences)),
+            worldNpcs);
+        var service = new WorldMapTransitionService(
+            presences, interactions, outboxes, npcStateService, writer);
+
+        var result = await service.TryTransitionAsync(
+            101, 1, 200, 65, 64, Now, CancellationToken.None);
+
+        Assert.Null(result);
+        Assert.Equal(0, writer.CallCount);
+        Assert.False(presences.TryGetByCharacter(1, out _));
+        Assert.Empty(outboxes.Snapshot(101));
+    }
+
+    [Fact]
     public async Task Persistence_success_updates_runtime_concurrency_state()
     {
         var presences = new WorldPresenceRegistry();
@@ -572,6 +599,33 @@ public sealed class WorldMapTransitionServiceTests
                 CancellationToken cancellationToken) =>
             ValueTask.FromResult(
                 CharacterMapTransitionWriteResult.Conflict);
+    }
+
+    private sealed class LeavingNpcRepository(
+        WorldPresenceRegistry presences) : INpcSnapshotRepository
+    {
+        public ValueTask<IReadOnlyList<NpcSnapshotEntry>> ListByMapAsync(
+            long mapId, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            presences.TryLeave(101, out _);
+            return ValueTask.FromResult<IReadOnlyList<NpcSnapshotEntry>>([]);
+        }
+    }
+
+    private sealed class CountingMapTransitionWriter :
+        ICharacterMapTransitionWriter
+    {
+        public int CallCount { get; private set; }
+
+        public ValueTask<CharacterMapTransitionWriteResult> TryUpdateAsync(
+            CharacterMapTransitionWriteRequest request,
+            CancellationToken cancellationToken)
+        {
+            CallCount++;
+            return ValueTask.FromResult(
+                CharacterMapTransitionWriteResult.Conflict);
+        }
     }
 
     private sealed class ThrowingNpcRepository :
