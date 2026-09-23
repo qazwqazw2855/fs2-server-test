@@ -25,6 +25,7 @@ public sealed class WorldReplicationOutboxRegistry
     private readonly object _gate = new();
     private readonly int _maximumEventsPerConnection;
     private readonly Dictionary<long, Queue<WorldReplicationEvent>> _outboxes = [];
+    private readonly Dictionary<long, long> _droppedEvents = [];
     private long _nextSequence;
 
     public WorldReplicationOutboxRegistry(
@@ -61,9 +62,13 @@ public sealed class WorldReplicationOutboxRegistry
 
         lock (_gate)
         {
-            return _outboxes.TryAdd(
-                connectionId,
-                new Queue<WorldReplicationEvent>());
+            if (!_outboxes.TryAdd(
+                    connectionId,
+                    new Queue<WorldReplicationEvent>()))
+                return false;
+
+            _droppedEvents[connectionId] = 0;
+            return true;
         }
     }
 
@@ -128,6 +133,8 @@ public sealed class WorldReplicationOutboxRegistry
                    _maximumEventsPerConnection)
             {
                 outbox.Dequeue();
+                _droppedEvents[recipientConnectionId] =
+                    checked(_droppedEvents[recipientConnectionId] + 1);
             }
 
             queuedEvent = new WorldReplicationEvent(
@@ -155,6 +162,16 @@ public sealed class WorldReplicationOutboxRegistry
         }
     }
 
+    public long DroppedEventCount(long connectionId)
+    {
+        lock (_gate)
+        {
+            return _droppedEvents.TryGetValue(connectionId, out var count)
+                ? count
+                : 0;
+        }
+    }
+
     public bool TryRemove(
         long connectionId,
         out IReadOnlyList<WorldReplicationEvent> discardedEvents)
@@ -170,6 +187,7 @@ public sealed class WorldReplicationOutboxRegistry
             }
 
             discardedEvents = outbox.ToArray();
+            _droppedEvents.Remove(connectionId);
             return true;
         }
     }
