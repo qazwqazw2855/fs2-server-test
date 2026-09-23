@@ -142,11 +142,14 @@ public sealed class PendingWorldEntryRegistry
         foreach (var pair in _entries)
         {
             if (pair.Value.ExpiresAtUtc <= nowUtc &&
-                _entries.TryRemove(pair.Key, out var expired))
+                ((ICollection<KeyValuePair<string, PendingWorldEntry>>)_entries)
+                    .Remove(pair))
             {
+                // Remove only the entry observed as expired; another thread
+                // may have claimed it and reserved a fresh entry at this key.
                 _sessionRegistry.Release(
-                    expired.AccountName,
-                    expired.ReservationConnectionId);
+                    pair.Value.AccountName,
+                    pair.Value.ReservationConnectionId);
 
                 removed++;
             }
