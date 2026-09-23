@@ -263,7 +263,7 @@ await stream.WriteAsync(
     timeout.Token);
 
 var characterList = await ReadFrameAsync(stream, timeout.Token);
-var decoded = OfficialLoginWireTransform.Decode(characterList);
+var decoded = CurrentClientServerWireTransform.Decode(characterList);
 
 try
 {
@@ -278,7 +278,7 @@ try
 
     Require(
         decoded[^1] ==
-        OfficialLoginWireTransform.ComputeChecksum(decoded),
+        CurrentClientServerWireTransform.ComputeChecksum(decoded),
         "角色列表 Checksum 錯誤");
 
     var count =
