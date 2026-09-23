@@ -30,8 +30,7 @@ public partial class MainWindow : Window
             StartGameButton.IsEnabled = false;
 
             var launcherDirectory = AppContext.BaseDirectory;
-            var clientDirectory = Path.GetFullPath(
-                Path.Combine(launcherDirectory, "..", "God2-Official"));
+            var clientDirectory = launcherDirectory;
 
             _clientIntegrity = await ClientIntegrityService.VerifyAsync(
                 clientDirectory);
@@ -74,8 +73,14 @@ public partial class MainWindow : Window
             }
 
             var launcherDirectory = AppContext.BaseDirectory;
-            var clientDirectory = Path.GetFullPath(
-                Path.Combine(launcherDirectory, "..", "God2-Official"));
+            var clientDirectory = launcherDirectory;
+
+            var endpoint = await V2EndpointService.ConfigureAsync(clientDirectory);
+            if (!endpoint.Success)
+            {
+                ClientStatusText.Text = endpoint.Status;
+                return;
+            }
 
             ClientStatusText.Text = "正在啟動仙界傳...";
 
