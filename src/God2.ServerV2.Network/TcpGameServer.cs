@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 16933)
+Total output lines: 1452
+
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
@@ -17,6 +20,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly PortalRouteService _portalRouteService;
     private readonly ICharacterInventorySnapshotRepository? _inventoryRepository;
     private readonly IMapMovementBoundsRepository? _movementBoundsRepository;
+    private readonly IWorldLoginMapIdentityRepository? _worldLoginMapIdentityRepository;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -41,7 +45,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterMapTransitionWriter? characterMapTransitionWriter = null,
         PortalRouteService? portalRouteService = null,
         ICharacterInventorySnapshotRepository? inventoryRepository = null,
-        IMapMovementBoundsRepository? movementBoundsRepository = null)
+        IMapMovementBoundsRepository? movementBoundsRepository = null,
+        IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -63,6 +68,7 @@ public sealed class TcpGameServer : IAsyncDisposable
 
         _inventoryRepository = inventoryRepository;
         _movementBoundsRepository = movementBoundsRepository;
+        _worldLoginMapIdentityRepository = worldLoginMapIdentityRepository;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -435,6 +441,41 @@ public sealed class TcpGameServer : IAsyncDisposable
                             pendingWorld.Character.GenderCode,
                             pendingWorld.Character.AppearanceCode);
 
+                    if (_worldLoginMapIdentityRepository is not null)
+                    {
+                        var identity = await _worldLoginMapIdentityRepository.GetByMapAsync(
+                            mapId, serverCancellationToken);
+                        var x = pendingWorld.Character.PositionX;
+                        var y = pendingWorld.Character.PositionY;
+                        if (identity is null || x is null || y is null ||
+                            !identity.Contains(x.Value, y.Value))
+                        {
+                            Log(connectionId,
+                                $"World login location rejected: map={mapId}; pos=({x},{y}); " +
+                                "reason=missing_identity_or_outside_bounds");
+                            return;
+                        }
+                        try
+                        {
+                            var locatedBootstrap = OfficialWorldBootstrapCodec.EncodeWithVerifiedLocation(
+                                pendingWorld.Character.CharacterId,
+                                pendingWorld.Character.Name,
+                                pendingWorld.Character.ClassCode,
+                                pendingWorld.Character.GenderCode,
+                                pendingWorld.Character.AppearanceCode,
+                                identity.ClientBuildId, identity.ClientMapId,
+                                identity.ClientAreaId, x.Value, y.Value);
+                            Array.Clear(worldBootstrap);
+                            worldBootstrap = locatedBootstrap;
+                        }
+                        catch (NotSupportedException exception)
+                        {
+                            Log(connectionId,
+                                $"World login location rejected: map={mapId}; reason={exception.Message}");
+                            return;
+                        }
+                    }
+
                     await stream.WriteAsync(
                         worldBootstrap,
                         serverCancellationToken);
@@ -665,78 +706,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                                         "NPC interaction open rejected: " +
                                         $"handle={npcInteraction.ClientEntityHandle}; " +
                                         $"status={openResult.Status}; " +
-                                        "closing connection.");
-                                    break;
-                                }
-
-                                var dialogEncoding =
-                                    OfficialNpcDialogCodec.EncodeOpenResponse(
-                                        OfficialNpcSpawnCodec.ClientBuildId,
-                                        npcInteraction.ClientEntityHandle);
-
-                                if (!dialogEncoding.Succeeded)
-                                {
-                                    Log(
-                                        connectionId,
-                                        "RX NpcInteractionOpen " +
-                                        $"bytes={worldFrame.Length}; " +
-                                        $"character={pendingWorld.Character.CharacterId}; " +
-                                        $"map={currentMapId}; " +
-                                        $"handle={npcInteraction.ClientEntityHandle}; " +
-                                        $"spawn={openResult.Session!.SpawnId}; " +
-                                        "sessionOwnership=Accepted; " +
-                                        "wireResponse=BlockedByEvidence; " +
-                                        $"reason={dialogEncoding.Reason}");
-                                    continue;
-                                }
-
-                                try
-                                {
-                                    await stream.WriteAsync(
-                                        dialogEncoding.Frame,
-                                        serverCancellationToken);
-                                }
-                                finally
-                                {
-                                    Array.Clear(dialogEncoding.Frame);
-                                }
-
-                                Log(
-                                    connectionId,
-                                    "RX NpcInteractionOpen " +
-                                    $"bytes={worldFrame.Length}; " +
-                                    $"character={pendingWorld.Character.CharacterId}; " +
-                                    $"map={currentMapId}; " +
-                                    $"handle={npcInteraction.ClientEntityHandle}; " +
-                                    $"spawn={openResult.Session!.SpawnId}; " +
-                                    "sessionOwnership=Accepted; " +
-                                    "wireResponse=OfficialNpcDialogCodec; " +
-                                    $"txBytes={OfficialNpcDialogCodec.ExactOpenResponseLength}; " +
-                                    $"evidence={OfficialNpcDialogCodec.EvidenceId}");
-                                continue;
-                            }
-
-                            var closeStatus =
-                                npcInteractions.TryClose(
-                                    connectionId,
-                                    npcInteraction.ClientEntityHandle,
-                                    out var closedInteraction);
-
-                            if (closeStatus !=
-                                NpcInteractionCloseStatus.Closed)
-                            {
-                                Log(
-                                    connectionId,
-                                    "NPC interaction close rejected: " +
-                                    $"handle={npcInteraction.ClientEntityHandle}; " +
-                                    $"status={closeStatus}; " +
-                                    "closing connection.");
-                                break;
-                            }
-
-                            Log(
-                                connectionId,
-                                "RX NpcInteractionMerchantClose " +
+                                        "closing connection.");…933 tokens truncated…     "RX NpcInteractionMerchantClose " +
                                 $"bytes={worldFrame.Length}; " +
                                 $"character={closedInteraction!.CharacterId}; " +
                                 $"map={closedInteraction.MapId}; " +
