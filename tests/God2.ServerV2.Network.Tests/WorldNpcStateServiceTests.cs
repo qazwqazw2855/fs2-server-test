@@ -39,6 +39,32 @@ public sealed class WorldNpcStateServiceTests
     }
 
     [Fact]
+    public async Task Concurrent_entrants_share_one_map_load()
+    {
+        var repository = new PausedRepository([Npc(100, 1001)]);
+        var registry = new WorldNpcRegistry();
+        var service = new WorldNpcStateService(
+            new NpcSnapshotService(repository), registry);
+
+        var first = service.EnsureLoadedAsync(100, CancellationToken.None)
+            .AsTask();
+        await repository.WaitUntilStartedAsync();
+
+        var second = service.EnsureLoadedAsync(100, CancellationToken.None)
+            .AsTask();
+        Assert.False(second.IsCompleted);
+        Assert.Equal(1, repository.CallCount);
+
+        repository.Release();
+        var results = await Task.WhenAll(first, second);
+
+        Assert.Equal(WorldNpcLoadStatus.Loaded, results[0].Status);
+        Assert.Equal(WorldNpcLoadStatus.AlreadyLoaded, results[1].Status);
+        Assert.Equal(1, repository.CallCount);
+        Assert.Single(registry.SnapshotMap(100));
+    }
+
+    [Fact]
     public async Task Empty_map_is_still_considered_loaded()
     {
         var repository = new CountingRepository([]);
@@ -119,6 +145,30 @@ public sealed class WorldNpcStateServiceTests
             OpaqueTemplateSha256: null,
             WireEvidenceStatus: "EvidenceBlocked",
             WireEvidenceReference: null);
+
+    private sealed class PausedRepository(
+        IReadOnlyList<NpcSnapshotEntry> entries) : INpcSnapshotRepository
+    {
+        private readonly TaskCompletionSource _started =
+            new(TaskCreationOptions.RunContinuationsAsynchronously);
+        private readonly TaskCompletionSource _release =
+            new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        public int CallCount { get; private set; }
+
+        public Task WaitUntilStartedAsync() => _started.Task;
+
+        public void Release() => _release.SetResult();
+
+        public async ValueTask<IReadOnlyList<NpcSnapshotEntry>> ListByMapAsync(
+            long mapId, CancellationToken cancellationToken)
+        {
+            CallCount++;
+            _started.TrySetResult();
+            await _release.Task.WaitAsync(cancellationToken);
+            return entries;
+        }
+    }
 
     private sealed class CountingRepository :
         INpcSnapshotRepository
