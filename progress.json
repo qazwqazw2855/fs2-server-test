@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-23T00:55:38+08:00",
-  "summary": "第一輪 God2 Server V2 Data Inventory Baseline 與 Wire Baseline 已完成，正式進入正服完整資料 Parity 階段。目前 exact-current 官方 Map_City_Coordniate evidence 已固定：144 maps、14 areas、category 0/1/2/3 = 37/14/1/92，root candidates=14、explicit parent pointers=0。Migration 114 與 exact-current 已確認 144 組 Area/Map 完全對齊。目前發現 9 組 resource path 命名差異，包含大小寫、資料夾名稱與檔名差異；在沒有更高層正服證據前維持 evidence-gated，不自行修正。Map hierarchy evidence 已納入 parity exporter，Map parser 相關測試 5/5 通過。Full-world runtime promotion 仍維持 blocked，下一階段為完整 exact-current Client resource、navigation、collision 與 Portal reference parity.",
+  "updated_at": "2026-09-24T00:44:36+08:00",
+  "summary": "God2 Server V2 正服地圖基線持續進行。Windows 實機顯示室內雜貨店畫面，但測試角色資料庫地圖為九天冰屋 170015007，已確認登入畫面與角色地圖可能錯位。隔離分支 codex/world-login-map-identity 建立依正式地圖 ID 查客戶端 Area/Map 身分與邊界的登入定位流程；Protocol 110/110、Network 80/80、Host Release build 通過。AWS 127.0.0.1:6002 唯讀 LoginProbe 證實 1772-byte Bootstrap 後接定位封包，總計 1790 bytes，解碼為 Area 15 / Map 7、(17,15)。正式 6001 未變更；Windows 畫面及主世界進出仍待實機驗證。Portal 1 來源座標 (252,397) 超過崑崙仙界 DB 界線，暫不修改。整體進度維持 78%。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,9 +262,9 @@
     }
   ],
   "current_focus": {
-    "title": "Exact-current Client Resource / Map Parity",
-    "description": "Exact-current 官方 gamedata.csvZ 已固定為 hierarchy evidence：144 maps、14 areas、category 0/1/2/3 = 37/14/1/92，root candidates=14、explicit parent pointers=0。Migration 114 與 exact-current 已確認 144 組 Area/Map 完全對齊。目前保留 9 組 resource path 命名差異，不在沒有額外正服證據時自行修改。下一工作節點為取得完整 exact-current Client，進一步驗證 resource、navigation、collision 與 portal references。",
-    "status": "waiting_for_exact_current_client_upload"
+    "title": "登入地圖身分與主世界進出驗證",
+    "description": "隔離分支完成無畫面 Area 15 / Map 7 登入定位驗證；公司無客戶端時先補 Network 清理及拒絕路徑測試、資料庫位置唯讀核對與 Portal 1 邊界來源稽核。待 Windows client 實際顯示正確地圖、登出重登及移動回寫一致後，才合併至正式分支。詳見 docs/handoff/world-login-map-20260924.md（隔離分支）。",
+    "status": "isolated_headless_verified_client_acceptance_pending"
   },
   "verification": {
     "build": "passing",
@@ -303,7 +303,7 @@
         "failed": 0
       }
     ],
-    "note": "Server V2 六個測試專案最近一次結果合計 262/262 通過；MariaDB 整合測試已實際連線執行，需 GOD2_TEST_PASSWORD 的登入案例本次未執行。正式 6001 已驗證 Portal 閉環與 World 背包唯讀載入。"
+    "note": "Server V2 六個測試專案最近一次結果合計 262/262 通過；MariaDB 整合測試已實際連線執行，需 GOD2_TEST_PASSWORD 的登入案例本次未執行。正式 6001 已驗證 Portal 閉環與 World 背包唯讀載入。 2026-09-24 隔離分支另有 Protocol 110/110、Network 80/80、Host Release build 與 6002 唯讀登入地圖 7:15/(17,15) 通過；不計入上述正式分支 262 項統計，且不代表客戶端畫面通過。"
   },
   "blockers": [
     {
@@ -328,6 +328,7 @@
     }
   ],
   "next_steps": [
+    "公司無 client：檢查隔離分支登入地圖驗證失敗時 WorldPresence/Session 清理、DB 位置一致性及 Portal 1 入口越界來源；僅無畫面測試，不部署至 6001。",
     "從完整 exact-current Windows 客戶端封存 Data2/Patch/Comm/gamedata.csvZ 與 Data2/map，驗證官方來源與檔案 SHA-256",
     "將 158 client map resources、144 identities 與 65 disabled portal links 對照 exact-current client，產生 semantic diff",
     "完成 Map hierarchy、collision、navigation 與 Portal unresolved-reference diff；未驗證資料維持 disabled",
@@ -335,6 +336,11 @@
     "68 條 legacy CAN-link candidates 維持 supplemental；trigger 未驗證前禁止匯入 gameplay"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-24",
+      "title": "登入地圖隔離分支 6002 無畫面閉環",
+      "detail": "codex/world-login-map-identity：Protocol 110/110、Network 80/80、Host Release build 成功；AWS 唯讀 LoginProbe 證實 World Bootstrap 1772 + 定位 18 = 1790 bytes，地圖 7:15、座標 (17,15)，角色 DB map=170015007。正式 6001 未更新；Windows 客戶端實際畫面尚未驗收。詳見 docs/handoff/world-login-map-20260924.md（隔離分支）。"
+    },
     {
       "date": "2026-09-23",
       "title": "Exact-current Map Hierarchy Evidence 完成",
