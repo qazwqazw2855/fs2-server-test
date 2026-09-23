@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 16933)
-Total output lines: 1452
-
 using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
@@ -706,7 +703,78 @@ public sealed class TcpGameServer : IAsyncDisposable
                                         "NPC interaction open rejected: " +
                                         $"handle={npcInteraction.ClientEntityHandle}; " +
                                         $"status={openResult.Status}; " +
-                                        "closing connection.");…933 tokens truncated…     "RX NpcInteractionMerchantClose " +
+                                        "closing connection.");
+                                    break;
+                                }
+
+                                var dialogEncoding =
+                                    OfficialNpcDialogCodec.EncodeOpenResponse(
+                                        OfficialNpcSpawnCodec.ClientBuildId,
+                                        npcInteraction.ClientEntityHandle);
+
+                                if (!dialogEncoding.Succeeded)
+                                {
+                                    Log(
+                                        connectionId,
+                                        "RX NpcInteractionOpen " +
+                                        $"bytes={worldFrame.Length}; " +
+                                        $"character={pendingWorld.Character.CharacterId}; " +
+                                        $"map={currentMapId}; " +
+                                        $"handle={npcInteraction.ClientEntityHandle}; " +
+                                        $"spawn={openResult.Session!.SpawnId}; " +
+                                        "sessionOwnership=Accepted; " +
+                                        "wireResponse=BlockedByEvidence; " +
+                                        $"reason={dialogEncoding.Reason}");
+                                    continue;
+                                }
+
+                                try
+                                {
+                                    await stream.WriteAsync(
+                                        dialogEncoding.Frame,
+                                        serverCancellationToken);
+                                }
+                                finally
+                                {
+                                    Array.Clear(dialogEncoding.Frame);
+                                }
+
+                                Log(
+                                    connectionId,
+                                    "RX NpcInteractionOpen " +
+                                    $"bytes={worldFrame.Length}; " +
+                                    $"character={pendingWorld.Character.CharacterId}; " +
+                                    $"map={currentMapId}; " +
+                                    $"handle={npcInteraction.ClientEntityHandle}; " +
+                                    $"spawn={openResult.Session!.SpawnId}; " +
+                                    "sessionOwnership=Accepted; " +
+                                    "wireResponse=OfficialNpcDialogCodec; " +
+                                    $"txBytes={OfficialNpcDialogCodec.ExactOpenResponseLength}; " +
+                                    $"evidence={OfficialNpcDialogCodec.EvidenceId}");
+                                continue;
+                            }
+
+                            var closeStatus =
+                                npcInteractions.TryClose(
+                                    connectionId,
+                                    npcInteraction.ClientEntityHandle,
+                                    out var closedInteraction);
+
+                            if (closeStatus !=
+                                NpcInteractionCloseStatus.Closed)
+                            {
+                                Log(
+                                    connectionId,
+                                    "NPC interaction close rejected: " +
+                                    $"handle={npcInteraction.ClientEntityHandle}; " +
+                                    $"status={closeStatus}; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            Log(
+                                connectionId,
+                                "RX NpcInteractionMerchantClose " +
                                 $"bytes={worldFrame.Length}; " +
                                 $"character={closedInteraction!.CharacterId}; " +
                                 $"map={closedInteraction.MapId}; " +
