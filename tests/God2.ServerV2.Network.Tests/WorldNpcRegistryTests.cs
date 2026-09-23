@@ -157,6 +157,24 @@ public sealed class WorldNpcRegistryTests
         Assert.Equal(0, registry.LoadedMapCount);
     }
 
+    [Fact]
+    public void Duplicate_client_handles_are_rejected_without_replacing_map()
+    {
+        var registry = new WorldNpcRegistry();
+        registry.PublishMap(100, [Npc(1001, 10, 100, 3793)]);
+
+        Assert.Throws<ArgumentException>(() =>
+            registry.PublishMap(
+                100,
+                [
+                    Npc(1002, 11, 100, 3954),
+                    Npc(1003, 12, 100, 3954)
+                ]));
+
+        Assert.Equal(1001, Assert.Single(registry.SnapshotMap(100)).SpawnId);
+        Assert.Equal(1, registry.LoadedMapCount);
+    }
+
     private static NpcSnapshotEntry Npc(
         long spawnId,
         long npcId,
