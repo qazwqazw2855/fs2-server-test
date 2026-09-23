@@ -93,6 +93,7 @@
 > 舊台服 Server 的完整資料數量與上述 Official Client Recovery inventory 必須分開管理。後續以舊台服正式資料庫/Server source 做一次完整 inventory，再建立 machine-checkable parity diff；不得把不同來源的筆數直接視為同一集合。
 
 Supplemental monster/spawn/drop identity checks: `docs/parity/monster-spawn-drop-static.md` (regenerate with `python3 Automation/check-monster-static-evidence.py`). These counts do not establish gameplay semantics.
+Supplemental NPC/merchant/dialog identity checks: `docs/parity/npc-merchant-dialog-static.md` (regenerate with `python3 Automation/check-npc-static-evidence.py`). Visual map candidates do not provide exact spawn positions.
 
 ## 4. Parity 驗收方式
 
