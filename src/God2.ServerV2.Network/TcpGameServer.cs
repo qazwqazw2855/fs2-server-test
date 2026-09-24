@@ -862,6 +862,34 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 break;
                             }
 
+                            if (worldLoginMapIdentityRepository is not null)
+                            {
+                                var destinationIdentity =
+                                    await worldLoginMapIdentityRepository.GetByMapAsync(
+                                        route.DestinationMapId,
+                                        serverCancellationToken);
+
+                                if (destinationIdentity is null ||
+                                    destinationIdentity.MapId != route.DestinationMapId ||
+                                    !destinationIdentity.MatchesBuildAndContains(
+                                        OfficialPortalWireCodec.ClientBuildId,
+                                        route.DestinationX,
+                                        route.DestinationY))
+                                {
+                                    Log(
+                                        connectionId,
+                                        "Portal transition rejected: " +
+                                        $"portal={route.PortalId}; " +
+                                        $"destinationMap={route.DestinationMapId}; " +
+                                        $"destinationX={route.DestinationX}; " +
+                                        $"destinationY={route.DestinationY}; " +
+                                        "reason=DestinationIdentityOrBounds; " +
+                                        "worldTransition=NotCommitted; " +
+                                        "closing connection.");
+                                    break;
+                                }
+                            }
+
                             var portalFrames =
                                 OfficialPortalWireCodec
                                     .SerializeVerifiedClientDestination(
