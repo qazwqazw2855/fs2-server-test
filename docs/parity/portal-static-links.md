@@ -59,7 +59,7 @@ The offline check can be repeated without database or live-client access:
 python3 Automation/check-portal-client-assets.py /path/to/god2-portal-can-evidence.zip /path/to/god2-portal-assets-sha256.csv
 ```
 
-It validates source CAN bytes and every CSV row against the pinned manifest and CAN record index. The output lists absent assets separately from invalid evidence; absent assets leave `clientFileProvenanceComplete=false`, while a hash, path or index mismatch exits with an error. The operator-provided ZIP and CSV remain outside the repository.
+It validates source CAN bytes and every CSV row against the pinned manifest and CAN record index. The output lists absent assets separately from invalid evidence; a hash, path or index mismatch exits with an error. `assetFilesComplete` requires all 65 adjacent files; `clientFileProvenanceComplete` additionally requires hashing the pinned-build `God2_opt.exe` with optional `--client-exe /path/to/God2_opt.exe`. Without that executable the build match is `null` and provenance remains false. The observed local executable hash differs from the pinned build, so the current operator evidence cannot satisfy that gate. The operator-provided ZIP and CSV remain outside the repository.
 
 ### Installed destination asset hash cross-check, 2026-09-24
 
