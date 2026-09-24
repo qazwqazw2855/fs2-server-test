@@ -41,4 +41,28 @@ LEFT JOIN (
   GROUP BY QuestId
 ) AS p ON p.QuestId = q.quest_id;
 
+-- Count potential quest activation inputs without promoting them. These
+-- legacy client NPC IDs and step payloads are candidates, not verified server
+-- bindings or runnable quest transitions.
+SELECT
+  COUNT(*) AS enabled_formal_quests,
+  SUM(COALESCE(p.has_start_npc, 0)) AS with_start_npc_candidate,
+  SUM(COALESCE(p.has_end_npc, 0)) AS with_end_npc_candidate,
+  SUM(COALESCE(p.has_steps, 0)) AS with_nonempty_steps_candidate,
+  SUM(COALESCE(p.has_start_npc, 0) AND
+      COALESCE(p.has_end_npc, 0) AND
+      COALESCE(p.has_steps, 0)) AS with_all_three_candidates
+FROM god2_game.quests AS q
+LEFT JOIN (
+  SELECT QuestId,
+         MAX(StartNpcClientId IS NOT NULL) AS has_start_npc,
+         MAX(EndNpcClientId IS NOT NULL) AS has_end_npc,
+         MAX(StepsJson IS NOT NULL AND StepsJson NOT IN ('', '[]', '{}'))
+             AS has_steps
+  FROM god2.quest_content_profiles
+  WHERE QuestId IS NOT NULL
+  GROUP BY QuestId
+) AS p ON p.QuestId = q.quest_id
+WHERE q.enabled = 1;
+
 SQL
