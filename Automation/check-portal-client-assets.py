@@ -14,6 +14,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "db/imports/official/maps/God2_exact_current_map_sha256.csv"
 INVENTORY = ROOT / "db/imports/official/portals/portals.official.json"
+PINNED_CLIENT_SHA256 = "6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B"
 
 
 def key(path: str) -> str:
@@ -24,6 +25,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("can_zip", type=Path, help="archive containing the four source CAN files")
     parser.add_argument("asset_csv", type=Path, help="PowerShell export of installed adjacent files")
+    parser.add_argument("--client-exe", type=Path,
+                        help="optional God2_opt.exe to hash against the pinned protocol build")
     args = parser.parse_args()
 
     with MANIFEST.open(encoding="utf-8-sig", newline="") as stream:
@@ -93,9 +96,22 @@ def main() -> int:
 
     missing = {path: record_id for path, record_id in expected.items()
                if path not in installed}
+    exe_sha256 = None
+    exe_matches_build = None
+    if args.client_exe is not None:
+        digest = hashlib.sha256()
+        with args.client_exe.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                digest.update(chunk)
+        exe_sha256 = digest.hexdigest().upper()
+        exe_matches_build = exe_sha256 == PINNED_CLIENT_SHA256
     print(json.dumps({"canLinks": len(links), "assetsMatched": len(installed),
                       "missing": missing, "issues": issues,
-                      "clientFileProvenanceComplete": not missing and not issues},
+                      "assetFilesComplete": not missing and not issues,
+                      "clientExeSha256": exe_sha256,
+                      "clientExeMatchesPinnedBuild": exe_matches_build,
+                      "clientFileProvenanceComplete": not missing and not issues
+                      and exe_matches_build is True},
                      indent=2, ensure_ascii=False))
     return 1 if issues else 0
 
