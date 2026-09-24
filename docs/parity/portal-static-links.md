@@ -51,4 +51,10 @@ A read-only PowerShell enumeration used the 65 CAN record paths (record indices 
 | `South003.can` | 11 | `Data2/map/south003/indoor/god02.hmd[Z]` |
 | `South003.can` | 14 | `Data2/map/south003/indoor/god03.hmd[Z]` |
 
-The other 60 files were checked for presence only, not compared byte-for-byte with the pinned manifest. The five missing exact paths do not prove the content cannot be supplied by another install, patch, archive or client-side resolver. No link is promoted, deleted or rewritten based on presence alone; the client executable build difference and trigger evidence gap remain unresolved.
+The 60 existing assets were subsequently checked by SHA-256 as described below. The five missing exact paths do not prove the content cannot be supplied by another install, patch, archive or client-side resolver. No link is promoted, deleted or rewritten based on presence alone; the client executable build difference and trigger evidence gap remain unresolved.
+
+### Installed destination asset hash cross-check, 2026-09-24
+
+The operator generated a read-only CSV from `E:\\God2` with CAN source, record index, adjacent file path, byte length and SHA-256. All **60** rows agree with `db/imports/official/maps/God2_exact_current_map_sha256.csv` on normalized path, exact length and SHA-256; there are **0** duplicate paths, malformed hashes or mismatches. Each row's source and record index also resolves to the path stored in the four supplied CAN files (with the installed `Z` suffix), with **0** mismatches. The per-CAN counts are 14 of 15 for Island03, 19 of 19 for array, 12 of 13 for TONG, and 15 of 18 for South003. The five remaining indices are precisely those listed as absent above.
+
+This cross-check establishes byte identity for the 60 available adjacent assets against the repository manifest, while the operator's read-only check establishes the same 60 paths are present in both local installations. The missing five assets, differing executable SHA-256 and absent transfer trigger evidence leave `exactClientFileProvenanceComplete=false` and `readyForFullPortalPromotion=false`. Keep all staging links disabled.
