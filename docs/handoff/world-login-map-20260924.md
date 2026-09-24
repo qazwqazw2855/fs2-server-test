@@ -29,6 +29,7 @@
 - Windows 原版 Client 實際登入九天冰屋及其他地圖的畫面驗收。
 - 多張不同 Area/Map 的 real-client World Entry acceptance。
 - Portal 1 入口 `(252,397)`、來源半徑 `0` 與 Map 3 正式 bounds `(0..251,0..251)` 衝突。2026-09-24 唯讀查詢正式資料庫 `god2_game.portals` JOIN `god2_game.maps`，取得 `source_in_bounds=0`。Migration 083 的備註只記載切圖前最後移動座標 `(252,397)`，尚未核對原始封包／座標系；Portal 1 來源觸發驗收受阻。保留現有資料，不推定更正座標或擴張 bounds。
+- 舊 `OfficialPortalRouteCatalog` 將 Portal 1 標為 `ExplicitActivation`，引用 `PortalCapture/portal-verified-20260811-151345`。`Automation/State/portal-elevation-run.txt` 指向舊 Windows `C:\Users\SeiHo\Desktop\Simao\God2\God2 Classic Server\Artifacts\PortalCapture\portal-verified-20260811-151345`；2026-09-24 使用者在 AWS `/home/ubuntu/games` 搜尋該檔名無結果。這些索引尚未提供原始封包，不能據以解決 bounds 衝突。
 - 正式分支合併與 6001 production deployment 尚未進行。
 
 ## 下一步
