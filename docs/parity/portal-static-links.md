@@ -23,3 +23,18 @@ The 68-record supplemental inventory contains these 65 CAN links plus three `off
 - `official-observed/yuanshi-transfer-to-fenghua`
 
 Their exact destination/map identity, coordinates or packet fields are incomplete. Keep them outside CAN-link staging and gameplay promotion.
+
+## 2026-09-24 local CAN bytes cross-check
+
+The operator supplied four unmodified CAN files copied from `E:\\God2\\Data2\\map` while the official client continued running separately from `D:\\god\\珈賜換II`. The executables and these four files have identical hashes across the two directories. The archive entry names omit the installation-specific `Original/` prefix used in the supplemental inventory.
+
+| CAN file | Bytes | SHA-256 | Header records | Staging links |
+|---|---:|---|---:|---:|
+| `island03/Island03.can` | 1080 | `5A176C2BDE2C1C98E4E853213CB7017D114EB4AC0F7DAE9E0810F91FC806E727` | 16 | 15 |
+| `array/array.Can` | 1336 | `FAB5D383BEA882D17952741F49C80BA9DFD683AEB76AA4F844AB862316994B0B` | 20 | 19 |
+| `tong/TONG.Can` | 942 | `7D97EFBA6DC2728FF8FF190B5BEDC0B29339E8E64ADEEAA17591350B2A868144` | 14 | 13 |
+| `south003/South003.can` | 1302 | `ADD0EA1A01BD3EA57ED7CFC075E2E5D3EA14E8BD829776CE6508A49E695804EE` | 19 | 18 |
+
+All four file hashes match `db/imports/official/maps/God2_exact_current_map_sha256.csv`. For every one of the **65** staging links, the byte offset `12 + 64 * can_record_index`, one-byte record type, NUL-terminated resource path and the inventory's normalized destination resource candidate match the supplied CAN bytes; **0 mismatches**. The matching migration rows also agree with the supplemental inventory on source path, record index and type. The four additional header records identify source resources and are not staging links. This proves provenance of these four CAN file bytes and the 65 static link entries; it does not establish any transfer trigger, click/walk action, source/destination coordinates or server opcode.
+
+The observed `God2_opt.exe` SHA-256 in both local directories is `6F2639A0A7AD25053D0364108147173EB68BD04F57E6942491F42633F40052BC`. The repository's protocol build `god2-opt-6b127086e0c0` is tied to executable SHA-256 `6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B`. The executable mismatch prevents treating these local files as executable-specific proof of the latter build's trigger behavior. Destination asset bytes have not been checked for all links; `exactClientFileProvenanceComplete` and full Portal promotion remain **false**, and all staging links stay disabled.
