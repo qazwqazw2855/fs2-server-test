@@ -4,7 +4,7 @@
 
 - 角色 `test001`（ID 1）正式資料庫地圖為 `170015007` 九天冰屋，客戶端地圖身分為 Area 15 / Map 7。
 - `WorldLoginMapIdentityRepository` 已可由 Formal DB 取得 `client_build_id`、`client_area_id`、`client_map_id` 與座標 bounds。
-- Official map catalog 共 144 張；144 張 enabled map 全部具備 World Login repository 所需 identity 與 bounds，正式資料層覆蓋為 **144/144**。
+- Official map catalog 共 **144 張**；其中 **143 張啟用、1 張停用**（Area 7 / Map 8）。另有一張已啟用的既有 Map 19 室內圖（`557790525`）。因此目前已啟用且屬於當前 build 的正式 DB map 共 **144 張 = 143 張官方地圖 + 1 張室內圖**，與官方 catalog 的 144 張屬不同集合。
 - 先前 World Login 會呼叫 `OfficialPortalWireCodec.SerializeWorldProjectionDestination()`，因此錯誤受到 Portal 六張已驗證 destination whitelist 限制。此限制來自 World Login 對 Portal serializer 的實作耦合，不代表正服 World Login 只有六張地圖可登入。
 - commit `ad05cbf` 已將 production World Login 與 Portal wire projection 解耦。World Login 仍保留 Formal Map identity 與座標 bounds 驗證，但不再於 Bootstrap 後追加 Portal `0x61/0xBB` projection。
 - Portal serializer、六張已驗證 destination、PositionMode、PreludeState、MapTransitionFirst 等 Portal evidence gate 均未修改；Portal 與 World Login 維持不同證據鏈。
@@ -17,11 +17,11 @@
 
 ## World Login / Portal 證據邊界
 
-- World Login Formal identity coverage：**144/144**。
+- 官方 catalog 的 Formal identity 資料覆蓋：**144/144**（含一張停用地圖）。production World Login repository 只回傳 enabled map；目前可讀取的 **144 張 enabled map = 143 張官方地圖 + 1 張 Map 19 室內圖**。
 - World Login production Bootstrap：**1772 bytes**。
 - World Login 不再依賴 Portal destination whitelist。
 - Portal wire projection：目前仍只有 **6 個 evidence-backed destination identities**，不得擴張成 144/144。
-- 不得用 World Login 144/144 宣稱 Portal 144/144；也不得用 Portal 6/144 反向限制 World Login Formal identity coverage。
+- 不得將兩個不同的 144 張集合混為一談，也不得用 World Login identity 資料覆蓋宣稱 Portal 144/144 或實機地圖載入完成。
 - 無新的正服證據前，不推測 Portal 的 PositionMode、PreludeState 或 MapTransitionFirst。
 
 ## 2026-09-24 Portal Runtime 觸發路徑稽核
@@ -53,3 +53,9 @@
 - `Runtime_version_change_after_database_commit_reports_inconsistent_state` 以測試 writer 主動改動 presence，證實「DB 已提交但 registry 版本不符」時服務會拋出明確例外。這是防護／故障注入測試，**不是正式連線曾發生該競態的證據**。
 - 現行 `TcpGameServer` 對單一連線在同一 world-frame 讀取迴圈依序 await Portal 切圖與移動；離線清理位於該處理流程的 `finally`。因此不能僅憑故障注入測試要求新增角色鎖或宣稱同連線會在 DB 寫入期間處理下一筆移動。若後續引入跨任務 presence 更新，須先建立真正的併發呼叫路徑與重現測試，再設計跨 DB／registry 的一致性處理。
 - 未持有 `GOD2_TEST_PASSWORD`，本輪沒有啟動 6002 LoginProbe；6001 service 與正式分支未改動。Portal 的原版 Client 觸發序列與視覺驗收仍待證據。
+
+## 2026-09-24 Portal build 與逐張 World Login DB 驗證
+
+- `d9ba47f` 在 Portal route 兩端新增 current client build 比對，於世界切圖寫入前拒絕不符路線；隔離 checkout 的 Network.Tests **80/80 通過**，但尚未以原版 Client 驗收該拒絕分支。
+- 唯讀 DB 查詢與 `a84c5fb` 的整合測試確認目前五條已啟用 Portal（1、2、3、4、170015007）的來源及目的地 build 均為 `god2-opt-6b127086e0c0`；整合測試 **1/1 通過**。
+- `e300d24` 的整合測試逐張呼叫 production `MariaDbWorldLoginMapIdentityRepository`：**144 張 enabled map 均可讀取 current build identity 與有效 bounds**，停用的 Area 7 / Map 8 不會回傳；AWS 測試 **1/1 通過**。這是資料層驗證，不等於原版 Client 已載入每張地圖。
