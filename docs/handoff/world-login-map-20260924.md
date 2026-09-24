@@ -28,12 +28,12 @@
 
 - Windows 原版 Client 實際登入九天冰屋及其他地圖的畫面驗收。
 - 多張不同 Area/Map 的 real-client World Entry acceptance。
-- Portal 1 入口 `(252,397)` 與正式 bounds `(0..251,0..251)` 的來源衝突仍未解決；無新證據前不修改數據。
+- Portal 1 入口 `(252,397)`、來源半徑 `0` 與 Map 3 正式 bounds `(0..251,0..251)` 衝突。2026-09-24 唯讀查詢正式資料庫 `god2_game.portals` JOIN `god2_game.maps`，取得 `source_in_bounds=0`。Migration 083 的備註只記載切圖前最後移動座標 `(252,397)`，尚未核對原始封包／座標系；Portal 1 來源觸發驗收受阻。保留現有資料，不推定更正座標或擴張 bounds。
 - 正式分支合併與 6001 production deployment 尚未進行。
 
 ## 下一步
 
-1. 將 World Login **144/144 Formal identity coverage** 與 Portal **6-destination wire evidence** 分別寫入 parity baseline，避免兩條證據鏈再次混用。
-2. 保持 Portal codec 不變，繼續 clientless baseline / provenance 工作。
-3. 回到可執行原版 Windows Client 的環境後，以隔離埠做真正 World Entry 畫面驗收。
-4. Real-client acceptance 通過前，不宣稱 144 張地圖皆已具備完整可玩 World Entry。
+1. World Login 與 Portal 證據鏈已分別寫入 `docs/parity/official-parity-baseline.md`；維持此邊界。
+2. 搜尋並核對 Portal 1 原始切圖／移動封包與 Map 3 座標系，確認 `(252,397)` 是否可作來源觸發位置；在此之前不得修改路線或 bounds。
+3. 取得 exact-current 客戶端檔案後，核對 65 筆 disabled staging portal links 的來源檔案與觸發證據。
+4. 回到可執行原版 Windows Client 的環境後，以隔離埠驗收 World Entry 畫面及 Portal 1–4 真實切圖；驗收前不宣稱 144 張地圖皆可正常顯示，亦不宣稱 Portal 1–4 已通過實機觸發。
