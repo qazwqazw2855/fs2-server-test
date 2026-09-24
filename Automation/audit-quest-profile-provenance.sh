@@ -27,7 +27,13 @@ SELECT
   SUM(q.completion_text_zh_tw IS NOT NULL AND p.reward_text IS NULL)
       AS completion_text_without_profile_reward,
   SUM(q.completion_text_zh_tw IS NULL AND p.reward_text IS NOT NULL)
-      AS profile_reward_without_completion_text
+      AS profile_reward_without_completion_text,
+  SUM(q.completion_text_zh_tw IS NOT NULL AND p.reward_text IS NOT NULL
+      AND HEX(q.completion_text_zh_tw) = HEX(p.reward_text))
+      AS completion_text_exact_match,
+  SUM(q.completion_text_zh_tw IS NOT NULL AND p.reward_text IS NOT NULL
+      AND HEX(q.completion_text_zh_tw) <> HEX(p.reward_text))
+      AS completion_text_exact_mismatch
 FROM god2_game.quests AS q
 LEFT JOIN (
   SELECT QuestId,
@@ -37,5 +43,9 @@ LEFT JOIN (
   WHERE QuestId IS NOT NULL
   GROUP BY QuestId
 ) AS p ON p.QuestId = q.quest_id;
+
+-- Counts are separate from the presentation/profile text audit.
+SELECT COUNT(*) AS formal_objective_rows FROM god2_game.quest_objectives;
+SELECT COUNT(*) AS formal_reward_rows FROM god2_game.quest_rewards;
 
 SQL
