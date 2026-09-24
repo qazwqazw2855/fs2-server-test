@@ -44,7 +44,7 @@ public sealed class MariaDbItemStackRuleRepository(
                 $"Invalid maximum_stack: item={itemId}");
 
         return new ItemStackRule(
-            reader.GetInt32(0),
+            reader.GetInt64(0),
             reader.GetString(1),
             configuredMaximum,
             reader.GetBoolean(3));
