@@ -45,3 +45,11 @@
 2. 搜尋並核對 Portal 1 原始切圖／移動封包與 Map 3 座標系，確認 `(252,397)` 是否可作來源觸發位置；在此之前不得修改路線或 bounds。另對 Portal 2–4 蒐集實際來源觸發事件，確認 V2 是否需要新增 movement-trigger dispatch，避免把 route／codec 單元驗證誤認為完整切圖。
 3. 取得 exact-current 客戶端檔案後，核對 65 筆 disabled staging portal links 的來源檔案與觸發證據。
 4. 回到可執行原版 Windows Client 的環境後，以隔離埠驗收 World Entry 畫面及 Portal 1–4 真實切圖；驗收前不宣稱 144 張地圖皆可正常顯示，亦不宣稱 Portal 1–4 已通過實機觸發。
+
+## 2026-09-24 無 Client 切圖一致性驗證
+
+- 隔離 checkout 執行 `WorldMapTransitionServiceTests`：**11/11 通過**。涵蓋目的地 NPC 載入、持久化衝突、NPC 互動清理與既有 presence／replication 行為。
+- 設定 `GOD2_RUN_DB_INTEGRATION=1`，執行 `StaleCharacterMapTransitionWrite_IsRejectedWithoutMutation` 與 `CurrentCharacterMapTransitionWrite_SucceedsAndRollsBack`：**2/2 通過**；後者在交易內驗證寫入並回滾，不應表述為正式角色已切圖。
+- `Runtime_version_change_after_database_commit_reports_inconsistent_state` 以測試 writer 主動改動 presence，證實「DB 已提交但 registry 版本不符」時服務會拋出明確例外。這是防護／故障注入測試，**不是正式連線曾發生該競態的證據**。
+- 現行 `TcpGameServer` 對單一連線在同一 world-frame 讀取迴圈依序 await Portal 切圖與移動；離線清理位於該處理流程的 `finally`。因此不能僅憑故障注入測試要求新增角色鎖或宣稱同連線會在 DB 寫入期間處理下一筆移動。若後續引入跨任務 presence 更新，須先建立真正的併發呼叫路徑與重現測試，再設計跨 DB／registry 的一致性處理。
+- 未持有 `GOD2_TEST_PASSWORD`，本輪沒有啟動 6002 LoginProbe；6001 service 與正式分支未改動。Portal 的原版 Client 觸發序列與視覺驗收仍待證據。
