@@ -88,7 +88,21 @@ def main() -> None:
     for record_id in observed_ids:
         lines.append(f"- `{record_id}`")
     lines += ["", "Their exact destination/map identity, coordinates or packet fields are incomplete. Keep them outside CAN-link staging and gameplay promotion.", ""]
-    OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+    # Preserve evidence recorded from supplied client bytes when refreshing the
+    # generated staging summary. The marker separates operator evidence from
+    # content derived solely from the pinned SQL and inventory.
+    evidence_marker = "## 2026-09-24 local CAN bytes cross-check"
+    evidence = ""
+    if OUTPUT.exists():
+        existing = OUTPUT.read_text(encoding="utf-8")
+        if existing.count(evidence_marker) > 1:
+            raise ValueError("Duplicate portal client evidence marker")
+        if evidence_marker in existing:
+            evidence = existing[existing.index(evidence_marker):].strip()
+    generated = "\\n".join(lines).rstrip() + "\\n"
+    if evidence:
+        generated += "\\n" + evidence + "\\n"
+    OUTPUT.write_text(generated, encoding="utf-8")
     print(f"Checked {len(links)} staging links; wrote {OUTPUT.relative_to(ROOT)}")
 
 
