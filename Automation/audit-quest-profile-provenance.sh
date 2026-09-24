@@ -27,7 +27,10 @@ SELECT
   SUM(q.completion_text_zh_tw IS NOT NULL AND p.reward_text IS NULL)
       AS completion_text_without_profile_reward,
   SUM(q.completion_text_zh_tw IS NULL AND p.reward_text IS NOT NULL)
-      AS profile_reward_without_completion_text
+      AS profile_reward_without_completion_text,
+  SUM(q.completion_text_zh_tw IS NOT NULL AND p.reward_text IS NOT NULL
+      AND BINARY q.completion_text_zh_tw <> BINARY p.reward_text)
+      AS differing_nonnull_completion_text
 FROM god2_game.quests AS q
 LEFT JOIN (
   SELECT QuestId,
