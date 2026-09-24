@@ -24,6 +24,12 @@
 - 不得用 World Login 144/144 宣稱 Portal 144/144；也不得用 Portal 6/144 反向限制 World Login Formal identity coverage。
 - 無新的正服證據前，不推測 Portal 的 PositionMode、PreludeState 或 MapTransitionFirst。
 
+## 2026-09-24 Portal Runtime 觸發路徑稽核
+
+- `TcpGameServer` 目前只在成功解碼 `PortalActivate` 後呼叫 `portalRouteService.ResolveAsync`，再做 destination codec 與 `WorldMapTransitionService.TryTransitionAsync`。
+- `WorldMovement` 路徑只檢查序號與 bounds、更新位置／presence、回傳 ACK；該路徑沒有呼叫 Portal route resolver 或 transition。Portal 2–4 的 DB route／codec integration tests 僅證明資料可讀、指定座標可解析與目的地可編碼，**不證明移動進入口會切圖**。
+- 舊 `OfficialPortalRouteCatalog` 將 Portal 1 分類 `ExplicitActivation`，Portal 2–4 分類 `MovementRegion`；這是舊 runtime 的標籤，尚不足以證明 V2 收到的原版 Client movement／activate 事件序列。維持 production 程式不變，先取得對應原始 Client 觸發封包或可重現的實機紀錄。
+
 ## 尚未完成
 
 - Windows 原版 Client 實際登入九天冰屋及其他地圖的畫面驗收。
@@ -35,6 +41,6 @@
 ## 下一步
 
 1. World Login 與 Portal 證據鏈已分別寫入 `docs/parity/official-parity-baseline.md`；維持此邊界。
-2. 搜尋並核對 Portal 1 原始切圖／移動封包與 Map 3 座標系，確認 `(252,397)` 是否可作來源觸發位置；在此之前不得修改路線或 bounds。
+2. 搜尋並核對 Portal 1 原始切圖／移動封包與 Map 3 座標系，確認 `(252,397)` 是否可作來源觸發位置；在此之前不得修改路線或 bounds。另對 Portal 2–4 蒐集實際來源觸發事件，確認 V2 是否需要新增 movement-trigger dispatch，避免把 route／codec 單元驗證誤認為完整切圖。
 3. 取得 exact-current 客戶端檔案後，核對 65 筆 disabled staging portal links 的來源檔案與觸發證據。
 4. 回到可執行原版 Windows Client 的環境後，以隔離埠驗收 World Entry 畫面及 Portal 1–4 真實切圖；驗收前不宣稱 144 張地圖皆可正常顯示，亦不宣稱 Portal 1–4 已通過實機觸發。
