@@ -34,7 +34,13 @@ public sealed class EnabledPortalBuildIntegrationTests
         command.CommandText = """
             SELECT p.portal_id,
                    source_map.client_build_id,
-                   destination_map.client_build_id
+                   destination_map.client_build_id,
+                   p.destination_x,
+                   p.destination_y,
+                   destination_map.minimum_x,
+                   destination_map.maximum_x,
+                   destination_map.minimum_y,
+                   destination_map.maximum_y
             FROM god2_game.portals AS p
             JOIN god2_game.maps AS source_map
               ON source_map.map_id = p.source_map_id
@@ -61,6 +67,18 @@ public sealed class EnabledPortalBuildIntegrationTests
             Assert.Equal(
                 OfficialPortalWireCodec.ClientBuildId,
                 reader.GetString(2));
+
+            Assert.False(reader.IsDBNull(3) || reader.IsDBNull(4),
+                $"Portal {portalId} has no destination position.");
+            Assert.False(reader.IsDBNull(5) || reader.IsDBNull(6) ||
+                         reader.IsDBNull(7) || reader.IsDBNull(8),
+                $"Portal {portalId} has no destination bounds.");
+
+            var x = reader.GetInt32(3);
+            var y = reader.GetInt32(4);
+            Assert.True(x >= reader.GetInt32(5) && x <= reader.GetInt32(6) &&
+                        y >= reader.GetInt32(7) && y <= reader.GetInt32(8),
+                $"Portal {portalId} destination ({x},{y}) is outside map bounds.");
         }
 
         Assert.Equal(
