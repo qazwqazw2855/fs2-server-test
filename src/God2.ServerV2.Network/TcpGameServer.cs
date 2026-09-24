@@ -274,11 +274,14 @@ public sealed class TcpGameServer : IAsyncDisposable
                         var x = pendingWorld.Character.PositionX;
                         var y = pendingWorld.Character.PositionY;
                         if (identity is null || x is null || y is null ||
+                            !string.Equals(identity.ClientBuildId,
+                                OfficialPortalWireCodec.ClientBuildId,
+                                StringComparison.Ordinal) ||
                             !identity.Contains(x.Value, y.Value))
                         {
                             Log(connectionId,
                                 $"World login location rejected: map={mapId}; pos=({x},{y}); " +
-                                "reason=missing_identity_or_outside_bounds");
+                                "reason=missing_identity_or_build_mismatch_or_outside_bounds");
                             return;
                         }
                         Log(
