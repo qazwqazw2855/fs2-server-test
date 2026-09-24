@@ -98,6 +98,13 @@ public sealed class OfficialNpcSpawnCodecTests
             "F53E8D79A02FB96A528E9ABF334E5D1383018780BA79D62340549FC5AD36885B",
             Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
                 decoded.AsSpan(2, OfficialNpcSpawnCodec.ApplicationRecordLength))));
+        var preservedOpaque = decoded.AsSpan(9, 2).ToArray()
+            .Concat(decoded.AsSpan(12, 7).ToArray())
+            .ToArray();
+        Assert.Equal(
+            OfficialNpcSpawnCodec.TypeZeroOpaqueTemplateSha256,
+            Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
+                preservedOpaque)));
     }
 
     [Fact]
