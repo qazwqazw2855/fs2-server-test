@@ -267,6 +267,28 @@ public sealed class TcpGameServer : IAsyncDisposable
                         return;
                     }
 
+                    if (worldLoginMapIdentityRepository is not null)
+                    {
+                        var identity = await worldLoginMapIdentityRepository.GetByMapAsync(
+                            mapId, serverCancellationToken);
+                        var x = pendingWorld.Character.PositionX;
+                        var y = pendingWorld.Character.PositionY;
+                        if (identity is null || x is null || y is null ||
+                            !identity.Contains(x.Value, y.Value))
+                        {
+                            Log(connectionId,
+                                $"World login location rejected: map={mapId}; pos=({x},{y}); " +
+                                "reason=missing_identity_or_outside_bounds");
+                            return;
+                        }
+                        Log(
+                            connectionId,
+                            $"World login identity verified: map={mapId}; " +
+                            $"client={identity.ClientAreaId}:{identity.ClientMapId}; " +
+                            $"pos=({x.Value},{y.Value}); " +
+                            "wireProjection=OfficialBootstrapOnly");
+                    }
+
                     WorldNpcLoadResult npcLoadResult;
 
                     try
@@ -439,28 +461,6 @@ public sealed class TcpGameServer : IAsyncDisposable
                             pendingWorld.Character.ClassCode,
                             pendingWorld.Character.GenderCode,
                             pendingWorld.Character.AppearanceCode);
-
-                    if (worldLoginMapIdentityRepository is not null)
-                    {
-                        var identity = await worldLoginMapIdentityRepository.GetByMapAsync(
-                            mapId, serverCancellationToken);
-                        var x = pendingWorld.Character.PositionX;
-                        var y = pendingWorld.Character.PositionY;
-                        if (identity is null || x is null || y is null ||
-                            !identity.Contains(x.Value, y.Value))
-                        {
-                            Log(connectionId,
-                                $"World login location rejected: map={mapId}; pos=({x},{y}); " +
-                                "reason=missing_identity_or_outside_bounds");
-                            return;
-                        }
-                        Log(
-                            connectionId,
-                            $"World login identity verified: map={mapId}; " +
-                            $"client={identity.ClientAreaId}:{identity.ClientMapId}; " +
-                            $"pos=({x.Value},{y.Value}); " +
-                            "wireProjection=OfficialBootstrapOnly");
-                    }
 
                     await stream.WriteAsync(
                         worldBootstrap,
