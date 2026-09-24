@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-24T00:44:36+08:00",
-  "summary": "God2 Server V2 正服地圖基線持續進行。Windows 實機顯示室內雜貨店畫面，但測試角色資料庫地圖為九天冰屋 170015007，已確認登入畫面與角色地圖可能錯位。隔離分支 codex/world-login-map-identity 建立依正式地圖 ID 查客戶端 Area/Map 身分與邊界的登入定位流程；Protocol 110/110、Network 80/80、Host Release build 通過。AWS 127.0.0.1:6002 唯讀 LoginProbe 證實 1772-byte Bootstrap 後接定位封包，總計 1790 bytes，解碼為 Area 15 / Map 7、(17,15)。正式 6001 未變更；Windows 畫面及主世界進出仍待實機驗證。Portal 1 來源座標 (252,397) 超過崑崙仙界 DB 界線，暫不修改。整體進度維持 78%。",
+  "updated_at": "2026-09-24T15:00:15+08:00",
+  "summary": "God2 Server V2 已完成正式 World Login map identity/bounds 解耦與 Production acceptance。正式 World Login 不再依賴 Portal 六筆 destination whitelist；144/144 enabled official maps 均具 WorldLoginMapIdentityRepository 所需的 Client Area/Map identity 與 bounds。正式 6001 已部署 eaac178，LoginProbe 完成 Login → World，接收官方 1772-byte Bootstrap，不附加 Portal projection，Exit Code 0。V2 六個測試專案實際執行 282/282 通過。目前主線進入 World Runtime 完整化；Portal wire projection 仍維持 6 個 evidence-backed destination identities，不由 World Login 144/144 推論擴張。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,19 +262,24 @@
     }
   ],
   "current_focus": {
-    "title": "登入地圖身分與主世界進出驗證",
-    "description": "隔離分支完成無畫面 Area 15 / Map 7 登入定位驗證；公司無客戶端時先補 Network 清理及拒絕路徑測試、資料庫位置唯讀核對與 Portal 1 邊界來源稽核。待 Windows client 實際顯示正確地圖、登出重登及移動回寫一致後，才合併至正式分支。詳見 docs/handoff/world-login-map-20260924.md（隔離分支）。",
-    "status": "isolated_headless_verified_client_acceptance_pending"
+    "title": "World Runtime 完整化 / Portal Evidence",
+    "description": "World Login Formal identity/bounds coverage 已達 144/144，並完成正式 6001 無畫面 acceptance。目前重點轉向 Portal / World Transition、NPC Runtime 與後續 Gameplay。Portal wire projection 目前僅有 6 個 evidence-backed destination identities；PositionMode、PreludeState、MapTransitionFirst 等欄位在取得正服證據前不推論。",
+    "status": "production_world_login_verified_portal_evidence_in_progress"
   },
   "verification": {
     "build": "passing",
-    "total_tests": 262,
-    "passed_tests": 262,
+    "total_tests": 282,
+    "passed_tests": 282,
     "failed_tests": 0,
     "suites": [
       {
         "name": "Core",
         "passed": 7,
+        "failed": 0
+      },
+      {
+        "name": "Application",
+        "passed": 49,
         "failed": 0
       },
       {
@@ -284,26 +289,21 @@
       },
       {
         "name": "Protocol",
-        "passed": 107,
-        "failed": 0
-      },
-      {
-        "name": "Application",
-        "passed": 40,
+        "passed": 110,
         "failed": 0
       },
       {
         "name": "Network",
-        "passed": 75,
+        "passed": 80,
         "failed": 0
       },
       {
         "name": "Persistence Integration",
-        "passed": 13,
+        "passed": 16,
         "failed": 0
       }
     ],
-    "note": "Server V2 六個測試專案最近一次結果合計 262/262 通過；MariaDB 整合測試已實際連線執行，需 GOD2_TEST_PASSWORD 的登入案例本次未執行。正式 6001 已驗證 Portal 閉環與 World 背包唯讀載入。 2026-09-24 隔離分支另有 Protocol 110/110、Network 80/80、Host Release build 與 6002 唯讀登入地圖 7:15/(17,15) 通過；不計入上述正式分支 262 項統計，且不代表客戶端畫面通過。"
+    "note": "V2 六個測試專案已逐一 restore 並實際執行，共 282/282 通過。正式 6001 已完成 World Login acceptance：角色 test001、World Bootstrap 1772 bytes、Portal projection 未附加、Probe Exit Code 0。"
   },
   "blockers": [
     {
@@ -328,14 +328,20 @@
     }
   ],
   "next_steps": [
-    "公司無 client：檢查隔離分支登入地圖驗證失敗時 WorldPresence/Session 清理、DB 位置一致性及 Portal 1 入口越界來源；僅無畫面測試，不部署至 6001。",
-    "從完整 exact-current Windows 客戶端封存 Data2/Patch/Comm/gamedata.csvZ 與 Data2/map，驗證官方來源與檔案 SHA-256",
-    "將 158 client map resources、144 identities 與 65 disabled portal links 對照 exact-current client，產生 semantic diff",
-    "完成 Map hierarchy、collision、navigation 與 Portal unresolved-reference diff；未驗證資料維持 disabled",
-    "對 Portal 1、2、3、4 執行 controlled real-client transition acceptance；Portal 170015007 保留既有台服實機 acceptance",
-    "68 條 legacy CAN-link candidates 維持 supplemental；trigger 未驗證前禁止匯入 gameplay"
+    "持續建立 Portal / World Transition exact-current 與 live-client evidence；不由 World Login 144/144 推論 Portal wire 支援。",
+    "驗證更多 Area/Map 的原版 Windows Client World Entry 實際畫面；144/144 目前代表 Formal identity/bounds coverage，不代表 144 張皆已實機顯示驗收。",
+    "補齊 NPC Runtime、NPC 功能與世界資料對應。",
+    "建立物品／背包 Client wire 與 Runtime mutation evidence。",
+    "建立戰鬥／技能、任務與主要 Gameplay evidence baseline 及 Runtime。",
+    "建立 Player Spawn、AOI、Despawn、Movement replication 等 Multiplayer wire evidence。",
+    "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-09-24",
+      "title": "World Login 144/144 正式部署與 Production acceptance",
+      "detail": "World Login 已解除對 OfficialPortalWireCodec 六筆 destination whitelist 的實作耦合，保留正式地圖 identity/bounds 驗證並使用原始官方 1772-byte World Bootstrap。V2 六個測試專案 282/282 通過；正式 6001 部署 eaac178 後 LoginProbe Exit Code 0。Portal wire projection 仍維持 6 個 evidence-backed destination identities，兩條證據鏈保持分離。"
+    },
     {
       "date": "2026-09-24",
       "title": "登入地圖隔離分支 6002 無畫面閉環",
@@ -490,5 +496,134 @@
     "strategy": "保留正服 God2_opt.exe 作為遊戲執行核心；由自製 God2V2Launcher 重現正服 Launcher 必要前置作業、完成 IP/設定準備後啟動 OPT，並導向 AWS Server V2",
     "current_task": "研究並逐步重現正服 Launcher → God2_opt.exe 前置作業；同時主線轉向舊台服完整資料 → V2 對應與世界系統補齊",
     "next": "先完成地圖/NPC/怪物/傳送等正服資料基線，再整合 Launcher 前置流程與後續完整官方 Client acceptance"
+  },
+  "roadmap": {
+    "current_key": "portal",
+    "promotion_ready": false,
+    "stages": [
+      {
+        "key": "foundation",
+        "name": "基礎 Server",
+        "status": "completed",
+        "metric": "Foundation Complete"
+      },
+      {
+        "key": "client",
+        "name": "Client 相容",
+        "status": "completed",
+        "metric": "Login → World"
+      },
+      {
+        "key": "baseline",
+        "name": "正服 Baseline",
+        "status": "completed",
+        "metric": "Map 144/144"
+      },
+      {
+        "key": "world-login",
+        "name": "World Login",
+        "status": "completed",
+        "metric": "144/144 · 6001 Accepted"
+      },
+      {
+        "key": "portal",
+        "name": "Portal",
+        "status": "in_progress",
+        "metric": "6 Evidence Destinations"
+      },
+      {
+        "key": "npc",
+        "name": "NPC Runtime",
+        "status": "in_progress",
+        "metric": "Evidence-gated"
+      },
+      {
+        "key": "gameplay",
+        "name": "Gameplay",
+        "status": "pending",
+        "metric": "Catalog → Runtime"
+      },
+      {
+        "key": "multiplayer",
+        "name": "Multiplayer",
+        "status": "pending",
+        "metric": "Replication Pending"
+      },
+      {
+        "key": "full-world",
+        "name": "Full World",
+        "status": "pending",
+        "metric": "Runtime Promotion"
+      },
+      {
+        "key": "release",
+        "name": "正式完成",
+        "status": "pending",
+        "metric": "Promotion Gate"
+      }
+    ]
+  },
+  "playability": {
+    "label": "距離可完整遊玩",
+    "target": "Full Playable",
+    "ready": false,
+    "current_focus": "Portal / World Transition",
+    "gates": [
+      {
+        "key": "login-world",
+        "name": "登入與進入世界",
+        "weight": 15,
+        "status": "completed"
+      },
+      {
+        "key": "world-map",
+        "name": "世界地圖與角色定位",
+        "weight": 15,
+        "status": "completed"
+      },
+      {
+        "key": "movement",
+        "name": "移動與位置持久化",
+        "weight": 10,
+        "status": "completed"
+      },
+      {
+        "key": "portal",
+        "name": "完整地圖傳送",
+        "weight": 10,
+        "status": "in_progress"
+      },
+      {
+        "key": "npc",
+        "name": "NPC 與互動",
+        "weight": 10,
+        "status": "in_progress"
+      },
+      {
+        "key": "items",
+        "name": "物品與背包",
+        "weight": 10,
+        "status": "pending"
+      },
+      {
+        "key": "combat",
+        "name": "戰鬥與技能",
+        "weight": 15,
+        "status": "pending"
+      },
+      {
+        "key": "quests",
+        "name": "任務與主要 Gameplay",
+        "weight": 10,
+        "status": "pending"
+      },
+      {
+        "key": "multiplayer",
+        "name": "多人同步與完整 Runtime",
+        "weight": 5,
+        "status": "pending"
+      }
+    ],
+    "percent": 50
   }
 }
