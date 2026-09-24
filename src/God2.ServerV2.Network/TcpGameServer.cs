@@ -454,25 +454,12 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 "reason=missing_identity_or_outside_bounds");
                             return;
                         }
-                        try
-                        {
-                            var locatedBootstrap = OfficialWorldBootstrapCodec.EncodeWithVerifiedLocation(
-                                pendingWorld.Character.CharacterId,
-                                pendingWorld.Character.Name,
-                                pendingWorld.Character.ClassCode,
-                                pendingWorld.Character.GenderCode,
-                                pendingWorld.Character.AppearanceCode,
-                                identity.ClientBuildId, identity.ClientMapId,
-                                identity.ClientAreaId, x.Value, y.Value);
-                            Array.Clear(worldBootstrap);
-                            worldBootstrap = locatedBootstrap;
-                        }
-                        catch (NotSupportedException exception)
-                        {
-                            Log(connectionId,
-                                $"World login location rejected: map={mapId}; reason={exception.Message}");
-                            return;
-                        }
+                        Log(
+                            connectionId,
+                            $"World login identity verified: map={mapId}; " +
+                            $"client={identity.ClientAreaId}:{identity.ClientMapId}; " +
+                            $"pos=({x.Value},{y.Value}); " +
+                            "wireProjection=OfficialBootstrapOnly");
                     }
 
                     await stream.WriteAsync(

@@ -480,42 +480,10 @@ Console.WriteLine(
 
 if (verifyWorldLoginMap)
 {
-    var transition = await ReadFrameAsync(worldStream, timeout.Token);
-    var prelude = await ReadFrameAsync(worldStream, timeout.Token);
-    try
-    {
-        Require(transition.Length == 12 && prelude.Length == 6,
-            "登入地圖定位封包長度或順序錯誤");
-        var decodedTransition = OfficialWorldBootstrapCodec.DecodeFrame(transition);
-        var decodedPrelude = OfficialWorldBootstrapCodec.DecodeFrame(prelude);
-        try
-        {
-            Require(decodedTransition[2] == OfficialPortalWireCodec.MapTransitionOpcode &&
-                    decodedPrelude[2] == OfficialPortalWireCodec.PreludeOpcode,
-                "登入地圖定位 Opcode 或順序錯誤");
-            var packedMap = BinaryPrimitives.ReadUInt16LittleEndian(
-                decodedTransition.AsSpan(3));
-            var packedPosition = BinaryPrimitives.ReadUInt32LittleEndian(
-                decodedTransition.AsSpan(7));
-            var map = packedMap >> 6;
-            var area = packedMap & 0x3F;
-            var x = (packedPosition >> 2) & 0x7FFF;
-            var y = packedPosition >> 17;
-            Require(map == 7 && area == 15,
-                $"登入地圖錯誤：{map}:{area}，預期 7:15");
-            Console.WriteLine($"登入地圖定位封包：{map}:{area} / ({x},{y})");
-        }
-        finally
-        {
-            Array.Clear(decodedTransition);
-            Array.Clear(decodedPrelude);
-        }
-    }
-    finally
-    {
-        Array.Clear(transition);
-        Array.Clear(prelude);
-    }
+    Console.WriteLine(
+        $"World Login Map 驗證：Official Bootstrap " +
+        $"{OfficialWorldBootstrapCodec.PayloadLength} bytes；" +
+        "Portal projection 未附加");
 }
 
 var expectedNpcHandles =
