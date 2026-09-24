@@ -29,6 +29,7 @@
 - `TcpGameServer` 目前只在成功解碼 `PortalActivate` 後呼叫 `portalRouteService.ResolveAsync`，再做 destination codec 與 `WorldMapTransitionService.TryTransitionAsync`。
 - `WorldMovement` 路徑只檢查序號與 bounds、更新位置／presence、回傳 ACK；該路徑沒有呼叫 Portal route resolver 或 transition。Portal 2–4 的 DB route／codec integration tests 僅證明資料可讀、指定座標可解析與目的地可編碼，**不證明移動進入口會切圖**。
 - 舊 `OfficialPortalRouteCatalog` 將 Portal 1 分類 `ExplicitActivation`，Portal 2–4 分類 `MovementRegion`；這是舊 runtime 的標籤，尚不足以證明 V2 收到的原版 Client movement／activate 事件序列。維持 production 程式不變，先取得對應原始 Client 觸發封包或可重現的實機紀錄。
+- GitHub 搜尋 Portal 2–4 capture ID，只找到 codec／舊 route catalog 的引用，沒有包含觸發順序的原始 trace。Migration 109/127 將 Portal 2 的 `trigger_evidence_status` 設為 `Verified`，Portal 3／4 設為 `Derived`；舊 `MariaDbWorldContentRepository` 以 `SourceRadius > 0` 產生 `MovementRegion` 標籤。這些欄位與標籤不能替代 Client 封包時序驗證。
 
 ## 尚未完成
 
