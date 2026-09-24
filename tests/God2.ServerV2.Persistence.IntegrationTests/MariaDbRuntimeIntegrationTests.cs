@@ -586,6 +586,43 @@ public sealed class MariaDbRuntimeIntegrationTests
             long.MaxValue, CancellationToken.None));
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task PersistedCharacterLocation_IsAdmissibleForWorldRelogin()
+    {
+        if (!ShouldRun())
+            return;
+
+        var options = CreateOptions();
+        var characters = await new MariaDbCharacterListRepository(options)
+            .ListByAccountAsync(1, CancellationToken.None);
+        var character = Assert.Single(
+            characters,
+            entry => entry.CharacterId == 1);
+
+        Assert.True(character.MapId.HasValue);
+        Assert.True(character.PositionX.HasValue);
+        Assert.True(character.PositionY.HasValue);
+        Assert.True(character.RuntimeVersion > 0);
+        Assert.Equal(32, character.ConcurrencyToken.Length);
+
+        var identity = await new MariaDbWorldLoginMapIdentityRepository(options)
+            .GetByMapAsync(character.MapId.Value, CancellationToken.None);
+
+        Assert.NotNull(identity);
+        Assert.Equal("god2-opt-6b127086e0c0", identity.ClientBuildId);
+        Assert.True(
+            identity.Contains(character.PositionX.Value, character.PositionY.Value),
+            $"Persisted character {character.CharacterId} at map {character.MapId} " +
+            $"position ({character.PositionX},{character.PositionY}) is outside World Login bounds.");
+
+        var movementBounds = await new MariaDbMapMovementBoundsRepository(options)
+            .GetByMapAsync(character.MapId.Value, CancellationToken.None);
+        Assert.NotNull(movementBounds);
+        Assert.True(movementBounds.Contains(
+            character.PositionX.Value, character.PositionY.Value));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
