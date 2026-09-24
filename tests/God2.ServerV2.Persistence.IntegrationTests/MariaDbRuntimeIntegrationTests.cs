@@ -556,6 +556,36 @@ public sealed class MariaDbRuntimeIntegrationTests
             long.MaxValue, CancellationToken.None));
     }
 
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task WorldLoginMapIdentity_EnforcesEnabledIdentityAndBounds()
+    {
+        if (!ShouldRun())
+            return;
+
+        var repository =
+            new MariaDbWorldLoginMapIdentityRepository(CreateOptions());
+
+        var identity = await repository.GetByMapAsync(
+            170015007, CancellationToken.None);
+
+        Assert.NotNull(identity);
+        Assert.Equal(170015007, identity.MapId);
+        Assert.Equal("god2-opt-6b127086e0c0", identity.ClientBuildId);
+        Assert.Equal((ushort)7, identity.ClientMapId);
+        Assert.Equal((byte)15, identity.ClientAreaId);
+        Assert.True(identity.Contains(48, 81));
+        Assert.False(identity.Contains(294, 81));
+
+        // Disabled Formal map must not be available for World Login.
+        Assert.Null(await repository.GetByMapAsync(
+            1200070008, CancellationToken.None));
+
+        // Unknown map must also fail closed.
+        Assert.Null(await repository.GetByMapAsync(
+            long.MaxValue, CancellationToken.None));
+    }
+
     private static bool ShouldRun() =>
         string.Equals(
             Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
