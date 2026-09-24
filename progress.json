@@ -5,7 +5,7 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-09-24T15:00:15+08:00",
+  "updated_at": "2026-09-24T15:30:52+08:00",
   "summary": "God2 Server V2 已完成正式 World Login map identity/bounds 解耦與 Production acceptance。正式 World Login 不再依賴 Portal 六筆 destination whitelist；144/144 enabled official maps 均具 WorldLoginMapIdentityRepository 所需的 Client Area/Map identity 與 bounds。正式 6001 已部署 eaac178，LoginProbe 完成 Login → World，接收官方 1772-byte Bootstrap，不附加 Portal projection，Exit Code 0。V2 六個測試專案實際執行 282/282 通過。目前主線進入 World Runtime 完整化；Portal wire projection 仍維持 6 個 evidence-backed destination identities，不由 World Login 144/144 推論擴張。",
   "milestones": [
     {
