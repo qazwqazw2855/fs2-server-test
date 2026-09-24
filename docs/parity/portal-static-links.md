@@ -38,3 +38,17 @@ The operator supplied four unmodified CAN files copied from `E:\\God2\\Data2\\ma
 All four file hashes match `db/imports/official/maps/God2_exact_current_map_sha256.csv`. For every one of the **65** staging links, the byte offset `12 + 64 * can_record_index`, one-byte record type, NUL-terminated resource path and the inventory's normalized destination resource candidate match the supplied CAN bytes; **0 mismatches**. The matching migration rows also agree with the supplemental inventory on source path, record index and type. The four additional header records identify source resources and are not staging links. This proves provenance of these four CAN file bytes and the 65 static link entries; it does not establish any transfer trigger, click/walk action, source/destination coordinates or server opcode.
 
 The observed `God2_opt.exe` SHA-256 in both local directories is `6F2639A0A7AD25053D0364108147173EB68BD04F57E6942491F42633F40052BC`. The repository's protocol build `god2-opt-6b127086e0c0` is tied to executable SHA-256 `6B127086E0C00014DE26137B4EC482801E06E0724C5C05C64561D7F9FF32BD9B`. The executable mismatch prevents treating these local files as executable-specific proof of the latter build's trigger behavior. Destination asset bytes have not been checked for all links; `exactClientFileProvenanceComplete` and full Portal promotion remain **false**, and all staging links stay disabled.
+
+### Installed destination asset presence, 2026-09-24
+
+A read-only PowerShell enumeration used the 65 CAN record paths (record indices 1 through count minus 1) to check each adjacent map asset both as the literal `.mdt/.hmd` and with a `Z` suffix. The two local directories `E:\\God2` and `D:\\god\\珈賜換II` each returned **65 checked, 60 existing, 5 missing**. The same five exact relative paths are absent in both:
+
+| CAN source | Record index | Missing adjacent asset |
+|---|---:|---|
+| `Island03.can` | 10 | `Data2/map/island03/indoor/god03.hmd[Z]` |
+| `TONG.Can` | 8 | `Data2/map/tong/reborn/reborn.mdt[Z]` |
+| `South003.can` | 9 | `Data2/map/south003/indoor/god01.hmd[Z]` |
+| `South003.can` | 11 | `Data2/map/south003/indoor/god02.hmd[Z]` |
+| `South003.can` | 14 | `Data2/map/south003/indoor/god03.hmd[Z]` |
+
+The other 60 files were checked for presence only, not compared byte-for-byte with the pinned manifest. The five missing exact paths do not prove the content cannot be supplied by another install, patch, archive or client-side resolver. No link is promoted, deleted or rewritten based on presence alone; the client executable build difference and trigger evidence gap remain unresolved.
