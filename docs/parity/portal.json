@@ -1,6 +1,6 @@
 {
   "schema": "God2PortalParityBaseline/1",
-  "generatedAtUtc": "2026-09-22T14:08:49Z",
+  "generatedAtUtc": "2026-09-24T16:30:15Z",
   "clientBuildId": "god2-opt-6b127086e0c0",
   "productionDatabaseTouched": false,
   "authorityBoundary": {
@@ -80,9 +80,11 @@
       "sourceX": 252,
       "sourceY": 397,
       "sourceRadius": 0,
+      "sourceCenterInBounds": 0,
       "destinationMapId": 557790525,
       "destinationX": 28,
       "destinationY": 34,
+      "destinationInBounds": 1,
       "enabled": 1
     },
     {
@@ -92,9 +94,11 @@
       "sourceX": 16,
       "sourceY": 20,
       "sourceRadius": 1,
+      "sourceCenterInBounds": 1,
       "destinationMapId": 1675308248,
       "destinationX": 196,
       "destinationY": 139,
+      "destinationInBounds": 1,
       "enabled": 1
     },
     {
@@ -104,9 +108,11 @@
       "sourceX": 284,
       "sourceY": 452,
       "sourceRadius": 8,
+      "sourceCenterInBounds": 1,
       "destinationMapId": 192354557,
       "destinationX": 52,
       "destinationY": 184,
+      "destinationInBounds": 1,
       "enabled": 1
     },
     {
@@ -116,9 +122,11 @@
       "sourceX": 51,
       "sourceY": 185,
       "sourceRadius": 8,
+      "sourceCenterInBounds": 1,
       "destinationMapId": 130139698,
       "destinationX": 283,
       "destinationY": 453,
+      "destinationInBounds": 1,
       "enabled": 1
     },
     {
@@ -128,12 +136,21 @@
       "sourceX": 249,
       "sourceY": 246,
       "sourceRadius": 0,
+      "sourceCenterInBounds": 1,
       "destinationMapId": 170015007,
       "destinationX": 48,
       "destinationY": 81,
+      "destinationInBounds": 1,
       "enabled": 1
     }
   ],
+  "routeGeometry": {
+    "enabledSourceCentersOutsideBounds": [
+      1
+    ],
+    "enabledDestinationsOutsideBounds": [],
+    "note": "A source center outside bounds is an unresolved coordinate/trigger conflict; this audit does not correct source coordinates or infer client movement semantics."
+  },
   "diff": {
     "missingEvidenceBackedRoutes": [],
     "missingCount": 0,
