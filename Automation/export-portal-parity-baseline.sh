@@ -55,19 +55,27 @@ comm -13 \
 
 db_query '
 SELECT JSON_OBJECT(
-  "portalId", portal_id,
-  "nameZhTw", name_zh_tw,
-  "sourceMapId", source_map_id,
-  "sourceX", source_x,
-  "sourceY", source_y,
-  "sourceRadius", source_radius,
-  "destinationMapId", destination_map_id,
-  "destinationX", destination_x,
-  "destinationY", destination_y,
-  "enabled", enabled
+  "portalId", p.portal_id,
+  "nameZhTw", p.name_zh_tw,
+  "sourceMapId", p.source_map_id,
+  "sourceX", p.source_x,
+  "sourceY", p.source_y,
+  "sourceRadius", p.source_radius,
+  "sourceCenterInBounds", CASE WHEN source_map.map_id IS NULL THEN NULL
+    ELSE (p.source_x BETWEEN source_map.minimum_x AND source_map.maximum_x
+      AND p.source_y BETWEEN source_map.minimum_y AND source_map.maximum_y) END,
+  "destinationMapId", p.destination_map_id,
+  "destinationX", p.destination_x,
+  "destinationY", p.destination_y,
+  "destinationInBounds", CASE WHEN destination_map.map_id IS NULL THEN NULL
+    ELSE (p.destination_x BETWEEN destination_map.minimum_x AND destination_map.maximum_x
+      AND p.destination_y BETWEEN destination_map.minimum_y AND destination_map.maximum_y) END,
+  "enabled", p.enabled
 )
-FROM god2_game.portals
-ORDER BY portal_id;
+FROM god2_game.portals AS p
+LEFT JOIN god2_game.maps AS source_map ON source_map.map_id = p.source_map_id
+LEFT JOIN god2_game.maps AS destination_map ON destination_map.map_id = p.destination_map_id
+ORDER BY p.portal_id;
 ' |
 jq -s '.' > "$work_dir/formal.json"
 
@@ -209,6 +217,17 @@ jq -n \
       runtimeBoundStagingLinks: $boundLinkCount
     },
     formalRows: $formal[0],
+    routeGeometry: {
+      enabledSourceCentersOutsideBounds: [
+        $formal[0][] | select(.enabled == 1 and .sourceCenterInBounds != 1)
+        | .portalId
+      ],
+      enabledDestinationsOutsideBounds: [
+        $formal[0][] | select(.enabled == 1 and .destinationInBounds != 1)
+        | .portalId
+      ],
+      note: "A source center outside bounds is an unresolved coordinate/trigger conflict; this audit does not correct source coordinates or infer client movement semantics."
+    },
     diff: {
       missingEvidenceBackedRoutes: $missing[0],
       missingCount: $missingCount,
@@ -286,6 +305,8 @@ jq -r '
     "",
     "- Status: **" + .regression.status + "**",
     "- Missing IDs: `" + (.diff.missingEvidenceBackedRoutes | map(tostring) | join(", ")) + "`",
+    "- Enabled source centers outside bounds: `" + (.routeGeometry.enabledSourceCentersOutsideBounds | map(tostring) | join(", ")) + "`",
+    "- Enabled destinations outside bounds: `" + (.routeGeometry.enabledDestinationsOutsideBounds | map(tostring) | join(", ")) + "`",
     "- Cause: `" + .regression.cause + "`",
     "",
     "The 68 legacy CAN-link candidates remain TransferTriggerUnverified and cannot be imported into gameplay.",
@@ -309,6 +330,7 @@ echo "Wrote $output_md"
 jq '{
   inventory,
   diff,
+  routeGeometry,
   regression,
   promotionGate
 }' "$output_json"
