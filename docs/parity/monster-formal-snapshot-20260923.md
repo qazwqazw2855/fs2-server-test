@@ -19,3 +19,7 @@ The Formal DB query returned 9 monsters, all disabled; each has NULL `monster_fa
 All nine `monster_N` codes have a unique numeric match in the 208-record supplemental client inventory. Three names differ only in traditional/simplified Chinese characters (馬賊/马贼, 鯨龍/鲸龙, 怨靈/怨灵); the other six names match exactly. Code and name agreement is an identity lead, not evidence of combat statistics, spawn placement, drop semantics or runtime eligibility.
 
 This snapshot must be refreshed before making decisions based on Formal DB counts. No database writes or runtime promotion were performed.
+
+## 2026-09-24 refreshed Formal DB counts
+
+The operator reran read-only aggregate queries against the AWS runtime MariaDB through an existing container administrative connection. Results: **9 total monsters, 0 enabled, 9 disabled, 0 monster_spawns and 0 monster_drops**. This refresh confirms the prior aggregate counts and enabled status; it did not reread every column or row in the nine-row identity table above. The existing runtime account `god2_v2` lacks SELECT on `god2_game.monsters`; no grant or schema change was made. The database remains unsuitable for promoting monster spawn, combat or drop runtime behavior.
