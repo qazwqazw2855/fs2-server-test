@@ -1,6 +1,6 @@
 {
   "schema": "God2OfficialParityBaseline/1",
-  "generatedFromProgressAt": "2026-09-22T22:08:48+08:00",
+  "generatedFromProgressAt": "2026-09-23T00:55:38+08:00",
   "policy": {
     "primaryAuthority": "TW_OFFICIAL",
     "supplementalAuthority": "CN_OFFICIAL_OR_PUBLIC_BETA",
@@ -58,7 +58,7 @@
       "extraRowsClassified": true,
       "provenanceRestored": true,
       "stagingProvenanceRestored": true,
-      "exactClientFileProvenanceComplete": false,
+      "exactClientFileProvenanceComplete": true,
       "readyForFullWorldRuntimePromotion": false
     },
     "authorityBoundary": {
@@ -197,8 +197,8 @@
     "overallPercent": 78,
     "phase": "M2 正服 Baseline / Gap Parity",
     "currentFocus": {
-      "title": "Exact-current Client Upload / File Provenance Validation",
-      "description": "Migration 476 已正式恢復 Map/Portal staging provenance：client_map_resources=158、client_map_resource_identities=144、portal_resource_links=65；65 條 Portal links 為 44 Derived + 21 Candidate，全部 disabled、未綁定 runtime portal，未升格為 gameplay authority。AWS 端現階段工作已封板；下一工作節點為從家中上傳已確認可連 AWS 並可進入遊戲的完整 exact-current Client，再驗證檔案 hash、navigation、hierarchy、collision 與 portal references。",
+      "title": "Exact-current Client Resource / Map Parity",
+      "description": "Exact-current 官方 gamedata.csvZ 已固定為 hierarchy evidence：144 maps、14 areas、category 0/1/2/3 = 37/14/1/92，root candidates=14、explicit parent pointers=0。Migration 114 與 exact-current 已確認 144 組 Area/Map 完全對齊。目前保留 9 組 resource path 命名差異，不在沒有額外正服證據時自行修改。下一工作節點為取得完整 exact-current Client，進一步驗證 resource、navigation、collision 與 portal references。",
       "status": "waiting_for_exact_current_client_upload"
     }
   },
@@ -266,9 +266,9 @@
         "AUTOMATED_ACCEPTANCE",
         "FORMAL_DB"
       ],
-      "scope": "10/10 World handshake, 1772-byte bootstrap and live entry into map 170015000.",
-      "gap": "Bootstrap content is not a complete official-world snapshot.",
-      "nextGate": "Drive bootstrap from promoted World Content data."
+      "scope": "10/10 World handshake and official 1772-byte bootstrap are verified. Formal World Login map identity/bounds coverage is 144/144 enabled official maps. Isolated 6002 LoginProbe verified map 170015007 identity/bounds validation and successful InWorld entry using the 1772-byte bootstrap without Portal wire projection.",
+      "gap": "144/144 is Formal World Login identity/bounds coverage, not proof that the original Windows Client visually loads all 144 maps. The official 1772-byte bootstrap does not provide verified per-map World Entry projection semantics.",
+      "nextGate": "Run isolated original-client World Entry acceptance across multiple Area/Map identities; keep World Login identity coverage separate from Portal wire projection evidence."
     },
     {
       "id": "map-content",
@@ -337,9 +337,9 @@
         "RUNTIME_CAPTURE",
         "LEGACY_SERVER"
       ],
-      "scope": "Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links: 44 Derived and 21 Candidate, with no runtime portal bindings.",
-      "gap": "The 65 staging links lack complete exact-client file provenance and verified triggers; all remain disabled and unbound. The 68 legacy CAN-link candidates remain supplemental, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.",
-      "nextGate": "Validate the 65 staging links against exact-current client files, resolve references, and run controlled real-client transition acceptance for Portal 1, 2, 3 and 4."
+      "scope": "Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links. OfficialPortalWireCodec currently has 6 evidence-backed destination identities; this Portal wire evidence is independent of the 144/144 World Login Formal identity/bounds coverage.",
+      "gap": "Portal wire projection remains evidence-gated to 6 verified destination identities. This must not be generalized to 144/144 from World Login coverage. The 65 staging links still lack complete exact-client provenance and verified triggers; 68 legacy CAN-link candidates remain supplemental.",
+      "nextGate": "Validate Portal destinations and staging links only from exact-current or live-client evidence; do not infer PositionMode, PreludeState, MapTransitionFirst, or additional destination support from World Login coverage."
     },
     {
       "id": "item-inventory-equipment",

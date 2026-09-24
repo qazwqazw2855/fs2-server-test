@@ -1,6 +1,6 @@
 # God2 Official Parity Baseline
 
-Progress source: `2026-09-22T22:08:48+08:00`
+Progress source: `2026-09-23T00:55:38+08:00`
 
 Overall: **78%**
 
@@ -20,11 +20,11 @@ Overall: **78%**
 | 0 | Character List / Select | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Capture lifecycle variants only when selected as the active gap. |
 | 0 | Login | NOT_APPLICABLE | VERIFIED | VERIFIED | VERIFIED | Preserve regression coverage. |
 | 0 | Movement | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Bind validation to promoted collision evidence. |
-| 0 | World Entry | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Drive bootstrap from promoted World Content data. |
+| 0 | World Entry | PARTIAL | VERIFIED | VERIFIED | VERIFIED | Run isolated original-client World Entry acceptance across multiple Area/Map identities; keep World Login identity coverage separate from Portal wire projection evidence. |
 | 1 | Map Content / Hierarchy / Collision | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Validate the restored staging rows against exact-current client files, then diff hierarchy, collision and portal references. |
 | 1 | Monster / Spawn / AI / Drop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Complete template, spawn and drop provenance diff. |
 | 1 | NPC Spawn / Dialog | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Diff NPC templates, spawns, map bindings and dialogs. |
-| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Validate the 65 staging links against exact-current client files, resolve references, and run controlled real-client transition acceptance for Portal 1, 2, 3 and 4. |
+| 1 | Portal / Map Transition | PARTIAL | VERIFIED | VERIFIED | PARTIAL | Validate Portal destinations and staging links only from exact-current or live-client evidence; do not infer PositionMode, PreludeState, MapTransitionFirst, or additional destination support from World Login coverage. |
 | 2 | Item / Inventory / Equipment | CANDIDATE | PARTIAL | BLOCKED | BLOCKED | Complete identity and bootstrap baseline before mutation. |
 | 2 | Merchant / Shop | CANDIDATE | BLOCKED | BLOCKED | BLOCKED | Promote catalog, then verify isolated purchase and sale. |
 | 2 | Player Replication / AOI / Despawn | PARTIAL | PARTIAL | BLOCKED | BLOCKED | Run two-client AOI after World Content is stable. |
@@ -55,8 +55,8 @@ Overall: **78%**
 
 ### World Entry
 
-- Proven scope: 10/10 World handshake, 1772-byte bootstrap and live entry into map 170015000.
-- Gap: Bootstrap content is not a complete official-world snapshot.
+- Proven scope: 10/10 World handshake and official 1772-byte bootstrap are verified. Formal World Login map identity/bounds coverage is 144/144 enabled official maps. Isolated 6002 LoginProbe verified map 170015007 identity/bounds validation and successful InWorld entry using the 1772-byte bootstrap without Portal wire projection.
+- Gap: 144/144 is Formal World Login identity/bounds coverage, not proof that the original Windows Client visually loads all 144 maps. The official 1772-byte bootstrap does not provide verified per-map World Entry projection semantics.
 - Authorities: `TW_LIVE_CLIENT`, `AUTOMATED_ACCEPTANCE`, `FORMAL_DB`
 
 ### Map Content / Hierarchy / Collision
@@ -79,14 +79,13 @@ Overall: **78%**
 
 ### Portal / Map Transition
 
-- Proven scope: Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links: 44 Derived and 21 Candidate, with no runtime portal bindings.
-- Gap: The 65 staging links lack complete exact-client file provenance and verified triggers; all remain disabled and unbound. The 68 legacy CAN-link candidates remain supplemental, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.
+- Proven scope: Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links. OfficialPortalWireCodec currently has 6 evidence-backed destination identities; this Portal wire evidence is independent of the 144/144 World Login Formal identity/bounds coverage.
+- Gap: Portal wire projection remains evidence-gated to 6 verified destination identities. This must not be generalized to 144/144 from World Login coverage. The 65 staging links still lack complete exact-client provenance and verified triggers; 68 legacy CAN-link candidates remain supplemental.
 - Authorities: `TW_LIVE_CLIENT`, `AUTOMATED_ACCEPTANCE`, `FORMAL_DB`, `RUNTIME_CAPTURE`, `LEGACY_SERVER`
 
 ### Item / Inventory / Equipment
 
-- Proven scope: Read-only inventory, stack rules and selected static permissions exist. AWS test DB read-only audit on 2026-09-23 at commit `356741a` found 1 inventory state and 1 active slot; zero invalid capacity, negative versions, orphan slots, out-of-range positions/quantities, null metadata, missing Formal item links, declared-stack excesses, or over-capacity states. Application tests passed 49/49 after slot validation at commit `b820330`. After the BIGINT range guard at commit `25f6d61`, AWS Release build of Persistence succeeded and two selected read-only MariaDB integration tests passed (inventory snapshot and item stack impact; 2/2, 0 skipped).
-- Limit: One test character and one active slot are a narrow snapshot; this does not verify mutation concurrency, item transfer, equipment effects, or official-client wire behavior.
+- Proven scope: Read-only inventory, stack rules and selected static permissions exist.
 - Gap: Mutation, equipment effects, economy and client update wire are blocked.
 - Authorities: `EXACT_CURRENT_STATIC`, `FORMAL_DB`, `LEGACY_SERVER`, `CN_SUPPLEMENTAL`
 

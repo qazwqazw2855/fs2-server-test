@@ -59,9 +59,9 @@
         "AUTOMATED_ACCEPTANCE",
         "FORMAL_DB"
       ],
-      "scope": "10/10 World handshake, 1772-byte bootstrap and live entry into map 170015000.",
-      "gap": "Bootstrap content is not a complete official-world snapshot.",
-      "nextGate": "Drive bootstrap from promoted World Content data."
+      "scope": "10/10 World handshake and official 1772-byte bootstrap are verified. Formal World Login map identity/bounds coverage is 144/144 enabled official maps. Isolated 6002 LoginProbe verified map 170015007 identity/bounds validation and successful InWorld entry using the 1772-byte bootstrap without Portal wire projection.",
+      "gap": "144/144 is Formal World Login identity/bounds coverage, not proof that the original Windows Client visually loads all 144 maps. The official 1772-byte bootstrap does not provide verified per-map World Entry projection semantics.",
+      "nextGate": "Run isolated original-client World Entry acceptance across multiple Area/Map identities; keep World Login identity coverage separate from Portal wire projection evidence."
     },
     {
       "id": "movement",
@@ -95,9 +95,9 @@
         "RUNTIME_CAPTURE",
         "LEGACY_SERVER"
       ],
-      "scope": "Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links: 44 Derived and 21 Candidate, with no runtime portal bindings.",
-      "gap": "The 65 staging links lack complete exact-client file provenance and verified triggers; all remain disabled and unbound. The 68 legacy CAN-link candidates remain supplemental, and only Portal 170015007 has Taiwan live-client to Server V2 acceptance.",
-      "nextGate": "Validate the 65 staging links against exact-current client files, resolve references, and run controlled real-client transition acceptance for Portal 1, 2, 3 and 4."
+      "scope": "Migration 475 restored all 5 evidence-backed Formal routes and 5 portal evidence rows. Migration 476 restored 65 disabled staging portal resource links. OfficialPortalWireCodec currently has 6 evidence-backed destination identities; this Portal wire evidence is independent of the 144/144 World Login Formal identity/bounds coverage.",
+      "gap": "Portal wire projection remains evidence-gated to 6 verified destination identities. This must not be generalized to 144/144 from World Login coverage. The 65 staging links still lack complete exact-client provenance and verified triggers; 68 legacy CAN-link candidates remain supplemental.",
+      "nextGate": "Validate Portal destinations and staging links only from exact-current or live-client evidence; do not infer PositionMode, PreludeState, MapTransitionFirst, or additional destination support from World Login coverage."
     },
     {
       "id": "map-content",
