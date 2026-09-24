@@ -99,9 +99,9 @@ def main() -> None:
             raise ValueError("Duplicate portal client evidence marker")
         if evidence_marker in existing:
             evidence = existing[existing.index(evidence_marker):].strip()
-    generated = "\\n".join(lines).rstrip() + "\\n"
+    generated = "\n".join(lines).rstrip() + "\n"
     if evidence:
-        generated += "\\n" + evidence + "\\n"
+        generated += "\n" + evidence + "\n"
     OUTPUT.write_text(generated, encoding="utf-8")
     print(f"Checked {len(links)} staging links; wrote {OUTPUT.relative_to(ROOT)}")
 
