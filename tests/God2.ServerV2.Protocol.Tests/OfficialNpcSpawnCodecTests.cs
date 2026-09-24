@@ -81,6 +81,27 @@ public sealed class OfficialNpcSpawnCodecTests
     }
 
     [Fact]
+    public void Archived_3954_spawn_decodes_to_pinned_application_hash()
+    {
+        // Migration 103 archived this exact Stage 4 wire frame. This audit does
+        // not enable the V2 database row or expand the production codec.
+        var encoded = Convert.FromHexString(
+            "180072720F00005260000081000000CF010000C0036C00A1");
+        var decoded = OfficialWorldBootstrapCodec.DecodeFrame(encoded);
+
+        Assert.Equal(OfficialNpcSpawnCodec.FrameLength, decoded.Length);
+        Assert.Equal(OfficialNpcSpawnCodec.SpawnOpcode, decoded[2]);
+        Assert.True(OfficialNpcSpawnCodec.TryDecodeHandle(
+            encoded,
+            out var handle));
+        Assert.Equal(3954U, handle);
+        Assert.Equal(
+            "F53E8D79A02FB96A528E9ABF334E5D1383018780BA79D62340549FC5AD36885B",
+            Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(
+                decoded.AsSpan(2, OfficialNpcSpawnCodec.ApplicationRecordLength))));
+    }
+
+    [Fact]
     public void Live_dialog_profile_does_not_generalize_handle()
     {
         var result = OfficialNpcSpawnCodec.Encode(
