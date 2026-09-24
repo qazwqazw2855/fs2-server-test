@@ -54,6 +54,12 @@
 - 現行 `TcpGameServer` 對單一連線在同一 world-frame 讀取迴圈依序 await Portal 切圖與移動；離線清理位於該處理流程的 `finally`。因此不能僅憑故障注入測試要求新增角色鎖或宣稱同連線會在 DB 寫入期間處理下一筆移動。若後續引入跨任務 presence 更新，須先建立真正的併發呼叫路徑與重現測試，再設計跨 DB／registry 的一致性處理。
 - 未持有 `GOD2_TEST_PASSWORD`，本輪沒有啟動 6002 LoginProbe；6001 service 與正式分支未改動。Portal 的原版 Client 觸發序列與視覺驗收仍待證據。
 
+## 2026-09-25 Portal 1 可達性檢查
+
+- `0d91e43` 的唯讀 baseline 從正式 DB 回報：五條 enabled route 中，只有 Portal 1 的來源中心超出來源地圖 bounds；五條目的地都在 bounds 內。Portal 1 來源中心 `(252,397)`、半徑 `0`，Map 3 正式 bounds 為 `x=0..251,y=0..251`。
+- 在目前 V2 實作，`TcpGameServer` 的 World Login identity 檢查拒絕 bounds 外的登入位置，WorldMovement 也在更新 presence 之前拒絕 bounds 外座標；`PortalActivate` 只用現有 world presence 位置呼叫 `PortalRouteService.ResolveAsync`，該服務以 `max(abs(dx),abs(dy)) <= SourceRadius` 判定命中。因此在這些 gate 啟用且 presence 只經正常 World Login／Movement 更新的條件下，Portal 1 不可能以來源中心 `(252,397)` 命中。這是目前資料與 V2 控制流程的推論，不是正服 client 的觸發時序證據。
+- 未核對原始移動／切圖封包與座標系前，不修改 Portal 1 資料、Map 3 bounds 或 WorldMovement gate，也不將 Portal 1 列為已通過真實切圖驗收。Portal 2–4 的移動觸發語意仍待實機證據。
+
 ## 2026-09-24 Portal build 與逐張 World Login DB 驗證
 
 - `d9ba47f` 在 Portal route 兩端新增 current client build 比對，於世界切圖寫入前拒絕不符路線；隔離 checkout 的 Network.Tests **80/80 通過**，但尚未以原版 Client 驗收該拒絕分支。
