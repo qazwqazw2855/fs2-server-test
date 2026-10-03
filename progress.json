@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T11:05:42+08:00",
-  "summary": "God2 Server V2 已完成伺服器內部道具入包與任務接受 → 進度 → 道具領獎交易閉環。六組測試 353/353 通過，DB integration 已啟用。接受流程原子保存任務、目標及獎勵快照；已驗證併發接受防重、完成後重複接受拒絕、事件重播、領獎防重與快照寫入失敗自動回滾。測試角色與臨時 DB 帳號已清理。正式任務目標與獎勵仍各為 0 筆，167 筆啟用任務的 repeatable 仍為未知；測試定義不代表正式內容核准。本輪未部署 6001，部署來源仍為 3344eb3；任務與背包客戶端流程仍待證據及實機驗收。",
+  "updated_at": "2026-10-03T12:50:28+08:00",
+  "summary": "God2 Server V2 已建立內部道具入包、任務接受 → 進度 → 領獎，以及商店購買的原子交易機制。六組測試 362/362 通過，DB integration 已啟用。商店測試驗證併發購買防重、錢包版本衝突、餘額不足，以及入包後扣款權限拒絕時自動回滾並重試成功。測試角色、商店與臨時 DB 帳號均已清理。商店內容與核准 gate 僅使用測試 fixture；正式任務目標與獎勵尚未接入，本輪未接入 Network、未部署 6001、未進行 Client 驗收。正式 6001 部署來源仍為 3344eb3。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 353,
-    "passed_tests": 353,
+    "total_tests": 362,
+    "passed_tests": 362,
     "failed_tests": 0,
     "suites": [
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Application",
-        "passed": 96,
+        "passed": 104,
         "failed": 0
       },
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 39,
+        "passed": 40,
         "failed": 0
       }
     ],
-    "note": "六組測試 353/353 通過，DB integration 已啟用。Core 7、Application 96、Session 20、Protocol 111、Network 80、Persistence Integration 39。獨立停用角色驗證接受 → 進度 → 領獎閉環。8 個不同 instance 競爭接受，僅一個成功；完成後原 instance 可重播，新 instance 被拒絕。快照 INSERT 權限拒絕觸發 owned transaction 回滾，任務、目標及獎勵快照均未殘留。核准 gate 僅限測試 fixture，正式預設仍阻擋；未接入 Network、未部署 6001、未進行 Client 驗收。"
+    "note": "六組測試 362/362 通過，0 failed、0 skipped，DB integration 已啟用。Core 7、Application 104、Session 20、Protocol 111、Network 80、Persistence Integration 40。涵蓋內部入包與任務接受 → 進度 → 領獎交易閉環。商店 8 個相同請求僅購買一次；不同請求競爭相同錢包版本時僅一個成功。另驗證餘額不足、提交後重播，以及入包後錢包 UPDATE 權限拒絕觸發自有交易回滾，背包、錢包與紀錄恢復，再以原請求重試成功。此故障測試不涵蓋扣款後購買紀錄或金錢稽核寫入失敗。fixture 清理成功；正式 gate 仍阻擋，DB 堆疊合併尚未驗證，未部署或進行 Client 驗收。"
   },
   "blockers": [
     {
