@@ -22,6 +22,8 @@ fixture_name="shopfixture_$(python3 -c 'import uuid; print(uuid.uuid4().hex)')"
 test_user="shoptest_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
 test_password="$(python3 -c 'import secrets; print(secrets.token_hex(32))')"
 fault_user="shopfault_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
+receipt_user="shopreceipt_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
+audit_user="shopaudit_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
 merchant_id="$(python3 -c 'import secrets; print(4000000000 + secrets.randbelow(1000000000))')"
 
 cleanup() {
@@ -51,9 +53,11 @@ WHERE merchant_id=$merchant_id AND admin_note='$fixture_name';
 COMMIT;
 DROP USER IF EXISTS '$test_user'@'172.17.0.1';
 DROP USER IF EXISTS '$fault_user'@'172.17.0.1';
+DROP USER IF EXISTS '$receipt_user'@'172.17.0.1';
+DROP USER IF EXISTS '$audit_user'@'172.17.0.1';
 SELECT
   (SELECT COUNT(*) FROM accounts WHERE username='$fixture_name')
-  + (SELECT COUNT(*) FROM mysql.user WHERE User IN ('$test_user','$fault_user'))
+  + (SELECT COUNT(*) FROM mysql.user WHERE User IN ('$test_user','$fault_user','$receipt_user','$audit_user'))
   + (SELECT COUNT(*) FROM god2_game.merchants WHERE admin_note='$fixture_name');
 SQL
   )"; then
@@ -79,6 +83,28 @@ GRANT SELECT,INSERT ON god2_player.inventory_audit_ledger TO '$test_user'@'172.1
 GRANT SELECT ON god2_game.items TO '$test_user'@'172.17.0.1';
 GRANT SELECT ON god2_game.merchants TO '$test_user'@'172.17.0.1';
 GRANT SELECT ON god2_game.merchant_inventory TO '$test_user'@'172.17.0.1';
+CREATE USER '$receipt_user'@'172.17.0.1' IDENTIFIED BY '$test_password';
+GRANT SELECT ON god2_player.characters TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT,UPDATE ON god2_player.player_inventory_state TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT,UPDATE ON god2_player.player_currency_balances TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE,DELETE ON god2_player.character_inventory TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.inventory_item_identity_sequence TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT ON god2_player.inventory_transaction_idempotency TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.inventory_audit_ledger TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.items TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.merchants TO '$receipt_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.merchant_inventory TO '$receipt_user'@'172.17.0.1';
+CREATE USER '$audit_user'@'172.17.0.1' IDENTIFIED BY '$test_password';
+GRANT SELECT ON god2_player.characters TO '$audit_user'@'172.17.0.1';
+GRANT SELECT,UPDATE ON god2_player.player_inventory_state TO '$audit_user'@'172.17.0.1';
+GRANT SELECT,UPDATE ON god2_player.player_currency_balances TO '$audit_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE,DELETE ON god2_player.character_inventory TO '$audit_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.inventory_item_identity_sequence TO '$audit_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.inventory_transaction_idempotency TO '$audit_user'@'172.17.0.1';
+GRANT SELECT ON god2_player.inventory_audit_ledger TO '$audit_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.items TO '$audit_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.merchants TO '$audit_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.merchant_inventory TO '$audit_user'@'172.17.0.1';
 CREATE USER '$fault_user'@'172.17.0.1' IDENTIFIED BY '$test_password';
 GRANT SELECT ON god2_player.characters TO '$fault_user'@'172.17.0.1';
 GRANT SELECT,UPDATE ON god2_player.player_inventory_state TO '$fault_user'@'172.17.0.1';
@@ -125,6 +151,8 @@ export GOD2_SALE_FIXTURE_MERCHANT_ID="$merchant_id"
 export GOD2_SALE_FIXTURE_USER="$test_user"
 export GOD2_SALE_FIXTURE_PASSWORD="$test_password"
 export GOD2_SALE_FAULT_USER="$fault_user"
+export GOD2_SALE_RECEIPT_FAULT_USER="$receipt_user"
+export GOD2_SALE_AUDIT_FAULT_USER="$audit_user"
 
 if test "${1:-}" = "--all"; then
   test -n "${GOD2_TEST_PASSWORD:-}" || {

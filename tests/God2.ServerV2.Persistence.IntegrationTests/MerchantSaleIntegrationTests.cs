@@ -125,6 +125,62 @@ public sealed class MerchantSaleIntegrationTests
             WHERE CharacterId=@character AND OperationType='V2MerchantSell';
             """));
 
+        async Task AssertLateFailureRollback(
+            string environmentName, string prefix, string table)
+        {
+            var lateUser = Required(environmentName);
+            Assert.StartsWith(prefix, lateUser);
+            var lateOptions = new MariaDbAuthenticationOptions(
+                Required("GOD2_DB_HOST"), int.Parse(Required("GOD2_DB_PORT")),
+                lateUser, Required("GOD2_SALE_FIXTURE_PASSWORD"));
+
+            var lateError = await Assert.ThrowsAsync<MySqlException>(async () =>
+            {
+                await new MariaDbMerchantSaleWriter(lateOptions, gate)
+                    .SellAsync(sale, CancellationToken.None);
+            });
+            Assert.Equal(1142, lateError.Number);
+            Assert.Contains(table, lateError.Message);
+
+            var snapshot = await repository.GetByCharacterAsync(
+                character, CancellationToken.None);
+            Assert.NotNull(snapshot);
+            Assert.Equal(
+                JsonSerializer.Serialize(before),
+                JsonSerializer.Serialize(snapshot));
+            Assert.Equal(slotVersion, await Scalar("""
+                SELECT slot_version FROM god2_player.character_inventory
+                WHERE character_id=@character
+                  AND enabled=1 AND deleted_at_utc IS NULL;
+                """));
+            Assert.Equal(60, await Scalar("""
+                SELECT Balance FROM god2_player.player_currency_balances
+                WHERE CharacterId=@character AND CurrencyType='Gold';
+                """));
+            Assert.Equal(1, await Scalar("""
+                SELECT Version FROM god2_player.player_currency_balances
+                WHERE CharacterId=@character AND CurrencyType='Gold';
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT COUNT(*) FROM god2_player.inventory_transaction_idempotency
+                WHERE CharacterId=@character AND OperationType='V2MerchantSell';
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT COUNT(*) FROM god2_player.inventory_audit_ledger
+                WHERE CharacterId=@character AND OperationType='V2MerchantSell';
+                """));
+        }
+
+        // Both accounts can update the wallet. Their first denied write is
+        // respectively the sale receipt or the subsequent sale audit.
+        await AssertLateFailureRollback(
+            "GOD2_SALE_RECEIPT_FAULT_USER", "shopreceipt_",
+            "inventory_transaction_idempotency");
+        await AssertLateFailureRollback(
+            "GOD2_SALE_AUDIT_FAULT_USER", "shopaudit_",
+            "inventory_audit_ledger");
+
+        // Retry the identical request after all injected failures.
         var results = await Task.WhenAll(Enumerable.Range(0, 8).Select(async _ =>
             await new MariaDbMerchantSaleWriter(options, gate)
                 .SellAsync(sale, CancellationToken.None)));
