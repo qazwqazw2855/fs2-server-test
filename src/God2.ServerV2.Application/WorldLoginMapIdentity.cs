@@ -10,6 +10,10 @@ public sealed record WorldLoginMapIdentity(
     int MinimumY,
     int MaximumY)
 {
+    public bool MatchesBuildAndContains(string clientBuildId, int x, int y) =>
+        string.Equals(ClientBuildId, clientBuildId, StringComparison.Ordinal) &&
+        Contains(x, y);
+
     public bool Contains(int x, int y) =>
         x >= MinimumX && x <= MaximumX && y >= MinimumY && y <= MaximumY;
 }

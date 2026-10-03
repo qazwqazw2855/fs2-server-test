@@ -22,6 +22,8 @@
 
 - Status: **REPAIRED**
 - Missing IDs: ``
+- Enabled source centers outside bounds: `1`
+- Enabled destinations outside bounds: ``
 - Cause: `FORGE_SEED_LEDGER_DRIFT`
 
 The 68 legacy CAN-link candidates remain TransferTriggerUnverified and cannot be imported into gameplay.

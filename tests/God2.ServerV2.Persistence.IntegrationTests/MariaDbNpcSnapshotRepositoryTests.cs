@@ -153,6 +153,62 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
             decodedHandle);
     }
 
+    [Theory]
+    [Trait("Category", "Integration")]
+    [InlineData(1310005042L, 5042U)]
+    [InlineData(1310005096L, 5096U)]
+    public async Task KunlunMap_DatabaseSpawnPassesOfficialWireCodec(
+        long spawnId,
+        uint expectedHandle)
+    {
+        if (!string.Equals(
+                Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"),
+                "1",
+                StringComparison.Ordinal))
+        {
+            return;
+        }
+
+        var repository = new MariaDbNpcSnapshotRepository(
+            new MariaDbAuthenticationOptions(
+                Required("GOD2_DB_HOST"),
+                int.Parse(Required("GOD2_DB_PORT")),
+                Required("GOD2_DB_USER"),
+                Required("GOD2_DB_PASSWORD")));
+
+        var entry = Assert.Single(
+            await repository.ListByMapAsync(
+                1675308248,
+                CancellationToken.None),
+            candidate => candidate.SpawnId == spawnId);
+
+        Assert.Equal("Derived", entry.WireEvidenceStatus);
+        Assert.Equal(expectedHandle, entry.ClientEntityHandle);
+
+        var encoded = OfficialNpcSpawnCodec.Encode(
+            new OfficialNpcSpawnEvidence(
+                entry.ClientBuildId,
+                entry.ClientEntityHandle,
+                entry.ResourceType,
+                entry.ResourceOrdinal,
+                entry.SelectorHighBits,
+                entry.DirectionCode,
+                entry.StateCode,
+                entry.PositionX,
+                entry.PositionY,
+                entry.SpawnMessageSha256,
+                entry.OpaqueTemplateSha256,
+                entry.WireEvidenceStatus,
+                entry.WireEvidenceReference));
+
+        Assert.True(encoded.Succeeded, encoded.Reason);
+        Assert.Equal(OfficialNpcSpawnCodec.FrameLength, encoded.Frame.Length);
+        Assert.True(OfficialNpcSpawnCodec.TryDecodeHandle(
+            encoded.Frame,
+            out var decodedHandle));
+        Assert.Equal(expectedHandle, decodedHandle);
+    }
+
     private static string Required(string name) =>
         Environment.GetEnvironmentVariable(name)
             is { Length: > 0 } value
