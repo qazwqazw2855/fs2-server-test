@@ -303,7 +303,7 @@
         "failed": 0
       }
     ],
-    "note": "V2 六個測試專案已逐一 restore 並實際執行，共 282/282 通過。正式 6001 已完成 World Login acceptance：角色 test001、World Bootstrap 1772 bytes、Portal projection 未附加、Probe Exit Code 0。"
+    "note": "2026-10-03 整合版六組測試實際執行 292/292 通過，DB integration 已啟用，0 failed、0 skipped。隔離 6002 World Login Map Probe 通過：test001、1772-byte Bootstrap、Portal projection 未附加、heartbeat 與斷線清理成功，Exit Code 0。本輪正式 6001 部署與驗收尚未完成；此 Probe 不涵蓋 NPC、Portal 或 Windows Client 畫面驗收。"
   },
   "blockers": [
     {
