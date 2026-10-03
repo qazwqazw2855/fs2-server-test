@@ -84,12 +84,39 @@ public sealed class MerchantCommandIntegrationTests
             new MariaDbMerchantSaleWriter(options, new SaleGate(character, merchant)),
             lane);
 
+        // Simulate a frame already holding this connection's lane.
+        async Task<MerchantPurchaseCommandResult> PurchaseInFrame(
+            long connectionId,
+            Guid currentInteractionId,
+            MerchantInteractionBinding currentBinding,
+            MerchantPurchaseCommand command,
+            CancellationToken cancellationToken)
+        {
+            using var lease = await lane.EnterAsync(cancellationToken);
+            return await Service().PurchaseInLeaseAsync(
+                lease, connectionId, currentInteractionId,
+                currentBinding, command, cancellationToken);
+        }
+
+        async Task<MerchantSaleCommandResult> SellInFrame(
+            long connectionId,
+            Guid currentInteractionId,
+            MerchantInteractionBinding currentBinding,
+            MerchantSaleCommand command,
+            CancellationToken cancellationToken)
+        {
+            using var lease = await lane.EnterAsync(cancellationToken);
+            return await Service().SellInLeaseAsync(
+                lease, connectionId, currentInteractionId,
+                currentBinding, command, cancellationToken);
+        }
+
         var buy = new MerchantPurchaseCommand(
             Guid.NewGuid(), "command-buy", 253231541, 1,
             initial.InventoryId, 0, 0, 0);
 
         Assert.True(presences.TryMove(101, character, 100, 124, out _));
-        var rejected = await Service().PurchaseAsync(
+        var rejected = await PurchaseInFrame(
             101, interactionId, binding, buy, CancellationToken.None);
         Assert.Equal(MerchantInteractionStatus.OutOfRange, rejected.InteractionStatus);
         Assert.Null(rejected.TransactionResult);
@@ -103,7 +130,7 @@ public sealed class MerchantCommandIntegrationTests
             """));
 
         Assert.True(presences.TryMove(101, character, 74, 124, out _));
-        var purchased = await Service().PurchaseAsync(
+        var purchased = await PurchaseInFrame(
             101, interactionId, binding, buy, CancellationToken.None);
         Assert.Equal(MerchantInteractionStatus.Allowed, purchased.InteractionStatus);
         Assert.NotNull(purchased.TransactionResult);
@@ -111,7 +138,7 @@ public sealed class MerchantCommandIntegrationTests
         Assert.Equal(60, purchased.TransactionResult.BalanceAfter);
         Assert.Equal(1, purchased.TransactionResult.InventoryVersionAfter);
 
-        var replay = await Service().PurchaseAsync(
+        var replay = await PurchaseInFrame(
             101, interactionId, binding, buy, CancellationToken.None);
         Assert.Equal(MerchantPurchaseStatus.Replayed, replay.TransactionResult!.Status);
 
@@ -134,7 +161,7 @@ public sealed class MerchantCommandIntegrationTests
 
         Assert.Equal(NpcInteractionCloseStatus.Closed,
             interactions.TryClose(101, 5042, out _));
-        var closedSale = await Service().SellAsync(
+        var closedSale = await SellInFrame(
             101, interactionId, binding, sale, CancellationToken.None);
         Assert.Equal(MerchantInteractionStatus.InteractionConflict,
             closedSale.InteractionStatus);
@@ -145,15 +172,15 @@ public sealed class MerchantCommandIntegrationTests
         var reopenedId = interactions.TryOpen(
             101, character, 100, 5042, [npc], now).Session!.InteractionId;
         Assert.NotEqual(interactionId, reopenedId);
-        var oldSale = await Service().SellAsync(
+        var oldSale = await SellInFrame(
             101, interactionId, binding, sale, CancellationToken.None);
         Assert.Equal(MerchantInteractionStatus.InteractionConflict, oldSale.InteractionStatus);
 
-        var sold = await Service().SellAsync(
+        var sold = await SellInFrame(
             101, reopenedId, binding, sale, CancellationToken.None);
         Assert.Equal(MerchantSaleStatus.Sold, sold.TransactionResult!.Status);
         Assert.Equal(64, sold.TransactionResult.BalanceAfter);
-        var saleReplay = await Service().SellAsync(
+        var saleReplay = await SellInFrame(
             101, reopenedId, binding, sale, CancellationToken.None);
         Assert.Equal(MerchantSaleStatus.Replayed, saleReplay.TransactionResult!.Status);
 
@@ -175,6 +202,19 @@ public sealed class MerchantCommandIntegrationTests
             WHERE CharacterId=@character
               AND OperationType IN ('V2MerchantBuy','V2MerchantSell');
             """));
+
+        // No frame lease remains after the durable operations.
+        var cleanupCalls = 0;
+        await lane.CloseAsync(() =>
+        {
+            cleanupCalls++;
+            interactions.Remove(101, out _);
+            presences.TryLeave(101, out _);
+            return ValueTask.CompletedTask;
+        }).WaitAsync(TimeSpan.FromSeconds(5));
+        Assert.Equal(1, cleanupCalls);
+        Assert.False(interactions.TryGetByConnection(101, out _));
+        Assert.False(presences.TryGetByConnection(101, out _));
     }
 
     private sealed class BuyGate(long character, long merchant) : IMerchantPurchaseEvidenceGate
