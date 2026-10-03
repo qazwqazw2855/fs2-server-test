@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T13:33:26+08:00",
-  "summary": "God2 Server V2 已建立內部入包、任務接受 → 進度 → 領獎與商店買賣交易。本輪新增 NPC 互動唯一身分、目前 World 狀態檢查與內部買賣命令入口。六組測試 393/393 通過，DB integration 已啟用，fixture 與臨時帳號已清理。命令入口由 World presence 取得角色身分，由核准映射取得商店身分；派送測試使用替身 writer，尚未驗證命令入口到 MariaDB 的整合閉環。TCP 買賣封包接入、交易期間生命週期協調與正式內容核准尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
+  "updated_at": "2026-10-03T13:37:55+08:00",
+  "summary": "God2 Server V2 已建立內部入包、任務交易閉環與商店買賣交易。已驗證目前 NPC 互動 → 內部命令入口 → 真實 MariaDB 購買／出售閉環，包含交易重播、超距拒絕與關閉／重開後舊互動失效。六組測試 394/394 通過，DB integration 已啟用，所有 fixture 清理成功。World/NPC 映射與買賣核准僅限測試 fixture。TCP 買賣封包、交易期間生命週期協調及正式內容核准尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3，未進行 Client 驗收。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 393,
-    "passed_tests": 393,
+    "total_tests": 394,
+    "passed_tests": 394,
     "failed_tests": 0,
     "suites": [
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 41,
+        "passed": 42,
         "failed": 0
       }
     ],
-    "note": "測試來源 15b3f02。六組 393/393 通過，0 failed、0 skipped，DB integration 已啟用：Core 7、Application 114、Session 20、Protocol 111、Network 100、Persistence Integration 41。新增互動重開身分失效、目前位置／地圖／NPC 檢查，以及內部命令派送測試。互動拒絕與預先取消不呼叫 writer；writer 拒絕與例外正確傳回。命令派送使用替身 writer，既有 DB 交易測試另行執行。各 runner 回報 fixture 與臨時帳號清理成功。檢查結果不是跨非同步交易的狀態保留；TCP 接入與生命週期協調未完成。正式 gate 未開放；DB 堆疊合併及錢包更新後紀錄／稽核故障仍未驗證。未部署 6001，未進行 Client 驗收。"
+    "note": "測試來源 8b20e8a。六組 394/394 通過，0 failed、0 skipped，DB integration 已啟用：Core 7、Application 114、Session 20、Protocol 111、Network 100、Persistence Integration 42。獨立停用角色串接互動檢查、命令入口與真實 DB writer：買入 40、出售 4，餘額 100 → 60 → 64，背包與錢包版本均為 2。新 writer 可重播；超距購買無交易紀錄，關閉互動後出售不改背包，重開後舊互動 ID 仍被拒絕。所有 fixture runner 清理成功。未驗證交易途中跨執行緒狀態變動；未接入 TCP 或核准正式商店內容。DB 堆疊合併及錢包更新後紀錄／稽核故障仍未驗證。未部署 6001，未進行 Client 驗收。"
   },
   "blockers": [
     {
