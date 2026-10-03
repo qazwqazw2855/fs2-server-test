@@ -1,0 +1,39 @@
+Oct 03 01:03:20 ip-172-31-15-62 systemd[1]: Stopping god2-server-v2.service - God2 Server V2...
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[768078]: Shutdown requested...
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[768078]: 2026-10-03T01:03:20.3221879+00:00 [server] Stopped
+Oct 03 01:03:20 ip-172-31-15-62 systemd[1]: god2-server-v2.service: Deactivated successfully.
+Oct 03 01:03:20 ip-172-31-15-62 systemd[1]: Stopped god2-server-v2.service - God2 Server V2.
+Oct 03 01:03:20 ip-172-31-15-62 systemd[1]: Started god2-server-v2.service - God2 Server V2.
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: God2 Server V2
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: Version: 0.1.0-foundation
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: Default content mode: ClassicCompatibility
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: Network: bind=0.0.0.0:6001; advertised=52.63.34.162:6001
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: Authentication: MariaDB 127.0.0.1:3308 user=god2_v2
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: Movement persistence: Enabled
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:20.4050073+00:00 [server] Listening on 0.0.0.0:6001
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:20.7117194+00:00 [1] Connected remote=127.0.0.1:49046 stage=Connected
+Oct 03 01:03:20 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:20.7157852+00:00 [1] TX LoginServerHandshake bytes=19 hex=1300B20DBBA18DA4B99A0C2480B2B88574D2CF
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.6268951+00:00 [1] RX LoginClientHandshake bytes=19 hex=1300A89B3A8985045785210F89725C4D973FD4
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.6270205+00:00 [1] TX LoginVersionFollowUp bytes=6 hex=0600A329DEF5
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.6270555+00:00 [1] Verified Login 19/19/6 handshake completed. stage=Login
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.6295404+00:00 [1] RX LoginRequestCandidate bytes=208 stage=Login hex=[REDACTED_SENSITIVE_LOGIN_FRAME]
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.7785565+00:00 [1] Login result=Success stage=Login account=[REDACTED]
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.7954418+00:00 [1] Character list loaded count=1 account=[REDACTED]
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.7969861+00:00 [1] TX LoginSuccessBootstrap bytes=417 endpoint=52.63.34.162:6001 hex=[REDACTED_SENSITIVE_LOGIN_ECHO]
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.7970162+00:00 [1] Ready for server selection stage=CharacterSelect
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.7972129+00:00 [1] RX ServerSelectionCandidate bytes=6 hex=06009202CE97
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8013081+00:00 [1] TX CharacterListBootstrap bytes=78 server=1 characters=1 hex=[REDACTED]
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8066005+00:00 [1] Closed stage=Closed
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8094573+00:00 [2] Connected remote=127.0.0.1:49056 stage=Connected
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8162125+00:00 [2] World login identity verified: map=170015007; client=15:7; pos=(17,15); wireProjection=OfficialBootstrapOnly
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8282712+00:00 [2] NPC world state ready: map=170015007; status=Loaded; npcs=3; loadedMaps=1.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8312318+00:00 [2] NPC spawn blocked by evidence: spawn=170153954; handle=3954; reason=EvidenceStatusBlocked.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8312650+00:00 [2] NPC spawn blocked by evidence: spawn=1310005004; handle=5004; reason=EvidenceStatusBlocked.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8359420+00:00 [2] Inventory snapshot ready: character=1; capacity=32; version=1; slots=1; wireDispatch=BlockedNoVerifiedInventoryCodec.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8392115+00:00 [2] World presence entered: character=1; map=170015007; visiblePeers=0; queuedReplicationEvents=0; wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8411549+00:00 [2] NPC snapshot loaded: map=170015007; count=3; worldNpcCount=3; loadedMaps=1; wireEligible=1; wireBlocked=2; wireDispatch=EvidenceGatedOfficialNpcSpawnCodec.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8411824+00:00 [2] World bootstrap completed bytes=1772; character=1; stage=InWorld
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.8459454+00:00 [2] RX WorldHeartbeat bytes=5 classification=KeepAlive
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.9451031+00:00 [2] World remote closed connection.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.9453282+00:00 [2] World presence released: character=1; map=170015007; visiblePeers=0; wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.
+Oct 03 01:03:21 ip-172-31-15-62 dotnet[1438231]: 2026-10-03T01:03:21.9470487+00:00 [2] Closed stage=Closed
