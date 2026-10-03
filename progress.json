@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T13:05:31+08:00",
-  "summary": "God2 Server V2 已建立內部道具入包、任務接受 → 進度 → 領獎，以及商店買入／售出的原子交易機制。六組測試 373/373 通過，DB integration 已啟用。買賣 fixture 驗證交易防重、版本檢查、錢包寫入失敗回滾，以及售完格子重新使用後拒絕舊道具實例。測試角色、商店與臨時 DB 帳號已清理。正式商店及任務內容核准、Network 接入與 Client 驗收尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
+  "updated_at": "2026-10-03T13:33:26+08:00",
+  "summary": "God2 Server V2 已建立內部入包、任務接受 → 進度 → 領獎與商店買賣交易。本輪新增 NPC 互動唯一身分、目前 World 狀態檢查與內部買賣命令入口。六組測試 393/393 通過，DB integration 已啟用，fixture 與臨時帳號已清理。命令入口由 World presence 取得角色身分，由核准映射取得商店身分；派送測試使用替身 writer，尚未驗證命令入口到 MariaDB 的整合閉環。TCP 買賣封包接入、交易期間生命週期協調與正式內容核准尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 373,
-    "passed_tests": 373,
+    "total_tests": 393,
+    "passed_tests": 393,
     "failed_tests": 0,
     "suites": [
       {
@@ -294,7 +294,7 @@
       },
       {
         "name": "Network",
-        "passed": 80,
+        "passed": 100,
         "failed": 0
       },
       {
@@ -303,7 +303,7 @@
         "failed": 0
       }
     ],
-    "note": "六組測試 373/373 通過，DB integration 已啟用。Core 7、Application 114、Session 20、Protocol 111、Network 80、Persistence Integration 41。涵蓋入包、任務交易閉環與商店買賣。出售驗證 8 個相同請求僅成交一次、提交後重播、道具扣除後錢包 UPDATE 權限拒絕時自動回滾，並以原請求重試成功。售完格子停用；重新買入取得新實例 ID，舊實例出售請求被拒絕。測試收購價及核准 gate 僅限 fixture，正式預設 gate 仍阻擋。錢包更新後的紀錄／稽核寫入故障及 DB 堆疊合併尚未驗證。fixture 清理成功；未接入 Network、未部署 6001、未進行 Client 驗收。"
+    "note": "測試來源 15b3f02。六組 393/393 通過，0 failed、0 skipped，DB integration 已啟用：Core 7、Application 114、Session 20、Protocol 111、Network 100、Persistence Integration 41。新增互動重開身分失效、目前位置／地圖／NPC 檢查，以及內部命令派送測試。互動拒絕與預先取消不呼叫 writer；writer 拒絕與例外正確傳回。命令派送使用替身 writer，既有 DB 交易測試另行執行。各 runner 回報 fixture 與臨時帳號清理成功。檢查結果不是跨非同步交易的狀態保留；TCP 接入與生命週期協調未完成。正式 gate 未開放；DB 堆疊合併及錢包更新後紀錄／稽核故障仍未驗證。未部署 6001，未進行 Client 驗收。"
   },
   "blockers": [
     {

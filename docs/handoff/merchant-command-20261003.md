@@ -10,3 +10,13 @@
 - TCP packet dispatch is not wired; cross-thread lifecycle coordination remains incomplete.
 - No formal merchant binding, distance policy or wire codec was promoted.
 - No production deployment or DB privilege changes.
+
+## Full verification
+
+- Tested source: 15b3f02.
+- Six suites: 393 passed, 0 failed, 0 skipped; DB integration enabled.
+- Core 7, Application 114, Session 20, Protocol 111, Network 100, Persistence Integration 41.
+- All fixture runners reported successful cleanup.
+- Command dispatch uses recording writers; no command-service-to-MariaDB integration test yet.
+- TCP integration, transaction lifecycle coordination and formal content approval remain incomplete.
+- Production 6001 remains at source 3344eb3; no Client acceptance performed.
