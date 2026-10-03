@@ -20,7 +20,7 @@ CREATE TABLE god2_player.v2_quest_instances (
         ON UPDATE CURRENT_TIMESTAMP(6),
     PRIMARY KEY (QuestInstanceId),
     UNIQUE KEY ux_v2_quest_instance_owner (QuestInstanceId, CharacterId),
-    UNIQUE KEY ux_v2_quest_completion_event (CompletionEventId),
+    KEY ix_v2_quest_completion_event (CompletionEventId),
     KEY ix_v2_quest_character_state (CharacterId, State),
     CONSTRAINT fk_v2_quest_character FOREIGN KEY (CharacterId)
         REFERENCES god2_player.characters (character_id),
