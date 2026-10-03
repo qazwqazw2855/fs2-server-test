@@ -28,7 +28,7 @@ public sealed class QuestRewardClaimCommittedTests
 
         var instanceIds = Required("GOD2_QUEST_FIXTURE_INSTANCES")
             .Split(',').Select(Guid.Parse).ToArray();
-        Assert.Equal(3, instanceIds.Length);
+        Assert.Equal(4, instanceIds.Length);
 
         var repository = new MariaDbCharacterInventorySnapshotRepository(options);
         var initial = await repository.GetByCharacterAsync(
