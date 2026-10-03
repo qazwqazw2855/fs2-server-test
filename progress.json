@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T14:03:14+08:00",
-  "summary": "God2 Server V2 已建立內部入包、任務交易閉環與商店買賣交易。World frame 處理及斷線清理已使用每連線 command lane；六組測試 401/401 通過，DB integration 已啟用，所有 fixture 清理成功。6002 隔離 Probe 驗證登入、1772-byte World Bootstrap、heartbeat 與 presence 清理。商店命令尚未接入 TCP 封包，正式內容核准及 Client 驗收尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
+  "updated_at": "2026-10-03T14:44:04+08:00",
+  "summary": "God2 Server V2 已建立內部入包、任務交易閉環與商店買賣交易。World frame 與斷線清理使用每連線 command lane；商店命令可在有效 lease 內派送，已驗證真實 DB 買賣、重播及清理。六組測試 405/405 通過，DB integration 已啟用，所有 fixture 清理成功。商店 TCP 封包、正式內容核准及 Client 驗收尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 401,
-    "passed_tests": 401,
+    "total_tests": 405,
+    "passed_tests": 405,
     "failed_tests": 0,
     "suites": [
       {
@@ -294,7 +294,7 @@
       },
       {
         "name": "Network",
-        "passed": 107,
+        "passed": 111,
         "failed": 0
       },
       {
@@ -303,7 +303,7 @@
         "failed": 0
       }
     ],
-    "note": "測試來源 b17cdbbebdcd62fcfb05ecd6ce21bf0962f61eb3。六組 401/401 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 107、Persistence Integration 42；DB integration 已啟用。所有 fixture runner 清理成功。command lane 測試涵蓋序列執行、關閉等待、拒絕新操作、例外後釋放及 lease 重複 Dispose。6002 Probe Exit Code 0，驗證 World Bootstrap、heartbeat 與斷線清理；移動持久化關閉，未驗證移動、NPC 互動或商店 TCP 流程。商店命令服務尚未與 TCP frame 共用 lane 實例；外部 registry 更新亦未全面協調。正式 gate 仍阻擋；DB 堆疊合併及錢包更新後紀錄／稽核故障尚未驗證。未部署 6001，未進行 Client 驗收。"
+    "note": "測試來源 1f1c98c706e5f0708da7e00ade57d0901db0408a。六組 405/405 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 42；DB integration 已啟用。有效 lease 內派送不重複取鎖，其他 lane 或已釋放的 lease 被拒絕；互動檢查與取消處理仍保留。真實 DB 測試透過 lease 入口驗證買入、出售、重播、超距及舊互動拒絕，餘額 100 → 60 → 64，背包與錢包版本為 2，最後 lane 清理完成。所有 fixture runner 清理成功。TCP 尚未建立商店命令服務並共用其 lane；lease 不支援並行共用或派送完成前釋放，外部 registry 更新尚未全面協調。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。正式 gate 仍阻擋；DB 堆疊合併及錢包更新後紀錄／稽核故障尚未驗證。未部署 6001，未進行 Client 驗收。"
   },
   "blockers": [
     {
