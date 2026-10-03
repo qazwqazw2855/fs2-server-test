@@ -5,6 +5,29 @@ namespace God2.ServerV2.Network.Tests;
 public sealed class ConnectionCommandLaneTests
 {
     [Fact]
+    public async Task Explicit_frame_lease_blocks_cleanup_and_releases_only_once()
+    {
+        var lane = new ConnectionCommandLane();
+        var lease = await lane.EnterAsync(CancellationToken.None);
+        var cleaned = false;
+        var close = lane.CloseAsync(() =>
+        {
+            cleaned = true;
+            return ValueTask.CompletedTask;
+        });
+
+        Assert.False(close.IsCompleted);
+        Assert.False(cleaned);
+        lease.Dispose();
+        lease.Dispose();
+        await close.WaitAsync(TimeSpan.FromSeconds(5));
+        Assert.True(cleaned);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            lane.EnterAsync(CancellationToken.None).AsTask());
+    }
+
+    [Fact]
     public async Task Active_operation_finishes_before_next_operation()
     {
         var lane = new ConnectionCommandLane();

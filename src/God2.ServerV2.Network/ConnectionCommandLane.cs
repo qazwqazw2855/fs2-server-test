@@ -16,19 +16,38 @@ public sealed class ConnectionCommandLane
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(operation);
+        using var lease = await EnterAsync(cancellationToken);
+        return await operation(cancellationToken);
+    }
+
+    // Supports existing frame loops with continue/break/return.
+    // Always dispose the lease; do not recursively enter the same lane.
+    public async ValueTask<IDisposable> EnterAsync(
+        CancellationToken cancellationToken)
+    {
         cancellationToken.ThrowIfCancellationRequested();
         ThrowIfClosing();
-
         await _gate.WaitAsync(cancellationToken);
         try
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfClosing();
-            return await operation(cancellationToken);
+            return new Lease(_gate);
         }
-        finally
+        catch
         {
             _gate.Release();
+            throw;
+        }
+    }
+
+    private sealed class Lease(SemaphoreSlim gate) : IDisposable
+    {
+        private SemaphoreSlim? _ownedGate = gate;
+
+        public void Dispose()
+        {
+            Interlocked.Exchange(ref _ownedGate, null)?.Release();
         }
     }
 

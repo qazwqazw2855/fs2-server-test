@@ -199,6 +199,7 @@ public sealed class TcpGameServer : IAsyncDisposable
             (client.Client.RemoteEndPoint as IPEndPoint)?.Address.ToString() ??
             "unknown";
         var state = new ConnectionStateMachine();
+        var commandLane = new ConnectionCommandLane();
         using var sessionContext = new ConnectionSessionContext(
             connectionId,
             sessionRegistry);
@@ -553,6 +554,12 @@ public sealed class TcpGameServer : IAsyncDisposable
                             Log(connectionId, "World remote closed connection.");
                             break;
                         }
+
+                        // Network reads stay outside the lane.
+                        // The lease covers this frame's state updates and
+                        // is released on continue, break, return or exception.
+                        using var commandLease =
+                            await commandLane.EnterAsync(serverCancellationToken);
 
                         worldActivity.RecordActivity(DateTimeOffset.UtcNow);
 
@@ -1437,51 +1444,55 @@ public sealed class TcpGameServer : IAsyncDisposable
         }
         finally
         {
-            if (npcInteractions.Remove(
-                    connectionId,
-                    out var releasedInteraction))
+            await commandLane.CloseAsync(() =>
             {
-                Log(
-                    connectionId,
-                    "NPC interaction session released: " +
-                    $"character={releasedInteraction!.CharacterId}; " +
-                    $"map={releasedInteraction.MapId}; " +
-                    $"handle={releasedInteraction.ClientEntityHandle}; " +
-                    $"spawn={releasedInteraction.SpawnId}.");
-            }
-
-            if (worldPresences.TryLeave(
-                    connectionId,
-                    out var departedPresence,
-                    out var departedVisiblePeers))
-            {
-                foreach (var peer in departedVisiblePeers)
+                if (npcInteractions.Remove(
+                        connectionId,
+                        out var releasedInteraction))
                 {
-                    worldReplicationOutboxes.TryEnqueue(
-                        peer.ConnectionId,
-                        WorldReplicationEventKind.PlayerLeft,
-                        departedPresence!,
-                        DateTimeOffset.UtcNow,
-                        out _);
+                    Log(
+                        connectionId,
+                        "NPC interaction session released: " +
+                        $"character={releasedInteraction!.CharacterId}; " +
+                        $"map={releasedInteraction.MapId}; " +
+                        $"handle={releasedInteraction.ClientEntityHandle}; " +
+                        $"spawn={releasedInteraction.SpawnId}.");
                 }
 
-                Log(
+                if (worldPresences.TryLeave(
+                        connectionId,
+                        out var departedPresence,
+                        out var departedVisiblePeers))
+                {
+                    foreach (var peer in departedVisiblePeers)
+                    {
+                        worldReplicationOutboxes.TryEnqueue(
+                            peer.ConnectionId,
+                            WorldReplicationEventKind.PlayerLeft,
+                            departedPresence!,
+                            DateTimeOffset.UtcNow,
+                            out _);
+                    }
+
+                    Log(
+                        connectionId,
+                        "World presence released: " +
+                        $"character={departedPresence!.Character.CharacterId}; " +
+                        $"map={departedPresence.Character.MapId}; " +
+                        $"visiblePeers={departedVisiblePeers.Count}; " +
+                        "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
+                }
+
+                worldReplicationOutboxes.TryRemove(
                     connectionId,
-                    "World presence released: " +
-                    $"character={departedPresence!.Character.CharacterId}; " +
-                    $"map={departedPresence.Character.MapId}; " +
-                    $"visiblePeers={departedVisiblePeers.Count}; " +
-                    "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
-            }
+                    out _);
 
-            worldReplicationOutboxes.TryRemove(
-                connectionId,
-                out _);
-
-            sessionContext.Dispose();
-            state.TryTransition(ConnectionStage.Closing);
-            state.TryTransition(ConnectionStage.Closed);
-            Log(connectionId, $"Closed stage={state.Stage}");
+                sessionContext.Dispose();
+                state.TryTransition(ConnectionStage.Closing);
+                state.TryTransition(ConnectionStage.Closed);
+                Log(connectionId, $"Closed stage={state.Stage}");
+                return ValueTask.CompletedTask;
+            });
         }
     }
 
