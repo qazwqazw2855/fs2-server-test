@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T10:46:26+08:00",
-  "summary": "God2 Server V2 已完成內部道具入包、任務進度事件與道具領獎交易機制。六組測試 343/343 通過，DB integration 已啟用。獨立 fixture 驗證事件防重、目標進度、Ready 狀態與原子領獎閉環，並驗證併發、跨連線重播及領獎失敗回滾。測試角色與臨時 DB 帳號已清理。任務接受與快照註冊尚未實作，正式目標與獎勵內容尚未接入。本輪未部署正式 6001，部署來源仍為 3344eb3；客戶端任務與背包封包仍待證據及實機驗收。",
+  "updated_at": "2026-10-03T11:05:42+08:00",
+  "summary": "God2 Server V2 已完成伺服器內部道具入包與任務接受 → 進度 → 道具領獎交易閉環。六組測試 353/353 通過，DB integration 已啟用。接受流程原子保存任務、目標及獎勵快照；已驗證併發接受防重、完成後重複接受拒絕、事件重播、領獎防重與快照寫入失敗自動回滾。測試角色與臨時 DB 帳號已清理。正式任務目標與獎勵仍各為 0 筆，167 筆啟用任務的 repeatable 仍為未知；測試定義不代表正式內容核准。本輪未部署 6001，部署來源仍為 3344eb3；任務與背包客戶端流程仍待證據及實機驗收。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 343,
-    "passed_tests": 343,
+    "total_tests": 353,
+    "passed_tests": 353,
     "failed_tests": 0,
     "suites": [
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Application",
-        "passed": 87,
+        "passed": 96,
         "failed": 0
       },
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 38,
+        "passed": 39,
         "failed": 0
       }
     ],
-    "note": "六組測試 343/343 通過，0 failed、0 skipped，DB integration 已啟用。Core 7、Application 87、Session 20、Protocol 111、Network 80、Persistence Integration 38。進度事件 8 請求併發僅套用一次，修改事件內容被拒絕；不相關事件不增加進度，版本衝突被拒絕，完成目標後可原子領獎。完成後舊事件仍可重播，新事件不能再增加進度。各提交測試使用獨立停用角色，fixture 與臨時帳號已清理。進度及獎勵 gate 核准僅限測試，正式預設仍阻擋。本輪未部署 6001、未進行 Client 驗收；DB 堆疊合併尚未驗證。"
+    "note": "六組測試 353/353 通過，DB integration 已啟用。Core 7、Application 96、Session 20、Protocol 111、Network 80、Persistence Integration 39。獨立停用角色驗證接受 → 進度 → 領獎閉環。8 個不同 instance 競爭接受，僅一個成功；完成後原 instance 可重播，新 instance 被拒絕。快照 INSERT 權限拒絕觸發 owned transaction 回滾，任務、目標及獎勵快照均未殘留。核准 gate 僅限測試 fixture，正式預設仍阻擋；未接入 Network、未部署 6001、未進行 Client 驗收。"
   },
   "blockers": [
     {
