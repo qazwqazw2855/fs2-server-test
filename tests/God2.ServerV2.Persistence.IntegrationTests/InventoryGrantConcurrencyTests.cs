@@ -4,6 +4,7 @@ using MySqlConnector;
 
 namespace God2.ServerV2.Persistence.IntegrationTests;
 
+[Collection("InventoryGrantDatabase")]
 public sealed class InventoryGrantConcurrencyTests
 {
     [Fact]
