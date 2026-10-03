@@ -67,7 +67,7 @@ else
 dotnet test \
   tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj \
   --configuration Release \
-  --filter 'FullyQualifiedName~InventoryGrantFailureTests' \
+  --filter "${GOD2_GRANT_FAULT_TEST_FILTER:-FullyQualifiedName~InventoryGrantFailureTests}" \
   --verbosity minimal
 
 fi
