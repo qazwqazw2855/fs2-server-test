@@ -1,8 +1,8 @@
 # Inventory grant — 2026-10-03
 
 - Tested source: 029f3513075db2564f3ade0f47074de887859c82.
-- Six suites: 316 passed, 0 failed.
-- Suites: Core 7, Application 69, Session 20, Protocol 111, Network 80, Persistence Integration 29.
+- Six suites: 317 passed, 0 failed.
+- Suites: Core 7, Application 69, Session 20, Protocol 111, Network 80, Persistence Integration 30.
 - DB integration enabled on 127.0.0.1:3308.
 - Inventory planning preserves input state and rejects insufficient capacity without partial changes.
 - DB writer locks character/inventory, checks identity/version/sequence, reads formal item rules, and commits slots, versions, replay records and per-slot audits together.
@@ -33,3 +33,13 @@ The runner creates and removes the dedicated committed-test fixture.
 Add DB stack-merge and mid-transaction failure coverage using isolated test data.
 Before gameplay integration, bind grant requests to authoritative reward/drop events.
 SourceReference records provenance; it does not itself authorize a reward.
+
+## Audit failure rollback verification
+
+- Tested source: 7f1c1fbd896be04020c1dc9d67221b6760fdc7d7.
+- Full verification: 317 passed; DB integration enabled.
+- Temporary audit table rejects INSERT after the first slot and identity reservation are written.
+- Caller-owned transaction rollback restores inventory and removes reserved identity rows; replay records remain unchanged.
+- This verifies GrantInTransactionAsync with caller rollback; it does not inject failure into GrantAsync's owned transaction.
+- Both committed fixture and temporary DB account were cleaned.
+- Full repeat command: Automation/test-v2-inventory-grant-failure.sh --all with GOD2_TEST_PASSWORD set.
