@@ -62,6 +62,8 @@ test_password="$(python3 -c 'import secrets; print(secrets.token_hex(32))')"
 fixture_sql="$(mktemp)"
 export GOD2_QUEST_FIXTURE_USER="$test_user"
 export GOD2_QUEST_FIXTURE_PASSWORD="$test_password"
+fault_user="questfault_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
+export GOD2_QUEST_ACCEPT_FAULT_USER="$fault_user"
 export GOD2_RUN_DB_INTEGRATION=1
 
 cleanup() {
@@ -85,29 +87,35 @@ SET @loop_character=(
   WHERE account_id=@account AND name='${fixture_name}_loop'
     AND enabled=0 AND admin_note='QuestRewardCommittedFixture'
 );
+SET @accept_character=(
+  SELECT character_id FROM characters
+  WHERE account_id=@account AND name='${fixture_name}_accept'
+    AND enabled=0 AND admin_note='QuestRewardCommittedFixture'
+);
 DELETE FROM v2_quest_progress_events
-WHERE CharacterId IN (@character,@loop_character);
+WHERE CharacterId IN (@character,@loop_character,@accept_character);
 DELETE p FROM v2_quest_objective_progress p
 JOIN v2_quest_instances q ON q.QuestInstanceId=p.QuestInstanceId
-WHERE q.CharacterId IN (@character,@loop_character);
-DELETE FROM v2_quest_reward_claims WHERE CharacterId IN (@character,@loop_character);
+WHERE q.CharacterId IN (@character,@loop_character,@accept_character);
+DELETE FROM v2_quest_reward_claims WHERE CharacterId IN (@character,@loop_character,@accept_character);
 DELETE s FROM v2_quest_reward_snapshots s
 JOIN v2_quest_instances q ON q.QuestInstanceId=s.QuestInstanceId
-WHERE q.CharacterId IN (@character,@loop_character);
-DELETE FROM v2_quest_instances WHERE CharacterId IN (@character,@loop_character);
+WHERE q.CharacterId IN (@character,@loop_character,@accept_character);
+DELETE FROM v2_quest_instances WHERE CharacterId IN (@character,@loop_character,@accept_character);
 DELETE s FROM inventory_item_identity_sequence s
 JOIN character_inventory i ON i.inventory_id=s.PersistentInventoryItemId
-WHERE i.character_id IN (@character,@loop_character);
-DELETE FROM character_inventory WHERE character_id IN (@character,@loop_character);
-DELETE FROM characters WHERE character_id IN (@character,@loop_character);
+WHERE i.character_id IN (@character,@loop_character,@accept_character);
+DELETE FROM character_inventory WHERE character_id IN (@character,@loop_character,@accept_character);
+DELETE FROM characters WHERE character_id IN (@character,@loop_character,@accept_character);
 DELETE FROM accounts WHERE account_id=@account
   AND NOT EXISTS (SELECT 1 FROM characters WHERE account_id=@account);
 COMMIT;
 DROP USER IF EXISTS '$test_user'@'172.17.0.1';
+DROP USER IF EXISTS '$fault_user'@'172.17.0.1';
 SELECT
   (SELECT COUNT(*) FROM accounts WHERE username='$fixture_name')
   +
-  (SELECT COUNT(*) FROM mysql.user WHERE User='$test_user');
+  (SELECT COUNT(*) FROM mysql.user WHERE User IN ('$test_user','$fault_user'));
 SQL
   )"; then
     echo "Fixture 清理失敗：$fixture_name"
@@ -122,17 +130,27 @@ trap cleanup EXIT
 
 db_admin <<SQL
 CREATE USER '$test_user'@'172.17.0.1' IDENTIFIED BY '$test_password';
+CREATE USER '$fault_user'@'172.17.0.1' IDENTIFIED BY '$test_password';
+GRANT SELECT ON god2_player.characters TO '$fault_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.quests TO '$fault_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE ON god2_player.v2_quest_instances
+  TO '$fault_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE ON god2_player.v2_quest_objective_progress
+  TO '$fault_user'@'172.17.0.1';
+GRANT SELECT ON god2_player.v2_quest_reward_snapshots
+  TO '$fault_user'@'172.17.0.1';
 GRANT SELECT ON god2_player.characters TO '$test_user'@'172.17.0.1';
 GRANT SELECT,UPDATE ON god2_player.player_inventory_state TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT,UPDATE,DELETE ON god2_player.character_inventory TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_item_identity_sequence TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_transaction_idempotency TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_audit_ledger TO '$test_user'@'172.17.0.1';
+GRANT SELECT ON god2_game.quests TO '$test_user'@'172.17.0.1';
 GRANT SELECT ON god2_game.items TO '$test_user'@'172.17.0.1';
-GRANT SELECT,UPDATE ON god2_player.v2_quest_instances TO '$test_user'@'172.17.0.1';
-GRANT SELECT ON god2_player.v2_quest_reward_snapshots TO '$test_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE ON god2_player.v2_quest_instances TO '$test_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.v2_quest_reward_snapshots TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.v2_quest_reward_claims TO '$test_user'@'172.17.0.1';
-GRANT SELECT,UPDATE ON god2_player.v2_quest_objective_progress TO '$test_user'@'172.17.0.1';
+GRANT SELECT,INSERT,UPDATE ON god2_player.v2_quest_objective_progress TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.v2_quest_progress_events TO '$test_user'@'172.17.0.1';
 SQL
 
@@ -156,12 +174,24 @@ INSERT INTO player_inventory_state
   (CharacterId,InventoryId,Capacity,InventoryVersion,
    MutationSequence,DirtyState,UpdatedAtUtc)
 VALUES (@loop_character,UUID(),8,0,0,'Clean',UTC_TIMESTAMP(6));
+INSERT INTO characters
+  (account_id,name,status,enabled,admin_note,level)
+VALUES
+  (@account,'${fixture_name}_accept','Disabled',0,
+   'QuestRewardCommittedFixture',1);
+SET @accept_character=LAST_INSERT_ID();
+INSERT INTO player_inventory_state
+  (CharacterId,InventoryId,Capacity,InventoryVersion,
+   MutationSequence,DirtyState,UpdatedAtUtc)
+VALUES (@accept_character,UUID(),8,0,0,'Clean',UTC_TIMESTAMP(6));
 COMMIT;
-SELECT CONCAT(@character,',',@loop_character);
+SELECT CONCAT(@character,',',@loop_character,',',@accept_character);
 SQL
 )"
-loop_id="${fixture_id#*,}"
-fixture_id="${fixture_id%%,*}"
+IFS=',' read -r fixture_id loop_id accept_id <<<"$fixture_id"
+[[ "$accept_id" =~ ^[0-9]+$ ]]
+test "$accept_id" -gt 1
+export GOD2_QUEST_ACCEPT_CHARACTER_ID="$accept_id"
 [[ "$loop_id" =~ ^[0-9]+$ ]]
 test "$loop_id" -gt 1
 export GOD2_QUEST_LOOP_CHARACTER_ID="$loop_id"
@@ -231,6 +261,6 @@ else
   dotnet test \
     tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj \
     --configuration Release \
-    --filter 'FullyQualifiedName~QuestRewardClaimCommittedTests|FullyQualifiedName~QuestProgressClosedLoopTests' \
+    --filter 'FullyQualifiedName~QuestRewardClaimCommittedTests|FullyQualifiedName~QuestProgressClosedLoopTests|FullyQualifiedName~QuestAcceptanceClosedLoopTests' \
     --verbosity minimal
 fi
