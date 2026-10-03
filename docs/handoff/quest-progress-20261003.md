@@ -1,0 +1,25 @@
+# Quest progress and reward closed loop — 2026-10-03
+
+- Tested source: a855e391f9ea5a491d1a6eafde60ae59ecb75ebd.
+- Six suites: 343 passed, 0 failed, 0 skipped; DB integration enabled.
+- Suites: Core 7, Application 87, Session 20, Protocol 111, Network 80, Persistence Integration 38.
+- Internal confirmed-event model supports DefeatMonster, InteractNpc and VisitMap.
+- These names are server models, not recovered client packet semantics.
+- Objective updates, quest version/state and event replay record commit atomically.
+- Replay identity is (QuestInstanceId, EventId); changed event payload is rejected.
+- Unrelated events are recorded without advancing progress or quest version.
+- Eight concurrent matching-event requests applied once.
+- Final objective progress transitions Accepted to Ready; reward claim transitions Ready to Completed.
+- Old events replay after completion; new progress events are rejected.
+- CompletionEventId is a nonunique index: one event can be associated with multiple quest instances.
+- The two progress infrastructure tables were created in god2_player.
+- Commit tests use separate disabled fixture characters; fixture data and temporary users were cleaned.
+- Definition/objective and reward approval gates are test-only; production defaults remain blocked.
+- Quest acceptance, snapshot registration and authoritative runtime event producers are not implemented.
+- Formal quest objectives/rewards were not synthesized or promoted.
+- No Network integration, production 6001 deployment or client acceptance in this step.
+- Production deployed source remains 3344eb3.
+- Engineering/playability gates were not advanced.
+- Full repeat: Automation/test-v2-quest-reward-committed.sh --all with GOD2_TEST_PASSWORD set.
+- Next: reviewed quest definition loading, eligibility and atomic acceptance/snapshot registration.
+- Management backend remains deferred until basic gameplay content is ready.
