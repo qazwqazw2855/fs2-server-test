@@ -43,6 +43,8 @@ db_admin <<SQL
 CREATE USER '$GOD2_GRANT_FAULT_USER'@'172.17.0.1'
 IDENTIFIED BY '$GOD2_GRANT_FAULT_PASSWORD';
 
+GRANT CREATE TEMPORARY TABLES ON god2_game.*
+TO '$GOD2_GRANT_FAULT_USER'@'172.17.0.1';
 GRANT CREATE TEMPORARY TABLES ON god2_player.*
 TO '$GOD2_GRANT_FAULT_USER'@'172.17.0.1';
 GRANT SELECT ON god2_player.characters
@@ -67,7 +69,7 @@ else
 dotnet test \
   tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj \
   --configuration Release \
-  --filter "${GOD2_GRANT_FAULT_TEST_FILTER:-FullyQualifiedName~InventoryGrantFailureTests}" \
+  --filter "${GOD2_GRANT_FAULT_TEST_FILTER:-FullyQualifiedName~InventoryGrantFailureTests|FullyQualifiedName~InventoryGrantStackTests}" \
   --verbosity minimal
 
 fi
