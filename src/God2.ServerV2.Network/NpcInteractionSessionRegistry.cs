@@ -8,7 +8,10 @@ public sealed record NpcInteractionSession(
     long MapId,
     long SpawnId,
     uint ClientEntityHandle,
-    DateTimeOffset OpenedAtUtc);
+    DateTimeOffset OpenedAtUtc)
+{
+    public Guid InteractionId { get; } = Guid.NewGuid();
+}
 
 public enum NpcInteractionOpenStatus
 {
@@ -46,6 +49,36 @@ public sealed class NpcInteractionSessionRegistry
             {
                 return _byConnection.Count;
             }
+        }
+    }
+
+    public bool TryGetByConnection(
+        long connectionId,
+        out NpcInteractionSession? session)
+    {
+        if (connectionId <= 0)
+            throw new ArgumentOutOfRangeException(nameof(connectionId));
+
+        lock (_gate)
+        {
+            return _byConnection.TryGetValue(connectionId, out session);
+        }
+    }
+
+    // A current-state check, not a lease across an asynchronous DB transaction.
+    public bool IsCurrent(long connectionId, Guid interactionId)
+    {
+        if (connectionId <= 0)
+            throw new ArgumentOutOfRangeException(nameof(connectionId));
+        if (interactionId == Guid.Empty)
+            throw new ArgumentException(
+                "Interaction identity must not be empty.",
+                nameof(interactionId));
+
+        lock (_gate)
+        {
+            return _byConnection.TryGetValue(connectionId, out var session)
+                && session.InteractionId == interactionId;
         }
     }
 
