@@ -1,0 +1,26 @@
+# Quest reward transaction verification — 2026-10-03
+
+- Tested source: d7303a92e11fb72cc47dda91e5bee6ba6e22d760.
+- Six suites: 333 passed, 0 failed, 0 skipped; DB integration enabled.
+- Suites: Core 7, Application 78, Session 20, Protocol 111, Network 80, Persistence Integration 37.
+- Batch planning rejects unsupported rewards and insufficient capacity without partial output.
+- Claim identity is bound to the quest instance, independent of caller transaction IDs.
+- Inventory grants, claim record and quest completion commit in one transaction.
+- Eight concurrent requests produced one claim and seven replays.
+- A new writer/connection replayed the committed result.
+- Claim transaction ID collision after inventory writes caused owned-transaction rollback.
+- The failed instance remained claimable and succeeded with a fresh transaction ID.
+- Dedicated disabled characters and temporary DB users were cleaned.
+- Actual DDL constraints were tested in a disposable schema, then three infrastructure tables were created in god2_player.
+- The persistent infrastructure tables remain; fixture quest instances, snapshots and claims were removed.
+- Runtime god2_v2 received no new quest-table privileges from the committed-test runner.
+- Formal quest_rewards remains empty; no official reward content was synthesized.
+- Fixture evidence approval is test-only. Production default evidence gate remains blocked.
+- Reward snapshot registration and authoritative quest completion are not implemented.
+- Claim writer is not connected to Network or deployed to production 6001.
+- Production deployed source remains 3344eb3.
+- Client inventory/quest wire acceptance and DB stack merging remain unverified.
+- Engineering progress and playability gate statuses were not advanced.
+- Full repeat: Automation/test-v2-quest-reward-committed.sh --all with GOD2_TEST_PASSWORD set.
+- Next: authoritative quest acceptance/progress/completion and reviewed reward snapshot registration.
+- Management backend is deferred until basic gameplay content is ready.

@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T10:09:18+08:00",
-  "summary": "God2 Server V2 已加入伺服器內部道具入包規劃與 MariaDB 原子交易，包含版本檢查、持久化防重及逐格稽核。2026-10-03 六組測試 317/317 通過，DB integration 已啟用；併發與提交後重播驗證通過，臨時 fixture 已清理。入包功能尚未接入 Network 或部署至正式 6001。正式 6001 仍為來源 3344eb3 的 World Login 驗收版本。客戶端背包 wire dispatch 仍受 evidence gate 阻擋。",
+  "updated_at": "2026-10-03T10:35:21+08:00",
+  "summary": "God2 Server V2 已完成內部道具入包與任務道具領獎交易機制。六組測試 333/333 通過，DB integration 已啟用，0 failed、0 skipped。已驗證整批容量檢查、任務實例防重、併發領取、提交後跨連線重播與領取紀錄失敗後自動回滾。測試 fixture 與臨時 DB 帳號已清理。正式任務獎勵仍為 0 筆，領獎機制尚未接入任務流程或 Network。正式 6001 仍為部署來源 3344eb3；本輪未部署。背包與任務客戶端封包仍需證據及實機驗收。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 317,
-    "passed_tests": 317,
+    "total_tests": 333,
+    "passed_tests": 333,
     "failed_tests": 0,
     "suites": [
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Application",
-        "passed": 69,
+        "passed": 78,
         "failed": 0
       },
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 30,
+        "passed": 37,
         "failed": 0
       }
     ],
-    "note": "入包分支六組測試 317/317 通過，DB integration 已啟用。Application 69、Persistence Integration 30。入包 DB 測試使用既有 NULL maximum_stack → 1 規則；DB 堆疊合併尚未驗證。已驗證原子入包、容量與版本拒絕、交易防重、跨連線競爭、提交後新 writer 重播及 fixture 清理。本次未部署入包功能，也未進行 Windows Client 畫面驗收。另驗證第一格與配號寫入後，稽核失敗時由呼叫端回滾，背包與紀錄恢復；臨時測試帳號已清理。"
+    "note": "六組測試 333/333 通過：Core 7、Application 78、Session 20、Protocol 111、Network 80、Persistence Integration 37。DB integration 已啟用，0 failed、0 skipped。任務 SQL 在一次性 schema 驗證 CHECK、外鍵與唯一鍵；三張 V2 任務基礎表已建立於 god2_player。獨立停用角色驗證 ClaimAsync 自有交易提交、8 請求併發僅領一次、新連線重播與例外自動回滾後重試。證據核准僅由測試 fixture gate 提供，正式預設 gate 仍阻擋。DB 堆疊合併尚未驗證；未部署 6001，未進行 Client 驗收。"
   },
   "blockers": [
     {
