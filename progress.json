@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T12:50:28+08:00",
-  "summary": "God2 Server V2 已建立內部道具入包、任務接受 → 進度 → 領獎，以及商店購買的原子交易機制。六組測試 362/362 通過，DB integration 已啟用。商店測試驗證併發購買防重、錢包版本衝突、餘額不足，以及入包後扣款權限拒絕時自動回滾並重試成功。測試角色、商店與臨時 DB 帳號均已清理。商店內容與核准 gate 僅使用測試 fixture；正式任務目標與獎勵尚未接入，本輪未接入 Network、未部署 6001、未進行 Client 驗收。正式 6001 部署來源仍為 3344eb3。",
+  "updated_at": "2026-10-03T13:05:31+08:00",
+  "summary": "God2 Server V2 已建立內部道具入包、任務接受 → 進度 → 領獎，以及商店買入／售出的原子交易機制。六組測試 373/373 通過，DB integration 已啟用。買賣 fixture 驗證交易防重、版本檢查、錢包寫入失敗回滾，以及售完格子重新使用後拒絕舊道具實例。測試角色、商店與臨時 DB 帳號已清理。正式商店及任務內容核准、Network 接入與 Client 驗收尚未完成。本輪未部署 6001，正式部署來源仍為 3344eb3。",
   "milestones": [
     {
       "key": "foundation",
@@ -268,8 +268,8 @@
   },
   "verification": {
     "build": "passing",
-    "total_tests": 362,
-    "passed_tests": 362,
+    "total_tests": 373,
+    "passed_tests": 373,
     "failed_tests": 0,
     "suites": [
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Application",
-        "passed": 104,
+        "passed": 114,
         "failed": 0
       },
       {
@@ -299,11 +299,11 @@
       },
       {
         "name": "Persistence Integration",
-        "passed": 40,
+        "passed": 41,
         "failed": 0
       }
     ],
-    "note": "六組測試 362/362 通過，0 failed、0 skipped，DB integration 已啟用。Core 7、Application 104、Session 20、Protocol 111、Network 80、Persistence Integration 40。涵蓋內部入包與任務接受 → 進度 → 領獎交易閉環。商店 8 個相同請求僅購買一次；不同請求競爭相同錢包版本時僅一個成功。另驗證餘額不足、提交後重播，以及入包後錢包 UPDATE 權限拒絕觸發自有交易回滾，背包、錢包與紀錄恢復，再以原請求重試成功。此故障測試不涵蓋扣款後購買紀錄或金錢稽核寫入失敗。fixture 清理成功；正式 gate 仍阻擋，DB 堆疊合併尚未驗證，未部署或進行 Client 驗收。"
+    "note": "六組測試 373/373 通過，DB integration 已啟用。Core 7、Application 114、Session 20、Protocol 111、Network 80、Persistence Integration 41。涵蓋入包、任務交易閉環與商店買賣。出售驗證 8 個相同請求僅成交一次、提交後重播、道具扣除後錢包 UPDATE 權限拒絕時自動回滾，並以原請求重試成功。售完格子停用；重新買入取得新實例 ID，舊實例出售請求被拒絕。測試收購價及核准 gate 僅限 fixture，正式預設 gate 仍阻擋。錢包更新後的紀錄／稽核寫入故障及 DB 堆疊合併尚未驗證。fixture 清理成功；未接入 Network、未部署 6001、未進行 Client 驗收。"
   },
   "blockers": [
     {

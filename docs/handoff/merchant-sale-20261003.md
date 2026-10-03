@@ -1,0 +1,21 @@
+# Merchant sale verification — 2026-10-03
+
+- Six suites: 373 passed; DB integration enabled.
+- Suites: Core 7, Application 114, Session 20, Protocol 111, Network 80, Persistence Integration 41.
+- Sale requires enabled merchant/listing/item, explicit buyback_enabled and positive purchasing_price.
+- Currency and eligibility require explicit evidence gate approval; default gate blocks.
+- Request identifies authoritative item instance, slot and expected inventory/slot/wallet versions.
+- Item removal, inventory version, wallet credit, replay receipt and audit share one transaction.
+- Eight identical requests produce one sale and seven replays.
+- Wallet UPDATE denial after item/state writes triggers owned transaction rollback.
+- Snapshot, slot version, wallet balance/version and sale records were checked after rollback.
+- The exact failed request succeeds when retried with the normal fixture account.
+- Sold-out slot is disabled; repurchase allocates a new identity and stale identity is rejected.
+- Price 4 and merchant policy approval are fixture inputs, not official content promotion.
+- Wallet-update-afterward receipt/audit failure was not injected; DB stack merging remains unverified.
+- Fixture cleanup includes identity reservations referenced by historical item audits.
+- Repeat: Automation/test-v2-merchant-sale.sh --all with GOD2_TEST_PASSWORD set.
+- Production deployment source remains 3344eb3; no deployment in this round.
+- Current phase remains M2 baseline/gap parity; no promotion gate advanced.
+- Next gate: reviewed merchant/NPC interaction provenance and trusted runtime integration.
+- Network and original-client buy/sell acceptance remain unverified.
