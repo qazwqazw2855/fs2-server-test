@@ -110,6 +110,58 @@ public sealed class MerchantPurchaseIntegrationTests
             WHERE CharacterId=@character;
             """));
 
+        async Task AssertLatePurchaseRollback(
+            string environmentName, string prefix, string expectedMessage)
+        {
+            var lateUser = Required(environmentName);
+            Assert.StartsWith(prefix, lateUser);
+            var lateOptions = new MariaDbAuthenticationOptions(
+                Required("GOD2_DB_HOST"), int.Parse(Required("GOD2_DB_PORT")),
+                lateUser, Required("GOD2_SHOP_FIXTURE_PASSWORD"));
+
+            var lateError = await Assert.ThrowsAsync<MySqlException>(async () =>
+            {
+                await new MariaDbMerchantPurchaseWriter(lateOptions, gate)
+                    .PurchaseAsync(request, CancellationToken.None);
+            });
+            Assert.Equal(1644, lateError.Number);
+            Assert.Equal(expectedMessage, lateError.Message);
+
+            var snapshot = await repository.GetByCharacterAsync(
+                character, CancellationToken.None);
+            Assert.NotNull(snapshot);
+            Assert.Equal(
+                JsonSerializer.Serialize(initial),
+                JsonSerializer.Serialize(snapshot));
+            Assert.Equal(100, await Scalar("""
+                SELECT Balance FROM god2_player.player_currency_balances
+                WHERE CharacterId=@character AND CurrencyType='Gold';
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT Version FROM god2_player.player_currency_balances
+                WHERE CharacterId=@character AND CurrencyType='Gold';
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT COUNT(*) FROM god2_player.character_inventory
+                WHERE character_id=@character;
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT COUNT(*) FROM god2_player.inventory_transaction_idempotency
+                WHERE CharacterId=@character;
+                """));
+            Assert.Equal(0, await Scalar("""
+                SELECT COUNT(*) FROM god2_player.inventory_audit_ledger
+                WHERE CharacterId=@character;
+                """));
+        }
+
+        await AssertLatePurchaseRollback(
+            "GOD2_SHOP_RECEIPT_FAULT_USER", "shopreceipt_",
+            "fixture_buy_receipt_after_wallet");
+        await AssertLatePurchaseRollback(
+            "GOD2_SHOP_AUDIT_FAULT_USER", "shopaudit_",
+            "fixture_buy_audit_after_receipt");
+
         // Retry the exact failed request using the normal fixture account.
 
         var results = await Task.WhenAll(Enumerable.Range(0, 8).Select(async _ =>
