@@ -215,6 +215,104 @@ public sealed class MerchantCommandServiceTests
         Assert.Equal(0, f.Writer.SaleCalls);
     }
 
+    [Fact]
+    public async Task Held_frame_lease_dispatches_both_commands_without_reentry()
+    {
+        var f = new Fixture();
+        using var lease = await f.Lane.EnterAsync(CancellationToken.None);
+
+        var buy = await f.Service.PurchaseInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None).AsTask().WaitAsync(TimeSpan.FromSeconds(5));
+        var sell = await f.Service.SellInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Sale,
+            CancellationToken.None).AsTask().WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Same(f.Writer.PurchaseResult, buy.TransactionResult);
+        Assert.Same(f.Writer.SaleResult, sell.TransactionResult);
+        Assert.Equal(1, f.Writer.PurchaseCalls);
+        Assert.Equal(1, f.Writer.SaleCalls);
+
+        var cleanupCalls = 0;
+        var close = f.Lane.CloseAsync(() =>
+        {
+            cleanupCalls++;
+            return ValueTask.CompletedTask;
+        });
+        Assert.False(close.IsCompleted);
+        Assert.Equal(0, cleanupCalls);
+        lease.Dispose();
+        await close.WaitAsync(TimeSpan.FromSeconds(5));
+        Assert.Equal(1, cleanupCalls);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Foreign_or_disposed_lease_never_dispatches(bool disposed)
+    {
+        var f = new Fixture();
+        var owner = disposed ? f.Lane : new ConnectionCommandLane();
+        using var lease = await owner.EnterAsync(CancellationToken.None);
+        if (disposed)
+            lease.Dispose();
+
+        async Task Buy() => await f.Service.PurchaseInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None);
+        async Task Sell() => await f.Service.SellInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Sale,
+            CancellationToken.None);
+
+        if (disposed)
+        {
+            await Assert.ThrowsAsync<ObjectDisposedException>(Buy);
+            await Assert.ThrowsAsync<ObjectDisposedException>(Sell);
+        }
+        else
+        {
+            await Assert.ThrowsAsync<InvalidOperationException>(Buy);
+            await Assert.ThrowsAsync<InvalidOperationException>(Sell);
+        }
+        Assert.Equal(0, f.Writer.PurchaseCalls);
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
+    [Fact]
+    public async Task Held_lease_still_checks_interaction_and_cancellation()
+    {
+        var f = new Fixture();
+        using var lease = await f.Lane.EnterAsync(CancellationToken.None);
+        Assert.True(f.Interactions.Remove(101, out _));
+
+        var buy = await f.Service.PurchaseInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None);
+        var sell = await f.Service.SellInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Sale,
+            CancellationToken.None);
+        Assert.Equal(MerchantInteractionStatus.InteractionConflict,
+            buy.InteractionStatus);
+        Assert.Equal(MerchantInteractionStatus.InteractionConflict,
+            sell.InteractionStatus);
+        Assert.Null(buy.TransactionResult);
+        Assert.Null(sell.TransactionResult);
+
+        using var cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
+            await f.Service.PurchaseInLeaseAsync(
+                lease, 101, f.InteractionId, f.Binding, f.Purchase,
+                cancellation.Token));
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(async () =>
+            await f.Service.SellInLeaseAsync(
+                lease, 101, f.InteractionId, f.Binding, f.Sale,
+                cancellation.Token));
+
+        Assert.Equal(0, f.Writer.PurchaseCalls);
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
     private sealed class Fixture
     {
         public NpcInteractionSessionRegistry Interactions { get; } = new();

@@ -22,7 +22,7 @@ public sealed class ConnectionCommandLane
 
     // Supports existing frame loops with continue/break/return.
     // Always dispose the lease; do not recursively enter the same lane.
-    public async ValueTask<IDisposable> EnterAsync(
+    public async ValueTask<Lease> EnterAsync(
         CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -32,7 +32,7 @@ public sealed class ConnectionCommandLane
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfClosing();
-            return new Lease(_gate);
+            return new Lease(this, _gate);
         }
         catch
         {
@@ -41,9 +41,27 @@ public sealed class ConnectionCommandLane
         }
     }
 
-    private sealed class Lease(SemaphoreSlim gate) : IDisposable
+    // Exclusive frame scope: await each dispatch before disposing.
+    // Do not share the lease with concurrent operations.
+    public sealed class Lease : IDisposable
     {
-        private SemaphoreSlim? _ownedGate = gate;
+        private readonly ConnectionCommandLane _owner;
+        private SemaphoreSlim? _ownedGate;
+
+        internal Lease(ConnectionCommandLane owner, SemaphoreSlim gate)
+        {
+            _owner = owner;
+            _ownedGate = gate;
+        }
+
+        internal void ValidateOwner(ConnectionCommandLane owner)
+        {
+            if (!ReferenceEquals(_owner, owner))
+                throw new InvalidOperationException(
+                    "Lease belongs to another connection command lane.");
+            if (Volatile.Read(ref _ownedGate) is null)
+                throw new ObjectDisposedException(nameof(Lease));
+        }
 
         public void Dispose()
         {

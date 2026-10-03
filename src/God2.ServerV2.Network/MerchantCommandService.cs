@@ -74,6 +74,23 @@ public sealed class MerchantCommandService
                 connectionId, interactionId, binding, command, token),
             cancellationToken);
 
+    // Caller keeps this exclusive frame lease until dispatch completes.
+    // This entry does not acquire or dispose the supplied lease.
+    public ValueTask<MerchantPurchaseCommandResult> PurchaseInLeaseAsync(
+        ConnectionCommandLane.Lease lease,
+        long connectionId,
+        Guid interactionId,
+        MerchantInteractionBinding binding,
+        MerchantPurchaseCommand command,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(lease);
+        lease.ValidateOwner(_lane);
+        cancellationToken.ThrowIfCancellationRequested();
+        return PurchaseCoreAsync(
+            connectionId, interactionId, binding, command, cancellationToken);
+    }
+
     private async ValueTask<MerchantPurchaseCommandResult> PurchaseCoreAsync(
         long connectionId,
         Guid interactionId,
@@ -117,6 +134,23 @@ public sealed class MerchantCommandService
             token => SellCoreAsync(
                 connectionId, interactionId, binding, command, token),
             cancellationToken);
+
+    // Caller keeps this exclusive frame lease until dispatch completes.
+    // This entry does not acquire or dispose the supplied lease.
+    public ValueTask<MerchantSaleCommandResult> SellInLeaseAsync(
+        ConnectionCommandLane.Lease lease,
+        long connectionId,
+        Guid interactionId,
+        MerchantInteractionBinding binding,
+        MerchantSaleCommand command,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(lease);
+        lease.ValidateOwner(_lane);
+        cancellationToken.ThrowIfCancellationRequested();
+        return SellCoreAsync(
+            connectionId, interactionId, binding, command, cancellationToken);
+    }
 
     private async ValueTask<MerchantSaleCommandResult> SellCoreAsync(
         long connectionId,
