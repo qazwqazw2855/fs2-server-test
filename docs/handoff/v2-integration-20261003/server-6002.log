@@ -1,0 +1,33 @@
+God2 Server V2
+Version: 0.1.0-foundation
+Default content mode: ClassicCompatibility
+Network: bind=127.0.0.1:6002; advertised=127.0.0.1:6002
+Authentication: MariaDB 127.0.0.1:3308 user=god2_v2
+Movement persistence: Disabled
+2026-10-03T00:58:45.4829807+00:00 [server] Listening on 127.0.0.1:6002
+2026-10-03T00:58:45.7856123+00:00 [1] Connected remote=127.0.0.1:52316 stage=Connected
+2026-10-03T00:58:45.7895317+00:00 [1] TX LoginServerHandshake bytes=19 hex=1300B20DBBA18DA4B99A0C2480B2B88574D2CF
+2026-10-03T00:58:46.7005114+00:00 [1] RX LoginClientHandshake bytes=19 hex=1300A89B3A8985045785210F89725C4D973FD4
+2026-10-03T00:58:46.7006473+00:00 [1] TX LoginVersionFollowUp bytes=6 hex=0600A329DEF5
+2026-10-03T00:58:46.7006755+00:00 [1] Verified Login 19/19/6 handshake completed. stage=Login
+2026-10-03T00:58:46.7046252+00:00 [1] RX LoginRequestCandidate bytes=208 stage=Login hex=[REDACTED_SENSITIVE_LOGIN_FRAME]
+2026-10-03T00:58:46.8615003+00:00 [1] Login result=Success stage=Login account=[REDACTED]
+2026-10-03T00:58:46.8791900+00:00 [1] Character list loaded count=1 account=[REDACTED]
+2026-10-03T00:58:46.8806120+00:00 [1] TX LoginSuccessBootstrap bytes=417 endpoint=127.0.0.1:6002 hex=[REDACTED_SENSITIVE_LOGIN_ECHO]
+2026-10-03T00:58:46.8806452+00:00 [1] Ready for server selection stage=CharacterSelect
+2026-10-03T00:58:46.8808717+00:00 [1] RX ServerSelectionCandidate bytes=6 hex=06009202CE97
+2026-10-03T00:58:46.8850876+00:00 [1] TX CharacterListBootstrap bytes=78 server=1 characters=1 hex=[REDACTED]
+2026-10-03T00:58:46.8904452+00:00 [1] Closed stage=Closed
+2026-10-03T00:58:46.8930630+00:00 [2] Connected remote=127.0.0.1:34138 stage=Connected
+2026-10-03T00:58:46.8989917+00:00 [2] World login identity verified: map=170015007; client=15:7; pos=(17,15); wireProjection=OfficialBootstrapOnly
+2026-10-03T00:58:46.9117087+00:00 [2] NPC world state ready: map=170015007; status=Loaded; npcs=3; loadedMaps=1.
+2026-10-03T00:58:46.9147510+00:00 [2] NPC spawn blocked by evidence: spawn=170153954; handle=3954; reason=EvidenceStatusBlocked.
+2026-10-03T00:58:46.9147926+00:00 [2] NPC spawn blocked by evidence: spawn=1310005004; handle=5004; reason=EvidenceStatusBlocked.
+2026-10-03T00:58:46.9195690+00:00 [2] Inventory snapshot ready: character=1; capacity=32; version=1; slots=1; wireDispatch=BlockedNoVerifiedInventoryCodec.
+2026-10-03T00:58:46.9231381+00:00 [2] World presence entered: character=1; map=170015007; visiblePeers=0; queuedReplicationEvents=0; wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.
+2026-10-03T00:58:46.9252329+00:00 [2] NPC snapshot loaded: map=170015007; count=3; worldNpcCount=3; loadedMaps=1; wireEligible=1; wireBlocked=2; wireDispatch=EvidenceGatedOfficialNpcSpawnCodec.
+2026-10-03T00:58:46.9252589+00:00 [2] World bootstrap completed bytes=1772; character=1; stage=InWorld
+2026-10-03T00:58:46.9296989+00:00 [2] RX WorldHeartbeat bytes=5 classification=KeepAlive
+2026-10-03T00:58:47.0307317+00:00 [2] World remote closed connection.
+2026-10-03T00:58:47.0309733+00:00 [2] World presence released: character=1; map=170015007; visiblePeers=0; wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.
+2026-10-03T00:58:47.0314259+00:00 [2] Closed stage=Closed
