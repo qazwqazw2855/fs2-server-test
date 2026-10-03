@@ -77,10 +77,12 @@ public sealed class MerchantCommandIntegrationTests
             "fixture-build", 2, "command-fixture", true);
         var resolver = new MerchantInteractionResolver(interactions, presences, npcs);
 
+        var lane = new ConnectionCommandLane();
         MerchantCommandService Service() => new(
             presences, resolver,
             new MariaDbMerchantPurchaseWriter(options, new BuyGate(character, merchant)),
-            new MariaDbMerchantSaleWriter(options, new SaleGate(character, merchant)));
+            new MariaDbMerchantSaleWriter(options, new SaleGate(character, merchant)),
+            lane);
 
         var buy = new MerchantPurchaseCommand(
             Guid.NewGuid(), "command-buy", 253231541, 1,

@@ -125,11 +125,102 @@ public sealed class MerchantCommandServiceTests
         Assert.Same(f.Writer.Failure, sellError);
     }
 
+    [Fact]
+    public async Task Shared_lane_checks_state_after_preceding_update()
+    {
+        var f = new Fixture();
+        await f.Lane.RunAsync<bool>(token => ValueTask.FromResult(
+            f.Presences.TryMove(101, 7, 100, 124, out _)),
+            CancellationToken.None);
+
+        var result = await f.Service.PurchaseAsync(
+            101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None);
+
+        Assert.Equal(MerchantInteractionStatus.OutOfRange,
+            result.InteractionStatus);
+        Assert.Null(result.TransactionResult);
+        Assert.Equal(0, f.Writer.PurchaseCalls);
+    }
+
+    [Fact]
+    public async Task Closed_shared_lane_rejects_both_commands()
+    {
+        var f = new Fixture();
+        await f.Lane.CloseAsync(() =>
+        {
+            f.Interactions.Remove(101, out _);
+            f.Presences.TryLeave(101, out _);
+            return ValueTask.CompletedTask;
+        });
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            f.Service.PurchaseAsync(
+                101, f.InteractionId, f.Binding, f.Purchase,
+                CancellationToken.None).AsTask());
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            f.Service.SellAsync(
+                101, f.InteractionId, f.Binding, f.Sale,
+                CancellationToken.None).AsTask());
+
+        Assert.Equal(0, f.Writer.PurchaseCalls);
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
+    [Fact]
+    public async Task Closing_waits_for_dispatched_writer_before_world_cleanup()
+    {
+        var f = new Fixture();
+        var entered = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        var release = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        f.Writer.BeforePurchase = async () =>
+        {
+            entered.SetResult(true);
+            await release.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        };
+
+        var purchase = f.Service.PurchaseAsync(
+            101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None).AsTask();
+        await entered.Task.WaitAsync(TimeSpan.FromSeconds(5));
+
+        var cleanupCalls = 0;
+        var close = f.Lane.CloseAsync(() =>
+        {
+            cleanupCalls++;
+            f.Interactions.Remove(101, out _);
+            f.Presences.TryLeave(101, out _);
+            return ValueTask.CompletedTask;
+        });
+
+        Assert.False(close.IsCompleted);
+        Assert.Equal(0, cleanupCalls);
+        Assert.True(f.Interactions.IsCurrent(101, f.InteractionId));
+        Assert.True(f.Presences.TryGetByConnection(101, out _));
+
+        release.SetResult(true);
+        var result = await purchase.WaitAsync(TimeSpan.FromSeconds(5));
+        Assert.Same(f.Writer.PurchaseResult, result.TransactionResult);
+        await close.WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Equal(1, cleanupCalls);
+        Assert.False(f.Interactions.TryGetByConnection(101, out _));
+        Assert.False(f.Presences.TryGetByConnection(101, out _));
+        await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            f.Service.SellAsync(
+                101, f.InteractionId, f.Binding, f.Sale,
+                CancellationToken.None).AsTask());
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
     private sealed class Fixture
     {
         public NpcInteractionSessionRegistry Interactions { get; } = new();
         public WorldPresenceRegistry Presences { get; } = new();
         public RecordingWriter Writer { get; } = new();
+        public ConnectionCommandLane Lane { get; } = new();
         public MerchantCommandService Service { get; }
         public Guid InteractionId { get; }
         public MerchantInteractionBinding Binding { get; } = new(
@@ -162,7 +253,7 @@ public sealed class MerchantCommandServiceTests
             Service = new(
                 Presences,
                 new MerchantInteractionResolver(Interactions, Presences, npcs),
-                Writer, Writer);
+                Writer, Writer, Lane);
         }
     }
 
@@ -174,6 +265,7 @@ public sealed class MerchantCommandServiceTests
         public MerchantPurchaseRequest? LastPurchase { get; private set; }
         public MerchantSaleRequest? LastSale { get; private set; }
         public Exception? Failure { get; set; }
+        public Func<ValueTask>? BeforePurchase { get; set; }
         public MerchantPurchaseResult PurchaseResult { get; } = new(
             MerchantPurchaseStatus.EvidenceBlocked,
             Guid.NewGuid(), 100, 100, 5, 3, 3);
@@ -181,15 +273,17 @@ public sealed class MerchantCommandServiceTests
             MerchantSaleStatus.EvidenceBlocked,
             Guid.NewGuid(), 100, 100, 9, 6, 6);
 
-        public ValueTask<MerchantPurchaseResult> PurchaseAsync(
+        public async ValueTask<MerchantPurchaseResult> PurchaseAsync(
             MerchantPurchaseRequest request, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
             PurchaseCalls++;
             LastPurchase = request;
-            return Failure is null
-                ? ValueTask.FromResult(PurchaseResult)
-                : ValueTask.FromException<MerchantPurchaseResult>(Failure);
+            if (BeforePurchase is not null)
+                await BeforePurchase();
+            if (Failure is not null)
+                throw Failure;
+            return PurchaseResult;
         }
 
         public ValueTask<MerchantSaleResult> SellAsync(

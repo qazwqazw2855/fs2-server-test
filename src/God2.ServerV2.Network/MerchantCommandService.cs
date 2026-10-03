@@ -37,6 +37,7 @@ public sealed record MerchantSaleCommandResult(
 
 public sealed class MerchantCommandService
 {
+    private readonly ConnectionCommandLane _lane;
     private readonly WorldPresenceRegistry _presences;
     private readonly MerchantInteractionResolver _resolver;
     private readonly IMerchantPurchaseWriter _purchases;
@@ -46,8 +47,10 @@ public sealed class MerchantCommandService
         WorldPresenceRegistry presences,
         MerchantInteractionResolver resolver,
         IMerchantPurchaseWriter purchases,
-        IMerchantSaleWriter sales)
+        IMerchantSaleWriter sales,
+        ConnectionCommandLane lane)
     {
+        _lane = lane ?? throw new ArgumentNullException(nameof(lane));
         _presences = presences ??
             throw new ArgumentNullException(nameof(presences));
         _resolver = resolver ??
@@ -58,9 +61,20 @@ public sealed class MerchantCommandService
             throw new ArgumentNullException(nameof(sales));
     }
 
-    // Call and await only within the connection's serialized command loop.
-    // This service does not serialize registry mutations from other callers.
-    public async ValueTask<MerchantPurchaseCommandResult> PurchaseAsync(
+    // Share this lane with connection state updates and final cleanup.
+    // Registry mutations that bypass the lane are not coordinated.
+    public ValueTask<MerchantPurchaseCommandResult> PurchaseAsync(
+        long connectionId,
+        Guid interactionId,
+        MerchantInteractionBinding binding,
+        MerchantPurchaseCommand command,
+        CancellationToken cancellationToken) =>
+        _lane.RunAsync(
+            token => PurchaseCoreAsync(
+                connectionId, interactionId, binding, command, token),
+            cancellationToken);
+
+    private async ValueTask<MerchantPurchaseCommandResult> PurchaseCoreAsync(
         long connectionId,
         Guid interactionId,
         MerchantInteractionBinding binding,
@@ -93,7 +107,18 @@ public sealed class MerchantCommandService
         return new(MerchantInteractionStatus.Allowed, result);
     }
 
-    public async ValueTask<MerchantSaleCommandResult> SellAsync(
+    public ValueTask<MerchantSaleCommandResult> SellAsync(
+        long connectionId,
+        Guid interactionId,
+        MerchantInteractionBinding binding,
+        MerchantSaleCommand command,
+        CancellationToken cancellationToken) =>
+        _lane.RunAsync(
+            token => SellCoreAsync(
+                connectionId, interactionId, binding, command, token),
+            cancellationToken);
+
+    private async ValueTask<MerchantSaleCommandResult> SellCoreAsync(
         long connectionId,
         Guid interactionId,
         MerchantInteractionBinding binding,
