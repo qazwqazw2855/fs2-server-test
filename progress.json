@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-04T13:57:49+08:00",
-  "summary": "God2 Server V2 已建立內部入包、任務交易閉環與商店買賣交易。六組測試 409/409 通過，0 failed、0 skipped，DB integration 已啟用。已驗證買賣晚期寫入失敗回滾、堆疊合併與溢出、提交後跨連線重播，以及競爭版本拒絕後重新取得版本重試成功。所有 fixture 與臨時帳號清理成功。正式堆疊規則及商店內容尚未核准；商店原始封包證據、TCP 買賣接入與 Client 驗收尚未完成。未部署 6001，正式部署來源仍為 3344eb3。",
+  "updated_at": "2026-10-04T15:48:47+08:00",
+  "summary": "商店共用買賣請求解碼器已完成，Protocol 121/121 通過。小腿肉 client_item_id 已修正為 6906。上次完整六組測試為 409/409；本輪未重跑完整六組。下一步建立伺服器商品索引／背包槽位映射，再將商店交易接入 TCP 共用 connection lane。尚未完成商店 Client 驗收；未部署或重啟 6001。",
   "milestones": [
     {
       "key": "foundation",
@@ -303,7 +303,7 @@
         "failed": 0
       }
     ],
-    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。"
+    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。"
   },
   "blockers": [
     {
