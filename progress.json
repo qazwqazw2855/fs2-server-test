@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-03T09:04:08+08:00",
-  "summary": "God2 Server V2 已整合 World Login client build／位置准入與 Portal 目的地 bounds 防護。六組測試 292/292 通過，DB integration 已啟用。2026-10-03 正式 6001 部署來源 3344eb3，localhost World Login Map Probe 完成 Login → World、1772-byte Bootstrap、heartbeat 與 presence 清理，Exit Code 0；未附加 Portal projection。World Login 144/144 enabled map coverage 不代表 Portal coverage。NPC、Portal、移動與 Windows Client 畫面驗收不包含於本次 Probe。",
+  "updated_at": "2026-10-04T22:41:46+08:00",
+  "summary": "Merchant 0x38 encoded World protocol boundary、商品索引映射、錢包讀取、Merchant Authority/Binding 與 TCP interaction authorization gate 已完成。TCP 現在依 current NPC interaction 的 SpawnId/MapId/Handle 查詢 DB Authority，取得 MerchantId 後交由 MerchantInteractionResolver 驗證；不在 TCP 硬編碼 merchant。目前 3954 因 Binding 尚未取得核准 evidence、Enabled=false、MaximumDistance=null，維持 fail-closed。交易執行尚未接入，未扣 Gold、未發道具、SELL 未接。本輪 Core 7/7、Application 114/114、Session 20/20、Protocol 125/125、Network 113/113，合計 379/379；本次 Merchant DB Integration 4/4。未部署或重啟 6001。",
   "milestones": [
     {
       "key": "foundation",
@@ -262,14 +262,14 @@
     }
   ],
   "current_focus": {
-    "title": "World Runtime 完整化 / Portal Evidence",
-    "description": "World Login Formal identity/bounds coverage 已達 144/144，並完成正式 6001 無畫面 acceptance。目前重點轉向 Portal / World Transition、NPC Runtime 與後續 Gameplay。Portal wire projection 目前僅有 6 個 evidence-backed destination identities；PositionMode、PreludeState、MapTransitionFirst 等欄位在取得正服證據前不推論。",
-    "status": "production_world_login_verified_portal_evidence_in_progress"
+    "title": "商店 TCP Authority Gate → BUY 執行邊界",
+    "description": "共用 0x38 解碼、Server-owned catalog identity、wallet snapshot、Merchant Authority/Binding 與 TCP interaction authorization gate 已建立。下一步先補足可核准的 merchant interaction evidence / distance policy，再以既有 connection lane 接入 PurchaseInLeaseAsync；不得硬編碼 MerchantId、不得信任 client price，SELL 暫不接。",
+    "status": "in_progress"
   },
   "verification": {
     "build": "passing",
-    "total_tests": 292,
-    "passed_tests": 292,
+    "total_tests": 409,
+    "passed_tests": 409,
     "failed_tests": 0,
     "suites": [
       {
@@ -279,7 +279,7 @@
       },
       {
         "name": "Application",
-        "passed": 50,
+        "passed": 114,
         "failed": 0
       },
       {
@@ -294,16 +294,16 @@
       },
       {
         "name": "Network",
-        "passed": 80,
+        "passed": 111,
         "failed": 0
       },
       {
         "name": "Persistence Integration",
-        "passed": 24,
+        "passed": 46,
         "failed": 0
       }
     ],
-    "note": "六組測試 292/292 通過，0 failed、0 skipped，DB integration 已啟用。隔離 6002 與正式 6001 World Login Map Probe 均 Exit Code 0。正式部署來源 3344eb3；6001 Probe 從 localhost 連線，不涵蓋外部連線、NPC、Portal、移動或 Windows Client 畫面驗收。"
+    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。"
   },
   "blockers": [
     {
@@ -328,6 +328,10 @@
     }
   ],
   "next_steps": [
+    "補足可核准的 Merchant Interaction evidence／distance policy；3954 在取得足夠正服證據前維持 fail-closed，不由測試 fixture 或 ObservationOnly 距離推論。",
+    "在 Merchant Interaction Allowed 後，以 Server-owned catalog identity、inventory／wallet snapshot 建立 MerchantPurchaseCommand，並透過 TCP 現有 connection lane 呼叫 PurchaseInLeaseAsync；不得硬編碼 MerchantId 或信任 client price。",
+    "SELL 維持阻擋，直到建立 client inventory slot → authoritative item instance／slot version 的伺服器投影；不得由目前 CN slot 12 capture 推論通用映射。",
+    "建立經證據驗證的 Merchant transaction result／response wire projection，完成隔離 6002 DB／TCP 測試後再進行 Client 商店驗收。",
     "持續建立 Portal / World Transition exact-current 與 live-client evidence；不由 World Login 144/144 推論 Portal wire 支援。",
     "驗證更多 Area/Map 的原版 Windows Client World Entry 實際畫面；144/144 目前代表 Formal identity/bounds coverage，不代表 144 張皆已實機顯示驗收。",
     "補齊 NPC Runtime、NPC 功能與世界資料對應。",
@@ -337,6 +341,16 @@
     "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-04",
+      "title": "Merchant TCP Authority Gate 收工",
+      "detail": "Checkpoint 70cb113。OfficialMerchantTransactionCodec 已擁有 encoded World frame 的 IsCandidate/TryDecode boundary；Protocol 125/125。Migration 479 建立 verified merchant client catalog identity，Migration 480 提供 V2 merchant runtime reads；479/480 checksum 維持 3dd4c3b7aa94c7e61ef79543cb1adae7dbbd319887b0fc78dcc02acdb2ad1f94 / 870d0ce2e1bfe6b82d24a058333c83bfa984e484016bf111bbba6b65f1790039。新增 CharacterWalletSnapshot、MerchantCatalogIdentity、MerchantInteractionAuthority repositories 與 BindingProvider。TCP 已完成 current NPC interaction handle ownership → SpawnId/MapId/ClientBuildId/Handle DB Authority → MerchantId/Binding → MerchantInteractionResolver gate。3954 目前仍因 Binding evidence 未核准而 fail-closed；transaction execution=BlockedNotWired。本輪 Core 7/7、Application 114/114、Session 20/20、Protocol 125/125、Network 113/113，共 379/379；Merchant Catalog/Authority DB Integration 4/4。未扣 Gold、未發道具、SELL 未接、未做 Client merchant acceptance，未部署或重啟 6001。"
+    },
+    {
+      "date": "2026-10-04",
+      "title": "商店共用解碼器與交易驗證收工",
+      "detail": "共用 12-byte 0x38 買賣請求解碼器完成，Protocol 121/121 通過。Migration 478 已將小腿肉 client_item_id 修正為 6906。先前完整六組 409/409 已涵蓋商店買賣晚期寫入失敗回滾、堆疊合併／溢出、提交後跨連線重播與競爭版本重試。本輪未重跑完整六組；商店 TCP 派送及 Client 驗收尚未完成。未部署或重啟 6001。"
+    },
     {
       "date": "2026-09-24",
       "title": "World Login 144/144 正式部署與 Production acceptance",
