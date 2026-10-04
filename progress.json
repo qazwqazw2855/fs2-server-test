@@ -328,9 +328,10 @@
     }
   ],
   "next_steps": [
-    "建立伺服器商品索引與客戶端背包槽位映射，避免直接信任客戶端物品與槽位。",
-    "將共用商店交易服務接入 TCP 現有 connection lane，完成開店、買入、賣出與關店流程。",
-    "完成對應回應封包、隔離 DB／TCP 測試與私服 Client 商店驗收。",
+    "補足可核准的 Merchant Interaction evidence／distance policy；3954 在取得足夠正服證據前維持 fail-closed，不由測試 fixture 或 ObservationOnly 距離推論。",
+    "在 Merchant Interaction Allowed 後，以 Server-owned catalog identity、inventory／wallet snapshot 建立 MerchantPurchaseCommand，並透過 TCP 現有 connection lane 呼叫 PurchaseInLeaseAsync；不得硬編碼 MerchantId 或信任 client price。",
+    "SELL 維持阻擋，直到建立 client inventory slot → authoritative item instance／slot version 的伺服器投影；不得由目前 CN slot 12 capture 推論通用映射。",
+    "建立經證據驗證的 Merchant transaction result／response wire projection，完成隔離 6002 DB／TCP 測試後再進行 Client 商店驗收。",
     "持續建立 Portal / World Transition exact-current 與 live-client evidence；不由 World Login 144/144 推論 Portal wire 支援。",
     "驗證更多 Area/Map 的原版 Windows Client World Entry 實際畫面；144/144 目前代表 Formal identity/bounds coverage，不代表 144 張皆已實機顯示驗收。",
     "補齊 NPC Runtime、NPC 功能與世界資料對應。",
