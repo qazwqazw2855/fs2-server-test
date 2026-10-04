@@ -5,7 +5,7 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-04T22:41:46+08:00",
+  "updated_at": "2026-10-04T22:53:45+08:00",
   "summary": "Merchant 0x38 encoded World protocol boundary、商品索引映射、錢包讀取、Merchant Authority/Binding 與 TCP interaction authorization gate 已完成。TCP 現在依 current NPC interaction 的 SpawnId/MapId/Handle 查詢 DB Authority，取得 MerchantId 後交由 MerchantInteractionResolver 驗證；不在 TCP 硬編碼 merchant。目前 3954 因 Binding 尚未取得核准 evidence、Enabled=false、MaximumDistance=null，維持 fail-closed。交易執行尚未接入，未扣 Gold、未發道具、SELL 未接。本輪 Core 7/7、Application 114/114、Session 20/20、Protocol 125/125、Network 113/113，合計 379/379；本次 Merchant DB Integration 4/4。未部署或重啟 6001。",
   "milestones": [
     {
@@ -184,7 +184,7 @@
         },
         {
           "name": "物品與背包",
-          "status": "pending"
+          "status": "in_progress"
         },
         {
           "name": "戰鬥與技能",
@@ -257,6 +257,62 @@
         {
           "name": "Client 自動更新機制",
           "status": "deferred"
+        }
+      ]
+    },
+    {
+      "key": "gameplay",
+      "name": "物品、背包與商店",
+      "percent": 60,
+      "status": "in_progress",
+      "items": [
+        {
+          "name": "Inventory Application / Persistence 與版本控制",
+          "status": "completed"
+        },
+        {
+          "name": "Inventory Grant 與 transaction / audit 基礎",
+          "status": "completed"
+        },
+        {
+          "name": "Server-owned Merchant Catalog Identity",
+          "status": "completed"
+        },
+        {
+          "name": "Character Gold Wallet Snapshot",
+          "status": "completed"
+        },
+        {
+          "name": "共用 12-byte 0x38 Merchant Transaction Codec",
+          "status": "completed"
+        },
+        {
+          "name": "Merchant Interaction Authority / Binding",
+          "status": "completed"
+        },
+        {
+          "name": "TCP Merchant Interaction Authorization Gate",
+          "status": "completed"
+        },
+        {
+          "name": "Merchant Interaction evidence / distance policy",
+          "status": "in_progress"
+        },
+        {
+          "name": "BUY → PurchaseInLeaseAsync 執行與 Gold / Inventory mutation",
+          "status": "pending"
+        },
+        {
+          "name": "SELL authoritative slot → item instance 投影",
+          "status": "pending"
+        },
+        {
+          "name": "Merchant transaction result / response wire",
+          "status": "pending"
+        },
+        {
+          "name": "原版 Client 商店買賣 acceptance",
+          "status": "pending"
         }
       ]
     }
@@ -512,7 +568,7 @@
     "next": "先完成地圖/NPC/怪物/傳送等正服資料基線，再整合 Launcher 前置流程與後續完整官方 Client acceptance"
   },
   "roadmap": {
-    "current_key": "portal",
+    "current_key": "gameplay",
     "promotion_ready": false,
     "stages": [
       {
@@ -543,19 +599,19 @@
         "key": "portal",
         "name": "Portal",
         "status": "in_progress",
-        "metric": "6 Evidence Destinations"
+        "metric": "Evidence Destinations / Runtime Parity"
       },
       {
         "key": "npc",
         "name": "NPC Runtime",
         "status": "in_progress",
-        "metric": "Evidence-gated"
+        "metric": "Evidence-gated Runtime"
       },
       {
         "key": "gameplay",
         "name": "Gameplay",
-        "status": "pending",
-        "metric": "Catalog → Runtime"
+        "status": "in_progress",
+        "metric": "Inventory / Merchant Runtime"
       },
       {
         "key": "multiplayer",
@@ -581,7 +637,7 @@
     "label": "距離可完整遊玩",
     "target": "Full Playable",
     "ready": false,
-    "current_focus": "Portal / World Transition",
+    "current_focus": "Gameplay / Merchant Transactions",
     "gates": [
       {
         "key": "login-world",
@@ -615,9 +671,9 @@
       },
       {
         "key": "items",
-        "name": "物品與背包",
+        "name": "物品、背包與商店交易",
         "weight": 10,
-        "status": "pending"
+        "status": "in_progress"
       },
       {
         "key": "combat",
@@ -638,6 +694,111 @@
         "status": "pending"
       }
     ],
-    "percent": 50
-  }
+    "percent": 55
+  },
+  "current_validation": {
+    "title": "Merchant Authority Gate",
+    "date": "2026-10-04",
+    "status": "passing",
+    "summary": "本輪 Merchant checkpoint 已通過 379/379 非 DB 測試，另通過 4/4 Merchant DB integration；本輪未重新執行完整六套 Regression。",
+    "groups": [
+      {
+        "name": "非 DB 測試",
+        "passed": 379,
+        "total": 379
+      },
+      {
+        "name": "Merchant DB Integration",
+        "passed": 4,
+        "total": 4
+      }
+    ],
+    "suites": [
+      {
+        "name": "Core",
+        "passed": 7,
+        "total": 7
+      },
+      {
+        "name": "Application",
+        "passed": 114,
+        "total": 114
+      },
+      {
+        "name": "Session",
+        "passed": 20,
+        "total": 20
+      },
+      {
+        "name": "Protocol",
+        "passed": 125,
+        "total": 125
+      },
+      {
+        "name": "Network",
+        "passed": 113,
+        "total": 113
+      }
+    ],
+    "limitations": [
+      "Merchant DB Integration 4/4 為本輪篩選測試，不等同完整 Persistence Integration suite。",
+      "本輪未重新執行完整六套 Regression，因此 409/409 仍保留為最近一次完整 Baseline。",
+      "本輪 Merchant checkpoint 尚未部署 production 6001。",
+      "本輪尚未完成原版 Client 商店交易 acceptance。"
+    ]
+  },
+  "validation_queue": [
+    {
+      "title": "Merchant BUY 實際交易",
+      "status": "pending_validation",
+      "detail": "TCP authorization gate 已完成，但 BUY 尚未接入 PurchaseInLeaseAsync，因此尚未驗證實際 Gold 扣除、Inventory mutation 與交易結果回傳。"
+    },
+    {
+      "title": "Merchant transaction response wire",
+      "status": "pending_validation",
+      "detail": "目前只有 request decode 與 authorization boundary；尚未建立具正服證據的交易結果／response wire projection。"
+    },
+    {
+      "title": "原版 Client 商店買賣 acceptance",
+      "status": "pending_validation",
+      "detail": "需先完成 BUY execution 與 response wire，並通過隔離 6002 DB／TCP 測試後，才進行原版 Client 實機驗收。"
+    },
+    {
+      "title": "更多 Area / Map 原版 Client World Entry",
+      "status": "pending_validation",
+      "detail": "144/144 目前代表 Formal identity 與 bounds coverage，不代表 144 張地圖皆已由原版 Windows Client 實機顯示驗收。"
+    }
+  ],
+  "open_questions": [
+    {
+      "title": "商店 NPC 的有效互動距離缺乏正服證據",
+      "status": "needs_external_evidence",
+      "since": "2026-10-04",
+      "problem": "Merchant Interaction Authority 已能確認 Merchant、NPC、Spawn、Map、Client Handle 與 Client Build，但目前沒有足夠正服證據確認商店交易允許的 MaximumDistance。",
+      "known": "測試 fixture 曾使用距離 2；現有 NPC Open 流程的距離只屬 ObservationOnly。兩者都不能當成正式正服規則，因此 3954 目前維持 fail-closed。",
+      "needed": "希望取得其他 God2 私服或正服研究中的 NPC／Merchant interaction distance 判定、Server handler、封包 trace、設定資料或可重現實測結果。",
+      "rule": "在取得足夠證據前，不以 fixture=2 或 ObservationOnly 結果推論正式 MaximumDistance。"
+    },
+    {
+      "title": "SELL 的 Client Inventory Slot 如何映射 Server Item Instance",
+      "status": "needs_external_evidence",
+      "since": "2026-10-04",
+      "problem": "已能解出 Merchant SELL request 的 client inventory slot 與 quantity，但尚無足夠證據證明該 slot 如何映射到伺服器 authoritative item instance 與 slot version。",
+      "known": "CN 實測 evidence 曾出現 SELL quantity=2、client inventory slot=12；這只能證明該次封包內容，不能推論通用 inventory mapping。",
+      "needed": "希望取得其他 God2 私服的 Inventory slot mapping、SELL handler、item instance/version 對應方式、封包 trace 或相關 Runtime／DB 實作。",
+      "rule": "在 authoritative slot → item instance/version 投影建立前，SELL Runtime mutation 維持阻擋。"
+    }
+  ],
+  "paused_items": [
+    {
+      "title": "God2Patch Large-Over 1054",
+      "reason": "Patch manifest 與診斷回傳流程已有研究成果，但目前不是 Server V2 Gameplay 主線，暫停深入分析。",
+      "resume_when": "Gameplay／World Runtime 主線需要重新處理原版 Patch 流程時再恢復。"
+    },
+    {
+      "title": "正服 Launcher → God2_opt.exe 前置流程研究",
+      "reason": "God2_opt.exe 已完成 AWS V2 Login / World acceptance；Launcher 前置流程仍有研究價值，但目前不是主要阻塞。",
+      "resume_when": "進入 Launcher／正式 Client 發佈與完整啟動流程階段時再恢復。"
+    }
+  ]
 }
