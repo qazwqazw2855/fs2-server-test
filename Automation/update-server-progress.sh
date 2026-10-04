@@ -31,12 +31,19 @@ playability_percent="$(
     ' "$PROGRESS"
 )"
 
-# 找第一個進行中的 Roadmap 階段作為 current_key。
-current_key="$(
-    jq -r '
-      [.roadmap.stages[] | select(.status == "in_progress")][0].key
-      // .roadmap.current_key
-    ' "$PROGRESS"
+# current_key 不由 updater 自動猜測。
+# Portal / NPC / Gameplay 可以同時 in_progress，
+# 因此目前主線必須由 progress.json 明確指定。
+
+protected_before="$(
+    jq -c '{
+        current_focus,
+        current_validation,
+        open_questions,
+        paused_items,
+        next_steps,
+        recent_activity
+    }' "$PROGRESS"
 )"
 
 tmp="$(mktemp)"
@@ -44,11 +51,9 @@ trap 'rm -f "$tmp"' EXIT
 
 jq \
   --arg updated_at "$updated_at" \
-  --arg current_key "$current_key" \
   --argjson playable "$playability_percent" \
   '
     .updated_at = $updated_at
-    | .roadmap.current_key = $current_key
     | .playability.percent = $playable
     | .playability.ready =
         ([.playability.gates[].status] | all(. == "completed"))
@@ -62,6 +67,29 @@ jq -e '
     and (.playability.percent >= 0)
     and (.playability.percent <= 100)
 ' "$tmp" >/dev/null
+
+protected_after="$(
+    jq -c '{
+        current_focus,
+        current_validation,
+        open_questions,
+        paused_items,
+        next_steps,
+        recent_activity
+    }' "$tmp"
+)"
+
+if [[ "$protected_before" != "$protected_after" ]]; then
+    echo "ERROR: protected progress fields changed"
+    echo "The updater is not allowed to modify:"
+    echo "  current_focus"
+    echo "  current_validation"
+    echo "  open_questions"
+    echo "  paused_items"
+    echo "  next_steps"
+    echo "  recent_activity"
+    exit 1
+fi
 
 mv "$tmp" "$PROGRESS"
 trap - EXIT
