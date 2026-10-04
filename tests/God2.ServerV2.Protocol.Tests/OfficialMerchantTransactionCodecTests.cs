@@ -28,6 +28,60 @@ public sealed class OfficialMerchantTransactionCodecTests
     }
 
     [Theory]
+    [InlineData(3954, 6901, 1, 1, 7)]
+    [InlineData(1504, 6906, 1, 1, 13)]
+    [InlineData(1504, 6906, 2, 2, 12)]
+    public void Parses_encoded_world_frame(
+        int handle, int item, int quantity, int operation, int index)
+    {
+        var decoded = Frame(handle, item, quantity, operation, index);
+        var encoded = OfficialWorldBootstrapCodec.EncodeFrame(decoded);
+
+        Assert.True(
+            OfficialMerchantTransactionCodec.IsCandidate(encoded));
+
+        Assert.True(
+            OfficialMerchantTransactionCodec.TryDecode(
+                encoded,
+                out var value,
+                out var failure));
+
+        Assert.Equal(string.Empty, failure);
+        Assert.NotNull(value);
+        Assert.Equal((ushort)handle, value!.ClientEntityHandle);
+        Assert.Equal((ushort)item, value.ClientItemId);
+        Assert.Equal((byte)quantity, value.Quantity);
+        Assert.Equal(
+            (OfficialMerchantTransactionOperation)operation,
+            value.Operation);
+        Assert.Equal(
+            (ushort)index,
+            value.CatalogIndexOrClientInventorySlot);
+    }
+
+    [Fact]
+    public void Recognizes_corrupt_merchant_candidate_but_rejects_decode()
+    {
+        var decoded = Frame(1504, 6906, 1, 1, 13);
+        decoded[7] = 2;
+
+        var encoded =
+            OfficialWorldBootstrapCodec.EncodeFrame(decoded);
+
+        Assert.True(
+            OfficialMerchantTransactionCodec.IsCandidate(encoded));
+
+        Assert.False(
+            OfficialMerchantTransactionCodec.TryDecode(
+                encoded,
+                out var value,
+                out var failure));
+
+        Assert.Null(value);
+        Assert.Equal("ChecksumMismatch", failure);
+    }
+
+    [Theory]
     [InlineData(0, 6906, 1, 1, "InvalidFields")]
     [InlineData(1504, 0, 1, 1, "InvalidFields")]
     [InlineData(1504, 6906, 0, 1, "InvalidFields")]

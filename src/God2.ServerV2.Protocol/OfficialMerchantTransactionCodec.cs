@@ -25,6 +25,61 @@ public static class OfficialMerchantTransactionCodec
     public const byte Opcode = 0x38;
     public const int FrameLength = 12;
 
+    public static bool IsCandidate(
+        ReadOnlySpan<byte> encodedFrame)
+    {
+        if (encodedFrame.Length != FrameLength ||
+            BinaryPrimitives.ReadUInt16LittleEndian(
+                encodedFrame) != FrameLength)
+        {
+            return false;
+        }
+
+        var decoded =
+            OfficialWorldBootstrapCodec.DecodeFrame(encodedFrame);
+
+        try
+        {
+            return decoded[2] == Opcode;
+        }
+        finally
+        {
+            Array.Clear(decoded);
+        }
+    }
+
+    public static bool TryDecode(
+        ReadOnlySpan<byte> encodedFrame,
+        out OfficialMerchantTransactionSelection? selection,
+        out string failureCode)
+    {
+        selection = null;
+        failureCode = string.Empty;
+
+        if (encodedFrame.Length != FrameLength ||
+            BinaryPrimitives.ReadUInt16LittleEndian(
+                encodedFrame) != FrameLength)
+        {
+            failureCode = "InvalidLength";
+            return false;
+        }
+
+        var decoded =
+            OfficialWorldBootstrapCodec.DecodeFrame(encodedFrame);
+
+        try
+        {
+            return TryDecodeDecoded(
+                decoded,
+                out selection,
+                out failureCode);
+        }
+        finally
+        {
+            Array.Clear(decoded);
+        }
+    }
+
     public static bool TryDecodeDecoded(
         ReadOnlySpan<byte> decodedFrame,
         out OfficialMerchantTransactionSelection? selection,

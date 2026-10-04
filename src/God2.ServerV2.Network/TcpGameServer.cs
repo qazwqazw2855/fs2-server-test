@@ -18,6 +18,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly ICharacterInventorySnapshotRepository? _inventoryRepository;
     private readonly IMapMovementBoundsRepository? _movementBoundsRepository;
     private readonly IWorldLoginMapIdentityRepository? _worldLoginMapIdentityRepository;
+    private readonly MerchantInteractionBindingProvider? _merchantInteractionBindingProvider;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -43,7 +44,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         PortalRouteService? portalRouteService = null,
         ICharacterInventorySnapshotRepository? inventoryRepository = null,
         IMapMovementBoundsRepository? movementBoundsRepository = null,
-        IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository = null)
+        IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository = null,
+        MerchantInteractionBindingProvider? merchantInteractionBindingProvider = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -66,6 +68,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         _inventoryRepository = inventoryRepository;
         _movementBoundsRepository = movementBoundsRepository;
         _worldLoginMapIdentityRepository = worldLoginMapIdentityRepository;
+        _merchantInteractionBindingProvider =
+            merchantInteractionBindingProvider;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -133,6 +137,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _inventoryRepository,
                     _movementBoundsRepository,
                     _worldLoginMapIdentityRepository,
+                    _merchantInteractionBindingProvider,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -188,6 +193,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterInventorySnapshotRepository? inventoryRepository,
         IMapMovementBoundsRepository? movementBoundsRepository,
         IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository,
+        MerchantInteractionBindingProvider? merchantInteractionBindingProvider,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -791,6 +797,132 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 "NPC interaction candidate rejected: " +
                                 $"bytes={worldFrame.Length}; " +
                                 $"reason={npcInteractionFailure}; " +
+                                "closing connection.");
+                            break;
+                        }
+
+                        if (OfficialMerchantTransactionCodec.TryDecode(
+                                worldFrame,
+                                out var merchantTransaction,
+                                out var merchantTransactionFailure) &&
+                            merchantTransaction is not null)
+                        {
+                            if (!npcInteractions.TryGetByConnection(
+                                    connectionId,
+                                    out var merchantInteraction) ||
+                                merchantInteraction is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Merchant transaction rejected: " +
+                                    $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                    "reason=NoCurrentNpcInteraction; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            if (merchantInteraction.ClientEntityHandle !=
+                                merchantTransaction.ClientEntityHandle)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Merchant transaction rejected: " +
+                                    $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                    $"currentHandle={merchantInteraction.ClientEntityHandle}; " +
+                                    $"spawn={merchantInteraction.SpawnId}; " +
+                                    "reason=InteractionHandleMismatch; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            if (merchantInteractionBindingProvider is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Merchant transaction rejected: " +
+                                    $"spawn={merchantInteraction.SpawnId}; " +
+                                    $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                    "reason=MerchantBindingProviderUnavailable; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            var merchantBinding =
+                                await merchantInteractionBindingProvider.ResolveAsync(
+                                    merchantInteraction.SpawnId,
+                                    merchantInteraction.MapId,
+                                    OfficialNpcSpawnCodec.ClientBuildId,
+                                    merchantTransaction.ClientEntityHandle,
+                                    serverCancellationToken);
+
+                            if (merchantBinding is null)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Merchant transaction rejected: " +
+                                    $"map={merchantInteraction.MapId}; " +
+                                    $"spawn={merchantInteraction.SpawnId}; " +
+                                    $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                    "reason=MerchantBindingNotFound; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            var merchantInteractionResolver =
+                                new MerchantInteractionResolver(
+                                    npcInteractions,
+                                    worldPresences,
+                                    worldNpcs);
+
+                            var merchantInteractionStatus =
+                                merchantInteractionResolver.Check(
+                                    connectionId,
+                                    merchantInteraction.InteractionId,
+                                    merchantBinding.MerchantId,
+                                    merchantBinding);
+
+                            if (merchantInteractionStatus !=
+                                MerchantInteractionStatus.Allowed)
+                            {
+                                Log(
+                                    connectionId,
+                                    "Merchant transaction rejected: " +
+                                    $"merchant={merchantBinding.MerchantId}; " +
+                                    $"map={merchantInteraction.MapId}; " +
+                                    $"spawn={merchantInteraction.SpawnId}; " +
+                                    $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                    $"reason={merchantInteractionStatus}; " +
+                                    "closing connection.");
+                                break;
+                            }
+
+                            Log(
+                                connectionId,
+                                "RX MerchantTransaction " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"character={merchantInteraction.CharacterId}; " +
+                                $"merchant={merchantBinding.MerchantId}; " +
+                                $"map={merchantInteraction.MapId}; " +
+                                $"spawn={merchantInteraction.SpawnId}; " +
+                                $"handle={merchantTransaction.ClientEntityHandle}; " +
+                                $"item={merchantTransaction.ClientItemId}; " +
+                                $"quantity={merchantTransaction.Quantity}; " +
+                                $"operation={merchantTransaction.Operation}; " +
+                                $"selector={merchantTransaction.CatalogIndexOrClientInventorySlot}; " +
+                                "authorization=InteractionAllowed; " +
+                                "transactionExecution=BlockedNotWired; " +
+                                "wireResponse=None");
+                            continue;
+                        }
+
+                        if (OfficialMerchantTransactionCodec.IsCandidate(
+                                worldFrame))
+                        {
+                            Log(
+                                connectionId,
+                                "Merchant transaction candidate rejected: " +
+                                $"bytes={worldFrame.Length}; " +
+                                $"reason={merchantTransactionFailure}; " +
                                 "closing connection.");
                             break;
                         }
