@@ -1,54 +1,114 @@
 # Merchant TCP checkpoint — 2026-10-04
 
-## Completed
-- Added generic OfficialMerchantTransactionCodec for decoded 12-byte opcode 0x38 requests.
-- Extracts NPC handle, client item ID, quantity, buy/sell operation and catalog index/client inventory slot.
-- Validates length, opcode, checksum, nonzero identity/quantity and supported operation.
-- Decoder does not bind a specific merchant, authorize a transaction or resolve client inventory slots.
-- Protocol suite: 121 passed, 0 failed, 0 skipped; 10 cases added.
-- Latest full six-suite verification remains 409 passed at source dd31e94.
-- Full suites were not rerun after migration 478 or this decoder change.
+## Checkpoint
+- Branch: `codex/inventory-grant-20261003`
+- Implementation checkpoint: `70cb113`
+- Repository: `/home/ubuntu/games/fs2-v2-inventory-grant-20261003`
+- Production 6001 was not deployed or restarted.
 
-## Database
-- Migration 478 applied to god2-runtime-db-test and journaled.
-- Checksum: 38072cfbb3425c4a2aecfe65f74bd5bb7527b218a11eb5b9a778950af1174cf1.
-- Small leg meat canonical item_id 2117880098 now has client_item_id 6906.
-- Global prices remain buy_price NULL / sell_price 60; maximum_stack remains unknown.
-- Observed merchant purchase price 60 and buyback price 6 are catalog-specific evidence.
-- No merchant listing or NPC spawn was added this session.
+## Completed
+- Generic `OfficialMerchantTransactionCodec` handles the 12-byte opcode `0x38` request.
+- Codec now owns the encoded World-frame boundary through `IsCandidate` / `TryDecode`.
+- It extracts NPC handle, client item ID, quantity, BUY/SELL operation and catalog index/client inventory slot.
+- It validates length, opcode, checksum, nonzero identities/quantity and supported operation.
+- Decoder does not authorize merchants, trust client prices or resolve authoritative inventory identity.
+- Protocol suite is now 125/125.
+- `InternalsVisibleTo` is limited to Protocol.Tests so tests can use the existing World encoder without duplicating cipher logic.
+
+## Server-owned merchant projections
+- Migration 479 publishes the verified current-build merchant client catalog identity.
+- Migration 480 grants the V2 runtime role the required merchant read access.
+- Migration 479 checksum:
+  `3dd4c3b7aa94c7e61ef79543cb1adae7dbbd319887b0fc78dcc02acdb2ad1f94`
+- Migration 480 checksum:
+  `870d0ce2e1bfe6b82d24a058333c83bfa984e484016bf111bbba6b65f1790039`
+- Added `MerchantCatalogIdentity` repository for exact:
+  MerchantId + ClientBuildId + wire catalog index + client item ID → canonical server listing/item identity.
+- Added `CharacterWalletSnapshotRepository`; wallet state remains server-owned.
+- No client-supplied price is authoritative.
+
+## Merchant interaction authority
+- Added `MerchantInteractionAuthority` and MariaDB repository.
+- Authority lookup key is:
+  `SpawnId + MapId + ClientBuildId + ClientEntityHandle`.
+- The resolved authority contains MerchantId; TCP does not hardcode MerchantId.
+- Merchant/NPC identity is checked bidirectionally.
+- Disabled/ambiguous/mismatched authority fails closed.
+- Added `MerchantInteractionBindingProvider` as a straight authority → binding projection.
+- Provider does not infer evidence, distance or enablement.
+
+## TCP authorization chain
+Current request path:
+
+`0x38 encoded World frame`
+→ `OfficialMerchantTransactionCodec`
+→ current `NpcInteractionSession`
+→ handle ownership check
+→ authoritative `SpawnId / MapId / Handle`
+→ DB Merchant Authority
+→ `MerchantId / MerchantInteractionBinding`
+→ `MerchantInteractionResolver.Check`
+→ transaction execution boundary
+
+- The NPC interaction session's SpawnId comes from the server-visible NPC registry, not the client request.
+- Client build comes from the server's exact-current build identity, not the `0x38` payload.
+- Resolver rechecks interaction, world presence, NPC identity and policy.
+- Existing per-connection `ConnectionCommandLane` remains authoritative; no second lane was introduced.
+
+## Current fail-closed state
+- Merchant handle 3954 can resolve formal identity, but its merchant interaction Binding is not approved.
+- Current Binding remains `Enabled=false`.
+- Current `MaximumDistance=null`.
+- Current merchant interaction evidence is not sufficient for promotion.
+- Therefore `MerchantInteractionResolver` returns a blocked status.
+- Do not promote a distance such as `2` from test fixtures.
+- NPC Open spatial logging is `ObservationOnly` and is not authorization evidence.
+
+## Transaction boundary
+- BUY execution is intentionally not wired yet.
+- `PurchaseInLeaseAsync` has not been called from TCP.
+- No Gold is deducted.
+- No item is granted.
+- No merchant result wire response is emitted.
+- SELL execution remains unwired.
+- Do not infer SELL item-instance identity from the client slot value.
+- `test001` currently has no authoritative Gold wallet row; do not insert one manually merely to make BUY pass.
+
+## Verification at close
+- Core: 7/7
+- Application: 114/114
+- Session: 20/20
+- Protocol: 125/125
+- Network: 113/113
+- Non-DB suites total: 379/379
+- Merchant Catalog Identity + Merchant Interaction Authority DB integration: 4/4
+- Network project build succeeded after TCP authority wiring.
+- `git diff --check` clean before checkpoint commit.
 
 ## Evidence boundaries
-- User confirms shops share generic functionality; catalogs and prices are server configuration.
-- CN official server: 夢迴朝歌; NPC 楓華雜貨鋪老闆.
-- CN client SHA256: 6f2639a0a7ad25053d0364108147173eb68bd04f57e6942491f42633f40052bc.
-- CN requests: handle 1504, item 6906, purchase index 13, sale client slot 12.
-- Two purchases of quantity 1 cost 60 each; one sale of quantity 2 returned 12.
-- CN shop-entry capture indicates Area 2 Map 15 and NPC position (17,8).
-- Private historical mapping: map 557790525, Area 4 Map 19, indoor/groceryl.hmd.
-- Uploaded private groceryL.hmdZ SHA256 matches historical resource evidence:
-  42d769c0ff328db3e1e295e17208d0db7a0ff12608976f952dae800ff79c3c00.
-- Historical private NPC: npc_id 1075128734, spawn_id 316049902, handle 1504, position (17,8).
-- Current DB has the NPC template disabled, merchant_id NULL, and no spawn for handle 1504.
-- CN and private map IDs, cipher state and spawn bytes must retain separate provenance.
+- Shops share generic functionality; catalogs and prices are server configuration.
+- CN official evidence remains supplemental and must not be merged with private historical provenance.
+- CN observed handle 1504 / item 6906 / BUY index 13 / SELL slot 12 remain capture evidence only.
+- CN observed purchase price 60 and buyback 6 are catalog-specific evidence, not global item-price rules.
+- Private historical grocery mapping remains separate provenance.
+- 3954 must not be promoted solely from historical rows or test fixtures.
 
 ## Next implementation
-1. Inspect authoritative merchant catalog, item identity, inventory and wallet repository interfaces.
-2. Resolve purchase index and sale client slot through server-owned projections.
-3. Construct commands from authoritative character, inventory, slot and wallet state.
-4. Dispatch through PurchaseInLeaseAsync / SellInLeaseAsync using the TCP connection's existing lane.
-5. Implement verified open/result/close wire projections and corresponding tests.
-6. Verify DB and isolated TCP flow before Client acceptance.
+1. Establish independently supportable merchant interaction evidence / distance policy before enabling a Binding.
+2. Keep the lookup chain server-owned:
+   current interaction → Spawn/Map/Build/Handle → Authority → MerchantId/Binding.
+3. After interaction authorization is legitimately `Allowed`, resolve BUY catalog identity through the server repository.
+4. Read authoritative inventory and wallet snapshots.
+5. Construct `MerchantPurchaseCommand` from server-owned state.
+6. Dispatch through `PurchaseInLeaseAsync` using the TCP connection's existing `ConnectionCommandLane`.
+7. Keep SELL blocked until authoritative client-slot → item-instance projection is established.
+8. Verify on isolated 6002 before any production 6001 deployment.
 
-## Current limitations
-- TCP has not been wired to the merchant transaction decoder or command service.
-- No new merchant response serializer or arbitrary slot mapping was introduced.
-- External registry mutations are not all coordinated through connection lanes.
-- Latest isolated 6002 World Probe was at b17cdbb; not rerun for this checkpoint.
-- No 6001 restart or deployment; production source remains 3344eb3.
-- No private Client merchant acceptance performed.
-
-## Working locations
-- Repository: /home/ubuntu/games/fs2-v2-inventory-grant-20261003
-- Branch: codex/inventory-grant-20261003
-- Source review: /tmp/god2-merchant-tcp-review.txt (temporary; recreate if missing)
-- See docs/parity/merchant-cn-live-20261004.md for capture and identity repair audit.
+## Permanent rules
+- 沒有正服證據，不猜協定；沒有建立 baseline，不直接改 V2。
+- Taiwan official evidence first; CN official/public beta remains supplemental with explicit provenance.
+- Merchant products and prices are DB configuration, not NPC-specific hardcoded TCP logic.
+- Do not hardcode MerchantId in TCP.
+- Do not trust client price, character identity, wallet state or canonical item identity.
+- Do not create a second connection command lane.
+- Do not deploy or restart 6001 before an explicitly validated checkpoint.
