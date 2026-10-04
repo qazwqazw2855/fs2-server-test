@@ -16,3 +16,13 @@
 - The test owns commit/rollback around GrantInTransactionAsync; it does not test stack behavior through GrantAsync.
 - Full suites have not yet been rerun; previous full result remains 408 at source 1c25881.
 - No formal stack-rule approval, TCP merchant dispatch, production deployment or Client acceptance.
+
+## Full verification
+
+- Tested source: dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080.
+- Six suites: 409 passed, 0 failed, 0 skipped; DB integration enabled.
+- Core 7, Application 114, Session 20, Protocol 111, Network 111, Persistence Integration 46.
+- All nested runners and the outer stack fixture reported successful cleanup.
+- Supersedes the earlier full-suite verification gap.
+- Formal content approval, merchant TCP dispatch and Client acceptance remain incomplete.
+- Production 6001 was not deployed.
