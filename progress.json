@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-06T19:37:34+08:00",
-  "summary": "提交 2c21f97、ade3074：新增 MerchantPurchaseCommandFactory 與 MerchantPurchasePreparationService，從 server-owned catalog、inventory、wallet snapshot 建立命令；Host/TCP 已接入唯讀 BUY preparation，沿用既有 connection lease。Protocol 125/125、Network 139/139 通過；Host/LoginProbe Release build 通過。隔離 127.0.0.1:6002 完成 Login、World handshake、1772-byte Bootstrap、NPC 3793 接收；未開啟 NPC interaction 的 synthetic BUY 收到 EOF，server 明確記錄 NoCurrentNpcInteraction，未進入 preparation。此結果不代表成功 TCP preparation 或購買完成。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未部署或重啟 6001，未手動補錢包，未進行原版 Client 商店驗收。",
+  "updated_at": "2026-10-06T19:54:55+08:00",
+  "summary": "提交 37133bb：新增兩個實際 loopback TCP 測試，使用系統分配的 port 與記憶體 repositories，完成 Login、World、1772-byte Bootstrap、NPC 5042 open、BUY、Logout。有錢包時 prepared=True；缺少錢包時 prepared=False、WalletMissing；兩者均未送交易回應。Network 完整 suite 141/141、Host Release build 通過。本日 Protocol 125/125 與最新 Network 141/141 合計 266/266，未重跑完整六套或 DB integration。測試 authority 與距離 2 為 synthetic fixture，不代表正式 merchant 核准。距離 3 的既有 NPC-open 證據仍需原始 exact-build artifact；AWS 現有 runtime hash 不符，不能用來驗證該版本。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未修改正式 DB、未部署或重啟 6001、未完成原版 Client 商店驗收。",
   "milestones": [
     {
       "key": "foundation",
@@ -322,8 +322,8 @@
     }
   ],
   "current_focus": {
-    "title": "商店 BUY 準備完成 → 授權證據與執行邊界",
-    "description": "Host/TCP 已接入同一 connection lease 內的唯讀 BUY preparation。下一步核對 exact-build NPC-open 距離 3 的原始證據及交易適用範圍，補成功 TCP preparation 驗證，再處理 PurchaseInLeaseAsync 與回應證據。目前 Merchant authority 啟用／距離設定未變，SELL 維持阻擋。",
+    "title": "商店 TCP 準備驗證完成 → 購買執行邊界與授權證據",
+    "description": "已驗證 synthetic repositories 下成功 TCP preparation 與 WalletMissing 阻擋。下一步核對 PurchaseInLeaseAsync 執行前重驗、交易 ID 與不確定結果重試邊界，並取得 exact-build 授權及回應證據。正式 Merchant authority 設定未變，交易執行與 SELL 維持阻擋。",
     "status": "in_progress"
   },
   "verification": {
@@ -363,7 +363,7 @@
         "failed": 0
       }
     ],
-    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。\n2026-10-06 補充：提交 2c21f97、ade3074：新增 MerchantPurchaseCommandFactory 與 MerchantPurchasePreparationService，從 server-owned catalog、inventory、wallet snapshot 建立命令；Host/TCP 已接入唯讀 BUY preparation，沿用既有 connection lease。Protocol 125/125、Network 139/139 通過；Host/LoginProbe Release build 通過。隔離 127.0.0.1:6002 完成 Login、World handshake、1772-byte Bootstrap、NPC 3793 接收；未開啟 NPC interaction 的 synthetic BUY 收到 EOF，server 明確記錄 NoCurrentNpcInteraction，未進入 preparation。此結果不代表成功 TCP preparation 或購買完成。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未部署或重啟 6001，未手動補錢包，未進行原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-preparation-20261006.md。"
+    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。\n2026-10-06 補充：提交 2c21f97、ade3074：新增 MerchantPurchaseCommandFactory 與 MerchantPurchasePreparationService，從 server-owned catalog、inventory、wallet snapshot 建立命令；Host/TCP 已接入唯讀 BUY preparation，沿用既有 connection lease。Protocol 125/125、Network 139/139 通過；Host/LoginProbe Release build 通過。隔離 127.0.0.1:6002 完成 Login、World handshake、1772-byte Bootstrap、NPC 3793 接收；未開啟 NPC interaction 的 synthetic BUY 收到 EOF，server 明確記錄 NoCurrentNpcInteraction，未進入 preparation。此結果不代表成功 TCP preparation 或購買完成。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未部署或重啟 6001，未手動補錢包，未進行原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-preparation-20261006.md。\n2026-10-06 TCP fixture 補充：提交 37133bb：新增兩個實際 loopback TCP 測試，使用系統分配的 port 與記憶體 repositories，完成 Login、World、1772-byte Bootstrap、NPC 5042 open、BUY、Logout。有錢包時 prepared=True；缺少錢包時 prepared=False、WalletMissing；兩者均未送交易回應。Network 完整 suite 141/141、Host Release build 通過。本日 Protocol 125/125 與最新 Network 141/141 合計 266/266，未重跑完整六套或 DB integration。測試 authority 與距離 2 為 synthetic fixture，不代表正式 merchant 核准。距離 3 的既有 NPC-open 證據仍需原始 exact-build artifact；AWS 現有 runtime hash 不符，不能用來驗證該版本。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未修改正式 DB、未部署或重啟 6001、未完成原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-fixture-20261006.md。"
   },
   "blockers": [
     {
@@ -401,6 +401,11 @@
     "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-06",
+      "title": "Merchant TCP preparation 成功與缺少錢包驗證",
+      "detail": "提交 37133bb：新增兩個實際 loopback TCP 測試，使用系統分配的 port 與記憶體 repositories，完成 Login、World、1772-byte Bootstrap、NPC 5042 open、BUY、Logout。有錢包時 prepared=True；缺少錢包時 prepared=False、WalletMissing；兩者均未送交易回應。Network 完整 suite 141/141、Host Release build 通過。本日 Protocol 125/125 與最新 Network 141/141 合計 266/266，未重跑完整六套或 DB integration。測試 authority 與距離 2 為 synthetic fixture，不代表正式 merchant 核准。距離 3 的既有 NPC-open 證據仍需原始 exact-build artifact；AWS 現有 runtime hash 不符，不能用來驗證該版本。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未修改正式 DB、未部署或重啟 6001、未完成原版 Client 商店驗收。"
+    },
     {
       "date": "2026-10-06",
       "title": "Merchant BUY 準備接線與 TCP 拒絕驗證",
@@ -706,15 +711,15 @@
     "percent": 55
   },
   "current_validation": {
-    "title": "Merchant BUY Preparation / TCP Rejection",
+    "title": "Merchant TCP Preparation / WalletMissing",
     "date": "2026-10-06",
     "status": "passing",
-    "summary": "本輪 Protocol 125/125、Network 139/139，共 264/264；隔離 6002 無 interaction BUY 拒絕測試通過。未重跑完整六套或 DB integration。",
+    "summary": "本日 Protocol 125/125、最新 Network 141/141，共 266/266；兩個 loopback TCP fixture 通過，Host Release build 通過。先前隔離 6002 無 interaction 拒絕驗證已通過。未重跑完整六套或 DB integration。",
     "groups": [
       {
         "name": "Protocol / Network",
-        "passed": 264,
-        "total": 264
+        "passed": 266,
+        "total": 266
       }
     ],
     "suites": [
@@ -725,14 +730,15 @@
       },
       {
         "name": "Network",
-        "passed": 139,
-        "total": 139
+        "passed": 141,
+        "total": 141
       }
     ],
     "limitations": [
-      "409/409 是先前完整六套基線，本輪未重跑。",
-      "6002 驗證 TCP 拒絕入口；成功 preparation 分支尚未實機驗證。",
-      "Synthetic BUY fixture 不屬新增正服封包證據。",
+      "409/409 保留為先前完整六套基線，本輪未重跑。",
+      "成功 TCP preparation 使用記憶體 fixture，尚未驗證正式 MariaDB 購買。",
+      "Synthetic authority、距離與 BUY fixture 不屬新增正服證據。",
+      "Exact-build NPC-open 原始 artifact 尚未取得；交易距離適用範圍待核對。",
       "交易執行、SELL、交易結果回應及原版 Client 驗收尚未完成。",
       "未部署或重啟 production 6001。"
     ]
