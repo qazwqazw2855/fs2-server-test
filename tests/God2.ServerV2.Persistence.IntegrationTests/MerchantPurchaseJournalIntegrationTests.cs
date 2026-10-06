@@ -165,7 +165,7 @@ public sealed class MerchantPurchaseJournalIntegrationTests
         }
     }
 
-    private sealed class Repositories :
+    internal sealed class Repositories :
         IAccountAuthenticator, ICharacterListRepository, INpcSnapshotRepository,
         IMerchantInteractionAuthorityRepository, IMerchantCatalogIdentityRepository,
         ICharacterInventorySnapshotRepository, ICharacterWalletSnapshotRepository,
@@ -203,7 +203,7 @@ public sealed class MerchantPurchaseJournalIntegrationTests
             _writer = new(options, new FixtureBuyGate(character, merchant));
         }
 
-        public static async Task<Repositories> CreateAsync()
+        public static async Task<Repositories> CreateAsync(bool requireInitialState = true)
         {
             static string Required(string name) =>
                 Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -241,12 +241,15 @@ public sealed class MerchantPurchaseJournalIntegrationTests
             var wallet = await repos._wallet.GetGoldByCharacterAsync(
                 character, CancellationToken.None);
             Assert.NotNull(initial);
-            Assert.Empty(initial.Slots);
-            Assert.Equal(0, initial.Version);
-            Assert.Equal(0, initial.MutationSequence);
             Assert.NotNull(wallet);
-            Assert.Equal(100, wallet.Balance);
-            Assert.Equal(0, wallet.Version);
+            if (requireInitialState)
+            {
+                Assert.Empty(initial.Slots);
+                Assert.Equal(0, initial.Version);
+                Assert.Equal(0, initial.MutationSequence);
+                Assert.Equal(100, wallet.Balance);
+                Assert.Equal(0, wallet.Version);
+            }
             return repos;
         }
 
