@@ -1,6 +1,7 @@
 using System.Text.Json;
 using God2.ServerV2.Application;
 using God2.ServerV2.Network;
+using God2.ServerV2.Protocol;
 using God2.ServerV2.Persistence;
 using MySqlConnector;
 
@@ -62,7 +63,7 @@ public sealed class MerchantCommandIntegrationTests
         var npcs = new WorldNpcRegistry();
         var npc = new NpcSnapshotEntry(
             9001, 8001, "Command fixture", 100, 74, 124,
-            "fixture-build", 5042, null, null, null, null, null,
+            OfficialMerchantPurchaseResultCodec.ClientBuildId, 3954, null, null, null, null, null,
             null, null, "EvidenceBlocked", "command-fixture");
         npcs.PublishMap(100, [npc]);
         Assert.True(presences.TryEnter(new WorldPresence(
@@ -71,10 +72,10 @@ public sealed class MerchantCommandIntegrationTests
                 character, account, "Fixture", null, null, null, 1, null,
                 100, 74, 124, now, null), now)).Succeeded);
         var interactionId = interactions.TryOpen(
-            101, character, 100, 5042, [npc], now).Session!.InteractionId;
+            101, character, 100, 3954, [npc], now).Session!.InteractionId;
         var binding = new MerchantInteractionBinding(
-            merchant, 8001, 9001, 100, 5042,
-            "fixture-build", 2, "command-fixture", true);
+            merchant, 8001, 9001, 100, 3954,
+            OfficialMerchantPurchaseResultCodec.ClientBuildId, 2, "command-fixture", true);
         var resolver = new MerchantInteractionResolver(interactions, presences, npcs);
 
         var lane = new ConnectionCommandLane();
@@ -115,6 +116,43 @@ public sealed class MerchantCommandIntegrationTests
             Guid.NewGuid(), "command-buy", 253231541, 1,
             initial.InventoryId, 0, 0, 0);
 
+        // Synthetic authority only; this does not approve a formal merchant.
+        var selection = new OfficialMerchantTransactionSelection(
+            3954, 6901, 1, OfficialMerchantTransactionOperation.Buy, 7);
+
+        async Task<MerchantPurchaseExecutionResult> ExecuteInFrame(
+            MerchantCommandService service,
+            MerchantPurchaseCommand command)
+        {
+            using var lease = await lane.EnterAsync(CancellationToken.None);
+            var coordinator = new MerchantPurchaseExecutionService(
+                lane, presences, resolver, service, repository);
+            return await coordinator.ExecuteInLeaseAsync(
+                lease, 101, interactionId, binding, selection,
+                command, CancellationToken.None);
+        }
+
+        var blockedService = new MerchantCommandService(
+            presences, resolver,
+            new MariaDbMerchantPurchaseWriter(
+                options, new BlockedMerchantPurchaseEvidenceGate()),
+            new MariaDbMerchantSaleWriter(
+                options, new SaleGate(character, merchant)),
+            lane);
+        var blocked = await ExecuteInFrame(blockedService, buy);
+        Assert.Equal(MerchantPurchaseStatus.EvidenceBlocked,
+            blocked.TransactionResult!.Status);
+        Assert.Null(blocked.EncodedResponse);
+        Assert.False(blocked.RequiresReconciliation);
+        Assert.Equal(0, await Scalar("""
+            SELECT COUNT(*) FROM god2_player.inventory_transaction_idempotency
+            WHERE CharacterId=@character;
+            """));
+        Assert.Equal(100, await Scalar("""
+            SELECT Balance FROM god2_player.player_currency_balances
+            WHERE CharacterId=@character AND CurrencyType='Gold';
+            """));
+
         Assert.True(presences.TryMove(101, character, 100, 124, out _));
         var rejected = await PurchaseInFrame(
             101, interactionId, binding, buy, CancellationToken.None);
@@ -130,13 +168,43 @@ public sealed class MerchantCommandIntegrationTests
             """));
 
         Assert.True(presences.TryMove(101, character, 74, 124, out _));
-        var purchased = await PurchaseInFrame(
-            101, interactionId, binding, buy, CancellationToken.None);
+        var purchased = await ExecuteInFrame(Service(), buy);
         Assert.Equal(MerchantInteractionStatus.Allowed, purchased.InteractionStatus);
         Assert.NotNull(purchased.TransactionResult);
         Assert.Equal(MerchantPurchaseStatus.Purchased, purchased.TransactionResult.Status);
         Assert.Equal(60, purchased.TransactionResult.BalanceAfter);
         Assert.Equal(1, purchased.TransactionResult.InventoryVersionAfter);
+        Assert.Equal("", purchased.FailureCode);
+        Assert.False(purchased.RequiresReconciliation);
+        Assert.True(OfficialMerchantPurchaseResultCodec.TryEncode(
+            OfficialMerchantPurchaseResultCodec.ClientBuildId,
+            selection, 60, out var expectedResponse, out _));
+        Assert.Equal(expectedResponse, purchased.EncodedResponse);
+        Assert.NotNull(purchased.EncodedResponse);
+        Assert.Equal(57, purchased.EncodedResponse.Length);
+
+        // A second fresh BUY cannot use this empty-inventory response profile.
+        var secondBuy = buy with
+        {
+            TransactionId = Guid.NewGuid(),
+            IdempotencyKey = "command-second-buy-blocked",
+            ExpectedInventoryVersion = 1,
+            ExpectedMutationSequence = 1,
+            ExpectedWalletVersion = 1
+        };
+        var layoutBlocked = await ExecuteInFrame(Service(), secondBuy);
+        Assert.Null(layoutBlocked.TransactionResult);
+        Assert.Null(layoutBlocked.EncodedResponse);
+        Assert.Equal("InventoryLayoutEvidenceBlocked",
+            layoutBlocked.FailureCode);
+        Assert.Equal(60, await Scalar("""
+            SELECT Balance FROM god2_player.player_currency_balances
+            WHERE CharacterId=@character AND CurrencyType='Gold';
+            """));
+        Assert.Equal(1, await Scalar("""
+            SELECT COUNT(*) FROM god2_player.inventory_transaction_idempotency
+            WHERE CharacterId=@character AND OperationType='V2MerchantBuy';
+            """));
 
         var replay = await PurchaseInFrame(
             101, interactionId, binding, buy, CancellationToken.None);
@@ -160,7 +228,7 @@ public sealed class MerchantCommandIntegrationTests
             slotVersion, 1);
 
         Assert.Equal(NpcInteractionCloseStatus.Closed,
-            interactions.TryClose(101, 5042, out _));
+            interactions.TryClose(101, 3954, out _));
         var closedSale = await SellInFrame(
             101, interactionId, binding, sale, CancellationToken.None);
         Assert.Equal(MerchantInteractionStatus.InteractionConflict,
@@ -170,7 +238,7 @@ public sealed class MerchantCommandIntegrationTests
         Assert.Equal(JsonSerializer.Serialize(beforeSale), JsonSerializer.Serialize(unchanged));
 
         var reopenedId = interactions.TryOpen(
-            101, character, 100, 5042, [npc], now).Session!.InteractionId;
+            101, character, 100, 3954, [npc], now).Session!.InteractionId;
         Assert.NotEqual(interactionId, reopenedId);
         var oldSale = await SellInFrame(
             101, interactionId, binding, sale, CancellationToken.None);

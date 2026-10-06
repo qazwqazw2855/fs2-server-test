@@ -41,6 +41,7 @@
 - This does not establish generic inventory layouts, stacking, repeated BUY,
   production-ready replay reconciliation, or original-client acceptance.
 - Writer exceptions do not simulate a lost database commit acknowledgement.
-- Earlier filtered MariaDB purchase and command tests passed and cleaned
-  fixtures; the new execution coordinator has not yet been DB-integrated.
+- Filtered MariaDB command integration now verifies the execution coordinator,
+  committed inventory readback and 57-byte BUY response projection.
+- TCP with MariaDB end-to-end remains unverified; these are separate checks.
 - No production 6001 deployment/restart or test001 wallet change occurred.
