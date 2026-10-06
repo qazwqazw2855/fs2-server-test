@@ -24,6 +24,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly IMerchantPurchaseWriter? _merchantPurchaseWriter;
     private readonly IMerchantSaleWriter? _merchantSaleWriter;
     private readonly bool _enableRestrictedInventoryBootstrap;
+    private readonly ICharacterEconomySnapshotRepository? _economyRepository;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -55,7 +56,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterWalletSnapshotRepository? walletRepository = null,
         IMerchantPurchaseWriter? merchantPurchaseWriter = null,
         IMerchantSaleWriter? merchantSaleWriter = null,
-        bool enableRestrictedInventoryBootstrap = false)
+        bool enableRestrictedInventoryBootstrap = false,
+        ICharacterEconomySnapshotRepository? economyRepository = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -88,10 +90,11 @@ public sealed class TcpGameServer : IAsyncDisposable
         _merchantPurchaseWriter = merchantPurchaseWriter;
         _merchantSaleWriter = merchantSaleWriter;
         if (enableRestrictedInventoryBootstrap &&
-            (inventoryRepository is null || walletRepository is null))
+            economyRepository is null)
             throw new ArgumentException(
-                "Restricted inventory bootstrap requires inventory and wallet repositories.");
+                "Restricted inventory bootstrap requires a consistent economy repository.");
         _enableRestrictedInventoryBootstrap = enableRestrictedInventoryBootstrap;
+        _economyRepository = economyRepository;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -169,6 +172,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _merchantPurchaseWriter,
                     _merchantSaleWriter,
                     _enableRestrictedInventoryBootstrap,
+                    _economyRepository,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -230,6 +234,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         IMerchantPurchaseWriter? merchantPurchaseWriter,
         IMerchantSaleWriter? merchantSaleWriter,
         bool enableRestrictedInventoryBootstrap,
+        ICharacterEconomySnapshotRepository? economyRepository,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -410,7 +415,16 @@ public sealed class TcpGameServer : IAsyncDisposable
                     }
 
                     CharacterInventorySnapshot? bootstrapInventory = null;
-                    if (inventoryRepository is not null)
+                    CharacterWalletSnapshot? bootstrapWallet = null;
+                    if (enableRestrictedInventoryBootstrap)
+                    {
+                        var economy = await economyRepository!.GetByCharacterAsync(
+                            pendingWorld.Character.CharacterId,
+                            serverCancellationToken);
+                        bootstrapInventory = economy.Inventory;
+                        bootstrapWallet = economy.Wallet;
+                    }
+                    else if (inventoryRepository is not null)
                     {
                         var inventory =
                             await inventoryRepository.GetByCharacterAsync(
@@ -531,17 +545,13 @@ public sealed class TcpGameServer : IAsyncDisposable
                     // No writer or purchase replay is invoked during World entry.
                     if (enableRestrictedInventoryBootstrap)
                     {
-                        if (bootstrapInventory is null || walletRepository is null)
+                        if (bootstrapInventory is null)
                         {
                             Log(connectionId,
                                 "Inventory bootstrap rejected: reason=SnapshotUnavailable.");
                             return;
                         }
 
-                        var bootstrapWallet =
-                            await walletRepository.GetGoldByCharacterAsync(
-                                pendingWorld.Character.CharacterId,
-                                serverCancellationToken);
                         if (bootstrapWallet is null ||
                             bootstrapWallet.CharacterId !=
                                 pendingWorld.Character.CharacterId ||

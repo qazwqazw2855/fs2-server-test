@@ -21,7 +21,21 @@ public sealed class MariaDbCharacterInventorySnapshotRepository(
         await using var connection = new MySqlConnection(_connectionString);
         await connection.OpenAsync(cancellationToken);
 
+        return await ReadInTransactionAsync(
+            connection, null, characterId, cancellationToken);
+    }
+
+    internal static async ValueTask<CharacterInventorySnapshot?> ReadInTransactionAsync(
+        MySqlConnection connection,
+        MySqlTransaction? transaction,
+        long characterId,
+        CancellationToken cancellationToken)
+    {
+        if (characterId <= 0)
+            throw new ArgumentOutOfRangeException(nameof(characterId));
+
         await using var command = connection.CreateCommand();
+        command.Transaction = transaction;
         command.CommandText = """
             SELECT s.InventoryId, s.Capacity, s.InventoryVersion,
                    s.MutationSequence, s.DirtyState,

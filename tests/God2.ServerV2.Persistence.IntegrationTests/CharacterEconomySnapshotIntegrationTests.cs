@@ -12,212 +12,62 @@ using God2.ServerV2.Session;
 namespace God2.ServerV2.Persistence.IntegrationTests;
 
 [Collection("InventoryGrantDatabase")]
-public sealed class MerchantPurchaseTcpReconnectIntegrationTests
+public sealed class CharacterEconomySnapshotIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task ReconnectRestoresCommittedInventoryWithoutAnotherPurchase()
+    public async Task ConcurrentCommitDoesNotMixInventoryAndWalletSnapshots()
     {
-        const int scenario = 0;
         var repos = await Repositories.CreateAsync();
-        using var lifetime = new CancellationTokenSource();
-        using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30));
-        using var output = new StringWriter();
-        var previousOutput = Console.Out;
-        Console.SetOut(TextWriter.Synchronized(output));
-
-        await using var server = new TcpGameServer(
-            TcpServerOptions.Loopback(0),
-            new SessionRegistry(),
-            new LoginService(repos),
-            new CharacterListService(repos),
-            npcSnapshotService: new NpcSnapshotService(repos),
-            inventoryRepository: repos,
-            merchantInteractionBindingProvider:
-                new MerchantInteractionBindingProvider(repos),
-            merchantCatalogRepository: repos,
-            walletRepository: repos,
-            merchantPurchaseWriter: repos,
-            merchantSaleWriter: repos,
-            enableRestrictedInventoryBootstrap: true,
-            economyRepository: repos);
-
-        Task? running = null;
-        try
-        {
-            running = server.RunAsync(lifetime.Token);
-            var port = server.LocalEndpoint.Port;
-            Assert.InRange(port, 1, ushort.MaxValue);
-
-            for (var round = 0; round < 2; round++)
-            {
-            using (var login = new TcpClient())
-            {
-                await login.ConnectAsync(IPAddress.Loopback, port, timeout.Token);
-                var stream = login.GetStream();
-                Assert.Equal(
-                    OfficialLoginHandshakeProtocol.ServerHandshakeFrame.ToArray(),
-                    await ReadFrame(stream, timeout.Token));
-                await stream.WriteAsync(
-                    OfficialLoginHandshakeProtocol.ExpectedClientHandshakeFrame,
-                    timeout.Token);
-                Assert.Equal(
-                    OfficialLoginHandshakeProtocol.VersionFollowUpFrame.ToArray(),
-                    await ReadFrame(stream, timeout.Token));
-
-                var request = LoginRequest();
-                try
-                {
-                    await stream.WriteAsync(request, timeout.Token);
-                }
-                finally
-                {
-                    Array.Clear(request);
-                }
-
-                Assert.Equal(
-                    OfficialLoginSuccessCodec.FrameLength,
-                    (await ReadFrame(stream, timeout.Token)).Length);
-                await stream.WriteAsync(
-                    Convert.FromHexString("06009202CE97"), timeout.Token);
-                var characters = await ReadFrame(stream, timeout.Token);
-                Assert.NotEmpty(characters);
-                Assert.Equal(
-                    0, await stream.ReadAsync(new byte[1], timeout.Token));
-            }
-
-            using (var world = new TcpClient())
-            {
-                await world.ConnectAsync(IPAddress.Loopback, port, timeout.Token);
-                var stream = world.GetStream();
-                Assert.Equal(
-                    OfficialWorldHandshakeProtocol.ServerHandshakeFrame.ToArray(),
-                    await ReadFrame(stream, timeout.Token));
-                await stream.WriteAsync(
-                    OfficialWorldHandshakeProtocol.ExpectedClientHandshakeFrame,
-                    timeout.Token);
-                Assert.Equal(
-                    OfficialWorldHandshakeProtocol.FirstFollowUpFrame.ToArray(),
-                    await ReadFrame(stream, timeout.Token));
-
-                var lengths = new[]
-                {
-                    OfficialWorldBootstrapCodec.PlayerSpawnFrameLength,
-                    320, 752, 68, 182, 36, 63, 42, 67, 88, 26
-                };
-                var total = 0;
-                foreach (var length in lengths)
-                {
-                    var frame = await ReadFrame(stream, timeout.Token);
-                    Assert.Equal(length, frame.Length);
-                    total += frame.Length;
-                }
-                Assert.Equal(OfficialWorldBootstrapCodec.PayloadLength, total);
-
-                var spawn = await ReadFrame(stream, timeout.Token);
-                Assert.True(
-                    OfficialNpcSpawnCodec.TryDecodeHandle(spawn, out var handle));
-                Assert.Equal(3954U, handle);
-
-                // Synthetic authorization/catalog fixture. It does not enable
-                // a formal merchant or establish official transaction evidence.
-                if (round == 0)
-                {
-                    await stream.WriteAsync(
-                        OfficialNpcInteractionCodec.EncodeOpen(3954), timeout.Token);
-                    await stream.WriteAsync(
-                        OfficialMerchantTransactionCodec.EncodeRequest(
-                            3954, 6901, 1,
-                            OfficialMerchantTransactionOperation.Buy, 7),
-                        timeout.Token);
-                }
-                // Second World entry sends no open or BUY.
-                // The next frame must come from the inventory restore path.
-
-                // Receive the supported response before logout; rejected,
-                // uncertain or unreconciled execution must produce EOF.
-                if (scenario == 0)
-                {
-                    var response = await ReadFrame(stream, timeout.Token);
-                    Assert.Equal(57, response.Length);
-                    Assert.True(OfficialMerchantPurchaseResultCodec.TryEncode(
-                        OfficialMerchantPurchaseResultCodec.ClientBuildId,
-                        new(3954, 6901, 1,
-                            OfficialMerchantTransactionOperation.Buy, 7),
-                        60, out var expected, out _));
-                    Assert.Equal(expected, response);
-                    await stream.WriteAsync(
-                        Convert.FromHexString("0500AC9D30"), timeout.Token);
-                }
-                // Other outcomes close without emitting a purchase response.
-                Assert.Equal(
-                    0, await stream.ReadAsync(new byte[1], timeout.Token));
-            }
-            }
-        }
-        catch (Exception exception)
-        {
-            throw new InvalidOperationException(
-                "Merchant TCP fixture failed. Server log:\n" +
-                output.ToString(), exception);
-        }
-        finally
-        {
-            lifetime.Cancel();
-            try
-            {
-                if (running is not null)
-                    await running.WaitAsync(TimeSpan.FromSeconds(5));
-            }
-            finally
-            {
-                Console.SetOut(previousOutput);
-            }
-        }
-
-        var log = output.ToString();
-        Assert.Contains(
-            "reason=; reconciliation=False; wireResponse=Purchase0x3B", log);
-        Assert.DoesNotContain("execution uncertain:", log);
-        Assert.Contains(
-            "slots=0; walletVersion=0; restoreFrame=False; mutation=None", log);
-        Assert.Contains(
-            "slots=1; walletVersion=1; restoreFrame=True; mutation=None", log);
-        Assert.Equal(1, repos.PurchaseCalls);
-        Assert.Equal(0, repos.SaleCalls);
-        Assert.NotNull(repos.LastPurchase);
-        Assert.Equal(repos.CharacterId, repos.LastPurchase!.CharacterId);
-        Assert.Equal(repos.MerchantId, repos.LastPurchase.MerchantId);
-        Assert.Equal(0, repos.LastPurchase.ExpectedInventoryVersion);
-        Assert.Equal(0, repos.LastPurchase.ExpectedMutationSequence);
-        Assert.Equal(0, repos.LastPurchase.ExpectedWalletVersion);
-        Assert.Equal(3, repos.InventoryCalls);
-        Assert.Equal(1, repos.WalletCalls);
-        Assert.Equal(2, repos.EconomyCalls);
-
-        var inventory = await repos.GetByCharacterAsync(
+        var initial = await repos.GetByCharacterAsync(
             repos.CharacterId, CancellationToken.None);
-        var wallet = await repos.GetGoldByCharacterAsync(
+        Assert.NotNull(initial);
+        var repository = new MariaDbCharacterEconomySnapshotRepository(
+            repos.Options);
+        var request = new MerchantPurchaseRequest(
+            Guid.NewGuid(), "economy-snapshot-" + Guid.NewGuid().ToString("N"),
+            repos.CharacterId, repos.MerchantId, 253231541, 1,
+            initial!.InventoryId, 0, 0, 0);
+        var commits = 0;
+
+        var captured = await repository.ReadAsync(
+            repos.CharacterId,
+            async token =>
+            {
+                // Separate real writer connection commits between the two reads.
+                var result = await repos.PurchaseAsync(request, token);
+                Assert.Equal(MerchantPurchaseStatus.Purchased, result.Status);
+                Assert.Equal(60, result.BalanceAfter);
+                commits++;
+            },
+            CancellationToken.None);
+
+        Assert.Equal(1, commits);
+        Assert.NotNull(captured.Inventory);
+        Assert.NotNull(captured.Wallet);
+        Assert.Empty(captured.Inventory!.Slots);
+        Assert.Equal(0, captured.Inventory.Version);
+        Assert.Equal(0, captured.Inventory.MutationSequence);
+        Assert.Equal(100, captured.Wallet!.Balance);
+        Assert.Equal(0, captured.Wallet.Version);
+
+        var current = await repository.GetByCharacterAsync(
             repos.CharacterId, CancellationToken.None);
-        Assert.NotNull(inventory);
-        Assert.NotNull(wallet);
-        var slot = Assert.Single(inventory.Slots);
+        Assert.NotNull(current.Inventory);
+        Assert.NotNull(current.Wallet);
+        var slot = Assert.Single(current.Inventory!.Slots);
         Assert.Equal(0, slot.SlotIndex);
         Assert.Equal(253231541, slot.ItemId);
         Assert.Equal(1, slot.Quantity);
-        Assert.Equal(1, inventory.Version);
-        Assert.Equal(1, inventory.MutationSequence);
-        Assert.Equal(60, wallet.Balance);
-        Assert.Equal(1, wallet.Version);
+        Assert.Equal(1, current.Inventory.Version);
+        Assert.Equal(1, current.Inventory.MutationSequence);
+        Assert.Equal(60, current.Wallet!.Balance);
+        Assert.Equal(1, current.Wallet.Version);
+        Assert.Equal(1, repos.PurchaseCalls);
         Assert.Equal(1, await repos.ScalarAsync("""
             SELECT COUNT(*) FROM god2_player.inventory_transaction_idempotency
             WHERE CharacterId=@character AND OperationType='V2MerchantBuy';
             """));
-
-        Assert.Equal(1, repos.PurchaseCalls);
-        Assert.Equal(0, repos.SaleCalls);
-        Console.WriteLine(
-            "PASS: BUY then fresh Login/World restores inventory; no second purchase.");
     }
 
     private static async Task<byte[]> ReadFrame(
@@ -265,6 +115,7 @@ public sealed class MerchantPurchaseTcpReconnectIntegrationTests
         private const long SpawnId = 9001;
         private const long NpcId = 8001;
         private readonly MariaDbAuthenticationOptions _options;
+        public MariaDbAuthenticationOptions Options => _options;
         private readonly MariaDbCharacterInventorySnapshotRepository _inventory;
         private readonly MariaDbCharacterWalletSnapshotRepository _wallet;
         private readonly MariaDbMerchantPurchaseWriter _writer;
