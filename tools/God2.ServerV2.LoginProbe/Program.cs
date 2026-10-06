@@ -87,6 +87,13 @@ var verifyNpcDialog =
             "GOD2_PROBE_VERIFY_NPC_DIALOG"),
         "1",
         StringComparison.Ordinal);
+var verifyMerchantRejection =
+    string.Equals(
+        Environment.GetEnvironmentVariable(
+            "GOD2_PROBE_VERIFY_MERCHANT_REJECTION"),
+        "1",
+        StringComparison.Ordinal);
+
 var verifyNpcInteractionOwnership =
     string.Equals(
         Environment.GetEnvironmentVariable(
@@ -104,7 +111,8 @@ if ((expectDuplicateLogin ? 1 : 0) +
     (verifyWorldLoginMap ? 1 : 0) +
     (verifyNpcInteraction ? 1 : 0) +
     (verifyNpcDialog ? 1 : 0) +
-    (verifyNpcInteractionOwnership ? 1 : 0) > 1)
+    (verifyNpcInteractionOwnership ? 1 : 0) +
+    (verifyMerchantRejection ? 1 : 0) > 1)
 {
     Console.Error.WriteLine(
         "測試模式只能啟用一種（包含登入地圖檢查）。");
@@ -487,6 +495,7 @@ if (verifyWorldLoginMap)
 }
 
 var expectedNpcHandles =
+    verifyMerchantRejection ? new uint[] { 3793 } :
     verifyWorldLoginMap ? Array.Empty<uint>() :
     verifyPortal
         ? Array.Empty<uint>()
@@ -678,6 +687,57 @@ else if (verifyNpcDialog)
 
     Console.WriteLine(
         "NPC 3793 Open、Selection、Session 釋放、重新 Open 與登出測試成功");
+}
+else if (verifyMerchantRejection)
+{
+    // Synthetic transport fixture, not an official captured transaction.
+    // No NPC interaction is opened: rejection must precede repository reads.
+    var decodedBuy = new byte[12];
+    BinaryPrimitives.WriteUInt16LittleEndian(decodedBuy, 12);
+    decodedBuy[2] = 0x38;
+    BinaryPrimitives.WriteUInt16LittleEndian(decodedBuy.AsSpan(3), 5042);
+    BinaryPrimitives.WriteUInt16LittleEndian(decodedBuy.AsSpan(5), 6901);
+    decodedBuy[7] = 1;
+    decodedBuy[8] = (byte)OfficialMerchantTransactionOperation.Buy;
+    BinaryPrimitives.WriteUInt16LittleEndian(decodedBuy.AsSpan(9), 7);
+    decodedBuy[^1] =
+        OfficialLoginWireTransform.ComputeChecksum(decodedBuy);
+
+    var encodedBuy = OfficialMerchantTransactionCodec.EncodeRequest(
+        5042, 6901, 1, OfficialMerchantTransactionOperation.Buy, 7);
+    try
+    {
+        Require(
+            OfficialMerchantTransactionCodec.TryDecode(
+                encodedBuy, out var selection, out var failure),
+            $"Merchant fixture 編碼驗證失敗：{failure}");
+        Require(
+            selection is not null &&
+            selection.ClientEntityHandle == 5042 &&
+            selection.ClientItemId == 6901 &&
+            selection.Quantity == 1 &&
+            selection.Operation == OfficialMerchantTransactionOperation.Buy &&
+            selection.CatalogIndexOrClientInventorySlot == 7,
+            "Merchant fixture 欄位錯誤");
+
+        await worldStream.WriteAsync(encodedBuy, timeout.Token);
+
+        var eofProbe = new byte[1];
+        var bytesRead =
+            await worldStream.ReadAsync(eofProbe, timeout.Token);
+        Require(
+            bytesRead == 0,
+            "沒有 NPC interaction 的 BUY 未以無回應關閉連線");
+    }
+    finally
+    {
+        Array.Clear(decodedBuy);
+        Array.Clear(encodedBuy);
+    }
+
+    Console.WriteLine(
+        "Merchant 無 interaction BUY fixture：收到 EOF；" +
+        "拒絕原因須另核對 Server log 的 NoCurrentNpcInteraction。");
 }
 else if (verifyNpcInteractionOwnership)
 {

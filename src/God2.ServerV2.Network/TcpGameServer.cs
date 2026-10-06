@@ -19,6 +19,8 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly IMapMovementBoundsRepository? _movementBoundsRepository;
     private readonly IWorldLoginMapIdentityRepository? _worldLoginMapIdentityRepository;
     private readonly MerchantInteractionBindingProvider? _merchantInteractionBindingProvider;
+    private readonly IMerchantCatalogIdentityRepository? _merchantCatalogRepository;
+    private readonly ICharacterWalletSnapshotRepository? _walletRepository;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -45,7 +47,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterInventorySnapshotRepository? inventoryRepository = null,
         IMapMovementBoundsRepository? movementBoundsRepository = null,
         IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository = null,
-        MerchantInteractionBindingProvider? merchantInteractionBindingProvider = null)
+        MerchantInteractionBindingProvider? merchantInteractionBindingProvider = null,
+        IMerchantCatalogIdentityRepository? merchantCatalogRepository = null,
+        ICharacterWalletSnapshotRepository? walletRepository = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -70,6 +74,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         _worldLoginMapIdentityRepository = worldLoginMapIdentityRepository;
         _merchantInteractionBindingProvider =
             merchantInteractionBindingProvider;
+        _merchantCatalogRepository = merchantCatalogRepository;
+        _walletRepository = walletRepository;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -138,6 +144,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _movementBoundsRepository,
                     _worldLoginMapIdentityRepository,
                     _merchantInteractionBindingProvider,
+                    _merchantCatalogRepository,
+                    _walletRepository,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -194,6 +202,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         IMapMovementBoundsRepository? movementBoundsRepository,
         IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository,
         MerchantInteractionBindingProvider? merchantInteractionBindingProvider,
+        IMerchantCatalogIdentityRepository? merchantCatalogRepository,
+        ICharacterWalletSnapshotRepository? walletRepository,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -894,6 +904,52 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     $"reason={merchantInteractionStatus}; " +
                                     "closing connection.");
                                 break;
+                            }
+
+                            if (merchantTransaction.Operation ==
+                                OfficialMerchantTransactionOperation.Buy)
+                            {
+                                if (merchantCatalogRepository is null ||
+                                    inventoryRepository is null ||
+                                    walletRepository is null)
+                                {
+                                    Log(connectionId,
+                                        "Merchant BUY preparation blocked: " +
+                                        "reason=PreparationRepositoryUnavailable; " +
+                                        "transactionExecution=BlockedNotWired; " +
+                                        "wireResponse=None");
+                                    continue;
+                                }
+
+                                var preparationService =
+                                    new MerchantPurchasePreparationService(
+                                        commandLane,
+                                        worldPresences,
+                                        merchantInteractionResolver,
+                                        merchantCatalogRepository,
+                                        inventoryRepository,
+                                        walletRepository);
+
+                                // One server operation identity for this received frame.
+                                // No payload-based deduplication or automatic DB retry.
+                                var preparation =
+                                    await preparationService.PrepareInLeaseAsync(
+                                        commandLease,
+                                        connectionId,
+                                        merchantInteraction.InteractionId,
+                                        merchantBinding,
+                                        merchantTransaction,
+                                        Guid.NewGuid(),
+                                        serverCancellationToken);
+
+                                Log(connectionId,
+                                    "Merchant BUY preparation: " +
+                                    $"interaction={preparation.InteractionStatus}; " +
+                                    $"prepared={preparation.Command is not null}; " +
+                                    $"reason={preparation.FailureCode}; " +
+                                    "transactionExecution=BlockedNotWired; " +
+                                    "wireResponse=None");
+                                continue;
                             }
 
                             Log(

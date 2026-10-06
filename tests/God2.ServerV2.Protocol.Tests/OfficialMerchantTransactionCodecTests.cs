@@ -34,8 +34,12 @@ public sealed class OfficialMerchantTransactionCodecTests
     public void Parses_encoded_world_frame(
         int handle, int item, int quantity, int operation, int index)
     {
-        var decoded = Frame(handle, item, quantity, operation, index);
-        var encoded = OfficialWorldBootstrapCodec.EncodeFrame(decoded);
+        var encoded = OfficialMerchantTransactionCodec.EncodeRequest(
+            (ushort)handle,
+            (ushort)item,
+            (byte)quantity,
+            (OfficialMerchantTransactionOperation)operation,
+            (ushort)index);
 
         Assert.True(
             OfficialMerchantTransactionCodec.IsCandidate(encoded));

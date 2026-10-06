@@ -72,6 +72,8 @@ ICharacterInventorySnapshotRepository? inventoryRepository;
 IMapMovementBoundsRepository? movementBoundsRepository;
 IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository;
 MerchantInteractionBindingProvider? merchantInteractionBindingProvider;
+IMerchantCatalogIdentityRepository? merchantCatalogRepository;
+ICharacterWalletSnapshotRepository? walletRepository;
 var enableMovementBounds = string.Equals(
     Environment.GetEnvironmentVariable("GOD2_ENFORCE_MOVEMENT_BOUNDS"),
     "1", StringComparison.Ordinal);
@@ -113,6 +115,10 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
     merchantInteractionBindingProvider =
         new MerchantInteractionBindingProvider(
             new MariaDbMerchantInteractionAuthorityRepository(databaseOptions));
+    merchantCatalogRepository =
+        new MariaDbMerchantCatalogIdentityRepository(databaseOptions);
+    walletRepository =
+        new MariaDbCharacterWalletSnapshotRepository(databaseOptions);
 
     var enableMovementPersistence =
         string.Equals(
@@ -146,6 +152,8 @@ else
     movementBoundsRepository = null;
     worldLoginMapIdentityRepository = null;
     merchantInteractionBindingProvider = null;
+    merchantCatalogRepository = null;
+    walletRepository = null;
     Console.WriteLine(
         "Authentication: RejectAll (database environment is incomplete)");
 }
@@ -170,7 +178,9 @@ await using var server = new TcpGameServer(
     inventoryRepository,
     movementBoundsRepository,
     worldLoginMapIdentityRepository,
-    merchantInteractionBindingProvider: merchantInteractionBindingProvider);
+    merchantInteractionBindingProvider: merchantInteractionBindingProvider,
+    merchantCatalogRepository: merchantCatalogRepository,
+    walletRepository: walletRepository);
 
 try
 {

@@ -22,6 +22,42 @@ public sealed record OfficialMerchantTransactionSelection(
 // Catalog indexes and client inventory slots remain distinct namespaces.
 public static class OfficialMerchantTransactionCodec
 {
+
+    public static byte[] EncodeRequest(
+        ushort clientEntityHandle,
+        ushort clientItemId,
+        byte quantity,
+        OfficialMerchantTransactionOperation operation,
+        ushort catalogIndexOrClientInventorySlot)
+    {
+        var decoded = new byte[12];
+        try
+        {
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded, 12);
+            decoded[2] = 0x38;
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded.AsSpan(3), clientEntityHandle);
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded.AsSpan(5), clientItemId);
+            decoded[7] = quantity;
+            decoded[8] = (byte)operation;
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt16LittleEndian(
+                decoded.AsSpan(9), catalogIndexOrClientInventorySlot);
+            decoded[^1] = OfficialLoginWireTransform.ComputeChecksum(decoded);
+
+            if (!TryDecodeDecoded(decoded, out _, out var failure))
+                throw new ArgumentException(
+                    $"Invalid merchant request: {failure}");
+
+            return OfficialWorldBootstrapCodec.EncodeFrame(decoded);
+        }
+        finally
+        {
+            Array.Clear(decoded);
+        }
+    }
+
     public const byte Opcode = 0x38;
     public const int FrameLength = 12;
 
