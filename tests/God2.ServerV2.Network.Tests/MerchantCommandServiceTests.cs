@@ -313,6 +313,59 @@ public sealed class MerchantCommandServiceTests
         Assert.Equal(0, f.Writer.SaleCalls);
     }
 
+    [Fact]
+    public async Task Uncertain_writer_failure_does_not_automatically_retry()
+    {
+        var f = new Fixture();
+        var command = f.Purchase;
+        f.Writer.Failure = new IOException("fixture: result unavailable");
+
+        using var lease = await f.Lane.EnterAsync(CancellationToken.None);
+        var error = await Assert.ThrowsAsync<IOException>(async () =>
+            await f.Service.PurchaseInLeaseAsync(
+                lease, 101, f.InteractionId, f.Binding, command,
+                CancellationToken.None));
+
+        Assert.Same(f.Writer.Failure, error);
+        Assert.Equal(1, f.Writer.PurchaseCalls);
+        var firstRequest = f.Writer.LastPurchase;
+        Assert.NotNull(firstRequest);
+
+        // Explicit retry retains transaction identity and every expected version.
+        // This recording writer does not model a committed database transaction.
+        f.Writer.Failure = null;
+        var retry = await f.Service.PurchaseInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, command,
+            CancellationToken.None);
+
+        Assert.Equal(2, f.Writer.PurchaseCalls);
+        Assert.Equal(firstRequest, f.Writer.LastPurchase);
+        Assert.Equal(command.TransactionId, f.Writer.LastPurchase!.TransactionId);
+        Assert.Equal(command.IdempotencyKey, f.Writer.LastPurchase.IdempotencyKey);
+        Assert.Same(f.Writer.PurchaseResult, retry.TransactionResult);
+        Assert.False(retry.TransactionResult!.Succeeded);
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
+    [Fact]
+    public async Task Held_lease_revalidates_distance_before_purchase_dispatch()
+    {
+        var f = new Fixture();
+        using var lease = await f.Lane.EnterAsync(CancellationToken.None);
+
+        // Simulate a preceding state update within this frame lease.
+        Assert.True(f.Presences.TryMove(101, 7, 100, 124, out _));
+        var result = await f.Service.PurchaseInLeaseAsync(
+            lease, 101, f.InteractionId, f.Binding, f.Purchase,
+            CancellationToken.None);
+
+        Assert.Equal(MerchantInteractionStatus.OutOfRange,
+            result.InteractionStatus);
+        Assert.Null(result.TransactionResult);
+        Assert.Equal(0, f.Writer.PurchaseCalls);
+        Assert.Equal(0, f.Writer.SaleCalls);
+    }
+
     private sealed class Fixture
     {
         public NpcInteractionSessionRegistry Interactions { get; } = new();
