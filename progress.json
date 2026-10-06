@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-06T21:27:35+08:00",
-  "summary": "239b9c4、0b5d1f4：新增不可變購買請求 journal、保存後派送 wrapper 與唯讀 receipt 復原。固定識別格式與派送邊界單元測試 3/3；兩個獨立測試程序各 1/1，第二程序從 DB 找回原請求與已提交結果，不呼叫購買 writer。最新 TCP/MariaDB journal 案例 1/1：writer 入口確認原請求已保存，真實提交後模擬結果遺失，無自動重試；receipt 核對與相同請求重播不增加扣款。各 runner fixture 清理完成。未重跑完整六套或完整 DB suite；正式 Host 功能未啟用，6001 未重啟，原版 Client 驗收未完成。",
+  "updated_at": "2026-10-06T21:33:01+08:00",
+  "summary": "來源 b74817a：Core 7、Application 114、Session 20、Protocol 136、Network 175，五套完整單元測試 452/452；Journal filtered unit 3/3；九個隔離 DB runners 共 10/10 cases，本輪實際執行合計 465/465，零失敗或跳過。全部 DB fixture 清理完成，Host Release build 通過。未重跑完整 Persistence integration suite；歷史六套 409/409 保留。正式 Host 購買／恢復仍未啟用，正式證據與原版 Client 驗收待完成，production 6001 未重啟。",
   "milestones": [
     {
       "key": "foundation",
@@ -403,6 +403,11 @@
   "recent_activity": [
     {
       "date": "2026-10-06",
+      "title": "商店整合回歸 465/465 通過",
+      "detail": "來源 b74817a：Core 7、Application 114、Session 20、Protocol 136、Network 175，五套完整單元測試 452/452；Journal filtered unit 3/3；九個隔離 DB runners 共 10/10 cases，本輪實際執行合計 465/465，零失敗或跳過。全部 DB fixture 清理完成，Host Release build 通過。未重跑完整 Persistence integration suite；歷史六套 409/409 保留。正式 Host 購買／恢復仍未啟用，正式證據與原版 Client 驗收待完成，production 6001 未重啟。"
+    },
+    {
+      "date": "2026-10-06",
       "title": "BUY Journal 持久化、跨程序復原與 TCP 保存驗證",
       "detail": "239b9c4、0b5d1f4：新增不可變購買請求 journal、保存後派送 wrapper 與唯讀 receipt 復原。固定識別格式與派送邊界單元測試 3/3；兩個獨立測試程序各 1/1，第二程序從 DB 找回原請求與已提交結果，不呼叫購買 writer。最新 TCP/MariaDB journal 案例 1/1：writer 入口確認原請求已保存，真實提交後模擬結果遺失，無自動重試；receipt 核對與相同請求重播不增加扣款。各 runner fixture 清理完成。未重跑完整六套或完整 DB suite；正式 Host 功能未啟用，6001 未重啟，原版 Client 驗收未完成。"
     },
@@ -741,14 +746,62 @@
     "percent": 55
   },
   "current_validation": {
-    "title": "Merchant Journal / Cross-process Recovery / TCP",
+    "title": "Merchant Regression / Journal Recovery",
     "date": "2026-10-06",
     "status": "passing",
-    "summary": "Journal 派送及識別單元測試 3/3；跨程序 runner 兩個 filtered cases 各 1/1；TCP journal filtered case 1/1。Network 175/175 為先前本日結果，未重跑完整六套或完整 DB suite。",
+    "summary": "來源 b74817a：Core 7、Application 114、Session 20、Protocol 136、Network 175，五套完整單元測試 452/452；Journal filtered unit 3/3；九個隔離 DB runners 共 10/10 cases，本輪實際執行合計 465/465，零失敗或跳過。全部 DB fixture 清理完成，Host Release build 通過。未重跑完整 Persistence integration suite；歷史六套 409/409 保留。正式 Host 購買／恢復仍未啟用，正式證據與原版 Client 驗收待完成，production 6001 未重啟。",
+    "suites": [
+      {
+        "name": "Core",
+        "passed": 7,
+        "total": 7
+      },
+      {
+        "name": "Application",
+        "passed": 114,
+        "total": 114
+      },
+      {
+        "name": "Session",
+        "passed": 20,
+        "total": 20
+      },
+      {
+        "name": "Protocol",
+        "passed": 136,
+        "total": 136
+      },
+      {
+        "name": "Network",
+        "passed": 175,
+        "total": 175
+      },
+      {
+        "name": "JournalUnit",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "groups": [
+      {
+        "name": "Five complete unit suites",
+        "passed": 452,
+        "total": 452
+      },
+      {
+        "name": "Journal filtered unit",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "name": "Merchant filtered DB cases",
+        "passed": 10,
+        "total": 10
+      }
+    ],
     "limitations": [
-      "Filtered cases 使用各自 fixture，不能當作完整 suite 結果。",
-      "跨程序讀取不等於完整 Host 重啟或崩潰復原驗收。",
-      "正式證據、Client 顯示及回應補送仍待驗證。",
+      "本輪不是完整 Persistence integration suite。",
+      "正式 merchant／封包證據與原版 Client 驗收尚未完成。",
       "正式 Host 功能未啟用，production 6001 未重啟。"
     ]
   },
