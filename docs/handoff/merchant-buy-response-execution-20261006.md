@@ -43,5 +43,6 @@
 - Writer exceptions do not simulate a lost database commit acknowledgement.
 - Filtered MariaDB command integration now verifies the execution coordinator,
   committed inventory readback and 57-byte BUY response projection.
-- TCP with MariaDB end-to-end remains unverified; these are separate checks.
+- TCP with MariaDB end-to-end now passes a dedicated filtered case: purchase, committed readback, 57-byte response and writer replay.
+- Evidence: merchant-tcp-db-20261006-122934/verification.md.
 - No production 6001 deployment/restart or test001 wallet change occurred.
