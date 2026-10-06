@@ -31,13 +31,24 @@ playability_percent="$(
     ' "$PROGRESS"
 )"
 
-# 找第一個進行中的 Roadmap 階段作為 current_key。
+# current_key 是人工／evidence-controlled 的目前開發焦點。
+# 多個 Roadmap 階段可以同時 in_progress，因此不得用
+# 「第一個 in_progress」覆寫目前真正的開發主線。
 current_key="$(
-    jq -r '
-      [.roadmap.stages[] | select(.status == "in_progress")][0].key
-      // .roadmap.current_key
-    ' "$PROGRESS"
+    jq -r '.roadmap.current_key' "$PROGRESS"
 )"
+
+if [[ -z "$current_key" || "$current_key" == "null" ]]; then
+    echo "ERROR: roadmap.current_key is required"
+    exit 1
+fi
+
+jq -e --arg current_key "$current_key" '
+    any(.roadmap.stages[]; .key == $current_key)
+' "$PROGRESS" >/dev/null || {
+    echo "ERROR: roadmap.current_key does not match any roadmap stage"
+    exit 1
+}
 
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
