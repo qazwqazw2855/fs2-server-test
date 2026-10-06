@@ -23,6 +23,7 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly ICharacterWalletSnapshotRepository? _walletRepository;
     private readonly IMerchantPurchaseWriter? _merchantPurchaseWriter;
     private readonly IMerchantSaleWriter? _merchantSaleWriter;
+    private readonly bool _enableRestrictedInventoryBootstrap;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -53,7 +54,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         IMerchantCatalogIdentityRepository? merchantCatalogRepository = null,
         ICharacterWalletSnapshotRepository? walletRepository = null,
         IMerchantPurchaseWriter? merchantPurchaseWriter = null,
-        IMerchantSaleWriter? merchantSaleWriter = null)
+        IMerchantSaleWriter? merchantSaleWriter = null,
+        bool enableRestrictedInventoryBootstrap = false)
     {
         Options = options;
         _loginService = loginService ??
@@ -85,6 +87,11 @@ public sealed class TcpGameServer : IAsyncDisposable
                 "Merchant execution requires both writer dependencies.");
         _merchantPurchaseWriter = merchantPurchaseWriter;
         _merchantSaleWriter = merchantSaleWriter;
+        if (enableRestrictedInventoryBootstrap &&
+            (inventoryRepository is null || walletRepository is null))
+            throw new ArgumentException(
+                "Restricted inventory bootstrap requires inventory and wallet repositories.");
+        _enableRestrictedInventoryBootstrap = enableRestrictedInventoryBootstrap;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -161,6 +168,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _walletRepository,
                     _merchantPurchaseWriter,
                     _merchantSaleWriter,
+                    _enableRestrictedInventoryBootstrap,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -221,6 +229,7 @@ public sealed class TcpGameServer : IAsyncDisposable
         ICharacterWalletSnapshotRepository? walletRepository,
         IMerchantPurchaseWriter? merchantPurchaseWriter,
         IMerchantSaleWriter? merchantSaleWriter,
+        bool enableRestrictedInventoryBootstrap,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -400,6 +409,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                         }
                     }
 
+                    CharacterInventorySnapshot? bootstrapInventory = null;
                     if (inventoryRepository is not null)
                     {
                         var inventory =
@@ -407,6 +417,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                                 pendingWorld.Character.CharacterId,
                                 serverCancellationToken);
 
+                        bootstrapInventory = inventory;
                         Log(
                             connectionId,
                             inventory is null
@@ -514,6 +525,66 @@ public sealed class TcpGameServer : IAsyncDisposable
                         {
                             Array.Clear(npcSpawnFrame);
                         }
+                    }
+
+                    // Opt-in internal projection; not formal evidence approval.
+                    // No writer or purchase replay is invoked during World entry.
+                    if (enableRestrictedInventoryBootstrap)
+                    {
+                        if (bootstrapInventory is null || walletRepository is null)
+                        {
+                            Log(connectionId,
+                                "Inventory bootstrap rejected: reason=SnapshotUnavailable.");
+                            return;
+                        }
+
+                        var bootstrapWallet =
+                            await walletRepository.GetGoldByCharacterAsync(
+                                pendingWorld.Character.CharacterId,
+                                serverCancellationToken);
+                        if (bootstrapWallet is null ||
+                            bootstrapWallet.CharacterId !=
+                                pendingWorld.Character.CharacterId ||
+                            bootstrapWallet.CurrencyType != "Gold" ||
+                            bootstrapWallet.Version < 0)
+                        {
+                            Log(connectionId,
+                                "Inventory bootstrap rejected: reason=WalletMismatch.");
+                            return;
+                        }
+
+                        if (!InventoryBootstrapProjection.TryEncode(
+                                OfficialMerchantPurchaseResultCodec.ClientBuildId,
+                                pendingWorld.Character.CharacterId,
+                                bootstrapInventory,
+                                bootstrapWallet.Balance,
+                                out var restoreFrame,
+                                out var restoreFailure))
+                        {
+                            Log(connectionId,
+                                $"Inventory bootstrap rejected: reason={restoreFailure}.");
+                            return;
+                        }
+
+                        if (restoreFrame is not null)
+                        {
+                            try
+                            {
+                                await stream.WriteAsync(
+                                    restoreFrame, serverCancellationToken);
+                            }
+                            finally
+                            {
+                                Array.Clear(restoreFrame);
+                            }
+                        }
+
+                        Log(connectionId,
+                            "Inventory bootstrap projection: " +
+                            $"slots={bootstrapInventory.Slots.Count}; " +
+                            $"walletVersion={bootstrapWallet.Version}; " +
+                            $"restoreFrame={restoreFrame is not null}; " +
+                            "mutation=None; evidencePromotion=None.");
                     }
 
                     Log(
