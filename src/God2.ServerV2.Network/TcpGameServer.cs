@@ -21,6 +21,8 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly MerchantInteractionBindingProvider? _merchantInteractionBindingProvider;
     private readonly IMerchantCatalogIdentityRepository? _merchantCatalogRepository;
     private readonly ICharacterWalletSnapshotRepository? _walletRepository;
+    private readonly IMerchantPurchaseWriter? _merchantPurchaseWriter;
+    private readonly IMerchantSaleWriter? _merchantSaleWriter;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -49,7 +51,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository = null,
         MerchantInteractionBindingProvider? merchantInteractionBindingProvider = null,
         IMerchantCatalogIdentityRepository? merchantCatalogRepository = null,
-        ICharacterWalletSnapshotRepository? walletRepository = null)
+        ICharacterWalletSnapshotRepository? walletRepository = null,
+        IMerchantPurchaseWriter? merchantPurchaseWriter = null,
+        IMerchantSaleWriter? merchantSaleWriter = null)
     {
         Options = options;
         _loginService = loginService ??
@@ -76,6 +80,11 @@ public sealed class TcpGameServer : IAsyncDisposable
             merchantInteractionBindingProvider;
         _merchantCatalogRepository = merchantCatalogRepository;
         _walletRepository = walletRepository;
+        if ((merchantPurchaseWriter is null) != (merchantSaleWriter is null))
+            throw new ArgumentException(
+                "Merchant execution requires both writer dependencies.");
+        _merchantPurchaseWriter = merchantPurchaseWriter;
+        _merchantSaleWriter = merchantSaleWriter;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -150,6 +159,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _merchantInteractionBindingProvider,
                     _merchantCatalogRepository,
                     _walletRepository,
+                    _merchantPurchaseWriter,
+                    _merchantSaleWriter,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -208,6 +219,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         MerchantInteractionBindingProvider? merchantInteractionBindingProvider,
         IMerchantCatalogIdentityRepository? merchantCatalogRepository,
         ICharacterWalletSnapshotRepository? walletRepository,
+        IMerchantPurchaseWriter? merchantPurchaseWriter,
+        IMerchantSaleWriter? merchantSaleWriter,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -945,6 +958,71 @@ public sealed class TcpGameServer : IAsyncDisposable
                                         merchantTransaction,
                                         Guid.NewGuid(),
                                         serverCancellationToken);
+
+                                if (preparation.Command is not null &&
+                                    merchantPurchaseWriter is not null &&
+                                    merchantSaleWriter is not null)
+                                {
+                                    var commandService = new MerchantCommandService(
+                                        worldPresences,
+                                        merchantInteractionResolver,
+                                        merchantPurchaseWriter,
+                                        merchantSaleWriter,
+                                        commandLane);
+                                    var executionService =
+                                        new MerchantPurchaseExecutionService(
+                                            commandLane,
+                                            worldPresences,
+                                            merchantInteractionResolver,
+                                            commandService,
+                                            inventoryRepository);
+
+                                    MerchantPurchaseExecutionResult execution;
+                                    try
+                                    {
+                                        execution =
+                                            await executionService.ExecuteInLeaseAsync(
+                                                commandLease,
+                                                connectionId,
+                                                merchantInteraction.InteractionId,
+                                                merchantBinding,
+                                                merchantTransaction,
+                                                preparation.Command,
+                                                serverCancellationToken);
+                                    }
+                                    catch
+                                    {
+                                        Log(connectionId,
+                                            "Merchant BUY execution uncertain: " +
+                                            $"transaction={preparation.Command.TransactionId}; " +
+                                            "automaticRetry=None; closing connection.");
+                                        throw;
+                                    }
+
+                                    Log(connectionId,
+                                        "Merchant BUY execution: " +
+                                        $"transaction={preparation.Command.TransactionId}; " +
+                                        $"interaction={execution.InteractionStatus}; " +
+                                        $"status={execution.TransactionResult?.Status}; " +
+                                        $"reason={execution.FailureCode}; " +
+                                        $"reconciliation={execution.RequiresReconciliation}; " +
+                                        $"wireResponse={(execution.EncodedResponse is null ? "None" : "Purchase0x3B")}");
+
+                                    if (execution.EncodedResponse is null)
+                                        break;
+
+                                    try
+                                    {
+                                        await stream.WriteAsync(
+                                            execution.EncodedResponse,
+                                            serverCancellationToken);
+                                    }
+                                    finally
+                                    {
+                                        Array.Clear(execution.EncodedResponse);
+                                    }
+                                    continue;
+                                }
 
                                 Log(connectionId,
                                     "Merchant BUY preparation: " +
