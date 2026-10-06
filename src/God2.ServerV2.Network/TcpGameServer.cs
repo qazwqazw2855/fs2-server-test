@@ -96,6 +96,10 @@ public sealed class TcpGameServer : IAsyncDisposable
 
     public TcpServerOptions Options { get; }
 
+    // Available after RunAsync starts the listener, including port 0.
+    public IPEndPoint LocalEndpoint =>
+        (IPEndPoint)_listener.LocalEndpoint;
+
     public async Task RunAsync(CancellationToken cancellationToken)
     {
         if (_started)
@@ -149,7 +153,7 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
-                    checked((ushort)Options.Port),
+                    checked((ushort)LocalEndpoint.Port),
                     cancellationToken);
                 _connections[connectionId] = task;
                 _ = ObserveConnectionAsync(connectionId, task);
