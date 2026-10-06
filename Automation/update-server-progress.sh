@@ -31,22 +31,29 @@ playability_percent="$(
     ' "$PROGRESS"
 )"
 
-# current_key 是人工／evidence-controlled 的目前開發焦點。
-# 多個 Roadmap 階段可以同時 in_progress，因此不得用
-# 「第一個 in_progress」覆寫目前真正的開發主線。
-current_key="$(
-    jq -r '.roadmap.current_key' "$PROGRESS"
+# current_key 不由 updater 自動猜測。
+# Portal / NPC / Gameplay 可以同時 in_progress，
+# 因此目前主線必須由 progress.json 明確指定。
+
+protected_before="$(
+    jq -c '{
+        current_focus,
+        current_validation,
+        open_questions,
+        paused_items,
+        next_steps,
+        recent_activity
+    }' "$PROGRESS"
 )"
 
-if [[ -z "$current_key" || "$current_key" == "null" ]]; then
-    echo "ERROR: roadmap.current_key is required"
-    exit 1
-fi
-
-jq -e --arg current_key "$current_key" '
-    any(.roadmap.stages[]; .key == $current_key)
+# Validate the manually selected development focus.
+jq -e '
+    .roadmap.current_key as $key
+    | ($key | type) == "string"
+      and ($key | length) > 0
+      and any(.roadmap.stages[]; .key == $key)
 ' "$PROGRESS" >/dev/null || {
-    echo "ERROR: roadmap.current_key does not match any roadmap stage"
+    echo "ERROR: invalid roadmap.current_key"
     exit 1
 }
 
@@ -55,11 +62,9 @@ trap 'rm -f "$tmp"' EXIT
 
 jq \
   --arg updated_at "$updated_at" \
-  --arg current_key "$current_key" \
   --argjson playable "$playability_percent" \
   '
     .updated_at = $updated_at
-    | .roadmap.current_key = $current_key
     | .playability.percent = $playable
     | .playability.ready =
         ([.playability.gates[].status] | all(. == "completed"))
@@ -73,6 +78,29 @@ jq -e '
     and (.playability.percent >= 0)
     and (.playability.percent <= 100)
 ' "$tmp" >/dev/null
+
+protected_after="$(
+    jq -c '{
+        current_focus,
+        current_validation,
+        open_questions,
+        paused_items,
+        next_steps,
+        recent_activity
+    }' "$tmp"
+)"
+
+if [[ "$protected_before" != "$protected_after" ]]; then
+    echo "ERROR: protected progress fields changed"
+    echo "The updater is not allowed to modify:"
+    echo "  current_focus"
+    echo "  current_validation"
+    echo "  open_questions"
+    echo "  paused_items"
+    echo "  next_steps"
+    echo "  recent_activity"
+    exit 1
+fi
 
 mv "$tmp" "$PROGRESS"
 trap - EXIT
