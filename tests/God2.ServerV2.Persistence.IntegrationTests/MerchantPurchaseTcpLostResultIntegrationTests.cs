@@ -37,7 +37,8 @@ public sealed class MerchantPurchaseTcpLostResultIntegrationTests
                 new MerchantInteractionBindingProvider(repos),
             merchantCatalogRepository: repos,
             walletRepository: repos,
-            merchantPurchaseWriter: repos,
+            merchantPurchaseWriter: new JournaledMerchantPurchaseWriter(
+                new MariaDbMerchantPurchaseJournal(repos.Options), repos),
             merchantSaleWriter: repos);
 
         Task? running = null;
@@ -200,6 +201,20 @@ public sealed class MerchantPurchaseTcpLostResultIntegrationTests
             """));
 
         // Exact same server request replays without a second debit or grant.
+        var recovered = await new MariaDbMerchantPurchaseJournal(repos.Options)
+            .FindAsync(repos.CharacterId, repos.LastPurchase!.TransactionId,
+                CancellationToken.None);
+        Assert.Equal(repos.LastPurchase, recovered);
+        Assert.NotNull(recovered);
+        var receipt = await new MariaDbMerchantPurchaseRecoveryReader(repos.Options)
+            .ReadAsync(recovered!, CancellationToken.None);
+        Assert.Equal(MerchantPurchaseRecoveryStatus.Committed, receipt.Status);
+        Assert.Equal(60L, receipt.BalanceAfter);
+        Assert.Equal(1, repos.PurchaseCalls);
+        Assert.Equal(1, await repos.ScalarAsync(
+            "SELECT COUNT(*) FROM god2_player.v2_merchant_purchase_journal " +
+            "WHERE CharacterId=@character;"));
+
         var replay = await repos.PurchaseAsync(
             repos.LastPurchase!, CancellationToken.None);
         Assert.Equal(MerchantPurchaseStatus.Replayed, replay.Status);
@@ -272,6 +287,7 @@ public sealed class MerchantPurchaseTcpLostResultIntegrationTests
         private const long SpawnId = 9001;
         private const long NpcId = 8001;
         private readonly MariaDbAuthenticationOptions _options;
+        public MariaDbAuthenticationOptions Options => _options;
         private readonly MariaDbCharacterInventorySnapshotRepository _inventory;
         private readonly MariaDbCharacterWalletSnapshotRepository _wallet;
         private readonly MariaDbMerchantPurchaseWriter _writer;
@@ -444,6 +460,11 @@ public sealed class MerchantPurchaseTcpLostResultIntegrationTests
         public async ValueTask<MerchantPurchaseResult> PurchaseAsync(
             MerchantPurchaseRequest request, CancellationToken cancellationToken)
         {
+            // Verify durability before the real purchase writer runs.
+            var saved = await new MariaDbMerchantPurchaseJournal(_options)
+                .FindAsync(request.CharacterId, request.TransactionId,
+                    cancellationToken);
+            Assert.Equal(request, saved);
             PurchaseCalls++;
             LastPurchase = request;
             var result = await _writer.PurchaseAsync(request, cancellationToken);

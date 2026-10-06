@@ -19,6 +19,8 @@ db_admin() {
   '
 }
 
+db_admin < database/schema/481_add_v2_merchant_purchase_journal.sql
+
 fixture_name="shopfixture_$(python3 -c 'import uuid; print(uuid.uuid4().hex)')"
 test_user="shoptest_$(python3 -c 'import secrets; print(secrets.token_hex(8))')"
 test_password="$(python3 -c 'import secrets; print(secrets.token_hex(32))')"
@@ -76,6 +78,7 @@ GRANT SELECT,UPDATE ON god2_player.player_currency_balances TO '$test_user'@'172
 GRANT SELECT,INSERT,UPDATE,DELETE ON god2_player.character_inventory TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_item_identity_sequence TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_transaction_idempotency TO '$test_user'@'172.17.0.1';
+GRANT SELECT,INSERT ON god2_player.v2_merchant_purchase_journal TO '$test_user'@'172.17.0.1';
 GRANT SELECT,INSERT ON god2_player.inventory_audit_ledger TO '$test_user'@'172.17.0.1';
 GRANT SELECT ON god2_game.items TO '$test_user'@'172.17.0.1';
 GRANT SELECT ON god2_game.merchants TO '$test_user'@'172.17.0.1';
