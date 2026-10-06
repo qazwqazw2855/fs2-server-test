@@ -42,10 +42,8 @@ public sealed class MariaDbMerchantPurchaseWriter
             request.IdempotencyKey.Length > 256)
             throw new ArgumentException("Invalid merchant purchase request.");
 
-        var key = Hash(
-            "God2.ServerV2.MerchantPurchase/1:" +
-            request.CharacterId + ":" + request.IdempotencyKey);
-        var fingerprint = Hash(JsonSerializer.Serialize(request));
+        var key = MerchantPurchaseRequestIdentity.Key(request);
+        var fingerprint = MerchantPurchaseRequestIdentity.Fingerprint(request);
 
         await using var connection = new MySqlConnection(_connectionString);
         await connection.OpenAsync(cancellationToken);
