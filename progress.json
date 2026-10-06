@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-06T20:26:10+08:00",
-  "summary": "新增受限 0x3B/57-byte BUY 回應 codec、空背包 preflight、提交後背包與交易版本核對、同一 connection lease 的購買協調流程，以及可注入 writer 的 TCP 執行路徑。六個 TCP fixture 案例通過，涵蓋成功回應、未支援 profile 零寫入、提交後配置不符、evidence 拒絕、writer 例外不重試、歷史重播需對帳。Protocol 136/136、Network 165/165、Classic 商店基線 23/23；Host Release build 通過。MariaDB coordinator filtered case 1/1 通過，確認錢包 100→60、讀回背包及編碼回應，fixture 清理為 0。TCP 與 MariaDB 尚未合併端到端驗證；未重跑完整六套。Host 未注入 writer，正式 BUY 執行仍停用；SELL TCP 未接。原始 capture、授權與 promotion gate 未補齊，未部署 6001。",
+  "updated_at": "2026-10-06T21:01:00+08:00",
+  "summary": "新增 CharacterEconomySnapshot 與 MariaDB 組合 repository，背包與 Gold 錢包以同一連線、Repeatable Read 交易讀取；受限 TCP 重連投影改用組合快照。Network 175/175、組合快照重連 filtered DB case 1/1 通過。並行提交 filtered DB case 1/1 通過：背包讀取後另一連線完成購買，同一快照仍為空背包＋100，新快照為一道具＋60，版本均為 1。兩個 DB runner fixture 清理完成。正式 Host 功能維持停用，未重跑完整六套，跨程序恢復、一般布局、SELL TCP 與原版 Client 驗收仍待完成。",
   "milestones": [
     {
       "key": "foundation",
@@ -322,8 +322,8 @@
     }
   ],
   "current_focus": {
-    "title": "BUY 執行與回應驗證 → DB/TCP 整合及正式證據",
-    "description": "受限 BUY codec、TCP fixture 與 MariaDB coordinator 驗證完成。下一步補 TCP+MariaDB 端到端、提交不確定結果對帳，並補 exact-build 原始 capture 與正式授權。非空背包、堆疊、重複購買、SELL TCP 與 Client 驗收尚未完成；Host 正式購買維持停用。",
+    "title": "BUY 重連一致性完成 → 復原邊界與正式證據",
+    "description": "已驗證購買、結果遺失防重、同一 Server 重連投影及 DB 背包／錢包一致性快照。下一步補跨 Server 實例恢復與不支援布局的 TCP 阻擋，再依正式證據處理 Client 驗收。",
     "status": "in_progress"
   },
   "verification": {
@@ -363,7 +363,7 @@
         "failed": 0
       }
     ],
-    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。\n2026-10-06 補充：提交 2c21f97、ade3074：新增 MerchantPurchaseCommandFactory 與 MerchantPurchasePreparationService，從 server-owned catalog、inventory、wallet snapshot 建立命令；Host/TCP 已接入唯讀 BUY preparation，沿用既有 connection lease。Protocol 125/125、Network 139/139 通過；Host/LoginProbe Release build 通過。隔離 127.0.0.1:6002 完成 Login、World handshake、1772-byte Bootstrap、NPC 3793 接收；未開啟 NPC interaction 的 synthetic BUY 收到 EOF，server 明確記錄 NoCurrentNpcInteraction，未進入 preparation。此結果不代表成功 TCP preparation 或購買完成。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未部署或重啟 6001，未手動補錢包，未進行原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-preparation-20261006.md。\n2026-10-06 TCP fixture 補充：提交 37133bb：新增兩個實際 loopback TCP 測試，使用系統分配的 port 與記憶體 repositories，完成 Login、World、1772-byte Bootstrap、NPC 5042 open、BUY、Logout。有錢包時 prepared=True；缺少錢包時 prepared=False、WalletMissing；兩者均未送交易回應。Network 完整 suite 141/141、Host Release build 通過。本日 Protocol 125/125 與最新 Network 141/141 合計 266/266，未重跑完整六套或 DB integration。測試 authority 與距離 2 為 synthetic fixture，不代表正式 merchant 核准。距離 3 的既有 NPC-open 證據仍需原始 exact-build artifact；AWS 現有 runtime hash 不符，不能用來驗證該版本。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未修改正式 DB、未部署或重啟 6001、未完成原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-fixture-20261006.md。\n2026-10-06 BUY 執行補充：新增受限 0x3B/57-byte BUY 回應 codec、空背包 preflight、提交後背包與交易版本核對、同一 connection lease 的購買協調流程，以及可注入 writer 的 TCP 執行路徑。六個 TCP fixture 案例通過，涵蓋成功回應、未支援 profile 零寫入、提交後配置不符、evidence 拒絕、writer 例外不重試、歷史重播需對帳。Protocol 136/136、Network 165/165、Classic 商店基線 23/23；Host Release build 通過。MariaDB coordinator filtered case 1/1 通過，確認錢包 100→60、讀回背包及編碼回應，fixture 清理為 0。TCP 與 MariaDB 尚未合併端到端驗證；未重跑完整六套。Host 未注入 writer，正式 BUY 執行仍停用；SELL TCP 未接。原始 capture、授權與 promotion gate 未補齊，未部署 6001。 交接：docs/handoff/merchant-buy-response-execution-20261006.md；docs/handoff/merchant-coordinator-db-20261006-122356/verification.md。"
+    "note": "測試來源 dd31e942d1ea6e3f4a6893b21fe0250d7cf6a080。六組 409/409 通過，0 failed、0 skipped：Core 7、Application 114、Session 20、Protocol 111、Network 111、Persistence Integration 46；DB integration 已啟用。買賣驗證錢包更新後交易紀錄／稽核寫入失敗回滾與重試。堆疊涵蓋容量拒絕、合併、溢出及提交後跨實體連線重播。8 個相同合併請求僅提交一次；兩個不同請求競爭同版本，一個成功、一個 VersionConflict，後者更新預期版本後重試成功。最終堆疊為 5 與 3，背包版本與 mutation sequence 均為 4；原實例保留，溢出新增實例，4 筆交易紀錄與 5 筆稽核。堆疊規則使用連線暫存物品表，正式內容未修改；提交由測試包裝 GrantInTransactionAsync，尚未驗證 GrantAsync 的堆疊流程。所有 fixture runner 清理成功。商店 TCP 尚未接入，外部 registry 更新尚未全面協調；原始 attempt-759 trace 與 Stage 4–6 匯出仍未取得，正式 gate 保持阻擋。先前 b17cdbb 的 6002 World Probe 通過；本版未重跑 Probe。未部署 6001，未進行 Client 驗收。\n2026-10-04 收工補充：來源 3d89a0e，新增共用 12-byte 0x38 商店請求解碼器，Protocol 121 passed、0 failed、0 skipped，新增 10 筆測試。409/409 保留為先前完整六組驗證結果，本輪未重跑完整六組，不能宣稱 419/419。Migration 478 已修正小腿肉 client_item_id=6906；商品價格、堆疊上限、NPC spawn 與商店列表未變更。TCP 商店派送、回應序列化及 Client 驗收仍待完成。交接：docs/handoff/merchant-tcp-checkpoint-20261004.md。\n2026-10-06 補充：提交 2c21f97、ade3074：新增 MerchantPurchaseCommandFactory 與 MerchantPurchasePreparationService，從 server-owned catalog、inventory、wallet snapshot 建立命令；Host/TCP 已接入唯讀 BUY preparation，沿用既有 connection lease。Protocol 125/125、Network 139/139 通過；Host/LoginProbe Release build 通過。隔離 127.0.0.1:6002 完成 Login、World handshake、1772-byte Bootstrap、NPC 3793 接收；未開啟 NPC interaction 的 synthetic BUY 收到 EOF，server 明確記錄 NoCurrentNpcInteraction，未進入 preparation。此結果不代表成功 TCP preparation 或購買完成。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未部署或重啟 6001，未手動補錢包，未進行原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-preparation-20261006.md。\n2026-10-06 TCP fixture 補充：提交 37133bb：新增兩個實際 loopback TCP 測試，使用系統分配的 port 與記憶體 repositories，完成 Login、World、1772-byte Bootstrap、NPC 5042 open、BUY、Logout。有錢包時 prepared=True；缺少錢包時 prepared=False、WalletMissing；兩者均未送交易回應。Network 完整 suite 141/141、Host Release build 通過。本日 Protocol 125/125 與最新 Network 141/141 合計 266/266，未重跑完整六套或 DB integration。測試 authority 與距離 2 為 synthetic fixture，不代表正式 merchant 核准。距離 3 的既有 NPC-open 證據仍需原始 exact-build artifact；AWS 現有 runtime hash 不符，不能用來驗證該版本。交易執行仍 BlockedNotWired，SELL 與交易回應未接；未修改正式 DB、未部署或重啟 6001、未完成原版 Client 商店驗收。 交接：docs/handoff/merchant-tcp-fixture-20261006.md。\n2026-10-06 BUY 執行補充：新增受限 0x3B/57-byte BUY 回應 codec、空背包 preflight、提交後背包與交易版本核對、同一 connection lease 的購買協調流程，以及可注入 writer 的 TCP 執行路徑。六個 TCP fixture 案例通過，涵蓋成功回應、未支援 profile 零寫入、提交後配置不符、evidence 拒絕、writer 例外不重試、歷史重播需對帳。Protocol 136/136、Network 165/165、Classic 商店基線 23/23；Host Release build 通過。MariaDB coordinator filtered case 1/1 通過，確認錢包 100→60、讀回背包及編碼回應，fixture 清理為 0。TCP 與 MariaDB 尚未合併端到端驗證；未重跑完整六套。Host 未注入 writer，正式 BUY 執行仍停用；SELL TCP 未接。原始 capture、授權與 promotion gate 未補齊，未部署 6001。 交接：docs/handoff/merchant-buy-response-execution-20261006.md；docs/handoff/merchant-coordinator-db-20261006-122356/verification.md。\n2026-10-06 TCP+MariaDB 補充：新增 MerchantPurchaseTcpIntegrationTests 與專用清理 runner；loopback TCP 完成登入、World、1772-byte Bootstrap、NPC open、BUY，使用真實 MariaDB writer 提交錢包 100→60、背包新增一件物品，客戶端收到 encoded 0x3B/57-byte 回應後正常登出。同一 server request 經 writer API 重播不再次扣款，交易 receipt 只有一筆。Filtered integration 1/1 通過，fixture 清理為 0。登入 adapter、NPC authority、catalog projection、evidence gate 仍為隔離 synthetic fixture；不代表正式商店或原版 Client 驗收完成。Host 未注入 writer，正式 BUY 停用；未部署 6001。 交接：docs/handoff/merchant-tcp-db-20261006-122934/verification.md。\n2026-10-06 補充：提交 2f7e45e 已驗證真實 MariaDB 提交後由 wrapper 丟出例外，TCP 不自動重買；原請求 API 重播後只有一次扣款與發道具。新增預設停用的受限背包投影與 TCP 接線，兩次 Login/World 的 MariaDB 測試通過：第二次未送 BUY，收到當前餘額 60 的 57-byte 恢復封包；背包、mutation、wallet 版本均保持 1，只有一筆購買紀錄。Network 175/175、Host Release build 通過；結果遺失與重連各一個 filtered DB case 通過且 fixture 清理完成。尚未驗證跨程序恢復、原版 Client 顯示、完整 DB suite 或一般背包布局。Host 開關與正式 authority 未啟用，production 6001 未變。 交接：docs/handoff/merchant-tcp-reconnect-20261006-125010/verification.md。\n2026-10-06 補充：新增 CharacterEconomySnapshot 與 MariaDB 組合 repository，背包與 Gold 錢包以同一連線、Repeatable Read 交易讀取；受限 TCP 重連投影改用組合快照。Network 175/175、組合快照重連 filtered DB case 1/1 通過。並行提交 filtered DB case 1/1 通過：背包讀取後另一連線完成購買，同一快照仍為空背包＋100，新快照為一道具＋60，版本均為 1。兩個 DB runner fixture 清理完成。正式 Host 功能維持停用，未重跑完整六套，跨程序恢復、一般布局、SELL TCP 與原版 Client 驗收仍待完成。 交接：docs/handoff/economy-snapshot-concurrency-20261006-125817/verification.md。"
   },
   "blockers": [
     {
@@ -401,6 +401,21 @@
     "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-06",
+      "title": "重連背包與錢包一致性快照驗證",
+      "detail": "新增 CharacterEconomySnapshot 與 MariaDB 組合 repository，背包與 Gold 錢包以同一連線、Repeatable Read 交易讀取；受限 TCP 重連投影改用組合快照。Network 175/175、組合快照重連 filtered DB case 1/1 通過。並行提交 filtered DB case 1/1 通過：背包讀取後另一連線完成購買，同一快照仍為空背包＋100，新快照為一道具＋60，版本均為 1。兩個 DB runner fixture 清理完成。正式 Host 功能維持停用，未重跑完整六套，跨程序恢復、一般布局、SELL TCP 與原版 Client 驗收仍待完成。"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "BUY 結果遺失防重與 TCP 重連背包投影",
+      "detail": "提交 2f7e45e 已驗證真實 MariaDB 提交後由 wrapper 丟出例外，TCP 不自動重買；原請求 API 重播後只有一次扣款與發道具。新增預設停用的受限背包投影與 TCP 接線，兩次 Login/World 的 MariaDB 測試通過：第二次未送 BUY，收到當前餘額 60 的 57-byte 恢復封包；背包、mutation、wallet 版本均保持 1，只有一筆購買紀錄。Network 175/175、Host Release build 通過；結果遺失與重連各一個 filtered DB case 通過且 fixture 清理完成。尚未驗證跨程序恢復、原版 Client 顯示、完整 DB suite 或一般背包布局。Host 開關與正式 authority 未啟用，production 6001 未變。"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "BUY TCP＋MariaDB 端到端驗證",
+      "detail": "新增 MerchantPurchaseTcpIntegrationTests 與專用清理 runner；loopback TCP 完成登入、World、1772-byte Bootstrap、NPC open、BUY，使用真實 MariaDB writer 提交錢包 100→60、背包新增一件物品，客戶端收到 encoded 0x3B/57-byte 回應後正常登出。同一 server request 經 writer API 重播不再次扣款，交易 receipt 只有一筆。Filtered integration 1/1 通過，fixture 清理為 0。登入 adapter、NPC authority、catalog projection、evidence gate 仍為隔離 synthetic fixture；不代表正式商店或原版 Client 驗收完成。Host 未注入 writer，正式 BUY 停用；未部署 6001。"
+    },
     {
       "date": "2026-10-06",
       "title": "BUY 回應、TCP 執行與 MariaDB 協調驗證",
@@ -716,46 +731,32 @@
     "percent": 55
   },
   "current_validation": {
-    "title": "BUY Response / TCP Execution / MariaDB Coordinator",
+    "title": "Economy Snapshot / TCP Reconnect",
     "date": "2026-10-06",
     "status": "passing",
-    "summary": "Protocol 136/136、Network 165/165；Classic filtered baseline 23/23、MariaDB coordinator filtered 1/1。各範圍分開記錄，未重跑完整六套。",
-    "groups": [
-      {
-        "name": "V2 Protocol / Network",
-        "passed": 301,
-        "total": 301
-      }
-    ],
+    "summary": "Network 175/175；組合快照 TCP 重連與並行提交 DB cases 各 1/1，fixture 清理完成。未重跑完整六套。",
     "suites": [
       {
-        "name": "Protocol",
-        "passed": 136,
-        "total": 136
-      },
-      {
         "name": "Network",
-        "passed": 165,
-        "total": 165
+        "passed": 175,
+        "total": 175
       },
       {
-        "name": "Classic merchant baseline (filtered)",
-        "passed": 23,
-        "total": 23
+        "name": "MariaDB consistent reconnect (filtered)",
+        "passed": 1,
+        "total": 1
       },
       {
-        "name": "MariaDB coordinator (filtered)",
+        "name": "MariaDB snapshot concurrency (filtered)",
         "passed": 1,
         "total": 1
       }
     ],
     "limitations": [
-      "409/409 保留為先前完整六套基線，本輪未重跑。",
-      "TCP fixture 與 MariaDB coordinator 分開驗證。",
-      "Synthetic authority、距離與 spawn hash 不屬正式證據。",
-      "Host 未注入 writer；正式 BUY 停用，SELL TCP 未接。",
-      "原始 capture、一般背包配置、對帳與原版 Client 驗收待完成。",
-      "未部署或重啟 production 6001。"
+      "409/409 為歷史完整六套結果。",
+      "一致性快照依賴 InnoDB 與普通一致性 SELECT。",
+      "未驗證程序重啟、原版 Client 顯示及一般背包布局。",
+      "正式 Host 功能維持停用，production 6001 未變。"
     ]
   },
   "validation_queue": [
