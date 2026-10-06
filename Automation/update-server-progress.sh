@@ -46,6 +46,17 @@ protected_before="$(
     }' "$PROGRESS"
 )"
 
+# Validate the manually selected development focus.
+jq -e '
+    .roadmap.current_key as $key
+    | ($key | type) == "string"
+      and ($key | length) > 0
+      and any(.roadmap.stages[]; .key == $key)
+' "$PROGRESS" >/dev/null || {
+    echo "ERROR: invalid roadmap.current_key"
+    exit 1
+}
+
 tmp="$(mktemp)"
 trap 'rm -f "$tmp"' EXIT
 
