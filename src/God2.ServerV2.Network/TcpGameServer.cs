@@ -25,6 +25,8 @@ public sealed class TcpGameServer : IAsyncDisposable
     private readonly IMerchantSaleWriter? _merchantSaleWriter;
     private readonly bool _enableRestrictedInventoryBootstrap;
     private readonly ICharacterEconomySnapshotRepository? _economyRepository;
+    private readonly ICharacterInventoryItemIdentityRepository? _itemIdentityRepository;
+    private readonly bool _enableMerchantSaleExecution;
     private readonly ICharacterPositionWriter? _characterPositionWriter;
     private readonly ICharacterMapTransitionWriter? _characterMapTransitionWriter;
     private readonly SessionRegistry _sessionRegistry;
@@ -57,7 +59,9 @@ public sealed class TcpGameServer : IAsyncDisposable
         IMerchantPurchaseWriter? merchantPurchaseWriter = null,
         IMerchantSaleWriter? merchantSaleWriter = null,
         bool enableRestrictedInventoryBootstrap = false,
-        ICharacterEconomySnapshotRepository? economyRepository = null)
+        ICharacterEconomySnapshotRepository? economyRepository = null,
+        ICharacterInventoryItemIdentityRepository? itemIdentityRepository = null,
+        bool enableMerchantSaleExecution = false)
     {
         Options = options;
         _loginService = loginService ??
@@ -95,6 +99,13 @@ public sealed class TcpGameServer : IAsyncDisposable
                 "Restricted inventory bootstrap requires a consistent economy repository.");
         _enableRestrictedInventoryBootstrap = enableRestrictedInventoryBootstrap;
         _economyRepository = economyRepository;
+        if (enableMerchantSaleExecution &&
+            (economyRepository is null || itemIdentityRepository is null ||
+             merchantPurchaseWriter is null || merchantSaleWriter is null))
+            throw new ArgumentException(
+                "Merchant sale execution requires economy, item identity and both writers.");
+        _itemIdentityRepository = itemIdentityRepository;
+        _enableMerchantSaleExecution = enableMerchantSaleExecution;
         _characterPositionWriter = characterPositionWriter;
         _characterMapTransitionWriter = characterMapTransitionWriter;
 
@@ -173,6 +184,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                     _merchantSaleWriter,
                     _enableRestrictedInventoryBootstrap,
                     _economyRepository,
+                    _itemIdentityRepository,
+                    _enableMerchantSaleExecution,
                     _worldReplicationOutboxes,
                     _npcInteractions,
                     Options.AdvertisedAddress.GetAddressBytes(),
@@ -235,6 +248,8 @@ public sealed class TcpGameServer : IAsyncDisposable
         IMerchantSaleWriter? merchantSaleWriter,
         bool enableRestrictedInventoryBootstrap,
         ICharacterEconomySnapshotRepository? economyRepository,
+        ICharacterInventoryItemIdentityRepository? itemIdentityRepository,
+        bool enableMerchantSaleExecution,
         WorldReplicationOutboxRegistry worldReplicationOutboxes,
         NpcInteractionSessionRegistry npcInteractions,
         byte[] advertisedAddress,
@@ -1112,6 +1127,121 @@ public sealed class TcpGameServer : IAsyncDisposable
                                     $"reason={preparation.FailureCode}; " +
                                     "transactionExecution=BlockedNotWired; " +
                                     "wireResponse=None");
+                                continue;
+                            }
+
+                            if (merchantTransaction.Operation ==
+                                    OfficialMerchantTransactionOperation.Sell &&
+                                enableMerchantSaleExecution)
+                            {
+                                if (economyRepository is null ||
+                                    itemIdentityRepository is null ||
+                                    merchantPurchaseWriter is null ||
+                                    merchantSaleWriter is null)
+                                {
+                                    Log(connectionId,
+                                        "Merchant SELL preparation blocked: " +
+                                        "reason=ExecutionDependencyUnavailable; " +
+                                        "wireResponse=None; closing connection.");
+                                    break;
+                                }
+
+                                var salePreparationService =
+                                    new MerchantSalePreparationService(
+                                        commandLane,
+                                        worldPresences,
+                                        merchantInteractionResolver,
+                                        economyRepository,
+                                        itemIdentityRepository);
+
+                                var salePreparation =
+                                    await salePreparationService.PrepareInLeaseAsync(
+                                        commandLease,
+                                        merchantBinding.ClientBuildId,
+                                        connectionId,
+                                        merchantInteraction.InteractionId,
+                                        merchantBinding,
+                                        merchantTransaction,
+                                        Guid.NewGuid(),
+                                        serverCancellationToken);
+
+                                if (salePreparation.Command is null)
+                                {
+                                    Log(connectionId,
+                                        "Merchant SELL preparation blocked: " +
+                                        $"interaction={salePreparation.InteractionStatus}; " +
+                                        $"reason={salePreparation.FailureCode}; " +
+                                        "wireResponse=None; closing connection.");
+                                    break;
+                                }
+
+                                var saleCommands = new MerchantCommandService(
+                                    worldPresences,
+                                    merchantInteractionResolver,
+                                    merchantPurchaseWriter,
+                                    merchantSaleWriter,
+                                    commandLane);
+                                var saleExecutionService =
+                                    new MerchantSaleExecutionService(
+                                        commandLane,
+                                        worldPresences,
+                                        merchantInteractionResolver,
+                                        saleCommands,
+                                        economyRepository,
+                                        itemIdentityRepository);
+
+                                MerchantSaleExecutionResult saleExecution;
+                                try
+                                {
+                                    saleExecution =
+                                        await saleExecutionService.ExecuteInLeaseAsync(
+                                            commandLease,
+                                            connectionId,
+                                            merchantInteraction.InteractionId,
+                                            merchantBinding,
+                                            merchantTransaction,
+                                            salePreparation.Command,
+                                            serverCancellationToken);
+                                }
+                                catch
+                                {
+                                    Log(connectionId,
+                                        "Merchant SELL execution uncertain: " +
+                                        $"transaction={salePreparation.Command.TransactionId}; " +
+                                        "automaticRetry=None; closing connection.");
+                                    throw;
+                                }
+
+                                Log(connectionId,
+                                    "Merchant SELL execution: " +
+                                    $"transaction={salePreparation.Command.TransactionId}; " +
+                                    $"interaction={saleExecution.InteractionStatus}; " +
+                                    $"status={saleExecution.TransactionResult?.Status}; " +
+                                    $"reason={saleExecution.FailureCode}; " +
+                                    $"reconciliation={saleExecution.RequiresReconciliation}; " +
+                                    $"wireResponse={(saleExecution.EncodedResponse is null ? "None" : "Sale0x41")}");
+
+                                if (saleExecution.EncodedResponse is null)
+                                    break;
+
+                                try
+                                {
+                                    await stream.WriteAsync(
+                                        saleExecution.EncodedResponse,
+                                        serverCancellationToken);
+                                }
+                                catch
+                                {
+                                    Log(connectionId,
+                                        "Merchant SELL response delivery uncertain: " +
+                                        $"transaction={salePreparation.Command.TransactionId}; " +
+                                        "automaticRetry=None; closing connection.");
+                                    throw;
+                                }
+                                finally
+                                {
+                                    Array.Clear(saleExecution.EncodedResponse);
+                                }
                                 continue;
                             }
 
