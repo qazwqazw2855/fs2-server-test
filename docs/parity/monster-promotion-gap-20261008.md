@@ -33,3 +33,19 @@ Operator-executed read-only queries against god2-runtime-db-test:
 - Client-dependent capture work is deferred until the client is available.
 
 No DB rows, runtime gates or production 6001 deployment were changed.
+
+## Reproducible import identity audit
+
+- Tool: Automation/audit-monster-import-identity.py.
+- Supplemental source SHA256: e222fa38e8ec2e1f2dd5f8fa61ab2b93ad9cef5b24cef5a58b5e09363101d882.
+- Recovery run: 88f531a0-4d5c-469e-9fb5-5c9059dcda8d.
+- Current recovery table: 208 rows; all lack level, HP, MP and experience.
+- Importer uses the normalized RecordKey SHA256 first four bytes, interpreted little-endian on this Ubuntu host, masked to a positive 31-bit integer.
+- Zero becomes one; collisions are resolved by incrementing in source order.
+- All 208 recovery IDs and codes matched; collision adjustments were zero.
+- All nine Formal IDs and codes matched the source-derived recovery identities; all remain disabled.
+- Formal import migrations 053/387/388 preserve the legacy monster Id rather than assigning a new monster ID.
+- Current god2.monsters is a base table using RecoveryStatus.
+- Current DB queries returned no legacy IDs 30/32 and no rows named 仙狐/褐蝸螺.
+- Historical live server IDs therefore remain unmapped to this recovery dataset.
+- This verifies import identity/code consistency, not original-client build equivalence, name semantics or gameplay approval.
