@@ -15,7 +15,10 @@ Verified all four table privilege entries after the change.
 No UPDATE or DELETE privileges were added.
 
 This records an applied test DB privilege change.
-Host connection/read/write verification with this account remains pending.
+Host-account TCP connection verified as god2_v2@172.17.0.1.
+SELECT queries against both journal tables passed using WHERE 1=0;
+no request data was read or written. INSERT execution remains untested
+with the Host account; its grant was verified in privilege metadata.
 Merchant evidence gates remain Blocked; no deployment or restart was
 performed as part of this grant change.
 
