@@ -65,3 +65,19 @@
 - Runner exit code: 0; its Host process was terminated during cleanup.
 - Local logs: /tmp/god2-host-idle-20261008-1AqRad
 - Production port 6001 was not restarted or deployed; original-client acceptance remains pending.
+
+## Repeatable Host lifecycle runner
+
+- Added Automation/test-v2-host-session-lifecycle.sh.
+- Tested source: e61cbb4 plus the new runner.
+- Host and LoginProbe Release builds passed.
+- One isolated Host on loopback port 6002 completed all scenarios.
+- Coverage: logout/relogin, pending ownership rejection, active-World duplicate login rejection, idle timeout and subsequent relogin/logout.
+- The active probe completed its 15-second heartbeat hold; idle closure was observed at 30.0 seconds.
+- Host logs recorded exactly six world presence entries and six releases.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- progress.json remained unchanged.
+- Merchant execution and movement persistence remained disabled.
+- This runner expects test001 / ID 1 and NPC 3793 in the current test environment.
+- Local logs: /tmp/god2-host-lifecycle-1Bl9s5
+- Production deployment and original-client acceptance remain pending.
