@@ -12,3 +12,10 @@
 - Host Release build previously passed with 0 warnings and 0 errors.
 - This verification uses a disabled synthetic fixture, not official client evidence.
 - Production Host wiring and official client acceptance remain pending.
+
+## Journal writer failure and cancellation tests
+
+- JournaledMerchantSaleWriterTests: 3/3 passed, 0 failed, 0 skipped.
+- Journal save failure prevents sale dispatch.
+- Cancellation after save preserves the request and prevents dispatch.
+- Writer result loss preserves the exact request without automatic retry.
