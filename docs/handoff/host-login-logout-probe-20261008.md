@@ -81,3 +81,18 @@
 - This runner expects test001 / ID 1 and NPC 3793 in the current test environment.
 - Local logs: /tmp/god2-host-lifecycle-1Bl9s5
 - Production deployment and original-client acceptance remain pending.
+
+## Movement sequencing and rejection recovery
+
+- Source: 99a79ea.
+- Read-only DB inspection confirmed map 170015007 bounds: X/Y 0 through 293.
+- Recovered movement samples target (16,14), sequence 1, and (16,15), sequence 2.
+- One isolated Host on loopback port 6002 served all three probes.
+- Consecutive movement requests received correctly sequenced acknowledgements and completed logout.
+- Repeating sequence 1 closed the connection without a second acknowledgement.
+- The same account subsequently re-entered World and passed official logout.
+- Host logs recorded exactly three world presence entries and three releases.
+- Movement bounds enforcement was enabled; movement persistence was disabled.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- Local logs: /tmp/god2-host-movement-20261008-gohJDA
+- This verifies protocol acknowledgements and connection recovery, not durable position updates or original-client movement acceptance.
