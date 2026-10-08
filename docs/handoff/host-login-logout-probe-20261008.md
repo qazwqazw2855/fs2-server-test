@@ -39,3 +39,16 @@
 - Runner exit code: 0; its Host process was terminated during cleanup.
 - Local logs: /tmp/god2-host-duplicate-20261008-nE0Gab
 - Production port 6001 and original-client acceptance remain outside this verification.
+
+## Pending-World ownership verification
+
+- Source: 6c8281b.
+- One isolated Host listened on loopback port 6002.
+- After character selection and Login connection closure, the probe attempted the same account from a second connection.
+- The probe verified the exact DuplicateLogin failure during pending World ownership.
+- The original connection subsequently entered World as test001 / ID 1.
+- NPC handle 3793 and the heartbeat path passed.
+- Host logs recorded exactly one world presence entry and one release.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- Local logs: /tmp/god2-host-pending-20261008-5zvEYw
+- This run ended by closing the probe connection; it did not test official logout.
