@@ -74,6 +74,24 @@ IWorldLoginMapIdentityRepository? worldLoginMapIdentityRepository;
 MerchantInteractionBindingProvider? merchantInteractionBindingProvider;
 IMerchantCatalogIdentityRepository? merchantCatalogRepository;
 ICharacterWalletSnapshotRepository? walletRepository;
+IMerchantPurchaseWriter? merchantPurchaseWriter = null;
+IMerchantSaleWriter? merchantSaleWriter = null;
+ICharacterEconomySnapshotRepository? economyRepository = null;
+ICharacterInventoryItemIdentityRepository? itemIdentityRepository = null;
+
+var enableMerchantExecution = string.Equals(
+    Environment.GetEnvironmentVariable("GOD2_ENABLE_MERCHANT_EXECUTION"),
+    "1", StringComparison.Ordinal);
+var enableMerchantSaleExecution = string.Equals(
+    Environment.GetEnvironmentVariable("GOD2_ENABLE_MERCHANT_SALE_EXECUTION"),
+    "1", StringComparison.Ordinal);
+
+if (enableMerchantSaleExecution && !enableMerchantExecution)
+{
+    Console.Error.WriteLine(
+        "Merchant SELL requires GOD2_ENABLE_MERCHANT_EXECUTION=1.");
+    return 2;
+}
 var enableMovementBounds = string.Equals(
     Environment.GetEnvironmentVariable("GOD2_ENFORCE_MOVEMENT_BOUNDS"),
     "1", StringComparison.Ordinal);
@@ -120,6 +138,27 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
     walletRepository =
         new MariaDbCharacterWalletSnapshotRepository(databaseOptions);
 
+    if (enableMerchantExecution)
+    {
+        merchantPurchaseWriter = new JournaledMerchantPurchaseWriter(
+            new MariaDbMerchantPurchaseJournal(databaseOptions),
+            new MariaDbMerchantPurchaseWriter(
+                databaseOptions, new BlockedMerchantPurchaseEvidenceGate()));
+        merchantSaleWriter = new JournaledMerchantSaleWriter(
+            new MariaDbMerchantSaleJournal(databaseOptions),
+            new MariaDbMerchantSaleWriter(
+                databaseOptions, new BlockedMerchantSaleEvidenceGate()));
+        economyRepository =
+            new MariaDbCharacterEconomySnapshotRepository(databaseOptions);
+        itemIdentityRepository =
+            new MariaDbCharacterInventoryItemIdentityRepository(databaseOptions);
+    }
+
+    Console.WriteLine(
+        $"Merchant execution wiring: {(enableMerchantExecution ? "Enabled" : "Disabled")}; " +
+        $"SELL: {(enableMerchantSaleExecution ? "Enabled" : "Disabled")}; " +
+        "BUY/SELL evidence gates: Blocked");
+
     var enableMovementPersistence =
         string.Equals(
             Environment.GetEnvironmentVariable(
@@ -142,6 +181,13 @@ if (!string.IsNullOrWhiteSpace(dbHost) &&
 }
 else
 {
+    if (enableMerchantExecution)
+    {
+        Console.Error.WriteLine(
+            "Merchant execution requires complete database configuration.");
+        return 2;
+    }
+
     authenticator = new RejectAllAccountAuthenticator();
     characterListRepository = new EmptyCharacterListRepository();
     npcSnapshotRepository = new EmptyNpcSnapshotRepository();
@@ -180,7 +226,12 @@ await using var server = new TcpGameServer(
     worldLoginMapIdentityRepository,
     merchantInteractionBindingProvider: merchantInteractionBindingProvider,
     merchantCatalogRepository: merchantCatalogRepository,
-    walletRepository: walletRepository);
+    walletRepository: walletRepository,
+    merchantPurchaseWriter: merchantPurchaseWriter,
+    merchantSaleWriter: merchantSaleWriter,
+    economyRepository: economyRepository,
+    itemIdentityRepository: itemIdentityRepository,
+    enableMerchantSaleExecution: enableMerchantSaleExecution);
 
 try
 {
