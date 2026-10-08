@@ -52,3 +52,16 @@
 - Runner exit code: 0; its Host process was terminated during cleanup.
 - Local logs: /tmp/god2-host-pending-20261008-5zvEYw
 - This run ended by closing the probe connection; it did not test official logout.
+
+## Idle timeout and same-Host relogin verification
+
+- Source: 0c3f84e.
+- One isolated Host remained running on loopback port 6002.
+- The first probe observed World connection closure after 30.0 seconds of inactivity.
+- Host logs confirmed the 30-second idle timeout and presence release.
+- The same account subsequently re-entered World as test001 / ID 1.
+- The second probe passed official logout.
+- Host logs recorded exactly two world presence entries and two releases.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- Local logs: /tmp/god2-host-idle-20261008-1AqRad
+- Production port 6001 was not restarted or deployed; original-client acceptance remains pending.
