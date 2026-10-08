@@ -49,3 +49,21 @@ No DB rows, runtime gates or production 6001 deployment were changed.
 - Current DB queries returned no legacy IDs 30/32 and no rows named 仙狐/褐蝸螺.
 - Historical live server IDs therefore remain unmapped to this recovery dataset.
 - This verifies import identity/code consistency, not original-client build equivalence, name semantics or gameplay approval.
+
+## Current drop relationship verification
+
+- Operator-provided read-only DB results on 2026-10-08 found 47 relationships covering exactly the nine current Formal monsters.
+- All 47 monster and item IDs resolve to current Formal rows.
+- Relationship statuses: Candidate 17; Derived 30.
+- All 47 have NULL minimum/maximum quantities, declared chance and weight.
+- Effective chance is zero; IsDropEnabled and ProductionDropEnabled are zero for all rows.
+- Recovery reporting explicitly describes NULL declared chance plus effective zero as disabled unknown probability, not official 0%.
+- All relationships belong to run cd28082b-3804-4b1e-b628-daf59ca769ee, created on 2026-08-11.
+- Current Phase2MariaDbPromoter code synchronizes monsters referenced by drop candidates and inserts disabled Formal drops with NULL rates when declared chance is unknown.
+- This code path is consistent with the nine-monster subset, but does not prove which historical code version populated it.
+- Formal monster_drops currently contains zero rows.
+- No columns were found for research tables monster_drop_gap_evidence_audit, legacy_monster_drop_relationship_evidence or relationship_source_archive; these tables are absent from the inspected DB.
+- Migration 418's missing-monster statement does not describe current identity coverage; the migration file is not proof of execution.
+- Derived relationship status alone does not establish quantity or probability evidence.
+- Remaining work: recover original relationship sources and execution history, verify quantities/probability units/conditions, and establish the V2 combat and reward baseline.
+- No migrations were rerun, no runtime content was enabled, and no production deployment was performed.
