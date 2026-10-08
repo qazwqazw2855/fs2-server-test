@@ -26,3 +26,16 @@
 - Runner exit code: 0; its Host process was terminated during cleanup.
 - Local logs: /tmp/god2-host-relogin-20261008-r1QyGB
 - This verifies sequential ownership reuse, not simultaneous duplicate login.
+
+## Active-World duplicate login verification
+
+- Source: 595d33a.
+- One isolated Host on loopback port 6002 served both probes.
+- The first probe entered World from 127.0.0.1 and completed a 15-second heartbeat hold.
+- A second probe from 127.0.0.2 attempted the same account login.
+- The second probe verified the exact DuplicateLogin failure response.
+- The original probe completed successfully after the rejection.
+- Host logs recorded exactly one world presence entry and one release.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- Local logs: /tmp/god2-host-duplicate-20261008-nE0Gab
+- Production port 6001 and original-client acceptance remain outside this verification.
