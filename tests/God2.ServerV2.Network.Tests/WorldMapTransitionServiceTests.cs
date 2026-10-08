@@ -66,8 +66,11 @@ public sealed class WorldMapTransitionServiceTests
             repository.CallCount);
     }
 
-    [Fact]
-    public async Task Runtime_version_change_after_database_commit_reports_inconsistent_state()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Presence_change_after_database_commit_reports_inconsistent_state(
+        bool preserveRuntimeVersion)
     {
         var presences = new WorldPresenceRegistry();
         var interactions = new NpcInteractionSessionRegistry();
@@ -91,7 +94,7 @@ public sealed class WorldMapTransitionServiceTests
                 worldNpcs);
 
         var writer =
-            new RacingMapTransitionWriter(presences);
+            new RacingMapTransitionWriter(presences, preserveRuntimeVersion);
 
         var service =
             new WorldMapTransitionService(
@@ -119,6 +122,8 @@ public sealed class WorldMapTransitionServiceTests
             presences.TryGetByCharacter(1, out var unchanged));
 
         Assert.Equal(100, unchanged!.Character.MapId);
+        Assert.Equal(11, unchanged.Character.PositionX);
+        Assert.Equal(21, unchanged.Character.PositionY);
         Assert.Equal(1, interactions.Count);
         Assert.Empty(outboxes.Snapshot(101));
     }
@@ -597,10 +602,14 @@ public sealed class WorldMapTransitionServiceTests
     {
         private readonly WorldPresenceRegistry _presences;
 
+        private readonly bool _preserveRuntimeVersion;
+
         public RacingMapTransitionWriter(
-            WorldPresenceRegistry presences)
+            WorldPresenceRegistry presences,
+            bool preserveRuntimeVersion)
         {
             _presences = presences;
+            _preserveRuntimeVersion = preserveRuntimeVersion;
         }
 
         public ValueTask<CharacterMapTransitionWriteResult>
@@ -615,7 +624,8 @@ public sealed class WorldMapTransitionServiceTests
                 11,
                 21,
                 request.ExpectedRuntimeVersion,
-                request.ExpectedRuntimeVersion + 1,
+                request.ExpectedRuntimeVersion +
+                    (_preserveRuntimeVersion ? 0 : 1),
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                 out _,
                 out _,

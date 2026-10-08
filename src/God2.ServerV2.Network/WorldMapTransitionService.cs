@@ -167,7 +167,8 @@ public sealed class WorldMapTransitionService
             runtimeVersion,
             concurrencyToken,
             nowUtc,
-            out var result);
+            out var result,
+            currentPresence);
 
         Console.WriteLine(
             "[WorldMapTransition] CORE_RESULT " +
@@ -217,10 +218,22 @@ public sealed class WorldMapTransitionService
         long? runtimeVersion,
         string? concurrencyToken,
         DateTimeOffset nowUtc,
-        out WorldMapTransitionResult? result)
+        out WorldMapTransitionResult? result,
+        WorldPresence? expectedPresence = null)
     {
         using (_worldPresences.EnterReplicationScope())
         {
+            // The DB await can outlive a presence change even when
+            // the runtime version remains unchanged.
+            if (expectedPresence is not null &&
+                (!_worldPresences.TryGetByConnection(
+                    connectionId, out var actualPresence) ||
+                 !ReferenceEquals(expectedPresence, actualPresence)))
+            {
+                result = null;
+                return false;
+            }
+
             if (!_worldPresences.TryChangeMap(
                     connectionId,
                     characterId,
