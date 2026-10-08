@@ -15,3 +15,14 @@
 - LoginProbe now accepts GOD2_PROBE_EXPECTED_NPC_HANDLES as a comma-separated list of positive integers.
 - Existing mode-specific NPC expectations remain the default when the override is absent.
 - Local logs: /tmp/god2-host-probe-20261008-ESEaxN
+
+## Same-Host relogin verification
+
+- Source: f6412a2.
+- One isolated Host stayed running throughout both login/logout rounds.
+- The same account re-entered as test001 / ID 1 successfully.
+- Both rounds received NPC handle 3793 and passed official logout.
+- Host logs recorded exactly two world presence entries and two releases.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- Local logs: /tmp/god2-host-relogin-20261008-r1QyGB
+- This verifies sequential ownership reuse, not simultaneous duplicate login.
