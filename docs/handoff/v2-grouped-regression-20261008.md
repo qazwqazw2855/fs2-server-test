@@ -13,3 +13,16 @@
 - TRX and per-script logs remain in the temporary result directory printed by the runner.
 - Reproduce: export GOD2_TEST_PASSWORD and GOD2_V2_TEST_ONLY=1, then run bash Automation/test-v2-quest-reward-committed.sh --all.
 - Official client acceptance, merchant production evidence promotion, monster source recovery and production deployment remain pending.
+
+## Committed-position runner integration
+
+- Tested source: 4faf215 plus the grouped runner update.
+- CharacterPositionCommittedTests is excluded from the base Persistence group and executed through its dedicated fixture runner.
+- Six base groups passed: 554/554, zero failed or skipped.
+- Fifteen fixture scripts completed twenty passing test-case executions, including prerequisite reruns.
+- Fixture execution counts are not added to the base count as a unique-test total.
+- The committed-position fixture and outer fixture accounts/users were cleaned successfully.
+- The outer committed-quest runner exited with code 0.
+- progress.json remained unchanged, verified by the invoking shell.
+- Log: /tmp/god2-v2-grouped-position-20261008-133014.log
+- Production deployment and original-client acceptance were not performed.
