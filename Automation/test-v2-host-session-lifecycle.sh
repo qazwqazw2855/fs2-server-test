@@ -171,15 +171,22 @@ run_case idle GOD2_PROBE_VERIFY_IDLE_TIMEOUT \
   'World 30 秒閒置逾時測試成功'
 run_case after-idle GOD2_PROBE_VERIFY_LOGOUT 'World 正式登出測試成功'
 
+run_case movement GOD2_PROBE_VERIFY_MOVEMENT \
+  'World 連續移動、雙 ACK 與連線維持測試成功'
+run_case duplicate-movement GOD2_PROBE_VERIFY_DUPLICATE_MOVEMENT \
+  'World 重複移動序號拒絕、無第二次 ACK 測試成功'
+run_case after-duplicate-movement GOD2_PROBE_VERIFY_LOGOUT \
+  'World 正式登出測試成功'
+
 python3 - "$work/server.log" <<'PY'
 import sys
 from pathlib import Path
 text = Path(sys.argv[1]).read_text()
 assert text.count("Listening on 127.0.0.1:6002") == 1
-assert text.count("World presence entered: character=1;") == 6
-assert text.count("World presence released: character=1;") == 6
+assert text.count("World presence entered: character=1;") == 9
+assert text.count("World presence released: character=1;") == 9
 assert "World idle timeout after 30 seconds." in text
-print("PASS: 同一 Host 完成全部案例；presence 進入／釋放各 6 次")
+print("PASS: 同一 Host 完成全部案例；presence 進入／釋放各 9 次")
 PY
 
 test "$progress_before" = "$(sha256sum progress.json)"

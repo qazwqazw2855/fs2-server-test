@@ -96,3 +96,16 @@
 - Runner exit code: 0; its Host process was terminated during cleanup.
 - Local logs: /tmp/god2-host-movement-20261008-gohJDA
 - This verifies protocol acknowledgements and connection recovery, not durable position updates or original-client movement acceptance.
+
+## Lifecycle runner with movement coverage
+
+- Tested source: c0fae98 plus the lifecycle runner extension.
+- Added consecutive movement, duplicate movement sequence rejection and subsequent relogin/logout.
+- All existing login, pending ownership, duplicate login and idle timeout scenarios passed together with the movement scenarios.
+- One isolated Host recorded exactly nine world presence entries and nine releases.
+- Host and LoginProbe Release builds passed.
+- Runner exit code: 0; its Host process was terminated during cleanup.
+- progress.json remained unchanged.
+- Movement bounds enforcement remained enabled; movement persistence and merchant execution remained disabled.
+- Local logs: /tmp/god2-host-lifecycle-8cxvcF
+- Durable position updates, production deployment and original-client acceptance were not verified by this run.
