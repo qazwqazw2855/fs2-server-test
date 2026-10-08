@@ -505,6 +505,28 @@ var expectedNpcHandles =
             ? new uint[] { OfficialNpcDialogCodec.LiveDialogHandle }
             : new uint[] { 5042, 5096 };
 
+var expectedNpcHandlesOverride =
+    Environment.GetEnvironmentVariable("GOD2_PROBE_EXPECTED_NPC_HANDLES");
+
+if (expectedNpcHandlesOverride is not null)
+{
+    var handles = new List<uint>();
+
+    foreach (var value in expectedNpcHandlesOverride.Split(','))
+    {
+        if (!uint.TryParse(value.Trim(), out var handle) || handle == 0)
+        {
+            Console.Error.WriteLine(
+                "GOD2_PROBE_EXPECTED_NPC_HANDLES 必須是逗號分隔的正整數。");
+            return 1;
+        }
+
+        handles.Add(handle);
+    }
+
+    expectedNpcHandles = handles.ToArray();
+}
+
 foreach (var expectedNpcHandle in expectedNpcHandles)
 {
     var npcSpawn =
