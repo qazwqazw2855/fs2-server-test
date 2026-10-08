@@ -9,6 +9,90 @@ public sealed class WorldPresenceRegistryTests
         new(2026, 9, 16, 0, 0, 0, TimeSpan.Zero);
 
     [Fact]
+    public async Task Concurrent_entries_allow_only_one_owner()
+    {
+        var registry = new WorldPresenceRegistry();
+        var start = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+        var tasks = Enumerable.Range(0, 8).Select(index => Task.Run(async () =>
+        {
+            await start.Task;
+            var connection = 101L + index;
+            var result = registry.TryEnter(
+                Presence(connection, "account-a", 1, 11, mapId: 100));
+            return (connection, result);
+        })).ToArray();
+
+        start.SetResult(true);
+        var results = await Task.WhenAll(tasks);
+        var winner = Assert.Single(results, value => value.result.Succeeded);
+        Assert.Equal(7, results.Count(value => !value.result.Succeeded));
+        Assert.All(results, value =>
+            Assert.Equal(winner.connection, value.result.ExistingConnectionId));
+        Assert.Equal(1, registry.Count);
+        Assert.True(registry.TryGetByCharacter(11, out var owner));
+        Assert.Equal(winner.connection, owner!.ConnectionId);
+
+        foreach (var loser in results.Where(value => !value.result.Succeeded))
+            Assert.False(registry.TryLeave(loser.connection, out _));
+        Assert.Equal(1, registry.Count);
+
+        Assert.True(registry.TryLeave(winner.connection, out _));
+        Assert.False(registry.TryGetByCharacter(11, out _));
+        Assert.Equal(0, registry.Count);
+        Assert.True(registry.TryEnter(
+            Presence(999, "account-a", 1, 11, mapId: 100)).Succeeded);
+        Assert.False(registry.TryLeave(winner.connection, out _));
+        Assert.True(registry.TryGetByCharacter(11, out var replacement));
+        Assert.Equal(999L, replacement!.ConnectionId);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task Concurrent_update_and_leave_cannot_restore_departed_owner(
+        bool changeMap)
+    {
+        var registry = new WorldPresenceRegistry();
+        Assert.True(registry.TryEnter(
+            Presence(101, "account-a", 1, 11, mapId: 100)).Succeeded);
+        var start = new TaskCompletionSource<bool>(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+
+        var update = Task.Run(async () =>
+        {
+            await start.Task;
+            return changeMap
+                ? registry.TryChangeMap(101, 11, 200, 10, 20,
+                    out _, out _, out _, out _)
+                : registry.TryMove(101, 11, 10, 20, out _);
+        });
+        var leave = Task.Run(async () =>
+        {
+            await start.Task;
+            return registry.TryLeave(101, out _);
+        });
+
+        start.SetResult(true);
+        await Task.WhenAll(update, leave);
+        Assert.True(await leave);
+        Assert.Equal(0, registry.Count);
+        Assert.False(registry.TryGetByConnection(101, out _));
+        Assert.False(registry.TryGetByCharacter(11, out _));
+        Assert.Empty(registry.VisiblePeers(101));
+
+        Assert.True(registry.TryEnter(
+            Presence(202, "account-a", 1, 11, mapId: 100)).Succeeded);
+        Assert.False(registry.TryMove(101, 11, 99, 99, out _));
+        Assert.False(registry.TryChangeMap(101, 11, 300, 99, 99,
+            out _, out _, out _, out _));
+        Assert.False(registry.TryLeave(101, out _));
+        Assert.True(registry.TryGetByCharacter(11, out var owner));
+        Assert.Equal(202L, owner!.ConnectionId);
+        Assert.Equal(100L, owner.Character.MapId);
+    }
+
+    [Fact]
     public void First_world_connection_enters()
     {
         var registry = new WorldPresenceRegistry();
