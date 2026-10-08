@@ -4,6 +4,11 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
+# Explicit test-only mode preserves the existing fixture chain.
+if test "${GOD2_V2_TEST_ONLY:-}" = "1"; then
+  exec bash "$ROOT/Automation/test-v2-all-no-progress.sh"
+fi
+
 echo '========================================'
 echo ' God2 Server V2 Progress Update'
 echo '========================================'
