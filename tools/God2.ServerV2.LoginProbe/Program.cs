@@ -1124,6 +1124,14 @@ else if (verifyMovement)
             $"World 移動 ACK Sequence 錯誤：{acknowledgedSequence}");
 
         Array.Clear(movementAcknowledgement);
+        Console.WriteLine($"World Movement ACK verified: sequence={acknowledgedSequence}");
+    }
+
+    if (Environment.GetEnvironmentVariable("GOD2_PROBE_MOVEMENT_DISCONNECT") == "1")
+    {
+        worldClient.Dispose();
+        Console.WriteLine("World 雙 ACK 後 TCP 斷線測試成功");
+        return 0;
     }
 
     var logoutRequest = Convert.FromHexString("0500AC9D30");

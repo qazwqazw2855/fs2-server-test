@@ -523,6 +523,8 @@ public sealed class TcpGameServer : IAsyncDisposable
                             "World presence entered: " +
                             $"character={pendingWorld.Character.CharacterId}; " +
                             $"map={pendingWorld.Character.MapId}; " +
+                            $"position=({pendingWorld.Character.PositionX},{pendingWorld.Character.PositionY}); " +
+                            $"runtimeVersion={pendingWorld.Character.RuntimeVersion}; " +
                             $"visiblePeers={visibleWorldPeers.Count}; " +
                             $"queuedReplicationEvents=" +
                             $"{worldReplicationOutboxes.Snapshot(connectionId).Count}; " +
