@@ -460,71 +460,75 @@ public sealed class TcpGameServer : IAsyncDisposable
                                   "wireDispatch=BlockedNoVerifiedInventoryCodec.");
                     }
 
-                    var presenceResult =
-                        worldPresences.TryEnter(
-                            new WorldPresence(
+                    using (worldPresences.EnterReplicationScope())
+                    {
+                        var presenceResult =
+                            worldPresences.TryEnter(
+                                new WorldPresence(
+                                    connectionId,
+                                    pendingWorld.AccountName,
+                                    pendingWorld.AccountId,
+                                    pendingWorld.Character,
+                                    DateTimeOffset.UtcNow),
+                                out var visibleWorldPeers);
+
+                        if (!presenceResult.Succeeded)
+                        {
+                            Log(
                                 connectionId,
-                                pendingWorld.AccountName,
-                                pendingWorld.AccountId,
-                                pendingWorld.Character,
-                                DateTimeOffset.UtcNow),
-                            out var visibleWorldPeers);
+                                "World presence rejected: " +
+                                $"status={presenceResult.Status}; " +
+                                $"existingConnection={presenceResult.ExistingConnectionId}; " +
+                                $"character={pendingWorld.Character.CharacterId}; " +
+                                "closing connection.");
+                            return;
+                        }
 
-                    if (!presenceResult.Succeeded)
-                    {
+                        if (!worldReplicationOutboxes.TryRegister(
+                                connectionId))
+                        {
+                            Log(
+                                connectionId,
+                                "World replication outbox registration rejected.");
+                            return;
+                        }
+
+                        var currentPresence =
+                            worldPresences.TryGetByConnection(
+                                connectionId,
+                                out var registeredPresence)
+                                ? registeredPresence!
+                                : throw new InvalidOperationException(
+                                    "Registered world presence is unavailable.");
+
+                        foreach (var peer in visibleWorldPeers)
+                        {
+                            worldReplicationOutboxes.TryEnqueue(
+                                peer.ConnectionId,
+                                WorldReplicationEventKind.PlayerEntered,
+                                currentPresence,
+                                DateTimeOffset.UtcNow,
+                                out _);
+
+                            worldReplicationOutboxes.TryEnqueue(
+                                connectionId,
+                                WorldReplicationEventKind.PlayerEntered,
+                                peer,
+                                DateTimeOffset.UtcNow,
+                                out _);
+                        }
+
                         Log(
                             connectionId,
-                            "World presence rejected: " +
-                            $"status={presenceResult.Status}; " +
-                            $"existingConnection={presenceResult.ExistingConnectionId}; " +
+                            "World presence entered: " +
                             $"character={pendingWorld.Character.CharacterId}; " +
-                            "closing connection.");
-                        return;
+                            $"map={pendingWorld.Character.MapId}; " +
+                            $"visiblePeers={visibleWorldPeers.Count}; " +
+                            $"queuedReplicationEvents=" +
+                            $"{worldReplicationOutboxes.Snapshot(connectionId).Count}; " +
+                            "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
+
                     }
-
-                    if (!worldReplicationOutboxes.TryRegister(
-                            connectionId))
-                    {
-                        Log(
-                            connectionId,
-                            "World replication outbox registration rejected.");
-                        return;
-                    }
-
-                    var currentPresence =
-                        worldPresences.TryGetByConnection(
-                            connectionId,
-                            out var registeredPresence)
-                            ? registeredPresence!
-                            : throw new InvalidOperationException(
-                                "Registered world presence is unavailable.");
-
-                    foreach (var peer in visibleWorldPeers)
-                    {
-                        worldReplicationOutboxes.TryEnqueue(
-                            peer.ConnectionId,
-                            WorldReplicationEventKind.PlayerEntered,
-                            currentPresence,
-                            DateTimeOffset.UtcNow,
-                            out _);
-
-                        worldReplicationOutboxes.TryEnqueue(
-                            connectionId,
-                            WorldReplicationEventKind.PlayerEntered,
-                            peer,
-                            DateTimeOffset.UtcNow,
-                            out _);
-                    }
-
-                    Log(
-                        connectionId,
-                        "World presence entered: " +
-                        $"character={pendingWorld.Character.CharacterId}; " +
-                        $"map={pendingWorld.Character.MapId}; " +
-                        $"visiblePeers={visibleWorldPeers.Count}; " +
-                        $"queuedReplicationEvents=" +
-                        $"{worldReplicationOutboxes.Snapshot(connectionId).Count}; " +
-                        "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
 
                     await stream.WriteAsync(
                         OfficialWorldHandshakeProtocol.FirstFollowUpFrame,
@@ -1608,47 +1612,51 @@ public sealed class TcpGameServer : IAsyncDisposable
 
                             var replicationRecipients = 0;
 
-                            if (worldPresences.TryMove(
-                                    connectionId,
-                                    pendingWorld.Character.CharacterId,
-                                    movement.X,
-                                    movement.Y,
-                                    runtimeVersion,
-                                      concurrencyToken,
-                                      out var movementSubject) &&
-                                movementSubject is not null)
+                            using (worldPresences.EnterReplicationScope())
                             {
-                                var movementReplication =
-                                    new WorldReplicationMovement(
+                                if (worldPresences.TryMove(
+                                        connectionId,
+                                        pendingWorld.Character.CharacterId,
                                         movement.X,
                                         movement.Y,
-                                        movement.Sequence,
-                                        movement.State);
-
-                                foreach (var peer in
-                                         worldPresences.VisiblePeers(
-                                             connectionId))
+                                        runtimeVersion,
+                                          concurrencyToken,
+                                          out var movementSubject) &&
+                                    movementSubject is not null)
                                 {
-                                    if (worldReplicationOutboxes
-                                        .TryEnqueueMovement(
-                                            peer.ConnectionId,
-                                            movementSubject,
-                                            movementReplication,
-                                            DateTimeOffset.UtcNow,
-                                            out _))
+                                    var movementReplication =
+                                        new WorldReplicationMovement(
+                                            movement.X,
+                                            movement.Y,
+                                            movement.Sequence,
+                                            movement.State);
+
+                                    foreach (var peer in
+                                             worldPresences.VisiblePeers(
+                                                 connectionId))
                                     {
-                                        replicationRecipients++;
+                                        if (worldReplicationOutboxes
+                                            .TryEnqueueMovement(
+                                                peer.ConnectionId,
+                                                movementSubject,
+                                                movementReplication,
+                                                DateTimeOffset.UtcNow,
+                                                out _))
+                                        {
+                                            replicationRecipients++;
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                Log(
-                                    connectionId,
-                                    "World movement state commit failed after " +
-                                    $"{persistenceState} persistence; " +
-                                    "closing without acknowledgement.");
-                                break;
+                                else
+                                {
+                                    Log(
+                                        connectionId,
+                                        "World movement state commit failed after " +
+                                        $"{persistenceState} persistence; " +
+                                        "closing without acknowledgement.");
+                                    break;
+                                }
+
                             }
 
                             Log(
@@ -1927,46 +1935,50 @@ public sealed class TcpGameServer : IAsyncDisposable
         {
             await commandLane.CloseAsync(() =>
             {
-                if (npcInteractions.Remove(
-                        connectionId,
-                        out var releasedInteraction))
+                using (worldPresences.EnterReplicationScope())
                 {
-                    Log(
-                        connectionId,
-                        "NPC interaction session released: " +
-                        $"character={releasedInteraction!.CharacterId}; " +
-                        $"map={releasedInteraction.MapId}; " +
-                        $"handle={releasedInteraction.ClientEntityHandle}; " +
-                        $"spawn={releasedInteraction.SpawnId}.");
-                }
-
-                if (worldPresences.TryLeave(
-                        connectionId,
-                        out var departedPresence,
-                        out var departedVisiblePeers))
-                {
-                    foreach (var peer in departedVisiblePeers)
+                    if (npcInteractions.Remove(
+                            connectionId,
+                            out var releasedInteraction))
                     {
-                        worldReplicationOutboxes.TryEnqueue(
-                            peer.ConnectionId,
-                            WorldReplicationEventKind.PlayerLeft,
-                            departedPresence!,
-                            DateTimeOffset.UtcNow,
-                            out _);
+                        Log(
+                            connectionId,
+                            "NPC interaction session released: " +
+                            $"character={releasedInteraction!.CharacterId}; " +
+                            $"map={releasedInteraction.MapId}; " +
+                            $"handle={releasedInteraction.ClientEntityHandle}; " +
+                            $"spawn={releasedInteraction.SpawnId}.");
                     }
 
-                    Log(
-                        connectionId,
-                        "World presence released: " +
-                        $"character={departedPresence!.Character.CharacterId}; " +
-                        $"map={departedPresence.Character.MapId}; " +
-                        $"visiblePeers={departedVisiblePeers.Count}; " +
-                        "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
-                }
+                    if (worldPresences.TryLeave(
+                            connectionId,
+                            out var departedPresence,
+                            out var departedVisiblePeers))
+                    {
+                        foreach (var peer in departedVisiblePeers)
+                        {
+                            worldReplicationOutboxes.TryEnqueue(
+                                peer.ConnectionId,
+                                WorldReplicationEventKind.PlayerLeft,
+                                departedPresence!,
+                                DateTimeOffset.UtcNow,
+                                out _);
+                        }
 
-                worldReplicationOutboxes.TryRemove(
-                    connectionId,
-                    out _);
+                        Log(
+                            connectionId,
+                            "World presence released: " +
+                            $"character={departedPresence!.Character.CharacterId}; " +
+                            $"map={departedPresence.Character.MapId}; " +
+                            $"visiblePeers={departedVisiblePeers.Count}; " +
+                            "wireDispatch=BlockedNoVerifiedPlayerReplicationCodec.");
+                    }
+
+                    worldReplicationOutboxes.TryRemove(
+                        connectionId,
+                        out _);
+
+                }
 
                 sessionContext.Dispose();
                 state.TryTransition(ConnectionStage.Closing);

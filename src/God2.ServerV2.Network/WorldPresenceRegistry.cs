@@ -29,6 +29,34 @@ public sealed class WorldPresenceRegistry
 {
     private readonly object _gate = new();
 
+    // Synchronous scope only: never await DB or network I/O while held.
+    // Uses the presence lock so state updates and replication publication
+    // can be serialized across connections. Registry methods are reentrant.
+    public IDisposable EnterReplicationScope() =>
+        new ReplicationScope(_gate);
+
+    private sealed class ReplicationScope : IDisposable
+    {
+        private object? _gate;
+
+        public ReplicationScope(object gate)
+        {
+            Monitor.Enter(gate);
+            _gate = gate;
+        }
+
+        public void Dispose()
+        {
+            if (_gate is not { } gate)
+                return;
+            // Monitor ownership is thread-affine; Exit must succeed before
+            // marking this scope disposed.
+            Monitor.Exit(gate);
+            _gate = null;
+        }
+    }
+
+
     private readonly Dictionary<long, WorldPresence> _byConnection = [];
     private readonly Dictionary<string, WorldPresence> _byAccount =
         new(StringComparer.OrdinalIgnoreCase);

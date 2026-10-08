@@ -219,77 +219,80 @@ public sealed class WorldMapTransitionService
         DateTimeOffset nowUtc,
         out WorldMapTransitionResult? result)
     {
-        if (!_worldPresences.TryChangeMap(
-                connectionId,
-                characterId,
-                destinationMapId,
-                destinationX,
-                destinationY,
-                expectedRuntimeVersion,
-                runtimeVersion,
-                concurrencyToken,
-                out var previousPresence,
-                out var updatedPresence,
-                out var previousVisiblePeers,
-                out var newVisiblePeers))
+        using (_worldPresences.EnterReplicationScope())
         {
-            result = null;
-            return false;
-        }
-
-        _npcInteractions.Remove(
-            connectionId,
-            out var releasedInteraction);
-
-        var playerLeftEventsQueued = 0;
-
-        foreach (var peer in previousVisiblePeers)
-        {
-            if (_replicationOutboxes.TryEnqueue(
-                    peer.ConnectionId,
-                    WorldReplicationEventKind.PlayerLeft,
-                    previousPresence!,
-                    nowUtc,
-                    out _))
-            {
-                playerLeftEventsQueued++;
-            }
-        }
-
-        var playerEnteredEventsQueued = 0;
-
-        foreach (var peer in newVisiblePeers)
-        {
-            if (_replicationOutboxes.TryEnqueue(
-                    peer.ConnectionId,
-                    WorldReplicationEventKind.PlayerEntered,
-                    updatedPresence!,
-                    nowUtc,
-                    out _))
-            {
-                playerEnteredEventsQueued++;
-            }
-
-            if (_replicationOutboxes.TryEnqueue(
+            if (!_worldPresences.TryChangeMap(
                     connectionId,
-                    WorldReplicationEventKind.PlayerEntered,
-                    peer,
-                    nowUtc,
-                    out _))
+                    characterId,
+                    destinationMapId,
+                    destinationX,
+                    destinationY,
+                    expectedRuntimeVersion,
+                    runtimeVersion,
+                    concurrencyToken,
+                    out var previousPresence,
+                    out var updatedPresence,
+                    out var previousVisiblePeers,
+                    out var newVisiblePeers))
             {
-                playerEnteredEventsQueued++;
+                result = null;
+                return false;
             }
+
+            _npcInteractions.Remove(
+                connectionId,
+                out var releasedInteraction);
+
+            var playerLeftEventsQueued = 0;
+
+            foreach (var peer in previousVisiblePeers)
+            {
+                if (_replicationOutboxes.TryEnqueue(
+                        peer.ConnectionId,
+                        WorldReplicationEventKind.PlayerLeft,
+                        previousPresence!,
+                        nowUtc,
+                        out _))
+                {
+                    playerLeftEventsQueued++;
+                }
+            }
+
+            var playerEnteredEventsQueued = 0;
+
+            foreach (var peer in newVisiblePeers)
+            {
+                if (_replicationOutboxes.TryEnqueue(
+                        peer.ConnectionId,
+                        WorldReplicationEventKind.PlayerEntered,
+                        updatedPresence!,
+                        nowUtc,
+                        out _))
+                {
+                    playerEnteredEventsQueued++;
+                }
+
+                if (_replicationOutboxes.TryEnqueue(
+                        connectionId,
+                        WorldReplicationEventKind.PlayerEntered,
+                        peer,
+                        nowUtc,
+                        out _))
+                {
+                    playerEnteredEventsQueued++;
+                }
+            }
+
+            result = new WorldMapTransitionResult(
+                previousPresence!,
+                updatedPresence!,
+                previousVisiblePeers,
+                newVisiblePeers,
+                releasedInteraction,
+                playerLeftEventsQueued,
+                playerEnteredEventsQueued);
+
+            return true;
         }
-
-        result = new WorldMapTransitionResult(
-            previousPresence!,
-            updatedPresence!,
-            previousVisiblePeers,
-            newVisiblePeers,
-            releasedInteraction,
-            playerLeftEventsQueued,
-            playerEnteredEventsQueued);
-
-        return true;
     }
 }

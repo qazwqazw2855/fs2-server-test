@@ -92,6 +92,100 @@ public sealed class WorldPresenceRegistryTests
         Assert.Equal(100L, owner.Character.MapId);
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void Publication_scope_orders_update_before_concurrent_leave(int action)
+    {
+        var registry = new WorldPresenceRegistry();
+        var outboxes = new WorldReplicationOutboxRegistry();
+        Assert.True(outboxes.TryRegister(999));
+        if (action != 0)
+            Assert.True(registry.TryEnter(
+                Presence(101, "account-a", 1, 11, mapId: 100)).Succeeded);
+
+        using var attempted = new ManualResetEventSlim();
+        Exception? workerError = null;
+        var worker = new Thread(() =>
+        {
+            try
+            {
+                attempted.Set();
+                using (registry.EnterReplicationScope())
+                {
+                    Assert.True(registry.TryLeave(101, out var departed));
+                    Assert.True(outboxes.TryEnqueue(
+                        999, WorldReplicationEventKind.PlayerLeft,
+                        departed!, Now, out _));
+                }
+            }
+            catch (Exception error)
+            {
+                workerError = error;
+            }
+        }) { IsBackground = true };
+
+        try
+        {
+            using (registry.EnterReplicationScope())
+            {
+                switch (action)
+                {
+                    case 0:
+                        Assert.True(registry.TryEnter(
+                            Presence(101, "account-a", 1, 11, mapId: 100)).Succeeded);
+                        break;
+                    case 1:
+                        Assert.True(registry.TryMove(101, 11, 30, 40, out _));
+                        break;
+                    case 2:
+                        Assert.True(registry.TryChangeMap(101, 11, 200, 30, 40,
+                            out _, out _, out _, out _));
+                        break;
+                }
+
+                worker.Start();
+                Assert.True(attempted.Wait(TimeSpan.FromSeconds(5)));
+                // The worker has reached the contended Monitor, rather than
+                // merely being scheduled later.
+                Assert.True(SpinWait.SpinUntil(
+                    () => (worker.ThreadState &
+                        System.Threading.ThreadState.WaitSleepJoin) != 0,
+                    TimeSpan.FromSeconds(5)));
+
+                Assert.True(registry.TryGetByConnection(101, out var subject));
+                if (action == 1)
+                    Assert.True(outboxes.TryEnqueueMovement(
+                        999, subject!,
+                        new WorldReplicationMovement(30, 40, 1, 0xFF),
+                        Now, out _));
+                else
+                    Assert.True(outboxes.TryEnqueue(
+                        999, WorldReplicationEventKind.PlayerEntered,
+                        subject!, Now, out _));
+            }
+        }
+        finally
+        {
+            if ((worker.ThreadState &
+                System.Threading.ThreadState.Unstarted) == 0)
+                Assert.True(worker.Join(TimeSpan.FromSeconds(5)));
+        }
+
+        Assert.Null(workerError);
+        var events = outboxes.Snapshot(999);
+        Assert.Equal(2, events.Count);
+        Assert.Equal(
+            action == 1 ? WorldReplicationEventKind.PlayerMoved
+                        : WorldReplicationEventKind.PlayerEntered,
+            events[0].Kind);
+        Assert.Equal(WorldReplicationEventKind.PlayerLeft, events[1].Kind);
+        Assert.True(events[0].Sequence < events[1].Sequence);
+        Assert.Equal(events[0].Subject, events[1].Subject);
+        Assert.Equal(0, registry.Count);
+    }
+
     [Fact]
     public void First_world_connection_enters()
     {
