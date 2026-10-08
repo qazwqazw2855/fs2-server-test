@@ -135,3 +135,11 @@ dotnet test \
   --configuration Release \
   --filter 'FullyQualifiedName~MerchantSaleTcpLostResultIntegrationTests' \
   --verbosity minimal
+
+# The TCP test process has exited. Recover only from durable DB state.
+dotnet test \
+  tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj \
+  --configuration Release \
+  --no-build \
+  --filter 'FullyQualifiedName~MerchantSaleJournalProcessRecoveryTests' \
+  --verbosity minimal

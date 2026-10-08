@@ -41,9 +41,8 @@ public sealed class MariaDbMerchantSaleWriter : IMerchantSaleWriter
             request.IdempotencyKey.Length > 256)
             throw new ArgumentException("Invalid merchant sale request.");
 
-        var key = Hash("God2.ServerV2.MerchantSale/1:" +
-            request.CharacterId + ":" + request.IdempotencyKey);
-        var fingerprint = Hash(JsonSerializer.Serialize(request));
+        var key = MerchantSaleRequestIdentity.Key(request);
+        var fingerprint = MerchantSaleRequestIdentity.Fingerprint(request);
 
         await using var connection = new MySqlConnection(_connectionString);
         await connection.OpenAsync(cancellationToken);

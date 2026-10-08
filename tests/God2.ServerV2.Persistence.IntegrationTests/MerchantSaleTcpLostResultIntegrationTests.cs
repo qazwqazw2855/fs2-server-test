@@ -38,7 +38,8 @@ public sealed class MerchantSaleTcpLostResultIntegrationTests
             merchantCatalogRepository: repos,
             walletRepository: repos,
             merchantPurchaseWriter: repos,
-            merchantSaleWriter: repos,
+            merchantSaleWriter: new JournaledMerchantSaleWriter(
+                new MariaDbMerchantSaleJournal(repos.Options), repos),
             economyRepository: repos,
             itemIdentityRepository: repos,
             enableMerchantSaleExecution: true);
@@ -216,6 +217,42 @@ public sealed class MerchantSaleTcpLostResultIntegrationTests
         }
 
         await VerifyCommittedState();
+
+        var journal = new MariaDbMerchantSaleJournal(repos.Options);
+        var recovered = await journal.FindAsync(
+            repos.CharacterId, original.TransactionId, CancellationToken.None);
+        Assert.Equal(original, recovered);
+        Assert.NotNull(recovered);
+        await journal.SaveAsync(recovered!, CancellationToken.None);
+
+        var recovery = new MariaDbMerchantSaleRecoveryReader(repos.Options);
+        var receipt = await recovery.ReadAsync(
+            recovered!, CancellationToken.None);
+        Assert.Equal(MerchantSaleRecoveryStatus.Committed, receipt.Status);
+        Assert.Equal(original.TransactionId, receipt.TransactionId);
+        Assert.Equal(60L, receipt.BalanceBefore);
+        Assert.Equal(64L, receipt.BalanceAfter);
+        Assert.Equal(1L, receipt.InventoryVersionBefore);
+        Assert.Equal(2L, receipt.InventoryVersionAfter);
+
+        var changed = original with {
+            ExpectedWalletVersion = original.ExpectedWalletVersion + 1
+        };
+        await Assert.ThrowsAsync<InvalidDataException>(async () =>
+            await journal.SaveAsync(changed, CancellationToken.None));
+        Assert.Equal(MerchantSaleRecoveryStatus.IdentityConflict,
+            (await recovery.ReadAsync(changed, CancellationToken.None)).Status);
+        Assert.Equal(MerchantSaleRecoveryStatus.Unknown,
+            (await recovery.ReadAsync(
+                original with {
+                    TransactionId = Guid.NewGuid(),
+                    IdempotencyKey = original.IdempotencyKey + "-missing"
+                }, CancellationToken.None)).Status);
+        Assert.Equal(1, repos.SaleCalls);
+        Assert.Equal(1, await repos.ScalarAsync(
+            "SELECT COUNT(*) FROM god2_player.v2_merchant_sale_journal " +
+            "WHERE CharacterId=@character;"));
+
         var replay = await repos.SellAsync(original, CancellationToken.None);
         Assert.Equal(MerchantSaleStatus.Replayed, replay.Status);
         Assert.Equal(original.TransactionId, replay.TransactionId);
@@ -271,6 +308,7 @@ public sealed class MerchantSaleTcpLostResultIntegrationTests
         private const long SpawnId = 9001;
         private const long NpcId = 8001;
         private readonly MariaDbAuthenticationOptions _options;
+        public MariaDbAuthenticationOptions Options => _options;
         private readonly MariaDbCharacterInventorySnapshotRepository _inventory;
         private readonly MariaDbCharacterWalletSnapshotRepository _wallet;
         private readonly MariaDbMerchantPurchaseWriter _writer;
@@ -476,6 +514,10 @@ public sealed class MerchantSaleTcpLostResultIntegrationTests
         public async ValueTask<MerchantSaleResult> SellAsync(
             MerchantSaleRequest request, CancellationToken cancellationToken)
         {
+            var saved = await new MariaDbMerchantSaleJournal(_options)
+                .FindAsync(request.CharacterId, request.TransactionId,
+                    cancellationToken);
+            Assert.Equal(request, saved);
             SaleCalls++;
             LastSale = request;
             var result = await _saleWriter.SellAsync(
