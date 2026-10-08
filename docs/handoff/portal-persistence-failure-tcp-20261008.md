@@ -21,3 +21,14 @@
 - Full Network regression: 214 passed, 0 failed, 0 skipped.
 - Operator log: /tmp/god2-portal-conflict-regression-20261008-122450.log.
 - No actual DB transaction, private-registry inspection or official client acceptance is claimed.
+
+## Relogin before server shutdown
+
+- Both exception and Conflict cases wait for SessionRegistry.Count to reach zero while the server remains running.
+- Cleanup observation has a five-second deadline; EOF alone is not treated as cleanup completion.
+- The same account then completes login, world handshake, bootstrap and NPC spawn reception on the same server.
+- The second world connection logs out normally and its session is released before server shutdown.
+- Map-transition writer call count remains one, with no automatic retry.
+- Full Network regression: 214 passed, 0 failed, 0 skipped.
+- Operator log: /tmp/god2-portal-relogin-regression-20261008-123001.log.
+- Synthetic TCP verification does not establish official client acceptance or actual DB recovery.

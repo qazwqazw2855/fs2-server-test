@@ -124,6 +124,88 @@ public sealed class PortalPersistenceFailureTcpTests
                 Assert.Equal(
                     0, await stream.ReadAsync(new byte[1], timeout.Token));
             }
+
+            // Verify cleanup before server shutdown, then reuse the account.
+            await WaitForSessionRelease(sessions, timeout.Token);
+            Assert.NotNull(running);
+            Assert.False(running!.IsCompleted);
+
+            using (var login = new TcpClient())
+            {
+                await login.ConnectAsync(IPAddress.Loopback, port, timeout.Token);
+                var stream = login.GetStream();
+                Assert.Equal(
+                    OfficialLoginHandshakeProtocol.ServerHandshakeFrame.ToArray(),
+                    await ReadFrame(stream, timeout.Token));
+                await stream.WriteAsync(
+                    OfficialLoginHandshakeProtocol.ExpectedClientHandshakeFrame,
+                    timeout.Token);
+                Assert.Equal(
+                    OfficialLoginHandshakeProtocol.VersionFollowUpFrame.ToArray(),
+                    await ReadFrame(stream, timeout.Token));
+
+                var request = LoginRequest();
+                try
+                {
+                    await stream.WriteAsync(request, timeout.Token);
+                }
+                finally
+                {
+                    Array.Clear(request);
+                }
+
+                Assert.Equal(
+                    OfficialLoginSuccessCodec.FrameLength,
+                    (await ReadFrame(stream, timeout.Token)).Length);
+                await stream.WriteAsync(
+                    Convert.FromHexString("06009202CE97"), timeout.Token);
+                var characters = await ReadFrame(stream, timeout.Token);
+                Assert.NotEmpty(characters);
+                Assert.Equal(
+                    0, await stream.ReadAsync(new byte[1], timeout.Token));
+            }
+
+            // Complete the second world entry and log out normally.
+            using (var world = new TcpClient())
+            {
+                await world.ConnectAsync(IPAddress.Loopback, port, timeout.Token);
+                var stream = world.GetStream();
+                Assert.Equal(
+                    OfficialWorldHandshakeProtocol.ServerHandshakeFrame.ToArray(),
+                    await ReadFrame(stream, timeout.Token));
+                await stream.WriteAsync(
+                    OfficialWorldHandshakeProtocol.ExpectedClientHandshakeFrame,
+                    timeout.Token);
+                Assert.Equal(
+                    OfficialWorldHandshakeProtocol.FirstFollowUpFrame.ToArray(),
+                    await ReadFrame(stream, timeout.Token));
+
+                var lengths = new[]
+                {
+                    OfficialWorldBootstrapCodec.PlayerSpawnFrameLength,
+                    320, 752, 68, 182, 36, 63, 42, 67, 88, 26
+                };
+                var total = 0;
+                foreach (var length in lengths)
+                {
+                    var frame = await ReadFrame(stream, timeout.Token);
+                    Assert.Equal(length, frame.Length);
+                    total += frame.Length;
+                }
+                Assert.Equal(OfficialWorldBootstrapCodec.PayloadLength, total);
+
+                var spawn = await ReadFrame(stream, timeout.Token);
+                Assert.True(
+                    OfficialNpcSpawnCodec.TryDecodeHandle(spawn, out var handle));
+                Assert.Equal(5042U, handle);
+
+                await stream.WriteAsync(
+                    Convert.FromHexString("0500AC9D30"), timeout.Token);
+                Assert.Equal(
+                    0, await stream.ReadAsync(new byte[1], timeout.Token));
+            }
+
+            await WaitForSessionRelease(sessions, timeout.Token);
         }
         catch (Exception exception)
         {
@@ -178,6 +260,24 @@ public sealed class PortalPersistenceFailureTcpTests
                     CharacterMapTransitionWriteResult.Conflict);
             throw new InvalidOperationException(
                 "portal-persistence-fixture-failure");
+        }
+    }
+
+    private static async Task WaitForSessionRelease(
+        SessionRegistry sessions, CancellationToken cancellationToken)
+    {
+        using var deadline =
+            CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        deadline.CancelAfter(TimeSpan.FromSeconds(5));
+        try
+        {
+            while (sessions.Count != 0)
+                await Task.Delay(10, deadline.Token);
+        }
+        catch (OperationCanceledException)
+            when (!cancellationToken.IsCancellationRequested)
+        {
+            Assert.Equal(0, sessions.Count);
         }
     }
 
