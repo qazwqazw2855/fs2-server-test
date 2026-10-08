@@ -11,3 +11,13 @@
 - Full Network regression: 213 passed, 0 failed, 0 skipped.
 - Logs: /tmp/god2-portal-failure-tcp-20261008-122156.log and /tmp/god2-portal-failure-regression-20261008-122234.log.
 - No production deployment or official client acceptance was performed.
+
+## Conflict branch verification
+
+- The TCP fixture now covers both a writer exception and an explicit Conflict result.
+- Each case calls the writer once and receives EOF without a portal response.
+- Conflict logs contain DB_TRANSITION_CONFLICT and WorldTransitionRejected, without the controlled writer exception.
+- SessionRegistry.Count is zero after fixture shutdown in both cases.
+- Full Network regression: 214 passed, 0 failed, 0 skipped.
+- Operator log: /tmp/god2-portal-conflict-regression-20261008-122450.log.
+- No actual DB transaction, private-registry inspection or official client acceptance is claimed.

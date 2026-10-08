@@ -11,12 +11,15 @@ namespace God2.ServerV2.Network.Tests;
 [Collection("Merchant TCP")]
 public sealed class PortalPersistenceFailureTcpTests
 {
-    [Fact]
-    public async Task PortalPersistenceFailureClosesConnectionAndReleasesSession()
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task PortalPersistenceFailureClosesConnectionAndReleasesSession(
+        bool returnConflict)
     {
         var repos = new Repositories(false);
         var sessions = new SessionRegistry();
-        var writer = new ThrowingMapTransitionWriter();
+        var writer = new ThrowingMapTransitionWriter(returnConflict);
         using var lifetime = new CancellationTokenSource();
         using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(15));
         using var output = new StringWriter();
@@ -145,12 +148,21 @@ public sealed class PortalPersistenceFailureTcpTests
         Assert.Equal(1, writer.Calls);
         Assert.Equal(0, sessions.Count);
         var log = output.ToString();
-        Assert.Contains("portal-persistence-fixture-failure", log);
+        if (returnConflict)
+        {
+            Assert.Contains("DB_TRANSITION_CONFLICT", log);
+            Assert.Contains("reason=WorldTransitionRejected;", log);
+            Assert.DoesNotContain("portal-persistence-fixture-failure", log);
+        }
+        else
+        {
+            Assert.Contains("portal-persistence-fixture-failure", log);
+        }
         Assert.Contains("World presence released:", log);
         Assert.Contains("Closed stage=Closed", log);
     }
 
-    private sealed class ThrowingMapTransitionWriter :
+    private sealed class ThrowingMapTransitionWriter(bool returnConflict) :
         ICharacterMapTransitionWriter
     {
         public int Calls { get; private set; }
@@ -161,6 +173,9 @@ public sealed class PortalPersistenceFailureTcpTests
         {
             cancellationToken.ThrowIfCancellationRequested();
             Calls++;
+            if (returnConflict)
+                return ValueTask.FromResult(
+                    CharacterMapTransitionWriteResult.Conflict);
             throw new InvalidOperationException(
                 "portal-persistence-fixture-failure");
         }
