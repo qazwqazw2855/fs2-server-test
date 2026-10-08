@@ -162,6 +162,28 @@ public sealed class WorldReplicationOutboxRegistry
         }
     }
 
+    // A diagnostic Snapshot may be incomplete after overflow.
+    // Dispatch readers must reject that history rather than send partial state.
+    // This only checks the snapshot at acquisition time; it neither authorizes
+    // a wire codec nor acknowledges delivery or resynchronization.
+    public bool TrySnapshotForDispatch(
+        long connectionId,
+        out IReadOnlyList<WorldReplicationEvent> events)
+    {
+        lock (_gate)
+        {
+            if (!_outboxes.TryGetValue(connectionId, out var outbox) ||
+                _droppedEvents[connectionId] != 0)
+            {
+                events = [];
+                return false;
+            }
+
+            events = outbox.ToArray();
+            return true;
+        }
+    }
+
     public long DroppedEventCount(long connectionId)
     {
         lock (_gate)

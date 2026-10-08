@@ -9,6 +9,62 @@ public sealed class WorldReplicationOutboxRegistryTests
         new(2026, 9, 16, 0, 0, 0, TimeSpan.Zero);
 
     [Fact]
+    public void Intact_dispatch_snapshot_preserves_event_order()
+    {
+        var registry = new WorldReplicationOutboxRegistry();
+        Assert.True(registry.TryRegister(101));
+        Assert.True(registry.TrySnapshotForDispatch(101, out var empty));
+        Assert.Empty(empty);
+        Assert.True(registry.TryEnqueue(
+            101, WorldReplicationEventKind.PlayerEntered,
+            Presence(202, 2), Now, out var entered));
+        Assert.True(registry.TryEnqueue(
+            101, WorldReplicationEventKind.PlayerLeft,
+            Presence(202, 2), Now, out var left));
+        Assert.True(registry.TrySnapshotForDispatch(101, out var events));
+        Assert.NotNull(entered);
+        Assert.NotNull(left);
+        Assert.Equal(new[] { entered!, left! }, events);
+    }
+
+    [Fact]
+    public void Overflow_blocks_dispatch_snapshot_until_connection_removed()
+    {
+        var registry = new WorldReplicationOutboxRegistry(1);
+        Assert.True(registry.TryRegister(101));
+        Assert.True(registry.TryRegister(303));
+        Assert.True(registry.TryEnqueue(
+            101, WorldReplicationEventKind.PlayerEntered,
+            Presence(202, 2), Now, out _));
+        Assert.True(registry.TryEnqueue(
+            101, WorldReplicationEventKind.PlayerLeft,
+            Presence(202, 2), Now, out _));
+
+        Assert.Single(registry.Snapshot(101));
+        Assert.Equal(1L, registry.DroppedEventCount(101));
+        Assert.False(registry.TrySnapshotForDispatch(101, out var blocked));
+        Assert.Empty(blocked);
+        Assert.False(registry.TrySnapshotForDispatch(101, out _));
+        Assert.True(registry.TrySnapshotForDispatch(303, out var unaffected));
+        Assert.Empty(unaffected);
+
+        Assert.True(registry.TryRemove(101, out _));
+        Assert.False(registry.TrySnapshotForDispatch(101, out _));
+        Assert.True(registry.TryRegister(101));
+        Assert.True(registry.TrySnapshotForDispatch(101, out var fresh));
+        Assert.Empty(fresh);
+    }
+
+    [Fact]
+    public void Unknown_connection_has_no_dispatch_snapshot()
+    {
+        var registry = new WorldReplicationOutboxRegistry();
+        Assert.False(registry.TrySnapshotForDispatch(999, out var events));
+        Assert.Empty(events);
+        Assert.Equal(0, registry.ConnectionCount);
+    }
+
+    [Fact]
     public void Registered_connection_accepts_ordered_events()
     {
         var registry =
