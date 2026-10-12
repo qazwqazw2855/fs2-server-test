@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../src/God2.V2Launcher/Services/V2EndpointService.cs"
+             Link="V2EndpointService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="../../src/God2.V2Launcher/Resources/LoginServer.v2.csvZ"
+             Link="Resources/LoginServer.v2.csvZ"
+             CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
