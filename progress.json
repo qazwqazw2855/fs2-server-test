@@ -5,7 +5,7 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-08T20:45:29+08:00",
+  "updated_at": "2026-10-13T00:40:54+08:00",
   "summary": "2026-10-08 測試紀錄已於 66d8d3c 提交：六套基礎分組 554/554，14 支獨立 fixture 腳本共 19 次執行全部通過，0 failed、0 skipped，fixture 清理成功。19 次含前置案例重跑，不與 554 相加宣稱唯一測試數。SELL journal、BUY／SELL 與任務跨程序唯讀復原已驗證；Host journal 可選接線完成，預設關閉，正式 evidence gates 保持 Blocked。多人 presence 更新與事件入列已同步；換圖 DB 回寫後核對 presence，TCP 拋錯／Conflict 後清理與同帳號重新進世界通過，Network 214/214。原版客戶端驗收、多人 wire 證據、怪物數值／出生／掉落來源仍待補齊。本輪未部署或重啟 production 6001。",
   "milestones": [
     {
@@ -424,6 +424,11 @@
     "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-13",
+      "title": "Merchant 3310 隔離復原安全驗證階段收工",
+      "detail": "STEP 90Q-23S 收工：3310 隔離資料庫完成空 Fixture Runner 與 EXIT Trap 驗證、14/14 InnoDB 檢查、交易鎖定與 ROLLBACK 驗證，以及 0:0:0 身分拒絕測試。已建立交易內身分變數 SQL，但資料庫端強制中止尚未實作；1:1:1 清理、交易式 DELETE 與 BUY／SELL 3310 整合測試均未執行。正式 Merchant evidence gates 維持 Blocked，未修改 3308／3309 或 production 6001／6002。下一步 STEP 90Q-23T。"
+    },
     {
       "date": "2026-10-08",
       "title": "V2 分組整合驗證完成，客戶端驗收待辦",
