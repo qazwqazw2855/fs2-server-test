@@ -69,3 +69,12 @@
 - Both passed 1/1, including fault injection and concurrent replay.
 - Fault accounts/triggers and Fixtures removed.
 - Three non-merchant legacy scripts remain; full grouped regression pending.
+
+## Isolated committed position — 2026-10-13
+- Grouped position runner now targets isolated 3310.
+- Synthetic map has no official client identity.
+- Committed-position readback and stale-write rejection passed 1/1.
+- Fixture account, character, synthetic map and test user removed.
+- Evidence: docs/handoff/position-3310-20261013-123449-cKurUv.
+- Quest process recovery and inventory stack runners remain on legacy 3308.
+- Full grouped regression has not been rerun.

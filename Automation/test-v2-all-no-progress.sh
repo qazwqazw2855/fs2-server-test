@@ -54,7 +54,7 @@ for suite in Core Application Session Protocol Network Persistence.Integration; 
 done
 
 scripts=(
-  test-v2-position-committed.sh
+  test-v2-position-committed-isolated.sh
   test-v2-merchant-purchase-isolated.sh
   test-v2-economy-snapshot-isolated.sh
   test-v2-merchant-tcp-reconnect-isolated.sh

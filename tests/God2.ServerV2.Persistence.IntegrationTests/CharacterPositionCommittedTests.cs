@@ -7,15 +7,38 @@ public sealed class CharacterPositionCommittedTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task CommittedPositionIsReadByNewConnectionAndStaleWriteIsRejected()
+    public Task CommittedPositionIsReadByNewConnectionAndStaleWriteIsRejected() =>
+        RunPositionScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task CommittedPositionIsReadByNewConnectionAndStaleWriteIsRejectedIsolated3310() =>
+        RunPositionScenarioAsync(true);
+
+    private async Task RunPositionScenarioAsync(bool isolated3310)
     {
         if (Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION") != "1")
+        {
+            if (isolated3310)
+                throw new InvalidOperationException("Integration execution required.");
             return;
+        }
 
         static string Required(string name) =>
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
                 ? value
                 : throw new InvalidOperationException($"Missing {name}");
+
+        if (isolated3310)
+        {
+            if (Required("GOD2_RUN_DB_INTEGRATION") != "1" ||
+                Required("GOD2_DB_HOST") != "127.0.0.1" ||
+                Required("GOD2_DB_PORT") != "3310" ||
+                !System.Text.RegularExpressions.Regex.IsMatch(
+                    Required("GOD2_POSITION_FIXTURE_USER"),
+                    @"\Apositiontest_[0-9a-f]{16}\z"))
+                throw new InvalidOperationException("Unapproved position fixture target.");
+        }
 
         var options = new MariaDbAuthenticationOptions(
             Required("GOD2_DB_HOST"),
