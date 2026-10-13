@@ -15,7 +15,19 @@ public sealed class InventoryGrantIntegrationTests
     [InlineData("capacity")]
     [InlineData("inactive")]
     [Trait("Category", "Integration")]
-    public async Task Grant_preserves_atomicity_and_rolls_back(string scenario)
+    public Task Grant_preserves_atomicity_and_rolls_back(string scenario) =>
+        RunGrantScenarioAsync(scenario, false);
+
+    [Theory]
+    [InlineData("success")]
+    [InlineData("stale")]
+    [InlineData("capacity")]
+    [InlineData("inactive")]
+    [Trait("Category", "Integration")]
+    public Task Grant_preserves_atomicity_and_rolls_backIsolated3310(string scenario) =>
+        RunGrantScenarioAsync(scenario, true);
+
+    private async Task RunGrantScenarioAsync(string scenario, bool isolated3310)
     {
         Assert.Equal(
             "1", Environment.GetEnvironmentVariable("GOD2_RUN_DB_INTEGRATION"));
@@ -25,6 +37,18 @@ public sealed class InventoryGrantIntegrationTests
                 ? value
                 : throw new InvalidOperationException($"Missing {name}");
 
+        var characterId = isolated3310
+            ? long.Parse(Required("GOD2_GRANT_FIXTURE_CHARACTER_ID")) : 1L;
+        if (isolated3310)
+        {
+            Assert.True(characterId > 1);
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                Required("GOD2_DB_USER"));
+        }
+
         var options = new MariaDbAuthenticationOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
@@ -32,8 +56,27 @@ public sealed class InventoryGrantIntegrationTests
             Required("GOD2_DB_PASSWORD"));
 
         await using var connection =
-            new MySqlConnection(options.BuildConnectionString());
+            new MySqlConnection(
+                options.BuildConnectionString() + ";Allow User Variables=true");
         await connection.OpenAsync();
+        await using (var identity = connection.CreateCommand())
+        {
+            identity.CommandText = "SET @fixture_character_id=@id;";
+            identity.Parameters.AddWithValue("@id", characterId);
+            await identity.ExecuteNonQueryAsync();
+        }
+        if (isolated3310)
+        {
+            await using var identity = connection.CreateCommand();
+            identity.CommandText = """
+                SELECT COUNT(*) FROM god2_player.characters
+                WHERE character_id=@fixture_character_id AND enabled=0
+                  AND status='Disabled' AND name LIKE 'shopfixture_%'
+                  AND admin_note='MerchantPurchaseFixture';
+                """;
+            Assert.Equal(1L, Convert.ToInt64(await identity.ExecuteScalarAsync()));
+        }
+
 
         var original = await CaptureAsync(connection, null);
         var transactionId = Guid.NewGuid();
@@ -57,7 +100,7 @@ public sealed class InventoryGrantIntegrationTests
                     command.Transaction = transaction;
                     command.CommandText = """
                         SELECT character_id FROM god2_player.characters
-                        WHERE character_id=1 AND deleted_at_utc IS NULL
+                        WHERE character_id=@fixture_character_id AND deleted_at_utc IS NULL
                         FOR UPDATE;
                         """;
                     Assert.NotNull(await command.ExecuteScalarAsync());
@@ -85,7 +128,7 @@ public sealed class InventoryGrantIntegrationTests
 
                 await Execute("""
                     DELETE FROM god2_player.character_inventory
-                    WHERE character_id=1;
+                    WHERE character_id=@fixture_character_id;
                     """);
 
                 await using (var command = connection.CreateCommand())
@@ -96,7 +139,7 @@ public sealed class InventoryGrantIntegrationTests
                         SET InventoryId=@id, Capacity=@capacity,
                             InventoryVersion=7, MutationSequence=11,
                             DirtyState='Clean'
-                        WHERE CharacterId=1;
+                        WHERE CharacterId=@fixture_character_id;
                         """;
                     command.Parameters.AddWithValue("@id", inventoryId.ToString());
                     command.Parameters.AddWithValue(
@@ -126,7 +169,7 @@ public sealed class InventoryGrantIntegrationTests
                             (inventory_id,character_id,slot_index,item_id,quantity,
                              inventory_version,slot_version,bound,bind_state,
                              item_instance_metadata,enabled,deleted_at_utc)
-                        VALUES (@id,1,0,@item,@quantity,7,3,0,'Unbound','{}',
+                        VALUES (@id,@fixture_character_id,0,@item,@quantity,7,3,0,'Unbound','{}',
                                 @enabled,@deleted);
                         """;
                     command.Parameters.AddWithValue("@id", originalItemId);
@@ -146,7 +189,7 @@ public sealed class InventoryGrantIntegrationTests
                     transactionId,
                     "integration-" + transactionId,
                     "IntegrationTest/InventoryGrant",
-                    1, inventoryId,
+                    characterId, inventoryId,
                     scenario == "stale" ? 6 : 7,
                     11, itemId, 2);
                 var writer = new MariaDbInventoryGrantWriter(options);
@@ -177,7 +220,7 @@ public sealed class InventoryGrantIntegrationTests
                         command.CommandText = """
                             SELECT InventoryVersion, MutationSequence
                             FROM god2_player.player_inventory_state
-                            WHERE CharacterId=1;
+                            WHERE CharacterId=@fixture_character_id;
                             """;
                         await using var reader =
                             await command.ExecuteReaderAsync();
@@ -196,7 +239,7 @@ public sealed class InventoryGrantIntegrationTests
                                    item_instance_metadata,enabled,deleted_at_utc,
                                    item_id
                             FROM god2_player.character_inventory
-                            WHERE character_id=1 ORDER BY slot_index;
+                            WHERE character_id=@fixture_character_id ORDER BY slot_index;
                             """;
                         await using var reader =
                             await command.ExecuteReaderAsync();
@@ -309,11 +352,11 @@ public sealed class InventoryGrantIntegrationTests
         var captured = new List<string>();
         foreach (var query in new[]
         {
-            "SELECT * FROM god2_player.player_inventory_state WHERE CharacterId=1",
-            "SELECT * FROM god2_player.character_inventory WHERE character_id=1 ORDER BY slot_index",
-            "SELECT * FROM god2_player.inventory_transaction_idempotency WHERE CharacterId=1 ORDER BY IdempotencyKeyHash",
-            "SELECT * FROM god2_player.inventory_audit_ledger WHERE CharacterId=1 ORDER BY AuditId",
-            "SELECT * FROM god2_player.player_currency_balances WHERE CharacterId=1 ORDER BY CurrencyType"
+            "SELECT * FROM god2_player.player_inventory_state WHERE CharacterId=@fixture_character_id",
+            "SELECT * FROM god2_player.character_inventory WHERE character_id=@fixture_character_id ORDER BY slot_index",
+            "SELECT * FROM god2_player.inventory_transaction_idempotency WHERE CharacterId=@fixture_character_id ORDER BY IdempotencyKeyHash",
+            "SELECT * FROM god2_player.inventory_audit_ledger WHERE CharacterId=@fixture_character_id ORDER BY AuditId",
+            "SELECT * FROM god2_player.player_currency_balances WHERE CharacterId=@fixture_character_id ORDER BY CurrencyType"
         })
         {
             await using var command = connection.CreateCommand();

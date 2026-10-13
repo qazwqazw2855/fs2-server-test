@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="41c25ee2-6f8e-43fb-b2aa-f5775a89a6ba" name="@ip-172-31-15-62 2026-10-13 12:56:40" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T12:56:40.3947839+00:00" queuing="2026-10-13T12:56:40.3947840+00:00" start="2026-10-13T12:56:36.7968581+00:00" finish="2026-10-13T12:56:40.4102435+00:00" />
+  <TestSettings name="default" id="f8d2ab40-b545-4cd7-9073-881ef2bd89b3">
+    <Deployment runDeploymentRoot="_ip-172-31-15-62_2026-10-13_12_56_40" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="9472f8de-c1c2-4fa7-b416-d89ed1858352" testId="72d2ded4-60a7-b4fa-f83e-ffabf43c8a7b" testName="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;inactive&quot;)" computerName="ip-172-31-15-62" duration="00:00:00.0304907" startTime="2026-10-13T12:56:40.2157656+00:00" endTime="2026-10-13T12:56:40.2467471+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9472f8de-c1c2-4fa7-b416-d89ed1858352" />
+    <UnitTestResult executionId="23617e79-cb36-4a0d-8a95-75f0fcfeb6a8" testId="f39e648d-77fe-c8c1-61f2-810c29f6e2d1" testName="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;stale&quot;)" computerName="ip-172-31-15-62" duration="00:00:00.0390875" startTime="2026-10-13T12:56:40.1998179+00:00" endTime="2026-10-13T12:56:40.1999649+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23617e79-cb36-4a0d-8a95-75f0fcfeb6a8" />
+    <UnitTestResult executionId="a6fbeed4-0088-4f5a-befc-ee1da245ceb4" testId="56049d09-c6ad-6017-730a-b1c31d56ab28" testName="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;success&quot;)" computerName="ip-172-31-15-62" duration="00:00:01.4778359" startTime="2026-10-13T12:56:38.6481851+00:00" endTime="2026-10-13T12:56:40.1494478+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a6fbeed4-0088-4f5a-befc-ee1da245ceb4" />
+    <UnitTestResult executionId="70b88cec-4fba-4cbe-b6ba-a9dd376208c2" testId="416455ef-19e8-e763-5ca3-8f4778fac026" testName="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;capacity&quot;)" computerName="ip-172-31-15-62" duration="00:00:00.0218367" startTime="2026-10-13T12:56:40.2067602+00:00" endTime="2026-10-13T12:56:40.2154449+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70b88cec-4fba-4cbe-b6ba-a9dd376208c2" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;stale&quot;)" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="f39e648d-77fe-c8c1-61f2-810c29f6e2d1">
+      <Execution id="23617e79-cb36-4a0d-8a95-75f0fcfeb6a8" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests" name="Grant_preserves_atomicity_and_rolls_backIsolated3310" />
+    </UnitTest>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;capacity&quot;)" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="416455ef-19e8-e763-5ca3-8f4778fac026">
+      <Execution id="70b88cec-4fba-4cbe-b6ba-a9dd376208c2" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests" name="Grant_preserves_atomicity_and_rolls_backIsolated3310" />
+    </UnitTest>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;inactive&quot;)" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="72d2ded4-60a7-b4fa-f83e-ffabf43c8a7b">
+      <Execution id="9472f8de-c1c2-4fa7-b416-d89ed1858352" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests" name="Grant_preserves_atomicity_and_rolls_backIsolated3310" />
+    </UnitTest>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310(scenario: &quot;success&quot;)" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="56049d09-c6ad-6017-730a-b1c31d56ab28">
+      <Execution id="a6fbeed4-0088-4f5a-befc-ee1da245ceb4" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests" name="Grant_preserves_atomicity_and_rolls_backIsolated3310" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="72d2ded4-60a7-b4fa-f83e-ffabf43c8a7b" executionId="9472f8de-c1c2-4fa7-b416-d89ed1858352" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f39e648d-77fe-c8c1-61f2-810c29f6e2d1" executionId="23617e79-cb36-4a0d-8a95-75f0fcfeb6a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56049d09-c6ad-6017-730a-b1c31d56ab28" executionId="a6fbeed4-0088-4f5a-befc-ee1da245ceb4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="416455ef-19e8-e763-5ca3-8f4778fac026" executionId="70b88cec-4fba-4cbe-b6ba-a9dd376208c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)
+[xUnit.net 00:00:00.28]   Discovering: God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.57]   Discovered:  God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.65]   Starting:    God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:02.33]   Finished:    God2.ServerV2.Persistence.IntegrationTests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

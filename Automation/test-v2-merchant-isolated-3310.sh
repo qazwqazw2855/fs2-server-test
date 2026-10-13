@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell|stack|grantconcurrency) ;;
+  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell|stack|grantconcurrency|grantrollback) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -389,7 +389,7 @@ export GOD2_MERCHANT_COMMAND_FIXTURE_MERCHANT_ID="$merchant_id"
 export GOD2_MERCHANT_COMMAND_FIXTURE_USER="$test_user"
 export GOD2_MERCHANT_COMMAND_FIXTURE_PASSWORD="$test_password"
 
-if [[ "$scenario" == grantconcurrency ]]; then
+if [[ "$scenario" == grantconcurrency || "$scenario" == grantrollback ]]; then
   export GOD2_DB_USER="$test_user"
   export GOD2_DB_PASSWORD="$test_password"
   export GOD2_GRANT_FIXTURE_CHARACTER_ID="$fixture_id"
@@ -424,6 +424,10 @@ if [[ "$scenario" == buy ]]; then
 elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+elif [[ "$scenario" == grantrollback ]]; then
+  producer="$namespace.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310"
+  recovery=""
+
 elif [[ "$scenario" == grantconcurrency ]]; then
   producer="$namespace.InventoryGrantConcurrencyTests.Concurrent_committed_grants_are_durable_and_not_duplicatedIsolated3310"
   recovery=""
@@ -472,17 +476,19 @@ run_phase() {
     --results-directory "$evidence" --verbosity minimal \
     2>&1 | tee "$evidence/$phase.log"
 
-  python3 - "$evidence/$phase.trx" <<'PY_TRX'
+  local expected=1
+  [[ "$scenario" != grantrollback ]] || expected=4
+  python3 - "$evidence/$phase.trx" "$expected" <<'PY_TRX'
 import sys
 import xml.etree.ElementTree as ET
 root = ET.parse(sys.argv[1]).getroot()
 counters = root.find(".//{*}Counters")
 assert counters is not None, "STOP: missing TRX counters"
 for key in ("total", "executed", "passed"):
-    assert counters.get(key) == "1", f"STOP: {key}={counters.get(key)}"
+    assert counters.get(key) == sys.argv[2], f"STOP: {key}={counters.get(key)}"
 assert counters.get("failed") == "0", "STOP: failed test"
 assert counters.get("notExecuted") == "0", "STOP: skipped test"
-print("PASS: exactly one test executed and passed")
+print(f"PASS: exactly {sys.argv[2]} tests executed and passed")
 PY_TRX
 }
 

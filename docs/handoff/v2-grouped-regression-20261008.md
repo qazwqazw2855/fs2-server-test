@@ -109,3 +109,14 @@
 - Base DB tests still require isolation review, including fixed-character
   inventory rollback and runtime/catalog baseline tests.
 - Full grouped regression has not been rerun.
+
+## Isolated inventory grant rollback — 2026-10-13
+- Four rollback scenarios passed 4/4 on dedicated isolated fixture.
+- Original success/stale/capacity/inactive assertions retained.
+- Isolated variant uses fixture character ID instead of fixed character 1.
+- Fixture SQL variable is explicitly initialized on the test connection.
+- Temporary user and transactional fixture cleanup passed.
+- Grouped fixture script count: 16.
+- Evidence: docs/handoff/merchant-3310-grantrollback-20261013-125630-pEJTL3.
+- Runtime/catalog base tests still need isolated baseline review.
+- Full grouped regression not yet rerun; official merchant gates remain Blocked.
