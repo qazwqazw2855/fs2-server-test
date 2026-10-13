@@ -34,10 +34,11 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-25E
-Create and verify a merchant-only isolated regression entrypoint.
-Merchant fixture migrations complete; three non-merchant legacy runners remain.
-Full grouped regression and official merchant promotion remain pending.
+## Next step: 90Q-25G
+Review official merchant promotion gaps and existing client evidence.
+Merchant isolated regression complete: integration 14/14; unit 36/36.
+Full grouped regression remains pending for three legacy fixture runners.
+Official evidence gates remain Blocked; no live deployment.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -182,3 +183,12 @@ Full grouped regression and official merchant promotion remain pending.
 - All merchant-related grouped fixture runners now use isolated 3310.
 - Remaining shared runners: position, quest process recovery, inventory stack.
 - No full grouped run, official evidence promotion, push or deployment.
+
+## 90Q-25E merchant-only regression verified
+- All 12 isolated scenarios completed successfully.
+- Integration tests: 14/14, zero failures/skips.
+- Receipt validator/database guard tests: 36/36.
+- All 12 fixture cleanup runs passed.
+- Both atomic scenarios removed their fault users and triggers.
+- Evidence: docs/handoff/merchant-3310-regression-20261013-121637-WXYzkE.
+- No full grouped regression, push or live deployment performed.

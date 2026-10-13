@@ -1,0 +1,4 @@
+PASS: isolated merchant integration 14/14
+PASS: validator/database guard 36/36
+PASS: all 12 fixture cleanup runs completed
+Full grouped regression not executed; official evidence gates remain Blocked.

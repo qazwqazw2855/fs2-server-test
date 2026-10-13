@@ -1,0 +1,49 @@
+===== MERCHANT 3310 SAFETY CHECK =====
+3306	5e1ed8080046	1	1	0	0	0
+===== STRICT FIXTURE PREFLIGHT =====
+PASS: 3310 fixture tables empty
+PASS: canonical item catalog intact
+===== PREFLIGHT COMPLETE =====
+===== GENERATE ISOLATED FIXTURE IDENTITY =====
+fixture_name=shopfixture_f78c261198684878a611c74e1472ec58
+test_user=shoptest_cc7d74e9d55a76d4
+fault_user=shopfault_cf52f686eb2ca699
+merchant_id=4693402046
+PASS: unique fixture identity generated
+===== FIXTURE IDENTITY COLLISION CHECK =====
+PASS: fixture identities do not collide
+===== PREPARE SCOPED CLEANUP =====
+PASS: scoped cleanup function prepared
+===== PREPARE EXIT CLEANUP TRAP =====
+PASS: EXIT cleanup trap installed
+===== CREATE ISOLATED FIXTURE =====
+PASS: isolated fixture committed	168	201
+===== PREPARE RECOVERY TEST ACCOUNT =====
+evidence=docs/handoff/merchant-3310-basic-20261013-121719-t6aSUB
+===== basic PRODUCER =====
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  God2.ServerV2.Core -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Core/bin/Release/net10.0/God2.ServerV2.Core.dll
+  God2.ServerV2.Session -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Session/bin/Release/net10.0/God2.ServerV2.Session.dll
+  God2.ServerV2.Protocol -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Protocol/bin/Release/net10.0/God2.ServerV2.Protocol.dll
+  God2.ServerV2.Application -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Application/bin/Release/net10.0/God2.ServerV2.Application.dll
+  God2.ServerV2.Network -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Network/bin/Release/net10.0/God2.ServerV2.Network.dll
+  God2.ServerV2.Persistence -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Persistence/bin/Release/net10.0/God2.ServerV2.Persistence.dll
+  God2.ServerV2.Persistence.IntegrationTests -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll
+Test run for /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.2 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/merchant-3310-basic-20261013-121719-t6aSUB/producer.trx
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 2 s - God2.ServerV2.Persistence.IntegrationTests.dll (net10.0)
+PASS: exactly one test executed and passed
+PASS: isolated basic integration completed
+===== EXIT CLEANUP CHECK =====
+PASS: temporary DB user removed
+CLEANUP CHECK: account=1 character=1 merchant=1
+CLEANUP: transactional identity verification and deletion
+PASS: scoped cleanup complete; transaction remains active
+PASS: transactional cleanup committed; fixture identities absent
+PASS: exit cleanup verification completed
