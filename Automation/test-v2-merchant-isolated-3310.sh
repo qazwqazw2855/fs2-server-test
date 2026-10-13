@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell|command|tcp|basic|newserver|reconnect) ;;
+  buy|sell|command|tcp|basic|newserver|reconnect|lostresult) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -394,6 +394,9 @@ if [[ "$scenario" == buy ]]; then
 elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+elif [[ "$scenario" == lostresult ]]; then
+  producer="$namespace.MerchantPurchaseTcpLostResultIntegrationTests.CommittedBuyWithLostResultReplaysWithoutAnotherMutationIsolated3310"
+  recovery=""
 elif [[ "$scenario" == reconnect ]]; then
   producer="$namespace.MerchantPurchaseTcpReconnectIntegrationTests.ReconnectRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310"
   recovery=""

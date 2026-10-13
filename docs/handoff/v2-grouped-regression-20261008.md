@@ -53,3 +53,8 @@
 - Basic TCP, new-server and reconnect runners replaced with isolated wrappers.
 - Each test passed 1/1; all temporary-user/Fixture cleanups passed.
 - 8 legacy scripts remain; full grouped regression has not been rerun.
+
+## Isolated BUY lost-result wiring — 2026-10-13
+- Replaced legacy BUY TCP lost-result runner with isolated 3310 wrapper.
+- Verified 1/1; temporary user and Fixture cleanup passed.
+- 7 legacy scripts remain; full grouped regression has not been rerun.

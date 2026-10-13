@@ -34,9 +34,9 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24V
-Inspect remaining merchant lost-result/economy/inventory-restore fixtures.
-8 legacy grouped fixture scripts remain.
+## Next step: 90Q-24Y
+Inspect economy-snapshot and inventory-restore-blocked fixtures.
+7 legacy grouped fixture scripts remain.
 Full grouped regression and official evidence promotion remain pending.
 
 ## Safety
@@ -145,3 +145,12 @@ Full grouped regression and official evidence promotion remain pending.
   - merchant-3310-newserver-20261013-115644-lWBk9a
   - merchant-3310-reconnect-20261013-115805-BDvjvn
 - Full grouped regression not run; no push or live deployment.
+
+## 90Q-24W BUY TCP lost-result verified
+- Isolated 3310 variant passed 1/1, zero failures/skips.
+- Real commit followed by synthetic caller result loss verified.
+- Persisted journal recovery and replay caused no second mutation.
+- Temporary DB user and committed Fixture cleanup passed.
+- Evidence: merchant-3310-lostresult-20261013-120113-mb80S0.
+- Isolated integration cases verified: 10; focused unit cases: 36.
+- 7 legacy grouped scripts remain; no full grouped run or push.
