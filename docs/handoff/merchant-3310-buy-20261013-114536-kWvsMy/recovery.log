@@ -1,0 +1,8 @@
+Test run for /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.2 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/merchant-3310-buy-20261013-114536-kWvsMy/recovery.trx
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 287 ms - God2.ServerV2.Persistence.IntegrationTests.dll (net10.0)

@@ -34,10 +34,10 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24I
-Audit grouped regression wiring before adding isolated recovery phases.
-Do not execute legacy merchant scripts against shared databases.
-Merchant official evidence gates remain Blocked; no live deployment.
+## Next step: 90Q-24L
+Audit remaining grouped fixture scripts for shared-database mutations.
+Do not run full grouped regression until that review is complete.
+Official merchant evidence gates remain Blocked.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -99,3 +99,10 @@ Merchant official evidence gates remain Blocked; no live deployment.
 - Transactional cleanup, SAVEPOINT restore and committed cleanup verified.
 - Final DB state: 14 fixture tables empty; canonical item intact.
 - No push or live deployment performed.
+
+## 90Q-24J wrapper verification
+- Grouped runner now calls isolated BUY/SELL recovery wrapper.
+- Wrapper verification: 4/4, zero failures/skips; both EXIT cleanups passed.
+- These are repeat executions of the same four integration tests.
+- Evidence: merchant-3310-wrapper-20261013/wrapper.log.
+- Full grouped regression not rerun; no push or live deployment.

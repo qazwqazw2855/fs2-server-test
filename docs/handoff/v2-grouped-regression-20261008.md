@@ -26,3 +26,13 @@
 - progress.json remained unchanged, verified by the invoking shell.
 - Log: /tmp/god2-v2-grouped-position-20261008-133014.log
 - Production deployment and original-client acceptance were not performed.
+
+## Isolated merchant recovery wiring — 2026-10-13
+- Replaced both legacy merchant process-recovery runner calls with
+  test-v2-merchant-recovery-isolated.sh.
+- Wrapper executes BUY and SELL independently on isolated 3310.
+- Fixture script count updated from 15 to 14; base suite exclusions retained.
+- Other fixture scripts remain unchanged and require separate safety review.
+- Full grouped regression has not been rerun after this wiring change.
+- Isolated wrapper verified: 4/4; both fixture/user cleanups passed.
+- Operator log: docs/handoff/merchant-3310-wrapper-20261013/wrapper.log.
