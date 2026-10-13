@@ -16,9 +16,17 @@ public sealed class CharacterEconomySnapshotIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task ConcurrentCommitDoesNotMixInventoryAndWalletSnapshots()
+    public Task ConcurrentCommitDoesNotMixInventoryAndWalletSnapshots() =>
+        RunIsolatedScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task ConcurrentCommitDoesNotMixInventoryAndWalletSnapshotsIsolated3310() =>
+        RunIsolatedScenarioAsync(true);
+
+    private async Task RunIsolatedScenarioAsync(bool isolated3310)
     {
-        var repos = await Repositories.CreateAsync();
+        var repos = await Repositories.CreateAsync(isolated3310);
         var initial = await repos.GetByCharacterAsync(
             repos.CharacterId, CancellationToken.None);
         Assert.NotNull(initial);
@@ -142,7 +150,7 @@ public sealed class CharacterEconomySnapshotIntegrationTests
             _writer = new(options, new FixtureBuyGate(character, merchant));
         }
 
-        public static async Task<Repositories> CreateAsync()
+        public static async Task<Repositories> CreateAsync(bool isolated3310 = false)
         {
             static string Required(string name) =>
                 Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -150,7 +158,14 @@ public sealed class CharacterEconomySnapshotIntegrationTests
 
             Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
             Assert.Equal("127.0.0.1", Required("GOD2_DB_HOST"));
-            Assert.Equal("3308", Required("GOD2_DB_PORT"));
+            if (isolated3310)
+                MerchantRecoveryDatabaseGuard.Validate(
+                    Required("GOD2_RUN_DB_INTEGRATION"),
+                    Required("GOD2_DB_HOST"),
+                    Required("GOD2_DB_PORT"),
+                    Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER"));
+            else
+                Assert.Equal("3308", Required("GOD2_DB_PORT"));
             var user = Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER");
             Assert.StartsWith("shoptest_", user);
             var character = long.Parse(Required(

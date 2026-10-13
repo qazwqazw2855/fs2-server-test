@@ -58,3 +58,8 @@
 - Replaced legacy BUY TCP lost-result runner with isolated 3310 wrapper.
 - Verified 1/1; temporary user and Fixture cleanup passed.
 - 7 legacy scripts remain; full grouped regression has not been rerun.
+
+## Isolated economy/restore wiring — 2026-10-13
+- Economy snapshot and blocked inventory restore now use isolated 3310 wrappers.
+- Each passed 1/1; both temporary-user/Fixture cleanups passed.
+- 5 legacy scripts remain; full grouped regression not rerun.

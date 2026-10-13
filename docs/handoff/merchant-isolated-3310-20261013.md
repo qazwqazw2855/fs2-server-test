@@ -34,10 +34,10 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24Y
-Inspect economy-snapshot and inventory-restore-blocked fixtures.
-7 legacy grouped fixture scripts remain.
-Full grouped regression and official evidence promotion remain pending.
+## Next step: 90Q-25B
+Inspect remaining merchant purchase/sale fixtures and fault-account requirements.
+5 legacy grouped scripts remain; full grouped regression pending.
+Official merchant evidence gates remain Blocked.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -154,3 +154,18 @@ Full grouped regression and official evidence promotion remain pending.
 - Evidence: merchant-3310-lostresult-20261013-120113-mb80S0.
 - Isolated integration cases verified: 10; focused unit cases: 36.
 - 7 legacy grouped scripts remain; no full grouped run or push.
+
+## 90Q-24Z economy/restore verification
+- Economy snapshot concurrency: 1/1; inventory/wallet snapshot consistency verified.
+- Unsupported inventory restore: 1/1; closed without transaction mutation.
+- Both executions removed temporary users and committed Fixtures.
+- Evidence:
+  - merchant-3310-economy-20261013-120440-xTs5Sc
+  - merchant-3310-restoreblocked-20261013-120453-8ThIah
+- Isolated integration cases verified: 12; focused unit cases: 36.
+- Remaining grouped legacy scripts:
+  - test-v2-position-committed.sh
+  - test-v2-merchant-purchase.sh
+  - test-v2-quest-process-recovery.sh
+  - test-v2-merchant-sale.sh
+  - test-v2-inventory-stack-committed.sh
