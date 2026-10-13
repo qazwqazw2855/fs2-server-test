@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell) ;;
+  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell|stack) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -389,6 +389,18 @@ export GOD2_MERCHANT_COMMAND_FIXTURE_MERCHANT_ID="$merchant_id"
 export GOD2_MERCHANT_COMMAND_FIXTURE_USER="$test_user"
 export GOD2_MERCHANT_COMMAND_FIXTURE_PASSWORD="$test_password"
 
+if [[ "$scenario" == stack ]]; then
+  db_admin <<SQL
+GRANT CREATE TEMPORARY TABLES ON god2_game.*
+TO '$test_user'@'$test_user_host';
+GRANT SELECT (account_id,username,status) ON god2_player.accounts
+TO '$test_user'@'$test_user_host';
+SQL
+  export GOD2_STACK_FIXTURE_CHARACTER_ID="$fixture_id"
+  export GOD2_STACK_FIXTURE_USER="$test_user"
+  export GOD2_STACK_FIXTURE_PASSWORD="$test_password"
+fi
+
 if [[ "$scenario" == atomicbuy || "$scenario" == atomicsell ]]; then
   prepare_atomic_faults
 fi
@@ -406,6 +418,9 @@ if [[ "$scenario" == buy ]]; then
 elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+elif [[ "$scenario" == stack ]]; then
+  producer="$namespace.InventoryGrantStackCommittedTests.Committed_stacks_replay_and_competing_versions_retry_safelyIsolated3310"
+  recovery=""
 elif [[ "$scenario" == atomicbuy ]]; then
   producer="$namespace.MerchantPurchaseIntegrationTests.Purchase_is_atomic_replayable_and_version_checkedIsolated3310"
   recovery=""

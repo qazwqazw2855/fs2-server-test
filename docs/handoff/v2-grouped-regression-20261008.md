@@ -78,3 +78,13 @@
 - Evidence: docs/handoff/position-3310-20261013-123449-cKurUv.
 - Quest process recovery and inventory stack runners remain on legacy 3308.
 - Full grouped regression has not been rerun.
+
+## Isolated committed inventory stack — 2026-10-13
+- Grouped stack runner now uses isolated 3310.
+- Original replay, competing-version, retry and stack assertions retained.
+- Connection-local temporary item tables preserve the canonical catalog.
+- Stack identity query has SELECT on account_id, username and status.
+- Integration passed 1/1; fixture and temporary user cleanup passed.
+- Evidence: docs/handoff/merchant-3310-stack-20261013-124015-LyQdPW.
+- Quest process recovery is the last legacy grouped fixture runner.
+- Full grouped regression and official merchant acceptance remain pending.

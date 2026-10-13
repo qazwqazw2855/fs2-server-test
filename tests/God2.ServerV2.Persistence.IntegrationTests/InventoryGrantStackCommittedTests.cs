@@ -11,7 +11,15 @@ public sealed class InventoryGrantStackCommittedTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task Committed_stacks_replay_and_competing_versions_retry_safely()
+    public Task Committed_stacks_replay_and_competing_versions_retry_safely() =>
+        RunStackScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task Committed_stacks_replay_and_competing_versions_retry_safelyIsolated3310() =>
+        RunStackScenarioAsync(true);
+
+    private async Task RunStackScenarioAsync(bool isolated3310)
     {
         static string Required(string name) =>
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -21,7 +29,14 @@ public sealed class InventoryGrantStackCommittedTests
         var character = long.Parse(Required("GOD2_STACK_FIXTURE_CHARACTER_ID"));
         Assert.True(character > 1);
         var user = Required("GOD2_STACK_FIXTURE_USER");
-        Assert.StartsWith("stacktest_", user);
+        if (isolated3310)
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                user);
+        else
+            Assert.StartsWith("stacktest_", user);
         var options = new MariaDbAuthenticationOptions(
             Required("GOD2_DB_HOST"), int.Parse(Required("GOD2_DB_PORT")),
             user, Required("GOD2_STACK_FIXTURE_PASSWORD"));
@@ -39,12 +54,22 @@ public sealed class InventoryGrantStackCommittedTests
             return Convert.ToInt64(await command.ExecuteScalarAsync());
         }
 
-        Assert.Equal(1, await Scalar("""
-            SELECT COUNT(*) FROM god2_player.characters
-            WHERE character_id=@character AND enabled=0
-              AND name LIKE 'stackfixture_%'
-              AND admin_note='InventoryStackCommittedFixture';
-            """));
+        var identitySql = isolated3310
+            ? """
+              SELECT COUNT(*) FROM god2_player.characters c
+              JOIN god2_player.accounts a ON a.account_id=c.account_id
+              WHERE c.character_id=@character AND c.enabled=0
+                AND c.status='Disabled' AND a.status='Disabled'
+                AND c.name=a.username AND c.name LIKE 'shopfixture_%'
+                AND c.admin_note='MerchantPurchaseFixture';
+              """
+            : """
+              SELECT COUNT(*) FROM god2_player.characters
+              WHERE character_id=@character AND enabled=0
+                AND name LIKE 'stackfixture_%'
+                AND admin_note='InventoryStackCommittedFixture';
+              """;
+        Assert.Equal(1, await Scalar(identitySql));
 
         var repository = new MariaDbCharacterInventorySnapshotRepository(options);
         var initial = await repository.GetByCharacterAsync(character, CancellationToken.None);
