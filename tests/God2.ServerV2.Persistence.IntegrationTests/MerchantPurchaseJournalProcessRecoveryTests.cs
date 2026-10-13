@@ -10,8 +10,18 @@ public sealed class MerchantPurchaseJournalProcessRecoveryTests
     [Trait("Category", "Integration")]
     public async Task SeparateProcessRecoversCommittedRequestWithoutDispatch()
     {
+        static string Required(string name) =>
+            Environment.GetEnvironmentVariable(name)
+                ?? throw new InvalidOperationException($"Missing {name}");
+
+        MerchantRecoveryDatabaseGuard.Validate(
+            Required("GOD2_RUN_DB_INTEGRATION"),
+            Required("GOD2_DB_HOST"),
+            Required("GOD2_DB_PORT"),
+            Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER"));
+
         var repos = await MerchantPurchaseJournalIntegrationTests.Repositories
-            .CreateAsync(requireInitialState: false);
+            .CreateRecoveryAsync();
 
         Guid transactionId;
         await using (var connection =

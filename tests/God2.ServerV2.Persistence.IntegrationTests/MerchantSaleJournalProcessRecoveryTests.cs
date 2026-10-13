@@ -14,10 +14,13 @@ public sealed class MerchantSaleJournalProcessRecoveryTests
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
                 ? value : throw new InvalidOperationException($"Missing {name}");
 
-        Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
-        Assert.Equal("127.0.0.1", Required("GOD2_DB_HOST"));
-        Assert.Equal("3308", Required("GOD2_DB_PORT"));
         var user = Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER");
+
+        MerchantRecoveryDatabaseGuard.Validate(
+            Required("GOD2_RUN_DB_INTEGRATION"),
+            Required("GOD2_DB_HOST"),
+            Required("GOD2_DB_PORT"),
+            user);
         Assert.StartsWith("shoptest_", user);
         var character = long.Parse(
             Required("GOD2_MERCHANT_COMMAND_FIXTURE_CHARACTER_ID"));
@@ -25,7 +28,9 @@ public sealed class MerchantSaleJournalProcessRecoveryTests
             Required("GOD2_MERCHANT_COMMAND_FIXTURE_MERCHANT_ID"));
         Assert.True(character > 1);
         var options = new MariaDbAuthenticationOptions(
-            "127.0.0.1", 3308, user,
+            Required("GOD2_DB_HOST"),
+            int.Parse(Required("GOD2_DB_PORT")),
+            user,
             Required("GOD2_MERCHANT_COMMAND_FIXTURE_PASSWORD"));
 
         async Task<long> Scalar(string sql)

@@ -82,13 +82,14 @@ public sealed class MariaDbMerchantSaleRecoveryReader(
             reader.GetInt64(5), reader.GetInt64(6),
             reader.GetInt64(7), reader.GetInt64(8));
 
-        if (receipt.BalanceBefore < 0 ||
-            receipt.BalanceAfter < 0 ||
-            receipt.BalanceAfter <= receipt.BalanceBefore ||
-            receipt.InventoryVersionBefore != request.ExpectedInventoryVersion ||
-            request.ExpectedInventoryVersion == long.MaxValue ||
-            receipt.InventoryVersionAfter != request.ExpectedInventoryVersion + 1 ||
-            await reader.ReadAsync(cancellationToken))
+        MerchantRecoveryReceiptValidator.ValidateSale(
+            receipt.BalanceBefore.GetValueOrDefault(),
+            receipt.BalanceAfter.GetValueOrDefault(),
+            receipt.InventoryVersionBefore.GetValueOrDefault(),
+            receipt.InventoryVersionAfter.GetValueOrDefault(),
+            request.ExpectedInventoryVersion);
+
+        if (await reader.ReadAsync(cancellationToken))
             throw new InvalidDataException("Sale receipt integrity mismatch.");
 
         return receipt;

@@ -28,16 +28,16 @@
 - 90Q-23S: identity-gate SQL created; static validation PASS.
 
 ## Unfinished
-- Database-side mandatory identity abort not implemented.
-- Transactional DELETE not enabled.
-- 1:1:1 cleanup not tested.
-- BUY/SELL 3310 integration tests not executed.
+- Database-side identity abort implemented and verified (90Q-23T–W).
+- Transactional cleanup enabled in isolated Runner and verified.
+- Real committed 1:1:1 Fixture cleanup verified.
+- BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-23T
-Implement a database-side mandatory identity abort.
-Verify 0:0:0 rejection before enabling cleanup.
-Keep identity checks and cleanup in one transaction.
+## Next step: 90Q-24I
+Audit grouped regression wiring before adding isolated recovery phases.
+Do not execute legacy merchant scripts against shared databases.
+Merchant official evidence gates remain Blocked; no live deployment.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -45,3 +45,57 @@ Keep identity checks and cleanup in one transaction.
 - Preserve existing untracked logs.
 - Commit only reviewed paths.
 - Do not push without explicit approval.
+
+## 90Q-23T through 90Q-23W verified
+- 23T: database rejects missing identity with ERROR 1644 / SQLSTATE 45000;
+  subsequent SQL not executed.
+- 23U: same-connection verification: identity 0:0:0,
+  in_transaction=0 after rejection.
+- 23V: execution without transaction rejected with
+  MERCHANT_FIXTURE_TRANSACTION_REQUIRED.
+- 23W: real inserted identity 1:1:1 accepted; transaction remains active.
+- 23W: explicit rollback removes all three inserted identity rows.
+- 23W: real inserted identity changed to 1:0:1 rejected;
+  gate rollback verified with in_transaction=0 and residual rows=0.
+- No fixture committed, no DELETE executed, no BUY/SELL integration run.
+- AUTO_INCREMENT counters may advance despite rollback.
+- Runner cleanup remains disabled. Evidence gates remain Blocked.
+
+## 90Q-24D integration verified
+- 24A: real inventory/audit/sequence cleanup passed.
+- 24A: unrelated sequence preserved; SAVEPOINT rollback restored 8 rows.
+- 24A: cleanup commit left no test residue; canonical item preserved.
+- 24B: empty Runner EXIT cleanup passed.
+- 24C: committed 1:1:1 Fixture removed by Runner EXIT cleanup.
+- 24D BUY: journal/result-loss producer and separate-process recovery 2/2.
+- 24D SELL: TCP/result-loss producer and separate-process recovery 2/2.
+- Total 4 executed / 4 passed / 0 failed / 0 skipped.
+- Both Runner executions removed temporary DB user and fixture identities.
+- Evidence:
+  - merchant-3310-buy-20261013-113425-jmqDfc
+  - merchant-3310-sell-20261013-113445-94B261
+- Merchant official evidence gates remain Blocked.
+- Shared databases and live service unchanged by these isolated runs.
+
+## 90Q-24F final verification
+- Receipt validator / database guard unit tests: 29/29, no skips.
+- Isolated DB: 14 checked fixture tables empty.
+- Canonical item 253231541 present in items and item_registry.
+- Both 24D temporary test users absent.
+- Evidence: merchant-3310-final-20261013-AkrpoX.
+
+## 90Q-24G independent guard cases
+- Added rejection tests using approved port 3310 with invalid users,
+  disabled integration and invalid hosts.
+- Focused validator/guard tests: 36/36, no failures or skips.
+- Evidence: merchant-3310-guard-20261013-wfDzUV.
+
+## 90Q-24H reviewed checkpoint
+- RecoveryReader validator extraction preserves existing integrity checks.
+- Isolated producer variants added for BUY journal and SELL TCP result loss.
+- Separate-process Recovery tests now require isolated 3310 target.
+- Legacy 3308 process-recovery runners require migration before reuse.
+- Verified: integration 4/4; focused unit tests 36/36.
+- Transactional cleanup, SAVEPOINT restore and committed cleanup verified.
+- Final DB state: 14 fixture tables empty; canonical item intact.
+- No push or live deployment performed.

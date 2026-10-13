@@ -16,9 +16,17 @@ public sealed class MerchantPurchaseJournalIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task JournalPreservesRequestAndRejectsIdentityConflicts()
+    public Task JournalPreservesRequestAndRejectsIdentityConflicts() =>
+        RunJournalScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task JournalPreservesRequestAndRejectsIdentityConflictsIsolated3310() =>
+        RunJournalScenarioAsync(true);
+
+    private async Task RunJournalScenarioAsync(bool isolated3310)
     {
-        var repos = await Repositories.CreateAsync();
+        var repos = await Repositories.CreateAsync(recoveryTarget: isolated3310);
         var initial = await repos.GetByCharacterAsync(
             repos.CharacterId, CancellationToken.None);
         Assert.NotNull(initial);
@@ -203,7 +211,26 @@ public sealed class MerchantPurchaseJournalIntegrationTests
             _writer = new(options, new FixtureBuyGate(character, merchant));
         }
 
-        public static async Task<Repositories> CreateAsync(bool requireInitialState = true)
+        public static Task<Repositories> CreateRecoveryAsync()
+        {
+            static string Required(string name) =>
+                Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
+                    ? value : throw new InvalidOperationException($"Missing {name}");
+
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER"));
+
+            return CreateAsync(
+                requireInitialState: false,
+                recoveryTarget: true);
+        }
+
+        public static async Task<Repositories> CreateAsync(
+            bool requireInitialState = true,
+            bool recoveryTarget = false)
         {
             static string Required(string name) =>
                 Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -211,7 +238,18 @@ public sealed class MerchantPurchaseJournalIntegrationTests
 
             Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
             Assert.Equal("127.0.0.1", Required("GOD2_DB_HOST"));
-            Assert.Equal("3308", Required("GOD2_DB_PORT"));
+            if (recoveryTarget)
+            {
+                MerchantRecoveryDatabaseGuard.Validate(
+                    Required("GOD2_RUN_DB_INTEGRATION"),
+                    Required("GOD2_DB_HOST"),
+                    Required("GOD2_DB_PORT"),
+                    Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER"));
+            }
+            else
+            {
+                Assert.Equal("3308", Required("GOD2_DB_PORT"));
+            }
             var user = Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER");
             Assert.StartsWith("shoptest_", user);
             var character = long.Parse(Required(
