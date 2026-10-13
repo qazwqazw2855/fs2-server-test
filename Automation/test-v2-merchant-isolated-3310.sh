@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell|stack) ;;
+  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell|stack|grantconcurrency) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -389,6 +389,12 @@ export GOD2_MERCHANT_COMMAND_FIXTURE_MERCHANT_ID="$merchant_id"
 export GOD2_MERCHANT_COMMAND_FIXTURE_USER="$test_user"
 export GOD2_MERCHANT_COMMAND_FIXTURE_PASSWORD="$test_password"
 
+if [[ "$scenario" == grantconcurrency ]]; then
+  export GOD2_DB_USER="$test_user"
+  export GOD2_DB_PASSWORD="$test_password"
+  export GOD2_GRANT_FIXTURE_CHARACTER_ID="$fixture_id"
+fi
+
 if [[ "$scenario" == stack ]]; then
   db_admin <<SQL
 GRANT CREATE TEMPORARY TABLES ON god2_game.*
@@ -418,6 +424,9 @@ if [[ "$scenario" == buy ]]; then
 elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+elif [[ "$scenario" == grantconcurrency ]]; then
+  producer="$namespace.InventoryGrantConcurrencyTests.Concurrent_committed_grants_are_durable_and_not_duplicatedIsolated3310"
+  recovery=""
 elif [[ "$scenario" == stack ]]; then
   producer="$namespace.InventoryGrantStackCommittedTests.Committed_stacks_replay_and_competing_versions_retry_safelyIsolated3310"
   recovery=""

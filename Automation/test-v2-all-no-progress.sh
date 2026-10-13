@@ -28,6 +28,7 @@ special=(
   QuestRewardClaimCommittedTests
   QuestProgressClosedLoopTests
   QuestAcceptanceClosedLoopTests
+  InventoryGrantConcurrencyTests
 )
 filter=""
 for name in "${special[@]}"; do
@@ -69,6 +70,7 @@ scripts=(
   test-v2-merchant-sale-isolated.sh
   test-v2-merchant-tcp-isolated.sh
   test-v2-inventory-stack-committed-isolated.sh
+  test-v2-inventory-grant-concurrency-isolated.sh
   test-v2-merchant-tcp-new-server-isolated.sh
   test-v2-merchant-recovery-isolated.sh
 )
@@ -105,7 +107,7 @@ for path in paths:
 print(f"六套基礎分組：{passed}/{total}，0 failed，0 skipped")
 
 logs = sorted(root.glob("test-v2-*.sh.log"))
-assert len(logs) == 14
+assert len(logs) == 15
 executions = 0
 pattern = r"Failed:\s*(\d+),\s*Passed:\s*(\d+),\s*Skipped:\s*(\d+),\s*Total:\s*(\d+)"
 for path in logs:
@@ -115,6 +117,6 @@ for path in logs:
         f, p, s, n = map(int, (f, p, s, n))
         assert n > 0 and p == n and f == s == 0, path
         executions += n
-print(f"14 支 fixture 腳本：{executions} 次測試執行全部通過")
+print(f"15 支 fixture 腳本：{executions} 次測試執行全部通過")
 print("fixture 執行含前置案例重跑，不與基礎分組相加為唯一測試數。")
 PY

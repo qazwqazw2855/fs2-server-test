@@ -9,7 +9,15 @@ public sealed class InventoryGrantConcurrencyTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task Concurrent_committed_grants_are_durable_and_not_duplicated()
+    public Task Concurrent_committed_grants_are_durable_and_not_duplicated() =>
+        RunConcurrencyScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task Concurrent_committed_grants_are_durable_and_not_duplicatedIsolated3310() =>
+        RunConcurrencyScenarioAsync(true);
+
+    private async Task RunConcurrencyScenarioAsync(bool isolated3310)
     {
         static string Required(string name) =>
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -19,6 +27,13 @@ public sealed class InventoryGrantConcurrencyTests
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
         var characterId = long.Parse(Required("GOD2_GRANT_FIXTURE_CHARACTER_ID"));
         Assert.True(characterId > 1);
+
+        if (isolated3310)
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                Required("GOD2_DB_USER"));
 
         var options = new MariaDbAuthenticationOptions(
             Required("GOD2_DB_HOST"), int.Parse(Required("GOD2_DB_PORT")),
@@ -37,9 +52,11 @@ public sealed class InventoryGrantConcurrencyTests
             command.Parameters.AddWithValue("@id", characterId);
             await using var reader = await command.ExecuteReaderAsync();
             Assert.True(await reader.ReadAsync());
-            Assert.StartsWith("grantfixture_", reader.GetString(0));
+            Assert.StartsWith(isolated3310 ? "shopfixture_" : "grantfixture_", reader.GetString(0));
             Assert.False(reader.GetBoolean(1));
-            Assert.Equal("InventoryGrantConcurrencyFixture", reader.GetString(2));
+            Assert.Equal(
+                isolated3310 ? "MerchantPurchaseFixture" : "InventoryGrantConcurrencyFixture",
+                reader.GetString(2));
         }
 
         var repository = new MariaDbCharacterInventorySnapshotRepository(options);

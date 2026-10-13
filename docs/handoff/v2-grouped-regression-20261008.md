@@ -99,3 +99,13 @@
 - Quest producer classes excluded from the base Persistence group.
 - Evidence: docs/handoff/quest-3310-20261013-124624-ifC12I.
 - Full grouped regression not yet rerun; official merchant gates remain Blocked.
+
+## Isolated inventory grant concurrency — 2026-10-13
+- Inventory grant concurrency moved from base group to isolated fixture runner.
+- Dedicated 3310 variant passed 1/1; fixture cleanup passed.
+- Eight-way replay, competing versions and durable readback assertions retained.
+- Grouped fixture script count is now 15.
+- Evidence: docs/handoff/merchant-3310-grantconcurrency-20261013-125033-bYC5Xm.
+- Base DB tests still require isolation review, including fixed-character
+  inventory rollback and runtime/catalog baseline tests.
+- Full grouped regression has not been rerun.
