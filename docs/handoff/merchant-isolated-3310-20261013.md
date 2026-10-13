@@ -34,9 +34,9 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24R
-Inspect merchant TCP reconnect/new-server/basic fixture requirements.
-11 legacy grouped fixture scripts still target shared 3308.
+## Next step: 90Q-24V
+Inspect remaining merchant lost-result/economy/inventory-restore fixtures.
+8 legacy grouped fixture scripts remain.
 Full grouped regression and official evidence promotion remain pending.
 
 ## Safety
@@ -133,3 +133,15 @@ Full grouped regression and official evidence promotion remain pending.
 - Grouped BUY/SELL TCP runner now uses isolated wrapper.
 - Isolated integration cases verified: 6; focused unit cases: 36.
 - 11 legacy grouped fixture scripts remain; no full grouped run or push.
+
+## 90Q-24S/T TCP migration verified
+- Basic TCP, new-server restore and reconnect restore: each 1/1.
+- Existing transaction, replay and restore assertions retained.
+- All three executions removed temporary users and committed Fixtures.
+- Isolated integration cases verified: 9; focused unit cases: 36.
+- Grouped fixture count remains 14; 8 legacy scripts remain.
+- Evidence:
+  - merchant-3310-basic-20261013-115629-38aHxe
+  - merchant-3310-newserver-20261013-115644-lWBk9a
+  - merchant-3310-reconnect-20261013-115805-BDvjvn
+- Full grouped regression not run; no push or live deployment.

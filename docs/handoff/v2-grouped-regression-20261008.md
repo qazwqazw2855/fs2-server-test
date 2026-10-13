@@ -48,3 +48,8 @@
 - Verified 1/1; temporary user and Fixture cleanup passed.
 - Fixture script count remains 14; 11 legacy scripts still target 3308.
 - Full grouped regression has not been rerun.
+
+## Isolated TCP restore wiring — 2026-10-13
+- Basic TCP, new-server and reconnect runners replaced with isolated wrappers.
+- Each test passed 1/1; all temporary-user/Fixture cleanups passed.
+- 8 legacy scripts remain; full grouped regression has not been rerun.

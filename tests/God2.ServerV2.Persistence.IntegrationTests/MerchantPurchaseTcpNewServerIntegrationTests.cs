@@ -16,10 +16,18 @@ public sealed class MerchantPurchaseTcpNewServerIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task NewServerRestoresCommittedInventoryWithoutAnotherPurchase()
+    public Task NewServerRestoresCommittedInventoryWithoutAnotherPurchase() =>
+        RunIsolatedScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task NewServerRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310() =>
+        RunIsolatedScenarioAsync(true);
+
+    private async Task RunIsolatedScenarioAsync(bool isolated3310)
     {
         const int scenario = 0;
-        var repos = await Repositories.CreateAsync();
+        var repos = await Repositories.CreateAsync(isolated3310);
         using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(30));
         using var output = new StringWriter();
         var previousOutput = Console.Out;
@@ -290,7 +298,7 @@ public sealed class MerchantPurchaseTcpNewServerIntegrationTests
             _writer = new(options, new FixtureBuyGate(character, merchant));
         }
 
-        public static async Task<Repositories> CreateAsync()
+        public static async Task<Repositories> CreateAsync(bool isolated3310 = false)
         {
             static string Required(string name) =>
                 Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -298,7 +306,14 @@ public sealed class MerchantPurchaseTcpNewServerIntegrationTests
 
             Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
             Assert.Equal("127.0.0.1", Required("GOD2_DB_HOST"));
-            Assert.Equal("3308", Required("GOD2_DB_PORT"));
+            if (isolated3310)
+                MerchantRecoveryDatabaseGuard.Validate(
+                    Required("GOD2_RUN_DB_INTEGRATION"),
+                    Required("GOD2_DB_HOST"),
+                    Required("GOD2_DB_PORT"),
+                    Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER"));
+            else
+                Assert.Equal("3308", Required("GOD2_DB_PORT"));
             var user = Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER");
             Assert.StartsWith("shoptest_", user);
             var character = long.Parse(Required(

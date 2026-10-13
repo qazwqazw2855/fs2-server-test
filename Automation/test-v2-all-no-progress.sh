@@ -57,16 +57,16 @@ scripts=(
   test-v2-position-committed.sh
   test-v2-merchant-purchase.sh
   test-v2-economy-snapshot.sh
-  test-v2-merchant-tcp-reconnect.sh
+  test-v2-merchant-tcp-reconnect-isolated.sh
   test-v2-merchant-tcp-lost-result.sh
   test-v2-merchant-command-isolated.sh
   test-v2-inventory-restore-blocked.sh
   test-v2-quest-process-recovery.sh
   test-v2-merchant-buy-sell-tcp-isolated.sh
   test-v2-merchant-sale.sh
-  test-v2-merchant-tcp.sh
+  test-v2-merchant-tcp-isolated.sh
   test-v2-inventory-stack-committed.sh
-  test-v2-merchant-tcp-new-server.sh
+  test-v2-merchant-tcp-new-server-isolated.sh
   test-v2-merchant-recovery-isolated.sh
 )
 
