@@ -10,7 +10,15 @@ public sealed class MerchantSaleIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task Buy_sell_rolls_back_replays_and_rejects_reused_slot_identity()
+    public Task Buy_sell_rolls_back_replays_and_rejects_reused_slot_identity() =>
+        RunAtomicScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task Buy_sell_rolls_back_replays_and_rejects_reused_slot_identityIsolated3310() =>
+        RunAtomicScenarioAsync(true);
+
+    private async Task RunAtomicScenarioAsync(bool isolated3310)
     {
         static string Required(string name) =>
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -18,6 +26,12 @@ public sealed class MerchantSaleIntegrationTests
 
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
         var user = Required("GOD2_SALE_FIXTURE_USER");
+        if (isolated3310)
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                user);
         Assert.StartsWith("shoptest_", user);
         var character = long.Parse(Required("GOD2_SALE_FIXTURE_CHARACTER_ID"));
         var merchant = long.Parse(Required("GOD2_SALE_FIXTURE_MERCHANT_ID"));

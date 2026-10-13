@@ -63,3 +63,9 @@
 - Economy snapshot and blocked inventory restore now use isolated 3310 wrappers.
 - Each passed 1/1; both temporary-user/Fixture cleanups passed.
 - 5 legacy scripts remain; full grouped regression not rerun.
+
+## Isolated atomic BUY/SELL wiring — 2026-10-13
+- Purchase/sale runners replaced with isolated wrappers.
+- Both passed 1/1, including fault injection and concurrent replay.
+- Fault accounts/triggers and Fixtures removed.
+- Three non-merchant legacy scripts remain; full grouped regression pending.

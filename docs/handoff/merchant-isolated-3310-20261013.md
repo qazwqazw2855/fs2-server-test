@@ -34,10 +34,10 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-25B
-Inspect remaining merchant purchase/sale fixtures and fault-account requirements.
-5 legacy grouped scripts remain; full grouped regression pending.
-Official merchant evidence gates remain Blocked.
+## Next step: 90Q-25E
+Create and verify a merchant-only isolated regression entrypoint.
+Merchant fixture migrations complete; three non-merchant legacy runners remain.
+Full grouped regression and official merchant promotion remain pending.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -169,3 +169,16 @@ Official merchant evidence gates remain Blocked.
   - test-v2-quest-process-recovery.sh
   - test-v2-merchant-sale.sh
   - test-v2-inventory-stack-committed.sh
+
+## 90Q-25C atomic BUY/SELL verified
+- BUY and SELL each passed 1/1 with original transaction assertions.
+- Wallet-denied and late receipt/audit failures rolled back.
+- Concurrent replay/version/slot-identity cases passed.
+- All fault users/triggers, normal test users and Fixtures removed.
+- Evidence:
+  - merchant-3310-atomicbuy-20261013-121000-VQwgwK
+  - merchant-3310-atomicsell-20261013-121014-z5equQ
+- Isolated integration cases verified: 14; focused unit cases: 36.
+- All merchant-related grouped fixture runners now use isolated 3310.
+- Remaining shared runners: position, quest process recovery, inventory stack.
+- No full grouped run, official evidence promotion, push or deployment.

@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked) ;;
+  buy|sell|command|tcp|basic|newserver|reconnect|lostresult|economy|restoreblocked|atomicbuy|atomicsell) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -13,6 +13,8 @@ cd "$ROOT"
 
 test "$(git branch --show-current)" = \
   "codex/inventory-grant-20261003"
+
+source Automation/merchant-isolated-3310-atomic-faults.sh
 
 # Never source production server-v2.env.
 export GOD2_DB_HOST="127.0.0.1"
@@ -269,6 +271,12 @@ cleanup_on_exit() {
 
   echo "===== EXIT CLEANUP CHECK ====="
 
+  if [[ "$atomic_fault_cleanup" == 1 ]]; then
+    if ! cleanup_atomic_faults; then
+      exit 1
+    fi
+  fi
+
   if [[ -n "${test_user_host:-}" ]]; then
     if ! db_admin <<SQL
 DROP USER IF EXISTS '$test_user'@'$test_user_host';
@@ -381,6 +389,10 @@ export GOD2_MERCHANT_COMMAND_FIXTURE_MERCHANT_ID="$merchant_id"
 export GOD2_MERCHANT_COMMAND_FIXTURE_USER="$test_user"
 export GOD2_MERCHANT_COMMAND_FIXTURE_PASSWORD="$test_password"
 
+if [[ "$scenario" == atomicbuy || "$scenario" == atomicsell ]]; then
+  prepare_atomic_faults
+fi
+
 evidence="$(mktemp -d "docs/handoff/merchant-3310-${scenario}-$(date +%Y%m%d-%H%M%S)-XXXXXX")"
 git rev-parse HEAD > "$evidence/source-commit.txt"
 echo "evidence=$evidence"
@@ -394,6 +406,12 @@ if [[ "$scenario" == buy ]]; then
 elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+elif [[ "$scenario" == atomicbuy ]]; then
+  producer="$namespace.MerchantPurchaseIntegrationTests.Purchase_is_atomic_replayable_and_version_checkedIsolated3310"
+  recovery=""
+elif [[ "$scenario" == atomicsell ]]; then
+  producer="$namespace.MerchantSaleIntegrationTests.Buy_sell_rolls_back_replays_and_rejects_reused_slot_identityIsolated3310"
+  recovery=""
 elif [[ "$scenario" == economy ]]; then
   producer="$namespace.CharacterEconomySnapshotIntegrationTests.ConcurrentCommitDoesNotMixInventoryAndWalletSnapshotsIsolated3310"
   recovery=""
