@@ -34,9 +34,9 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24O
-Inspect the next merchant fixture for isolated migration.
-12 legacy grouped fixture scripts still target shared 3308.
+## Next step: 90Q-24R
+Inspect merchant TCP reconnect/new-server/basic fixture requirements.
+11 legacy grouped fixture scripts still target shared 3308.
 Full grouped regression and official evidence promotion remain pending.
 
 ## Safety
@@ -123,3 +123,13 @@ Full grouped regression and official evidence promotion remain pending.
 - Grouped command runner now uses isolated wrapper.
 - Verified isolated integration cases: 5; validator/guard cases: 36.
 - 12 legacy grouped fixture scripts remain to be isolated.
+
+## 90Q-24P TCP BUY/SELL verified
+- Added isolated 3310 variant; original transaction/wire assertions retained.
+- TCP BUY/SELL test passed 1/1, zero failures/skips.
+- BUY/SELL responses, balance 100 -> 60 -> 64 and SELL replay verified.
+- Temporary user and committed Fixture cleanup passed.
+- Evidence: merchant-3310-tcp-20261013-115319-LYR6Am.
+- Grouped BUY/SELL TCP runner now uses isolated wrapper.
+- Isolated integration cases verified: 6; focused unit cases: 36.
+- 11 legacy grouped fixture scripts remain; no full grouped run or push.

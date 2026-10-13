@@ -62,7 +62,7 @@ scripts=(
   test-v2-merchant-command-isolated.sh
   test-v2-inventory-restore-blocked.sh
   test-v2-quest-process-recovery.sh
-  test-v2-merchant-buy-sell-tcp.sh
+  test-v2-merchant-buy-sell-tcp-isolated.sh
   test-v2-merchant-sale.sh
   test-v2-merchant-tcp.sh
   test-v2-inventory-stack-committed.sh

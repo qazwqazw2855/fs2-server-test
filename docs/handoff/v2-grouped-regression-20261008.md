@@ -42,3 +42,9 @@
 - Command test passed 1/1; Fixture and temporary user cleanup passed.
 - Fixture script count remains 14; 12 legacy scripts still target 3308.
 - Full grouped regression has not been rerun.
+
+## Isolated BUY/SELL TCP wiring — 2026-10-13
+- Replaced legacy BUY/SELL TCP runner with isolated 3310 wrapper.
+- Verified 1/1; temporary user and Fixture cleanup passed.
+- Fixture script count remains 14; 11 legacy scripts still target 3308.
+- Full grouped regression has not been rerun.
