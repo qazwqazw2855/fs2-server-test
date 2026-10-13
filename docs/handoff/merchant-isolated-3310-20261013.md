@@ -34,11 +34,11 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-25G
-Review official merchant promotion gaps and existing client evidence.
-Merchant isolated regression complete: integration 14/14; unit 36/36.
-Full grouped regression remains pending for three legacy fixture runners.
-Official evidence gates remain Blocked; no live deployment.
+## Next step: 90Q-25H
+At home, locate the historical attempt-759 trace or its backup.
+Inventory and hash original evidence before running exporters on a copy.
+Client validation deferred: operator currently has no client at work.
+Official merchant evidence gates remain Blocked.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -192,3 +192,21 @@ Official evidence gates remain Blocked; no live deployment.
 - Both atomic scenarios removed their fault users and triggers.
 - Evidence: docs/handoff/merchant-3310-regression-20261013-121637-WXYzkE.
 - No full grouped regression, push or live deployment performed.
+
+## 90Q-25G home evidence preparation
+- Merchant isolated regression committed at 5b4c846: integration 14/14,
+  validator/database guard 36/36; all 12 fixture cleanup runs passed.
+- AWS filename search found exporter scripts, but no original
+  attempt-759 trace or Stage 4-6 exports in searched locations.
+- Historical Windows trace path:
+  C:\Users\SeiHo\Desktop\Simao\God2\God2 Classic Server\Artifacts\ClientInstrumentation\ElevatedAutomationHost\host-run-20260812-000800\attempt-759-trace
+- Exporters read metadata.jsonl and analysis/stage4-campaign.json,
+  stage5-campaign.json and stage6-campaign.json.
+- Stage 6 additionally reads analysis/stage5-purchase-evidence.json.
+- Exporters depend on LiveRecoveryStageEvidence.ps1 and
+  protocol/evidence/current-build/client-dispatch-registry.json.
+- Exporters rewrite campaign files; preserve originals and hashes,
+  and perform analysis on a separate copy.
+- Verify client build/hash, capture authority and field mappings.
+- Keep CN_OFFICIAL evidence separate from the Classic profile.
+- No client validation, gate promotion, push or live deployment performed.
