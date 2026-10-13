@@ -10,12 +10,9 @@ public sealed class MariaDbRuntimeIntegrationTests
     [Trait("Category", "Integration")]
     public async Task God2TestAccount_AcceptsCorrectPassword_AndRejectsWrongPassword()
     {
-        if (!ShouldRun() ||
-            Environment.GetEnvironmentVariable("GOD2_TEST_PASSWORD")
-                is not { Length: > 0 } password)
-        {
-            return;
-        }
+        if (!ShouldRun())
+            throw new InvalidOperationException("DB integration execution required.");
+        var password = Required("GOD2_TEST_PASSWORD");
         var authenticator = new MariaDbAccountAuthenticator(
             CreateOptions(),
             new Pbkdf2Sha256PasswordHashVerifier());
@@ -630,7 +627,7 @@ public sealed class MariaDbRuntimeIntegrationTests
             StringComparison.Ordinal);
 
     private static MariaDbAuthenticationOptions CreateOptions() =>
-        new(
+        RegressionBaselineDatabaseGuard.CreateOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
             Required("GOD2_DB_USER"),

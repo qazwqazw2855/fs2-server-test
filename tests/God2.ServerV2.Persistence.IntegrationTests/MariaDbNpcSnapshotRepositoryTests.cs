@@ -19,7 +19,7 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
         }
 
         var repository = new MariaDbNpcSnapshotRepository(
-            new MariaDbAuthenticationOptions(
+            RegressionBaselineDatabaseGuard.CreateOptions(
                 Required("GOD2_DB_HOST"),
                 int.Parse(Required("GOD2_DB_PORT")),
                 Required("GOD2_DB_USER"),
@@ -77,7 +77,7 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
         }
 
         var repository = new MariaDbNpcSnapshotRepository(
-            new MariaDbAuthenticationOptions(
+            RegressionBaselineDatabaseGuard.CreateOptions(
                 Required("GOD2_DB_HOST"),
                 int.Parse(Required("GOD2_DB_PORT")),
                 Required("GOD2_DB_USER"),
@@ -170,7 +170,7 @@ public sealed class MariaDbNpcSnapshotRepositoryTests
         }
 
         var repository = new MariaDbNpcSnapshotRepository(
-            new MariaDbAuthenticationOptions(
+            RegressionBaselineDatabaseGuard.CreateOptions(
                 Required("GOD2_DB_HOST"),
                 int.Parse(Required("GOD2_DB_PORT")),
                 Required("GOD2_DB_USER"),

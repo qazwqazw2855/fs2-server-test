@@ -23,7 +23,7 @@ public sealed class MerchantCatalogIdentityIntegrationTests
 
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
 
-        var options = new MariaDbAuthenticationOptions(
+        var options = RegressionBaselineDatabaseGuard.CreateOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
             Required("GOD2_DB_USER"),

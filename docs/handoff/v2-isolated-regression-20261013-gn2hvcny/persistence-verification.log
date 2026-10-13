@@ -1,0 +1,21 @@
+PASS: isolated baseline fault account prepared
+persistence_results=/tmp/god2-persistence-isolated-i6hjd_o4
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  God2.ServerV2.Core -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Core/bin/Release/net10.0/God2.ServerV2.Core.dll
+  God2.ServerV2.Protocol -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Protocol/bin/Release/net10.0/God2.ServerV2.Protocol.dll
+  God2.ServerV2.Session -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Session/bin/Release/net10.0/God2.ServerV2.Session.dll
+  God2.ServerV2.Application -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Application/bin/Release/net10.0/God2.ServerV2.Application.dll
+  God2.ServerV2.Network -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Network/bin/Release/net10.0/God2.ServerV2.Network.dll
+  God2.ServerV2.Persistence -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Persistence/bin/Release/net10.0/God2.ServerV2.Persistence.dll
+  God2.ServerV2.Persistence.IntegrationTests -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll
+Test run for /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.2 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /tmp/god2-persistence-isolated-i6hjd_o4/Persistence.Integration.trx
+
+Passed!  - Failed:     0, Passed:    80, Skipped:     0, Total:    80, Duration: 2 s - God2.ServerV2.Persistence.IntegrationTests.dll (net10.0)
+PASS: Persistence 80/80
+PASS: isolated baseline fault account removed

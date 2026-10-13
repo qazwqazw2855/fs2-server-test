@@ -1,0 +1,32 @@
+evidence=docs/handoff/quest-3310-20261013-131430-r1JKVT
+獨立停用角色 ID：225
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  God2.ServerV2.Core -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Core/bin/Release/net10.0/God2.ServerV2.Core.dll
+  God2.ServerV2.Session -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Session/bin/Release/net10.0/God2.ServerV2.Session.dll
+  God2.ServerV2.Protocol -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Protocol/bin/Release/net10.0/God2.ServerV2.Protocol.dll
+  God2.ServerV2.Application -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Application/bin/Release/net10.0/God2.ServerV2.Application.dll
+  God2.ServerV2.Network -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Network/bin/Release/net10.0/God2.ServerV2.Network.dll
+  God2.ServerV2.Persistence -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/src/God2.ServerV2.Persistence/bin/Release/net10.0/God2.ServerV2.Persistence.dll
+  God2.ServerV2.Persistence.IntegrationTests -> /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll
+Test run for /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.2 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/quest-3310-20261013-131430-r1JKVT/producer.trx
+
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 2 s - God2.ServerV2.Persistence.IntegrationTests.dll (net10.0)
+PASS: quest phase 3/3
+Test run for /home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.2 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: /home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/quest-3310-20261013-131430-r1JKVT/recovery.trx
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 278 ms - God2.ServerV2.Persistence.IntegrationTests.dll (net10.0)
+PASS: quest phase 1/1
+PASS: isolated quest producer/recovery 4/4
+remaining_fixture_accounts_and_users=0
+Committed-quest-test exit code: 0

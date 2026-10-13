@@ -19,7 +19,7 @@ public sealed class InventoryGrantFailureTests
 
         var user = Required("GOD2_GRANT_FAULT_USER");
         Assert.StartsWith("grantfault_", user);
-        var options = new MariaDbAuthenticationOptions(
+        var options = RegressionBaselineDatabaseGuard.CreateFaultOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
             user, Required("GOD2_GRANT_FAULT_PASSWORD"));

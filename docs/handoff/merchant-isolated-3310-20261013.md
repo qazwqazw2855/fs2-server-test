@@ -34,11 +34,11 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-25H
-At home, locate the historical attempt-759 trace or its backup.
-Inventory and hash original evidence before running exporters on a copy.
-Client validation deferred: operator currently has no client at work.
-Official merchant evidence gates remain Blocked.
+## Next step: 90Q-26A
+Isolated grouped regression verified: base 582/582; fixture executions 25/25.
+Official client evidence work 90Q-25H remains deferred until client access.
+Review progress reporting against the verified scope before updating it.
+Official merchant gates remain Blocked; no live deployment.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -210,3 +210,9 @@ Official merchant evidence gates remain Blocked.
 - Verify client build/hash, capture authority and field mappings.
 - Keep CN_OFFICIAL evidence separate from the Classic profile.
 - No client validation, gate promotion, push or live deployment performed.
+
+## Isolated grouped regression checkpoint
+- Base suites 582/582 across two invocations; 16 fixture scripts passed 25/25.
+- Baseline target 3311; fixture target 3310; final DB checks passed.
+- Evidence: docs/handoff/v2-isolated-regression-20261013-gn2hvcny.
+- Official client evidence deferred by operator; no push or deployment.

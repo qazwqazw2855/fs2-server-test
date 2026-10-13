@@ -20,7 +20,7 @@ public sealed class WorldLoginCatalogIntegrationTests
                 : throw new InvalidOperationException($"Missing {name}");
 
         const string clientBuildId = "god2-opt-6b127086e0c0";
-        var options = new MariaDbAuthenticationOptions(
+        var options = RegressionBaselineDatabaseGuard.CreateOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
             Required("GOD2_DB_USER"),

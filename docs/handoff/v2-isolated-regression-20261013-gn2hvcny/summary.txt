@@ -1,0 +1,4 @@
+PASS: six base suites 582/582, verified across two invocations
+PASS: 16 isolated fixture scripts; 25/25 test executions
+Base TRX evidence retained; failed initial Persistence TRX not counted.
+Official merchant evidence gates remain Blocked; no live deployment.

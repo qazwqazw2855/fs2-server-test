@@ -120,3 +120,21 @@
 - Evidence: docs/handoff/merchant-3310-grantrollback-20261013-125630-pEJTL3.
 - Runtime/catalog base tests still need isolated baseline review.
 - Full grouped regression not yet rerun; official merchant gates remain Blocked.
+
+## Complete isolated regression — 2026-10-13
+- Base suites: 582/582, zero failures/skips, verified across two invocations.
+- Core 7; Application 114; Session 20; Protocol 147; Network 214;
+  Persistence.Integration 80.
+- All 16 isolated fixture scripts passed: 25 test executions.
+- Failed initial Persistence run excluded from passing totals.
+- Baseline tests use isolated 3311; fixture tests use isolated 3310.
+- Mandatory DB target guards added; missing login password fails explicitly.
+- Temporary baseline fault account created and removed per runner invocation.
+- Final 3310 checks: fixture rows/users/triggers absent; canonical item intact.
+- Final 3311 checks: baseline maps, portals and inventory checks passed;
+  temporary fault users absent.
+- Baseline dump and credentials remain outside Git in a private directory.
+- Evidence: docs/handoff/v2-isolated-regression-20261013-gn2hvcny.
+- Complete no-argument entrypoint was not rerun after fault wiring:
+  base suites and fixture phase were verified separately.
+- Official merchant evidence gates remain Blocked; no push/live deployment.

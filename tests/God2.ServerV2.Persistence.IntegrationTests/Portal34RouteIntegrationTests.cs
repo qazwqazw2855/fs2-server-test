@@ -22,7 +22,7 @@ public sealed class Portal34RouteIntegrationTests
                 ? value
                 : throw new InvalidOperationException($"Missing {name}");
 
-        var options = new MariaDbAuthenticationOptions(
+        var options = RegressionBaselineDatabaseGuard.CreateOptions(
             Required("GOD2_DB_HOST"),
             int.Parse(Required("GOD2_DB_PORT")),
             Required("GOD2_DB_USER"),
