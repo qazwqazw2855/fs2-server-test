@@ -88,3 +88,14 @@
 - Evidence: docs/handoff/merchant-3310-stack-20261013-124015-LyQdPW.
 - Quest process recovery is the last legacy grouped fixture runner.
 - Full grouped regression and official merchant acceptance remain pending.
+
+## Isolated quest process recovery — 2026-10-13
+- Quest producer 3/3 and separate-process recovery 1/1 passed.
+- Synthetic quest, three disabled characters and two test users cleaned.
+- Cleanup residual count: 0; runner exit: 0.
+- Mandatory test target: loopback 3310 and dedicated quest fixture users.
+- Legacy 3308 quest runner requires migration before reuse.
+- Grouped fixture entries now all use isolated runners.
+- Quest producer classes excluded from the base Persistence group.
+- Evidence: docs/handoff/quest-3310-20261013-124624-ifC12I.
+- Full grouped regression not yet rerun; official merchant gates remain Blocked.

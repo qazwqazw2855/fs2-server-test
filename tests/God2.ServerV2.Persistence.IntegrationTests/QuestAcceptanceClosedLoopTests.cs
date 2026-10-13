@@ -19,6 +19,7 @@ public sealed class QuestAcceptanceClosedLoopTests
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
         var character = long.Parse(Required("GOD2_QUEST_ACCEPT_CHARACTER_ID"));
         Assert.True(character > 1);
+        QuestIsolatedDatabaseGuard.ValidateEnvironment();
         var user = Required("GOD2_QUEST_FIXTURE_USER");
         Assert.StartsWith("questtest_", user);
         var options = new MariaDbAuthenticationOptions(

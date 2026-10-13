@@ -19,9 +19,10 @@ public sealed class QuestProcessRecoveryTests
 
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
         Assert.Equal("127.0.0.1", Required("GOD2_DB_HOST"));
-        Assert.Equal("3308", Required("GOD2_DB_PORT"));
+        Assert.Equal("3310", Required("GOD2_DB_PORT"));
         var character = long.Parse(Required("GOD2_QUEST_ACCEPT_CHARACTER_ID"));
         Assert.True(character > 1);
+        QuestIsolatedDatabaseGuard.ValidateEnvironment();
         var user = Required("GOD2_QUEST_FIXTURE_USER");
         Assert.StartsWith("questtest_", user);
         var options = new MariaDbAuthenticationOptions(

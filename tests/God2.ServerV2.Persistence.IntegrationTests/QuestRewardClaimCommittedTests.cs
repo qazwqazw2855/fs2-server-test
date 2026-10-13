@@ -17,6 +17,7 @@ public sealed class QuestRewardClaimCommittedTests
                 ? value
                 : throw new InvalidOperationException($"Missing {name}");
 
+        QuestIsolatedDatabaseGuard.ValidateEnvironment();
         var user = Required("GOD2_QUEST_FIXTURE_USER");
         Assert.StartsWith("questtest_", user);
         var characterId = long.Parse(Required("GOD2_QUEST_FIXTURE_CHARACTER_ID"));

@@ -25,6 +25,9 @@ special=(
   MerchantPurchaseTcpNewServerIntegrationTests
   MerchantPurchaseJournalProcessRecoveryTests
   MerchantSaleJournalProcessRecoveryTests
+  QuestRewardClaimCommittedTests
+  QuestProgressClosedLoopTests
+  QuestAcceptanceClosedLoopTests
 )
 filter=""
 for name in "${special[@]}"; do
@@ -61,7 +64,7 @@ scripts=(
   test-v2-merchant-tcp-lost-result-isolated.sh
   test-v2-merchant-command-isolated.sh
   test-v2-inventory-restore-blocked-isolated.sh
-  test-v2-quest-process-recovery.sh
+  test-v2-quest-process-recovery-isolated.sh
   test-v2-merchant-buy-sell-tcp-isolated.sh
   test-v2-merchant-sale-isolated.sh
   test-v2-merchant-tcp-isolated.sh
