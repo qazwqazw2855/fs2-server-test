@@ -4,7 +4,7 @@ set -euo pipefail
 test "$#" -eq 0
 scenario="${GOD2_MERCHANT_RECOVERY_SCENARIO:-buy}"
 case "$scenario" in
-  buy|sell) ;;
+  buy|sell|command) ;;
   *) echo "STOP: invalid recovery scenario"; exit 1 ;;
 esac
 
@@ -391,9 +391,12 @@ namespace="God2.ServerV2.Persistence.IntegrationTests"
 if [[ "$scenario" == buy ]]; then
   producer="$namespace.MerchantPurchaseJournalIntegrationTests.JournalPreservesRequestAndRejectsIdentityConflictsIsolated3310"
   recovery="$namespace.MerchantPurchaseJournalProcessRecoveryTests.SeparateProcessRecoversCommittedRequestWithoutDispatch"
-else
+elif [[ "$scenario" == sell ]]; then
   producer="$namespace.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310"
   recovery="$namespace.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch"
+else
+  producer="$namespace.MerchantCommandIntegrationTests.Current_interaction_dispatches_durable_buy_and_sell_Isolated3310"
+  recovery=""
 fi
 
 run_phase() {
@@ -422,7 +425,10 @@ PY_TRX
 
 echo "===== $scenario PRODUCER ====="
 run_phase producer "$producer"
-echo "===== $scenario SEPARATE-PROCESS RECOVERY ====="
-run_phase recovery "$recovery" --no-build
-
-echo "PASS: $scenario producer and separate-process recovery completed"
+if [[ "$scenario" != command ]]; then
+  echo "===== $scenario SEPARATE-PROCESS RECOVERY ====="
+  run_phase recovery "$recovery" --no-build
+  echo "PASS: $scenario producer and separate-process recovery completed"
+else
+  echo "PASS: isolated merchant command integration completed"
+fi

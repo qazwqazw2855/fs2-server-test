@@ -12,7 +12,15 @@ public sealed class MerchantCommandIntegrationTests
 {
     [Fact]
     [Trait("Category", "Integration")]
-    public async Task Current_interaction_dispatches_durable_buy_and_sell()
+    public Task Current_interaction_dispatches_durable_buy_and_sell() =>
+        RunCommandScenarioAsync(false);
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public Task Current_interaction_dispatches_durable_buy_and_sell_Isolated3310() =>
+        RunCommandScenarioAsync(true);
+
+    private async Task RunCommandScenarioAsync(bool isolated3310)
     {
         static string Required(string name) =>
             Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
@@ -20,6 +28,12 @@ public sealed class MerchantCommandIntegrationTests
 
         Assert.Equal("1", Required("GOD2_RUN_DB_INTEGRATION"));
         var user = Required("GOD2_MERCHANT_COMMAND_FIXTURE_USER");
+        if (isolated3310)
+            MerchantRecoveryDatabaseGuard.Validate(
+                Required("GOD2_RUN_DB_INTEGRATION"),
+                Required("GOD2_DB_HOST"),
+                Required("GOD2_DB_PORT"),
+                user);
         Assert.StartsWith("shoptest_", user);
         var character = long.Parse(Required(
             "GOD2_MERCHANT_COMMAND_FIXTURE_CHARACTER_ID"));

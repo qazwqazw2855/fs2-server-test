@@ -59,7 +59,7 @@ scripts=(
   test-v2-economy-snapshot.sh
   test-v2-merchant-tcp-reconnect.sh
   test-v2-merchant-tcp-lost-result.sh
-  test-v2-merchant-command.sh
+  test-v2-merchant-command-isolated.sh
   test-v2-inventory-restore-blocked.sh
   test-v2-quest-process-recovery.sh
   test-v2-merchant-buy-sell-tcp.sh

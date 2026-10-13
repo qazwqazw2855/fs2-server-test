@@ -36,3 +36,9 @@
 - Full grouped regression has not been rerun after this wiring change.
 - Isolated wrapper verified: 4/4; both fixture/user cleanups passed.
 - Operator log: docs/handoff/merchant-3310-wrapper-20261013/wrapper.log.
+
+## Isolated command wiring — 2026-10-13
+- Replaced test-v2-merchant-command.sh with isolated command wrapper.
+- Command test passed 1/1; Fixture and temporary user cleanup passed.
+- Fixture script count remains 14; 12 legacy scripts still target 3308.
+- Full grouped regression has not been rerun.

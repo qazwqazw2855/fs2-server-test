@@ -34,10 +34,10 @@
 - BUY/SELL isolated 3310 producer/recovery tests passed 4/4.
 - No promotion of Merchant evidence gates.
 
-## Next step: 90Q-24L
-Audit remaining grouped fixture scripts for shared-database mutations.
-Do not run full grouped regression until that review is complete.
-Official merchant evidence gates remain Blocked.
+## Next step: 90Q-24O
+Inspect the next merchant fixture for isolated migration.
+12 legacy grouped fixture scripts still target shared 3308.
+Full grouped regression and official evidence promotion remain pending.
 
 ## Safety
 - Never source production server-v2.env in isolated Runner.
@@ -106,3 +106,20 @@ Official merchant evidence gates remain Blocked.
 - These are repeat executions of the same four integration tests.
 - Evidence: merchant-3310-wrapper-20261013/wrapper.log.
 - Full grouped regression not rerun; no push or live deployment.
+
+## 90Q-24L grouped target audit
+- 13 remaining fixture scripts load server-v2.env and target shared 3308.
+- Only merchant recovery wrapper uses isolated 3310.
+- Some legacy scripts apply schema/runtime SQL.
+- Audit: grouped-fixture-target-audit-20261013.md.
+- Full grouped runner not executed.
+
+## 90Q-24M command integration verified
+- Added isolated 3310 variant; transaction assertions retained.
+- Command integration passed 1/1, no failure or skip.
+- BUY/SELL replay, interaction rejection and final balance/version verified.
+- Temporary test user and committed Fixture removed successfully.
+- Evidence: merchant-3310-command-20261013-115037-mcO4P6.
+- Grouped command runner now uses isolated wrapper.
+- Verified isolated integration cases: 5; validator/guard cases: 36.
+- 12 legacy grouped fixture scripts remain to be isolated.
