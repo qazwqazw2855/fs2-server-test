@@ -1,0 +1,16 @@
+{
+  "started_utc": "2026-10-17T05:07:56.365341+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-merchant-purchase-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 1,
+    "PASS: all atomic fault users and triggers absent": 1
+  },
+  "ended_utc": "2026-10-17T05:08:05.830992+00:00"
+}

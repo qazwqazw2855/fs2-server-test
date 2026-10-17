@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-17T05:08:05.875519+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-economy-snapshot-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 1
+  },
+  "ended_utc": "2026-10-17T05:08:15.434931+00:00"
+}

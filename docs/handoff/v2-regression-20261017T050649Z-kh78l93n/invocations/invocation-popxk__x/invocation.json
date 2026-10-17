@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-17T05:07:47.263116+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-position-committed-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: position fixture, synthetic map and user removed": 1
+  },
+  "ended_utc": "2026-10-17T05:07:56.320478+00:00"
+}

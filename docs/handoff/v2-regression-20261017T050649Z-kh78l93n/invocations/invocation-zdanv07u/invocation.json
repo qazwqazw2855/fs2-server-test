@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-17T05:06:50.660419+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-all-no-progress.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "remaining_fixture_accounts_and_users=0": 1
+  },
+  "ended_utc": "2026-10-17T05:10:42.497740+00:00"
+}

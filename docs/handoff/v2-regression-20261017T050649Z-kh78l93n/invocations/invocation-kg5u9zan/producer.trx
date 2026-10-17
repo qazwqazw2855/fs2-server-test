@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="03c8f839-641f-430c-ae6f-ae2f198727e6" name="@ip-172-31-15-62 2026-10-17 05:08:26" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-17T05:08:26.0555612+00:00" queuing="2026-10-17T05:08:26.0555612+00:00" start="2026-10-17T05:08:20.0867868+00:00" finish="2026-10-17T05:08:26.0631933+00:00" />
+  <TestSettings name="default" id="18c6ca8c-7814-444b-b4ab-4caaa92bae2e">
+    <Deployment runDeploymentRoot="_ip-172-31-15-62_2026-10-17_05_08_26" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a0c6603e-b9e0-4e4d-b8e1-3b148e27afc9" testId="1b6c5739-8c61-30b1-5f5d-f54dee1e99b9" testName="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpReconnectIntegrationTests.ReconnectRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310" computerName="ip-172-31-15-62" duration="00:00:03.9168917" startTime="2026-10-17T05:08:22.0193380+00:00" endTime="2026-10-17T05:08:25.9532300+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a0c6603e-b9e0-4e4d-b8e1-3b148e27afc9" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpReconnectIntegrationTests.ReconnectRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="1b6c5739-8c61-30b1-5f5d-f54dee1e99b9">
+      <Execution id="a0c6603e-b9e0-4e4d-b8e1-3b148e27afc9" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpReconnectIntegrationTests" name="ReconnectRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="1b6c5739-8c61-30b1-5f5d-f54dee1e99b9" executionId="a0c6603e-b9e0-4e4d-b8e1-3b148e27afc9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)
+[xUnit.net 00:00:00.32]   Discovering: God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.57]   Discovered:  God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.68]   Starting:    God2.ServerV2.Persistence.IntegrationTests
+PASS: BUY then fresh Login/World restores inventory; no second purchase.
+[xUnit.net 00:00:04.73]   Finished:    God2.ServerV2.Persistence.IntegrationTests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

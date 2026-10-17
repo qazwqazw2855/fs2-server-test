@@ -129,3 +129,51 @@ baseline fault user 在 finally 移除，baseline-cleanup.json 紀錄結果；�
 原 fixture runner 的外部 evidence 目錄不整批加入；原 TRX 路徑由 invocation.json 記錄，TRX 副本位於本次主證據目錄。
 檢查本次主證據目錄無 Git ignored 檔案；仍逐檔選取，不使用整個目錄的強制加入。
 progress.json 新增本輪紀錄並保存既有 10/13 latest_grouped_regression／current_validation 為歷史；582 與 fixture 25 次分開，Merchant gates／原版 Client／正式部署限制維持。
+
+## 已提交審查修正版完整驗證 — 2026-10-17
+
+受測 commit：`51d1e158e093f14604cf768f021805f0ca385e70`（51d1e158）；branch `codex/inventory-grant-20261003`。執行前 tracked 工作樹與 index 乾淨；所有 290 個既有 untracked 路徑均保留，沒有清理。
+實際命令：`bash Automation/test-v2-all-isolated.sh`，完整入口只執行 1 次，重跑 0 次，最終 exit code 0。
+UTC 開始：2026-10-17T05:06:50.010060+00:00；結束：2026-10-17T05:10:43.224364+00:00。
+新證據：`docs/handoff/v2-regression-20261017T050649Z-kh78l93n`。結果均由本次 TRX／invocation 讀取，沒有沿用先前數字。
+
+| 六套基礎 | 通過／執行 | failed | skipped |
+|---|---:|---:|---:|
+| Core | 7/7 | 0 | 0 |
+| Application | 114/114 | 0 | 0 |
+| Session | 20/20 | 0 | 0 |
+| Protocol | 147/147 | 0 | 0 |
+| Network | 214/214 | 0 | 0 |
+| Persistence.Integration | 80/80 | 0 | 0 |
+
+基礎共 582/582。以下 16 支 fixture 共 25/25 次測試執行；包含重複前置案例，不與基礎合併為唯一測試總數。
+
+| Fixture runner（省略 test-v2- 與 -isolated.sh） | dotnet invocation | 通過／執行 | exit | 清理 |
+|---|---:|---:|---:|---|
+| position-committed | 1 | 1/1 | 0 | PASS |
+| merchant-purchase | 1 | 1/1 | 0 | PASS |
+| economy-snapshot | 1 | 1/1 | 0 | PASS |
+| merchant-tcp-reconnect | 1 | 1/1 | 0 | PASS |
+| merchant-tcp-lost-result | 1 | 1/1 | 0 | PASS |
+| merchant-command | 1 | 1/1 | 0 | PASS |
+| inventory-restore-blocked | 1 | 1/1 | 0 | PASS |
+| quest-process-recovery | 2 | 4/4 | 0 | PASS |
+| merchant-buy-sell-tcp | 1 | 1/1 | 0 | PASS |
+| merchant-sale | 1 | 1/1 | 0 | PASS |
+| merchant-tcp | 1 | 1/1 | 0 | PASS |
+| inventory-stack-committed | 1 | 1/1 | 0 | PASS |
+| inventory-grant-concurrency | 1 | 1/1 | 0 | PASS |
+| inventory-grant-rollback | 1 | 4/4 | 0 | PASS |
+| merchant-tcp-new-server | 1 | 1/1 | 0 | PASS |
+| merchant-recovery | 4 | 4/4 | 0 | PASS |
+
+- 43 筆 invocation：26 次 dotnet test、16 個 fixture wrappers、1 個 grouped runner；每筆 process_exit_code／exit_code 均為 0。
+- 26 份 invocation TRX 的 counters 與原檔一致，trx_valid 均為 true，failed／skipped 均為 0。
+- manifest 前後一致：12 專案／798 檔案，source_stable=true；開始與結束時 staged／unstaged 均為空。
+- 793 個 tracked 輸入逐檔 SHA256 對應受測 commit；五個歷史 untracked SQL 仍僅為保守超集，hash 未變，未被 runner 引用，未加入本次提交。
+- DB 前後各 31 項具名檢查全通過；container／hostname／port／principal／schemas 前後一致，只使用 3310／3311。
+- 每支 fixture 有清理標記；merchant EXIT cleanup、position 清理、quest remaining=0、atomic fault users/triggers 清理通過；baseline fault account 已移除。
+- result-audit.json 保存逐項核對結果；artifact-index.json 保存完整證據檔名、大小、SHA256、原始絕對路徑與 Git 選取狀態。
+- 逐檔提交本次 JSON 與 invocation TRX 副本；原始 logs／重複 grouped TRX 留本機，不整個目錄加入。
+- 此次直接驗證已提交的審查修正版，取代前節「審查修正版僅局部驗證」作為最新狀態；前節保留為歷史紀錄。
+- 本輪沒有功能或重構變更，沒有修改 gameplay／Merchant gate，沒有操作 3308／3309 或啟停 6001／6002；Merchant gates 仍 Blocked、原版 Client 驗收 pending、未部署正式環境，未 push。

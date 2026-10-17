@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-17T05:08:46.688391+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-inventory-restore-blocked-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 1
+  },
+  "ended_utc": "2026-10-17T05:08:56.510858+00:00"
+}

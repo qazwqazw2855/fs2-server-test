@@ -1,0 +1,1516 @@
+{
+  "run": {
+    "started_utc": "2026-10-17T05:06:50.010060+00:00",
+    "argv": [
+      "bash",
+      "Automation/test-v2-all-isolated.sh"
+    ],
+    "test_exit_code": 0,
+    "exit_code": 0,
+    "source_stable": true,
+    "changed_paths": [],
+    "ended_utc": "2026-10-17T05:10:43.224364+00:00",
+    "counting": "Each invocation is retained separately. Fixture counts include repeated prerequisite executions; no unique combined total."
+  },
+  "invocations": [
+    {
+      "started_utc": "2026-10-17T05:06:50.660419+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-all-no-progress.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "remaining_fixture_accounts_and_users=0": 1
+      },
+      "ended_utc": "2026-10-17T05:10:42.497740+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:06:50.702882+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Core.Tests/God2.ServerV2.Core.Tests.csproj",
+        "-c",
+        "Release",
+        "--logger",
+        "trx;LogFileName=Core.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Core.trx",
+          "copy": "Core.trx",
+          "counters": {
+            "total": "7",
+            "executed": "7",
+            "passed": "7",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Core.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:06:57.711353+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:06:57.754694+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Application.Tests/God2.ServerV2.Application.Tests.csproj",
+        "-c",
+        "Release",
+        "--logger",
+        "trx;LogFileName=Application.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Application.trx",
+          "copy": "Application.trx",
+          "counters": {
+            "total": "114",
+            "executed": "114",
+            "passed": "114",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Application.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:05.127859+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:05.170639+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Session.Tests/God2.ServerV2.Session.Tests.csproj",
+        "-c",
+        "Release",
+        "--logger",
+        "trx;LogFileName=Session.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Session.trx",
+          "copy": "Session.trx",
+          "counters": {
+            "total": "20",
+            "executed": "20",
+            "passed": "20",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Session.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:08.266473+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:08.329725+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Protocol.Tests/God2.ServerV2.Protocol.Tests.csproj",
+        "-c",
+        "Release",
+        "--logger",
+        "trx;LogFileName=Protocol.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Protocol.trx",
+          "copy": "Protocol.trx",
+          "counters": {
+            "total": "147",
+            "executed": "147",
+            "passed": "147",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Protocol.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:14.016686+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:14.076398+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Network.Tests/God2.ServerV2.Network.Tests.csproj",
+        "-c",
+        "Release",
+        "--logger",
+        "trx;LogFileName=Network.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Network.trx",
+          "copy": "Network.trx",
+          "counters": {
+            "total": "214",
+            "executed": "214",
+            "passed": "214",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Network.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:35.136104+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:35.185259+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "-c",
+        "Release",
+        "--filter",
+        "FullyQualifiedName!~CharacterPositionCommittedTests&FullyQualifiedName!~MerchantPurchaseIntegrationTests&FullyQualifiedName!~CharacterEconomySnapshotIntegrationTests&FullyQualifiedName!~MerchantPurchaseTcpReconnectIntegrationTests&FullyQualifiedName!~MerchantPurchaseTcpLostResultIntegrationTests&FullyQualifiedName!~MerchantCommandIntegrationTests&FullyQualifiedName!~MerchantSaleTcpLostResultIntegrationTests&FullyQualifiedName!~InventoryRestoreTcpBlockedIntegrationTests&FullyQualifiedName!~QuestProcessRecoveryTests&FullyQualifiedName!~MerchantBuySellTcpIntegrationTests&FullyQualifiedName!~MerchantSaleIntegrationTests&FullyQualifiedName!~MerchantPurchaseJournalIntegrationTests&FullyQualifiedName!~MerchantPurchaseTcpIntegrationTests&FullyQualifiedName!~InventoryGrantStackCommittedTests&FullyQualifiedName!~MerchantPurchaseTcpNewServerIntegrationTests&FullyQualifiedName!~MerchantPurchaseJournalProcessRecoveryTests&FullyQualifiedName!~MerchantSaleJournalProcessRecoveryTests&FullyQualifiedName!~QuestRewardClaimCommittedTests&FullyQualifiedName!~QuestProgressClosedLoopTests&FullyQualifiedName!~QuestAcceptanceClosedLoopTests&FullyQualifiedName!~InventoryGrantConcurrencyTests&FullyQualifiedName!~InventoryGrantIntegrationTests",
+        "--logger",
+        "trx;LogFileName=Persistence.Integration.trx",
+        "--results-directory",
+        "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Persistence.Integration.trx",
+          "copy": "Persistence.Integration.trx",
+          "counters": {
+            "total": "80",
+            "executed": "80",
+            "passed": "80",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Persistence.Integration.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:47.199440+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:47.263116+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-position-committed-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: position fixture, synthetic map and user removed": 1
+      },
+      "ended_utc": "2026-10-17T05:07:56.320478+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:47.895278+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "-c",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.CharacterPositionCommittedTests.CommittedPositionIsReadByNewConnectionAndStaleWriteIsRejectedIsolated3310",
+        "--logger",
+        "trx;LogFileName=position.trx",
+        "--results-directory",
+        "docs/handoff/position-3310-20261017-050747-1EzcPs",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/position-3310-20261017-050747-1EzcPs/position.trx",
+          "copy": "position.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/position-3310-20261017-050747-1EzcPs/position.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:07:56.122520+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:56.365341+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-purchase-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1,
+        "PASS: all atomic fault users and triggers absent": 1
+      },
+      "ended_utc": "2026-10-17T05:08:05.830992+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:07:57.858194+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseIntegrationTests.Purchase_is_atomic_replayable_and_version_checkedIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-atomicbuy-20261017-050757-4NisBx",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-atomicbuy-20261017-050757-4NisBx/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-atomicbuy-20261017-050757-4NisBx/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:05.248852+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:05.875519+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-economy-snapshot-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:08:15.434931+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:06.733449+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.CharacterEconomySnapshotIntegrationTests.ConcurrentCommitDoesNotMixInventoryAndWalletSnapshotsIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-economy-20261017-050806-j8xkNp",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-economy-20261017-050806-j8xkNp/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-economy-20261017-050806-j8xkNp/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:15.012927+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:15.479978+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-tcp-reconnect-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:08:26.533477+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:16.320565+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpReconnectIntegrationTests.ReconnectRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-reconnect-20261017-050816-b5I0Pa",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-reconnect-20261017-050816-b5I0Pa/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-reconnect-20261017-050816-b5I0Pa/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:26.124099+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:26.584088+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-tcp-lost-result-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:08:37.081873+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:27.469788+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpLostResultIntegrationTests.CommittedBuyWithLostResultReplaysWithoutAnotherMutationIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-lostresult-20261017-050827-7m6K56",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-lostresult-20261017-050827-7m6K56/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-lostresult-20261017-050827-7m6K56/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:36.701373+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:37.128027+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-command-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:08:46.639286+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:38.000455+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantCommandIntegrationTests.Current_interaction_dispatches_durable_buy_and_sell_Isolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-command-20261017-050837-mnMiuG",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-command-20261017-050837-mnMiuG/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-command-20261017-050837-mnMiuG/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:46.239136+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:46.688391+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-inventory-restore-blocked-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:08:56.510858+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:47.565711+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.InventoryRestoreTcpBlockedIntegrationTests.UnsupportedRestoreLayoutClosesWithoutMutationIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-restoreblocked-20261017-050847-cPlyBs",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-restoreblocked-20261017-050847-cPlyBs/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-restoreblocked-20261017-050847-cPlyBs/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:08:56.110000+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:56.557439+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-quest-process-recovery-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "remaining_fixture_accounts_and_users=0": 1
+      },
+      "ended_utc": "2026-10-17T05:09:08.990782+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:08:57.445964+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.QuestRewardClaimCommittedTests.Owned_transactions_commit_once_and_roll_back_claim_failure|FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.QuestProgressClosedLoopTests.Trusted_events_progress_once_then_allow_atomic_reward_claim|FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.QuestAcceptanceClosedLoopTests.Acceptance_registers_once_then_progress_and_claim_complete",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/quest-3310-20261017-050856-cKVnM8",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/quest-3310-20261017-050856-cKVnM8/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "3",
+            "executed": "3",
+            "passed": "3",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/quest-3310-20261017-050856-cKVnM8/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:07.019876+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:07.083997+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--no-build",
+        "--no-restore",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.QuestProcessRecoveryTests.Separate_process_reads_completed_quest_without_dispatch",
+        "--logger",
+        "trx;LogFileName=recovery.trx",
+        "--results-directory",
+        "docs/handoff/quest-3310-20261017-050856-cKVnM8",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/quest-3310-20261017-050856-cKVnM8/recovery.trx",
+          "copy": "recovery.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/quest-3310-20261017-050856-cKVnM8/recovery.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:08.849176+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:09.037924+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-buy-sell-tcp-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:09:18.402022+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:09.905634+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantBuySellTcpIntegrationTests.TcpBuyThenSellCommitsAndReturnsBothResponsesIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-tcp-20261017-050909-9qNvkX",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-tcp-20261017-050909-9qNvkX/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-tcp-20261017-050909-9qNvkX/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:18.008943+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:18.451532+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-sale-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1,
+        "PASS: all atomic fault users and triggers absent": 1
+      },
+      "ended_utc": "2026-10-17T05:09:28.161476+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:19.579802+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantSaleIntegrationTests.Buy_sell_rolls_back_replays_and_rejects_reused_slot_identityIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-atomicsell-20261017-050919-RzXfJO",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-atomicsell-20261017-050919-RzXfJO/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-atomicsell-20261017-050919-RzXfJO/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:27.611318+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:28.205312+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-tcp-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:09:38.610591+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:29.051753+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpIntegrationTests.TcpBuyCommitsMariaDbAndReturnsPurchaseResponseIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:38.208308+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:38.659842+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-inventory-stack-committed-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:09:47.524300+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:39.611693+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.InventoryGrantStackCommittedTests.Committed_stacks_replay_and_competing_versions_retry_safelyIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-stack-20261017-050939-vt3Zwn",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-stack-20261017-050939-vt3Zwn/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-stack-20261017-050939-vt3Zwn/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:46.928926+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:47.600868+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-inventory-grant-concurrency-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:09:56.541762+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:48.577128+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.InventoryGrantConcurrencyTests.Concurrent_committed_grants_are_durable_and_not_duplicatedIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-grantconcurrency-20261017-050948-J07XYK",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-grantconcurrency-20261017-050948-J07XYK/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-grantconcurrency-20261017-050948-J07XYK/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:09:56.173557+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:56.584521+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-inventory-grant-rollback-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:10:06.963895+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:09:57.572060+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.InventoryGrantIntegrationTests.Grant_preserves_atomicity_and_rolls_backIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-grantrollback-20261017-050957-dxFXfj",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-grantrollback-20261017-050957-dxFXfj/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "4",
+            "executed": "4",
+            "passed": "4",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-grantrollback-20261017-050957-dxFXfj/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:06.598177+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:07.007376+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-tcp-new-server-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      },
+      "ended_utc": "2026-10-17T05:10:18.225762+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:07.846933+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpNewServerIntegrationTests.NewServerRestoresCommittedInventoryWithoutAnotherPurchaseIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-newserver-20261017-051007-JjhPBl",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-newserver-20261017-051007-JjhPBl/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-newserver-20261017-051007-JjhPBl/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:17.826564+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:18.274319+00:00",
+      "argv": [
+        "bash",
+        "Automation/test-v2-merchant-recovery-isolated.sh"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [],
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 2
+      },
+      "ended_utc": "2026-10-17T05:10:42.422329+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:19.147747+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseJournalIntegrationTests.JournalPreservesRequestAndRejectsIdentityConflictsIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:26.494825+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:26.713421+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--no-build",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseJournalProcessRecoveryTests.SeparateProcessRecoversCommittedRequestWithoutDispatch",
+        "--logger",
+        "trx;LogFileName=recovery.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR/recovery.trx",
+          "copy": "recovery.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-buy-20261017-051019-YBWhvR/recovery.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:29.180446+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:30.382912+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310",
+        "--logger",
+        "trx;LogFileName=producer.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7/producer.trx",
+          "copy": "producer.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7/producer.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:39.897465+00:00"
+    },
+    {
+      "started_utc": "2026-10-17T05:10:39.962786+00:00",
+      "argv": [
+        "dotnet",
+        "test",
+        "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+        "--configuration",
+        "Release",
+        "--no-build",
+        "--filter",
+        "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantSaleJournalProcessRecoveryTests.SeparateProcessRecoversCommittedSaleWithoutDispatch",
+        "--logger",
+        "trx;LogFileName=recovery.trx",
+        "--results-directory",
+        "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7",
+        "--verbosity",
+        "minimal"
+      ],
+      "exit_code": 0,
+      "status": "passed",
+      "process_exit_code": 0,
+      "trx": [
+        {
+          "path": "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7/recovery.trx",
+          "copy": "recovery.trx",
+          "counters": {
+            "total": "1",
+            "executed": "1",
+            "passed": "1",
+            "failed": "0",
+            "error": "0",
+            "timeout": "0",
+            "aborted": "0",
+            "inconclusive": "0",
+            "passedButRunAborted": "0",
+            "notRunnable": "0",
+            "notExecuted": "0",
+            "disconnected": "0",
+            "warning": "0",
+            "completed": "0",
+            "inProgress": "0",
+            "pending": "0"
+          }
+        }
+      ],
+      "trx_expected": "docs/handoff/merchant-3310-sell-20261017-051030-w2ARp7/recovery.trx",
+      "trx_valid": true,
+      "ended_utc": "2026-10-17T05:10:41.812645+00:00"
+    }
+  ]
+}

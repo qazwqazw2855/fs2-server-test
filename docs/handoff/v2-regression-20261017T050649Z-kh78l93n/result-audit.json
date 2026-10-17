@@ -1,0 +1,291 @@
+{
+  "tested_commit": "51d1e158e093f14604cf768f021805f0ca385e70",
+  "entrypoint": [
+    "bash",
+    "Automation/test-v2-all-isolated.sh"
+  ],
+  "entrypoint_invocations": 1,
+  "reruns": 0,
+  "exit_code": 0,
+  "source_stable": true,
+  "manifest_projects": 12,
+  "manifest_files": 798,
+  "tracked_inputs_matching_tested_commit": 793,
+  "untracked_conservative_scope_only": [
+    "Automation/merchant-isolated-3310-cleanup-preview.sql",
+    "Automation/merchant-isolated-3310-cleanup.sql",
+    "Automation/merchant-isolated-3310-identity-preview.sql",
+    "Automation/merchant-isolated-3310-lock-preview.sql",
+    "Automation/merchant-isolated-3310-restrict-preview.sql"
+  ],
+  "invocation_count": 43,
+  "dotnet_invocations": 26,
+  "trx_copies_verified": 26,
+  "base_suites": [
+    {
+      "suite": "Core",
+      "total": 7,
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "Application",
+      "total": 114,
+      "executed": 114,
+      "passed": 114,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "Session",
+      "total": 20,
+      "executed": 20,
+      "passed": 20,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "Protocol",
+      "total": 147,
+      "executed": 147,
+      "passed": 147,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "Network",
+      "total": 214,
+      "executed": 214,
+      "passed": 214,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "suite": "Persistence.Integration",
+      "total": 80,
+      "executed": 80,
+      "passed": 80,
+      "failed": 0,
+      "notExecuted": 0
+    }
+  ],
+  "base_passed": 582,
+  "base_executed": 582,
+  "fixture_scripts": 16,
+  "fixture_executions": 25,
+  "fixture_passed": 25,
+  "fixtures": [
+    {
+      "runner": "Automation/test-v2-position-committed-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: position fixture, synthetic map and user removed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-purchase-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1,
+        "PASS: all atomic fault users and triggers absent": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-economy-snapshot-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-tcp-reconnect-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-tcp-lost-result-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-command-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-inventory-restore-blocked-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-quest-process-recovery-isolated.sh",
+      "dotnet_invocations": 2,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "remaining_fixture_accounts_and_users=0": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-buy-sell-tcp-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-sale-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1,
+        "PASS: all atomic fault users and triggers absent": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-tcp-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-inventory-stack-committed-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-inventory-grant-concurrency-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-inventory-grant-rollback-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-tcp-new-server-isolated.sh",
+      "dotnet_invocations": 1,
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 1
+      }
+    },
+    {
+      "runner": "Automation/test-v2-merchant-recovery-isolated.sh",
+      "dotnet_invocations": 4,
+      "executed": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0,
+      "cleanup_markers": {
+        "PASS: exit cleanup verification completed": 2
+      }
+    }
+  ],
+  "db_checks": [
+    {
+      "phase": "db-before.json",
+      "checks": 31,
+      "passed": true
+    },
+    {
+      "phase": "db-after.json",
+      "checks": 31,
+      "passed": true
+    }
+  ],
+  "baseline_fault_account_removed": true,
+  "all_preexisting_untracked_paths_preserved": true,
+  "preexisting_untracked_count": 290,
+  "counting": "Fixture executions include repeated prerequisites; do not add to base count as unique tests."
+}

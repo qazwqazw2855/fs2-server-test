@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-10-17T05:06:50.010060+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-all-isolated.sh"
+  ],
+  "test_exit_code": 0,
+  "exit_code": 0,
+  "source_stable": true,
+  "changed_paths": [],
+  "ended_utc": "2026-10-17T05:10:43.224364+00:00",
+  "counting": "Each invocation is retained separately. Fixture counts include repeated prerequisite executions; no unique combined total."
+}

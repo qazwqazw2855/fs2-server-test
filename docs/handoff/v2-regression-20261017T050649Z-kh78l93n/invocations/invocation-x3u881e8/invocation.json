@@ -1,0 +1,46 @@
+{
+  "started_utc": "2026-10-17T05:06:57.754694+00:00",
+  "argv": [
+    "dotnet",
+    "test",
+    "tests/God2.ServerV2.Application.Tests/God2.ServerV2.Application.Tests.csproj",
+    "-c",
+    "Release",
+    "--logger",
+    "trx;LogFileName=Application.trx",
+    "--results-directory",
+    "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped",
+    "--verbosity",
+    "minimal"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [
+    {
+      "path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Application.trx",
+      "copy": "Application.trx",
+      "counters": {
+        "total": "114",
+        "executed": "114",
+        "passed": "114",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    }
+  ],
+  "trx_expected": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T050649Z-kh78l93n/grouped/Application.trx",
+  "trx_valid": true,
+  "ended_utc": "2026-10-17T05:07:05.127859+00:00"
+}

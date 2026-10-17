@@ -5,8 +5,8 @@
   "phase": "M2 正服 Baseline / Gap Parity",
   "status": "in_progress",
   "overall_percent": 78,
-  "updated_at": "2026-10-17T12:58:38.777862+08:00",
-  "summary": "2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑：六套基礎 582/582；16 支 fixture 共 25 次執行通過，兩者分開計數。26 次 dotnet test 各有 TRX；來源 manifest 12 專案／798 檔案，受測期間 hash 穩定；3310／3311 前後各 31 項具名 DB 檢查與清理通過。證據：docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j。審查修正收集器 fail-closed 行為後，只做一般及 -O 局部測試，未重跑完整入口；582/25 對應保存的受測來源副本，不冒充修正後版本的全套結果。Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。",
+  "updated_at": "2026-10-17T13:11:45.321207+08:00",
+  "summary": "已提交審查修正版 51d1e158e093f14604cf768f021805f0ca385e70 於 2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑。六套基礎 582/582；16 支 fixture 共 25/25 次執行通過，分開呈現，不合併為唯一測試數。26 次 dotnet test／26 份 TRX 核對通過；來源 manifest 12 專案／798 檔案，前後 hash 穩定，793 個 tracked 輸入符合受測 commit。3310／3311 前後各 31 項具名 DB 檢查與 fixture／fault account 清理通過。證據：docs/handoff/v2-regression-20261017T050649Z-kh78l93n。本輪未改程式，保留全部既有 untracked；Merchant gates 仍 Blocked，原版 Client 驗收 pending，未部署正式環境、未 push。",
   "milestones": [
     {
       "key": "foundation",
@@ -322,8 +322,8 @@
     }
   ],
   "current_focus": {
-    "title": "隔離回歸來源與結果可追溯；Merchant／Client 證據待補",
-    "description": "2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑：六套基礎 582/582；16 支 fixture 共 25 次執行通過，兩者分開計數。26 次 dotnet test 各有 TRX；來源 manifest 12 專案／798 檔案，受測期間 hash 穩定；3310／3311 前後各 31 項具名 DB 檢查與清理通過。證據：docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j。審查修正收集器 fail-closed 行為後，只做一般及 -O 局部測試，未重跑完整入口；582/25 對應保存的受測來源副本，不冒充修正後版本的全套結果。Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。",
+    "title": "審查修正版完整隔離回歸通過；Merchant／Client 證據待補",
+    "description": "已提交審查修正版 51d1e158e093f14604cf768f021805f0ca385e70 於 2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑。六套基礎 582/582；16 支 fixture 共 25/25 次執行通過，分開呈現，不合併為唯一測試數。26 次 dotnet test／26 份 TRX 核對通過；來源 manifest 12 專案／798 檔案，前後 hash 穩定，793 個 tracked 輸入符合受測 commit。3310／3311 前後各 31 項具名 DB 檢查與 fixture／fault account 清理通過。證據：docs/handoff/v2-regression-20261017T050649Z-kh78l93n。本輪未改程式，保留全部既有 untracked；Merchant gates 仍 Blocked，原版 Client 驗收 pending，未部署正式環境、未 push。",
     "status": "in_progress"
   },
   "verification": {
@@ -368,32 +368,33 @@
         "skipped": 0
       },
       {
-        "name": "Persistence Integration",
+        "name": "Persistence.Integration",
         "passed": 80,
         "total": 80,
         "failed": 0,
         "skipped": 0
       }
     ],
-    "note": "2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑：六套基礎 582/582；16 支 fixture 共 25 次執行通過，兩者分開計數。26 次 dotnet test 各有 TRX；來源 manifest 12 專案／798 檔案，受測期間 hash 穩定；3310／3311 前後各 31 項具名 DB 檢查與清理通過。證據：docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j。審查修正收集器 fail-closed 行為後，只做一般及 -O 局部測試，未重跑完整入口；582/25 對應保存的受測來源副本，不冒充修正後版本的全套結果。Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。",
+    "note": "已提交審查修正版 51d1e158e093f14604cf768f021805f0ca385e70 於 2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑。六套基礎 582/582；16 支 fixture 共 25/25 次執行通過，分開呈現，不合併為唯一測試數。26 次 dotnet test／26 份 TRX 核對通過；來源 manifest 12 專案／798 檔案，前後 hash 穩定，793 個 tracked 輸入符合受測 commit。3310／3311 前後各 31 項具名 DB 檢查與 fixture／fault account 清理通過。證據：docs/handoff/v2-regression-20261017T050649Z-kh78l93n。本輪未改程式，保留全部既有 untracked；Merchant gates 仍 Blocked，原版 Client 驗收 pending，未部署正式環境、未 push。",
     "latest_grouped_regression": {
       "date": "2026-10-17",
+      "tested_commit": "51d1e158e093f14604cf768f021805f0ca385e70",
+      "source_head": "51d1e158e093f14604cf768f021805f0ca385e70",
       "entrypoint": "bash Automation/test-v2-all-isolated.sh",
       "entrypoint_invocations": 1,
       "reruns": 0,
       "exit_code": 0,
-      "source_head": "827998516cc2cc8ced8f4f9c4dbfac0ea78148a9",
-      "source_preservation": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/source-preservation.json",
       "source_stable": true,
       "manifest_projects": 12,
       "manifest_files": 798,
-      "manifest_untracked_inputs": 11,
+      "tracked_inputs_matching_tested_commit": 793,
+      "manifest_untracked_inputs": 5,
       "base_groups": {
         "passed": 582,
         "total": 582,
         "failed": 0,
         "skipped": 0,
-        "scope": "Six base groups in one complete entrypoint invocation; fixture cases separate"
+        "scope": "Six base groups in one complete entrypoint; fixture execution counts separate"
       },
       "fixture_runs": {
         "scripts": 16,
@@ -411,19 +412,12 @@
         "passed": true
       },
       "cleanup_passed": true,
-      "evidence": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j",
+      "evidence": "docs/handoff/v2-regression-20261017T050649Z-kh78l93n",
       "baseline_db_port": 3311,
       "fixture_db_port": 3310,
       "merchant_gates": "Blocked",
       "client_acceptance": "Pending",
-      "production_deployment": "NotPerformed",
-      "review_followup": {
-        "full_regression_rerun": false,
-        "scope": "Collector failure paths only; no DB connection",
-        "normal_tests_passed": 11,
-        "optimized_tests_passed": 11,
-        "tested_snapshot_retained": true
-      }
+      "production_deployment": "NotPerformed"
     },
     "historical_verification_before_20261013": {
       "total_tests": 409,
@@ -488,6 +482,55 @@
         "fixture_db_port": 3310,
         "client_acceptance": "Pending",
         "production_deployment": "NotPerformed"
+      },
+      {
+        "date": "2026-10-17",
+        "entrypoint": "bash Automation/test-v2-all-isolated.sh",
+        "entrypoint_invocations": 1,
+        "reruns": 0,
+        "exit_code": 0,
+        "source_head": "827998516cc2cc8ced8f4f9c4dbfac0ea78148a9",
+        "source_preservation": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/source-preservation.json",
+        "source_stable": true,
+        "manifest_projects": 12,
+        "manifest_files": 798,
+        "manifest_untracked_inputs": 11,
+        "base_groups": {
+          "passed": 582,
+          "total": 582,
+          "failed": 0,
+          "skipped": 0,
+          "scope": "Six base groups in one complete entrypoint invocation; fixture cases separate"
+        },
+        "fixture_runs": {
+          "scripts": 16,
+          "test_executions": 25,
+          "passed": 25,
+          "failed": 0,
+          "skipped": 0,
+          "includes_repeated_setup_cases": true
+        },
+        "dotnet_test_invocations": 26,
+        "trx_copies": 26,
+        "named_db_checks": {
+          "before": 31,
+          "after": 31,
+          "passed": true
+        },
+        "cleanup_passed": true,
+        "evidence": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j",
+        "baseline_db_port": 3311,
+        "fixture_db_port": 3310,
+        "merchant_gates": "Blocked",
+        "client_acceptance": "Pending",
+        "production_deployment": "NotPerformed",
+        "review_followup": {
+          "full_regression_rerun": false,
+          "scope": "Collector failure paths only; no DB connection",
+          "normal_tests_passed": 11,
+          "optimized_tests_passed": 11,
+          "tested_snapshot_retained": true
+        }
       }
     ]
   },
@@ -527,6 +570,11 @@
     "完成 Full World Runtime regression 與 production acceptance 後才開啟 Full Runtime Promotion Gate。"
   ],
   "recent_activity": [
+    {
+      "date": "2026-10-17",
+      "title": "51d1e158 審查修正版：完整隔離入口一次通過",
+      "detail": "已提交審查修正版 51d1e158e093f14604cf768f021805f0ca385e70 於 2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑。六套基礎 582/582；16 支 fixture 共 25/25 次執行通過，分開呈現，不合併為唯一測試數。26 次 dotnet test／26 份 TRX 核對通過；來源 manifest 12 專案／798 檔案，前後 hash 穩定，793 個 tracked 輸入符合受測 commit。3310／3311 前後各 31 項具名 DB 檢查與 fixture／fault account 清理通過。證據：docs/handoff/v2-regression-20261017T050649Z-kh78l93n。本輪未改程式，保留全部既有 untracked；Merchant gates 仍 Blocked，原版 Client 驗收 pending，未部署正式環境、未 push。"
+    },
     {
       "date": "2026-10-17",
       "title": "隔離回歸可追溯：完整入口一次通過，審查修正局部驗證",
@@ -892,10 +940,10 @@
     "percent": 55
   },
   "current_validation": {
-    "title": "Traceable isolated regression with separate review followup",
+    "title": "Committed reviewed version: complete isolated regression",
     "date": "2026-10-17",
     "status": "passing",
-    "summary": "2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑：六套基礎 582/582；16 支 fixture 共 25 次執行通過，兩者分開計數。26 次 dotnet test 各有 TRX；來源 manifest 12 專案／798 檔案，受測期間 hash 穩定；3310／3311 前後各 31 項具名 DB 檢查與清理通過。證據：docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j。審查修正收集器 fail-closed 行為後，只做一般及 -O 局部測試，未重跑完整入口；582/25 對應保存的受測來源副本，不冒充修正後版本的全套結果。Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。",
+    "summary": "已提交審查修正版 51d1e158e093f14604cf768f021805f0ca385e70 於 2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑。六套基礎 582/582；16 支 fixture 共 25/25 次執行通過，分開呈現，不合併為唯一測試數。26 次 dotnet test／26 份 TRX 核對通過；來源 manifest 12 專案／798 檔案，前後 hash 穩定，793 個 tracked 輸入符合受測 commit。3310／3311 前後各 31 項具名 DB 檢查與 fixture／fault account 清理通過。證據：docs/handoff/v2-regression-20261017T050649Z-kh78l93n。本輪未改程式，保留全部既有 untracked；Merchant gates 仍 Blocked，原版 Client 驗收 pending，未部署正式環境、未 push。",
     "suites": [
       {
         "name": "Core",
@@ -933,7 +981,7 @@
         "skipped": 0
       },
       {
-        "name": "Persistence Integration",
+        "name": "Persistence.Integration",
         "passed": 80,
         "total": 80,
         "failed": 0,
@@ -953,10 +1001,9 @@
       }
     ],
     "limitations": [
-      "完整入口結果對應 tested-source 副本；其後審查修正只做局部測試，未宣稱提交版本另通過全套。",
-      "582 基礎與 fixture 25 次分開呈現，非唯一測試合計。",
-      "五個歷史 SQL 僅屬 manifest 保守超集，未被 runner 引用；保留本機，不混入提交。",
-      "Synthetic fixture 不代表官方協定／內容 promotion。",
+      "582 基礎與 fixture 25 次為不同執行範圍，不合併為唯一測試數。",
+      "五個歷史 SQL 僅屬 manifest 保守超集，保留本機未提交。",
+      "Synthetic fixtures 不代表官方協定／內容 promotion。",
       "Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。"
     ]
   },
@@ -1082,6 +1129,75 @@
         "Synthetic fixture 不代表官方協定／內容 promotion。",
         "官方 Client 買賣驗收待完成；正式 gates 維持 Blocked。",
         "未部署或重啟正式 6001。"
+      ]
+    },
+    {
+      "title": "Traceable isolated regression with separate review followup",
+      "date": "2026-10-17",
+      "status": "passing",
+      "summary": "2026-10-17 完整無參數隔離入口一次通過，exit 0，無失敗或重跑：六套基礎 582/582；16 支 fixture 共 25 次執行通過，兩者分開計數。26 次 dotnet test 各有 TRX；來源 manifest 12 專案／798 檔案，受測期間 hash 穩定；3310／3311 前後各 31 項具名 DB 檢查與清理通過。證據：docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j。審查修正收集器 fail-closed 行為後，只做一般及 -O 局部測試，未重跑完整入口；582/25 對應保存的受測來源副本，不冒充修正後版本的全套結果。Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。",
+      "suites": [
+        {
+          "name": "Core",
+          "passed": 7,
+          "total": 7,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Application",
+          "passed": 114,
+          "total": 114,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Session",
+          "passed": 20,
+          "total": 20,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Protocol",
+          "passed": 147,
+          "total": 147,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Network",
+          "passed": 214,
+          "total": 214,
+          "failed": 0,
+          "skipped": 0
+        },
+        {
+          "name": "Persistence Integration",
+          "passed": 80,
+          "total": 80,
+          "failed": 0,
+          "skipped": 0
+        }
+      ],
+      "groups": [
+        {
+          "name": "Six base groups",
+          "passed": 582,
+          "total": 582
+        },
+        {
+          "name": "Isolated fixture test executions",
+          "passed": 25,
+          "total": 25
+        }
+      ],
+      "limitations": [
+        "完整入口結果對應 tested-source 副本；其後審查修正只做局部測試，未宣稱提交版本另通過全套。",
+        "582 基礎與 fixture 25 次分開呈現，非唯一測試合計。",
+        "五個歷史 SQL 僅屬 manifest 保守超集，未被 runner 引用；保留本機，不混入提交。",
+        "Synthetic fixture 不代表官方協定／內容 promotion。",
+        "Merchant gates 仍 Blocked；原版 Client 驗收 pending；未部署正式環境。"
       ]
     }
   ]

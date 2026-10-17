@@ -1,0 +1,48 @@
+{
+  "started_utc": "2026-10-17T05:09:29.051753+00:00",
+  "argv": [
+    "dotnet",
+    "test",
+    "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+    "--configuration",
+    "Release",
+    "--filter",
+    "FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseTcpIntegrationTests.TcpBuyCommitsMariaDbAndReturnsPurchaseResponseIsolated3310",
+    "--logger",
+    "trx;LogFileName=producer.trx",
+    "--results-directory",
+    "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH",
+    "--verbosity",
+    "minimal"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [
+    {
+      "path": "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH/producer.trx",
+      "copy": "producer.trx",
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    }
+  ],
+  "trx_expected": "docs/handoff/merchant-3310-basic-20261017-050929-3AVYZH/producer.trx",
+  "trx_valid": true,
+  "ended_utc": "2026-10-17T05:09:38.208308+00:00"
+}

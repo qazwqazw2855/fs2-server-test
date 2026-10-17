@@ -1,0 +1,319 @@
+{
+  "utc": "2026-10-17T05:06:50.090723+00:00",
+  "targets": [
+    {
+      "container": "god2-merchant-db-isolated",
+      "container_id": "5e1ed8080046cef53bbff21ee3751c4e0dd2405942f069e29963104a45dd8aca",
+      "hostname": "5e1ed8080046",
+      "host": "127.0.0.1",
+      "port": 3310,
+      "db_identity": {
+        "hostname": "5e1ed8080046",
+        "internal_port": 3306,
+        "principal": "root@localhost",
+        "schemas": [
+          "god2_game",
+          "god2_player"
+        ]
+      }
+    },
+    {
+      "container": "god2-regression-db-isolated",
+      "container_id": "e29c0b67d1db0ba187aaeefa1a132dea3145a67e490d008659a02e13d5da5b11",
+      "hostname": "e29c0b67d1db",
+      "host": "127.0.0.1",
+      "port": 3311,
+      "db_identity": {
+        "hostname": "e29c0b67d1db",
+        "internal_port": 3306,
+        "principal": "root@localhost",
+        "schemas": [
+          "god2_game",
+          "god2_player"
+        ]
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "god2_player.accounts.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.characters.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.character_inventory.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.inventory_item_identity_sequence.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.inventory_audit_ledger.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.inventory_transaction_idempotency.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_merchant_purchase_journal.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_merchant_sale_journal.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.player_inventory_state.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.player_currency_balances.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_quest_instances.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_quest_reward_snapshots.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_quest_reward_claims.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_quest_objective_progress.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_player.v2_quest_progress_events.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.merchants.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.merchant_inventory.empty",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.items.total",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.items.canonical",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.item_registry.total",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "god2_game.item_registry.canonical",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "synthetic_position_maps.absent",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "synthetic_quests.absent",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "temporary_users.absent",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "fault_triggers.absent",
+      "target": "god2-merchant-db-isolated/127.0.0.1:3310",
+      "sql_file": "Automation/regression-db-3310.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "enabled_portals.expected_ids",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 5,
+      "expected": 5,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "enabled_portals.invalid_build_or_destination",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "character_one.inventory_state",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "character_one.inventory_count",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "character_one.inventory_slot_zero",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 1,
+      "expected": 1,
+      "condition": "actual == expected",
+      "passed": true
+    },
+    {
+      "name": "temporary_baseline_fault_users.absent",
+      "target": "god2-regression-db-isolated/127.0.0.1:3311",
+      "sql_file": "Automation/regression-db-3311.sql",
+      "actual": 0,
+      "expected": 0,
+      "condition": "actual == expected",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

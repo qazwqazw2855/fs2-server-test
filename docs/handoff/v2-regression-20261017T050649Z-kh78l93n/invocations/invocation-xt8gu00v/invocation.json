@@ -1,0 +1,15 @@
+{
+  "started_utc": "2026-10-17T05:09:09.037924+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-merchant-buy-sell-tcp-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "process_exit_code": 0,
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 1
+  },
+  "ended_utc": "2026-10-17T05:09:18.402022+00:00"
+}
