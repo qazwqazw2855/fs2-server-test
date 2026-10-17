@@ -1,0 +1,99 @@
+{
+  "base_head": "827998516cc2cc8ced8f4f9c4dbfac0ea78148a9",
+  "tracked_inputs_verified_against_base_or_patch": 787,
+  "tracked_patch": "tested-source/tracked-changes.diff.gz",
+  "added_required_tested_source_copies": 6,
+  "historical_nonexecuted_scope_only": 5,
+  "reconstruction_verified": true,
+  "untracked_classification": [
+    {
+      "path": "Automation/merchant-isolated-3310-cleanup-preview.sql",
+      "sha256": "df998cfc0eee13e07006128603ce2f9405bc08988459ebcf18fd873c49216b45",
+      "tracked": false,
+      "disposition": "local historical conservative-scope-only; no runner reference; not staged",
+      "tested_copy": null
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-cleanup.sql",
+      "sha256": "ab4ef8ddfaeb949018e55a349e483e86df37a5fc2e19acaa2d495ba7bd87989c",
+      "tracked": false,
+      "disposition": "local historical conservative-scope-only; no runner reference; not staged",
+      "tested_copy": null
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-identity-preview.sql",
+      "sha256": "86a06f763f4c107159aa9d346b8d1cd696fb464465a493cede04cb65b210a69f",
+      "tracked": false,
+      "disposition": "local historical conservative-scope-only; no runner reference; not staged",
+      "tested_copy": null
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-lock-preview.sql",
+      "sha256": "7f5557652b52a91873ec9bf515d77f9db3819f82532701b642ae776f203d398a",
+      "tracked": false,
+      "disposition": "local historical conservative-scope-only; no runner reference; not staged",
+      "tested_copy": null
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-restrict-preview.sql",
+      "sha256": "7ad796cb76801174df9c66257d8e16712f62faa698c96839dcada2ac54b3e461",
+      "tracked": false,
+      "disposition": "local historical conservative-scope-only; no runner reference; not staged",
+      "tested_copy": null
+    },
+    {
+      "path": "Automation/regression-db-3310.sql",
+      "sha256": "bde9bfefc6693ab501965fbbfcf434ac3f3334221dcef7fa588de3730a5106f8",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression-db-3310.sql"
+    },
+    {
+      "path": "Automation/regression-db-3311.sql",
+      "sha256": "e6a4662d885876f82a1e35540d31e6989247bbdf860de02acd459c23cc1811e5",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression-db-3311.sql"
+    },
+    {
+      "path": "Automation/regression_db_state.py",
+      "sha256": "e3358b7421941899c1214c6876c24d376fe9b7322f23e442c9091453a9378a13",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression_db_state.py"
+    },
+    {
+      "path": "Automation/regression_evidence.py",
+      "sha256": "ed496154591960b130079eaff2efc44023755f09f3bd0c4952fa4289b2dea64f",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression_evidence.py"
+    },
+    {
+      "path": "Automation/run_v2_isolated.py",
+      "sha256": "580af5ec964f9dd5fb789567bcbf9c1fdad116f5c7426c62bf8fa23e8249693b",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/run_v2_isolated.py"
+    },
+    {
+      "path": "Automation/test_regression_evidence.py",
+      "sha256": "ea2e650519669bce52eead2765f4ab0741c3b2f961154d3c8c6a7029655815b1",
+      "tracked": false,
+      "disposition": "tested copy committed plus current reviewed source committed",
+      "tested_copy": "docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/test_regression_evidence.py"
+    }
+  ],
+  "result_audit": {
+    "base_passed": 582,
+    "fixture_scripts": 16,
+    "fixture_executions": 25,
+    "dotnet_invocations": 26,
+    "trx_copies_verified": 26,
+    "named_db_checks_each_phase": 31,
+    "source_stable": true,
+    "cleanup_passed": true
+  },
+  "review_fixes_are_not_full_regression_tested": true,
+  "tracked_patch_uncompressed_sha256": "6e8c1a0d2a872b281357bea02220c1ffb8752c8cc0141b005aff5bbf2c65b350"
+}

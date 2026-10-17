@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-17T04:59:55.479644+00:00",
+  "checks": [
+    {
+      "scope": "review-local-mocked-no-DB",
+      "argv": [
+        "python3",
+        "-B",
+        "Automation/test_regression_evidence.py"
+      ],
+      "exit_code": 0,
+      "log": "review-normal.log",
+      "sha256": "0b0c6004787824f7c840d25affc5f2b0a501231a97c80f8244b5b5bd0ab632af",
+      "tests": 11
+    },
+    {
+      "scope": "review-local-mocked-no-DB",
+      "argv": [
+        "python3",
+        "-B",
+        "-O",
+        "Automation/test_regression_evidence.py"
+      ],
+      "exit_code": 0,
+      "log": "review-optimized.log",
+      "sha256": "5bcdc8b709a339716aa8a7dda5148ce595fba45683d47b9c32f5b156142cc170",
+      "tests": 11
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "Automation/test-v2-all-isolated.sh",
+        "Automation/test-v2-all-no-progress.sh",
+        "Automation/test-v2-merchant-isolated-3310.sh",
+        "Automation/test-v2-position-committed-isolated.sh",
+        "Automation/test-v2-quest-process-recovery-isolated.sh"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "python_ast": "passed",
+  "json_parse": "passed",
+  "diff_check": "passed",
+  "full_regression_rerun": false,
+  "db_connections": 0
+}

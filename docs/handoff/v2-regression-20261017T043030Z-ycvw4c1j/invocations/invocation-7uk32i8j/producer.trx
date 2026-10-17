@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c1cdf0b6-4a38-4970-bbde-2900120aea88" name="@ip-172-31-15-62 2026-10-17 04:31:48" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-17T04:31:48.3915641+00:00" queuing="2026-10-17T04:31:48.3915642+00:00" start="2026-10-17T04:31:44.4620154+00:00" finish="2026-10-17T04:31:48.4082248+00:00" />
+  <TestSettings name="default" id="23f8f878-2393-4326-bd34-413999d84244">
+    <Deployment runDeploymentRoot="_ip-172-31-15-62_2026-10-17_04_31_48" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3fde4b4a-b89e-426b-9da1-2174fd85bb20" testId="5907e0f4-709e-c6fc-30b8-8b6afdf6cc49" testName="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseIntegrationTests.Purchase_is_atomic_replayable_and_version_checkedIsolated3310" computerName="ip-172-31-15-62" duration="00:00:02.1201346" startTime="2026-10-17T04:31:46.0742275+00:00" endTime="2026-10-17T04:31:48.2294846+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3fde4b4a-b89e-426b-9da1-2174fd85bb20" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseIntegrationTests.Purchase_is_atomic_replayable_and_version_checkedIsolated3310" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="5907e0f4-709e-c6fc-30b8-8b6afdf6cc49">
+      <Execution id="3fde4b4a-b89e-426b-9da1-2174fd85bb20" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.MerchantPurchaseIntegrationTests" name="Purchase_is_atomic_replayable_and_version_checkedIsolated3310" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="5907e0f4-709e-c6fc-30b8-8b6afdf6cc49" executionId="3fde4b4a-b89e-426b-9da1-2174fd85bb20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)
+[xUnit.net 00:00:00.17]   Discovering: God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.32]   Discovered:  God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.38]   Starting:    God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:02.68]   Finished:    God2.ServerV2.Persistence.IntegrationTests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

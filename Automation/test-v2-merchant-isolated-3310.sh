@@ -470,7 +470,7 @@ run_phase() {
   local phase="$1" filter="$2"
   shift 2
 
-  dotnet test "$project" --configuration Release "$@" \
+  python3 Automation/regression_evidence.py run dotnet test "$project" --configuration Release "$@" \
     --filter "FullyQualifiedName=$filter" \
     --logger "trx;LogFileName=$phase.trx" \
     --results-directory "$evidence" --verbosity minimal \

@@ -1,0 +1,1285 @@
+{
+  "scope": "Each file except this index itself; original logs and duplicate TRX remain at retained_absolute_path. Selection is explicit, not a directory add.",
+  "files": [
+    {
+      "path": "baseline-cleanup.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/baseline-cleanup.json",
+      "bytes": 46,
+      "sha256": "4d5d0c1c26ffcb7c2d06253981afea266f0c44ebb0516ee47869705839cd1f77",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "db-after.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/db-after.json",
+      "bytes": 9770,
+      "sha256": "73273ded7d60a80124cda52b94282e7cf6f24fde6e85b31b89ec72c9498c5805",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "db-before.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/db-before.json",
+      "bytes": 9770,
+      "sha256": "db00020653e01aa82682e64e3ac5e4d16e1b84f1f33a3a0d347628bbcbb63561",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "entry.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/entry.log",
+      "bytes": 4978,
+      "sha256": "815a4961993a471854dd470060fe5fb785851c4df4f16226f9f09b49eab619a4",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Application.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Application.log",
+      "bytes": 1301,
+      "sha256": "171819053d1e9bd6638249d28027dc88552c80e175b99eeac09c2a40c759e65f",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Application.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Application.trx",
+      "bytes": 175157,
+      "sha256": "8cccd781d0f3a3533ac4fee70d2d4ef938e7495e36c414b1a82e2c309e027aad",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Core.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Core.log",
+      "bytes": 942,
+      "sha256": "a1fe1ecec9f5aa097549dc3088e47b05e1a59a86e5613e82d7e20de0e271caa4",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Core.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Core.trx",
+      "bytes": 11394,
+      "sha256": "f611aec2b7e26efb2e81179cada93a0074b6f0858422d882ecdc15d56935d8b6",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Network.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Network.log",
+      "bytes": 1577,
+      "sha256": "cf086c2cb7a1de3ac70f97270cb0bb0600452230c16707ef15ecdbc7db3dc8e2",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Network.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Network.trx",
+      "bytes": 325473,
+      "sha256": "dd461c773d5cf8a1f2ca1766aa21a553a746e48fad7520c7a2ad522027789678",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Persistence.Integration.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Persistence.Integration.log",
+      "bytes": 1844,
+      "sha256": "f84ba40bc8898f54ea4b85e30a050f09a4a1a066e1df4280c60c761036c9f039",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Persistence.Integration.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Persistence.Integration.trx",
+      "bytes": 136063,
+      "sha256": "f31b4f8483e9377b0cd637f6c5ae552b0c8e859411be5ee5b4e86b20a0e816ec",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Protocol.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Protocol.log",
+      "bytes": 1121,
+      "sha256": "c39b45f8833bde41e61f705453195b47b600c9b216019dc355103eac4f828453",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Protocol.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Protocol.trx",
+      "bytes": 229859,
+      "sha256": "fb644a847f36eddb4669d826ac36588aed81e7847c34c35027afe56e8ce5683d",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Session.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Session.log",
+      "bytes": 1114,
+      "sha256": "bc99a5dbd0fe9a2da59b1a0f5264f5b7c1e3713d6c2d01f7fd63450079e92c69",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/Session.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/Session.trx",
+      "bytes": 30637,
+      "sha256": "081c27c3acf5108dd182f7cd33605fe4a025e88b02cfc1fe1e5a5d03dea76b99",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-economy-snapshot-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-economy-snapshot-isolated.sh.log",
+      "bytes": 3138,
+      "sha256": "0928ea5887dab084bf9e508696625faf3d9a48f31f0c22fff042b96e3fac5cad",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-inventory-grant-concurrency-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-inventory-grant-concurrency-isolated.sh.log",
+      "bytes": 3174,
+      "sha256": "d6ac033d3d637d298ea80a09f987f0076946c7d328dcc32a4f71312617df051f",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-inventory-grant-rollback-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-inventory-grant-rollback-isolated.sh.log",
+      "bytes": 3162,
+      "sha256": "db9141503274228c32be2558911f0ca197e9ae8d27f498b87c1930ad348eb0d2",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-inventory-restore-blocked-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-inventory-restore-blocked-isolated.sh.log",
+      "bytes": 3166,
+      "sha256": "aeec8de4a45e1b76464b1bc65117ea493e7d246b759df48ffe8932fa3878a6da",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-inventory-stack-committed-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-inventory-stack-committed-isolated.sh.log",
+      "bytes": 3130,
+      "sha256": "4c7b253b28b8d28dbdbdbff9de8d4e6c1c73b413b47b61084f0d9507ee5411dd",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-buy-sell-tcp-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-buy-sell-tcp-isolated.sh.log",
+      "bytes": 3122,
+      "sha256": "d102397976ce8ef4947efec1b317e73eb1a319d3a754ddcfee59786a546852fa",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-command-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-command-isolated.sh.log",
+      "bytes": 3138,
+      "sha256": "7df250e3fe58b032140537a4d2a3379705c26e4f7753f50ca804e6594e4bc931",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-purchase-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-purchase-isolated.sh.log",
+      "bytes": 3241,
+      "sha256": "ee9488a04612a399ef7dd1c90a964876adcc7a79035df54571a91291909304ff",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-recovery-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-recovery-isolated.sh.log",
+      "bytes": 7792,
+      "sha256": "47a0a11dfa3bc2566a586befb58af0d64211d24ac7c39c05c56446ab782dd09d",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-sale-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-sale-isolated.sh.log",
+      "bytes": 3245,
+      "sha256": "2f96e2964e59dfac8cb447943adcfcfdb6489cf50df1f1d95d02df26cf6069c0",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-tcp-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-tcp-isolated.sh.log",
+      "bytes": 3130,
+      "sha256": "e0965698dbba6faee2c0cafb03f0eca55968d3f594995518a911b9cf71878bb1",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-tcp-lost-result-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-tcp-lost-result-isolated.sh.log",
+      "bytes": 3150,
+      "sha256": "daad7cff6d8b76337f5b21ba27e05c4c8d9bc3c8b8cfda476ba982928a2eba02",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-tcp-new-server-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-tcp-new-server-isolated.sh.log",
+      "bytes": 3146,
+      "sha256": "f9a48636259cb879791a65098f3f97291a47372e34f552d06cf3ea0077f88a3e",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-merchant-tcp-reconnect-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-merchant-tcp-reconnect-isolated.sh.log",
+      "bytes": 3146,
+      "sha256": "54c7f38defd4cae3535a10c1cb75f82ba1f35e6077edb946ccf4d1a7a906bdab",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-position-committed-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-position-committed-isolated.sh.log",
+      "bytes": 1970,
+      "sha256": "3e7dc116968923883d553583596a8d24aa8b91bd855f6f3bddcc03ad18743c46",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "grouped/test-v2-quest-process-recovery-isolated.sh.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/grouped/test-v2-quest-process-recovery-isolated.sh.log",
+      "bytes": 2664,
+      "sha256": "75957705e752c4e2747be0aaa7ff62c81a7dbda17c4863be28d1502f996e51c8",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-0pcnpywp/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-0pcnpywp/invocation.json",
+      "bytes": 333,
+      "sha256": "2de96a68baca79625ed86975b6d89619f381ee8a6b038ac0f733b01ab23a171e",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-0pcnpywp/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-0pcnpywp/output.log",
+      "bytes": 3174,
+      "sha256": "d6ac033d3d637d298ea80a09f987f0076946c7d328dcc32a4f71312617df051f",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-0tqh7pr2/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-0tqh7pr2/invocation.json",
+      "bytes": 1398,
+      "sha256": "8bc53e3e64516c247cb9c25f5fcf84c0e8cc3b64b4d538270baa1e07b43979f0",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-0tqh7pr2/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-0tqh7pr2/output.log",
+      "bytes": 1829,
+      "sha256": "bf32bf5f7598502e66f43c587659c3c029b7dbd4a4e45fdd0004ab6ff4ce88b3",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-0tqh7pr2/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-0tqh7pr2/producer.trx",
+      "bytes": 3395,
+      "sha256": "315a663a8f6a68aec637ac87903d7cc762a6c4ae99654d16ac1f42fde9c825cb",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-11ckhf6d/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-11ckhf6d/invocation.json",
+      "bytes": 325,
+      "sha256": "923ef52b1fdb2d4d629dd6780205b92e8bbc1295e95cd40440f0791664eee4e9",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-11ckhf6d/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-11ckhf6d/output.log",
+      "bytes": 2664,
+      "sha256": "75957705e752c4e2747be0aaa7ff62c81a7dbda17c4863be28d1502f996e51c8",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-25sk8ay8/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-25sk8ay8/invocation.json",
+      "bytes": 1380,
+      "sha256": "f5b921df95798c6b6b5379bc191272b2a3f874b25f6aefe4141afc201c22caee",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-25sk8ay8/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-25sk8ay8/output.log",
+      "bytes": 612,
+      "sha256": "5e67b1cab7d689269c32d58053e0a3b82971ae4a652e31644db7ac362a1f74b2",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-25sk8ay8/recovery.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-25sk8ay8/recovery.trx",
+      "bytes": 3357,
+      "sha256": "623351f2a5a53fcde95d862f7d78aedc4e0e5efb4303554b0bb7c0896d990bc6",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-2mheo8kb/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-2mheo8kb/invocation.json",
+      "bytes": 1397,
+      "sha256": "e914e6430ec732ebb0bd8a65d27da877fe2129c812603f353da79b3be6a008a8",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-2mheo8kb/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-2mheo8kb/output.log",
+      "bytes": 1833,
+      "sha256": "8d1f54b150d743ee28ec8fd3d0a94cd46969e053d297647b44de8734944d3666",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-2mheo8kb/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-2mheo8kb/producer.trx",
+      "bytes": 3282,
+      "sha256": "75439acdf249fe7bbbba5d89b57c1ede2107eed9d356ab55e456ecd62571e399",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-56gbl9of/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-56gbl9of/invocation.json",
+      "bytes": 1366,
+      "sha256": "e80bf739701539473a54adf9eb78ffbd653e6f25c621377f2cf71c96882bb82a",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-56gbl9of/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-56gbl9of/output.log",
+      "bytes": 1823,
+      "sha256": "be2af76951a61520da7dbb9789b44f2f06b531b6e4f48ef0ded9932f8268ad94",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-56gbl9of/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-56gbl9of/producer.trx",
+      "bytes": 3356,
+      "sha256": "f6763e14fd1363ad1e5d0f4032faef22330432b438ec21b58d148708f03941b9",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-5hfccony/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-5hfccony/invocation.json",
+      "bytes": 323,
+      "sha256": "152b5cf7ca037756388031101ad433d0a0af258dbd97f1c0a8333eb11b0070c1",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-5hfccony/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-5hfccony/output.log",
+      "bytes": 7792,
+      "sha256": "47a0a11dfa3bc2566a586befb58af0d64211d24ac7c39c05c56446ab782dd09d",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-6gaef1hu/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-6gaef1hu/invocation.json",
+      "bytes": 309,
+      "sha256": "829a6a58cc4e8aff4f1c28dc5412a8950c223cba5046361d48f52b3d1683ef70",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-6gaef1hu/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-6gaef1hu/output.log",
+      "bytes": 4885,
+      "sha256": "8ba45fd003e44ddbc9f2248f34724ddb235322e4a6a9ef316cc94872ab913212",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-6npj1iuw/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-6npj1iuw/invocation.json",
+      "bytes": 327,
+      "sha256": "c0bfab044ec7b7536d99886fb667b3faea033ef0721a75ac982f08cf8b564df9",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-6npj1iuw/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-6npj1iuw/output.log",
+      "bytes": 3122,
+      "sha256": "d102397976ce8ef4947efec1b317e73eb1a319d3a754ddcfee59786a546852fa",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-726_0jg0/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-726_0jg0/invocation.json",
+      "bytes": 331,
+      "sha256": "54b85b41ab162e071d8cb12b0a78fd9dc55b01757135d61e528b975610c28c20",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-726_0jg0/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-726_0jg0/output.log",
+      "bytes": 3166,
+      "sha256": "aeec8de4a45e1b76464b1bc65117ea493e7d246b759df48ffe8932fa3878a6da",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-7d7pydbo/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7d7pydbo/invocation.json",
+      "bytes": 1396,
+      "sha256": "d985c56ebc829c09748b5eaf2eb7fa9c9766921dd3d36d782fb29875e81626b2",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-7d7pydbo/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7d7pydbo/output.log",
+      "bytes": 1828,
+      "sha256": "1e1e2350f3a06115ae065a3b78a7ac78a6bcdf50c853e276aff1fc682f849c75",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-7d7pydbo/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7d7pydbo/producer.trx",
+      "bytes": 3406,
+      "sha256": "b1f99fb30cf2ec7f77d4c3d3029972bc8a17f4248489f1b42233902ad3e39a45",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-7uk32i8j/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7uk32i8j/invocation.json",
+      "bytes": 1376,
+      "sha256": "1b395950219cb9a4eabd866d11afdcb6306fac6ce87a232cf8bdad4ebacf4b51",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-7uk32i8j/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7uk32i8j/output.log",
+      "bytes": 1828,
+      "sha256": "9b1d857d6137f999b572dabaab8ae0f9323ba763b4c75491cbad946d5f7933da",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-7uk32i8j/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-7uk32i8j/producer.trx",
+      "bytes": 3264,
+      "sha256": "ee87c4022be336dc0b2e894812d0413a411e1208dbcfd9e40eb195697315a46b",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-8hyxt6ke/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8hyxt6ke/invocation.json",
+      "bytes": 1376,
+      "sha256": "f077428d41620fdfd373c87d1a90883494e0387ed7056d29603da63e91c9c1b9",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-8hyxt6ke/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8hyxt6ke/output.log",
+      "bytes": 613,
+      "sha256": "ce8b4ab523b5ca3dcc987ca35222cbf7fec2aadca67705f84ba8694dbe690e0a",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-8hyxt6ke/recovery.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8hyxt6ke/recovery.trx",
+      "bytes": 3339,
+      "sha256": "aa32756513a45b1872751c215ce8bb426ef89ce0e1bc2e9919bff5cc6490a583",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-8kfcdxgn/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8kfcdxgn/invocation.json",
+      "bytes": 1386,
+      "sha256": "59e572d2f7380a9422958344daec1318dda830b351346a19f048b883a7e47304",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-8kfcdxgn/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8kfcdxgn/output.log",
+      "bytes": 1829,
+      "sha256": "84f965f68357345d05e07f0b799895ee29ca5c25560095b0ecfae06434699a6c",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-8kfcdxgn/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-8kfcdxgn/producer.trx",
+      "bytes": 3285,
+      "sha256": "d0c290ea73931e870e94232b588345cbaceeb3c1422a1196ec01318cca57eabd",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-92swpltf/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-92swpltf/invocation.json",
+      "bytes": 331,
+      "sha256": "cadeb6ade1eb44b81671bf5c5293788137f52890a990dbc19b46d7017123fc14",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-92swpltf/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-92swpltf/output.log",
+      "bytes": 3130,
+      "sha256": "4c7b253b28b8d28dbdbdbff9de8d4e6c1c73b413b47b61084f0d9507ee5411dd",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-auvlxa3l/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-auvlxa3l/invocation.json",
+      "bytes": 1635,
+      "sha256": "24afc93deff554db1b8a6b4d165eafab7b886d5f98c5b6feb8d0410af19d5fc8",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-auvlxa3l/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-auvlxa3l/output.log",
+      "bytes": 1815,
+      "sha256": "d641535f9218b71068bf0a52635c6347a55f5e68867ae6d3406c38e769b6a15e",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-auvlxa3l/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-auvlxa3l/producer.trx",
+      "bytes": 6482,
+      "sha256": "77fec78155b82befae1c420ebc8f768f32045f6f01a54826ed1b88695be3cb68",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-b1lg97sp/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-b1lg97sp/invocation.json",
+      "bytes": 1344,
+      "sha256": "a8d84c13fee4e9e1652d44699a532fa730653c969f97335380f2b9b9d1d6434f",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-b1lg97sp/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-b1lg97sp/output.log",
+      "bytes": 1818,
+      "sha256": "2ed9b9f94ede1af3ed1ae2d6366bd7883e219e3fc41a6c60fa1b70af424391de",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-b1lg97sp/position.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-b1lg97sp/position.trx",
+      "bytes": 3297,
+      "sha256": "34dbaf89e4f158a61eb5d7cd67684b3c4ed073e5eddd84f75f04dac82fb7c538",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-d08pr04s/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-d08pr04s/invocation.json",
+      "bytes": 378,
+      "sha256": "a4486efebe71b44c16aea0810dab684ed79870f2f2b4d80b8678c3b160a2c7f4",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-d08pr04s/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-d08pr04s/output.log",
+      "bytes": 3245,
+      "sha256": "2f96e2964e59dfac8cb447943adcfcfdb6489cf50df1f1d95d02df26cf6069c0",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-d_zmc9mu/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-d_zmc9mu/invocation.json",
+      "bytes": 330,
+      "sha256": "afaf1dc6b63e69238fc149fd58eb178b748a270f0666245d3a681d48d0401bd7",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-d_zmc9mu/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-d_zmc9mu/output.log",
+      "bytes": 3162,
+      "sha256": "db9141503274228c32be2558911f0ca197e9ae8d27f498b87c1930ad348eb0d2",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ey0io7s0/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ey0io7s0/invocation.json",
+      "bytes": 1404,
+      "sha256": "a4a10b6a33b656b88d08e54275998514a0b26cf522c06cd25f13f34b14d482e7",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-ey0io7s0/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ey0io7s0/output.log",
+      "bytes": 1835,
+      "sha256": "806816c5bfa3c3c8bd779bd5eaaac3d2598bdfb9e209904f154cedec5393147d",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ey0io7s0/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ey0io7s0/producer.trx",
+      "bytes": 3285,
+      "sha256": "677b54206fb13e0cdb03652b3c26b042bed90c02178ee0e44e7b6b4593c2e0ca",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-fscquj7b/Persistence.Integration.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-fscquj7b/Persistence.Integration.trx",
+      "bytes": 136063,
+      "sha256": "f31b4f8483e9377b0cd637f6c5ae552b0c8e859411be5ee5b4e86b20a0e816ec",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-fscquj7b/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-fscquj7b/invocation.json",
+      "bytes": 2661,
+      "sha256": "a4e3478ea65f90e6d7505e7980b97cfb7495e5ae50eae61c2ed4814e6161686c",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-fscquj7b/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-fscquj7b/output.log",
+      "bytes": 1844,
+      "sha256": "f84ba40bc8898f54ea4b85e30a050f09a4a1a066e1df4280c60c761036c9f039",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ftnj_9cc/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ftnj_9cc/invocation.json",
+      "bytes": 322,
+      "sha256": "9992caf17c96956bbfbdadf4e8525c1ad91d1efb0e7bbd7d6452f53e0720dae5",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-ftnj_9cc/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ftnj_9cc/output.log",
+      "bytes": 3138,
+      "sha256": "7df250e3fe58b032140537a4d2a3379705c26e4f7753f50ca804e6594e4bc931",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-gxhygv9j/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-gxhygv9j/invocation.json",
+      "bytes": 322,
+      "sha256": "92f9eddba4060814214562171ce9cdecb68290daa6ef0e1a2260d071e64dc001",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-gxhygv9j/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-gxhygv9j/output.log",
+      "bytes": 3138,
+      "sha256": "0928ea5887dab084bf9e508696625faf3d9a48f31f0c22fff042b96e3fac5cad",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-gztes80e/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-gztes80e/invocation.json",
+      "bytes": 1355,
+      "sha256": "54f4266e1fb2175e51249b5ef9ac6683e84cbecad4045f529baa83b0ac9585f1",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-gztes80e/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-gztes80e/output.log",
+      "bytes": 1822,
+      "sha256": "4690072838b1590143b9b70720c8b077db21f5acd75bb10ec00f0ee415df3662",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-gztes80e/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-gztes80e/producer.trx",
+      "bytes": 3338,
+      "sha256": "b90ab431066b8b181d27675d664e0c9441a36da5c424b8e4b4328bc031b5378a",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-haevw5s9/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-haevw5s9/invocation.json",
+      "bytes": 1396,
+      "sha256": "2d48fa9a134ac52b5e00f52e60579e776be0d4aa5df6ade335d64a82f188655e",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-haevw5s9/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-haevw5s9/output.log",
+      "bytes": 1828,
+      "sha256": "03af99affdc3dcacd76b3773e59cd64e7fea67c38b652061836a20af487b89bf",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-haevw5s9/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-haevw5s9/producer.trx",
+      "bytes": 3397,
+      "sha256": "c9533b3f4db76fb124811edb5df73817b62d403b99e94212fe7da5d3e81b7023",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-hj4resce/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-hj4resce/invocation.json",
+      "bytes": 1375,
+      "sha256": "f1c5ecc9447811a89b453e4eab94728bf3f3db7afb7ca00b20c51290b9e148ac",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-hj4resce/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-hj4resce/output.log",
+      "bytes": 1824,
+      "sha256": "038543ad5c38691cb025ed85767c339741f4f5859097de1ad5725fb1dea26a7d",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-hj4resce/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-hj4resce/producer.trx",
+      "bytes": 3297,
+      "sha256": "c7822b717a38cdd32b1e9823815045e66e420ccd0826f8f86f5d38bbeff40cfa",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-iedzj66n/Core.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-iedzj66n/Core.trx",
+      "bytes": 11394,
+      "sha256": "f611aec2b7e26efb2e81179cada93a0074b6f0858422d882ecdc15d56935d8b6",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-iedzj66n/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-iedzj66n/invocation.json",
+      "bytes": 1287,
+      "sha256": "a84c20c2dda2fe5b45e014b55dd26727a6a0e3deaf8d70d6aead8c0294054d02",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-iedzj66n/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-iedzj66n/output.log",
+      "bytes": 942,
+      "sha256": "a1fe1ecec9f5aa097549dc3088e47b05e1a59a86e5613e82d7e20de0e271caa4",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-m3rr8byx/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-m3rr8byx/invocation.json",
+      "bytes": 318,
+      "sha256": "e4d497956d2b327d0ffb054ff9b82a22cbdffab8d54152c9920df47aa64e161d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-m3rr8byx/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-m3rr8byx/output.log",
+      "bytes": 3130,
+      "sha256": "e0965698dbba6faee2c0cafb03f0eca55968d3f594995518a911b9cf71878bb1",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-mfgguuuw/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-mfgguuuw/invocation.json",
+      "bytes": 328,
+      "sha256": "ae6fbf57e9c0e2e605d73cd7bca912272a4751bb61cf04d69ec00135c28173a8",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-mfgguuuw/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-mfgguuuw/output.log",
+      "bytes": 3146,
+      "sha256": "54c7f38defd4cae3535a10c1cb75f82ba1f35e6077edb946ccf4d1a7a906bdab",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-n8f8rnth/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-n8f8rnth/invocation.json",
+      "bytes": 330,
+      "sha256": "a3be66f897917f21697380bb290674a9727f7f0b91be768b11ef90c6a430bea0",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-n8f8rnth/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-n8f8rnth/output.log",
+      "bytes": 3150,
+      "sha256": "daad7cff6d8b76337f5b21ba27e05c4c8d9bc3c8b8cfda476ba982928a2eba02",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-o188rqo4/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o188rqo4/invocation.json",
+      "bytes": 329,
+      "sha256": "d5ad653f326251e1c5b441e0ab7315a153a42c72eda52cb2f15b3898c78fa4d6",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-o188rqo4/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o188rqo4/output.log",
+      "bytes": 3146,
+      "sha256": "f9a48636259cb879791a65098f3f97291a47372e34f552d06cf3ea0077f88a3e",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-o1io79do/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o1io79do/invocation.json",
+      "bytes": 1362,
+      "sha256": "88bdc4e5ed34a91015f4300067e847038d4c7e4c7258ee962d4f6cfde175bf7d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-o1io79do/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o1io79do/output.log",
+      "bytes": 605,
+      "sha256": "0ba7d6e25a40bc77d6ea2d441dbb3735ac14d724cc81a29ba6a5fbe9b1e43fb0",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-o1io79do/recovery.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o1io79do/recovery.trx",
+      "bytes": 3225,
+      "sha256": "41fc8e8fa1b78265ffd4159868e2d4f4861f65c98a3f0f6b7684a725a8243246",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-o6jh8az1/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o6jh8az1/invocation.json",
+      "bytes": 1377,
+      "sha256": "6dadb2078a38247eeb854cb830166e9f2253c41db6712d7a6f1c2ef0b2549078",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-o6jh8az1/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o6jh8az1/output.log",
+      "bytes": 1832,
+      "sha256": "601225f052fe7692e8eab988c49f9813cf2eaab69cad762474db05105c109b8f",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-o6jh8az1/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-o6jh8az1/producer.trx",
+      "bytes": 8279,
+      "sha256": "91d79d09ebc9e20d76cce82639f4fea292a546eebe3502dd5ab7bfcfacf91b4e",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-ssegf_8l/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ssegf_8l/invocation.json",
+      "bytes": 1372,
+      "sha256": "d357ed3b0c22276e8f73102e25099c25209f75b7a185b28daf22ed12ce9da922",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-ssegf_8l/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ssegf_8l/output.log",
+      "bytes": 1826,
+      "sha256": "872dfc0a599ce807da3c701bfb45f0fb9b78a00da65270917a06930fd6c046a3",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ssegf_8l/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ssegf_8l/producer.trx",
+      "bytes": 3270,
+      "sha256": "d92ae3a5fa479eb5d0753ecaef5cfbba260d9cde7bc39b06024bdec7a630bbc6",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-t23nbnys/Application.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-t23nbnys/Application.trx",
+      "bytes": 175157,
+      "sha256": "8cccd781d0f3a3533ac4fee70d2d4ef938e7495e36c414b1a82e2c309e027aad",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-t23nbnys/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-t23nbnys/invocation.json",
+      "bytes": 1335,
+      "sha256": "4778e56c0bfdb9eb2d1f40a12010c4ea42c8d5298a3a658d9fe3a87bf6a3a422",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-t23nbnys/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-t23nbnys/output.log",
+      "bytes": 1301,
+      "sha256": "171819053d1e9bd6638249d28027dc88552c80e175b99eeac09c2a40c759e65f",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-tgkwj_11/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-tgkwj_11/invocation.json",
+      "bytes": 1364,
+      "sha256": "7166f5635dcaa9bddc32826d310f52e22905dd23a65c349a1793628bfda6306b",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-tgkwj_11/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-tgkwj_11/output.log",
+      "bytes": 1824,
+      "sha256": "c46e10c0766c19bc61a6470da82a6a61dd2b00d9b1d0df5ff5cd2e63838ea550",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-tgkwj_11/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-tgkwj_11/producer.trx",
+      "bytes": 3332,
+      "sha256": "f37db1f48c920effd9e83f4d55d2e126901a6ea8f836f8ac603ce4753eeda423",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u0xi_y2t/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u0xi_y2t/invocation.json",
+      "bytes": 1366,
+      "sha256": "7124e51873c7b2fa6c5a3de1c064f87907b10383a4ba3d4402438704549b60f2",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u0xi_y2t/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u0xi_y2t/output.log",
+      "bytes": 1822,
+      "sha256": "ba47caacf3b1613e684e246b4a9f2c20413bdbce5f1dce681b4d74b89df86f38",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-u0xi_y2t/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u0xi_y2t/producer.trx",
+      "bytes": 3353,
+      "sha256": "84dd9fa6388f5ecdba6c4373e3e8254df594a66f918ca098b5416d06bba85a5a",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u1bchdpg/Network.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u1bchdpg/Network.trx",
+      "bytes": 325473,
+      "sha256": "dd461c773d5cf8a1f2ca1766aa21a553a746e48fad7520c7a2ad522027789678",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u1bchdpg/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u1bchdpg/invocation.json",
+      "bytes": 1311,
+      "sha256": "2fab5df00028f292a302d86cf9c7f5bd121c676f4643fe6feb3fc41f00606a27",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u1bchdpg/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u1bchdpg/output.log",
+      "bytes": 1577,
+      "sha256": "cf086c2cb7a1de3ac70f97270cb0bb0600452230c16707ef15ecdbc7db3dc8e2",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-u2zpc2us/Protocol.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u2zpc2us/Protocol.trx",
+      "bytes": 229859,
+      "sha256": "fb644a847f36eddb4669d826ac36588aed81e7847c34c35027afe56e8ce5683d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u2zpc2us/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u2zpc2us/invocation.json",
+      "bytes": 1317,
+      "sha256": "a14cacb4e0f2bf5374f8204b0f8ca933a88e50fd815c341b3e83c660106082ca",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-u2zpc2us/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-u2zpc2us/output.log",
+      "bytes": 1121,
+      "sha256": "c39b45f8833bde41e61f705453195b47b600c9b216019dc355103eac4f828453",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-xkzseq4w/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-xkzseq4w/invocation.json",
+      "bytes": 337,
+      "sha256": "73c7e2072a54d439917f89bab290941c2bfb16d73c59dc4de3cd71bd55917b2d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-xkzseq4w/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-xkzseq4w/output.log",
+      "bytes": 1970,
+      "sha256": "3e7dc116968923883d553583596a8d24aa8b91bd855f6f3bddcc03ad18743c46",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-y5hlsz9l/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-y5hlsz9l/invocation.json",
+      "bytes": 382,
+      "sha256": "48c7145e1da364778ed73bb1982c025e059757b5e382180d481ef0f2b4c1f4ce",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-y5hlsz9l/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-y5hlsz9l/output.log",
+      "bytes": 3241,
+      "sha256": "ee9488a04612a399ef7dd1c90a964876adcc7a79035df54571a91291909304ff",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ykf1oqo3/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ykf1oqo3/invocation.json",
+      "bytes": 1382,
+      "sha256": "38daa2e4d9576bea37e03808ad22c0d8f10906ac9647326d9d5d2e6277d12b26",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-ykf1oqo3/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ykf1oqo3/output.log",
+      "bytes": 1826,
+      "sha256": "d47d6084fb94187953b59fa9223d4bf9fd89d72ac300934673be2f103ea4a655",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "invocations/invocation-ykf1oqo3/producer.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-ykf1oqo3/producer.trx",
+      "bytes": 3300,
+      "sha256": "fb80c928f8388705ad50bde152d190e2d769806d6b9a444805406b2ede2a86a8",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-z1rk7qbn/Session.trx",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-z1rk7qbn/Session.trx",
+      "bytes": 30637,
+      "sha256": "081c27c3acf5108dd182f7cd33605fe4a025e88b02cfc1fe1e5a5d03dea76b99",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-z1rk7qbn/invocation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-z1rk7qbn/invocation.json",
+      "bytes": 1308,
+      "sha256": "958a5f707e99be08d50cd86902ecf041341aeb0b2469457278879d659a99fe7e",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "invocations/invocation-z1rk7qbn/output.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/invocations/invocation-z1rk7qbn/output.log",
+      "bytes": 1114,
+      "sha256": "bc99a5dbd0fe9a2da59b1a0f5264f5b7c1e3713d6c2d01f7fd63450079e92c69",
+      "git_selected": false,
+      "reason": "original raw log or duplicate TRX retained locally; hash only in Git"
+    },
+    {
+      "path": "review-normal.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/review-normal.log",
+      "bytes": 969,
+      "sha256": "0b0c6004787824f7c840d25affc5f2b0a501231a97c80f8244b5b5bd0ab632af",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "review-optimized.log",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/review-optimized.log",
+      "bytes": 969,
+      "sha256": "5bcdc8b709a339716aa8a7dda5148ce595fba45683d47b9c32f5b156142cc170",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "review-validation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/review-validation.json",
+      "bytes": 1227,
+      "sha256": "f76b29ea8a8eab243bfcad45e5642a0443ac6b46c2045c97f5d6107351b2986d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "run.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/run.json",
+      "bytes": 406,
+      "sha256": "1f6509bdbfb5d5291951df3777270e2e595c68656b40fb6c9f90caf4801ff483",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "source-after.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/source-after.json",
+      "bytes": 160923,
+      "sha256": "b20fef849a17ad6615179371a29a763ba426f73c816ae24f7355da85ee64a5ee",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "source-before.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/source-before.json",
+      "bytes": 160923,
+      "sha256": "17fc2d71f02340a1be81b703a82755b180b93d0d28e413de1f85f4d4d7825eb6",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "source-preservation.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/source-preservation.json",
+      "bytes": 4615,
+      "sha256": "9b323e65092aecc8053dcf4e2fb36f114ab119374d4a6dd1c11a136144098805",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "summary.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/summary.json",
+      "bytes": 48910,
+      "sha256": "bdc7d00a3520f236e54b3feff48d92623494acdb5ae74838c3213855474ee285",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/regression-db-3310.sql",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression-db-3310.sql",
+      "bytes": 3157,
+      "sha256": "bde9bfefc6693ab501965fbbfcf434ac3f3334221dcef7fa588de3730a5106f8",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/regression-db-3311.sql",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression-db-3311.sql",
+      "bytes": 1652,
+      "sha256": "e6a4662d885876f82a1e35540d31e6989247bbdf860de02acd459c23cc1811e5",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/regression_db_state.py",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression_db_state.py",
+      "bytes": 3765,
+      "sha256": "e3358b7421941899c1214c6876c24d376fe9b7322f23e442c9091453a9378a13",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/regression_evidence.py",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/regression_evidence.py",
+      "bytes": 10467,
+      "sha256": "ed496154591960b130079eaff2efc44023755f09f3bd0c4952fa4289b2dea64f",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/run_v2_isolated.py",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/run_v2_isolated.py",
+      "bytes": 6359,
+      "sha256": "580af5ec964f9dd5fb789567bcbf9c1fdad116f5c7426c62bf8fa23e8249693b",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/Automation/test_regression_evidence.py",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/Automation/test_regression_evidence.py",
+      "bytes": 5118,
+      "sha256": "ea2e650519669bce52eead2765f4ab0741c3b2f961154d3c8c6a7029655815b1",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "tested-source/tracked-changes.diff.gz",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/tested-source/tracked-changes.diff.gz",
+      "bytes": 3327,
+      "sha256": "26e490a9d152c435877055c8d8d900d09764f47e2f75992f2820582c3cf85f55",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    },
+    {
+      "path": "verification.json",
+      "retained_absolute_path": "/home/ubuntu/games/fs2-v2-inventory-grant-20261003/docs/handoff/v2-regression-20261017T043030Z-ycvw4c1j/verification.json",
+      "bytes": 255,
+      "sha256": "1d95dc0f29d7db148d1006f1290acabc85c62d9f99fbfa5d982c4756a70cb30d",
+      "git_selected": true,
+      "reason": "selected result/source/review evidence"
+    }
+  ]
+}

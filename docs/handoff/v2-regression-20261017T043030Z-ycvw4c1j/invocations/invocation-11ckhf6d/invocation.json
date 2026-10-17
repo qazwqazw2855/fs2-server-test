@@ -1,0 +1,14 @@
+{
+  "started_utc": "2026-10-17T04:32:37.604819+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-quest-process-recovery-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "ended_utc": "2026-10-17T04:32:49.506097+00:00",
+  "trx": [],
+  "cleanup_markers": {
+    "remaining_fixture_accounts_and_users=0": 1
+  }
+}

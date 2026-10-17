@@ -1,0 +1,14 @@
+{
+  "started_utc": "2026-10-17T04:33:46.451363+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-merchant-tcp-new-server-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "ended_utc": "2026-10-17T04:33:57.103511+00:00",
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 1
+  }
+}

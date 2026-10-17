@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-17T04:35:19.093295+00:00",
+  "dotnet_invocations": 26,
+  "dotnet_trx_copies": 26,
+  "source_stable": true,
+  "historical_tsv_unchanged": true,
+  "known_baseline_credential_leak_files": 0,
+  "full_entry_invocations": 1,
+  "reruns": 0
+}

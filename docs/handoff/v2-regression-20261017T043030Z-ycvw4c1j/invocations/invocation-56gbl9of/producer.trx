@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="aede24d6-25db-4423-847c-925f9ab48d15" name="@ip-172-31-15-62 2026-10-17 04:34:18" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-17T04:34:18.6284767+00:00" queuing="2026-10-17T04:34:18.6284767+00:00" start="2026-10-17T04:34:13.2429533+00:00" finish="2026-10-17T04:34:18.6362690+00:00" />
+  <TestSettings name="default" id="dd9c2767-fca5-45d5-b48d-e5451146d621">
+    <Deployment runDeploymentRoot="_ip-172-31-15-62_2026-10-17_04_34_18" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f8ca8459-e796-46ae-9f78-9b3210a6e0ee" testId="4c10c556-1cd1-8831-b738-0c4e3f3e4247" testName="God2.ServerV2.Persistence.IntegrationTests.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310" computerName="ip-172-31-15-62" duration="00:00:03.2293712" startTime="2026-10-17T04:34:15.2878013+00:00" endTime="2026-10-17T04:34:18.5310049+00:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f8ca8459-e796-46ae-9f78-9b3210a6e0ee" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="God2.ServerV2.Persistence.IntegrationTests.MerchantSaleTcpLostResultIntegrationTests.CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310" storage="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/god2.serverv2.persistence.integrationtests/bin/release/net10.0/god2.serverv2.persistence.integrationtests.dll" id="4c10c556-1cd1-8831-b738-0c4e3f3e4247">
+      <Execution id="f8ca8459-e796-46ae-9f78-9b3210a6e0ee" />
+      <TestMethod codeBase="/home/ubuntu/games/fs2-v2-inventory-grant-20261003/tests/God2.ServerV2.Persistence.IntegrationTests/bin/Release/net10.0/God2.ServerV2.Persistence.IntegrationTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="God2.ServerV2.Persistence.IntegrationTests.MerchantSaleTcpLostResultIntegrationTests" name="CommittedSaleWithLostResultDoesNotCreditTwiceIsolated3310" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4c10c556-1cd1-8831-b738-0c4e3f3e4247" executionId="f8ca8459-e796-46ae-9f78-9b3210a6e0ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)
+[xUnit.net 00:00:00.29]   Discovering: God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.66]   Discovered:  God2.ServerV2.Persistence.IntegrationTests
+[xUnit.net 00:00:00.81]   Starting:    God2.ServerV2.Persistence.IntegrationTests
+PASS: committed SELL result loss; EOF; no automatic retry; unchanged replay.
+[xUnit.net 00:00:04.12]   Finished:    God2.ServerV2.Persistence.IntegrationTests
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

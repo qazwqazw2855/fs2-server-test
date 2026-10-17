@@ -154,7 +154,7 @@ export GOD2_POSITION_FIXTURE_CHARACTER_ID="$character_id"
 evidence="$(mktemp -d docs/handoff/position-3310-$(date +%Y%m%d-%H%M%S)-XXXXXX)"
 echo "evidence=$evidence"
 git rev-parse HEAD >"$evidence/source-commit.txt"
-dotnet test \
+python3 Automation/regression_evidence.py run dotnet test \
   tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj \
   -c Release \
   --filter 'FullyQualifiedName=God2.ServerV2.Persistence.IntegrationTests.CharacterPositionCommittedTests.CommittedPositionIsReadByNewConnectionAndStaleWriteIsRejectedIsolated3310' \

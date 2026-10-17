@@ -4,7 +4,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 test "${GOD2_RUN_DB_INTEGRATION:-}" = "1"
 
-results="$(mktemp -d /tmp/god2-v2-grouped-XXXXXX)"
+results="${GOD2_REGRESSION_EVIDENCE:?Run through test-v2-all-isolated.sh}/grouped"
+mkdir "$results"
 printf '分組測試紀錄：%s\n' "$results"
 
 special=(
@@ -47,14 +48,15 @@ for suite in Core Application Session Protocol Network Persistence.Integration; 
   fi
 
   log="$results/$suite.log"
-  if dotnet test "$project" -c Release "${args[@]}" \
+  if python3 Automation/regression_evidence.py run dotnet test "$project" -c Release "${args[@]}" \
     --logger "trx;LogFileName=$suite.trx" \
     --results-directory "$results" --verbosity minimal >"$log" 2>&1
   then
     rg 'Passed!|Failed!' "$log"
   else
+    result=$?
     tail -n 55 "$log"
-    exit 1
+    exit "$result"
   fi
 done
 
@@ -80,11 +82,12 @@ scripts=(
 for script in "${scripts[@]}"; do
   printf '\n=== %s ===\n' "$script"
   log="$results/$script.log"
-  if bash "Automation/$script" >"$log" 2>&1; then
+  if python3 Automation/regression_evidence.py run bash "Automation/$script" >"$log" 2>&1; then
     rg 'Passed!|remaining_|exit code:|exit code' "$log" || true
   else
+    result=$?
     tail -n 60 "$log"
-    exit 1
+    exit "$result"
   fi
 done
 

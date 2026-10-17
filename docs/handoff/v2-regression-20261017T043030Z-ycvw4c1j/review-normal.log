@@ -1,0 +1,28 @@
+regression_evidence=/tmp/tmp7xhs5xrf/docs/handoff/v2-regression-20261017T045954Z-ffk9e43w
+worker finished
+regression_exit_code=2
+failure [REDACTED]
+regression_evidence=/tmp/tmpksjbit8j/docs/handoff/v2-regression-20261017T045954Z-ebjzzw3n
+worker finished
+regression_exit_code=7
+finished
+finished
+finished
+finished
+finished
+regression_evidence=/tmp/tmp08g22biy/docs/handoff/v2-regression-20261017T045955Z-4siqpm4i
+worker finished
+regression_exit_code=2
+STOP: isolated baseline fault account cleanup failed; details omitted
+PASS: isolated baseline fault account removed
+PASS: isolated baseline fault account removed
+STOP: final DB evidence collection failed
+STOP: isolated baseline fault account cleanup failed; details omitted
+PASS: isolated baseline fault account removed
+PASS: isolated baseline fault account removed
+STOP: final DB evidence collection failed
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 0.034s
+
+OK

@@ -350,7 +350,7 @@ namespace="God2.ServerV2.Persistence.IntegrationTests"
 run_phase() {
   local phase="$1" expected="$2" filter="$3"
   shift 3
-  dotnet test "$project" --configuration Release "$@" \
+  python3 Automation/regression_evidence.py run dotnet test "$project" --configuration Release "$@" \
     --filter "$filter" \
     --logger "trx;LogFileName=$phase.trx" \
     --results-directory "$evidence" --verbosity minimal \

@@ -1,0 +1,14 @@
+{
+  "started_utc": "2026-10-17T04:33:57.149085+00:00",
+  "argv": [
+    "bash",
+    "Automation/test-v2-merchant-recovery-isolated.sh"
+  ],
+  "exit_code": 0,
+  "status": "passed",
+  "ended_utc": "2026-10-17T04:34:21.670944+00:00",
+  "trx": [],
+  "cleanup_markers": {
+    "PASS: exit cleanup verification completed": 2
+  }
+}

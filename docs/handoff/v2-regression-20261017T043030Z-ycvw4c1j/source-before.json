@@ -1,0 +1,4015 @@
+{
+  "utc": "2026-10-17T04:30:30.478915+00:00",
+  "branch": "codex/inventory-grant-20261003",
+  "head": "827998516cc2cc8ced8f4f9c4dbfac0ea78148a9",
+  "tracked_staged": "",
+  "tracked_unstaged": "M\tAutomation/test-v2-all-isolated.sh\nM\tAutomation/test-v2-all-no-progress.sh\nM\tAutomation/test-v2-merchant-isolated-3310.sh\nM\tAutomation/test-v2-position-committed-isolated.sh\nM\tAutomation/test-v2-quest-process-recovery-isolated.sh",
+  "projects": [
+    "src/God2.ServerV2.Application/God2.ServerV2.Application.csproj",
+    "src/God2.ServerV2.Core/God2.ServerV2.Core.csproj",
+    "src/God2.ServerV2.Network/God2.ServerV2.Network.csproj",
+    "src/God2.ServerV2.Persistence/God2.ServerV2.Persistence.csproj",
+    "src/God2.ServerV2.Protocol/God2.ServerV2.Protocol.csproj",
+    "src/God2.ServerV2.Session/God2.ServerV2.Session.csproj",
+    "tests/God2.ServerV2.Application.Tests/God2.ServerV2.Application.Tests.csproj",
+    "tests/God2.ServerV2.Core.Tests/God2.ServerV2.Core.Tests.csproj",
+    "tests/God2.ServerV2.Network.Tests/God2.ServerV2.Network.Tests.csproj",
+    "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+    "tests/God2.ServerV2.Protocol.Tests/God2.ServerV2.Protocol.Tests.csproj",
+    "tests/God2.ServerV2.Session.Tests/God2.ServerV2.Session.Tests.csproj"
+  ],
+  "scope": "Six test projects and transitive project directories; ancestor build configuration; database/schema SQL; Automation sh/py/sql superset. Includes untracked and ignored source. Excludes bin/obj/TestResults/__pycache__, evidence, secret configuration. No source contents copied.",
+  "excluded_secret_configuration": [],
+  "files": [
+    {
+      "path": "Automation/audit-monster-import-identity.py",
+      "sha256": "a5cc3f157d71bc8fd21f40f9b54e1d01bf230ddfc127fc5ed002082764fa479e",
+      "tracked": true
+    },
+    {
+      "path": "Automation/audit-quest-profile-provenance.sh",
+      "sha256": "776411b08900f65b46ef6950a8cebb9630f79843158983d503ed3b097d128d76",
+      "tracked": true
+    },
+    {
+      "path": "Automation/audit-v2-inventory-readiness.sh",
+      "sha256": "7410322afa92ea9fa0cf409fed70cc124fb5afed342e4181b9d6c5b41b16cda3",
+      "tracked": true
+    },
+    {
+      "path": "Automation/check-monster-static-evidence.py",
+      "sha256": "42634697aa87d233e9ea1ce7cfe055d828fd3786c0329f495904b04659f6e276",
+      "tracked": true
+    },
+    {
+      "path": "Automation/check-npc-static-evidence.py",
+      "sha256": "1312afadd4b1bc66c8776f6a01c930df18eb9e583ab274251b7a89d98ebc0807",
+      "tracked": true
+    },
+    {
+      "path": "Automation/check-portal-client-assets.py",
+      "sha256": "7eaebf0dd8164ce24642de482d4eb0eebfbee2b876e34a2d6b79fd6da47ce776",
+      "tracked": true
+    },
+    {
+      "path": "Automation/check-portal-static-links.py",
+      "sha256": "db11e20ef7b371ff36070551537898230d304f1c075504bcb271f2f615ac4d76",
+      "tracked": true
+    },
+    {
+      "path": "Automation/check-quest-static-evidence.py",
+      "sha256": "02a9a5ea753cd2ef4057d02976560c5e6ef4c0af0ee68cacb7ad1785d7f22d9e",
+      "tracked": true
+    },
+    {
+      "path": "Automation/create-v2-quest-progress-runtime.sql",
+      "sha256": "b083da7f0c1a77cbab2c9a71582384134550ec9da037fea40dc13ed1ff26664f",
+      "tracked": true
+    },
+    {
+      "path": "Automation/create-v2-quest-reward-runtime.sql",
+      "sha256": "3f0ccaddd94cfca4d3bdcd073fc2e9d40f837d49f9bd46e9e00c123a851c19e5",
+      "tracked": true
+    },
+    {
+      "path": "Automation/export-gameplay-catalog-counts.sh",
+      "sha256": "e05eb90e091338cf37e7d19f9f75645b90c4dd89214844cc17fb6f039b971996",
+      "tracked": true
+    },
+    {
+      "path": "Automation/export-map-parity-baseline.sh",
+      "sha256": "e79d728abf1513ac6a91317795065115e106ff9daa0a7f66c537e043e519ed0c",
+      "tracked": true
+    },
+    {
+      "path": "Automation/export-official-parity-baseline.sh",
+      "sha256": "4f836b454267ae66d1b4fc5571bb07499f5e64a1bc562b5f792b710f5147d991",
+      "tracked": true
+    },
+    {
+      "path": "Automation/export-portal-parity-baseline.sh",
+      "sha256": "afeb381d47f8e7a29ed5a6c643b99cf130f4f53102b643f38455f542bd5feb38",
+      "tracked": true
+    },
+    {
+      "path": "Automation/generate-client-map-resource-drift-repair.sh",
+      "sha256": "41e6347f02c42db5776acfc050e7ffd4aeed15a79c181142b87ab1205b2f3971",
+      "tracked": true
+    },
+    {
+      "path": "Automation/grant-v2-inventory-runtime.sql",
+      "sha256": "4521855f2f98015b7856aa9fd92bf3d13ae789fd3138fc1aed49453dcd6c41c0",
+      "tracked": true
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-atomic-faults.sh",
+      "sha256": "e34d00f25d3fbf9bd8494e83e6506fe1a6b518942d27448e686ed4a81e55492b",
+      "tracked": true
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-cleanup-preview.sql",
+      "sha256": "df998cfc0eee13e07006128603ce2f9405bc08988459ebcf18fd873c49216b45",
+      "tracked": false
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-cleanup.sql",
+      "sha256": "ab4ef8ddfaeb949018e55a349e483e86df37a5fc2e19acaa2d495ba7bd87989c",
+      "tracked": false
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-identity-gate.sql",
+      "sha256": "8d17dea0fe24c42daef089e6e5e6630eb41004adc2b24e321788a4f430f7ba5a",
+      "tracked": true
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-identity-preview.sql",
+      "sha256": "86a06f763f4c107159aa9d346b8d1cd696fb464465a493cede04cb65b210a69f",
+      "tracked": false
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-lock-preview.sql",
+      "sha256": "7f5557652b52a91873ec9bf515d77f9db3819f82532701b642ae776f203d398a",
+      "tracked": false
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-restrict-preview.sql",
+      "sha256": "7ad796cb76801174df9c66257d8e16712f62faa698c96839dcada2ac54b3e461",
+      "tracked": false
+    },
+    {
+      "path": "Automation/merchant-isolated-3310-transactional-cleanup.sql",
+      "sha256": "bee6d573de480c9818790884888e441856a7f4e34ebd92b6a2ef9ca4989b8a57",
+      "tracked": true
+    },
+    {
+      "path": "Automation/regression-db-3310.sql",
+      "sha256": "bde9bfefc6693ab501965fbbfcf434ac3f3334221dcef7fa588de3730a5106f8",
+      "tracked": false
+    },
+    {
+      "path": "Automation/regression-db-3311.sql",
+      "sha256": "e6a4662d885876f82a1e35540d31e6989247bbdf860de02acd459c23cc1811e5",
+      "tracked": false
+    },
+    {
+      "path": "Automation/regression_db_state.py",
+      "sha256": "e3358b7421941899c1214c6876c24d376fe9b7322f23e442c9091453a9378a13",
+      "tracked": false
+    },
+    {
+      "path": "Automation/regression_evidence.py",
+      "sha256": "ed496154591960b130079eaff2efc44023755f09f3bd0c4952fa4289b2dea64f",
+      "tracked": false
+    },
+    {
+      "path": "Automation/run_v2_isolated.py",
+      "sha256": "580af5ec964f9dd5fb789567bcbf9c1fdad116f5c7426c62bf8fa23e8249693b",
+      "tracked": false
+    },
+    {
+      "path": "Automation/test-v2-all-isolated.sh",
+      "sha256": "4872a5d6f6ed6ee94ce33d411be11dd056bf1d66b89c3fbe0056b22f2a90d522",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-all-no-progress.sh",
+      "sha256": "95592724629849efe7cce063e000190219161074c68b6da7011185dae904533e",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-economy-snapshot-isolated.sh",
+      "sha256": "a0e25ad5f1b7a7f805c06c0b612991a0c9282c4d50d84a5d84dcc9cd98b18f1f",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-economy-snapshot.sh",
+      "sha256": "dd0eedf7bc9782e72dc85a1fb87a6c86e82df3f1eabbc1cab5b32a00c8247ad6",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-host-session-lifecycle.sh",
+      "sha256": "3c639753c703ba32e6b4f44c6bec4b0acd3d3c97116d966f3f23a55c7e965452",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-grant-concurrency-isolated.sh",
+      "sha256": "867513202c955358e819dae001e70c0fcf41d89b90ea5da8281a9c8581e2358e",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-grant-concurrency.sh",
+      "sha256": "4eae21259ea878efba36aecfba9a734b5a227ac7f0470207bde14d084e3c3b2d",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-grant-failure.sh",
+      "sha256": "a14e3cfc543ad4ec84fe46620d5ceea3c94b7a3098977cef7ca8b5f07ef23431",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-grant-rollback-isolated.sh",
+      "sha256": "c9b03284773191e75359ec0de5cb0f78727033a4fce038341d7ca1f730d990ad",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-restore-blocked-isolated.sh",
+      "sha256": "71049e81bb935b937bde9a294fe1aef0d6f62315ac076f2a29694177cea550be",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-restore-blocked.sh",
+      "sha256": "b8d52494caa8cc6d218e0d6ac923d0706b2682f39ac551237fb0aeb8cb636a7c",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-stack-committed-isolated.sh",
+      "sha256": "dd1126eb35469b8d2be471e9bcc198f412dd585b1f23321ffa7e0a1ab4b9e3bb",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-inventory-stack-committed.sh",
+      "sha256": "f42e2455c8597f7a012240d87ce2405d81a61b594b8057329f607a20abf06597",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-buy-sell-tcp-isolated.sh",
+      "sha256": "12c44c89ebd4fe9de227c1b9ea9ee753e2355299f1a1dc0a69687b4c02817c2a",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-buy-sell-tcp.sh",
+      "sha256": "0d2c59e82b2cd9f20c15b5b9e6de8db7d0d2f89b6d203318a97faced0507fcf6",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-command-isolated.sh",
+      "sha256": "e190d602e84483f7b3af2abd49a1f741031c2fdb33c4caa7b9306c5a388bcec6",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-command.sh",
+      "sha256": "cfa14c9ce88f48e5ae0581ab01cb3a6628b4a2b3eeee80e01ca7a6e7fb9a6a05",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-isolated-3310.sh",
+      "sha256": "eb5cee09fd1a9a5b6d8e48086506db528a1cc13318c4663730df95dc492ef27c",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-journal-process.sh",
+      "sha256": "d930fe43a9f8368b50de5e2c5891ccc493cfec4065e2b49e27c08be6be2f3574",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-journal.sh",
+      "sha256": "05e1a1668afecf3286c09b5b14916bc41a888036fbbc12811398ec930bcb2a75",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-purchase-isolated.sh",
+      "sha256": "06fed0ed114e59b85e07d5d4280633d4b852d7bc3cb9f272ecbe4ce323958a56",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-purchase.sh",
+      "sha256": "e93fb31af9d08beabac1cd1ca0881c1b145653f9d850d42893d9c35ecd7867a3",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-recovery-isolated.sh",
+      "sha256": "652180c8e36b40bd25158dbcbf08f91fc2c74ee20c7bbc65861c19a8b968290f",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-regression-isolated.sh",
+      "sha256": "af3fca822728ce3ba1bc15858aaad6a2229387c36e51520f18ce54093eb57c14",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-sale-isolated.sh",
+      "sha256": "5ab777b0e548bf7ff216fad3c0b9dbb5ec86ad8ff535df4735245f77e86073de",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-sale-journal-process.sh",
+      "sha256": "5f6009073a77514bfa1b609763134fdad345484028bd45881b3189637d968261",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-sale-tcp-lost-result.sh",
+      "sha256": "fa473a8932244bb41c4fe171fe448ff2358c1f1ad57a9c0ef0edb379d44ed874",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-sale.sh",
+      "sha256": "2ff5b687958a7c79d0540b708fe59126d70d7ffd0aef499fe317817d854d2873",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-isolated.sh",
+      "sha256": "410ae4654884dbf8f8afc6beef1e761d7d74f84b666290d8c4f6f670c68a40c4",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-lost-result-isolated.sh",
+      "sha256": "4c91cde0a6367dba73159b500bfa1681fc1b7dc7d95642c8688cb564ff242bbd",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-lost-result.sh",
+      "sha256": "678adf808f3b27a7ef18742f57696ebd4fe4bf528b944c99110e14fd36329a47",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-new-server-isolated.sh",
+      "sha256": "3f9fb5eaef56c04eaba953bb1ee6efc5fb48fc559c7d99ea20c1697e59a6c677",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-new-server.sh",
+      "sha256": "ffb9a233560a845abbeca0c7d1bd7d8aaa15f82a62d414edee8ea8df6738dd03",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-reconnect-isolated.sh",
+      "sha256": "a2ab921a2135435c7ea2ae696a3afe688e9263dfdd2b18f4cf5f5f5114ac4c33",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp-reconnect.sh",
+      "sha256": "faf6d494c0f4f9842d1e52dd4ad3674309eccae68d68eade7cb49785af903ddb",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-merchant-tcp.sh",
+      "sha256": "dbb825e4e08deced139beaab5c6694e6ceea21a1ff8a5f8412e9b5b0a44ca397",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-position-committed-isolated.sh",
+      "sha256": "13a93c3e75638473e1ca1570948c44a2bfe1fb5a1680275d84d611a8db81f254",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-position-committed.sh",
+      "sha256": "d5a206bfed9ed1330b019375d14aa0938f7cc05b28de0bc6757364f59190d295",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-position-tcp-relogin.sh",
+      "sha256": "eedc6c2c8cb0a25cc17b41bc700f94d3ccd4ef35d163b5e89420bb5752b6cb40",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-quest-process-recovery-isolated.sh",
+      "sha256": "515b401093df1dc879815f3ccff0d1374a9dd84cb633a7a2d29c601cbd877b10",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-quest-process-recovery.sh",
+      "sha256": "aa2e3d60b11803332fa101ef6d89cbef9226f4599ac91fb79490f5a4aa520d7c",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-quest-reward-committed.sh",
+      "sha256": "9ec724524d4b6a3ea628832d267e11dc8dc57fd8ec8b1eb8a246ef5855b0ceee",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test-v2-quest-reward-schema.sh",
+      "sha256": "33ff794ee082bd59414902b9b4fca07ec0190a431fb20bf085bfe92faed25214",
+      "tracked": true
+    },
+    {
+      "path": "Automation/test_regression_evidence.py",
+      "sha256": "ea2e650519669bce52eead2765f4ab0741c3b2f961154d3c8c6a7029655815b1",
+      "tracked": false
+    },
+    {
+      "path": "Automation/update-progress-all.sh",
+      "sha256": "d04b70b5c5ad94cb9fbbe785322176b213ce5a8c031053b646b841b13b808b6e",
+      "tracked": true
+    },
+    {
+      "path": "Automation/update-server-progress.sh",
+      "sha256": "b29a531a76673c6ad3042647b9b9849f4d92a685266e08e815fe901089daebc7",
+      "tracked": true
+    },
+    {
+      "path": "Automation/update-v2-test-progress.sh",
+      "sha256": "7fe8976e3794e28e08539f190d1a30722a4a4c416ca5a72ea8111541c5fc2e46",
+      "tracked": true
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "a9cf8186eacb2193a8b14e6486718c7607979f3a164cca002f0d3dfeae84b671",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/001_accounts.sql",
+      "sha256": "c207de6e28ebab92e99f4537f80ec23f7fca7a093d574dec9abe8335450a12cf",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/002_characters.sql",
+      "sha256": "f759cf0d4ca0d4e776142ab40615418244fda9d52cb41fc15d33149e35b4fe61",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/003_maps.sql",
+      "sha256": "2bf4ec23c608bf0db293e792d90433e001b12d4fa7cbb1132283fbfa3ef34f64",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/004_portals.sql",
+      "sha256": "8e6366eeaada37f4930b7d44cac998a353361995d8ba4b51e7b1162354c6771a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/005_items.sql",
+      "sha256": "ca2d0e3ab30c5fb8831a511fc94e9049d8dc78b0e4b96b54639aa3d8c925fb09",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/006_inventory.sql",
+      "sha256": "95427719eb8ebcc940ec0665d9b020ea1f0fa6f20ad338f2cc7a96d20ee5dc7d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/007_equipment.sql",
+      "sha256": "547651964b865753d9f1bfae7ae59575e182d5ad626d7a27b4716bdfb3a8fc62",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/008_skills.sql",
+      "sha256": "910730416a63efd7f8319787b5ded39882d4e79f599d1df95fa00d53952bc2b8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/009_npcs.sql",
+      "sha256": "f258ed84020c608248c7010f418321107fa9c188c6cb078acd1dcf8c608e2ab3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/010_monsters.sql",
+      "sha256": "b9839a1aedc3ec2191e18a2ee3a8d66a4bf516d6f7b1bb3e774027e43f037589",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/011_spawns.sql",
+      "sha256": "2baac6c03b62dc47927e7af7d32a0dd86f1b1f8850988e42bef0c2e12df5ee86",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/012_quests.sql",
+      "sha256": "83c0899c79b5e985a2d51b342e5098e57957ccee8862214217e4753964b36d5a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/013_merchants.sql",
+      "sha256": "c4518806f4b8f68a9481157527e308a733f77dfbcf390974a66e79e01264bc35",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/014_immortals.sql",
+      "sha256": "a452cfac79eefeae73382b01262db7ba3daae7341a6640e0969377b3de292f6e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/015_battle_pets.sql",
+      "sha256": "8780daac6706f028b0b2d48cac2f7867647ca65bc3e06d1f55713dfe9abe4bbf",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/016_drop_tables.sql",
+      "sha256": "5b04ed85364d47a2e8ebc8213d000876e4227735c13cb22b83070bc798f683ff",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/017_rewards.sql",
+      "sha256": "5cc3c5b791c744c176909b02d30ed73bf30bf2bcf3396265fc38c731136825ff",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/018_dialogs.sql",
+      "sha256": "0f95da2dff7fba0046e43ce259746bce3214a3073280ae8cdd277562951df14c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/019_status_effects.sql",
+      "sha256": "50ea09d80796d2df75e44bb3e0bfdd896f32707efb9df6064288d9495519b92a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/020_localization.sql",
+      "sha256": "21af50124dea92217378f28f7e38e14a7a65f6c79837d38b420466c3216ff261",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/021_runtime_state.sql",
+      "sha256": "71cafe12070b207a76c9523e356b31173c62532721d51e0c879e48116aaee2b8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/022_character_lifecycle.sql",
+      "sha256": "cdb4d541ef247dff9558deb628722679176f99519ff028f2c9e00892653b42eb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/023_inventory_transactions.sql",
+      "sha256": "42bcf37a116624f683941b91284c5addc68fd62dae1a2062a68a59a758a9b307",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/024_world_interactions.sql",
+      "sha256": "2176a48a55e3a02363f4d4b1df65ad286402966ac816f07f1616d180e7c1de5f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/025_combat_runtime.sql",
+      "sha256": "e91371d78dcdcacee3c5c76ddd2c3d38cee54605f24fe9d72793ed9f70c9f14f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/026_turn_based_battles.sql",
+      "sha256": "80c698bfda3134c3ad949c0d5807665a1d01ab61086d7d9444957094b0c9172f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/027_skill_runtime.sql",
+      "sha256": "d87938bb1c81047f53581790bcf6c9bb9b10d9f8dc0e50b5180d60adac7e35c7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/028_status_effect_runtime.sql",
+      "sha256": "b7b45791df3da56d4487ee5542ff39de098b53d7b18cc94119efd95e26f072f1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/029_quest_runtime.sql",
+      "sha256": "276f04b7307f30cf6f168d920c6276ef5ffaaeee0e21cffd474357c4611111e0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/030_battle_architecture_v2.sql",
+      "sha256": "b2dc9253995a7706de69ea89d32e71ef89f75072a47835d73ac9d84f794617fe",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/031_gameplay_content_recovery_phase1.sql",
+      "sha256": "d727204cda7cd9fed8ffdcc54bc6853fb9a99948a23000f6c2adc460924e7f8f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/032_gameplay_content_recovery_phase2.sql",
+      "sha256": "d99abda956a7200e6d2e47961646541894a58d37cc011480ef4f83d41ced69aa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/033_gameplay_content_recovery_phase2_integrity.sql",
+      "sha256": "f39cf3a20343dbff1a523cc2565cd1fe417a32cff0acbc68e57a0346760e97b6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/034_gameplay_content_recovery_phase3_semantic_promotion.sql",
+      "sha256": "79b3af6849f6adcf4e3ba8dcc187688036903184b575e8cb68f9fde00cfe5fe5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/035_client_map_identity_authority.sql",
+      "sha256": "ad077f302546c806c91ba8f15ead8baf21026eb9c80baaf5ce5518cc58bd21e7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/036_map3_client_identity_evidence.sql",
+      "sha256": "95315eacda4d6048522ff11d7bf50f77cdef3d90b6c5861af5e169b15ebcbdce",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/037_map19_identity_and_character_map_cutover.sql",
+      "sha256": "203ebf1707b5788bef3d8bb87d6beaa55306bb92fa2098046670859171b50183",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/038_map19_identity_cutover_resource_key_fix.sql",
+      "sha256": "8eb784d2d4b0ab7241e51bf47e637085880f3b85c402d6958883eed3e4204aa4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/039_roadmap_m2_npc_identity_and_spawn_promotion.sql",
+      "sha256": "7fa39a4eb0b7f8fe6d682498e2f4482810a33ef599fffb053f213e6a6898f7f9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/040_roadmap_m2_npc_promotion_hash_stage_fix.sql",
+      "sha256": "3b6615c7269437d3a703d40978a37ef5aa0ea98ecef89e93127ab87aafe4ceaa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/041_roadmap_m3_npc_wire_identity.sql",
+      "sha256": "1f9b750992963e2f1a69c90c63661a20263920fe7fdd296e22c7beb3f256bc38",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/042_roadmap_m2_monster_spawn_production_gate.sql",
+      "sha256": "dd69b4768bd1b2eed6f98bfbce5e60b8e0de16e8c01b86f96c45dd280463f23c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/043_inventory_authority_and_global_item_identity.sql",
+      "sha256": "c761a3843917c057345a5a862778e479c9e60325380b709bc1fa92594841954d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/044_character_creation_authority.sql",
+      "sha256": "4ba826db4e8c4617b9df15934fc0149d9f739f6217464ef995f1f4644c003d15",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/045_character_lifecycle_integrity.sql",
+      "sha256": "9e15bcbb3a76105f47f7653d6c6d6eb667d5b23a1aa3378c66e6499e1bec36ad",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/046_roadmap_m8_content_release_authority.sql",
+      "sha256": "6831bf8afb4bc5170a0d0873b392b0fec69841d0c460cc2826052fb111861bdd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/047_roadmap_m8_formal_catalog_release_manifest.sql",
+      "sha256": "38960c126d5616c916cb0624039e006a6a88f8fdec8302537d5f890f580c74e6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/048_roadmap_m8_formal_catalog_manifest_v2.sql",
+      "sha256": "6214b8a0d903f361738e47e83d779ac53058c6dee279e54b8cb8aa57120b79c8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/049_packet_capture_protocol_evidence.sql",
+      "sha256": "bb073e3bff89cd58528b0d8398649d7eb03644c183878bb05f7a747a6b2a87ec",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/050_packet_capture_protocol_evidence_batch2.sql",
+      "sha256": "e11d2045a071337cbcda82a3ad7493c4745117f34c1e3ba780b3fe79821d71e3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/051_god2_evidence_package_decoded_handler_evidence.sql",
+      "sha256": "ad608d22e912cbab1602111a66dc5fd0d682860bd8c6b7d5425111b0feb641b0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/052_create_god2_game_and_player_schema.sql",
+      "sha256": "929cffae6f3a9a1406ecb58b617a90533e4ac585fe96b3f7c873d8dfc781525a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/053_populate_god2_canonical_catalog.sql",
+      "sha256": "f393f80d774dd1baa898e69548a5fb39125901cfc4807c61385c6141d6c191b7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/054_switch_runtime_to_canonical_catalog.sql",
+      "sha256": "d105c65a3cd3efc3a2cc2b345ee74902430f613c40655b3092efe3a8c3404ff3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/055_add_runtime_player_compatibility.sql",
+      "sha256": "04b0465a4875ec7970fa573d0d4c0ebcfbec3feff86cabd0949759c731b735e5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/056_disable_invalid_canonical_dependencies.sql",
+      "sha256": "b026f67bca34f4ee01f6e8414121aeb5888d7d382e34862d62e3b7845fe214f1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/057_add_canonical_runtime_state.sql",
+      "sha256": "de4a3da613239a4c7cc9b368bfbf1c2feece6549f3b594f72b1b38cd1c5a034a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/058_god2_evidence_package_20260807_supplement.sql",
+      "sha256": "cdb5dc39bcbdafed876264216581bf2d2361ed28a79fc16ff3a69064a920e8ba",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/059_god2_evidence_package_20260807_112752.sql",
+      "sha256": "8096a9d151402feb5c8d484d49ad685c0a7eb880dba05c0538345e978ae31540",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/060_verified_battle_observations.sql",
+      "sha256": "bc43732feae8423b219e60edd32d0cf544a93ed3b44048e4467d4c2d2081f058",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/061_official_skill_book_catalog.sql",
+      "sha256": "f1b01c8310a087c6902595ab55f9916d3619b4fca7c1fdd20717c698f31b09cf",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/062_latest_controlled_gameplay_observation.sql",
+      "sha256": "66f5cb3f0649f3c6185b37acdc762f954f6d208002850adf21ec08f9bfa6c638",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/063_readable_monster_catalog_views.sql",
+      "sha256": "30a765ed9f6b12be24658426435e072a35591cc42a2d632c84ffa87265045c4d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/064_repair_catalog_builder_trigger_privileges.sql",
+      "sha256": "31909506952b5a9152e7b434aae855fe4a51e0ccf592c6a680becaac6c859710",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/065_move_monster_packet_evidence_out_of_formal_catalog.sql",
+      "sha256": "25d4d527e821dad3a1288c28a7e9320032e40dc4f69261d4d40db1dc6deed3b9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/066_correct_monster_hp_target_semantics.sql",
+      "sha256": "80295675112dadf9625198ec5856bd41162c2ca2677f03b0160d3221a2c32868",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/067_withdraw_hp_values_derived_from_source_position.sql",
+      "sha256": "bb771f7e2e6524cbf0ae0504d2da3744b72b93983ebfbc6c91cb8539f6228c26",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/068_record_latest_two_monster_level_evidence.sql",
+      "sha256": "b285014c9b5c99985aa20c6288c79ea8aac7d788dd8a52103b1091587fef535d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/069_replace_two_monster_evidence_with_latest_capture.sql",
+      "sha256": "8eea70d389c3396b0b822f16db6963db400950d2336a5fbdd6c55f615c623285",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/070_replace_two_monster_evidence_with_third_capture.sql",
+      "sha256": "23051178483c5c21194da2d0f07768934f2d29057fc29f85aef24249f4768030",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/071_replace_monster_evidence_with_object_v6.sql",
+      "sha256": "0d151277f26436918131feeb18677e48a23708c822842016ccd4daf6c22ca7b1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/072_restore_readable_quest_identity.sql",
+      "sha256": "10fc6fd0403d54a71fe405be3c60dfea6cb8f922003c3c57fcb4ee9c3e729571",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/073_move_unverified_battle_rules_out_of_formal_catalog.sql",
+      "sha256": "dbcb9da246241dbdaf6484f88307321944e06f4aae8bc0728a280fc7294d8748",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/074_remove_code_owned_placeholders_from_database.sql",
+      "sha256": "55967d208794e800e047997d83b9cddd06d5aefffbd8a685b83c55d10387aabc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/075_replace_import_hash_codes_with_readable_identity.sql",
+      "sha256": "611ab53a2d1b1074c25461bd97724bc96034548413b2bbea19bd4246daf9a66d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/076_publish_classified_item_usage_and_requirements.sql",
+      "sha256": "82848f8dc9c78a355386d4feac6c4ee03581ef5bc6de13fee075b97214ecb0d6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/077_split_items_weapons_equipment_and_magic_treasures.sql",
+      "sha256": "399a1e23bfca3f6a7049b6368a59cecdd7d4539146052900eedf0521de16ee62",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/078_add_equipment_instance_enhancement_state.sql",
+      "sha256": "bf5cf05d9df0c0de9977759746455facf4c9f6af8cf0cb89793412c9efa4cc76",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/079_add_strict_item_asset_mapping_catalog.sql",
+      "sha256": "f1f4ba12f13e0418f66bd5450ae91958b5ede767a80c49a57a451ec364991539",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/080_add_equipment_icon_identity.sql",
+      "sha256": "1f27ab324d08ca0f0106cdec73b0c4b5ea74444d7ff5eef076756bfb45999246",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/081_add_split_catalog_column_comments.sql",
+      "sha256": "34d5d439294498b29f9c07bed588c7c6c305a609fb6f9eafcb6f1d7bd03d3ec6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/082_redirect_item_sync_mapping_to_registry.sql",
+      "sha256": "89e4b64c4f60343ec808a1bb1f152864fce6ba91fe3f350bba5376348b8542c6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/083_publish_latest_verified_map3_map19_portals.sql",
+      "sha256": "dd787eed030ad5576d5d3571dc5e0d7bb745bc7fb5eeaf83decf010ee93d56e5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/084_publish_hongmeng_biyou_portal_pair.sql",
+      "sha256": "5fd4adb8c3ae0d15761c07db9f09ac6fa9edc3aa720a5c27f746ad90808a27d6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/085_publish_official_character_attribute_growth.sql",
+      "sha256": "5b03069cd19cafe3f42c4ae2c454f936b3607a2917fddb33582d66b9ac171990",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/086_publish_verified_consumable_effects.sql",
+      "sha256": "e649f9001afe1476e5267ee52f0c8c67f249c93eca4b0f3ee61557251fddc873",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/087_activate_recovered_item_catalog.sql",
+      "sha256": "9f1823adeaee1ef741cba5fbf9d4920fb9be215d0337b6e7bbd2d9510371bd91",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/088_publish_equipment_enhancement_rules.sql",
+      "sha256": "2cf0e6e99bb66cee70ba6430b864dbb9dc3b1c907d5540d734299a49bb835ea7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/089_publish_pet_growth_grades.sql",
+      "sha256": "9f708325d58bb8670779720faabaf5579433550c58fd248d6cf5254c925456c4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/090_publish_battle_pet_categories.sql",
+      "sha256": "70bec12039908230f2ae0902ac9ab66fb899fa5e212c9d54be113dfae18822f5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/091_publish_general_battle_pet_skills.sql",
+      "sha256": "c0035639aa453badee6b248a86a827b7396ef8649daab3b8a33d1ba50efaf2c2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/092_publish_pet_automatic_growth_allocations.sql",
+      "sha256": "0b6e7b9209d25710e548b26e5bd5a1d1e31976d491512ebab13bd728d76cb33d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/093_enable_manual_pet_growth_completion.sql",
+      "sha256": "9fb175ea966a4ba1860c66f1b853908d424bdcbe0cd14833cefb579e34fe3ecc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/094_preserve_manual_pet_growth_drafts.sql",
+      "sha256": "673f599ac3ddcc47f05eb40bc9473cc2ad7c1a65286f58fa180da1e4b505e4ca",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/095_confirm_manual_board_bull_growth.sql",
+      "sha256": "54dfae8c03b58a4c502836a921e06875a266a699dbad746fe604ae947e35d9b7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/096_remove_legacy_pet_growth_profiles.sql",
+      "sha256": "80ae4ecb6182837c3d8445bdf969b0ba48255585bb53d10c03bbc1f131c66d34",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/097_add_pet_lifecycle_transactions.sql",
+      "sha256": "7bb9272c6ebfe1cae8a376df3370e25e76990bd09227f4ed5a8e94d6f51098fa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/098_refresh_general_pet_wiki_data.sql",
+      "sha256": "71aff496476a361af817ff7e6b287493dbd1a13e8097957e3121f159e5f3236a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/099_publish_pet_innate_skill_identities.sql",
+      "sha256": "46ccfe615a7084f689e82c48658a6ac29c1c29ab0e071a76890e084f67850dbb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/100_publish_community_physical_skill_coefficients.sql",
+      "sha256": "1ba6dfa651c8283361e687b9b94b1482a765462e06de9e1ac62935ec6b30419a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/101_publish_community_magic_skill_formula.sql",
+      "sha256": "b5549216755dace5072de58d80d407ed3a1756adc4b25c246f7182ad714c5038",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/102_publish_official_client_skill_metadata.sql",
+      "sha256": "672834d562aba416ada0cf0b097fe47b95288677a2fde1c876f84b8ae3e30976",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/103_publish_live_stage3_stage7_runtime_slice.sql",
+      "sha256": "4b65e9dc8273a3f2f2b6de05d5d2e9e93baa37f8eadced6cb9ce00455c8f6cfa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/104_publish_verified_default_character_creation_profile.sql",
+      "sha256": "65bc932f9816fea4c672508473478d8c2b0a070b991143621344ae7b764f32e3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/105_fix_character_identity_generation.sql",
+      "sha256": "e4520c5b55ab52db29209e7f7cd50bc7e07a87e1edb8d250d40e98c22ddb7746",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/106_publish_level_one_immortal_baseline.sql",
+      "sha256": "736941edbab827fb5c02efbfe80a62e5b6da8c972f58d2bc53c1551dec7e3ef0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/107_correct_map19_visual_exit_trigger.sql",
+      "sha256": "4bd5fce2c10c3096081cd61928c4606a7e3cc2be507c775bfb93ac4e2ea5d41b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/108_create_client_map_resource_catalog.sql",
+      "sha256": "fc43311ad34980d6882cbb8f5b509ca4398a881bd3e6024764e4f0f10a60f281",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/109_add_portal_evidence_gate.sql",
+      "sha256": "d2c3e03f8bf3cf627f49214328723f346fb7f880fc31e499c7856566129aee51",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/110_expand_map_resource_navigation_and_bind_verified_maps.sql",
+      "sha256": "7b0faf85a82307ea0bfb9a803e5641ce915cbe986c3475bf6a1bf7c7da02da86",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/111_backfill_verified_map_coordinate_bounds.sql",
+      "sha256": "719e3092477962ffbae3b8505b1cb607d991ea0ad1c72e60ea17b3db6113452b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/112_retire_legacy_stitched_validation_characters.sql",
+      "sha256": "49bc19e543196d174657d561ed7925777e4e46bd45d8f4b62075a30fe2849963",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/113_enable_verified_map19_grocery_merchant.sql",
+      "sha256": "c30523477f50b8ab9ed3f495a1fdb442692f7f04dac9a502d2aaa131029d5d52",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/114_publish_official_map_catalog.sql",
+      "sha256": "bf6f02191dd2313f95c366eb96cd81135fe5b783d7167502131fefd01826881e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/115_publish_official_portal_resource_links.sql",
+      "sha256": "1a9f11e5d219877e3f01589695262c05e78b361c0c1023343f7ab4c04e6c436a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/116_publish_official_npc_appearance_and_coordinates.sql",
+      "sha256": "94e90510360b501dbdc7eb91b69d7a2e53b4520193446cc92439a5a58dbb367f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/117_catalog_all_official_npc_appearance_source_rows.sql",
+      "sha256": "8e39d6c633a1b2f75a527941417ac055cfb21174757185b5f477e0d3b3d45c71",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/118_publish_official_immortal_wire_identity.sql",
+      "sha256": "b8898c19e89cff3c08f17d6d6783577bff87e8931ff5bf4fd82161de2e6fadcf",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/119_promote_verified_map19_grocery_npc_evidence.sql",
+      "sha256": "9d699b2da9a3772ef82bec3dfb2a19fafd843659c47a12689017e06d4582a569",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/120_publish_verified_level1_class_profiles.sql",
+      "sha256": "0425a03a85dce429f5e562e6fb8397de9b54c27335572d4dcef09b48a9e64c81",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/121_publish_live_verified_skill_target_shape.sql",
+      "sha256": "2999381a3bd6f9653383fe4ab3696b183c57b26be9e750ba6aef2aa0e62c5d2b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/122_seed_formal_level_one_wuji_acceptance.sql",
+      "sha256": "16edaed813ede7fd74b1315594cdf629289b181ea45c1ab22dc826abcac4a07b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/123_correct_wuji_login_wire_identity.sql",
+      "sha256": "f7f95af07b6d4bc6312560e642870b570f5f7e46eaf08263ce3901b19cc9b329",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/124_finalize_observed_npc_dialog_authority.sql",
+      "sha256": "2a3d6d79db5c4cb0443481feaaf8059d5d99d1a94164de9e3bb53a3b5d718bf8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/125_disable_compatibility_estimate_enhancement_rates.sql",
+      "sha256": "8dadbe90b58f8d1eed6c41df28d24076db1bc2c4328cfa9f18338033416abbdf",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/126_publish_verified_immortal_login_wire_identities.sql",
+      "sha256": "7b501ade3e3ee23a550d56a913cc84e7d3529160e1bcd095e435295ccbca722b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/127_pin_enabled_portal_evidence_hashes.sql",
+      "sha256": "f2dc7c2dc9a6b450f4a48857d98eec8b182b77d0a0fa5f398461d9e57d3ef76e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/128_publish_verified_equipment_requirements.sql",
+      "sha256": "f1b2631b56600ccacf8fa6a7c83078f1bce94e58dc6e4cb6e9e4add4ba880cd0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/129_publish_verified_weapon_attack_ranges.sql",
+      "sha256": "f833678a3d83a4c183961f7563add66875ca096b1d8aba2ace21edecb0c80898",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/130_withdraw_generic_equipment_slot_labels.sql",
+      "sha256": "0fc701927e4ee5905e5d74c8c330e957041c13b71228a102014a7e913d648860",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/131_publish_verified_equipment_set_item_identities.sql",
+      "sha256": "2c4b11b82b8f42e1db61f40bfc95916a7518a24ae154a2f8b877eb9419aab82e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/132_publish_verified_equipment_set_member_slots.sql",
+      "sha256": "57c77ba5c99515f8d25ee7c75fd127092afa7d842692c8bdf0db69e49dd1fc78",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/133_publish_verified_equipment_set_bonus_text_values.sql",
+      "sha256": "d66c1dc4510679ed4d53b1c6bbb8f7c94b60995d8ffa2c9b57eed1d8b06f2bff",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/134_publish_verified_equipment_static_stats_and_withdraw_implicit_zeroes.sql",
+      "sha256": "aa8fe1303abc0270ac2c84d15f61ceba3631171a3f7c78db62d17b807c402dfb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/135_publish_verified_weapon_static_stats_and_withdraw_implicit_zeroes.sql",
+      "sha256": "12d5e807499b50c28987769a2cec0ddb039b06162c874181b29a89ede59d83b6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/136_publish_verified_equipment_class_restrictions.sql",
+      "sha256": "6b67125af9de81c35c248bc61f4df7f5ea6e142760ec1e90d3b18f788a504095",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/137_publish_verified_equipment_gender_restrictions.sql",
+      "sha256": "1298abc279a4d7805f7bf0337474af6891aca1759f021cc3c86e43b81b07f7d3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/138_publish_verified_immortal_rank_catalog.sql",
+      "sha256": "b5cb6d3c0a5d602222a9343c7b56483ef827f48862a1f1600e984516c94aae3a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/139_publish_verified_client_item_effect_visual_catalog.sql",
+      "sha256": "485cbb861ccd0305ee9aaa00762e80b90237329f75650ca262be4dbf327e03fd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/140_gate_exact_client_item_usage_flags.sql",
+      "sha256": "38634ab3bc82217de0f1e52f36bf85b73c4aee2412d25cc534a6e2bff74ee2e9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/141_publish_verified_item_static_permission_evidence.sql",
+      "sha256": "70acb8e350556138d3dcd771ffd9ca6b90654c396b0b1487eed553e6d1b38f07",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/142_add_server_owned_player_social_relationships.sql",
+      "sha256": "f1fd854c85ee42e8bb786318cb6043c81bb975fd36f05e8b79713436924a9b40",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/143_repair_canonical_catalog_invariants.sql",
+      "sha256": "a6f59fc392f767ef4dfa2eed4dc9e9ef59055262d2b986951e5b1e3e0fe4bda1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/144_enforce_traditional_chinese_runtime_text.sql",
+      "sha256": "ac8b9cfa418ae1616e375e18d3fe51573b9c6cdc4721c8bb78907bc1fe58c9a0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/145_add_bounded_runtime_verification_fixture.sql",
+      "sha256": "971216a1c28bb3d478673db7c9840a8a621f097f60c646a08c34b63edeab818e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/146_move_runtime_verification_fixture_to_infrastructure.sql",
+      "sha256": "7342d726a9b7b43f11a2698aa22cfaeccd6ff4abbe03e437eb8858be22bc745d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/147_promote_measured_magic_formula.sql",
+      "sha256": "b246241bec47a18ef2905b64ee73362f019a4064b537b7706ace355e8a5bde07",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/148_publish_public_beta_skill_effect_v0.sql",
+      "sha256": "f334ba78ed7d46493600002a6a4ef4787296284b86f32d856a6580f099f44096",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/149_publish_xjz_current_client_evidence_pack.sql",
+      "sha256": "7ac8b1a385e7cc9d88cca31261913086591928163b8c64b48222a21c4da5229a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/150_cleanup_xjz_current_client_evidence_header_rows.sql",
+      "sha256": "e7f3320f072503fe5fae8bbcd0e863453178cf12e231211f9f15c3e741251606",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/151_archive_xjz_evidence_tables_out_of_formal_game_schema.sql",
+      "sha256": "763911e1654349001ad4f5840dc80ab917cb12d39429dee3f9d83807153d0b84",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/152_archive_verified_evidence_tables_out_of_formal_game_schema.sql",
+      "sha256": "cd87afeb53d040035e74b138864d028e74e3edfd529de82c10a8e4b2424fa073",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/153_archive_legacy_god2_research_tables.sql",
+      "sha256": "1c222c2985686b0bcffb56d1ff771d0f642f98370b9cf2a079e3bc9a2437cd5f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/154_archive_content_field_evidence.sql",
+      "sha256": "01f47f0b4a0ee03910f9d9e922242397b65d8fa410d67a1521328ee487671020",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/155_archive_recovery_validation_tables.sql",
+      "sha256": "5c2f7a4b1a888d4f26561abd83e45137d8b94391aadc8cf4ad79ac4d1820bd9c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/156_grant_readonly_research_schema_to_runtime_tools.sql",
+      "sha256": "34b184ca0060179ab236a0d062f35c7d90704f2ec3b1d2f8938cf651e05b6c03",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/157_archive_phase3_manifest_tables_out_of_formal_god2.sql",
+      "sha256": "44b282eed01e3461edac868d9c612b931dfa1ca20f4abcd6183a1a83fce4500b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/158_move_monster_capture_eligibility_view_to_research.sql",
+      "sha256": "a47fcca668f9de2c3afc5931cf8b5fb1e4712f8fead2d6d64eb68cdadfc228ad",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/159_drop_empty_formal_views.sql",
+      "sha256": "857bf3cfbf0b8c32dfd4623b99031cea921ab8bb30714c6b4f433799eb541817",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/160_drop_empty_non_runtime_extension_tables.sql",
+      "sha256": "c179a1d1bbba9fba052a28fcb57751edd8e6cdfe468bf1259057ae74c148e99c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/161_drop_empty_legacy_god2_tables.sql",
+      "sha256": "948adb4008b7205de7bda0fb8b6b6648fb391b2f6ab17048cb5ee86a1f555d42",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/162_archive_runtime_source_observation_tables.sql",
+      "sha256": "9d3c29169c96c274d1337ba945d6893aab90b31729ee9596d00af105a5b26075",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/163_drop_legacy_runtime_duplicates_and_empty_catalog_placeholders.sql",
+      "sha256": "7480d35450f9c4716e39d3d60ea1be68bfa6943bd545dc7f17f9d393a957e113",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/164_split_final_gameplay_catalog_evidence_columns.sql",
+      "sha256": "4d266480514c602a73e2adab19187712f01fb2acbb8e2f7ba904fb217ab9b81f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/165_split_character_creation_profile_evidence.sql",
+      "sha256": "1214c632a7ea421d7052530299db9e5a422f1d7d199b4f1e189bc5b875191ceb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/166_split_magic_skill_damage_evidence.sql",
+      "sha256": "60e6afc8a79e6d7aafc129cba977d3b4545ed42339ae483b625196255d92b41b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/167_split_physical_skill_damage_evidence.sql",
+      "sha256": "43fd47970931acf8d46eccc7aff40f150755f33e017b4cea549ad2e6e816d33e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/168_split_equipment_enhancement_evidence.sql",
+      "sha256": "9fc452d0364d2f67b2688fa4bdae27bdeb9df4af36a31590cf6c7414fa9d89c7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/169_split_pet_growth_evidence.sql",
+      "sha256": "4496db659649399bd5a68a8756497994a6a96af0eb58e645e12a79848bfb576a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/170_split_battle_pet_catalog_evidence.sql",
+      "sha256": "09d3cabe3385add824357cb5069d273f26859138ee9373fcef2d7c20793c0531",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/171_split_immortal_template_and_baseline_evidence.sql",
+      "sha256": "39e27e70ea96a597d2d8bd5258c6a3df5b28b37fa038ab5a2463cc04e9826d7a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/172_split_item_catalog_evidence.sql",
+      "sha256": "6cd5355f7c4b41afb19e3ccdbddba52adeace8a92e95cd03d21a9eb6028597e3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/173_split_monster_catalog_evidence.sql",
+      "sha256": "2f826fa03e5615f3471ef5d89b65fe913b3edea42ad3e24419e6434bf0bbe6cc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/174_split_item_usage_and_effect_evidence.sql",
+      "sha256": "c77935e302ea97eb843f4c2b5c381a58e5251594bb5287d7e9d21229365cd4a7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/175_split_merchant_inventory_evidence.sql",
+      "sha256": "3d41a91fffa3316faf6957ad3aab21921b83a533d03b703ada1f921b26927d48",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/176_split_quest_catalog_evidence.sql",
+      "sha256": "70718db167090305e9594aa399c9d5833ac9ec7709f7177b346b655d6c4547f5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/177_split_skill_catalog_evidence.sql",
+      "sha256": "ebcbb02c663088b2d6793ed23e96a3383f951d0a18407a9f852f7dff3ffb8a40",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/178_split_world_entry_evidence.sql",
+      "sha256": "6f3fc0d075bfa1a2c7bb50826c661745da0fe5fbaeb5c2871f771ed1632255e5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/179_split_client_resource_link_evidence.sql",
+      "sha256": "635e7f4810560c48da7f68652af5bde0d07cf9f634269674ae998647c500e2b9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/180_split_skill_runtime_evidence.sql",
+      "sha256": "5e850bc4e67f5e23b5d410e54fcefb63b79c4c942a876606dd06582b5d8b216f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/181_split_legacy_skill_evidence.sql",
+      "sha256": "2e46184460befc61e10c2fa54eae188cefac295ea4ad9aa323c7baf9c2f3fdfe",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/182_split_legacy_official_runtime_payloads.sql",
+      "sha256": "35af5ce735c6abdb91adb6117bc6f72144765b514403b23cf113a3875787441c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/183_split_official_import_record_payloads.sql",
+      "sha256": "1799b36f15eb0b1d12dba6e432dee9582e8913573f6fd718359c1527f5fd6c07",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/184_split_legacy_world_spawn_evidence.sql",
+      "sha256": "8ab7450e5eee4c7b2a5819fa2f25c9399c7e4a629876a8264f2fba3d5d4f66b0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/185_split_legacy_profile_relationship_evidence.sql",
+      "sha256": "90b2e37c54ab66892304395aa34d945ea5382fd1d03eb9b5731af3cfb4dfa767",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/186_split_legacy_monster_semantic_evidence.sql",
+      "sha256": "6894679211642c2d1a3558042c5041d868bdf2c62b9b32e9300a115d2dbfb480",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/187_split_content_runtime_release_evidence.sql",
+      "sha256": "4e839aed76850b4f2e93f4d2c5ac98ce15c6a76bdf3ef1ca9440de2f27ea8e3b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/188_rename_monster_combat_runtime_metadata.sql",
+      "sha256": "ca2c1c53e08e8b7b4620fc6bce6fb07613d41ed447859f8b60867bbfa46b1bf7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/189_rename_game_meta_sync_observation_columns.sql",
+      "sha256": "daa0a10ce89acd0c2a1e543122e806a5a8f9c2d974fe16577ef295e4c2ec12c6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/190_rename_runtime_verification_case_hash.sql",
+      "sha256": "0a6e1e121e4a81363aff6f649f9a76c2deda4d1032055594bdd670ff7163537f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/191_rename_battle_v2_durability_payload_columns.sql",
+      "sha256": "04b92770891ba5046ef8a036df5c97f0842e6a5790b5e686423dfa8ecf51fe12",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/192_rename_status_effect_idempotency_hash_columns.sql",
+      "sha256": "602109a957e915d67b853a92124b7fadaee89b49b8513c1b8e896b40276b5c13",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/193_rename_skill_runtime_hash_columns.sql",
+      "sha256": "12a6c44ebfa18a89345e401437a4ff0edbcdce3e5c95a575f8d38d074ec5cf97",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/194_rename_quest_runtime_hash_columns.sql",
+      "sha256": "4b944a84953fbd17afe34bf5332a96143ecc93931c4d3a2e9acae45389b1a5e0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/195_rename_final_runtime_idempotency_hash_columns.sql",
+      "sha256": "0a3cfac00642fa766c3ee5edd955408a1ef8a2403ea4d8c7dcfad6f068dd40ca",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/196_rename_player_side_operation_fingerprint_columns.sql",
+      "sha256": "75b5271733153fe735a491119cd4b42068fd59fa5b13b17ff8101a1761e2212b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/197_normalize_formal_database_traditional_chinese.sql",
+      "sha256": "bc4eb403e76cbbfed4cbc1e68c5d8e345bd650d4824bfd529b3ee529098fdbe5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/198_normalize_remaining_formal_database_traditional_variants.sql",
+      "sha256": "586e47c250a53f9fcd3e7a8fbdc5d3a5e30f1db0a3ffb7b23774e6d41db3af07",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/199_rebuild_item_classified_view_readable_evidence_placeholders.sql",
+      "sha256": "5c11efdc237948166ba33f13dae1233f656031e1117a77b0e0fa480f41cafe07",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/200_archive_legacy_god2_original_text_columns.sql",
+      "sha256": "e3a22de899e3a0c01f4719b4c1425f7aee3b12e4b39840759763b3ace1653a5d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/201_archive_localization_entry_metadata.sql",
+      "sha256": "f6e04704de487ae246adb0568bd7cb9b8f77545f90adba37063967a9a071479c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/202_archive_localization_import_tracking_columns.sql",
+      "sha256": "5341cf423d6cae096b1cceb8ef29f8f4f0d4d9805a95e2df57387b3a68354927",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/203_archive_legacy_runtime_imported_at_columns.sql",
+      "sha256": "67c9b8c51ddb3600900efe7edfa2e9b79dea7ef3198ff2682b30c90d11217e66",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/204_move_runtime_verification_fixture_to_research_schema.sql",
+      "sha256": "7983efb3ee28d0680f3f05ae4ae0d03e2022558d1dc25e047ca9006534309b4c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/205_move_combatant_stat_observations_to_research_schema.sql",
+      "sha256": "83b48e8c7dc96ad3a0ae4a78558f53a8a6f04ce6caa038c03305f16d54de4cb3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/206_archive_pet_egg_relationship_source_hash.sql",
+      "sha256": "136929693f1d8d6cede8a43f862f69689784ba78a365de77e138053ef9607279",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/207_move_official_import_ledger_to_research_schema.sql",
+      "sha256": "9dc51061bb17f13f49751d5ea04cacea0a77f5f856df586064ea2de816ce9a14",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/208_archive_unused_synchronization_watermarks.sql",
+      "sha256": "ddc43e09d0d973d56c01a82c5575380e5f8008e16899ef04fa5f3aef465a5a01",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/209_move_catalog_sync_metadata_to_research_schema.sql",
+      "sha256": "be9d5305addb7d8319cf24f623b912b3709ffbb86b9270caeefd553f9b187d9b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/210_archive_legacy_god2classic_schema_to_research.sql",
+      "sha256": "b39b7327965ac223fc7833c0d046fce7ab64cee99da88766e295643c149ff07c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/211_rename_formal_probability_original_columns.sql",
+      "sha256": "cb7ed966c973d0c07e21827835628e90d4452a8dd6a4828d2a197154eec06b26",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/212_rename_formal_probability_evidence_columns_to_declared.sql",
+      "sha256": "16acd23c80c380a228173e07584c77f4debb496040bd74ce0c0678acc934c0fe",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/213_archive_formal_source_references.sql",
+      "sha256": "a9a66a740ff2c6da49ffd1bbb8d71436913ca1af7d3138dad0ef55f4c9e24d64",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/214_move_content_localization_glossary_to_research_schema.sql",
+      "sha256": "6a20465120bba3ec225b5b2141e2ed7efd161ad309590f45240e3746c13cabd3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/215_archive_relationship_source_metadata.sql",
+      "sha256": "8e2520b2e20f8322446604e3cbbbd4255f37cdd69f6df1be7749620089f4bc30",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/216_archive_equipment_and_pet_innate_source_hashes.sql",
+      "sha256": "dd3abc9ecb050c4097ffc8b388dca49c5b4b93f70bab850e64995d1d46bdaa4b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/217_archive_item_pet_and_quest_profile_source_metadata.sql",
+      "sha256": "6f2af5ba1469e6789dbc6513f32b55852f8032bad451265b14400a0f2da0ec7f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/218_archive_world_identity_source_metadata.sql",
+      "sha256": "0c4ebe67baa57601338e6a31dd26c68eebfe5e6e624d40c992ea46dad5478976",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/219_archive_content_recovery_run_summaries.sql",
+      "sha256": "44388543a57f1fbec7d72f859c5cf7a39d1838828820c929dc0b37af7112c0ad",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/220_archive_semantic_profile_source_runs.sql",
+      "sha256": "48dce1b7308ead2835e0027e994204e022077f5d82144fafedfb0e710c594c5b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/221_archive_pet_and_capture_source_metadata.sql",
+      "sha256": "2121618d1bbcfd3c7ed9dd7b16682319be4cc9c9857f5e2c2358e1177de8b1f4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/222_archive_item_visual_and_usage_source_locators.sql",
+      "sha256": "f5315d3180ef74c75edc05de0d04db838e88fa3d52e65ab9102c779fb2447406",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/223_archive_item_source_types_out_of_formal_catalog.sql",
+      "sha256": "fa202d57e780fca30b8c787df7f5b46b38632fd58220e295b16bca2698577822",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/224_archive_item_effect_visual_resource_paths.sql",
+      "sha256": "d740a529cbfe892cc29e30d9da884c98c7b585226dfd2339f39488a7d6569d0c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/225_archive_item_icon_atlas_asset_evidence.sql",
+      "sha256": "e5b11e941318c6555702448d4ff5885593dce1e5f3670f81e366fd0c50845be8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/226_archive_client_map_resource_file_evidence.sql",
+      "sha256": "8c7a418ab422b513c68e2652788958a775c8697454af8088d30e268cbbacfcf7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/227_normalize_remaining_formal_npc_runtime_keys_traditional_chinese.sql",
+      "sha256": "5c8649fd427b6f95381a8ef51eba8089ee7bda07da9964436364c838b6793ee0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/228_promote_public_source_monster_attributes.sql",
+      "sha256": "89cf80107b97e07e4be171364471e70d4a8924ac80da2d2b86f348257735be34",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/229_consolidate_duplicate_skill_client_mappings.sql",
+      "sha256": "28345f411cc8d8f6d1218a32444e5df19d4568d40736cb50a2d980ddc0fb50a0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/230_promote_xiandao_meditation_passive_skill_metadata.sql",
+      "sha256": "6f9072953b22979a3a04346c2ee14041fbe842356db1697f2a018a4150be5d11",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/231_promote_weapon_mastery_passive_skill_metadata.sql",
+      "sha256": "fec2e3c738dfc6bdd7157dd24aabc434c51401fc2470e1a7f6d6ce0a44728342",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/232_promote_mastery_and_blessing_skill_metadata.sql",
+      "sha256": "79d0f62913d7a6ed95f8d7c4d4c20e2a275c2c7ac81440d9215fba2d50e995ca",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/233_promote_formation_and_spell_cost_passive_metadata.sql",
+      "sha256": "5fc429ee62193193074f6c9c67f44f2d224a6caace7e64bdacf4060b64db124e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/234_promote_remaining_official_active_skill_metadata.sql",
+      "sha256": "0906ca2b50d8ddde09cebb82a581b4b2256f308be78c839ea99f70b85c85c55f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/235_archive_and_remove_unused_unmapped_skill_shells.sql",
+      "sha256": "5f1fbfb9dea56147a9602f8436ab56b950090ea4be5f15cf2aca5ecc572c2a79",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/236_complete_remaining_skill_metadata_readability.sql",
+      "sha256": "2933c6a62a03b22d065953cdcd27e4efe3353ed2188b175488be4c9e68f61b20",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/237_complete_quest_readability_function_descriptions.sql",
+      "sha256": "f120406b0aa5129167779bf8e9bc7df5ca5101018234220419aa3c546f0bbb3b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/238_refresh_pet_template_readable_views_with_skill_placeholders.sql",
+      "sha256": "1c5563281490d710f25cc4b11b1181a0fa56f6b1f17ed2e1f1f9846c3f50fe09",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/239_complete_item_registry_function_descriptions.sql",
+      "sha256": "469abbc817fd3098e84c84cf9bcebc9849c29217df2cfbb42092d1e18ae8f4fc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/240_archive_unbound_empty_npc_dialog_shells.sql",
+      "sha256": "5cb339c22b39ce33fa73f982afdb9e727edbe0409a388fba85a08e92a56d6ffa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/241_complete_pet_template_stable_codes.sql",
+      "sha256": "28b45948b3beb39f69efc649357d4a00dfed3c59e1f6c8da3f3cf8390ae7babe",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/242_normalize_formal_admin_notes_to_traditional_chinese.sql",
+      "sha256": "99addfc8b52c0f037243095aa427f2c436764e85d5577c8548fb7886e0727f69",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/243_finish_formal_admin_note_english_cleanup.sql",
+      "sha256": "fb4371422dc136f645109e865a00256ecb579aaa81b792cf89693d62b61106d7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/244_normalize_formal_table_comments_to_traditional_chinese.sql",
+      "sha256": "db00aa5e057826223408eb384e844645dadd3dbd2e50474887e449ef0f335317",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/245_finish_formal_table_comment_cleanup.sql",
+      "sha256": "338f5fc75c788e23d150b241e5b2f721c8a1fce135ca537443eac15b3c2e362b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/246_finish_game_column_comment_cleanup.sql",
+      "sha256": "b40ae98605f46d84cbfe37eb8d9c13dda5164d1860ce6e71f3990cc8cdb78b38",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/247_finish_social_portal_column_comment_cleanup.sql",
+      "sha256": "1ac9a67f75dc094c744fa823bc0eecb92a7da067f3e3d70de4939bcd34f644c4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/248_finish_last_column_comment_residue.sql",
+      "sha256": "d086fd27146e23e7fee6f78d98bf218ceedc80c9758d7af1636185b9a21dacc6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/249_finish_readable_column_comment_edges.sql",
+      "sha256": "5e2f96c507b129d5ed765f66c9144f70d2d269b6ed9dea5ad972a96a4e8864f4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/250_document_public_beta_skill_effect_v0_columns.sql",
+      "sha256": "d65cf97da372f46fbb24e3c5d0c48bbaf6e4e68930ba90cbd30b3bededdd36ea",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/251_cleanup_readable_catalog_enum_labels.sql",
+      "sha256": "beb641130e1eb2bae18b44ac434484fde162d94ed61a649dd94703edeffa8250",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/252_translate_service_backed_catalog_status_values.sql",
+      "sha256": "fc5b14505db81547a25b14d7bf72f7fae669cbaf0eb989ec47d645c2da690a25",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/253_translate_remaining_runtime_readable_status_values.sql",
+      "sha256": "95e4015b337423e014486394b3bcf7f29ab1961e03f830e131f11ecec40734e2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/254_finish_public_beta_skill_rule_traditional_labels.sql",
+      "sha256": "400b76f3e15509bb3045979f82ca58cba55d914eedae6444608d630fc6d391e8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/255_translate_public_beta_skill_effect_runtime_labels.sql",
+      "sha256": "d6b4b6b66f3212b9a5847606e11fa8d7638cd0de156e803d4e0097db4f2d2530",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/256_translate_skill_catalog_family_and_axis_labels.sql",
+      "sha256": "e1adc17da3d1f46d27f446edcc78f6f57fc262ba524b6bfc42711868e0e83aa7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/257_translate_catalog_bonus_element_and_numeric_effect_labels.sql",
+      "sha256": "d6222cd9f8ca8980433d6df3830f0e6ec36d0dbf8f8d228a3f2917db5382323d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/258_translate_account_and_character_lifecycle_status_labels.sql",
+      "sha256": "b1da129172f774c1c7d911e8368c1323769c9b8e5597d42eb4d6da77af527cc0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/259_translate_item_catalog_family_and_asset_status_labels.sql",
+      "sha256": "fcce1c0e6158c3cb6fd80e3b89a5b7d59ff04856c97dc2286fa021de7ff96393",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/260_translate_item_effect_enhancement_and_physical_skill_labels.sql",
+      "sha256": "a4f83204defa90228a37b0ef3af91b440e7b582301e9caf60d459ac54693c934",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/261_translate_growth_and_merchant_type_labels.sql",
+      "sha256": "c36ed334087128ccdb828b3425c04d29e872542f253f5747992d8e5ba67a9c22",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/262_translate_runtime_ledger_state_labels.sql",
+      "sha256": "bb93fbf32caf01df6b4ca2fd0e060c9890cfdd1b526555ff188f876549bf9391",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/263_translate_inventory_audit_source_labels.sql",
+      "sha256": "9b0d3868b8915005a67e89de405659ada88cb41a3fc53869b813ee7adf0fdf32",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/264_translate_catalog_runtime_label_batch.sql",
+      "sha256": "4f5fd5dee6b557166b560bf25734b08b0406db17af3fa476c399c01085f504d2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/265_translate_player_runtime_audit_readable_labels.sql",
+      "sha256": "044b0c223fe6b13a57d1d44a16768c4e6e3c6b5dc99e860cbb7ce58f53174d64",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/266_translate_skill_target_and_mapping_labels.sql",
+      "sha256": "31de8f94c8581b030c110f45926d738ff417d360b7445cefab870f745c20b84d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/267_translate_observed_world_placeholder_names.sql",
+      "sha256": "3dda816ddec12066c1a6068a18a6a07b82d7e951186cbe72d96384ceb7e8d83a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/268_normalize_display_text_english_tokens.sql",
+      "sha256": "70d5cc4fd984566dae9fe3446ae77603ed9f1ff914d5793272f7422d261bd58f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/269_finish_display_text_token_case_residue.sql",
+      "sha256": "825ac024dc4cc5d556a01866e73cd2331b0f0409ff64f9d99336aaf1a2d2dca1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/270_add_equipment_set_member_readable_view.sql",
+      "sha256": "53ebf5716448db4038c5c286b67055cc027ec5354303210e90e7121a9ab11a7c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/271_add_monster_drop_table_readable_view.sql",
+      "sha256": "d99eeb97db7e4c7e45ebbdcd772e1759b40602e630a05c322ab8043c411139d1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/272_add_dialog_readable_view.sql",
+      "sha256": "5bc30d815f15a90a6003e4ccce92fabfca81a42a89fe1cd23ed71a9c59d5aa42",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/273_add_container_item_relationship_readable_view.sql",
+      "sha256": "27bd85018fb43840c8b89f7af7b79ef8966076eb38bc33f56fae90ee58ee16a7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/274_add_legacy_items_readable_view.sql",
+      "sha256": "fcbb715fb6e57cbec1dad68c9345f340c10a5bb039c9b09b24e158f3c485f0a8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/275_add_legacy_monsters_readable_view.sql",
+      "sha256": "cd34682c9b3d17451ead2101e3d0abc8ecb00e4d377f036612f3dff7955ce741",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/276_add_monster_hpmp_reconciliation_view.sql",
+      "sha256": "61ff6887d3510398b988d1c0f0b1845b974650cb34b9b6ee278f401a94f561cc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/277_add_legacy_skills_readable_view.sql",
+      "sha256": "e0e49919337d6539170ccf60eb7f44810d631b501ffd2d671e7fa1b51854678f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/278_add_legacy_quests_readable_view.sql",
+      "sha256": "cba2a6a5b1e1161afb32736b5cd1a551fd1c50304288b34133444fbf6b5c62c2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/279_add_world_interactions_readable_view.sql",
+      "sha256": "555fcc050d814b2826f7c8bbe07f01c5b520adc887c3ee9f293111d88ff98970",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/280_add_account_character_readable_view.sql",
+      "sha256": "93a1cb35ba867104d6304b87b0adf474376ee689b2b637df5e3db1fa220ce4f6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/281_add_player_assets_readable_view.sql",
+      "sha256": "48bebd15488e1a69b54133d243396fdb305306f69ef9c0a063fe6b15075b00eb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/282_add_legacy_pet_content_readable_view.sql",
+      "sha256": "72b15af0bbbe1bf3072e2a46e3dd7b397f6247e363b755371c86139427b4dfbd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/283_add_item_usage_rules_readable_view.sql",
+      "sha256": "fa67b9aa0b48b4d87977d0f92cffe75c7ea5b51c6bdd26873d81c3fad383d3cd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/284_add_client_item_usage_flag_additions_readable_view.sql",
+      "sha256": "e7411d158a609c41211bafad7e423121fc67c59af392a2c26510d397acb0d816",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/285_add_public_beta_skill_effect_function_readable_view.sql",
+      "sha256": "9d753f6088c21de204f65c07f48c672c1a0fdc241de1fb293f1d96f99eaf6c5f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/286_add_battle_runtime_table_function_overview.sql",
+      "sha256": "c40b39bb8303a6c8e42d110157590a75eb51054fb6acc57d16ede549f517b8d8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/287_add_monster_runtime_table_function_overview.sql",
+      "sha256": "8e531b5c6ccecf329ef4cccca66001f73064cee7c0716440f14cef6836d12b40",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/288_add_content_evidence_inventory_readable_view.sql",
+      "sha256": "4f8aad5840909430c3c9969c966a110d32e76f1cfc5e809ff7f3790de48c2c16",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/289_add_player_runtime_table_function_overview.sql",
+      "sha256": "f361400ba4d44ade8bca75afcfbaf40991dcc02bbb3f1f4c382213fedc041c86",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/290_add_capture_gap_priority_readable_view.sql",
+      "sha256": "495fd7b978378a324b051b9cb1760e7a2e7f4934630ce8b12c9a3a69540fe79a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/291_add_monster_combat_stat_source_tracking.sql",
+      "sha256": "03498c5860beab40ad39d9253853089df0b6193fe93367413d8841eb287c955d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/292_add_monster_combat_stat_design_queue.sql",
+      "sha256": "63e9c3212618b4c5bb753cae00841d0722d18520a290fa485977935c8e8db759",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/293_add_monster_combat_stat_design_rules.sql",
+      "sha256": "559e14f6f75faa228ae145526104182d7007f194f1bc50374b7b51563ed0953f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/294_apply_monster_combat_stat_server_design_values.sql",
+      "sha256": "d5c70e5f81550fcc941bea09bfff43a1450c0ac29828e26d0be5e619c00dc9df",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/295_add_monster_spawn_drop_design_candidates.sql",
+      "sha256": "0d82cfcc0d9a86383cc68d908abfd28acadaec5880fd76152c2bee12cd76bc8f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/296_add_monster_spawn_drop_source_tracking.sql",
+      "sha256": "b75f13e71b5d9338e99134d2b3a6bc618b567efd8b3203d80258f4439ef1ecc8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/297_add_monster_spawn_drop_activation_review_queue.sql",
+      "sha256": "8f705147b83cae2f060463dc73fee070935631c239a45bc1d9fb998fb5e4ac3c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/298_add_first_wave_monster_spawn_drop_test_candidates.sql",
+      "sha256": "3ac83a9198d9251e84b215174dfe4be896588b1df0821f890ce207b1ae62795d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/299_apply_first_wave_monster_spawn_server_design.sql",
+      "sha256": "ed57e1cc3b516395029459b9ddd33e15aa78e333e4a2530848597e66d9f218bd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/300_apply_first_wave_monster_drop_server_design.sql",
+      "sha256": "143566df2a70b530f3d7079f50777f38bfcbe0cfedbf8d60d369233e32e0c0a3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/301_drop_nonformal_auxiliary_schemas.sql",
+      "sha256": "92bf6c2c4792b85612defc803105b2a84d8719a8464836da6df4335df157b353",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/302_drop_nonruntime_research_readable_views.sql",
+      "sha256": "638b598b8eb67cdd519f9d28393e2757818a95227299949ce758f32f85139c94",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/303_add_blackbox_runtime_observation_views.sql",
+      "sha256": "37f75c05eb5c42ff686872976d81f7ea87e8601e98ef7b01a2aebe8d7fbc29c2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/304_add_blackbox_item_use_test_targets_view.sql",
+      "sha256": "56b273c4c1b4b7e32932e4d2f83110e87b070eabc7c4fe8841d6b41b650bc214",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/305_add_blackbox_skill_status_test_targets_view.sql",
+      "sha256": "5552d1d1e1a09fb3f38ffc97b6960be5a3e27fb2a3fbe0aadc20a9c0242ad551",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/306_add_blackbox_world_interaction_test_targets_views.sql",
+      "sha256": "06d805089351301c484c266e20cc86ea7d1fddb751679d09886b111cbab58600",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/307_add_blackbox_quest_flow_test_targets_view.sql",
+      "sha256": "b6c14fae235095bd526519f2ec64d137794e1c056b79706460d9b9dbbfb9ca1b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/308_add_blackbox_pet_immortal_test_targets_views.sql",
+      "sha256": "603047e5956ce06b3ddf1e9e15f1eadc452d72ef921b6e4083c5e9665dd2ea66",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/309_add_blackbox_equipment_enhancement_test_targets_views.sql",
+      "sha256": "b68b1622686a09d699de0a7952949a5e63122576e30cfe0da986bcee42cff1ce",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/310_add_blackbox_combat_formula_test_targets_view.sql",
+      "sha256": "f654fe0880943d111f66b7e4053551b4208a4d6b99b3aa264a3ffa048f828cbd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/311_add_player_inventory_readable_views.sql",
+      "sha256": "77dff00cae16ba2ae9562bea595722664d4b81986b44aa129e5a77e382ab853b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/312_add_player_character_status_readable_views.sql",
+      "sha256": "5dafbabf50018e8a09b8762b60c539ceef0608c8a652a403cf91aabe6ca495ef",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/313_add_player_social_readable_views.sql",
+      "sha256": "b7a6c603c507b99c8b6c16312e3dc325fe6d2b6e8427a2c0ce5e4d3bd574dd39",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/314_add_life_skill_crafting_readable_views.sql",
+      "sha256": "3daf0c43582bcec2e5e8b936f8060a82a3e5699e4be19b51448535538b69515f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/315_add_world_interaction_readable_views.sql",
+      "sha256": "bddf66816124d71049ac8b4388647fe71c3e6a7535e5d9a2c1d4f134c17e6e3f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/316_add_game_meta_readable_views.sql",
+      "sha256": "7a331b797667d2d86572667f084d4599acb1259dadef45988e8f03218e74f540",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/317_add_battle_runtime_readable_views.sql",
+      "sha256": "60e95a81586dbae70f62df1b6d9305bc9c8f09f072c8fc31ec61aaa3f6fad6fe",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/318_add_quest_runtime_readable_views.sql",
+      "sha256": "739f1cde458cbf2f0fe49993c0519425f65df3ad54f04ecc2c10f8e249a285f7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/319_add_skill_status_runtime_readable_views.sql",
+      "sha256": "275e2fa04e5b6ac687c550be9c0b100d58dcb0eea267d54644b506793f018a36",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/320_add_monster_runtime_drop_readable_views.sql",
+      "sha256": "cb8a932190062e5bd6d7e089b8762301231afd0ae1e570b5e01ff97e194819f6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/321_add_god2_world_identity_readable_views.sql",
+      "sha256": "fdccd09ccacba231b01bce679c5b14cc609deeac3ab53938b3cdd623a7578372",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/322_add_god2_item_container_set_readable_views.sql",
+      "sha256": "6be36daf786b5e95fa26b451898ef7278725aafa6ad4e924c54f53aa9ea0df6a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/323_add_god2_dialog_merchant_localization_readable_views.sql",
+      "sha256": "39e4dab5f3d4a83ef93b090301e61b15240162ad097d56d71c449bd89f8fbbf3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/324_add_god2_pet_skill_static_readable_views.sql",
+      "sha256": "a7494b4eceac384c9e41d4e517f5e2da14f2b68d04e5e76a7205cc60df7213a6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/325_add_god2_pet_skill_priority_readable_views.sql",
+      "sha256": "fc3d406492ad8dad484e6f6b14e839998d56cc2b0b9bb3e9971dc104bf21be7e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/326_sanitize_god2_meditation_priority_readable_views.sql",
+      "sha256": "619df352c49657f2385556dcd7f1d769226b903cd275d050647324900850f8fd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/327_fix_god2_meditation_path_sanitization.sql",
+      "sha256": "ee8d865afed52de376a21e61c3f073d97458f28f96aed60dcaabc2e864c1f92d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/328_add_god2_game_client_asset_sanitized_readable_views.sql",
+      "sha256": "50b048452e47bc3e737003181014872cb94df885c3482174f28dd533d04713a5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/329_add_god2_game_item_text_sanitized_readable_views.sql",
+      "sha256": "99d01c8c0ff2156d135b64bef5d627bd770f73da8e3ba7b0a33f20ad39c870b1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/330_add_account_character_sanitized_readable_views.sql",
+      "sha256": "509f96bc744d515e69de6817fe4c985dd23e0fccc798636568f2eed7e9878923",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/331_add_god2_item_container_set_sanitized_views.sql",
+      "sha256": "0a8fe5e6b97020f5db6142c295d8ba23c1466ec821d98ee9d4593f55908f73d5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/332_add_god2_world_text_identity_sanitized_views.sql",
+      "sha256": "a55cac43d4f70d237635f3636d31553ba1bc04c226aba2360b1e7e28758391d1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/333_add_meta_player_internal_identifier_sanitized_views.sql",
+      "sha256": "89d1117c26b6eb7c766470847f0348a71e514462969c3b496d0e1fc9be36f60c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/334_summarize_internal_identifier_blackbox_observations.sql",
+      "sha256": "0e7e7c8bc48d8f5aa3c509d6d415e751bca1a3af62a8f2322f67a113c4c3f878",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/335_normalize_internal_identifier_observation_collations.sql",
+      "sha256": "2adbb29bd1877e2fd40f546ee3a7e7152ae45db73205e51ca64d70e3d3f7f9b4",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/336_add_player_operation_sanitized_readable_views.sql",
+      "sha256": "391d83b8f617eda75b7931ccc85ff787faf73ae164cd079952cd4cb260da45e7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/337_add_battle_runtime_sanitized_readable_views.sql",
+      "sha256": "ba83701307429c7fac8d89bf5453a541753c9510fd1091fd1adc2358b554e8af",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/338_add_quest_skill_runtime_sanitized_readable_views.sql",
+      "sha256": "a38b137fd0daf81e9abbdea98f0daec38f3bea9d605d2d3e237252cc336ba602",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/339_add_catalog_blackbox_target_sanitized_views.sql",
+      "sha256": "790e4a2cd081196f9881c00d7247d4dc2a1db179e03879409a0691ba3d9ae631",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/340_add_equipment_immortal_pet_quest_targets_sanitized_views.sql",
+      "sha256": "5840bf0729bec8d77bd18f3d1a3160f6e9543019e83d3dc372fa95f58fbaea02",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/341_add_drop_resource_meta_sanitized_views.sql",
+      "sha256": "7bbd1434bf47724c416bc062e0728c520f9f068dcd814e7be5d52aef64007b50",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/342_add_monster_runtime_sanitized_views.sql",
+      "sha256": "01ced2ca0ba2dd2d69b2f16d9d5cca5b62ab415ab85ec46294857b150456d443",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/343_add_remaining_catalog_player_observation_sanitized_views.sql",
+      "sha256": "afbebbbaaafe30fc5a236df361f0b5d80f81c87b27380f1d865d38b0d7ed7fac",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/344_clean_orphan_quest_color_codes.sql",
+      "sha256": "640d58b41d072f8143cbb3451a911999a8cebed3558dc4f60440ea1fe8687228",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/345_convert_remaining_simplified_text_to_traditional.sql",
+      "sha256": "f145c44749d365b2c1d557957fb8c3f7ed8c83b195a61566c6cebf3939dd9c92",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/346_convert_skill_presentation_keys_to_traditional.sql",
+      "sha256": "59c8b308b81f266ed9f37ed9ce5e100a8249bc6110de98bf615c323c75c1bfff",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/347_import_17173_monster_attribute_numeric_evidence.sql",
+      "sha256": "6166ac32eae4cdad1bd45c0837bd46a6de3d885f30ca754974b432d097f29c66",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/348_activate_fixed_value_consumable_recovery_items.sql",
+      "sha256": "a644031da385d270c62bc0cd7578ab21d58da61dd325e4f014ac588a0736330f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/349_activate_percent_recovery_consumable_items.sql",
+      "sha256": "729883cc8a98d7f80c84f147e92ff7dad282ea895b117a6e9de134d4a560e70c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/350_register_cleanse_consumable_candidates_fail_closed.sql",
+      "sha256": "d0f4b4482f9cd32b823cf65916226a04a0e052152444bd96f431ec37b15a1658",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/351_register_timed_stat_buff_consumable_candidates_fail_closed.sql",
+      "sha256": "a3043b118e9d1c0cb8acea9c430f2b95ad94e024769f2601be8b9f8a9d9a2068",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/352_add_item_effect_duration_for_timed_buff_candidates.sql",
+      "sha256": "0e19af84ef995f37c47350f3e3127247e342060327104efe067ddaa2350bc7ca",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/353_create_character_item_timed_effects.sql",
+      "sha256": "6a1732a212948b388c300bfd73bc51a450c521df1ce889f453944e25ec822c1f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/354_activate_timed_stat_buff_consumables.sql",
+      "sha256": "2c09bc09eb552ba75ad5deab5ec9c88765d8920dfa0586bf5ed16d9d776dc187",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/355_activate_cleanse_consumables.sql",
+      "sha256": "2421b9a784f19c63496532163b6e3547fcb37c59ad0fce19a2fe8284d0f362de",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/356_activate_constitution_timed_stat_buff_consumables.sql",
+      "sha256": "d2fc3503aa907e5df7027db4f53611dd64c508b93440c6a73017a3c3898dcf3a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/357_activate_battle_experience_bonus_consumables.sql",
+      "sha256": "3c796f8bc23fb7a8fe71c333a4f25287fde79d5f979f7e6f970f1696997ca510",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/358_enable_special_category_battle_experience_bonus_consumables.sql",
+      "sha256": "2e2e164ca07dcfe23244889708f5735f669c9dc6721a41921989129c688b1753",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/359_activate_element_attribute_bonus_consumables.sql",
+      "sha256": "b2cf455fe031c45a23354647e39533e446e4646dac2cee0733869f18d4c82bc9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/360_activate_identification_magnifier_percent_recovery_use.sql",
+      "sha256": "0ef8f5eca00ff3a8c4e5878d48d8414eb266faa152b0a55bf120cae79243c8fa",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/361_publish_formal_text_quality_audit_views.sql",
+      "sha256": "4aba98bc6e35d5418f98d70ee6579b7df935688178f24b84fd66145be3bd3a23",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/362_publish_formal_schema_table_inventory_audit.sql",
+      "sha256": "ff13ab109803e2d8df6c2286ac1d63a36dae62d69d51e61e032758060010db47",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/363_drop_empty_legacy_god2_tables_first_wave.sql",
+      "sha256": "5b40988f387cc0bfcd421efc0ab8cadce6e0058bd47b7565208203450412d9e5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/364_refine_formal_schema_table_inventory_cleanup_classification.sql",
+      "sha256": "853c84c0f26a6a3da32c9dbded7a214ac016060abbfd846f2c0058b522fb1f63",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/365_repoint_player_readable_views_to_formal_tables.sql",
+      "sha256": "b608d1356712f01d3b2dcfd2d9a4081974b8accdf31d7c80f0562206aef76eeb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/366_fix_player_assets_readable_collations.sql",
+      "sha256": "c12ee9769be9272b36bda9e850a97196d73b260717488c0c40756721fa631a39",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/367_drop_empty_legacy_player_authority_tables.sql",
+      "sha256": "7643318f1327ca918c2f7fdf33bdb254900dfa88b19dd6b7c5fe6ec847373b6b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/368_drop_empty_legacy_spawns_after_formal_monster_spawns_repoint.sql",
+      "sha256": "1be72f2f6da3612277d7ce86e863e690069cbe0250a400d6faeb878196c2f965",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/369_drop_empty_legacy_content_runtime_releases_after_meta_repoint.sql",
+      "sha256": "03dfa48b357520aa51843fa80ec9480b905a7f02103ed8453c20c08fbfef74a5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/370_reclassify_remaining_runtime_evidence_tables_as_retained.sql",
+      "sha256": "8a573ddc7365e391cdcdcad804fba28df00902b230cefeb1d0b19b5526980c29",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/371_clean_formal_text_quality_audit_view_literals.sql",
+      "sha256": "8dacdb68f21244efd34fe24c85d37632bedb75ac9e8edc9610633500337ef3a3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/372_narrow_formal_text_quality_audit_hex_patterns.sql",
+      "sha256": "f8c45fbcdf4ce5bfe002bed77a8b9a505ce33770154062b71f22b581e3347656",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/373_add_monster_combat_runtime_mp_magic_element_columns.sql",
+      "sha256": "9ee8b0e0ba62f614b0c253f0b9480ccda2a66e6637c17f6e2b781854371f3962",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/374_seed_service_designed_baseline_monster_ai_profiles.sql",
+      "sha256": "fc3f20297d817b42572f4938a5b0054e29d39e5d97c8ce637f67440795d17ed2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/375_reclassify_capture_gap_priority_for_deferred_design.sql",
+      "sha256": "9e470a7d2920cfaa597d440908bb5015dac58d9fb02d1301b912d163128321e7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/376_promote_item_model_keys_to_formal_catalog.sql",
+      "sha256": "2b658b560e98579722781801d88380c71eb3436c8239bfec82a31368d6c2d5c8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/377_drop_legacy_god2_item_profile_readable_views.sql",
+      "sha256": "cfcb8d68c90c1264db6fbf6762bc055d9cb46ffcc1b2f444dcc37eb27b654d4b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/378_sync_equipment_sets_to_formal_catalog.sql",
+      "sha256": "8f820bd14ae2fd51ceb934cdee7ee8070d6a9ebaba1cee47b661b3c4643499a9",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/379_sync_container_relationships_to_formal_rewards.sql",
+      "sha256": "005f80cfde31ee28e718429b48f3ea04cea3a5be253daa33114e46ae83d64e00",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/380_sync_skill_profiles_to_formal_catalog.sql",
+      "sha256": "458bf722fa26e943c907ed22598f47a44acac027168a9b8f471f6c1194aa721e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/381_sync_quest_profiles_to_formal_catalog.sql",
+      "sha256": "4930dcb98d755005d527d4b5885d3eba39154c94c17810cf89412898f312d143",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/382_sync_npc_profiles_to_formal_catalog.sql",
+      "sha256": "5c0184aeec45c82fb0ac79bc62234202bc893752ddc2405930134c3115f4a87f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/383_sync_pet_innates_to_formal_catalog.sql",
+      "sha256": "9a5bbaa64e6f2f4a3f1e08ca3d4cda796a7024532d97ba9e9fad8c4118b70c42",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/384_restore_merchant_inventory_candidate_research_table.sql",
+      "sha256": "a15bf2b919ce9e23d730e60acc72594bdb33f19d28d2712bc1ce7c21534041c3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/385_restore_core_research_pipeline_tables.sql",
+      "sha256": "31b09c727fbb6058333d16d2a9b9b44ddb879879520954e0481f40a93f498741",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/386_sync_monster_drop_relationships_to_formal_drops.sql",
+      "sha256": "469ddbfdccd3a6c6574175c7bdf879809aa36210f3dd8f0be2b0d5a8cd88c214",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/387_sync_legacy_monsters_for_formal_drops.sql",
+      "sha256": "b55e1c92b7facaa100dd79bd8bbd9a72c81b34392ed10ddfb4e604cd6d3f42f5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/388_force_sync_drop_monsters_and_relationships_to_formal.sql",
+      "sha256": "59aab0db3d393f47db599aff5877554e762bc5c017c38292dbfd7d00aa3e3069",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/389_sync_monster_drops_by_formal_monster_code.sql",
+      "sha256": "c5755b9b5815b9518cd5437dc0b2a83991306adfe6c0f63fe39e08f000a5f8e8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/390_promote_safe_monster_hpmp_reconciliation_sources.sql",
+      "sha256": "2d40b6fc531488dcd521821ff9d1b7204845157f1486919678fddf7349a049ad",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/391_exclude_blocked_monster_hpmp_reconciliation_sources.sql",
+      "sha256": "6d2d37d4788a958114352d871b4f49aacec7472c03c9bccf07b9e7697786b0db",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/392_publish_readable_pet_content_profile_candidates.sql",
+      "sha256": "001cbfb24cab5d07ee951517d006b91d96cac04e448625c47ea60849b51df738",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/393_publish_pet_content_profile_candidate_rows.sql",
+      "sha256": "6540f75330b10e1096ae2acd395ac118996e11a2bb4c47090b8befb236aee08b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/394_publish_readable_quest_content_profile_candidate_rows.sql",
+      "sha256": "842b8536e82d2367bc8bd79042f1b72a36a92ceab64fca9bd489cb9ffea148b8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/395_publish_readable_item_content_profile_rows.sql",
+      "sha256": "8dade6def32dd95243c0a17109cac18a45a54ca4ca2518d7f954385b6b8d9fdc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/396_publish_readable_skill_profile_candidate_rows.sql",
+      "sha256": "9789bbfdeb04e43dbc2a8534247be6214789985ad8a0b67d55b6604f47bbd857",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/397_publish_readable_relationship_candidate_rows.sql",
+      "sha256": "012474ced7bad6d05b246ef7b8079bb655d495f5f324aca353de06df96e42202",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/398_rebuild_readable_relationship_candidate_rows_without_join_fanout.sql",
+      "sha256": "0f37f56a0362b4609f168f9e8f80ae34391d40558a8e242d5084066c4e91313d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/399_publish_database_readability_surface.sql",
+      "sha256": "c82f96cc590e80933f0b97c4f9dbb4c6414d2d0399be1d8c30258d82d197fb4a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/400_clean_candidate_readability_surface_machine_field_names.sql",
+      "sha256": "2c36ec3541e1a155f01b68a3bc7ac6e84011536859feaa9ba5459667147bf6fc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/401_refresh_readability_surface_after_candidate_cleanup.sql",
+      "sha256": "34f98be2cc71be319aa08c73ac24f4d955161caad58d9c57180dbd7f232937ff",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/402_refine_readable_database_game_function_labels.sql",
+      "sha256": "c20aedc2e010bde3d4759ccb1d25563982ae85937e2f50dd22c99bfdf3cceaac",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/403_publish_formal_table_server_correspondence_audit.sql",
+      "sha256": "db02d40f62ac7f599844ccb08d5585dcc835cb400e881f02280a3489935f7ee0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/404_mark_character_class_runtime_correspondence.sql",
+      "sha256": "119c9c2c98e850b40ec9993aa781db4fab69f6c68fc03835aa9a8154be57192a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/405_mark_class_stat_growth_runtime_catalog_correspondence.sql",
+      "sha256": "1c596b66f8130a5ad6f94bdc0d564b846493bf363710f51099f20fa4ef22ef39",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/406_mark_immortal_ranks_runtime_catalog_correspondence.sql",
+      "sha256": "2277c29e974a139ecb928b97f7ba7cd78fd1fefb93ae4b4349a757efc0c23362",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/407_mark_pet_growth_archetypes_runtime_catalog_correspondence.sql",
+      "sha256": "c3e359ca2cc0484234e362030ed8325e51f6c305c42fcbcb4d20c5fc3e8b6178",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/408_mark_item_set_bonuses_runtime_catalog_correspondence.sql",
+      "sha256": "c67361a71352c115d32d9df07e817e3d78a3edeba0c8b8c4fe4c4ca34c0627d6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/409_mark_monster_design_rules_runtime_catalog_correspondence.sql",
+      "sha256": "83691a916b13b207ee42675baa506f7cae92dbb442aa7ff8fc27ece7d2d06707",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/410_publish_schema_consolidation_status.sql",
+      "sha256": "bd54ed80c8e8070f85c92c05256fa49c300d8bb8ea16775592957ea589f6079d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/411_publish_legacy_god2_table_consolidation_inventory.sql",
+      "sha256": "4963d0fe51a945f828a623c4230636c115317aaeedd8d05df1a0ab131d8cc4f3",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/412_classify_remaining_legacy_god2_manual_review_tables.sql",
+      "sha256": "470426104597edb207d0d2d9578c6e594dc770cd693ec95f47b50a49b4ab4954",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/413_publish_legacy_god2_static_table_coverage.sql",
+      "sha256": "f1d9e368496f20fb9c1fcb392eaa90bdeb9a6d978c90e56afb4d00a32d608342",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/414_publish_static_gap_remediation_queue.sql",
+      "sha256": "781a89835cb609c54deeb5de3cdf945c1f1867a1ad5f9edccada4b66074802bb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/415_publish_npc_dialog_gap_evidence_audit.sql",
+      "sha256": "16ff21a92076a12a55178469ccab0620623f7bb491e6081a553c3348b296d93c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/416_publish_container_gap_evidence_audit.sql",
+      "sha256": "eb2a43de000ab6c0c7e452e159e2b598393283d6b7e84194bcac2afd13bd52cc",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/417_publish_merchant_inventory_gap_evidence_audit.sql",
+      "sha256": "d8740230ad79908f0bb7d103afb35fdc333218a7c31215cb872f51ab6235533c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/418_publish_monster_drop_gap_evidence_audit.sql",
+      "sha256": "86ac63f04757e535f626cf73705ea77f2435e3573c1ab40d8647ba2469e31eb8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/419_promote_readable_legacy_items_to_formal_item_roots.sql",
+      "sha256": "476c921e76b85d8273ffe92fd18e9ac777ecccdfb180bb450142b5b8e6133262",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/420_intake_xjz_csharp_client_recovered_service_ports.sql",
+      "sha256": "62050098adef33900e5d049776661a50ab1d65e737b83ca27b0d2e4c8ae1a366",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/421_intake_xjz_executable_item_effect_candidates.sql",
+      "sha256": "04c02b627272760785d13c8a164b4ca27713a2ec6e74688efe9d64ec45c537db",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/422_link_xjz_item_effect_candidates_to_formal_items.sql",
+      "sha256": "1eceb1baaffcb3c9acd53721cf44ffa6f191d3d2463d1c8cd376c23f428c6758",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/423_reconcile_xjz_item_effect_candidates_with_runtime.sql",
+      "sha256": "6150c0cd8bd12d476a10e6779781ccc8aa9a6dab635b374820f94c2b9acb447d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/424_promote_xjz_hp_item_effect_candidates_to_runtime.sql",
+      "sha256": "392c075af8f8f014b398e37833c1ebae0a84aa5906ff7602cc7288edab92ba58",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/425_intake_xjz_npc_shop_slot_candidates.sql",
+      "sha256": "bcf9515d91c9f9004362e61dc04045286fefef21a94b615b4831c9a9f53cc162",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/426_intake_xjz_monster_visual_candidates.sql",
+      "sha256": "288ed42015597d93e9ebbf49b7dbac9f42fc2e0e1d384c2229ef0fc0f6953786",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/427_intake_xjz_quest_reward_capture_targets.sql",
+      "sha256": "3b776551715c5958ee4cdf21bca6ff806365d43a8568a09853006561e924158e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/428_publish_xjz_combat_runtime_contract_feature_audit.sql",
+      "sha256": "26348f7691b3f28a1ba9dd8fc21ae98c790fd94198ea16544b3f7f115fd2e6e5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/429_drop_empty_legacy_raw_research_tables.sql",
+      "sha256": "4897334f643cfbbc16027fe583c47d514b470f1182dff1890244e7cf7584555c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/430_clean_xjz_research_readable_surface.sql",
+      "sha256": "339483caa6056ae623bf69be3fe602baf969011e366b7f6e86909108028a787f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/431_refine_xjz_item_effect_candidate_parameter_labels.sql",
+      "sha256": "2db4de427c69c8ebe11d4ab4b40bfbf092832b4b7662a542ed6cc2923562e182",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/432_add_player_idempotency_readable_summaries.sql",
+      "sha256": "fbe3700f4689b0213df6ea5995bf7ee44cfc9b4788cbb71c792616be3e2dbd97",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/433_seed_evidence_backed_status_effect_identities.sql",
+      "sha256": "f4ef3322aa81f76a20025f2a0bc32dac69e3615f41e4687b90a19a543c83661e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/434_intake_xjz_monster_skill_probe_targets.sql",
+      "sha256": "677a48ff7f5483b0686584343d92e617dcb7fa13e6e38e5535e2e70efc8bf180",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/435_consolidate_monster_skill_remediation_queue.sql",
+      "sha256": "af0e95102f263533b53492db8fd17e5dac30f00d6aa5159d5471ee4a914555a6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/436_intake_xjz_pet_skill_learning_item_candidates.sql",
+      "sha256": "ccd140e7f86452eb88045cddd77393e162ce715c3484beeaf6729c6b852d7c04",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/437_add_pet_skill_learning_remediation_queue_row.sql",
+      "sha256": "2dc18b0223b3bd1cccc15b3255c9d05eb9f87e6dc3e124182b1f2658ecc6dd40",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/438_intake_xjz_craft_material_capture_targets.sql",
+      "sha256": "28fbe4bba1a28b87e03461366bbda7ab913c2a8ba670484769df125be130ad7e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/439_reconcile_quest_reward_remediation_status.sql",
+      "sha256": "f08cea9306b15bc34f313c3d911d8d13bd3492f04a3b49ab482e9456a9e4acd5",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/440_add_formations_remediation_tracking.sql",
+      "sha256": "cef6c5fa18a8cb834b1113ef8355c5d6a6c5e0d5f0b8abd59f5deb94574d204a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/441_intake_xjz_npc_dialog_candidates.sql",
+      "sha256": "3cf5f4492b9619994cf7db7145bdf756f5834f5cf1b340937220b537089c0995",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/442_add_readable_formal_gap_and_packet_evidence_dashboards.sql",
+      "sha256": "c35c0c56806ceca3e49deecb3fcb85ea1c8d51ceb5e36161114b0c4989670c8e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/443_add_item_effect_runtime_gap_readable_views.sql",
+      "sha256": "f303d39957b12f7674b10e2e3e93eb57e33d6027241440ce7d2497e247480bad",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/444_cleanup_xjz_npc_dialog_speaker_traditional_chinese.sql",
+      "sha256": "009d59f6b89c4b3eee045190b0c189d7231d86462cada70a659832177567b766",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/445_finish_xjz_npc_dialog_speaker_traditional_chinese_cleanup.sql",
+      "sha256": "a4cc433ec5fb4d3e0ec4e6a8dedc1b881567abb8960ebd885fe6bdc8ace210ce",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/446_finish_remaining_xjz_npc_dialog_speaker_simplified_cleanup.sql",
+      "sha256": "ca5d6746659048facae3ab588544ed303f617df8154eb71a49836ead1519b0b7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/447_cleanup_xjz_npc_dialog_remaining_single_character_simplified.sql",
+      "sha256": "1af8880c34a106adc7c39925e1c4cbae37ba5c82053f86790bc5090c01a8178f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/448_cleanup_xjz_npc_dialog_remaining_phrase_simplified.sql",
+      "sha256": "9e150bb9fcee31fb2bd596fd093e884280955d824b96c255391e1a5de5ef412b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/449_cleanup_npc_dialog_text_and_formal_npc_appearance_traditional_chinese.sql",
+      "sha256": "e81b42868c04ae46a9efbf0f9049b78bdec27914a5f27d690a72ef5ab7bfb4db",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/450_document_formal_schema_consolidation_boundaries.sql",
+      "sha256": "5303dd65cd83a1903194985fe324583caec194f7a488d803ed6b645efd44106f",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/451_intake_xjz_csharp_zip_evidence_digest.sql",
+      "sha256": "96abab00bee546caf6169f37c8625ae3e254751486e8e5d40f9a71488980869c",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/452_intake_xjz_monster_observation_csharp_evidence.sql",
+      "sha256": "2a38808a7e5f5cf1b648f36def4abf22608f2e670fbde19791f885b340f841d1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/453_intake_xjz_warehouse_storage_csharp_evidence.sql",
+      "sha256": "6b85695b655c96794bf8f59e24b8db062087bbabcf8dfe5e59c098edfdd30174",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/454_intake_xjz_client_message_security_csharp_evidence.sql",
+      "sha256": "1c2d0be4a0859cfc123db2ad29ee5c9bcea37214ef51a12c66c6075cb3a0d40d",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/455_cleanup_xjz_client_message_security_traditional_chinese.sql",
+      "sha256": "ed5179083f8a73a26de60fc7b60eaaaad2a3d5e99994e4e3aaef77e1280c8e38",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/456_tighten_xjz_client_message_security_simplified_scan.sql",
+      "sha256": "8126afa2426a5f461b3341bedd46f9a5370b63fa5654d0a546b10f81a083a8bb",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/457_intake_xjz_social_market_csharp_evidence.sql",
+      "sha256": "1df44ef3ffe9a2fb7496e044c4bd81c89a1dcb46be64b1c346b002fee6424c58",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/458_intake_xjz_reward_pool_csharp_evidence.sql",
+      "sha256": "26e891e929d6869b8d1fc55af49f268c5125ce2f67bdf57ddeab648b6d3c13fd",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/459_intake_xjz_csharp_evidence_source_index.sql",
+      "sha256": "11e666a08dad571e22f237ebf5f047eff9e64fe4cc12f80ab28289a7b9e33dd0",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/460_intake_xjz_achievement_activity_csharp_evidence.sql",
+      "sha256": "b237be49db29454ec6f8a7c3b8dae2b39b3739731370d8af6f32aa413154b17a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/461_intake_xjz_god_system_csharp_evidence.sql",
+      "sha256": "7cc99fd83d5e08bd1aebb44e140fcd7f285555ae518e6dcfbf619ba83a426028",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/462_intake_xjz_mount_transport_rebirth_csharp_evidence.sql",
+      "sha256": "a29fb3af2c06f3c798302223ca1601ee9295c81408b6d82fa8bb151d3e55aa55",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/463_intake_xjz_skill_effect_csharp_evidence.sql",
+      "sha256": "502785ecc43b2f09f32d7089175df7da171129c1f6e63795a25462052f0f6967",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/464_tighten_xjz_skill_effect_text_quality_scan.sql",
+      "sha256": "b437afa3b7634a7d572c444742984fcf358a7643cd901005cd26d53634cb4096",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/465_repair_xjz_mount_formal_item_links.sql",
+      "sha256": "62423199a98a6cba549ab72931bd1bb4509d3e987aea1245a3d14177d52948f7",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/466_refine_xjz_mount_petitem_formal_links.sql",
+      "sha256": "25174b8a5b67787b9d1e5f0d34a0ebdf2c75494c674d9a3020f1498ae945feec",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/467_create_deterministic_blackbox_work_queue.sql",
+      "sha256": "72605fa1a1a330007a1e76b199b5bee866bf2444028cc0f6dad3d746bbdd2d54",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/468_clean_deterministic_blackbox_work_queue_labels.sql",
+      "sha256": "a58e8e4fbdc10b774dea0403aac091e7da1ab9ba1025e38d08051eaf957dde51",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/469_pin_server_v2_npc_spawn_evidence.sql",
+      "sha256": "0bc947496f3dd9e946547976696b5b7d98e9e983627743727c3e26f68a73617a",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/470_pin_server_v2_live_dialog_spawn_evidence.sql",
+      "sha256": "891184e31f57de50ce71f25d1c7dd2154ddc6c4442c53cade54a499a41eee62b",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/471_grant_server_v2_character_map_transition.sql",
+      "sha256": "453c3ff8a227957cb59b680a16d8d94bd83423964f07de47a8307b5bb1125766",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/472_grant_server_v2_portal_route_read.sql",
+      "sha256": "32299e0a7b0a02e20001565025a3e5f8664a923d396b955fa0ba97aa7c471c01",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/473_grant_server_v2_inventory_read.sql",
+      "sha256": "3b063c273289adc8d97e8538a4fd871f0fadfee54e1309a22436036a142ddd0e",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/474_grant_server_v2_item_stack_policy_read.sql",
+      "sha256": "a73c760909fdb757b432630a66a4ecf4e1613abb3baf4fdc0bd141aa8381a1d8",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/475_repair_forge_portal_catalog_and_evidence_drift.sql",
+      "sha256": "4ce628460cf8d4872d42d491f15f2638fcd22b7810e849bbe8b8a4a3c5f90cab",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/476_repair_forge_client_map_resource_provenance_drift.sql",
+      "sha256": "a65b8ac59a9a26172b89254fcc3a79069238d313fb20246d9aa02b997cb478f6",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/477_pin_exact_current_map_file_provenance.sql",
+      "sha256": "d481a257b63f327e35e1d733558f07537bbe00f79387b4bb6ba63db8075887a2",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/478_repair_verified_small_leg_meat_client_identity.sql",
+      "sha256": "38072cfbb3425c4a2aecfe65f74bd5bb7527b218a11eb5b9a778950af1174cf1",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/479_publish_verified_merchant_client_catalog_identity.sql",
+      "sha256": "3dd4c3b7aa94c7e61ef79543cb1adae7dbbd319887b0fc78dcc02acdb2ad1f94",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/480_grant_server_v2_merchant_runtime_reads.sql",
+      "sha256": "870d0ce2e1bfe6b82d24a058333c83bfa984e484016bf111bbba6b65f1790039",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/481_add_v2_merchant_purchase_journal.sql",
+      "sha256": "c40466092d2d6b70e0a3b5bfcaa67923c52ee06f96537ebc1f2d41a3b29df8ba",
+      "tracked": true
+    },
+    {
+      "path": "database/schema/482_add_v2_merchant_sale_journal.sql",
+      "sha256": "23d29a900879aaf1204ce572160478ad39ece0382eaaf9ad1b83f7f27c9b048e",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/Authentication.cs",
+      "sha256": "bfb4fc2a0d4b36274caa5febd021e2102724c8ec793bf3d6463eb7a38222dd44",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterEconomySnapshot.cs",
+      "sha256": "2bd4aea9fb01cddd6372a984c012a03c9e60c0f49c640536896121c5aea00b01",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterInventoryItemIdentity.cs",
+      "sha256": "3ccc04c8546d0879afd1d5e4e3cb65e2c0bb41c1a1b9714ecc6ff0f9f3a6cfae",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterInventorySnapshot.cs",
+      "sha256": "c6c7e6d657e99759284e994fa0ffda91fd69f8ea74413bd1241dc1c8c42d6890",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterList.cs",
+      "sha256": "63ce2b32dabfff8a4314d8b358c4c840340f81e18ab8cf5594d80935793287f7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterMapTransitionWriter.cs",
+      "sha256": "196ca7019d273d44e31d56d1cc8e68da54720c9712ebba314c3cd91d2a249400",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterPositionWriter.cs",
+      "sha256": "73765f78c44a991aead93e5a260a6d048dafe047fb267a95f39a8a541fb44839",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/CharacterWalletSnapshotRepository.cs",
+      "sha256": "4441b1182564b365e59f503603991b1a23f96859c955d35a77028760606454da",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/God2.ServerV2.Application.csproj",
+      "sha256": "87a202baf0cbd3a481e49f32a33b6ba73a64740cce876bd6d09e5d3309726350",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/InventoryGrantPlanner.cs",
+      "sha256": "afdf5183536fa5fa7143c5079b87a3ff93eb4b50e0d6cdf5a01bf524d38c5971",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/InventoryGrantRequest.cs",
+      "sha256": "942718a7760aa8aed3e758b2466d8915c211a8f41bb9ffcafd05fc7ad2e6e29d",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/ItemStackChangeImpact.cs",
+      "sha256": "0e9ffdf1dfa5aba2a144b0059f4337ea69e6c76ff0a2a3a6300e06589c6b5a80",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/ItemStackChangePreview.cs",
+      "sha256": "56eba9e768a4e21324f32b85d633898b0ca890127081a5d5ff46aede3bf3310c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/ItemStackMergePolicy.cs",
+      "sha256": "53c07acfce32ba9df5d07393e7721d7a806ea5bba8e0abd53aa6bea113d4f683",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/ItemStackRule.cs",
+      "sha256": "359d7c1f54c4aea68a40708d5749ef3ba3842d99a3f4cda8dc8c780f9bee82c4",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MapMovementBounds.cs",
+      "sha256": "89637dcc41aa67301e26574fbac48c5036de093a1a655117543131f34e6308e2",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantCatalogIdentity.cs",
+      "sha256": "47d92903620572cef48276a1333bddf4ced1705bd3cf5debaf92c0046dc6e4a9",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantInteractionAuthority.cs",
+      "sha256": "c00f44b566f661aa336e59208c056ce0b1b57f438f42e42cbfec937888e71cd0",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantPurchaseJournal.cs",
+      "sha256": "084eb78bbd7d1d51388d60ea09926272d0b63338d003d281bc305cbf38a5e8b2",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantPurchasePlanner.cs",
+      "sha256": "c0330d3a4a9741b10cdb1f4e48c9bdc8dcee96d6e5753cfa5fae1d917d46b76c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantPurchaseRequest.cs",
+      "sha256": "48b3b78a3eb4d0fb9e491ece4a6e96b43bf56f2111ce3a521dfe05384158cc89",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantSaleJournal.cs",
+      "sha256": "088592223d97e367f06bce110822d8d5c2e577d051ddb6fde41d9486e365d67d",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantSalePlanner.cs",
+      "sha256": "913431d0559a59e6f8bd55e04c32965835ebec3a2b92edad9a161b52afa0186c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/MerchantSaleRequest.cs",
+      "sha256": "fbe120609e2b075211012cdf0f961c90944cd87a17b15052520a9c35f5901c6b",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/NpcSnapshot.cs",
+      "sha256": "cb3990f83cc30ccd27cc34c82b1b07985136baf0e08e62ed599528ae126027e1",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/Pbkdf2Sha256PasswordHashVerifier.cs",
+      "sha256": "89d84af7b8123fd2d66551a0519e8bb65afdd4b9727140afda029e21bb5e30da",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/PortalRoute.cs",
+      "sha256": "2a8ec3f5967df1f04272e50936de607641f39d52847e6fec79388852d858bd25",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestAcceptanceDefinition.cs",
+      "sha256": "a6f14e39551f73be70eac38a2aaf314a0c2a101a821bf5bbaed9a821f4eedab3",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestAcceptanceRequest.cs",
+      "sha256": "a75af6797f5024e98eebb94394451c54da62d8f682950cb01ee425e6547404c3",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestProgressPlanner.cs",
+      "sha256": "cb2a29f71aaf4ae4fe9c83ea5c49a38de21cf70ba173effe98a05dde809e4d66",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestProgressRequest.cs",
+      "sha256": "85a70dd567ab9a2dd6eb05bfac7e7f7503e3ea80d18b5e758707d5ec5ad9354c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestRewardBatchPlanner.cs",
+      "sha256": "a4b6c55a700fbfa6d268ed2f17f171080ec0926ea2a6451b3eb917b4842bcdf7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/QuestRewardClaimRequest.cs",
+      "sha256": "f72a2fdc9e31738129a798018a496cee3ae382ba6895571e52733a19891bc7c2",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/RejectAllAccountAuthenticator.cs",
+      "sha256": "18797bbaa46be1dda09ac5b1ddb95c0a24238217607424d5dd6e4563ff967402",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Application/WorldLoginMapIdentity.cs",
+      "sha256": "566e751fd63a6daf43e009e26ec6c4c87b1dab3021f9df096d89ef5ecf335811",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Core/ConnectionStateMachine.cs",
+      "sha256": "c8d8e684a47af581d4e724355eadb75b06bccd47698be1e8584e73988cd06423",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Core/God2.ServerV2.Core.csproj",
+      "sha256": "3472fccce5613343d3b55f6c2bbc48cbfd3de01f9cf32fd8607b8ac3a7e26395",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Core/ServerV2Architecture.cs",
+      "sha256": "d7701e14ff3a611d73d9474c1c16ead90b29a352d0375d637b17864afdedcd74",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/ConnectionCommandLane.cs",
+      "sha256": "99a2dba97c02ee86a6f33659aa60265e25e44194910f94e4241d66364c13a2e7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/God2.ServerV2.Network.csproj",
+      "sha256": "46ff6e4a3243ac7acc90d0652220eaad10b0429c418d406155042f2ceb6a2b2b",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/InventoryBootstrapProjection.cs",
+      "sha256": "d2e5d38fa2460d33452c7c69d8f6433cc8ee5e88d8aa3df60c319924f0a7a976",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantCommandService.cs",
+      "sha256": "0d66fb1835c4989a2800e56c42c0ebff792a6ef17de1ccaa78af8874f46ae005",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantInteractionBindingProvider.cs",
+      "sha256": "d296b8c8c52e98bc6f1f7932818306384296b576a60a6efa6feebba037b38502",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantInteractionPolicy.cs",
+      "sha256": "e4ef146635217380b53beb84bde324f2a3d71f436d21ed49236abdca698ffa18",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantInteractionResolver.cs",
+      "sha256": "b0212f773e6843675d7ed5ba014fa161556641cc8ca93254a3205721aab96911",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantPurchaseCommandFactory.cs",
+      "sha256": "bec577b5ca212947fb6f1a64b378044f1c7e1f15c6f8a2ed19aba23c3c20b4d4",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantPurchaseExecutionService.cs",
+      "sha256": "863ee330b2c632051723b508919148d10c6227ca0c596f2a129a49545908c29e",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantPurchasePreparationService.cs",
+      "sha256": "6eceb9f674e7e75b87a7e817964fc6ab3e7550ae89bfe91cc676dbad55fa953b",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantPurchaseResponsePolicy.cs",
+      "sha256": "5cc3b884b465fa62c0d5117d45cb4ce418267d60ea2fbb3d967101d0de980fa9",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantSaleCommandFactory.cs",
+      "sha256": "1d58ae27e757103f7a1d3fde1f7134a50148fc886a3dc0e9a8b2c4be87de3efc",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantSaleExecutionService.cs",
+      "sha256": "f10a78a93bc91beaaea5d03f5f3925dab631828454d55cf747fa269625bb88db",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantSalePreparationService.cs",
+      "sha256": "6505071bd380ed842246a1e1dc5280d720c0c9f34d69311ca7c0bdffcd6ae00a",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/MerchantSaleResponsePolicy.cs",
+      "sha256": "7436bf00da286e4dcc44e34b9dcb44458578ee815e60a396ab9cb6b5ffce6cbc",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/NpcInteractionSessionRegistry.cs",
+      "sha256": "c0148ceb0a10c895634be71987de3f9b6743db634e8fb436e5eca007c0f56142",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/PendingWorldEntryRegistry.cs",
+      "sha256": "8a58e3967e301b12394c1b16c1383cb87d1e6dd3736af9083e64d5c856bdd1e7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/TcpGameServer.cs",
+      "sha256": "ea18fb2b47156352c16def7061c3174af9258ddd824af8bb5f19c8a6c252b602",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/TcpServerOptions.cs",
+      "sha256": "09e0a9fb500c34ed4960fa84d632710dfb947e5121ccdf3090f332d57fdf71bd",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldActivityTracker.cs",
+      "sha256": "7c64f07706ade37d6c4ea912a75a410a32b4e210b0673155f2debaab5b02ab0a",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldMapTransitionService.cs",
+      "sha256": "722e94f20ffb01670a36e3ec7d1c49b5524cb9e2c9c4e79990a69923efbc072f",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldMovementSequenceTracker.cs",
+      "sha256": "23b9855f973cb3ef4d2bc9d9434e2d5c7e3c218fe28e5492b32992f4ba5ab89e",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldNpcRegistry.cs",
+      "sha256": "8f2fc2c765aeb129a42ebe92f407d8b0b2ac775a66e0aeb0d664f730ca7a061d",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldNpcSpatialQuery.cs",
+      "sha256": "3a1dd2df62292f20c884d643a7c747813526b1eef1018bf659a89d3ff3a5d1ed",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldNpcStateService.cs",
+      "sha256": "54140e0f4a80c3e09f3b5d9abdbb7ff6a54d340584d4ffc44dde4d2cda6c9196",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldPresenceRegistry.cs",
+      "sha256": "a5caaee508bea7d6920fc62f49c1143a3d3adf6de30f423affcdd89d1250e3ab",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Network/WorldReplicationOutboxRegistry.cs",
+      "sha256": "5aa3791e99a3f5aa59bbd47469ef60a043b4b788c2225cb1f1a923be00dc3a19",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/EconomySnapshotTestAccess.cs",
+      "sha256": "7691b638f1508aae2e5f8a9e3b78722834d3ff7a7470227d1d9f4c466fcc2949",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/God2.ServerV2.Persistence.csproj",
+      "sha256": "b37646262ccffb50862f3c96444c5275636b832ade708d0f0c2d0c619352a642",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/JournaledMerchantPurchaseWriter.cs",
+      "sha256": "30831a1e0b056fa6ef7cf30cd890ba6a1325a0e7b786b70a967ca4166e5a7f39",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/JournaledMerchantSaleWriter.cs",
+      "sha256": "ffbb13e5b168c285e0767cfc1db756abb44435897455531d449afcee3275fee3",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbAccountAuthenticator.cs",
+      "sha256": "5a5dde7d22651d870ecdb450bcc498362197f4bfdcbdf142860ef917200d1ac7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterEconomySnapshotRepository.cs",
+      "sha256": "1f7bf5abb985a7167be0420c837e7497dadf6b2aa3330c576070637c3a0a877c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterInventoryItemIdentityRepository.cs",
+      "sha256": "136eb528bccb85d71003f1b62f339b7ad9a3337b724349570235431d11d635ae",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterInventorySnapshotRepository.cs",
+      "sha256": "803cc10053ac0c4a4c86f8de766a9235efed443e1e8c58e345ba4ef78e8394fb",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterListRepository.cs",
+      "sha256": "5896026436968c88f247ad8ec6763bdd70dbafb81d7a14d8808dcfcd3994b268",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterMapTransitionWriter.cs",
+      "sha256": "5e66c7313fc34426f3def5c60f10916a610806ee0282a66f8febfc2bf72f9c5c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterPositionWriter.cs",
+      "sha256": "486bea1cc84fb11ab9befe9c5e58f3ece1471777e2f65b35ab81fe7063a865d8",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbCharacterWalletSnapshotRepository.cs",
+      "sha256": "b6b85d3aba58d7f046b548eb8a4c74dc1f129c5a82518a37a14da22c2be11316",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbInventoryGrantWriter.cs",
+      "sha256": "63c615e47176d0137d485f7cf11adc5c032bd980b29f22553cb6b008f99f77ef",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbItemStackChangeImpactRepository.cs",
+      "sha256": "cde5df68a496583f5d27526e31255f8aa6bb54984c8d5550c80c74a1d6183ca3",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbItemStackRuleRepository.cs",
+      "sha256": "ea79050e7c193248d9a4e2512d7074829ce4891d2a892fe7af3d3d3fd10e2689",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMapMovementBoundsRepository.cs",
+      "sha256": "f3280066e61a9d36d0f816b20e17b9cd84c21ba3c6dcc07d9b0a02a169fd8493",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantCatalogIdentityRepository.cs",
+      "sha256": "93424fb4624a449bb490410afab033ac3e8ad9ce5be71cd58efcf7e49118e0cb",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantInteractionAuthorityRepository.cs",
+      "sha256": "0947ac6aca7f36f3ea0d3bd82561dea804496e3a096875f545f36ecd09ef8cdf",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantPurchaseJournal.cs",
+      "sha256": "141e739d4df3a1110be6c612faebf53b078ffd0d772d2b3e7399605e286dec63",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantPurchaseRecoveryReader.cs",
+      "sha256": "94009a61b8edb04f86fff53e87cc5d6d153bacbbabf76dbe671a0a4c684cf3e9",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantPurchaseWriter.cs",
+      "sha256": "5ada86a4be4a5f80c9c15c6a818518fc275cc4890842d8643a393f8cd893ef04",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantSaleJournal.cs",
+      "sha256": "75205ec9eb2c5fd6b6f7bda2a9cba1f23e31ac7eada5a7cc57c626ff0da59ad4",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantSaleRecoveryReader.cs",
+      "sha256": "42763de216b5760ca3241c42df1a023b6620b561b9ef25931cc5ecce54ea47b0",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbMerchantSaleWriter.cs",
+      "sha256": "572b9783b11ce9bd1415e84b80a6a7fbc60437cd4f85527c875452f130309b6c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbNpcSnapshotRepository.cs",
+      "sha256": "aea25391775997082a3c4c2a8e8fd1747c71b34a39aff5906a1bbec64e9ad63f",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbPortalRouteRepository.cs",
+      "sha256": "640b5842b9b6546a41c7310bd2a0918e2d5b388da0576610bb0d1c5c587a4bc2",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbQuestAcceptanceWriter.cs",
+      "sha256": "66a29e30cbce0bfa2264acacb94e1a7a895e07f656b7589b2985f9562822a921",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbQuestProgressWriter.cs",
+      "sha256": "8ab0f76e1d60ea8aa100445d4624e8741093f0f8293f2a0c488f56d3d7693084",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbQuestRewardClaimWriter.cs",
+      "sha256": "c88ad158243e1ebf5d0b276e61137316576e52fa6ea648150610bd22cc306555",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MariaDbWorldLoginMapIdentityRepository.cs",
+      "sha256": "8b509a25c3a48b89801b758c38c3b344f5f96d6f66c497ce32843ecf4ad8d3ed",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MerchantPurchaseRequestIdentity.cs",
+      "sha256": "4e81e3bbed2756aa74c0ff8aa7e2390d92e826b06b32408f66b4125cbd823881",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MerchantRecoveryReceiptValidator.cs",
+      "sha256": "2b0453620e92e15836bd3a719e2b106f3574553b47bb4ac854dc2febea98a12d",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Persistence/MerchantSaleRequestIdentity.cs",
+      "sha256": "82ecd8e4b64a81ec77cf8c9110dabca9d77714f77e8282613fc3d39806a9b825",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/AssemblyInfo.cs",
+      "sha256": "3c6a6fce06d933dbf62649c6ce17d70425d9dc7e13726c7816698857f1ac4b74",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/CurrentClientServerWireTransform.cs",
+      "sha256": "87d4f85f0b1b4ffe018b87f9c0849cd23d4ead695513feffcb5ed20b454a781e",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/God2.ServerV2.Protocol.csproj",
+      "sha256": "be5c579f29e208b91dc803f717274fac91b169f65683c9576ae23def8d84ae58",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/LengthPrefixedFrameReader.cs",
+      "sha256": "dea3e7b380db0ab8d7810b6b343c3480577ba2405e6c34a0cdaca10159c1061d",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialLoginHandshakeProtocol.cs",
+      "sha256": "0a37492faeaa03e532d93d18424340b8b2274342608a77e6093e06395f8be441",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialLoginRequestCodec.cs",
+      "sha256": "d330ceb33aff6be356dd30bd00a937d869dc0be46750fa6c004f1729a91639ed",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialLoginResponseCodec.cs",
+      "sha256": "9b584891ab22b16b3590e755ffccdc2206334955cd98f10f29de8e9f906e4ded",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialLoginSuccessCodec.cs",
+      "sha256": "082c1cb5b03397b253a8102b5a09b060991b16cb2936a6cd144f1daaf091afb4",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialLoginWireTransform.cs",
+      "sha256": "031809e2ac9f2704ba7dc39db9005ff36a681a5336efd89410387d2512492acf",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialMapTransitionCodec.cs",
+      "sha256": "e9e7e7faf50352693b1e6e205be538f1670fc63d20eab50b698f1c6ec2d4e6ed",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialMerchantPurchaseResultCodec.cs",
+      "sha256": "2405bd36403ddb9eec4f01feed3496ff02cd9c74efe4ee18af47e1841ac94d56",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialMerchantSaleResultCodec.cs",
+      "sha256": "998f4e13beb34e2a1080570474d7ed1c709880004cd631cfba05740259e752ad",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialMerchantTransactionCodec.cs",
+      "sha256": "ae77220eb3cfb023de6e78e7f9bcca6dfcf5ecb7fd27783bda0ef4e66ef0654e",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialNpcDialogCodec.cs",
+      "sha256": "a9a15875ec5e78115960842bce205e2afad7f5d89548a2035bb3d9e6543ff169",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialNpcDialogSelectionCodec.cs",
+      "sha256": "bb4e6d0a0bab6d166a823c8d7ee8eaab8495cbcd6fde65e863c6962e66c1956c",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialNpcInteractionCodec.cs",
+      "sha256": "1bd18b9d5876686dd7f4e45937c667851ffa1d39d427b66ed284a953cdd08832",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialNpcSpawnCodec.cs",
+      "sha256": "1cf407f0c49fa64497baf5c608be9d07bc2406e27cd92d2e81a20cd273940fe7",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialServerSelectionCodec.cs",
+      "sha256": "37618561d024bf7126899bc8412ca1462b2058e6aa43d231ee2e23371d83c284",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialWorldBootstrapCodec.cs",
+      "sha256": "3abf1847630e2fe7cb0a1409daeffe51510719296a771733a90f8687ebfd62f0",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialWorldHandshakeProtocol.cs",
+      "sha256": "494cc9a89117e58c9ae24ac56f84198c97a812226a7b35bc0795823808ca89f9",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialWorldHeartbeatCodec.cs",
+      "sha256": "ff8db1459eb038b16d8bfc8a8b7cdd7a4213bc7cfa244bff5c0730546d9d75c6",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialWorldLogoutCodec.cs",
+      "sha256": "67bfb53c503cd77bc463d76892d26ab7c3ea312094e12334dfb1f46a26b21993",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Protocol/OfficialWorldMovementCodec.cs",
+      "sha256": "d10001808da5714237153eecfe29fe09a01b563848a487a319e25266636ace60",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Session/ConnectionSessionContext.cs",
+      "sha256": "bc253c88fa761cedb358801585eba38b0f6e32bb18182c6644ce899970b90c0a",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Session/God2.ServerV2.Session.csproj",
+      "sha256": "be5c579f29e208b91dc803f717274fac91b169f65683c9576ae23def8d84ae58",
+      "tracked": true
+    },
+    {
+      "path": "src/God2.ServerV2.Session/SessionRegistry.cs",
+      "sha256": "8d020bb1c3c703e10ccf039b9933f70478f6b350a97a6ca9d69a5e212311f1fc",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/CharacterListServiceTests.cs",
+      "sha256": "61d4577218acef8e88be227397dd67b3b41eeee30e939861f887eaf744c658e2",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/God2.ServerV2.Application.Tests.csproj",
+      "sha256": "818015145433cc108a5df20248d26eb3a641e918c88bfeb1b5f0157ccba2cefe",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/InventoryGrantPlannerTests.cs",
+      "sha256": "3306aa0ef65e5d5539102a2dccba5815eba1c548860673a73554b11617ee4ae7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/ItemStackChangePlannerTests.cs",
+      "sha256": "4d074f6517937bcf3ee2497c63b77bf8251b30014fba1d1e1d1ce398a2a2cfd4",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/ItemStackMergePolicyTests.cs",
+      "sha256": "c9fa16589e501f5ec7cb226e43e79cf63916ee1e95eae5620ae429e4fe8970e9",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/ItemStackRuleTests.cs",
+      "sha256": "c1b8d13ca08eeee9585d59ab4d5e914e6e4842f56a33bbf7c5d8071a37782bc5",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/LoginServiceTests.cs",
+      "sha256": "c4ca7b875a29d200cabfc778375336cab3972fc76014aeb087db677dc47c0407",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/MapMovementBoundsTests.cs",
+      "sha256": "0fb2cd5f5d7a7305ee34244f586c01a404b86de768a3d8ec0a3fa458b2b692b7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/MerchantPurchasePlannerTests.cs",
+      "sha256": "71339d898f9db9eb90e9fff5b7891d10685d21230625bada36b1c2423fee59c7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/MerchantSalePlannerTests.cs",
+      "sha256": "5afd84f8e231ad251591b2c255ea6b6465d3bb119171331f2489180c28613b9e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/NpcSnapshotServiceTests.cs",
+      "sha256": "d229df3b305932036570183ed787edcb678ad348ecdf5281832cf7ca3a3fc274",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/Pbkdf2Sha256PasswordHashVerifierTests.cs",
+      "sha256": "e1836834df2f6476d579bf9d0ea23cad2e51773dd3e5f0fd586303284dca35a2",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/PortalRouteServiceTests.cs",
+      "sha256": "d40420f147b2856d81cce24d636fbc94fe3210b25be074b9085090b8455bb2ed",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/QuestAcceptanceDefinitionTests.cs",
+      "sha256": "144ca61b75169ef59160087024e3c1cb4a48739d7f376aa71c7594e93f820fde",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/QuestProgressPlannerTests.cs",
+      "sha256": "220d31418bf9f81154e9cbb1bc7cf8c281b42fe95309dc757f06cb0f723a0637",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/QuestRewardBatchPlannerTests.cs",
+      "sha256": "b1718f672eefa58b0aab0ec8a9bb2885946fa6535572550221619c65134d160e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Application.Tests/WorldLoginMapIdentityTests.cs",
+      "sha256": "6ed3d407c6f097ddfc316b91104a8d71b9466d266f8d5ed69845f231904bd7f4",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Core.Tests/ConnectionStateMachineTests.cs",
+      "sha256": "6db2f2db67f20c62b6045c5b9ea881d0c260d2bca154306f126314bee4bbd3a6",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Core.Tests/God2.ServerV2.Core.Tests.csproj",
+      "sha256": "e8c608c1ab9f4a2403172940db0a7eccd4f1f99dd7e139cb04a62215ceffa563",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/ConnectionCommandLaneTests.cs",
+      "sha256": "c08feeda8f6f85cafb43d891f0691ee34435cc2ca3651f89513d94df18124d64",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/God2.ServerV2.Network.Tests.csproj",
+      "sha256": "0f43e3dc0cf60fc31d3523e480f23bcafb85d741519aa56252f50f4eb1624ba4",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/InventoryBootstrapProjectionTests.cs",
+      "sha256": "fd80f21eb1c2f3f905106ec9a913301a84d98986ebefc762dac7d3690b7f1160",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantCommandServiceTests.cs",
+      "sha256": "be3708dfeca46fd2d202fc75ee6b3197f02fb93f8a8c121134c9e4c142a84278",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantInteractionBindingProviderTests.cs",
+      "sha256": "3d9dca8cf1ecb179d3c9f00d1304cb8a2e858e9942148b5d4b3d8d6410497234",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantInteractionResolverTests.cs",
+      "sha256": "20f4e3993e9dca59d7d17d1c7297fddd335d14a2cfec898ed179347c40a3d551",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseCommandFactoryTests.cs",
+      "sha256": "ec0577c60b60c047321603894117bf1aa131966ffd1614acdace4ecfa1ff7806",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseExecutionServiceTests.cs",
+      "sha256": "8cb9001fb657cd3ec478bd272af8b40f9a36c3f08699b5e4b994272f7a0a800e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchasePreparationServiceTests.cs",
+      "sha256": "62acba37d0642edf8698994d084d23fa5c764e7f3b8e4800586c2baa86f1c17a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseResponsePolicyTests.cs",
+      "sha256": "6d818cbe461c3f92ea77c133fb1da2d3aba7cd3db8e2270307d1c4064979bd48",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseTcpExecutionBlockedTests.cs",
+      "sha256": "99bbaa659542834c36c6dc5eb6616beb10fadfdf5200137bb258e55e380839c3",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseTcpExecutionTests.cs",
+      "sha256": "8435e52feff6e4c8ade95c13fd313d8d24229301ad2dd3df1e78443f86c07334",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantPurchaseTcpTests.cs",
+      "sha256": "500fa72cf985369808d9c5c92c01a64fb1955882404a52bd5fc0c90ec8822add",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantSaleCommandFactoryTests.cs",
+      "sha256": "e7a532fb2c9895b932168e842effc74d97aac16d5897383a94e8bf01aa247d3e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantSaleExecutionServiceTests.cs",
+      "sha256": "2ae5d99bf21d7d95c14c83d479fc6800d6bbef22d8413bf3e54abc66aaf41a0c",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/MerchantSaleResponsePolicyTests.cs",
+      "sha256": "b7ad22a8419bfb3643f90f256da913892786e82b48134a9915cc73844a96a745",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/NpcInteractionSessionRegistryTests.cs",
+      "sha256": "62c7f1d430f47a8a1920a69cf0769c50592742a95fa7cc0de2204432cd02ee95",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/PendingWorldEntryRegistryTests.cs",
+      "sha256": "f9ca8cc6c31d6909bc28f0811a99935112022a4865c1e3448be1134c0e1351ec",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/PortalPersistenceFailureTcpTests.cs",
+      "sha256": "1627075517b23c29c523ab98ea89e0331f0700da4141270bd7e3c39ddb3f20ed",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/TcpServerOptionsTests.cs",
+      "sha256": "d7707c0700deb0d4a2d267cab3b1fd26e94fd5bcd299330aecadd9beef99a33e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldActivityTrackerTests.cs",
+      "sha256": "32afdcea1566e1d0e83726d8ed7a53a292a535b0dbbd04d031c9d59d004a592f",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldMapTransitionServiceTests.cs",
+      "sha256": "8a04ac155a2de6f6933739a39d3509e9e4ab684b6281ebe97778d62a7c3b6e78",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldMovementSequenceTrackerTests.cs",
+      "sha256": "379726f4bf176777f214affc3ba2c6b7ee5e9d27d57432fc86dccd116e591be7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldNpcRegistryTests.cs",
+      "sha256": "37bf55b9b085c3453218304f8fb3886ff76803251f62447188799973ff580a7f",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldNpcSpatialQueryTests.cs",
+      "sha256": "845711427a35580a0d07d9b236a96e89ab7920ca83d9f19d518395f6e9c66a2b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldNpcStateServiceTests.cs",
+      "sha256": "9a21b98e5e794cdc0160e89b655ef5d9a45e24ab2e7b8421c970403e7f3f35d1",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldPresenceRegistryTests.cs",
+      "sha256": "0dc4064fc425253504fcad3c70ff4214bcdea0746c6450e37a9a634099167997",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Network.Tests/WorldReplicationOutboxRegistryTests.cs",
+      "sha256": "03684220e36bb3acf68c76466d6423669014b021b8a1d55a23bf0c02f3175ede",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/CharacterEconomySnapshotIntegrationTests.cs",
+      "sha256": "e2c5682284ac80226e50a4e04e208ce4ae40dddb973ec4634f45f30b5e1369d6",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/CharacterPositionCommittedTests.cs",
+      "sha256": "9ccb0f30d37529a4bc7a63f5473f7aebb124e87198ac649e950b5e592c493029",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/EnabledPortalBuildIntegrationTests.cs",
+      "sha256": "f82838d0a3a4e22069c99ef3e4c9296bfe4095ffeb9cf754cdd60b4a8b2726a2",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/God2.ServerV2.Persistence.IntegrationTests.csproj",
+      "sha256": "4a146f66d2f263d70e1790c8884a9d21b7d118793fe4b01de4a969073321d26f",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantConcurrencyTests.cs",
+      "sha256": "2cdcd5fc09ea6b8656a43bbab1aa65ca9db73f609bf185e90e72d6ab69dc714a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantDatabaseCollection.cs",
+      "sha256": "6cb8f9fc8ca5a4fdadf9ad2cebe04f4ebd3a7dd456d31009a2fe2d5d099ae2c9",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantFailureTests.cs",
+      "sha256": "cae113fceaf140df07bcb8e90acd19f0e79cd0a017c2c20b762565271ea88f04",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantIntegrationTests.cs",
+      "sha256": "6644cce07cd64203ee238099d5dfa74e48bba2718c9265fe44bcf3566e2c3c2a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantStackCommittedTests.cs",
+      "sha256": "490875e85e14e59bca0b1ac5e1696f3ccaab1151a5d7c20eedb7ac7a56893e89",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryGrantStackTests.cs",
+      "sha256": "8adf18a3ba6972150b4889bb184903c9df1cf7b5ac0c632bb0c02eabad7b9cb3",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/InventoryRestoreTcpBlockedIntegrationTests.cs",
+      "sha256": "b665284819d06294e338fd50d2956e56a197ccd434bf3650bb5f77fa014d8b3a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/JournaledMerchantPurchaseWriterTests.cs",
+      "sha256": "1337811484b77029720f7370b3f00449b774a5908a4ee1d4f24c35cedced6e30",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/JournaledMerchantSaleWriterTests.cs",
+      "sha256": "7caf4250819d6f6de9d7c4d8a297f3f0a414eee94705a84a81a6b107e8da4250",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/LiveDialogSpawnEvidenceMigrationTests.cs",
+      "sha256": "8677da486e491094d01b1a134f0ff3bb13136ad5a40ca18a6a07648bdf209dc4",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MariaDbNpcSnapshotRepositoryTests.cs",
+      "sha256": "1ba0de808bf1901bd00718b1cd52819dc31f814a9c9c2d19d7badbc3500353aa",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MariaDbRuntimeIntegrationTests.cs",
+      "sha256": "aa660ffed0b9fe3624750fb745e71e3a586e8210dd968be4d4a2900595996bd7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantBuySellTcpIntegrationTests.cs",
+      "sha256": "ef2b24ed7056052b06614ae35f074c5bee557b2d5f98674cb4a9f1c899f9685b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantCatalogIdentityIntegrationTests.cs",
+      "sha256": "151aa02b2e88cec58c1e8e0b8165832574d39a38634c79a0065c7b9553e19863",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantCommandIntegrationTests.cs",
+      "sha256": "2b50c3f304826d414cb78841a0f85fbf2202dc5c3d84aaf689b79d3987f8b274",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantInteractionAuthorityIntegrationTests.cs",
+      "sha256": "ec8b293fd9555de49d2d7e7dc83fa5f72d2748d5a486cd440c0f8b1b7262b2f8",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseIntegrationTests.cs",
+      "sha256": "a3ab9e8f96ae6c37b276852eed318fe3916c4602f5bcac8e362208e79be67f3a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseJournalIntegrationTests.cs",
+      "sha256": "894f79f2d18c7b11e39f0aebe2c6bc93bab230af7d7740b7f0cefba81c1ba5cb",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseJournalProcessRecoveryTests.cs",
+      "sha256": "d6401f1f8f73109796a1bc1816cbaf5b57e3c5587a09b5ee577ddae3031a1f33",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseRequestIdentityTests.cs",
+      "sha256": "a05de13b20b3d1ef4169e9f6546c47c4a169c1315619398cabba1c19edfc6094",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseTcpIntegrationTests.cs",
+      "sha256": "f23c9c88742729f679c6022784a2703dc95b26360fbdfc382073a2c598eb111f",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseTcpLostResultIntegrationTests.cs",
+      "sha256": "b2bd590b4ba2a3f619313a064e980c4b9b75122987df3412b832dc4fc7db62ae",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseTcpNewServerIntegrationTests.cs",
+      "sha256": "2975452849c4b2a2b854fa9759a0c94a88ce5f20da30b5bc65f76991271a4a03",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantPurchaseTcpReconnectIntegrationTests.cs",
+      "sha256": "cc46613a45f5f44d7a279c89b5111b30db1afe08302dbc564dacdea3a92a387a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantRecoveryDatabaseGuard.cs",
+      "sha256": "9b06d67850e4d9c419ff475d11d7937b32df97ec710a41991a042892a6376bc2",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantRecoveryDatabaseGuardTests.cs",
+      "sha256": "9f56b920b761e46181a955fc60f6dbdffd0c073c3b5e5b32486c36641fde3407",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantRecoveryReceiptValidatorTests.cs",
+      "sha256": "3ff4112942d9e18d88f03fc5ec23556dbf29940291d788c2bcd3f9361feaae9b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantSaleIntegrationTests.cs",
+      "sha256": "2e208741ef9ddf6634dac036456df478cdf368fba7dbfdb18286b96d37fa0fbc",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantSaleJournalProcessRecoveryTests.cs",
+      "sha256": "a027d501696ceb550fe40e1e44599ad1c4e48597a7a3de9c8d365cae876323c9",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/MerchantSaleTcpLostResultIntegrationTests.cs",
+      "sha256": "0675ee1f800ce78c2d53523af47308751afc567531c8c03595a1bb3c9de65f21",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/NpcSpawnEvidenceMigrationTests.cs",
+      "sha256": "8da5baa5b188449f05f0bf31ea80ff56cbe3a779bddd05227a592f44be151b6d",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/Portal2RouteIntegrationTests.cs",
+      "sha256": "3b23a8f333c3a47b3f60276f946fd2004a352d87160779c3a91cc4730f59edf6",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/Portal34RouteIntegrationTests.cs",
+      "sha256": "7b003da9cb14ea50da13ef19de6acc5b32b40d7295edbadced329ac4c5df9078",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestAcceptanceClosedLoopTests.cs",
+      "sha256": "f66b0f4ac4d9298cb438f349af76c54f56c75991113dfcfb5bed13390dd97bb3",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestIsolatedDatabaseGuard.cs",
+      "sha256": "f69a2b8e71cafa71e05e09418e123fac9ff3d96630ce8cde376576404873883b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestProcessRecoveryTests.cs",
+      "sha256": "34d3998dc22ce0811e40e3b4f93ed279349578c1ac2fd6182d21db6f4b99243e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestProgressClosedLoopTests.cs",
+      "sha256": "88b22fc3f5fba69ff04d4f04c8044175a23efecc46c63cbd3f6010310ee39c6d",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestRewardClaimCommittedTests.cs",
+      "sha256": "ec50fe2ba93bb889651f629851dc8a9370e23cfdaaac9fc10fcfde1b826d018b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/QuestRewardClaimIntegrationTests.cs",
+      "sha256": "82e2b2f1aed50819e8358d157c6a4caa8c37c2d13c038858a8b35453b6730154",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/RegressionBaselineDatabaseGuard.cs",
+      "sha256": "f1da17d74e3f0b55c318a93a1dad66d312d3b47e60d57d53f78cea8c80b1356a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Persistence.IntegrationTests/WorldLoginCatalogIntegrationTests.cs",
+      "sha256": "d4997edc443edaa25df12749cd68b06d69b9a742483b171376086e9524113d52",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/God2.ServerV2.Protocol.Tests.csproj",
+      "sha256": "d07f432cca81c56dac0c4a464bc9b646b272a9b82a4ee6d71f199452acb7f115",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/LengthPrefixedFrameReaderTests.cs",
+      "sha256": "5339cf275077d99f27d38e8e5e61ebecf00c96f8ed2f96e408aa2f28627a013e",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialLoginResponseCodecTests.cs",
+      "sha256": "444de6783ad1931dd92bbd5ec17d69e79016c944b35350dd1547f9e156eb7d0a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialLoginSuccessCodecTests.cs",
+      "sha256": "d57db3681d557135147479ba61a3b735f26a71284bf5762eff13893bb45f322f",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialLoginWireTransformTests.cs",
+      "sha256": "699695317326d6d11a391ab20b9860bfcd3862ec6a98dc00de5532b8223324ec",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialMapTransitionCodecTests.cs",
+      "sha256": "fc540bbfc0fa5483c022b21c04221c0f40be74cc78f89441a414d94e8cfe3250",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialMerchantPurchaseResultCodecTests.cs",
+      "sha256": "e334a5fcd99c37881995d9a6ce9f15af0e40980d6bb0e5646bf1804a0fc01c42",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialMerchantSaleResultCodecTests.cs",
+      "sha256": "28f52728517347bbd063ec15ecbb350a80ce51a83fed9c0b80b71b47ac55bc86",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialMerchantTransactionCodecTests.cs",
+      "sha256": "621a72abfd81728a97bc8299d39ed0d89e2bd8e99c268698dcfa01dccc0f7fe5",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialNpcDialogCodecTests.cs",
+      "sha256": "9b5a9db3ce555ddd718cd79af12a4f853a9101fb9ba28b7a3f1a660d9945f650",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialNpcDialogSelectionCodecTests.cs",
+      "sha256": "99e8ecda6afebdfbc5248a606acb1f7555c0cfc7516f5ba800418bb8b77833c9",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialNpcInteractionCodecTests.cs",
+      "sha256": "8bce0e5355435f41eb206812d3d7aefb44f7d36b447b0b289282ff767c5c398b",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialNpcInteractionEncodingTests.cs",
+      "sha256": "a9b9759167dd17c50f1fdb273621c375da4d16bdec7f2f27ea8901285c884579",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialNpcSpawnCodecTests.cs",
+      "sha256": "90f3db82716e6f3591a0a5680ce8e4e62b1a380af67e157db57535e80596897d",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialServerSelectionCodecTests.cs",
+      "sha256": "c342b8af1a1332c2767573c343fff42c05f5ea6ca1b4e9c7f42cf59fa63b43e7",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialWorldBootstrapCodecTests.cs",
+      "sha256": "4c2ea90e23f85189c731582f211483fed70ef3534120771d8c30022700c52001",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialWorldHandshakeProtocolTests.cs",
+      "sha256": "51eb462cdbfb20139f5bf59610f1861667f942ec74cc5aca59d8f7c28ee6f05c",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialWorldHeartbeatCodecTests.cs",
+      "sha256": "4c97b276f14c165e477fee04b34a8e8297684f7357f714cf8bb4985dac4214a6",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialWorldLogoutCodecTests.cs",
+      "sha256": "6bdf4fa67c370aed50563125c3010a3c20b0a62fec3fcaaf0344ebf589d4335a",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Protocol.Tests/OfficialWorldMovementCodecTests.cs",
+      "sha256": "9982b33aea2b83471809848bf4657fa3e07c1a35bbc3ee0609bb915c0a981b5d",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Session.Tests/ConnectionSessionContextTests.cs",
+      "sha256": "8072c84e842575139dba68d57a847808076d0bc92e73dc795016ee6ede4cbfcd",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Session.Tests/God2.ServerV2.Session.Tests.csproj",
+      "sha256": "41baed6bf2e9d3ec5578ee05af694e9100a29636f90ef87a5620833ec03c34ee",
+      "tracked": true
+    },
+    {
+      "path": "tests/God2.ServerV2.Session.Tests/SessionRegistryTests.cs",
+      "sha256": "43d8f980e0e0fef5d7b6593ae377739b6d614d1b1f19c9776397939e1c2f373c",
+      "tracked": true
+    }
+  ]
+}
